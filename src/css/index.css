@@ -1,0 +1,637 @@
+@font-face {
+font-family: SuisseIntl-SemiBold;
+src: url("../assets/font/SuisseIntl-SemiBold.otf");
+}
+@font-face {
+font-family: SuisseIntl-Regular;
+src: url("../assets/font/SuisseIntl-Regular.otf");
+}
+@font-face {
+font-family: SuisseIntl-Thin;
+src: url("../assets/font/SuisseIntl-Thin.otf");
+}
+@font-face {
+  font-family: Courier-Regular;
+  src: url("../assets/font/CourierStd.otf");
+  }
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3,h5, a,span,button,p,li,ul,.logo{
+  color:black;
+  font-family: SuisseIntl-Regular;
+}
+.bold,ul{
+  font-family: SuisseIntl-SemiBold;
+  list-style-type:decimal;
+}
+.h-28px{
+  font-size:28px;
+}
+h1{
+  font-size:21px;
+  margin-bottom: -10px;
+}
+a{
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+  color:#FC2293;
+}
+h2{
+    font-size:18px;
+}
+h3,ul{
+  font-size:13px;
+}
+p,li{
+  font-size:16px;
+  line-height: 2em;
+}
+li{
+  font-size:15px;
+  line-height: 1em;
+}
+br{
+  line-height:2em;
+}
+ul{
+  margin-left:-1em;
+}
+li{
+  margin:1em auto 1em 2em;
+  cursor: pointer;
+}
+li:hover{
+  text-decoration: underline;
+  color:#FC2293;
+}
+span{
+  font-size:16px;
+}
+.grey{
+  color:black;
+  opacity:.5;
+}
+.pink{
+  color: #FC2293;
+}
+.blue{
+  color:blue;
+}
+
+a:hover{
+  color:#fd971f;
+}
+.black{
+  color:black;
+}
+.card{
+  display:inline-block;
+  box-shadow: 1px 2px 24px 0 #BDBBBE;
+  height:22em;
+  width:40%;
+  overflow: hidden;
+  z-index:2;
+  cursor: pointer;
+  margin-left:2em;
+  margin-top:3em;
+  max-width:500px;
+  height:44vw;
+  max-height:450px;
+}
+.Card-content{
+    position:absolute;
+    margin-left:2em;
+    width:90%;
+}
+.content{
+  top:2em;
+  left:0em;
+  width:auto;
+  margin-left:4vw;
+  margin-bottom: 3em;
+}
+.card:hover{
+  box-shadow: 1px 2px 24px 0 white;
+  border:solid 2px #FC2293;
+}
+.cardImg{
+  width:100%;
+}
+
+#navi{
+  top:60px;
+  bottom:5%;
+  left:0px;
+  height:90%;
+  width:25%;
+  position:fixed;
+  border: 0;
+  outline: 0;
+  border-right: .5px solid #FC2293;
+  z-index:8;
+}
+#content{
+  position: absolute;
+  top:10%;
+  left:0;
+  width:99.9%;
+}
+#recommend{
+  position: absolute;
+  width:100%;
+}
+#info{
+  position:absolute;
+  left:33.3%;
+  width:60%;
+}
+.descrip {
+  position: absolute;
+  width: 95%;
+  margin-top: -.5em;
+  font-size:13px;
+}
+
+.mobile-navi{
+  background:transparent;
+  position:fixed;
+  top:0em;
+  left:0;
+  width:100%;
+  height:60px;
+  z-index:9;
+  border-bottom-color: #FC2293;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.dropdown{
+  display:none;
+}
+
+.changOpt:hover{
+  opacity:.5;
+}
+.IsabellaW{
+  width:100%;
+  position: fixed;
+  left:0;
+  top:0;
+  background-size: cover;
+  
+}
+.contact-text{
+  position: absolute;
+  width:40%;
+  background-color:white;
+  padding:2em 2em;
+  margin-left:48%;
+
+}
+
+.HomeIntro{
+  font-size: 48px;
+  font-weight: lighter;
+  left:0;
+  width:90%;
+  background-color: #efefee;
+  padding:2em 1em;
+
+}
+.Intro2Project{
+  color:#FC2293;
+
+}
+
+
+.navigationMargin{
+margin-right: 24px;
+font-size: 18px;
+margin-top:6px;
+cursor: pointer;
+}
+
+.buttonTurnPink{
+  background-color: #FC2293;
+  color:white;
+}
+
+.arrowDown{
+  margin-top: -6px;
+  animation-name: arrowDownAnimeample;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.arr2op{
+  animation-delay: .4s;
+}
+.arr3op{
+  animation-delay: .8s;
+}
+  @keyframes arrowDownAnimeample {
+    from {opacity: 1;}
+    to {opacity: .333;}
+  }
+
+  .HP_downArr{
+    font-family:SuisseIntl-Regular;
+     margin-top:2em;
+     color:#FF1493;
+     display:flex;
+     flex-direction: row-reverse;
+     align-items: center;
+     position: relative;
+  }
+/* Homepage CSS */
+
+#HP_container{
+  display:inline-block;
+  flex-direction: row;
+  width:100vw;
+  height:100vh;
+ left:0px;
+ top:0px;
+  z-index: 17;
+  position: absolute;
+  color:white;
+  background-color: rgba(255, 182, 193, 0.507);
+}
+#landingPart, #contactPart{
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  width:70%;
+  z-Index:2;
+}
+#landingPart{
+  display:flex;
+  flex-direction: row;
+}
+#contactPart{
+  flex-direction: row;
+  align-items: center;
+  margin-top:20%;
+}
+
+.Alllinks{
+  font-size: 21px;
+}
+.pink{
+  color:#FC2293;
+}
+
+.HP_Intro{
+  font-size: 48px;
+  margin-top: 12px;
+  font-family: 'SuisseIntl-SemiBold';
+  z-index: 10;
+}
+.landingpage_Intro{
+  font-size: 40pt;
+  margin-top: 15%;
+  color:black;
+  width:70%;
+  font-family: 'SuisseIntl-Semibold';
+}
+
+.HP_descrip,.Alllinks{
+  font-size:21px;
+  margin-top: 24px;
+  font-family: 'SuisseIntl-Regular';
+  z-index: 10;
+  line-height: 42px;
+}
+.sessionContainer{
+  display:flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  flex-direction: row;
+  -webkit-box-orient: horizontal; 
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  flex-wrap:wrap;
+  align-items: center;
+  padding-left: 10%;
+  width:90%;
+}
+
+.contentblock{
+  width:45%;
+  margin-right: 2.5%;
+  align-content: space-around;
+  justify-content: space-around;
+}
+.img{
+  height:auto;
+  width:80%;
+  margin-left: 8%;
+}
+.ventureImg{
+  width:120%;
+  margin-left: -10%;
+  z-index: 3;
+}
+
+.pinkSquare{
+  margin-left: 0px;
+}
+.timeLine{
+  margin-left:40px;
+}
+#Thesis{
+  background:#fbfbfb;
+  margin-left: 0;
+  margin-top: 0;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.CampyBG{
+  width: 100%;
+  top: 0;
+  z-index: 5;
+  margin-left:-100;
+  margin-top:30
+}
+.DODCornell{
+  background-color: whitesmoke;
+  align-items: flex-start;
+  padding-top: 18vh;
+}
+.DODCornellImg{
+  width:100%;
+}
+#Vogether{
+  background-color: #333c4a;
+}
+.coder{
+  font-family: Courier-Regular;
+  color:white;
+  width:90%;
+  line-height: normal;
+}
+#coder{
+  background-color: black;
+  width:90%;
+  padding-left:10%;
+  overflow-wrap: break-word;
+  padding-top: 5vh;
+}
+.codeDefineIndent{
+  margin-left: -150px;
+}
+
+.greenCode{
+  color:#95ee0f;
+  font-family: Courier-Regular;
+  font-size:18px;
+}
+.blueCode{
+  color:#53dcf6;
+  font-family: Courier-Regular;
+  font-size:18px;
+  font-weight: bolder;
+}
+.greyCode{
+  color:grey;
+  font-size:21px;
+  font-family: Courier-Regular;
+  font-weight: bolder;
+}
+.pinkCode{
+  color:#f92672;
+  font-family: Courier-Regular;
+  font-size:18px;
+  font-weight: bolder;
+}
+.yellowCode{
+  color:#f2911f;
+  font-family: Courier-Regular;
+  font-size:18px;
+  font-weight: bolder;
+}
+.indentInCoder{
+  margin-left:170px;
+}
+
+#Venture,#Thesis, #DODCornell,#coder{
+  z-Index:5;
+}
+#Venture{
+  background-color: white;
+}
+
+#HomapageTopNavi{
+  height: 60px; 
+  width: 100%; position: fixed;
+  top:0;
+  left:0; 
+  background-color:red; 
+  z-index:40
+}
+@media only screen and (max-width: 850px) {
+
+  .card{
+    width:80%;
+    margin-left:10%;
+    margin-top:1em;
+    height:76vw;
+    min-height: 350px;
+  }
+  h1{
+    font-size:18px;
+  }
+  p{
+    font-size:16px;
+  }
+  .contact-text{
+    
+    display: block;
+    width: 90%;
+    left: 0;
+    margin-left: 0;
+    margin-top: 50%;
+    padding: 2em;
+    }
+   #navi{
+    width: 30%;
+   }
+  
+    .venture{
+      left:36px;
+      width:90%;
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      
+    }
+    .contentblockRight{
+      right:auto;
+      left:66px;
+      width:90%
+    }
+    .indentInCoder{
+      margin-left:42px;
+    }
+    .codeDefineIndent{
+      margin-left: -42px;
+    }
+    .HP_Intro{
+      font-size: 36px;
+    }
+    .HP_descrip,.Alllinks,.Alllinks{
+      font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+  #navi{
+    display:none;
+    position: fixed;
+    width:100%;
+    z-index:7;
+    background: white;
+  }
+  #content{
+    position: absolute;
+    top:10%;
+  }
+  #info{
+    left:5%;
+    width:90%;
+  }
+  
+
+  .dropdown{
+    display:inherit;
+    position:fixed;
+    right: 5%;
+    top: em;
+    border:solid 2px #FC2293;
+    color:#FC2293;
+    cursor:pointer;
+    font-weight:bold;
+    padding:5px 1vw;
+    font-size:12px;
+    background-color: white;
+  }
+  .IsabellaW
+  {
+    margin-top: 3em;
+  }
+  .campy{
+    left: 48px;
+  }
+  .indentInCoder{
+    overflow: inherit;
+    /* flex-wrap:wrap; */
+     width:300px
+  }
+  .sessionContainer{
+    flex-direction: column-reverse;
+    justify-content: center;
+
+  }
+  .HP_Intro{
+    font-size: 28px;
+  }
+  .HP_descrip,.Alllinks{
+    font-size: 16px;
+  }
+  .img{
+    width:50%;
+  }
+  .DODCornellImg,.img{
+    margin-bottom: 24px;
+  }
+  .ventureImg{
+    width:80%
+  }
+  .DODCornell{
+    align-items: center;
+    flex-direction: column;
+    top:0
+  }
+  .contentblock{
+    width:90%;
+  }
+  #landingPart, #contactPart{
+    width:90%;
+  }
+  #contactPart{
+  flex-direction:column;
+  align-self: flex-start;
+  align-items: flex-start;
+  }
+
+  .landingPart, .contactPart{
+    margin-left: -5%;
+    flex-direction: row;
+    align-self: start;
+
+  }
+  .timeLine{
+    margin-left: 0px;
+  }
+}
+
+
+@media only screen and (max-width: 450px) {
+  #navi{
+    top:50px;
+  }
+  .mobile-navi, #HomapageTopNavi{
+    height:50px;
+  }
+
+  .venture{
+    left:12px;
+  }
+  .card{
+    width:90%;
+    margin-left:2%;
+    margin-top:1em;
+  }
+  .Card-content{
+    position:absolute;
+    margin-left:1em;
+    width:90%;
+}
+.contentblockRight{
+  left: 12px;
+}
+.pinkSquare{
+  margin-left:1px;
+}
+
+#coder{
+  padding-left: 12px;
+  width: 100%;
+}
+.sessionContainer{
+  width:95%;
+  padding-left: 5%;
+}
+.img{
+  width:70%;
+}
+.ventureImg{
+  width:100%;
+  margin-left: 0;
+}
+.DODCornell{
+  padding-top: 0;
+  flex-direction: column;
+}
+#landingPart, #contactPart{
+  width:80%;
+}
+}
