@@ -21,12 +21,13 @@ import Venture from "../../assets/images/home/venture.png"
 import VentureBG from "../../assets/images/home/ventureBG.svg"
 import DODCornell from "../../assets/images/home/DODCornell.svg"
 import Copyright from "../../assets/copyright/home_copyright.json"
-
+import Voice from "../../assets/images/home/voice.svg"
+import AwareHealth from "../../assets/images/home/awareHealth.svg"
 import PinkButton from "../../components/pinkButton"
 import ArrowDown from "../../components/arrow"
 
-import Github from "../../assets/images/contact/github.png"
-import Linkedin from "../../assets/images/contact/linkedin.png"
+import Github from "../../assets/images/contact/github.svg"
+import Linkedin from "../../assets/images/contact/linkedin.svg"
 import ReactGA from 'react-ga';
 
 import IsabellaCursor from "../../assets/images/home/IsabellaCursor.png"
@@ -45,7 +46,7 @@ const windowHeight = {
 }
 const row = {
     marginLeft: '10%',
-    marginTop: 24
+    marginTop: '12px'
 }
 
 
@@ -96,6 +97,7 @@ function Boxes() {
     )
 }
 
+
 class Homepage extends React.Component {
 
     state = {
@@ -114,87 +116,19 @@ class Homepage extends React.Component {
 
     }
 
-    cursorEffect = e => {
-        this.setState({
-            top: e.pageY + 12,
-            left: e.pageX + 12,
-
-        })
-        // if (e.pageY < $('#DODCornell').offset().top) {
-        //     this.setState({
-        //         cursorRotation: 'rotate(0deg)',
-        //         cursorImg: null
-        //     })
-        // }
-        if (e.pageY > $('#DODCornell').offset().top) {
-            this.setState({
-                cursorRotation: 'rotate(0deg)',
-                cursorImg: SmoothHirecursor
-            })
-        }
-        if (e.pageY > $('#Thesis').offset().top && e.pageY < $('#coder').offset().top) {
-            this.setState({
-                cursorRotation: 'rotate(0deg)',
-                cursorImg: ThesisCursor
-            })
-        }
-        if (e.pageY > $('#coder').offset().top && e.pageY < $('#Vogether').offset().top) {
-            var xAxis = $("#dearTime").offset().left + window.innerWidth * .3 - e.pageX
-            var yAxis = $("#dearTime").offset().top - window.innerHeight * .1 - e.pageY
-            // angle of tangent
-            var angle = Math.atan2(yAxis, xAxis) * 180 / Math.PI
-
-            this.setState({
-                cursorImg: ArrowCursor,
-                cursorRotation: 'rotate(' + angle + 'deg)'
-            })
-        }
-        if (e.pageY > $('#Vogether').offset().top && e.pageY < $('#Venture').offset().top) {
-            this.setState({
-                cursorRotation: 'rotate(0deg)',
-                cursorImg: VogetherCursor
-            })
-        }
-        if (e.pageY > $('#Venture').offset().top && e.pageY < $('#Contact').offset().top) {
-            this.setState({
-                cursorRotation: 'rotate(0deg)',
-                cursorImg: VentureCursor
-            })
-        }
-
-        if (e.pageY > $('#Contact').offset().top) {
-            this.setState({
-                cursorRotation: 'rotate(0deg)',
-                cursorImg: IsabellaCursor
-            })
-        }
+    cursorMove(){
+        console.log('hi')
     }
-
+    
     render() {
         return (
 
 
-            <div id="parallaxScroll" onMouseMove={this.cursorEffect.bind(this)}>
-                {/* the cursor */}
-                {/* {window.innerWidth < 450 ? null : <img style={{
-                    position: 'absolute',
-                    width: 200,
-                    height: 'auto',
-                    zIndex: 999,
-                    top: this.state.top,
-                    left: this.state.left,
-                    transform: this.state.cursorRotation
-                }}
-                    alt="cursorImg"
-                    src={this.state.cursorImg}
-                    >
-                        </img>} */}
+            <div id="parallaxScroll" onMouseMove={this.cursorMove.bind(this)}>
 
                 {/* navigation bar */}
                 <NavigationBar href="#contactPart" contact />
-                <div id="HomapageTopNavi" style={{ backgroundColor: 'white', opacity: '.4' }}></div>
-                <TimeLine height={this.state.timeLineHeight} />
-
+                <div id="HomapageTopNavi" style={{ backgroundColor: ' linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1))'}}></div>
 
                 <div id="HP_container" className='black HP_container' >
 
@@ -205,14 +139,14 @@ class Homepage extends React.Component {
                         <div id="landingPart">
                             <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
                        
-                              Hello - I'm a product designer who with full-stack programming experience
+                              Hello - I'm a product designer with full stack programming experience
                           
                             </div>
 
 
                         </div>
                         <Canvas
-                            style={{ position: 'fixed', right: '0px', top: '0px', width: '60%' }}
+                            style={{ position: 'fixed', right: '0px', top: '0px', width: '60%', zIndex:1 }}
                             // gl={{ antialias: false, alpha: false }}
                             camera={{ position: [3, 5, 15] }}
                             // onCreated={({ gl }) => gl.setClearColor('lightpink')}
@@ -223,6 +157,50 @@ class Homepage extends React.Component {
                         </Canvas>
                     </div>
 
+                    {/* Voice */}
+                    <div id="voice" className="black sessionContainer voice" style={windowHeight} >
+                        <div className="imgBlock">
+                            <img src={Voice} style={{width:'100%'}} alt="voice"></img>
+                        </div>
+                        <div className="textBlock">
+                            <TimeStamp
+                                time="Product design"
+                                color="black"
+                            />
+                            <h3>Leading design on three products</h3>
+                            <p>
+                            I worked as a product designer at Voice, leading the design of the <a href="https://app.voice.com/" target="_blank">Voice app</a>'s creation feature, built internal process documentation site and <a href="http://design-system.voiceuxlab.com/design/illustrations" target="_blank">design system</a> from the ground up.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+
+                    {/* awareHealth */}
+                     <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
+
+                        <div className="contentblock awareHealthText" >
+                            <TimeStamp
+                                time="Fullstack engineering"
+                                color="black"
+                            />
+                            <h3>Developed my first go-to-production mobile app</h3>
+                            <p>
+                            At AwareHealth, I worked as a front-end engineer developed the authentication, chatting, community features of a GDPR compliant <a href="https://apps.apple.com/us/app/getawarehealth/id1507236576" target="_blank">mental well-being platform</a> using React Native, AWS, Cognito, Amplify, Redux.
+                            </p>
+                        </div>
+
+                        <div className="contentblock">
+                            <img src={AwareHealth} style={{width:'100%'}} alt="voice"></img>
+                        </div>
+                        
+                    </div>
+
+
+
+
                     {/* product studio */}
                     <div id="DODCornell" className="black sessionContainer DODCornell" style={windowHeight} >
                         <div className="contentblock">
@@ -230,11 +208,11 @@ class Homepage extends React.Component {
                         </div>
                         <div className="contentblock">
                             <TimeStamp
-                                time={Copyright.dodCornell.time}
+                                time="Product management"
                                 color="black"
                             />
-                            <div className='HP_Intro'>{Copyright.dodCornell.title}</div>
-                            <div className='HP_descrip'>
+                            <h3>{Copyright.dodCornell.title}</h3>
+                            <p>
                                 {Copyright.dodCornell.content}
                                 <br />
                                 <PinkButton
@@ -249,7 +227,7 @@ class Homepage extends React.Component {
                                     label="See process"
                                     link={Copyright.dodCornell.link}
                                 />
-                            </div>
+                            </p>
                         </div>
 
                     </div>
@@ -259,11 +237,11 @@ class Homepage extends React.Component {
 
                         <div className="contentblock">
                             <TimeStamp
-                                time={Copyright.thesis.time}
+                                time="Thesis"
                                 color='black'
                             />
-                            <div className='HP_Intro' > {Copyright.thesis.title}</div>
-                            <div className='HP_descrip'>{Copyright.thesis.content}
+                            <h3 >Research on technology for designers</h3>
+                            <p>{Copyright.thesis.content}
                                 <br />
                                 <PinkButton
                                     onClick={() => {
@@ -273,12 +251,12 @@ class Homepage extends React.Component {
                                             action: 'thesis from homeBlock'
                                         })
                                     }}
-                                    innerLink={false}
-                                    label="See product"
-                                    link={Copyright.thesis.link}
+                                    innerLink={true}
+                                    label="Documentation"
+                                    link="thesis"
 
                                 />
-                            </div>
+                            </p>
                         </div>
                         <div className="contentblock">
                             <img src={Campy} alt="campy" className="campy img" />
@@ -287,98 +265,55 @@ class Homepage extends React.Component {
                     </div>
 
 
-                    {/* Fullstack coding */}
-                    <div id="coder" className="black " style={windowHeight}>
-                        {/* <div className="sessionContainer"> */}
+                   
 
-                        <TimeStamp
-                            time={Copyright.coder.time}
-                            color="white"
-                        />
-                        <div className='HP_Intro coder' >{Copyright.coder.title}</div>
-                        <div className='HP_descrip coder'>
-                            <div className="indentInCoder"><span className="greyCode codeDefineIndent">var NewTechnologies</span> = [Javascript, Node.js, React.js, Bootstrap,Firebase, MySQL, MongoDB, Express.js, Chai.js, Mocha.js]
-                            </div>
-                            <br />
-                            <div>
-                                <div className="indentInCoder yellowCode"> <span className="greyCode codeDefineIndent">var Projects</span> <span className="pinkCode">=</span>
-                                        [<br />
-                                    <br />
-                                        &#123;name: "Flocker", type: ‘Matching app’,
-                                        <a className="greenCode" rel="noopener noreferrer"
-                                        target="_blank"
-                                        href="https://github.com/isabellawang0108/flocker"
-                                        onClick={() => {
-                                            console.log('flocker from homeBlock')
-                                            ReactGA.event({
-                                                category: 'direct to link',
-                                                action: 'flocker from homeBlock'
-                                            })
-                                        }}>link</a>&#125;,</div>
-                                <br />
-                                <div className="indentInCoder yellowCode" id="dearTime"> &#123;name: "DearTime", type: "UX engineering",
-                                <a className="greenCode" rel="noopener noreferrer"
-                                        target="_blank"
-                                        onClick={() => {
-                                            console.log('dearTime from homeBlock')
-                                            ReactGA.event({
-                                                category: 'direct to link',
-                                                action: 'dearTime from homeBlock'
-                                            })
-                                        }}
-                                        href="https://github.com/isabellawang0108/dearTime"
-                                    >link</a>&#125;,</div>
-                                <br />
-                                <div className="indentInCoder yellowCode"> &#123;name: "Bamazon", type: "Cli app",
-                                 <a className="greenCode" rel="noopener noreferrer"
-                                        target="_blank"
-                                        onClick={() => {
-                                            console.log('bamazon from homeBlock')
-                                            ReactGA.event({
-                                                category: 'direct to link',
-                                                action: 'bamazon from homeBlock'
-                                            })
-                                        }}
-                                        href="https://github.com/isabellawang0108/Bamazon_Cli_App"
-                                    >link</a> &#125;</div>
-                                <br />
-                                <div className="indentInCoder yellowCode">]</div>
-                                <br />
-                            </div>
-                            {
+                    {/* startup studio */}
+                    <div id="Venture" className="black sessionContainer" style={windowHeight}>
 
-                                <div>
-                                    {
-                                        Copyright.coder.content.map((item, i) => {
-                                            if (i % 2) {
-                                                return <span className="greyCode" key={i}> {item} </span>
-
-                                            }
-                                            else {
-                                                return item
-                                            }
-                                        })
-                                    }
-
-                                </div>
-                            }
-
+                     
+                        <div className="contentblock">
+                            <img src={Venture} alt="venture" className="img ventureImg"></img>
                         </div>
-                        {/* </div> */}
+
+                        <div className="contentblock">
+                            <TimeStamp
+                                time="Entrepreneur"
+                                color="black"
+                            />
+                            <h3 >{Copyright.venture.title}</h3>
+                            <p >
+                                {Copyright.venture.content}
+                            </p>
+                            <PinkButton
+                                onClick={() => {
+                                    console.log('venture from homeBlock')
+                                    ReactGA.event({
+                                        category: 'direct to link',
+                                        action: 'venture from homeBlock'
+                                    })
+                                }}
+                                innerLink={false}
+                                label="Read insights"
+                                link={Copyright.venture.link}
+                            />
+                        </div>
+                        <img src={VentureBG} style={{ bottom: 0, left: 0, position: 'absolute', opacity: 1 }} className={VentureBG} alt="VentureBG"></img>
+
                     </div>
 
 
-                    {/* Vogether */}
-                    <div id="Vogether" className="white sessionContainer" style={windowHeight}>
+
+ {/* Vogether */}
+ <div id="Vogether" className="white sessionContainer" style={windowHeight}>
                         <div className="contentblock">
                             <TimeStamp
                                 time={Copyright.vogether.time}
                                 color="white"
                             />
-                            <div className='HP_Intro' >{Copyright.vogether.title}</div>
-                            <div className='HP_descrip' >
+                            <h3 style={{color:'white'}}>{Copyright.vogether.title}</h3>
+                            <p style={{color:'white'}}>
                                 {Copyright.vogether.content}
-                            </div>
+                            </p>
                             <PinkButton
                                 onClick={() => {
                                     console.log('Vogetherfrom homeBlock')
@@ -398,62 +333,25 @@ class Homepage extends React.Component {
                     </div>
 
 
-                    {/* startup studio */}
-                    <div id="Venture" className="black sessionContainer" style={windowHeight}>
-
-                        <div className="contentblock">
-                            <TimeStamp
-                                time={Copyright.venture.time}
-                                color="black"
-                            />
-                            <div className='HP_Intro' >{Copyright.venture.title}</div>
-                            <div className='HP_descrip' >
-                                {Copyright.venture.content}
-                            </div>
-                            <PinkButton
-                                onClick={() => {
-                                    console.log('venture from homeBlock')
-                                    ReactGA.event({
-                                        category: 'direct to link',
-                                        action: 'venture from homeBlock'
-                                    })
-                                }}
-                                innerLink={false}
-                                label="Read insights"
-                                link={Copyright.venture.link}
-                            />
-                        </div>
-                        <div className="contentblock">
-                            <img src={Venture} alt="venture" className="img ventureImg"></img>
-                        </div>
-                        <img src={VentureBG} style={{ bottom: 0, left: 0, position: 'absolute', opacity: 1 }} className={VentureBG} alt="VentureBG"></img>
-
-                    </div>
-
 
 
                     {/* contact */}
                     <div style={windowHeight} id="Contact" className="sessionContainer white contactPart">
                         <div id="contactPart">
 
-                            <div style={row}>
-                                <h2 className="pink"> wangxbella0108@gmail.com</h2>
-                                <h2 className="pink"> +1 (908) 391 – 6750</h2>
-                            </div>
-
-                            <div style={row}>
-                                <a href="https://github.com/isabellawang0108">
-                                    <img src={Github} alt="icon"></img>
+                        <div style={{display:'flex', flexDirection:'row', justifyContent:'flex-start'}}>
+                            <a href="https://github.com/isabellawang0108" style={{marginRight:'36pt'}}>
+                                    <img style={{width:'36pt'}} src={Github} alt="icon"></img>
                                 </a>
-                            </div>
 
-                            <div style={row}>
                                 <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
-                                    <img src={Linkedin} alt="icon"></img>
+                                    <img style={{width:'36pt'}} src={Linkedin} alt="icon"></img>
                                 </a>
                             </div>
-
-
+                            <div style={row}>
+                                <h2> wangxbella0108@gmail.com</h2>
+                                <h2> +1 (908) 391 – 6750</h2>
+                            </div>
                         </div>
                     </div>
 

@@ -35,13 +35,12 @@ h1{
   margin-bottom: -10px;
 }
 a{
-  font-size: 16px;
   cursor: pointer;
   text-decoration: underline;
   color:#FC2293;
 }
 h2{
-    font-size:18px;
+    font-size:28px;
 }
 h3,ul{
   font-size:13px;
@@ -251,10 +250,9 @@ cursor: pointer;
 #HP_container{
   display:inline-block;
   flex-direction: row;
-  width:100vw;
-  height:100vh;
- left:0px;
- top:0px;
+  width:100%;
+  left:0px;
+  top:0px;
   z-index: 17;
   position: absolute;
   color:white;
@@ -262,21 +260,17 @@ cursor: pointer;
 }
 #landingPart, #contactPart{
   margin-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: flex-start;
-  width:70%;
-  z-Index:2;
-}
-#landingPart{
   display:flex;
   flex-direction: row;
+  align-items: flex-start;
+  align-self: flex-start;
+  width:55%;
+  z-Index:2;
 }
 #contactPart{
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  margin-top:20%;
+  margin-top:15%;
 }
 
 .Alllinks{
@@ -286,26 +280,28 @@ cursor: pointer;
   color:#FC2293;
 }
 
-.HP_Intro{
+.HP_Intro, h3{
   font-size: 48px;
   margin-top: 12px;
   font-family: 'SuisseIntl-SemiBold';
   z-index: 10;
 }
 .landingpage_Intro{
-  font-size: 40pt;
-  margin-top: 15%;
+  font-size: 3.3em;
+  margin-top: 25%;
+  vertical-align:middle;
   color:black;
-  width:70%;
+  margin-left: 10%;
   font-family: 'SuisseIntl-Semibold';
 }
 
-.HP_descrip,.Alllinks{
+.HP_descrip,.Alllinks, p{
   font-size:21px;
   margin-top: 24px;
   font-family: 'SuisseIntl-Regular';
   z-index: 10;
   line-height: 42px;
+  width:100%;
 }
 .sessionContainer{
   display:flex;
@@ -319,15 +315,35 @@ cursor: pointer;
   box-orient: horizontal;
   flex-wrap:wrap;
   align-items: center;
-  padding-left: 10%;
-  width:90%;
+  padding-left: 5%;
+  padding-right:5%;
+  left:0;
+  position: absolute;
+  /* width:95%; */
+  z-index: 100;
+  overflow: hidden;
 }
 
 .contentblock{
-  width:45%;
-  margin-right: 2.5%;
+  width:46%;
+  padding:2%;
+  margin-right: 0;
   align-content: space-around;
   justify-content: space-around;
+}
+.imgBlock{
+  width:60%;
+  margin-right: 0;
+  align-content: space-around;
+  justify-content: space-around;
+}
+.textBlock{
+  width:36%;
+  padding:2%;
+  margin-right: 0;
+  align-content: space-around;
+  justify-content: space-around;
+  overflow: hidden;
 }
 .img{
   height:auto;
@@ -335,7 +351,7 @@ cursor: pointer;
   margin-left: 8%;
 }
 .ventureImg{
-  width:120%;
+  width:100%;
   margin-left: -10%;
   z-index: 3;
 }
@@ -352,6 +368,7 @@ cursor: pointer;
   margin-top: 0;
   flex-wrap: wrap;
   overflow: hidden;
+  z-index: 100;
 }
 .CampyBG{
   width: 100%;
@@ -422,7 +439,7 @@ cursor: pointer;
 }
 
 #Venture,#Thesis, #DODCornell,#coder{
-  z-Index:5;
+  z-Index:100;
 }
 #Venture{
   background-color: white;
@@ -433,8 +450,24 @@ cursor: pointer;
   width: 100%; position: fixed;
   top:0;
   left:0; 
-  background-color:red; 
-  z-index:40
+  z-index:40;
+  background-color:white;
+  opacity:.2;
+}
+
+#voice, #awareHealth{
+  padding-left: 0%;
+  padding-top: 0;
+  background-color: white;
+}
+
+#awareHealth{
+  background-color:#F9FBFF;
+  flex-direction: row;
+}
+.awareHealthText{
+  margin-left: 5%;
+  width:40%;
 }
 @media only screen and (max-width: 850px) {
 
@@ -489,6 +522,8 @@ cursor: pointer;
     .HP_descrip,.Alllinks,.Alllinks{
       font-size: 18px;
     }
+
+  
 }
 
 @media only screen and (max-width: 700px) {
@@ -544,7 +579,7 @@ cursor: pointer;
     font-size: 28px;
   }
   .HP_descrip,.Alllinks{
-    font-size: 16px;
+    font-size: 18px;
   }
   .img{
     width:50%;
@@ -581,6 +616,14 @@ cursor: pointer;
   .timeLine{
     margin-left: 0px;
   }
+  #voice{
+    flex-direction: row-reverse;
+  }
+  .textBlock,.contentblock,.imgBlock, .awareHealthText{
+    width:100%;
+    margin-left: 0px;
+  }
+
 }
 
 
@@ -591,6 +634,8 @@ cursor: pointer;
   .mobile-navi, #HomapageTopNavi{
     height:50px;
   }
+
+ 
 
   .venture{
     left:12px;

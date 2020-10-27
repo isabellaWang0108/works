@@ -21,15 +21,15 @@ const button = {
 class PinkButton extends React.Component {
 
     mouseEnter(e) {
-        $(".pinkButton").css('background-color', '#FC2293');
-        $(".pinkButton").css('color', 'white')
+        $(".pinkButton").css('borderColor', 'lightpink')
     }
     mouseOut() {
         $(".pinkButton").css('background-color', 'transparent');
-        $(".pinkButton").css('color', '#FC2293')
+        $(".pinkButton").css('borderColor', '#FC2293')
     }
     onClick(data) {
-        window.open(data, '_blank')
+        window.open(data, '_blank');
+        $(".pinkButton").css('borderColor', '#FC2293')
     }
     render() {
 

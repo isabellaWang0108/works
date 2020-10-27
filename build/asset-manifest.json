@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.b01545b9.chunk.css",
-    "main.js": "/static/js/main.1372fd55.chunk.js",
-    "main.js.map": "/static/js/main.1372fd55.chunk.js.map",
+    "main.css": "/static/css/main.6f54d4f9.chunk.css",
+    "main.js": "/static/js/main.95e8870e.chunk.js",
+    "main.js.map": "/static/js/main.95e8870e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.f3a02c50.js",
     "runtime-main.js.map": "/static/js/runtime-main.f3a02c50.js.map",
-    "static/js/2.8f29b7f8.chunk.js": "/static/js/2.8f29b7f8.chunk.js",
-    "static/js/2.8f29b7f8.chunk.js.map": "/static/js/2.8f29b7f8.chunk.js.map",
+    "static/js/2.e41c03a5.chunk.js": "/static/js/2.e41c03a5.chunk.js",
+    "static/js/2.e41c03a5.chunk.js.map": "/static/js/2.e41c03a5.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.60014dfdd84db7e8d8f9c67831bddb83.js": "/precache-manifest.60014dfdd84db7e8d8f9c67831bddb83.js",
+    "precache-manifest.d82269fbad4e47376a846685e6651529.js": "/precache-manifest.d82269fbad4e47376a846685e6651529.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.b01545b9.chunk.css.map": "/static/css/main.b01545b9.chunk.css.map",
-    "static/js/2.8f29b7f8.chunk.js.LICENSE.txt": "/static/js/2.8f29b7f8.chunk.js.LICENSE.txt",
+    "static/css/main.6f54d4f9.chunk.css.map": "/static/css/main.6f54d4f9.chunk.css.map",
+    "static/js/2.e41c03a5.chunk.js.LICENSE.txt": "/static/js/2.e41c03a5.chunk.js.LICENSE.txt",
     "static/media/1-emotion.gif": "/static/media/1-emotion.752ccf9e.gif",
     "static/media/2-record.gif": "/static/media/2-record.9562d7c5.gif",
     "static/media/3-chat.gif": "/static/media/3-chat.01013e2a.gif",
@@ -23,6 +23,7 @@
     "static/media/IsabellaCursor.png": "/static/media/IsabellaCursor.48511820.png",
     "static/media/arrow.svg": "/static/media/arrow.51b53373.svg",
     "static/media/arrowCursor.png": "/static/media/arrowCursor.31c5d7b6.png",
+    "static/media/awareHealth.svg": "/static/media/awareHealth.c9e09c04.svg",
     "static/media/clippy.jpg": "/static/media/clippy.95aa4422.jpg",
     "static/media/companyCulture.svg": "/static/media/companyCulture.fc810a86.svg",
     "static/media/competitor.png": "/static/media/competitor.dfdc33ca.png",
@@ -35,10 +36,12 @@
     "static/media/experiment3.png": "/static/media/experiment3.1678a45e.png",
     "static/media/gallery1.jpg": "/static/media/gallery1.856b91d4.jpg",
     "static/media/gallery2.jpg": "/static/media/gallery2.619040c2.jpg",
+    "static/media/github.svg": "/static/media/github.19922a48.svg",
     "static/media/hi.jpeg": "/static/media/hi.8a519700.jpeg",
     "static/media/ideas.png": "/static/media/ideas.7df20b06.png",
     "static/media/jobApplication.svg": "/static/media/jobApplication.f38b36da.svg",
     "static/media/landingPg.png": "/static/media/landingPg.813bcb6a.png",
+    "static/media/linkedin.svg": "/static/media/linkedin.d295db73.svg",
     "static/media/logoCampy.gif": "/static/media/logoCampy.c8139f2e.gif",
     "static/media/prototype.png": "/static/media/prototype.a573592f.png",
     "static/media/research.png": "/static/media/research.a4fe7bab.png",
@@ -61,12 +64,13 @@
     "static/media/ventureBG.svg": "/static/media/ventureBG.360e4b80.svg",
     "static/media/ventureCursor.png": "/static/media/ventureCursor.4a7b6daf.png",
     "static/media/vogetherCursor.png": "/static/media/vogetherCursor.9db3df48.png",
+    "static/media/voice.svg": "/static/media/voice.50a534ea.svg",
     "static/media/workflow.png": "/static/media/workflow.22c84b0b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f3a02c50.js",
-    "static/js/2.8f29b7f8.chunk.js",
-    "static/css/main.b01545b9.chunk.css",
-    "static/js/main.1372fd55.chunk.js"
+    "static/js/2.e41c03a5.chunk.js",
+    "static/css/main.6f54d4f9.chunk.css",
+    "static/js/main.95e8870e.chunk.js"
   ]
 }

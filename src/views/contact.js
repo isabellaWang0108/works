@@ -2,8 +2,8 @@ import React from "react";
 import $ from 'jquery';
 
 import LandingPageAnimation from "../components/landingPageAnimation"
-import Github from "../assets/images/contact/github.png"
-import Linkedin from "../assets/images/contact/linkedin.png"
+import Github from "../assets/images/contact/github.svg"
+import Linkedin from "../assets/images/contact/linkedin.svg"
 import Navigation from "../components/navigation"
 import Goback from "../components/back"
 
