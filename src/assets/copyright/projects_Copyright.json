@@ -1,6 +1,6 @@
 {
     "smoothHire": {
-        "challenge": "This is a four-months product challenge given by US Department of Defense on investigating how to hire millennial technical talents",
+        "challenge": "This is a four-month product challenge given by the US Department of Defense to investigate how to hire millennial technical talents.",
         "team": "A multi-multidisciplinary team with 4 people from business, Computer science, Connected media and design background",
         "name": "smoothHire",
         "myrole": [
@@ -20,7 +20,7 @@
             "Prototype",
             "Video Demo"
         ],
-        "content": " Our contact point from the Department of Defense told us that there are difficulties for them to attract young technical talents and wanted us to investigate the problem and propose a solution. Thus, we started with user research. The solutions can only be found by figuring out the pain points in users. Throughout our process from finding problems to designing solutions, we interviewed around 20 people. Those people include fresh graduates from the top universities, boot camp students, career switchers, recruiters, technical experts, and C-suites from Tech startups.\n Here is a summary of their pain points:",
+        "content": "Our contact point from the Department of Defense told us that they had difficulties attracting young technical talents and wanted us to investigate the problem and propose a solution. Thus, we started with user research because the user pain points would suggest the solutions. Throughout our process, from seeing problems to designing solutions, we interviewed around 20 people. Those people include fresh graduates from the top universities, boot camp students, career switchers, recruiters, technical experts, and C-suites from Tech startups.\n Here is a summary of their pain points:",
         "otherProjects": [
             {
                 "name": "Smooth Hire",
@@ -37,7 +37,7 @@
         ]
     },
     "vogether": {
-        "challenge": "This is a personal visual design experimentation on what should an interface look like to help people seek immediate attention",
+        "challenge": "This is personal visual design experimentation on what an interface should look like to help people seek immediate attention.",
         "descrip": "Inspired by the behavior of people watching, Vogether creates an experience that contains motivation and satisfaction brought by people watching.",
         "name": "Vogether",
         "myrole": [
@@ -58,13 +58,13 @@
         ],
         "content": {
             "research": [
-                "To get to know the subject matter, I intentionally bring the topic up during my conversation with friends, family, and strangers on the subway and document my observations in a notebook. I realize lots of time, when people actively talk to strangers (except for the case of a social norm), they have no interest in building a relationship in advance, but out of curiosity of how other human beings are doing. There are lots of solutions to seek immediate attention, both digital and analog. From a digital perspective, social media play a big role in satisfying that curiosity. From the many options, I choose to take my exploration further on the relationship between social behavior and interface."
+                "To get to know the subject matter, I intentionally bring the topic up during my conversation with friends, family, and strangers on the subway and document my observations in a notebook. When people actively talk to strangers (except for the case of a social norm), I realize lots of time they have no interest in building a relationship in advance, but out of curiosity of how other human beings are doing. There are lots of solutions to seek immediate attention, both digital and analog. From a digital perspective, social media play a significant role in satisfying that curiosity. From the many options, I choose to explore the relationship between social behavior and interface."
             ],
-            "storyBoarding": "I used storyboarding method to Brainstorm on possible solutions. I decided to play around user input and interaction to see how they effect the user emotion.",
+            "storyBoarding": "I used the storyboarding method to brainstorm on possible solutions. I decided to play around with user input and interaction to see how they affect the user's emotion.",
             "competitor": " In addition to brainstorm on design elements, like input and interaction, I collected and categorized the products I can find, like podcasts, Instagram, Facebook, Twitter, to have a general idea of defining my value proposition. Also, I showed around my sketches to friends and professors to evaluate the feasibility and pick user input or interaction. Below is a comparison of how I define myself among all products that deliver the same value. If you want to know more about how I pick the direction, contact me!",
-            "prototype": "Based on the outline of user flow, I used Sketch to make prototypes that contain all the functionalities and content for the first round of usability tests. My core concept was to allow users to express their emotions and being able to have as much response as it can be towards the voice pose. In my design system, I used color to represent the emotion, a low-bar prompt to facilitate more responses from users and an optional busy screen to simulate a feeling of being surrounded by humans. ",
-            "userFlow": "After figuring out the specific plan from sketches, I mapped out a diagram of user flow as the assistance of developing prototypes",
-            "usability": "There were lots of changes made during the process of block-frame and prototyping. I showed each action to five people and observed their reactions and behaviors. During the test, people are more collaborative than I expected, and they pointed out what they think can be improved or what they wish to add directly. However, taking in every single piece of advice I heard can lead to screen creep. People involved in the test may have a different scope or just reflecting what they like in the existing products. I only redesigned the steps that multiple get stuck. For example, I redesigned the scroll up menu on the recording page, because only people who use iPhone X are trained to adapt to this particular pattern. Other mobile users had no clue how to deal with it, or even not realized that it was a menu at all. Thus, I changed the color and put in a verbal indicator to teach my users this new user pattern."
+            "prototype": "Based on the outline of user flow, I used Sketch to make prototypes that contain all the functionalities and content for the first round of usability tests. My core concept was to allow users to express their emotions and have as much response as it can be towards the voice pose. In my design system, I used color to represent the emotion, a low-bar prompt to facilitate more reactions from users, and an optional busy screen to simulate the feeling of being surrounded by humans.",
+            "userFlow": "After figuring out the specific plan from sketches, I mapped out a diagram of user flow to develop prototypes.",
+            "usability": "There were lots of changes made during the process of block-frame and prototyping. I showed each action to five people and observed their reactions and behaviors. During the test, people are more collaborative than I expected, and they pointed out what they think can be improved or what they wish to add directly. However, taking in every single piece of advice I heard can lead to screen creep. People involved in the test may have a different scope or just reflect what they like in the existing products. I only redesigned the steps that multiple get stuck. For example, I redesigned the scroll up menu on the recording page because only people who use iPhone X are trained to adapt to this particular pattern. Other mobile users had no clue how to deal with it or even realized that it was a menu. Thus, I changed the color and used a verbal indicator to teach my users this new user pattern."
         },
         "otherProjects": [
             {
@@ -88,15 +88,71 @@
             "Iteration",
             "What's next?"
         ],
-        "paragraph1": "As the internet becomes ubiquitous and software gets smarter, it raises the question that what does it mean to live with all these laptops, smartphones and other devices? Some people think softwares will dominate the world and terminate human civilization, while others think computers will be embedded into humans and turn them into cyborgs. Is it true?",
-        "paragraph2": "In order to answer that question, I narrowed my target as designers and looked into how far is the technology going in terms of being able to replace humans. Below is the list of cases that I referred",
-        "paragraph3": "Inspired by the case studies, I started to ideat on how to convey the idea that AI has no chance to replace or terminate humans. I started from a mind map to define the anchor point, then I made a website to vote on my ideas in addition to practicing a visual identity. See web preview below.",
-        "paragraph4": "From days of selecting, changing and turning the idea, I made two works to visually summarize my studies. Inspired by the chemical rocket example in case study I choose to give people a whole picture of the human technology relationship in the digital design field by visualizing a potential model, pipeline and database to implement AI in the design world. The intention of the visualization is to convey a sense of scale then reflect on whether AI is going to terminate the world.",
-        "paragraph5": "This is an experience for non-technical people to experience a data scientist's job: While they do Machine learning, they never know what’s next, why the algorithm failed, when they can beat accuracy records. Once you open the link, you will be in a set of data. Your job is to guess the combination of the letters that functions as commands to make sense of the data points.",
-        "paragraph6": "After reflecting on the subject matter during design in the last two mediums, I reached to a conclusion that technology will never replace humans, what they will become is the best assistant to make human super-human. What does the best assistant look like?",
-        "paragraph7": "In order to imagine the best assistant, I kept focus on designers and did my second round of research. My theory was developed based on the psychological theories and case studies.",
+        "paragraph1": "As the internet becomes ubiquitous and software gets smarter, it raises the question that what does it mean to live with all these laptops, smartphones, and other devices? Some people think software will dominate the world and terminate human civilization, while others think computers will be embedded in humans and turn them into cyborgs. Is it true?",
+        "paragraph2": "To answer that question, I narrowed my target as designers and looked into how far the technology is going to replace humans. Below is the list of cases that I referred:",
+        "paragraph3": "Inspired by the case studies, I started to ideat how to convey the idea that AI has no chance to replace or terminate humans. I started from a mind map to define the anchor point. Then I made a website to vote on my ideas in addition to practicing a visual identity. See the web preview below.",
+        "paragraph4": "From days of selecting, changing, and turning the idea, I made two works to summarize my studies visually. Inspired by the chemical rocket example in the case study, I choose to give people a whole picture of the human-technology relationship in the digital design field by visualizing a potential model, pipeline, and database to implement AI in the design world. The visualization intends to convey a sense of scale then reflect on whether AI will terminate the world.",
+        "paragraph5": "This is an experience for non-technical people to experience a data scientist's job: While they do Machine learning, they never know what’s next, why the algorithm failed, when they can beat accuracy records. Once you open the link, you will be in a set of data. Your job is to guess the combination of the letters that function as commands to make sense of the data points.",
+        "paragraph6": "After reflecting on the subject matter during design in the last two mediums, I concluded that technology would never replace humans. What they will become is the best assistant to make human super-human. What does the best assistant look like?",
+        "paragraph7": "To imagine the best assistant, I focused on designers and did my second round of research. My theory was developed based on psychological theories and case studies.",
         "paragraph8": "While doing research and case studies, I sketched out all ideas that pop into my mind.",
-        "paragraph9": " My proposal is a digital companion that lives in the multi-device environment, both on laptop and phone, and that offers different features based on the device's natural character. On the laptop, it generates variations based on computer vision and AI due to the device's better computational performance, saving designers time on tweaking minor changes. On the phone, it scrapes all popular websites and allows designers to search anytime, anywhere without repetition or going back and forth between workspace to websites.",
-        "paragraph10": "The thesis curriculum reaches to the end, but my journey of searching What will we become, now that life means living with computers hasn't had a conclusion. What I have right now is a prototype proposal mapped out in a higher level concept without any engineering. To continue the journey, I decide to join technology companies to keep exploring the relationship of human design and technology."
+        "paragraph9": "My proposal is a digital companion that lives in a multi-device environment, both on a laptop and phone, and that offers different features based on the device's natural character. On the desktop, it generates variations based on computer vision and AI due to the device's better computational performance, saving designers time on tweaking minor changes. On the phone, it scrapes all popular websites and allows designers to search anytime, anywhere without repetition or going back and forth between workspace to websites.",
+        "paragraph10": "The thesis curriculum reaches the end, but my journey of searching. What will we become, now that life means living with computers hasn't had a conclusion. What I have right now is a prototype proposal mapped out in a higher-level concept without any engineering. To continue the journey, I decide to join technology companies to explore the relationship between human design and technology."
+    },
+    "venture": {
+        "challenge": "This is a four-months product challenge given by US Department of Defense on investigating how to hire millennial technical talents",
+        "team": "A multi-multidisciplinary team with 4 people from business, Computer science, Connected media and design background",
+        "name": "smoothHire",
+        "myrole": [
+            "Sourced relevant players and conducted interviews",
+            "Designed experimentations to validate risky assumptions",
+            "Decided key user flows then made prototype conveys the value"
+        ],
+        "for": "UX design",
+        "title": [
+            "Pitch deck",
+            "Video demo",
+            "Customer discovery",
+            "Reflections"
+        ],
+        "content": " Our contact point from the Department of Defense told us that there are difficulties for them to attract young technical talents and wanted us to investigate the problem and propose a solution. Thus, we started with user research. The solutions can only be found by figuring out the pain points in users. Throughout our process from finding problems to designing solutions, we interviewed around 20 people. Those people include fresh graduates from the top universities, boot camp students, career switchers, recruiters, technical experts, and C-suites from Tech startups.\n Here is a summary of their pain points:",
+        "otherProjects": [
+            {
+                "name": "Smooth Hire",
+                "link": "/smoothHire"
+            },
+            {
+                "name": "Vogether",
+                "link": "/vogether"
+            },
+            {
+                "name": "Flocker",
+                "link": "/flocker"
+            }
+        ]
+    },
+    "voice": {
+        "descrip": "This is a year-long design research project based on the research of current technology's implementation and conceptual mechanization.",
+        "name": "Thesis – What will we become, now that life means living with computers? ",
+        "title": [
+            "Requirements",
+            "Competitive Analysis",
+            "User Journey",
+            "Wireframes",
+            "Prototype",
+            "User Testing ",
+            "Refinement",
+            "Handing off"
+        ],
+        "paragraph1": "As the internet becomes ubiquitous and software gets smarter, it raises the question that what does it mean to live with all these laptops, smartphones, and other devices? Some people think software will dominate the world and terminate human civilization, while others think computers will be embedded in humans and turn them into cyborgs. Is it true?",
+        "paragraph2": "To answer that question, I narrowed my target as designers and looked into how far is the technology going in terms of being able to replace humans. Below is the list of cases that I referred",
+        "paragraph3": "Inspired by the case studies, I started to ideat on how to convey the idea that AI has no chance to replace or terminate humans. I started from a mind map to define the anchor point, then I made a website to vote on my ideas in addition to practicing a visual identity. See the web preview below.",
+        "paragraph4": "From days of selecting, changing, and turning the idea, I made two works to visually summarize my studies. Inspired by the chemical rocket example in the case study I choose to give people a whole picture of the human-technology relationship in the digital design field by visualizing a potential model, pipeline, and database to implement AI in the design world. The visualization intends to convey a sense of scale then reflect on whether AI is going to terminate the world.",
+        "paragraph5": "This is an experience for non-technical people to experience a data scientist's job: While they do Machine learning, they never know what’s next, why the algorithm failed, when they can beat accuracy records. Once you open the link, you will be in a set of data. Your job is to guess the combination of the letters that function as commands to make sense of the data points.",
+        "paragraph6": "After reflecting on the subject matter during design in the last two mediums, I concluded that technology will never replace humans, what they will become is the best assistant to make human super-human. What does the best assistant look like?",
+        "paragraph7": "To imagine the best assistant, I kept the focus on designers and did my second round of research. My theory was developed based on psychological theories and case studies.",
+        "paragraph8": "While doing research and case studies, I sketched out all ideas that pop into my mind.",
+        "paragraph9": "My proposal is a digital companion that lives in a multi-device environment, both on laptop and phone, and that offers different features based on the device's natural character. On the laptop, it generates variations based on computer vision and AI due to the device's better computational performance, saving designers time on tweaking minor changes. On the phone, it scrapes all popular websites and allows designers to search anytime, anywhere without repetition or going back and forth between workspace to websites.",
+        "paragraph10": "The thesis curriculum reaches the end, but my journey of searching What will we become, now that life means living with computers hasn't had a conclusion. What I have right now is a prototype proposal mapped out in a higher-level concept without any engineering. To continue the journey, I decide to join technology companies to keep exploring the relationship between human design and technology."
     }
 }

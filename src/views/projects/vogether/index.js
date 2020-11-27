@@ -30,11 +30,12 @@ import $ from 'jquery';
 import ReactGA from 'react-ga';
 
 const container = {
-    top: window.innerWidth > 450 ? 60 : 50,
+    paddingTop: window.innerWidth > 450 ? 60 : 50,
+    left: 0,
     position: 'fixed',
     width: '100%',
     overflow: 'scroll',
-    height: "95vh"
+    height: "100vh"
 }
 
 class Vogether extends React.Component {
@@ -107,8 +108,8 @@ class Vogether extends React.Component {
 
                     {/* navigation bar ==============================================================================================  */}
                     <div id="navi" className="animated slideInDown">
-                        <Goback />
-                        <div id="content" style={{ background: '#FDF4E8' }}>
+                        {/* <Goback /> */}
+                        <div id="content">
                             <ul>Design Process
                             {Copyright.vogether.title.map((item, index) => {
                                 return (
@@ -179,12 +180,12 @@ class Vogether extends React.Component {
                             <p>Below is a display of my final work</p>
                             <br />
                             <span className="bold">Random exposure</span>
-                            <p>Each user will be able to record their own stories and listen to other people's stories according to emotions at the moment. Each color represents a mood.</p>
+                            <p>Each user will record their own stories and listen to other people's stories according to emotions at the moment. Each color represents a mood.</p>
                         </Paragraph>
 
                         <Paragraph banner={pro5} >
                             <span className="bold">Record your story</span>
-                            <p>You can record whatever you want to say. But be aware of what you say in each one, because the system only allows user to post a new one 2 hours after you send your recording.
+                            <p>You can record whatever you want to say. But be aware of what you say in each one, because the system only allows users to post a new one 2 hours after you send your recording.
                         </p>
                         </Paragraph>
 
@@ -202,18 +203,18 @@ class Vogether extends React.Component {
 
                         <Paragraph banner={pro8}>
                             <span className="bold">Emotion Archive</span>
-                            <p>We will archive all your stories in your profile and corresponsive analysis of the audiences. Share the trophies with your friends on social media! Have fun!
+                            <p>We will archive all your stories in your profile and corresponsive an analysis of the audiences. Share the trophies with your friends on social media! Have fun!
                         </p>
                         </Paragraph>
 
                         <Paragraph banner={pro9} title={Copyright.vogether.title[7]} val="pp7" class="pp7">
-                            <p>It is just a loneliness fulfilling app. We do not require you to provide any confidential information. The only thing you need to initiate it is an account, preferred name and preferred location. We don't even care about their authenticity. You do not have to put in anything you don't want to. We will just get to know the you that you want us to know.
+                            <p>It is just loneliness fulfilling app. We do not require you to provide any confidential information. The only thing you need to initiate it is an account, preferred name, and preferred location. We don't even care about their authenticity. You do not have to put in anything you don't want to. We will get to know you that you like us to know.
 
 </p>
                         </Paragraph>
 
                         <Paragraph noImg={true}>
-                            <Link to="/"> View other projects >></Link>
+                            <Link to="/"> View other projects</Link>
                         </Paragraph>
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 

@@ -21,8 +21,8 @@ class Loading extends React.Component {
         return (
             <div className="loadingpage">
                 <div className="loader circle"></div>
-                <h1>{facts[Math.floor(Math.random() * 9)]}
-                </h1>
+                <h2>{facts[Math.floor(Math.random() * 9)]}
+                </h2>
             </div>
 
         );

@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "caniuse-lite": "file:node_modules/caniuse-lite",
+    "core-util-is": "^1.0.2",
     "firebase": "^6.6.2",
     "jquery": "^3.4.1",
     "netlify-cli": "^2.51.0",

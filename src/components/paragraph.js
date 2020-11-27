@@ -21,7 +21,7 @@ class Paragraph extends React.Component {
                 {this.props.children}
                 {this.props.noImg ?
                     null :
-                    this.props.banner ? <img style={this.props.imgShadow?imgShadoe:img} alt=" " src={this.props.banner}></img>
+                    this.props.banner ? <img style={this.props.imgShadow?imgShadoe:img} src={this.props.banner}></img>
                         : <video style={video} controls autoPlay>
                             <source src={this.props.video} type='video/mp4' />
                         </video>

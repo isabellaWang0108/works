@@ -20,18 +20,19 @@ import Sketch1 from "../../../assets/images/Thesis/sketch1.jpg"
 import Sketch2 from "../../../assets/images/Thesis/sketch2.jpg"
 import Sketch3 from "../../../assets/images/Thesis/sketch3.jpg"
 import Campy from "../../../assets/images/home/logoCampy.gif"
+import Campys from "../../../assets/images/home/Thesis.svg"
 
 import $ from 'jquery';
 import ReactGA from 'react-ga';
 
 
 const container = {
-    top: window.innerWidth > 450 ? 60 : 50,
+    paddingTop: window.innerWidth > 450 ? 60 : 50,
     left: 0,
     position: 'fixed',
     width: '100%',
     overflow: 'scroll',
-    height: "95vh"
+    height: "100vh"
 }
 
 class Recruitment extends React.Component {
@@ -102,11 +103,11 @@ class Recruitment extends React.Component {
                 <div id="ThesisCampy" style={container} onScroll={this.handleScroll}>
                     {/* menu bar ==============================================================================================  */}
                     <div id="navi" className="animated slideInDown">
-                        <Goback />
 
                         {/* menu */}
-                        <div id="content" style={{ background: '#dbe9f9' }}>
-                            <ul>Process
+                        <div id="content">
+                          
+                            <ul>Content
                         {Copyright.campy.title.map((item, index) => {
                                 return (
                                     <li key={index} onClick={this.onClick} className={"p" + index}>{item}
@@ -114,19 +115,13 @@ class Recruitment extends React.Component {
                                 )
                             })}
                             </ul>
-                            {/* 
-                        <div id="recommend">
-                            <br />
-                            <ul>More projects<br />
-                            </ul>
-                        </div> */}
 
                         </div>
                     </div>
                     {/*contect itself ==============================================================================================                  */}
                     <div id="info">
                         <Prelude
-                            imgSrc={CampyFeature}
+                            imgSrc={Campys}
                             descrip={Copyright.campy.descrip}
                             name={Copyright.campy.name}
                             for={Copyright.campy.for} />
@@ -157,13 +152,14 @@ class Recruitment extends React.Component {
                         </Paragraph>
                         <Paragraph noImg={true} title={Copyright.campy.title[2]} val="pp2" class="pp2">
                             <p>{Copyright.campy.paragraph3}  </p>
-                            <a href="https://isabellaWang0108.github.io/IdealationVote/">Link to website</a>
+
                             <iframe src="https://isabellaWang0108.github.io/IdealationVote/"
                                 allowFullScreen
                                 title="ideationVote"
                                 // sandbox="allow-same-origin"
                                 height={400}
-                                width="100%"></iframe>
+                                width="100%"> <br /></iframe>
+                            <a href="https://isabellaWang0108.github.io/IdealationVote/">Link to website</a>
 
                         </Paragraph>
                         <Paragraph banner={Gallary2} title={Copyright.campy.title[3] + " – data visualization"} val="pp3" class="pp3">
@@ -175,17 +171,19 @@ class Recruitment extends React.Component {
                         </Paragraph>
                         <Paragraph noImg={true} title={Copyright.campy.title[4]} val="pp4" class="pp4">
                             <p>{Copyright.campy.paragraph5}</p>
-                            <a href="https://isabellaWang0108.github.io/3Dprogramming/"
-                                target="_blank" rel="noopener noreferrer">
-                                View it fullscreen
-                            </a>
+
                             <iframe src="https://isabellaWang0108.github.io/3Dprogramming/"
                                 allowFullScreen
                                 title="see as data scientist"
                                 // sandbox="allow-same-origin"
                                 height={400}
                                 width="100%">
+                                <br />
                             </iframe>
+                            <a href="https://isabellaWang0108.github.io/3Dprogramming/"
+                                target="_blank" rel="noopener noreferrer">
+                                View it fullscreen
+                            </a>
                         </Paragraph>
 
                         <Paragraph banner={SuperHuman} title={Copyright.campy.title[5]} val="pp5" class="pp5">
@@ -204,7 +202,7 @@ class Recruitment extends React.Component {
                             <p>{Copyright.campy.paragraph8}  </p>
                         </Paragraph>
                         <Paragraph banner={Sketch2} >
-                            <p>A further refinement from the ideation. </p>
+                            <p>Further refinement from the ideation. </p>
                         </Paragraph>
                         <Paragraph banner={Sketch3} >
                             <p>Any other options? </p>
@@ -220,10 +218,9 @@ class Recruitment extends React.Component {
                         </Paragraph>
                         <Paragraph noImg={true} title={Copyright.campy.title[9]} val="pp9" class="pp9">
                             <p>{Copyright.campy.paragraph10} </p>
-                            <img src={Campy} width="40%" alt="campy"></img>
                             <br /><br /><br /><br /><br />
 
-                            <Link to="/"> View other projects >></Link>
+                            <Link to="/"> View other projects </Link>
                         </Paragraph>
 
 

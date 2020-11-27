@@ -169,7 +169,7 @@ class Homepage extends React.Component {
                             />
                             <h3>Leading design on three products</h3>
                             <p>
-                            I worked as a product designer at Voice, leading the design of the <a href="https://app.voice.com/" target="_blank">Voice app</a>'s creation feature, built internal process documentation site and <a href="http://design-system.voiceuxlab.com/design/illustrations" target="_blank">design system</a> from the ground up.
+                            I worked as a product designer at Voice, leading the design of the <a href="https://app.voice.com/" target="_blank">Voice app</a>'s creation feature, built internal process documentation site and <a href="https://design-system.voiceuxdesigns.com" target="_blank">design system</a> from the ground up.
                             </p>
                         </div>
 
@@ -292,9 +292,9 @@ class Homepage extends React.Component {
                                         action: 'venture from homeBlock'
                                     })
                                 }}
-                                innerLink={false}
+                                innerLink={true}
                                 label="Read insights"
-                                link={Copyright.venture.link}
+                                link="venture"
                             />
                         </div>
                         <img src={VentureBG} style={{ bottom: 0, left: 0, position: 'absolute', opacity: 1 }} className={VentureBG} alt="VentureBG"></img>

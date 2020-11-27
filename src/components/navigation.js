@@ -38,7 +38,7 @@ class NavigationBar extends Component {
                 {/* contact button */}
                 {this.props.contact ?
                     <Link to="/contact">
-                        <h1 className="bold pink navigationMargin">contact</h1>
+                        <h2 className="bold pink navigationMargin">About Me</h2>
                     </Link>
                     : null}
                 {/* project button */}

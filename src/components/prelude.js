@@ -10,7 +10,7 @@ class Prelude extends React.Component {
                   {this.props.challenge ? <p className="grey">{this.props.challenge}</p>:null}
               
                 {/* image source */}
-                <img src={this.props.imgSrc} alt="featureshot" style={{ width: "100%"}}></img>
+                <img src={this.props.imgSrc} style={{ width: "100%"}}></img>
                 {/* team composition */}
                 {this.props.team ? <p><span className="bold">Team :&nbsp;  </span>{this.props.team}</p> : null}
                 {/* type of project */}

@@ -9,10 +9,10 @@
         "link": "https://thesiscampy.webflow.io"
     },
     "venture": {
-        "title": "Venture Capital",
-        "content": "My first effort to initiate a company, Alwa. There are rewards from customer discovery, growth in business thinking and lessons on founder compatibility.",
+        "title": "What do designers early in their career need to grow",
+        "content": "My first effort to initiate a company, Alwa. There are rewards from customer discovery, growth in business thinking and lessons on idea validation.",
         "time": "Product management",
-        "link":"https://medium.com/@wangxbella0108"
+        "link":"venture"
     },
     "vogether": {
         "title": "Have all basic techniques ready",
@@ -21,7 +21,7 @@
         "link":"vogether"
     },
     "dodCornell": {
-        "title": "Product challenge with a multidisciplinary team!",
+        "title": "How to hire millennial technical talents",
         "content": "A career-changing experience requiring me to step out of design comfort zone. From the collaboration with MBA, CS and CM students, I learned what a digital product needs to tackle beyond design.",
         "time": "UX design",
         "link":"smoothHire"

@@ -30,11 +30,11 @@ import $ from 'jquery';
 import ReactGA from 'react-ga';
 
 const container = {
-    top: window.innerWidth > 450 ? 60 : 50,
+    paddingTop: window.innerWidth > 450 ? 60 : 50,
     position: 'fixed',
     width: '100%',
     overflow: 'scroll',
-    height: "95vh",
+    height: "100vh",
     left: 0
 }
 class Recruitment extends React.Component {
@@ -107,8 +107,8 @@ class Recruitment extends React.Component {
                     {/* navigation bar ==============================================================================================  */}
                     <div id="navi" className="animated slideInDown">
 
-                        <Goback />
-                        <div id="content" style={{ background: '#F1F1F1' }}>
+                        {/* <Goback /> */}
+                        <div id="content" >
 
                             <ul>Process
                         {Copyright.smoothHire.title.map((item, index) => {
@@ -119,17 +119,6 @@ class Recruitment extends React.Component {
                             })}
                             </ul>
 
-                            {/* <div id="recommend">
-                            <br />
-                            <ul>More projects like this<br />
-                                
-                            {Copyright.smoothHire.otherProjects.map((item, index) => {
-                                    return (
-                                        <Link key={index} to={item.link}>{item.name}<br /></Link>
-                                    )
-                                })}
-                            </ul>
-                        </div> */}
 
                         </div>
                     </div>
@@ -154,8 +143,8 @@ class Recruitment extends React.Component {
                             <p>
                                 After analyzing the pain points we collected from the people, we refined the problem as:
                             <br /><br /><span className='bold'>For recruiters: </span> Every day, they are flooded by massive amounts of applications with different formats. It is hard for them to pick out candidates with the right qualification and skills.
-                            <br /><br /><span className='bold'>For candidates: </span> They often found insufficient information to illustrate how their life will look like after getting into the company. If they think they will figure out during the interview, often after the application, they suffer from the "Resume black hole", which means the endless waiting after the submission with no idea where the companies are in the review process and when they can expect a callback. All those problems draw the young talents away to other opportunities that give them a response.
-                        <br /><br /> To better understand the problem, we draw a rick picture to unveil the entire recruitment process to figure out all the stakeholders and technology involved, because the solution can go beyond just recruiters and candidates but be anywhere in the process.
+                            <br /><br /><span className='bold'>For candidates: </span> They often found insufficient information to illustrate how their lives will look after getting into the company. Suppose they think they will figure out during the interview, usually after the application. In that case, they suffer from the "Resume black hole," which means the endless waiting after the submission with no idea where the companies are in the review process and when they can expect a callback. All those problems draw the young talents away from other opportunities that give them a response.
+                        <br /><br /> To better understand the problem, we draw a rick picture to unveil the entire recruitment process to figure out all the stakeholders and technology involved. The solution can go beyond just recruiters and candidates but be anywhere in the process.
                         </p>
 
                         </Paragraph>
@@ -164,21 +153,18 @@ class Recruitment extends React.Component {
 
 
                         <Paragraph banner={pro3} title={Copyright.smoothHire.title[2]} val="pp2" class="pp2">
-                            <p>This is 2019, there are probably people already realize the problem and trying to solve that. With the major pain points in mind, we looked into other people's solutions to the pain points.
+                            <p>There are often people who already realize the problem and trying to solve that. With the significant pain points in mind, we looked into other people's solutions to the pain points.
                        <br />
                         Here is what we learned from our ancestors:
                         </p>
-                            <Bullet a="Automation is dangerous. Candidates want a touch of human during the recruitment, but automation struggles on giving personal messages."
-                                b="Recruitment is a two-side market, but we have to pick our side either help recruiters to do their jobs easier or provide better experience for candidates. "
+                            <Bullet a="Automation is dangerous. Candidates want a touch of humans during the recruitment, but automation struggles with giving personal messages."
+                                b="Recruitment is a two-side market, but we have to pick our side to help recruiters do their jobs easier or provide a better experience for candidates."
                             />
 
                         </Paragraph>
 
                         <Paragraph banner={pro4} title={Copyright.smoothHire.title[3]} val="pp3" class="pp3">
-                            <p>  Base on the research take away, we started to generate ideas that solve the pain point 30 per person.
-                            A good idea should not only logical but also sounds good.
-                            We gathered together to vote the best idea from the pitches.
-                            Initially we had three ideas that are tie to each other, but after talking to our contact points, some of them are just not feasible at scale. If you want to know the process in detail, contact me!
+                            <p>  Based on the research take away, we started to generate ideas that solve 30 per person. A good idea should not only logical but also sounds good. We gathered together to vote on the best idea from the pitches. Initially, we had three ideas tied to each other, but after talking to our contact points, some are just not feasible at scale. If you want to know the process in detail, contact me!
                             Here is what we propose:
                          </p>
                             <p><span className="bold pink">
@@ -191,15 +177,14 @@ class Recruitment extends React.Component {
 
                         <Paragraph banner={pro5} title={Copyright.smoothHire.title[4]} val="pp4" class="pp4">
                             <p>
-                                A good idea never immediately turns into a good product. We have to turn the idea into features. And features always come with its value and risk, so it is important to debug the fatal risks before we jump into conclusion and hand proposal over to engineers. Engineering is expensive and sometimes irreversible.
+                            A good idea never immediately turns into the right product. We have to turn the concept into features. And features always come with their value and risk, so it is essential to debug the fatal risks before we jump to a conclusion and hand the proposal over to engineers. Engineering is expensive and sometimes irreversible.
                         <br />  <br />
-                        For us, the RISKEST hypothesis is that recruiters are able to support the speed and transparency by putting out the recruitment process, team structure, company culture and commit to get back to candidates in a limited time.
+                        For us, the RISKEST hypothesis is that recruiters can support the speed and transparency by putting out the recruitment process, team structure, company culture, and commitment to getting back to candidates in a limited time.
                         </p>
                         </Paragraph>
 
                         <Paragraph imgShadow={true} banner={de1} title={Copyright.smoothHire.title[5]} val="pp5" class="pp5">
-                            <p>We designed our first experiment to test whether company can commit to the time constrain:
-                            We pitched 6 startups and asked them to run their recruitment process. 1/2  of the startups were super interested and they shared the breakdown of their recruitment process immediately. However, when it came to execution - they were afraid to commit to the 3-week time limit!
+                            <p>We designed our first experiment to test whether the company can commit to the time constraint: We pitched six startups and asked them to run their recruitment process. 1/2 of the startups were super interested, and they shared the breakdown of their recruitment process immediately. However, when it came to execution - they were afraid to commit to the 3-week time limit!
                         </p>
                         </Paragraph>
                         <Paragraph imgShadow={true} banner={de3}>
@@ -210,7 +195,7 @@ class Recruitment extends React.Component {
 
                         <Paragraph imgShadow={true} banner={Experiment3}>
                             <p>
-                                With a total failure on validating speed commitment from both recruiter and candidate sides, we have to think about the workaround. After several discussions, we decided to take transparency apart from speed and test on whether transparency matters. If neither speed nor transparency can be validated, we will have to pivot to other ideas.
+                                With a total failure on validating speed commitment from both recruiter and candidate sides, we have to think about the workaround. After several discussions, we decided to take transparency apart from speed and test whether transparency matters. If neither speed nor transparency can be validated, we will have to pivot to other ideas.
                         <br /><br />
                         We sent out emails with a job description with elements of transparency. Each link is tracked by analytics to a 404 page, so we will know who clicked on what. With concerns on the mere-exposure effect, we send out a total of 120 emails in total with shaffled order of links. If candidates care about transparency, they will click on the link to see further information. If they do not care, they will directly apply to the job. Once we can prove more than 54% of people care, the value is validated.
                         </p>
@@ -231,15 +216,15 @@ class Recruitment extends React.Component {
                         <br /> <br /> <br />
 
                         <Paragraph imgShadow={true} banner={de7} title={Copyright.smoothHire.title[7]} val="pp7" class="pp7">
-                            <p>Unlike most of the job board, our job board includes different elements of transparancy in addition to the basic job desciption, like recruitment process, day-to-day-life samples.</p>
+                            <p>Unlike most of the job boards, our job board includes different elements of transparency in addition to the primary job description, like the recruitment process, day-to-day-life samples.</p>
                         </Paragraph>
 
                         <Paragraph imgShadow={true} banner={de8}>
-                            <p>In addition, we have sessions to allow company showcase their culture.</p>
+                            <p>Also, we have sessions to allow companies to showcase their culture.</p>
                         </Paragraph>
 
                         <Paragraph banner={de6}>
-                            <p>If you're interested in having a general view of all the pages and see my design of information architecture.</p>
+                            <p>If you're interested in having a general view of all the pages, below is an overview.</p>
                         </Paragraph>
 
                         <Paragraph video={de4} title={Copyright.smoothHire.title[8]} val="pp8" class="pp8">
@@ -249,7 +234,7 @@ class Recruitment extends React.Component {
                         </Paragraph>
 
                         <Paragraph noImg={true}>
-                            <Link to="/"> View other projects >></Link>
+                            <Link to="/"> View other projects</Link>
                         </Paragraph>
                         <br /><br /><br /><br />
                     </div>

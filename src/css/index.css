@@ -19,20 +19,19 @@ html {
   scroll-behavior: smooth;
 }
 
-h1, h2, h3,h5, a,span,button,p,li,ul,.logo{
+h1, h2, h3,h4,h5,h6, a,span,button,p,li,ul,.logo, label{
   color:black;
   font-family: SuisseIntl-Regular;
 }
 .bold,ul{
   font-family: SuisseIntl-SemiBold;
-  list-style-type:decimal;
 }
 .h-28px{
-  font-size:28px;
+  font-size:28pt;
 }
 h1{
-  font-size:21px;
-  margin-bottom: -10px;
+  font-size:28pt;
+  line-height: 56pt;
 }
 a{
   cursor: pointer;
@@ -42,33 +41,50 @@ a{
 h2{
     font-size:28px;
 }
-h3,ul{
-  font-size:13px;
+h6{
+  font-size:14px;
+  color:#292929;
+  letter-spacing: .4px;
 }
-p,li{
+h4{
+  font-size:21px;
+  color:#222222;
+  line-height: 21pt;
+}
+h5{
+  font-size:18pt;
+  line-height: 28.8pt;
+  letter-spacing: .4pt;
+  /* color:#222222; */
+}
+
+ul{
+  font-size:12pt;
+  color:#424242;
+  padding-left:-1em;
+  list-style: none;
+}
+p{
   font-size:16px;
   line-height: 2em;
 }
 li{
-  font-size:15px;
-  line-height: 1em;
+  font-size:12pt;
+  color:#424242;
+  line-height: 1.5em;
+  margin:1em auto 1em 0em;
+  cursor: pointer;
+}
+label{
+  color:#424242;
+  font: 14px;
 }
 br{
   line-height:2em;
 }
-ul{
-  margin-left:-1em;
-}
-li{
-  margin:1em auto 1em 2em;
-  cursor: pointer;
-}
 li:hover{
   text-decoration: underline;
   color:#FC2293;
-}
-span{
-  font-size:16px;
 }
 .grey{
   color:black;
@@ -113,30 +129,22 @@ a:hover{
   margin-left:4vw;
   margin-bottom: 3em;
 }
-.card:hover{
-  box-shadow: 1px 2px 24px 0 white;
-  border:solid 2px #FC2293;
-}
-.cardImg{
-  width:100%;
-}
 
 #navi{
   top:60px;
   bottom:5%;
   left:0px;
   height:90%;
-  width:25%;
+  width:20%;
   position:fixed;
   border: 0;
   outline: 0;
-  border-right: .5px solid #FC2293;
+  border-right: .5px solid #fc229338;
   z-index:8;
 }
 #content{
   position: absolute;
-  top:10%;
-  left:0;
+  top:5%;
   width:99.9%;
 }
 #recommend{
@@ -145,8 +153,8 @@ a:hover{
 }
 #info{
   position:absolute;
-  left:33.3%;
-  width:60%;
+  left:25%;
+  width:70%;
 }
 .descrip {
   position: absolute;
@@ -156,16 +164,13 @@ a:hover{
 }
 
 .mobile-navi{
-  background:transparent;
+  background-color:rgba(255, 182, 193, 0.507);
   position:fixed;
   top:0em;
   left:0;
   width:100%;
   height:60px;
   z-index:9;
-  border-bottom-color: #FC2293;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
 }
 .dropdown{
   display:none;
@@ -211,6 +216,7 @@ margin-right: 24px;
 font-size: 18px;
 margin-top:6px;
 cursor: pointer;
+text-decoration: none;
 }
 
 .buttonTurnPink{
@@ -230,6 +236,19 @@ cursor: pointer;
 }
 .arr3op{
   animation-delay: .8s;
+}
+.AboutProj{
+  text-decoration: none;
+  min-width: 180px;
+}
+
+.AboutProj:hover{
+  background-color: lightcoral;
+  color:white;
+}
+.threecolumn{ 
+  display: flex;
+  margin-top: 12px; 
 }
   @keyframes arrowDownAnimeample {
     from {opacity: 1;}
@@ -493,9 +512,6 @@ cursor: pointer;
     margin-top: 50%;
     padding: 2em;
     }
-   #navi{
-    width: 30%;
-   }
   
     .venture{
       left:36px;
@@ -535,22 +551,21 @@ cursor: pointer;
     z-index:7;
     background: white;
   }
+
   #content{
     position: absolute;
-    top:10%;
+    top:8%;
   }
+
   #info{
     left:5%;
     width:90%;
   }
-  
 
   .dropdown{
     display:inherit;
     position:fixed;
     right: 5%;
-    top: em;
-    border:solid 2px #FC2293;
     color:#FC2293;
     cursor:pointer;
     font-weight:bold;
@@ -624,7 +639,16 @@ cursor: pointer;
     margin-left: 0px;
   }
 
-}
+  .threecolumn{ 
+    display: flex;
+    margin-top: 12px; 
+    flex-direction: column;
+  }
+ .AboutProj{
+   width:100%;
+   min-width: 300px;
+ }
+  }
 
 
 @media only screen and (max-width: 450px) {
@@ -634,8 +658,6 @@ cursor: pointer;
   .mobile-navi, #HomapageTopNavi{
     height:50px;
   }
-
- 
 
   .venture{
     left:12px;
