@@ -139,7 +139,7 @@ class Homepage extends React.Component {
                         <div id="landingPart">
                             <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
                        
-                              Hello - I'm a product designer with full stack programming experience
+                            Hello - I am a digital product maker who designs, codes, and iterates based on research or testing outcomes.
                           
                             </div>
 

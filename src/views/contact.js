@@ -38,7 +38,7 @@ class Contact extends React.Component {
                 <Navigation projects />
                 <div id="HP_container" className='HP_container' >
                     <div style={{ margin: '5% 5%', paddingTop: '5%' }}>
-                        <h5 style={{ width: '80%', marginBlockStart: '12px' }}>I deeply care about the human-technology relationship and aim to be part of the entity to define it. Careful research, creative experimentation, and consistent induction are at the heart of my design. My approach to questions always starts from answering the Why, then ideating the How, and eventually designing the What. 
+                        <h5 style={{ width: '80%', marginBlockStart: '12px' }}>I deeply care about the human-technology relationship and aim to be part of the entity to define it. Careful research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, then ideating the How, and eventually designing the What. 
                       <br /><br />
                       Here is a selection of my works for you to get to know me:
                         </h5>
