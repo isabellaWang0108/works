@@ -7,7 +7,6 @@ import Prelude from "../../../components/prelude"
 import Bullet from "../../../components/bullet"
 import Copyright from "../../../assets/copyright/projects_Copyright.json"
 import NavigationBar from "../../../components/navigation"
-import Goback from "../../../components/back"
 
 import CampyFeature from "../../../assets/images/Thesis/landingPg.png"
 
@@ -19,7 +18,6 @@ import Clippy from "../../../assets/images/Thesis/clippy.jpg"
 import Sketch1 from "../../../assets/images/Thesis/sketch1.jpg"
 import Sketch2 from "../../../assets/images/Thesis/sketch2.jpg"
 import Sketch3 from "../../../assets/images/Thesis/sketch3.jpg"
-import Campy from "../../../assets/images/home/logoCampy.gif"
 import Campys from "../../../assets/images/home/Thesis.svg"
 
 import $ from 'jquery';

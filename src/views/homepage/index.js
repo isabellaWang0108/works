@@ -1,16 +1,12 @@
-import { Link } from "react-router-dom";
-import ReactDOM from 'react-dom'
-import React, { useState, Suspense, useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo } from "react";
 import $ from 'jquery';
 import "../../css/index.css"
-import { Canvas, useFrame, useLoader } from 'react-three-fiber'
+import { Canvas, useFrame } from 'react-three-fiber'
 import niceColors from 'nice-color-palettes'
 import * as THREE from 'three'
 
 import TimeStamp from "../../components/timeStampInHP"
-import TimeLine from "../../components/timeLine"
 import NavigationBar from "../../components/navigation"
-import Matrix from "../../assets/images/home/data.png"
 // import LandingPageAnimation from "../../components/landingPageAnimation"
 
 import CampyBG from "../../assets/images/home/CampyBG.svg"
@@ -24,19 +20,10 @@ import Copyright from "../../assets/copyright/home_copyright.json"
 import Voice from "../../assets/images/home/voice.svg"
 import AwareHealth from "../../assets/images/home/awareHealth.svg"
 import PinkButton from "../../components/pinkButton"
-import ArrowDown from "../../components/arrow"
 
 import Github from "../../assets/images/contact/github.svg"
 import Linkedin from "../../assets/images/contact/linkedin.svg"
 import ReactGA from 'react-ga';
-
-import IsabellaCursor from "../../assets/images/home/IsabellaCursor.png"
-import SmoothHirecursor from '../../assets/images/home/smoothHirecursor.png'
-import ThesisCursor from '../../assets/images/home/thesisCursor.png'
-import ArrowCursor from "../../assets/images/home/arrowCursor.png"
-import VogetherCursor from "../../assets/images/home/vogetherCursor.png"
-import VentureCursor from "../../assets/images/home/ventureCursor.png"
-import ContactCursor from "../../assets/images/home/contactCursor.png"
 
 
 const windowHeight = {
@@ -56,7 +43,6 @@ const colors = new Array(1000).fill().map(() => niceColors[13][Math.floor(Math.r
 
 
 function Boxes() {
-    const [hovered, set] = useState()
     const colorArray = useMemo(() =>
         Float32Array.from(new Array(1500).fill().flatMap((_, i) => tempColor.set(colors[i]).toArray())), []
     )
@@ -139,7 +125,7 @@ class Homepage extends React.Component {
                         <div id="landingPart">
                             <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
                        
-                            Hello - I am a digital product maker who designs, codes, and iterates based on research or testing outcomes.
+                            Hello - I am a product person who designs, codes, and iterates based on research.
                           
                             </div>
 
@@ -169,7 +155,7 @@ class Homepage extends React.Component {
                             />
                             <h3>Leading design on three products</h3>
                             <p>
-                            I worked as a product designer at Voice, leading the design of the <a href="https://app.voice.com/" target="_blank">Voice app</a>'s creation feature, built internal process documentation site and <a href="https://design-system.voiceuxdesigns.com" target="_blank">design system</a> from the ground up.
+                            I am a product designer at Voice, charging the <a href="https://app.voice.com/" target="_blank" rel="noopener noreferrer">Voice app</a>'s creation feature, internal process documentation site and <a href="https://design-system.voiceuxdesigns.com" rel="noopener noreferrer" target="_blank">design system</a>.
                             </p>
                         </div>
 
@@ -188,7 +174,7 @@ class Homepage extends React.Component {
                             />
                             <h3>Developed my first go-to-production mobile app</h3>
                             <p>
-                            At AwareHealth, I worked as a front-end engineer developed the authentication, chatting, community features of a GDPR compliant <a href="https://apps.apple.com/us/app/getawarehealth/id1507236576" target="_blank">mental well-being platform</a> using React Native, AWS, Cognito, Amplify, Redux.
+                            At AwareHealth, I worked as a front-end engineer developed the authentication, chatting, community features of a GDPR compliant <a href="https://apps.apple.com/us/app/getawarehealth/id1507236576" target="_blank" rel="noopener noreferrer">mental well-being platform</a> using React Native, AWS, Cognito, Amplify, Redux.
                             </p>
                         </div>
 

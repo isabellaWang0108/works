@@ -6,15 +6,14 @@ class Loading extends React.Component {
     render() {
         const facts = [
             "I dance Argentine Tango",
-            "My favorite song is HAVANA by Camila Cabello",
+            "I am learning Flamenco",
             "I traveled to Mexico alone for a month",
             "My favorite show is Love, Death and Robot",
-            "My favorite food is ramen",
             "I have been to Japan 6 times",
-            "I have ordered takeaway from a hospital in Colombia",
-            "I have 2 parakeets, Var and Chu",
-            "My favorite cocktail is Sangria",
-            "I learnt chess with a homeless in NY"
+            "I like stand-up comedy",
+            "I have two parakeets",
+            "I can't resist bird videos",
+            "I learned chess from a homeless in NY"
 
 
         ]

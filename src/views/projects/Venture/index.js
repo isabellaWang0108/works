@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 import Navi from "../../../components/navi"
 import Paragraph from "../../../components/paragraph"
 import Prelude from "../../../components/prelude"
-import Bullet from "../../../components/bullet"
 import Copyright from "../../../assets/copyright/projects_Copyright.json"
 import NavigationBar from "../../../components/navigation"
-import Goback from "../../../components/back"
-
-import HeroImg from "../../../assets/images/home/venture.png"
 import Deck from "../../../assets/copyright/Alwa_Product_Introduction.pdf"
 
 import $ from 'jquery';
@@ -93,7 +89,6 @@ class Venture extends React.Component {
                     {/* navigation bar ==============================================================================================  */}
                     <div id="navi" className="animated slideInDown">
 
-                        {/* <Goback /> */}
                         <div id="content" >
 
                             <ul>Content
@@ -146,7 +141,7 @@ class Venture extends React.Component {
 
                         <Paragraph banner={' '} title={Copyright.venture.title[0]} val="pp2" class="pp2">
                             <p>
-                                <iframe src={Deck} width="100%" height="500px"></iframe>
+                                <iframe src={Deck} title="title1" width="100%" height="500px"></iframe>
                             </p>
 
                         </Paragraph>
@@ -154,10 +149,10 @@ class Venture extends React.Component {
                         <Paragraph banner={' '} title={Copyright.venture.title[1]} val="pp3" class="pp3">
 
                             <p>User onboarding</p>
-                            <iframe src="https://drive.google.com/file/d/1EpWCAdyjkTmuZJyS4eUX2jK8URIzF5fn/preview" width="640" height="400"></iframe>
+                            <iframe src="https://drive.google.com/file/d/1EpWCAdyjkTmuZJyS4eUX2jK8URIzF5fn/preview" title="title2" width="640" height="400"></iframe>
                             <br />
                             <p>Finding mentor</p>
-                            <iframe src="https://drive.google.com/file/d/1QN2FlK-PJ-wFvAJRoKy57ByBnWQ-hrfo/preview" width="640" height="400"></iframe>
+                            <iframe src="https://drive.google.com/file/d/1QN2FlK-PJ-wFvAJRoKy57ByBnWQ-hrfo/preview" title="title3" width="640" height="400"></iframe>
 
 
                             <br /><br /><br /><br /><br /><br />

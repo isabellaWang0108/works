@@ -8,7 +8,6 @@ import Prelude from "../../../components/prelude"
 import Navi from "../../../components/navi"
 import Copyright from "../../../assets/copyright/projects_Copyright.json"
 import NavigationBar from "../../../components/navigation"
-import Goback from "../../../components/back"
 
 // import pro1 from "./logo.png"
 import pro2 from "../../../assets/images/vogether/competitor.png"
@@ -108,7 +107,7 @@ class Vogether extends React.Component {
 
                     {/* navigation bar ==============================================================================================  */}
                     <div id="navi" className="animated slideInDown">
-                        {/* <Goback /> */}
+                        
                         <div id="content">
                             <ul>Design Process
                             {Copyright.vogether.title.map((item, index) => {

@@ -7,7 +7,6 @@ import Prelude from "../../../components/prelude"
 import Bullet from "../../../components/bullet"
 import Copyright from "../../../assets/copyright/projects_Copyright.json"
 import NavigationBar from "../../../components/navigation"
-import Goback from "../../../components/back"
 
 import SmoothHireImg from "../../../assets/images/smoothHire/smoothHireImg.jpg"
 import pro1 from "../../../assets/images/smoothHire/richPicture.jpg"
@@ -107,7 +106,6 @@ class Recruitment extends React.Component {
                     {/* navigation bar ==============================================================================================  */}
                     <div id="navi" className="animated slideInDown">
 
-                        {/* <Goback /> */}
                         <div id="content" >
 
                             <ul>Process

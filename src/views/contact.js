@@ -2,26 +2,16 @@ import React from "react";
 import $ from 'jquery';
 import { Link } from "react-router-dom";
 
-import LandingPageAnimation from "../components/landingPageAnimation"
 import Github from "../assets/images/contact/github.svg"
 import Linkedin from "../assets/images/contact/linkedin.svg"
 import Navigation from "../components/navigation"
-import Goback from "../components/back"
 
-const windowHeight = {
-    height: window.innerWidth < 990 ? window.innerHeight * 1.1 : window.innerHeight,
-    minHeight: 600,
-    position: 'relative',
-}
 const row = {
     width: '30%',
     padding: '24px 24px'
 }
 const title = {
     color: '#585858'
-}
-const AboutProject = {
-    margin: 0
 }
 
 class Contact extends React.Component {
@@ -75,7 +65,7 @@ class Contact extends React.Component {
                                 <p style={title}>Coding</p>
 
 
-                                <a target="_blank" href="https://isabellawang0108.github.io/3Dprogramming/" className="AboutProj">
+                                <a target="_blank" rel="noopener noreferrer" href="https://isabellawang0108.github.io/3Dprogramming/" className="AboutProj">
                                     <div className="AboutProj">
                                         <h4 style={{ marginBottom: '6px' }}>ML analogy</h4>
                                         <h6 style={{ marginTop: 0 }}> A simple game with 3D visual to let people experience Machine learning process.</h6>
@@ -83,14 +73,14 @@ class Contact extends React.Component {
                                 </a>
 
 
-                                <a target="_blank" href="https://github.com/isabellaWang0108/flocker" className="AboutProj">
+                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellaWang0108/flocker" className="AboutProj">
                                     <div className="AboutProj">
                                         <h4 style={{ marginBottom: '6px' }}>Flocker</h4>
                                         <h6 style={{ marginTop: 0 }}> A full-stack application helps solo travelers meet new people, based on common interests.</h6>
                                     </div>
                                 </a>
 
-                                <a target="_blank" href="https://apps.apple.com/us/app/getawarehealth/id1507236576" className="AboutProj">
+                                <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/getawarehealth/id1507236576" className="AboutProj">
                                     <div className="AboutProj">
                                         <h4 style={{ marginBottom: '6px' }}>AwareHealth</h4>
                                         <h6 style={{ marginTop: 0 }}> A GDPR compliant mental well-being platform using React Native, AWS, Cognito, Amplify, Redux.</h6>
@@ -123,8 +113,8 @@ class Contact extends React.Component {
                             </div>
 
                         </div>
-                        <div style={{alignContent:'center',textAlign:'center', width:'100%',alignContent:'center'}}>
-                            <h5 style={{ marginBottom: 0 }}>I would be happy to connect</h5>
+                        <div style={{alignContent:'center',textAlign:'center', width:'100%'}}>
+                            <h5 style={{ marginBottom: 0 }}>Happy to connect !</h5>
                             <a style={{ color: 'black', fontSize: '16px', textDecoration: 'none', marginTop: 0 }} href="mailto:wangxbella0108@gmail.co">
                                 <p style={{ marginTop: 0 }}>wangxbella0108@gmail.com</p></a>
 
