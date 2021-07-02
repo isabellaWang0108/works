@@ -93,7 +93,7 @@ class Contact extends React.Component {
                             </div>
 
                             <div style={row}>
-                                <p style={title}>Passion projects</p>
+                                <p style={title}>My passion</p>
 
 
                                 <Link to="Thesis" target="_blank" className="AboutProj">
