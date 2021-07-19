@@ -27,22 +27,25 @@ const logo = {
 //     color: '#f2911f'
 // }
 class NavigationBar extends Component {
-    Logoclick = () => {
-        window.location.href = "/";
-    }
+
     render() {
         return (
             <div onClick={this.props.onClick} style={navigation}>
                 {/* logo */}
-                <div style={logo} onClick={this.Logoclick} className="logo bold pink">Isabella Wang</div>
+                <Link to="/">
+                    <div style={logo} className="logo bold pink">Isabella Wang</div>
+                </Link>
                 {/* contact button */}
                 {this.props.contact ?
-                    <Link to="/contact">
-                        <h2 className="bold pink navigationMargin">About Me</h2>
+                    <Link to="/contact" style={{ textDecoration: 'none' }}>
+                        <a className="bold pink navigationMargin">About Me</a>
                     </Link>
                     : null}
                 {/* project button */}
-                {this.props.projects ? <a className="bold navigationMargin" onClick={this.Logoclick} href='/'>projects</a> : null}
+                {this.props.projects ?
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        <a className="bold navigationMargin">Projects</a>
+                    </Link> : null}
             </div>
         )
     }

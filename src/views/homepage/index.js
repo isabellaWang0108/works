@@ -102,10 +102,10 @@ class Homepage extends React.Component {
 
     }
 
-    cursorMove(){
+    cursorMove() {
         console.log('hi')
     }
-    
+
     render() {
         return (
 
@@ -114,7 +114,7 @@ class Homepage extends React.Component {
 
                 {/* navigation bar */}
                 <NavigationBar href="#contactPart" contact />
-                <div id="HomapageTopNavi" style={{ backgroundColor: ' linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1))'}}></div>
+                <div id="HomapageTopNavi" style={{ backgroundColor: ' linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1))' }}></div>
 
                 <div id="HP_container" className='black HP_container' >
 
@@ -124,18 +124,18 @@ class Homepage extends React.Component {
                     <div style={windowHeight} className="black sessionContainer landingPart" >
                         <div id="landingPart">
                             <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
-                       
-                            Hello - I am a product person who designs, codes, and iterates based on research.
-                          
+
+                               I am a product person who designs, codes, and iterates based on the research.
+
                             </div>
 
 
                         </div>
                         <Canvas
-                            style={{ position: 'fixed', right: '0px', top: '0px', width: '60%', zIndex:1 }}
+                            style={{ position: 'fixed', right: '0px', top: '0px', width: '60%', zIndex: 1 }}
                             // gl={{ antialias: false, alpha: false }}
                             camera={{ position: [3, 5, 15] }}
-                            // onCreated={({ gl }) => gl.setClearColor('lightpink')}
+                        // onCreated={({ gl }) => gl.setClearColor('lightpink')}
                         >
                             <ambientLight color="#FFFFFF" />
                             <pointLight position={[150, 150, 150]} intensity={0.8} />
@@ -146,7 +146,7 @@ class Homepage extends React.Component {
                     {/* Voice */}
                     <div id="voice" className="black sessionContainer voice" style={windowHeight} >
                         <div className="imgBlock">
-                            <img src={Voice} style={{width:'100%'}} alt="voice"></img>
+                            <img src={Voice} style={{ width: '100%' }} alt="voice"></img>
                         </div>
                         <div className="textBlock">
                             <TimeStamp
@@ -155,7 +155,7 @@ class Homepage extends React.Component {
                             />
                             <h3>Leading design on three products</h3>
                             <p>
-                            I am a product designer at Voice, charging the <a href="https://app.voice.com/" target="_blank" rel="noopener noreferrer">Voice app</a>'s creation feature, internal process documentation site and <a href="https://design-system.voiceuxdesigns.com" rel="noopener noreferrer" target="_blank">design system</a>.
+                                I am a product designer at Voice, charging the <a href="https://voice.com/" target="_blank" rel="noopener noreferrer">Voice app</a>'s creation feature, internal process documentation site and <a href="https://design-system.voiceuxdesigns.com" rel="noopener noreferrer" target="_blank">design system</a>.
                             </p>
                         </div>
 
@@ -165,7 +165,7 @@ class Homepage extends React.Component {
 
 
                     {/* awareHealth */}
-                     <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
+                    <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
 
                         <div className="contentblock awareHealthText" >
                             <TimeStamp
@@ -174,14 +174,14 @@ class Homepage extends React.Component {
                             />
                             <h3>Developed my first go-to-production mobile app</h3>
                             <p>
-                            At AwareHealth, I worked as a front-end engineer developed the authentication, chatting, community features of a GDPR compliant <a href="https://apps.apple.com/us/app/getawarehealth/id1507236576" target="_blank" rel="noopener noreferrer">mental well-being platform</a> using React Native, AWS, Cognito, Amplify, Redux.
+                                At AwareHealth, I worked as a front-end engineer developed the authentication, chatting, community features of a GDPR compliant <a href="https://apps.apple.com/us/app/getawarehealth/id1507236576" target="_blank" rel="noopener noreferrer">mental well-being platform</a> using React Native, AWS, Cognito, Amplify, Redux.
                             </p>
                         </div>
 
                         <div className="contentblock">
-                            <img src={AwareHealth} style={{width:'100%'}} alt="voice"></img>
+                            <img src={AwareHealth} style={{ width: '100%' }} alt="voice"></img>
                         </div>
-                        
+
                     </div>
 
 
@@ -251,12 +251,12 @@ class Homepage extends React.Component {
                     </div>
 
 
-                   
+
 
                     {/* startup studio */}
                     <div id="Venture" className="black sessionContainer" style={windowHeight}>
 
-                     
+
                         <div className="contentblock">
                             <img src={Venture} alt="venture" className="img ventureImg"></img>
                         </div>
@@ -289,15 +289,15 @@ class Homepage extends React.Component {
 
 
 
- {/* Vogether */}
- <div id="Vogether" className="white sessionContainer" style={windowHeight}>
+                    {/* Vogether */}
+                    <div id="Vogether" className="white sessionContainer" style={windowHeight}>
                         <div className="contentblock">
                             <TimeStamp
                                 time={Copyright.vogether.time}
                                 color="white"
                             />
-                            <h3 style={{color:'white'}}>{Copyright.vogether.title}</h3>
-                            <p style={{color:'white'}}>
+                            <h3 style={{ color: 'white' }}>{Copyright.vogether.title}</h3>
+                            <p style={{ color: 'white' }}>
                                 {Copyright.vogether.content}
                             </p>
                             <PinkButton
@@ -325,13 +325,13 @@ class Homepage extends React.Component {
                     <div style={windowHeight} id="Contact" className="sessionContainer white contactPart">
                         <div id="contactPart">
 
-                        <div style={{display:'flex', flexDirection:'row', justifyContent:'flex-start'}}>
-                            <a href="https://github.com/isabellawang0108" style={{marginRight:'36pt'}}>
-                                    <img style={{width:'36pt'}} src={Github} alt="icon"></img>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
+                                <a href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
+                                    <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
                                 </a>
 
                                 <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
-                                    <img style={{width:'36pt'}} src={Linkedin} alt="icon"></img>
+                                    <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
                                 </a>
                             </div>
                             <div style={row}>

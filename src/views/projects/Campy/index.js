@@ -54,7 +54,6 @@ class Recruitment extends React.Component {
 
     turnPink = (theclass) => {
         $("." + theclass).css("color", "#FC2293")
-            .css("text-decoration", "underline")
             .css("font-weight", "bold")
     }
     neutral = () => {
