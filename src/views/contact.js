@@ -28,9 +28,9 @@ class Contact extends React.Component {
                 <Navigation projects />
                 <div id="HP_container" className='HP_container' >
                     <div style={{ margin: '5% 5%', paddingTop: '5%' }}>
-                        <h5 style={{ width: '80%', marginBlockStart: '12px' }}>I deeply care about the human-technology relationship and aim to be part of the entity to define it. Careful research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, then ideating the How, and eventually designing the What. 
-                      <br /><br />
-                      Here is a selection of my works for you to get to know me:
+                        <h5 style={{ width: '80%', marginBlockStart: '12px' }}>I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
+                            <br /><br />
+                            Here is a selection of my works for you to get to know me:
                         </h5>
                         <div className="threecolumn">
                             <div style={row}>
@@ -109,17 +109,17 @@ class Contact extends React.Component {
                                         <h4 style={{ marginBottom: '6px' }}>Alwa</h4>
                                         <h6 style={{ marginTop: 0 }}> My startup venture on helping people to thrive in their lives. </h6>
                                     </div>
-                               </Link>
+                                </Link>
                             </div>
 
                         </div>
-                        <div style={{alignContent:'center',textAlign:'center', width:'100%'}}>
+                        <div style={{ alignContent: 'center', textAlign: 'center', width: '100%' }}>
                             <h5 style={{ marginBottom: 0 }}>Happy to connect !</h5>
                             <a style={{ color: 'black', fontSize: '16px', textDecoration: 'none', marginTop: 0 }} href="mailto:wangxbella0108@gmail.co">
                                 <p style={{ marginTop: 0 }}>wangxbella0108@gmail.com</p></a>
 
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                                <a href="https://github.com/isabellawang0108" style={{ marginRight:'36px' }}>
+                                <a href="https://github.com/isabellawang0108" style={{ marginRight: '36px' }}>
                                     <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
                                 </a>
 
