@@ -1,704 +1,826 @@
 @font-face {
-font-family: SuisseIntl-SemiBold;
-src: url("../assets/font/SuisseIntl-SemiBold.otf");
+  font-family: SuisseIntl-SemiBold;
+  src: url("../assets/font/SuisseIntl-SemiBold.otf");
 }
+
 @font-face {
-font-family: SuisseIntl-Regular;
-src: url("../assets/font/SuisseIntl-Regular.otf");
+  font-family: SuisseIntl-Regular;
+  src: url("../assets/font/SuisseIntl-Regular.otf");
 }
+
 @font-face {
-font-family: SuisseIntl-Thin;
-src: url("../assets/font/SuisseIntl-Thin.otf");
+  font-family: SuisseIntl-Thin;
+  src: url("../assets/font/SuisseIntl-Thin.otf");
 }
+
 @font-face {
   font-family: Courier-Regular;
   src: url("../assets/font/CourierStd.otf");
-  }
+}
 
 html {
   scroll-behavior: smooth;
 }
 
-h1, h2, h3,h4,h5,h6, a,span,button,p,li,ul,.logo, label{
-  color:black;
+a,
+span,
+button,
+p,
+li,
+ul {
+  color: black;
   font-family: SuisseIntl-Regular;
 }
-.bold,ul{
+
+.bold,
+ul,
+h1,
+h2,
+h3 {
   font-family: SuisseIntl-SemiBold;
 }
-.h-28px{
-  font-size:28pt;
-}
-h1{
-  font-size:28pt;
-  line-height: 56pt;
-}
-a{
-  cursor: pointer;
-  text-decoration: underline;
-  color:#FC2293;
-}
-h2{
-    font-size:28px;
-}
-h6{
-  font-size:14px;
-  color:#292929;
-  letter-spacing: .4px;
-}
-h4{
-  font-size:21px;
-  color:#222222;
-  line-height: 21pt;
-}
-h5{
-  font-size:18pt;
-  line-height: 28.8pt;
-  letter-spacing: .4pt;
-  /* color:#222222; */
+
+h1 {
+  font-size: 36px;
+  line-height: 42px;
 }
 
-ul{
-  font-size:12pt;
-  color:#424242;
-  padding-left:-1em;
-  list-style: none;
+a {
+  cursor: pointer;
 }
-p{
-  font-size:16px;
+
+h2 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+
+p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #181818;
+}
+
+p a {
+  color: #E83E91;
+}
+
+br {
   line-height: 2em;
 }
-li{
-  font-size:12pt;
-  color:#424242;
-  line-height: 1.5em;
-  margin:1em auto 1em 0em;
-  cursor: pointer;
-}
-label{
-  color:#424242;
-  font: 14px;
-}
-br{
-  line-height:2em;
-}
-li:hover{
+
+li:hover {
   text-decoration: underline;
-  color:#FC2293;
-}
-.grey{
-  color:black;
-  opacity:.5;
-}
-.pink{
-  color: #FC2293;
-}
-.blue{
-  color:blue;
 }
 
-a:hover{
-  color:#fd971f;
+.grey {
+  color: #575757;
 }
-.black{
-  color:black;
+
+.pink {
+  color: #E83E91;
 }
-.card{
-  display:inline-block;
+
+.blue {
+  color: blue;
+}
+
+
+.black {
+  color: #171717;
+}
+
+.card {
+  display: inline-block;
   box-shadow: 1px 2px 24px 0 #BDBBBE;
-  height:22em;
-  width:40%;
+  height: 22em;
+  width: 40%;
   overflow: hidden;
-  z-index:2;
+  z-index: 2;
   cursor: pointer;
-  margin-left:2em;
-  margin-top:3em;
-  max-width:500px;
-  height:44vw;
-  max-height:450px;
+  margin-left: 2em;
+  margin-top: 3em;
+  max-width: 500px;
+  height: 44vw;
+  max-height: 450px;
 }
-.Card-content{
-    position:absolute;
-    margin-left:2em;
-    width:90%;
+
+.Card-content {
+  position: absolute;
+  margin-left: 2em;
+  width: 90%;
 }
-.content{
-  top:2em;
-  left:0em;
-  width:auto;
-  margin-left:4vw;
+
+.content {
+  top: 2em;
+  left: 0em;
+  width: auto;
+  margin-left: 4vw;
   margin-bottom: 3em;
 }
 
-#navi{
-  top:60px;
-  bottom:5%;
-  left:0px;
-  height:90%;
-  width:20%;
-  position:fixed;
+.left-nav {
+  width: 20%;
   border: 0;
   outline: 0;
-  border-right: .5px solid #fc229338;
-  z-index:8;
+  border-right: 1px solid #fc229338;
+  z-index: 8;
+  position: fixed;
+  padding:4px 16px;
+  height:90vh;
 }
-#content{
+
+.left-nav .icon{
+  display:flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+
+.left-nav ul {
+  margin: 80px 0px;
+  padding-left: 0px;
+}
+
+.left-nav li {
+  list-style-type: none;
+  padding-left: 24px;
+  margin: 16px 0px;
+}
+
+li a {
+  text-decoration: none;
+}
+
+li a:hover {
+  color: #FC2293;
+}
+
+.page-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow: scroll;
+  left:0;
+}
+
+.content-layout {
+  margin-top: 70px;
+  margin-left: 20%;
+  padding: 100px 4em;
+  max-width: 56em;
+  height: 100%;
+}
+
+.content-block {
+  margin-top: 4em;
+}
+
+
+#recommend {
   position: absolute;
-  top:5%;
-  width:99.9%;
+  width: 100%;
 }
-#recommend{
+
+#info {
   position: absolute;
-  width:100%;
+  left: 25%;
+  width: 70%;
 }
-#info{
-  position:absolute;
-  left:25%;
-  width:70%;
-}
+
 .descrip {
   position: absolute;
   width: 95%;
   margin-top: -.5em;
-  font-size:13px;
+  font-size: 13px;
 }
 
-.mobile-navi{
-  background-color:rgba(255, 182, 193, 0.507);
-  position:fixed;
-  top:0em;
-  left:0;
-  width:100%;
-  height:60px;
-  z-index:9;
-}
-.dropdown{
-  display:none;
-}
-
-.changOpt:hover{
-  opacity:.5;
-}
-.IsabellaW{
-  width:100%;
+.mobile-navi {
+  background-color: rgba(255, 182, 193, 0.507);
   position: fixed;
-  left:0;
-  top:0;
+  top: 0em;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 9;
+}
+
+.dropdown {
+  display: none;
+}
+
+.changOpx:hover {
+  opacity: .5;
+}
+
+.IsabellaW {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
   background-size: cover;
-  
+
 }
-.contact-text{
+
+.contact-text {
   position: absolute;
-  width:40%;
-  background-color:white;
-  padding:2em 2em;
-  margin-left:48%;
+  width: 40%;
+  background-color: white;
+  padding: 2em 2em;
+  margin-left: 48%;
 
 }
 
-.HomeIntro{
+.HomeIntro {
   font-size: 48px;
   font-weight: lighter;
-  left:0;
-  width:90%;
+  left: 0;
+  width: 90%;
   background-color: #efefee;
-  padding:2em 1em;
-
-}
-.Intro2Project{
-  color:#FC2293;
+  padding: 2em 1em;
 
 }
 
+.Intro2Project {
+  color: #FC2293;
 
-.navigationMargin{
-margin-right: 24px;
-font-size: 18px;
-margin-top:6px;
-cursor: pointer;
-text-decoration: none;
 }
 
-.buttonTurnPink{
+
+.navigationMargin {
+  margin-right: 24px;
+  font-size: 18px;
+  margin-top: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.buttonTurnPink {
   background-color: #FC2293;
-  color:white;
+  color: white;
 }
 
-.arrowDown{
+.arrowDown {
   margin-top: -6px;
   animation-name: arrowDownAnimeample;
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-.arr2op{
+
+.arr2op {
   animation-delay: .4s;
 }
-.arr3op{
+
+.arr3op {
   animation-delay: .8s;
 }
-.AboutProj{
+
+.AboutProj {
   text-decoration: none;
   min-width: 180px;
 }
 
-.AboutProj:hover{
+.AboutProj:hover {
   background-color: lightcoral;
-  color:white;
+  color: white;
 }
-.threecolumn{ 
+
+.threecolumn {
   display: flex;
-  margin-top: 12px; 
+  margin-top: 12px;
 }
-  @keyframes arrowDownAnimeample {
-    from {opacity: 1;}
-    to {opacity: .333;}
+
+@keyframes arrowDownAnimeample {
+  from {
+    opacity: 1;
   }
 
-  .HP_downArr{
-    font-family:SuisseIntl-Regular;
-     margin-top:2em;
-     color:#FF1493;
-     display:flex;
-     flex-direction: row-reverse;
-     align-items: center;
-     position: relative;
+  to {
+    opacity: .333;
   }
+}
+
+.HP_downArr {
+  font-family: SuisseIntl-Regular;
+  margin-top: 2em;
+  color: #FF1493;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  position: relative;
+}
+
 /* Homepage CSS */
 
-#HP_container{
-  display:inline-block;
+#HP_container {
+  display: inline-block;
   flex-direction: row;
-  width:100%;
-  left:0px;
-  top:0px;
+  width: 100%;
+  left: 0px;
+  top: 0px;
   z-index: 17;
   position: absolute;
-  color:white;
+  color: white;
   background-color: rgba(255, 182, 193, 0.507);
 }
-#landingPart, #contactPart{
+
+#landingPart,
+#contactPart {
   margin-top: 10vh;
-  display:flex;
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   align-self: flex-start;
-  width:55%;
-  z-Index:2;
+  width: 55%;
+  z-Index: 2;
 }
-#contactPart{
+
+#contactPart {
   flex-direction: column;
   align-items: center;
-  margin-top:15%;
+  margin-top: 15%;
 }
 
-.Alllinks{
+.Alllinks {
   font-size: 21px;
 }
-.pink{
-  color:#FC2293;
+
+.pink {
+  color: #FC2293;
 }
 
-.HP_Intro, h3{
+.HP_Intro {
   font-size: 48px;
   margin-top: 12px;
   font-family: 'SuisseIntl-SemiBold';
   z-index: 10;
 }
-.landingpage_Intro{
+
+.landingpage_Intro {
   font-size: 3.3em;
   margin-top: 25%;
-  vertical-align:middle;
-  color:black;
+  vertical-align: middle;
+  color: black;
   margin-left: 10%;
   font-family: 'SuisseIntl-Semibold';
 }
 
-.HP_descrip,.Alllinks, p{
-  font-size:21px;
+.HP_descrip,
+.Alllinks {
+  font-size: 21px;
   margin-top: 24px;
   font-family: 'SuisseIntl-Regular';
   z-index: 10;
   line-height: 42px;
-  width:100%;
+  width: 100%;
 }
-.sessionContainer{
-  display:flex;
+
+.sessionContainer {
+  display: flex;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   flex-direction: row;
-  -webkit-box-orient: horizontal; 
+  -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;
   box-orient: horizontal;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   align-items: center;
   padding-left: 5%;
-  padding-right:5%;
-  left:0;
+  padding-right: 5%;
+  left: 0;
   position: absolute;
   /* width:95%; */
   z-index: 100;
   overflow: hidden;
 }
 
-.contentblock{
-  width:46%;
-  padding:2%;
+.contentblock {
+  width: 46%;
+  padding: 2%;
   margin-right: 0;
   align-content: space-around;
   justify-content: space-around;
 }
-.imgBlock{
-  width:60%;
+
+.imgBlock {
+  width: 60%;
   margin-right: 0;
   align-content: space-around;
   justify-content: space-around;
 }
-.textBlock{
-  width:36%;
-  padding:2%;
+
+.textBlock {
+  width: 36%;
+  padding: 2%;
   margin-right: 0;
   align-content: space-around;
   justify-content: space-around;
   overflow: hidden;
 }
-.img{
-  height:auto;
-  width:80%;
+
+.img {
+  height: auto;
+  width: 80%;
   margin-left: 8%;
 }
-.ventureImg{
-  width:100%;
+
+.ventureImg {
+  width: 100%;
   margin-left: -10%;
   z-index: 3;
 }
 
-.pinkSquare{
+.pinkSquare {
   margin-left: 0px;
 }
-.timeLine{
-  margin-left:40px;
+
+.timeLine {
+  margin-left: 40px;
 }
-#Thesis{
-  background:#fbfbfb;
+
+#Thesis {
+  background: #fbfbfb;
   margin-left: 0;
   margin-top: 0;
   flex-wrap: wrap;
   overflow: hidden;
   z-index: 100;
 }
-.CampyBG{
+
+.CampyBG {
   width: 100%;
   top: 0;
   z-index: 5;
-  margin-left:-100;
-  margin-top:30
+  margin-left: -100;
+  margin-top: 30
 }
-.DODCornell{
+
+.DODCornell {
   background-color: whitesmoke;
   align-items: flex-start;
   padding-top: 18vh;
 }
-.DODCornellImg{
-  width:100%;
+
+.DODCornellImg {
+  width: 100%;
 }
-#Vogether{
+
+#Vogether {
   background-color: #333c4a;
 }
-.coder{
+
+.coder {
   font-family: Courier-Regular;
-  color:white;
-  width:90%;
+  color: white;
+  width: 90%;
   line-height: normal;
 }
-#coder{
+
+#coder {
   background-color: black;
-  width:90%;
-  padding-left:10%;
+  width: 90%;
+  padding-left: 10%;
   overflow-wrap: break-word;
   padding-top: 5vh;
 }
-.codeDefineIndent{
+
+.codeDefineIndent {
   margin-left: -150px;
 }
 
-.greenCode{
-  color:#95ee0f;
+.greenCode {
+  color: #95ee0f;
   font-family: Courier-Regular;
-  font-size:18px;
-}
-.blueCode{
-  color:#53dcf6;
-  font-family: Courier-Regular;
-  font-size:18px;
-  font-weight: bolder;
-}
-.greyCode{
-  color:grey;
-  font-size:21px;
-  font-family: Courier-Regular;
-  font-weight: bolder;
-}
-.pinkCode{
-  color:#f92672;
-  font-family: Courier-Regular;
-  font-size:18px;
-  font-weight: bolder;
-}
-.yellowCode{
-  color:#f2911f;
-  font-family: Courier-Regular;
-  font-size:18px;
-  font-weight: bolder;
-}
-.indentInCoder{
-  margin-left:170px;
+  font-size: 18px;
 }
 
-#Venture,#Thesis, #DODCornell,#coder{
-  z-Index:100;
+.blueCode {
+  color: #53dcf6;
+  font-family: Courier-Regular;
+  font-size: 18px;
+  font-weight: bolder;
 }
-#Venture{
+
+.greyCode {
+  color: grey;
+  font-size: 21px;
+  font-family: Courier-Regular;
+  font-weight: bolder;
+}
+
+.pinkCode {
+  color: #f92672;
+  font-family: Courier-Regular;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.yellowCode {
+  color: #f2911f;
+  font-family: Courier-Regular;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.indentInCoder {
+  margin-left: 170px;
+}
+
+#Venture,
+#Thesis,
+#DODCornell,
+#coder {
+  z-Index: 100;
+}
+
+#Venture {
   background-color: white;
 }
 
-#HomapageTopNavi{
-  height: 60px; 
-  width: 100%; position: fixed;
-  top:0;
-  left:0; 
-  z-index:40;
-  background-color:white;
-  opacity:.2;
+#HomapageTopNavi {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  background-color: white;
+  opacity: .2;
 }
 
-#voice, #awareHealth{
+#voice,
+#awareHealth {
   padding-left: 0%;
   padding-top: 0;
   background-color: white;
 }
 
-#awareHealth{
-  background-color:#F9FBFF;
+#awareHealth {
+  background-color: #F9FBFF;
   flex-direction: row;
 }
-.awareHealthText{
+
+.awareHealthText {
   margin-left: 5%;
-  width:40%;
+  width: 40%;
 }
+
 @media only screen and (max-width: 850px) {
 
-  .card{
-    width:80%;
-    margin-left:10%;
-    margin-top:1em;
-    height:76vw;
+  .card {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 1em;
+    height: 76vw;
     min-height: 350px;
   }
-  h1{
-    font-size:18px;
-  }
-  p{
-    font-size:16px;
-  }
-  .contact-text{
-    
+
+  .contact-text {
+
     display: block;
     width: 90%;
     left: 0;
     margin-left: 0;
     margin-top: 50%;
     padding: 2em;
-    }
-  
-    .venture{
-      left:36px;
-      width:90%;
-      margin-left: auto;
-      margin-right: auto;
-      align-items: center;
-      
-    }
-    .contentblockRight{
-      right:auto;
-      left:66px;
-      width:90%
-    }
-    .indentInCoder{
-      margin-left:42px;
-    }
-    .codeDefineIndent{
-      margin-left: -42px;
-    }
-    .HP_Intro{
-      font-size: 36px;
-    }
-    .HP_descrip,.Alllinks,.Alllinks{
-      font-size: 18px;
-    }
+  }
 
-  
+  .venture {
+    left: 36px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+
+  }
+
+  .contentblockRight {
+    right: auto;
+    left: 66px;
+    width: 90%
+  }
+
+  .indentInCoder {
+    margin-left: 42px;
+  }
+
+  .codeDefineIndent {
+    margin-left: -42px;
+  }
+
+  .HP_Intro {
+    font-size: 36px;
+  }
+
+  .HP_descrip,
+  .Alllinks,
+  .Alllinks {
+    font-size: 18px;
+  }
+
+
 }
 
 @media only screen and (max-width: 700px) {
 
-  #navi{
-    display:none;
+  .left-nav {
+    display: none;
     position: fixed;
-    width:100%;
-    z-index:7;
+    width: 100%;
+    z-index: 7;
     background: white;
   }
 
-  #content{
+  #content {
     position: absolute;
-    top:8%;
+    top: 8%;
   }
 
-  #info{
-    left:5%;
-    width:90%;
+  #info {
+    left: 5%;
+    width: 90%;
   }
 
-  .dropdown{
-    display:inherit;
-    position:fixed;
+  .dropdown {
+    display: inherit;
+    position: fixed;
     right: 5%;
-    color:#FC2293;
-    cursor:pointer;
-    font-weight:bold;
-    padding:5px 1vw;
-    font-size:12px;
+    color: #FC2293;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 1vw;
+    font-size: 12px;
     background-color: white;
   }
-  .IsabellaW
-  {
+
+  .IsabellaW {
     margin-top: 3em;
   }
-  .campy{
+
+  .campy {
     left: 48px;
   }
-  .indentInCoder{
+
+  .indentInCoder {
     overflow: inherit;
     /* flex-wrap:wrap; */
-     width:300px
+    width: 300px
   }
-  .sessionContainer{
+
+  .sessionContainer {
     flex-direction: column-reverse;
     justify-content: center;
 
   }
-  .HP_Intro{
+
+  .HP_Intro {
     font-size: 28px;
   }
-  .HP_descrip,.Alllinks{
+
+  .HP_descrip,
+  .Alllinks {
     font-size: 18px;
   }
-  .img{
-    width:50%;
-  }
-  .DODCornellImg,.img{
-    margin-bottom: 24px;
-  }
-  .ventureImg{
-    width:80%
-  }
-  .DODCornell{
-    align-items: center;
-    flex-direction: column;
-    top:0
-  }
-  .contentblock{
-    width:90%;
-  }
-  #landingPart, #contactPart{
-    width:90%;
-  }
-  #contactPart{
-  flex-direction:column;
-  align-self: flex-start;
-  align-items: flex-start;
+
+  .img {
+    width: 50%;
   }
 
-  .landingPart, .contactPart{
+  .DODCornellImg,
+  .img {
+    margin-bottom: 24px;
+  }
+
+  .ventureImg {
+    width: 80%
+  }
+
+  .DODCornell {
+    align-items: center;
+    flex-direction: column;
+    top: 0
+  }
+
+  .contentblock {
+    width: 90%;
+  }
+
+  #landingPart,
+  #contactPart {
+    width: 90%;
+  }
+
+  #contactPart {
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: flex-start;
+  }
+
+  .landingPart,
+  .contactPart {
     margin-left: -5%;
     flex-direction: row;
     align-self: start;
 
   }
-  .timeLine{
-    margin-left: 0px;
-  }
-  #voice{
-    flex-direction: row-reverse;
-  }
-  .textBlock,.contentblock,.imgBlock, .awareHealthText{
-    width:100%;
+
+  .timeLine {
     margin-left: 0px;
   }
 
-  .threecolumn{ 
+  #voice {
+    flex-direction: row-reverse;
+  }
+
+  .textBlock,
+  .contentblock,
+  .imgBlock,
+  .awareHealthText {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .threecolumn {
     display: flex;
-    margin-top: 12px; 
+    margin-top: 12px;
     flex-direction: column;
   }
- .AboutProj{
-   width:100%;
-   min-width: 300px;
- }
+
+  .AboutProj {
+    width: 100%;
+    min-width: 300px;
   }
+}
 
 
 @media only screen and (max-width: 450px) {
-  #navi{
-    top:50px;
-  }
-  .mobile-navi, #HomapageTopNavi{
-    height:50px;
+  .left-nav {
+    top: 50px;
   }
 
-  .venture{
-    left:12px;
+  .mobile-navi,
+  #HomapageTopNavi {
+    height: 50px;
   }
-  .card{
-    width:90%;
-    margin-left:2%;
-    margin-top:1em;
-  }
-  .Card-content{
-    position:absolute;
-    margin-left:1em;
-    width:90%;
-}
-.contentblockRight{
-  left: 12px;
-}
-.pinkSquare{
-  margin-left:1px;
-}
 
-#coder{
-  padding-left: 12px;
-  width: 100%;
-}
-.sessionContainer{
-  width:95%;
-  padding-left: 5%;
-}
-.img{
-  width:70%;
-}
-.ventureImg{
-  width:100%;
-  margin-left: 0;
-}
-.DODCornell{
-  padding-top: 0;
-  flex-direction: column;
-}
-#landingPart, #contactPart{
-  width:80%;
-}
+  .venture {
+    left: 12px;
+  }
+
+  .card {
+    width: 90%;
+    margin-left: 2%;
+    margin-top: 1em;
+  }
+
+  .Card-content {
+    position: absolute;
+    margin-left: 1em;
+    width: 90%;
+  }
+
+  .contentblockRight {
+    left: 12px;
+  }
+
+  .pinkSquare {
+    margin-left: 1px;
+  }
+
+  #coder {
+    padding-left: 12px;
+    width: 100%;
+  }
+
+  .sessionContainer {
+    width: 95%;
+    padding-left: 5%;
+  }
+
+  .img {
+    width: 70%;
+  }
+
+  .ventureImg {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .DODCornell {
+    padding-top: 0;
+    flex-direction: column;
+  }
+
+  #landingPart,
+  #contactPart {
+    width: 80%;
+  }
 }
