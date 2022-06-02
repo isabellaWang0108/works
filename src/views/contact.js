@@ -6,14 +6,6 @@ import Github from "../assets/images/contact/github.svg"
 import Linkedin from "../assets/images/contact/linkedin.svg"
 import Navigation from "../components/navigation"
 
-const row = {
-    width: '30%',
-    padding: '24px 24px'
-}
-const title = {
-    color: '#585858'
-}
-
 class Contact extends React.Component {
 
     state = {
@@ -27,94 +19,98 @@ class Contact extends React.Component {
             <div id="parallaxScroll">
                 <Navigation projects />
                 <div id="HP_container" className='HP_container' >
-                    <div style={{ margin: '5% 5%', paddingTop: '5%' }}>
-                        <h5 style={{ width: '80%', marginBlockStart: '12px' }}>I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
+                    <div className="black" style={{ margin: '5% 5%', padding: "72px 0px" }}>
+                        <h2>About me</h2>
+                        <p style={{ width: '80%', maxWidth:900 }}>I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
                             <br /><br />
-                            Here is a selection of my works for you to get to know me:
-                        </h5>
+                            Below is a selection of my works for you to get to know me:
+                        </p>
                         <div className="threecolumn">
-                            <div style={row}>
-                                <p style={title}>Product design</p>
+                            <div className="threecolumn-row">
+                                <h2>Design projects</h2>
 
                                 <Link target="_blank" className="AboutProj">
-                                    <div className="AboutProj">
-                                        <h4 style={{ marginBottom: '6px' }}>SmoothHire  </h4>
-                                        <h6 style={{ marginTop: 0 }}>A job plarform designed to attract millennial technical talents. </h6>
-                                    </div>
+                                    <p className="AboutProj-content">
+                                        <b>Typography system</b>
+                                        <br />
+                                        A case study on building a design system.
+                                    </p>
                                 </Link>
 
                                 <Link target="_blank" className="AboutProj">
-                                    <div className="AboutProj">
-                                        <h4 style={{ marginBottom: '6px' }}>Vogether</h4>
-                                        <h6 style={{ marginTop: 0 }}> A social media to help people seek immediate attention.</h6>
-                                    </div>
+                                    <p className="AboutProj-content">
+                                        <b>NFT creation feature </b>
+                                        <br />
+                                        A case study on designing a product feature for an NFT Marketplace.
+                                    </p>
                                 </Link>
 
 
                                 <Link target="_blank" className="AboutProj">
-                                    <div className="AboutProj">
-                                        <h4 style={{ marginBottom: '6px' }}>Voice Design system  </h4>
-                                        <h6 style={{ marginTop: 0 }}> A design system site helps create user experience</h6>
-                                    </div>
+                                    <p className="AboutProj-content">
+                                        <b>Reimagining the recruitement UX</b>
+                                        <br />
+                                        A product challenge about designing a better job hunting experience for millennial technical talents.
+                                    </p>
                                 </Link>
                             </div>
 
 
 
-                            <div style={row}>
-                                <p style={title}>Coding</p>
+                            <div className="threecolumn-row">
+                                <h2>Coding work</h2>
 
 
                                 <a target="_blank" rel="noopener noreferrer" href="https://isabellawang0108.github.io/3Dprogramming/" className="AboutProj">
-                                    <div className="AboutProj">
-                                        <h4 style={{ marginBottom: '6px' }}>ML analogy</h4>
-                                        <h6 style={{ marginTop: 0 }}> A simple game with 3D visual to let people experience Machine learning process.</h6>
-                                    </div>
-                                </a>
-
-
-                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellaWang0108/flocker" className="AboutProj">
-                                    <div className="AboutProj">
-                                        <h4 style={{ marginBottom: '6px' }}>Flocker</h4>
-                                        <h6 style={{ marginTop: 0 }}> A full-stack application helps solo travelers meet new people, based on common interests.</h6>
-                                    </div>
+                                    <p className="AboutProj-content">
+                                        <b>3D programming </b>
+                                        <br />
+                                        A simple interactive project to let users experience the black box in ML.
+                                    </p>
                                 </a>
 
                                 <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/getawarehealth/id1507236576" className="AboutProj">
-                                    <div className="AboutProj">
-                                        <h4 style={{ marginBottom: '6px' }}>AwareHealth</h4>
-                                        <h6 style={{ marginTop: 0 }}> A GDPR compliant mental well-being platform using React Native, AWS, Cognito, Amplify, Redux.</h6>
-                                    </div>
+                                    <p className="AboutProj-content">
+                                        <b>Mobile app development</b>
+                                        <br />
+                                        A GDPR compliant mental well-being platform using React Native, AWS, Cognito, Amplify, Redux.
+                                    </p>
                                 </a>
-
-
-
 
                             </div>
 
-                            <div style={row}>
-                                <p style={title}>My passion</p>
+                            <div className="threecolumn-row">
+                                <h2>Others</h2>
 
-
-                                <Link to="Thesis" target="_blank" className="AboutProj">
-                                    <div className="AboutProj">
-                                        <h4 style={{ marginBottom: '6px' }}>Thesis </h4>
-                                        <h6 style={{ marginTop: 0 }}> My one year's research project on discovering Human-Technology relationship.</h6>
-                                    </div>
+                                <Link to="thesis" target="_blank" className="AboutProj">
+                                    <p className="AboutProj-content">
+                                        <b>Thesis </b>
+                                        <br />
+                                        A one-year research project that defines my focus on the human-technology relationship.
+                                    </p>
                                 </Link>
 
 
-                                <Link to="venture" target="_blank" className="AboutProj">
-                                    <div className="AboutProj">
-                                        <h4 style={{ marginBottom: '6px' }}>Alwa</h4>
-                                        <h6 style={{ marginTop: 0 }}> My startup venture on helping people to thrive in their lives. </h6>
-                                    </div>
-                                </Link>
+                                <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" target="_blank" className="AboutProj">
+                                    <p className="AboutProj-content">
+                                        <b>Integrated system </b>
+                                        <br />
+                                        A home automation passion project that reflects the automation status quo.
+                                    </p>
+                                </a>
+
+                                <a href="https://wangxbella0108.medium.com/ui-vs-logo-gradient-ec0f67d10e21" target="_blank" className="AboutProj">
+                                    <p className="AboutProj-content">
+                                        <b>Gradient research</b>
+                                        <br />
+                                        My featuring writing in my design research blogs.
+                                    </p>
+                                </a>
                             </div>
 
                         </div>
-                        <div style={{ alignContent: 'center', textAlign: 'center', width: '100%' }}>
-                            <h5 style={{ marginBottom: 0 }}>Happy to connect !</h5>
+                        <div style={{ alignContent: 'center', textAlign: 'center', width: '100%' , marginTop:24}}>
+                            <p style={{ marginBottom: 0 }}>Happy to connect !</p>
                             <a style={{ color: 'black', fontSize: '16px', textDecoration: 'none', marginTop: 0 }} href="mailto:wangxbella0108@gmail.co">
                                 <p style={{ marginTop: 0 }}>wangxbella0108@gmail.com</p></a>
 

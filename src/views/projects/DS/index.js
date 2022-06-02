@@ -32,7 +32,7 @@ class DS extends React.Component {
             .css("font-weight", "normal")
     }
 
-    scrollCheck(scrollPos) {
+    scrollCheck() {
 
         // for all the item in the menu except for the last one\
         for (var i = 1; i < this.content.length; i++) {
@@ -57,7 +57,7 @@ class DS extends React.Component {
     }
     handleScroll = e => {
         e.preventDefault();
-        this.scrollCheck($('.page-container').scrollTop());
+        this.scrollCheck();
     }
 
 

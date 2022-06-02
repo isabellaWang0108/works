@@ -8,12 +8,11 @@ import * as THREE from 'three'
 import Labeling from "../../components/labeling"
 import NavigationBar from "../../components/navigation"
 
-import CampyBG from "../../assets/images/home/CampyBG.svg"
-import Campy from "../../assets/images/home/logoCampy.gif"
-import Vogether from "../../assets/images/vogether/2-record.gif"
-import DODCornell from "../../assets/images/home/DODCornell.svg"
-import Copyright from "../../assets/copyright/home_copyright.json"
-// import Voice from "../../assets/images/home/voice.svg"
+import Thesis from "../../assets/images/home/thesis.png"
+import DesignSystem from "../../assets/images/home/ds.png"
+// import Vogether from "../../assets/images/vogether/2-record.gif"
+import ProductStudio from "../../assets/images/home/ProductStudio.svg"
+import Voice from "../../assets/images/home/voice.svg"
 import AwareHealth from "../../assets/images/home/awareHealth.svg"
 import PinkButton from "../../components/pinkButton"
 
@@ -110,7 +109,7 @@ class Homepage extends React.Component {
                         <div id="landingPart">
                             <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
 
-                                I am a product person who designs, codes, and iterates based on the research.
+                                I design, code, and iterate based on the research.
 
                             </div>
 
@@ -130,62 +129,92 @@ class Homepage extends React.Component {
 
 
                     {/* Thesis Campy */}
-                    <div id="Thesis" className="black sessionContainer" style={windowHeight}>
+                    <div id="Thesis" className="black sessionContainer bg-yellow" style={windowHeight}>
 
                         <div className="contentblock">
                             <Labeling
-                                time="Thesis, my passion"
+                                time="Thesis"
                                 color='black'
                             />
-                            <h3 >Technology for designers</h3>
-                            <p>The exploration of the relationship between human and technology in the near future by going across theories, existing implementation and conceptual mechanization.
+                            <h1>What will we become, now that life means living with computers?</h1>
+                            <p>This is a one-year research and self-exploration journey that ultimately defined my passion and research interest.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
-                                    label="Documentation"
+                                    label="See works"
                                     link="thesis"
 
                                 />
                             </p>
                         </div>
-                        <div className="contentblock">
-                            <img src={Campy} alt="campy" className="campy img" />
+                        <div className="imgBlock">
+                            <img src={Thesis} alt="thesis" className="campy img" />
                         </div>
-                        <img src={CampyBG} style={{ position: 'absolute', top: 0, left: -60 }} className={CampyBG} alt="campyBG"></img>
+                    </div>
+
+                    {/* Desigin system */}
+                    <div id="Design-system" className="black sessionContainer reverse bg-white" style={windowHeight}>
+
+                        <div className="contentblock">
+                            <Labeling
+                                time="Professional specialty"
+                                color='black'
+                            />
+                            <h1>Building a typography system</h1>
+                            <p>Through my three years of professional working experience, I have developed my specialty in product design -- Design Systems. This case study is one of my work at VTS.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="Read details"
+                                    link="design-system"
+
+                                />
+                            </p>
+                        </div>
+                        <div className="imgBlock">
+                            <img src={DesignSystem} alt="design system" className="ds img" />
+                        </div>
                     </div>
 
 
 
+
                     {/* Voice */}
-                    {/* <div id="voice" className="black sessionContainer voice" style={windowHeight} >
-                        <div className="imgBlock">
-                            <img src={Voice} style={{ width: '100%' }} alt="voice"></img>
-                        </div>
-                        <div className="textBlock">
+                    <div id="Voice" className="black sessionContainer bg-purple" style={windowHeight}>
+
+                        <div className="contentblock">
                             <Labeling
                                 time="Product design"
-                                color="black"
+                                color='black'
                             />
-                            <h3>Leading design on three products</h3>
-                            <p>
-                                I am a product designer at Voice, charging the <a href="https://voice.com/" target="_blank" rel="noopener noreferrer">Voice app</a>'s creation feature, internal process documentation site and <a href="https://design-system.voiceuxdesigns.com" rel="noopener noreferrer" target="_blank">design system</a>.
+                            <h1>Designing an NFT creation feature for everyday users</h1>
+                            <p>This case study demonstrates my workflow in a generic product design project. It is selected from my projects at Voice.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="Read more"
+                                    link="voice"
+
+                                />
                             </p>
                         </div>
-
-                    </div> */}
+                        <div className="imgBlock">
+                            <img src={Voice} alt="voice" className="img" />
+                        </div>
+                    </div>
 
 
 
 
                     {/* awareHealth */}
-                    <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
+                    {/* <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
 
                         <div className="contentblock awareHealthText" >
                             <Labeling
                                 time="Fullstack engineering"
                                 color="black"
                             />
-                            <h3>Developed my first go-to-production mobile app</h3>
+                            <h1>Developed my first go-to-production mobile app</h1>
                             <p>
                                 At AwareHealth, I worked as a front-end engineer developed the authentication, chatting, community features of a GDPR compliant <a href="https://apps.apple.com/us/app/getawarehealth/id1507236576" target="_blank" rel="noopener noreferrer">mental well-being platform</a> using React Native, AWS, Cognito, Amplify, Redux.
                             </p>
@@ -195,66 +224,38 @@ class Homepage extends React.Component {
                             <img src={AwareHealth} style={{ width: '100%' }} alt="voice"></img>
                         </div>
 
-                    </div>
+                    </div> */}
 
 
 
 
                     {/* product studio */}
-                    <div id="DODCornell" className="black sessionContainer DODCornell" style={windowHeight} >
-                        <div className="contentblock">
-                            <img src={DODCornell} className="DODCornellImg" alt="DODCornell"></img>
-                        </div>
+                    <div id="ProductStudio" className="black sessionContainer reverse bg-smokewhite" style={windowHeight} >
                         <div className="contentblock">
                             <Labeling
-                                time="Product management"
+                                time="Product discovery"
                                 color="black"
                             />
-                            <h3>How to hire millennial technical talents</h3>
+                            <h1>How to hire millennial technical talents?</h1>
                             <p>
-                                This is a collaborative project sponsored by the US Department of defense to explore the key to capturing millennial technical talents' hearts in the job market.
+                                This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
                                 <br />
-                                {/* <PinkButton
-                                  
+                                <PinkButton
                                     innerLink={true}
                                     label="See process"
-                                    link={Copyright.dodCornell.link}
-                                /> */}
+                                    link="product-studio"
+                                />
                             </p>
                         </div>
-
-                    </div>
-
-
-
-                    {/* Vogether */}
-                    <div id="Vogether" className="white sessionContainer" style={windowHeight}>
-                        <div className="contentblock">
-                            <Labeling
-                                time="UX/UI design"
-                                color="white"
-                            />
-                            <h3 style={{ color: 'white' }}>UI that satisfies people's need for attentions</h3>
-                            <p style={{ color: 'white' }}>
-                                A visually focus experimental project using the most updated tools, like Sketch, InVision, and Principles.
-                            </p>
-                            {/* <PinkButton
-                               
-                                innerLink={true}
-                                label="View project"
-                                link={Copyright.vogether.link}
-                            /> */}
-                        </div>
-                        <div className="contentblock" style={{ overflow: 'hidden' }}>
-                            <img src={Vogether} alt="vogether" className="img ventureImg"></img>
+                        <div className="imgblock">
+                            <img src={ProductStudio} className="DODCornellImg" alt="ProductStudio"></img>
                         </div>
                     </div>
-
 
 
 
                     {/* contact */}
-                    <div style={windowHeight} id="Contact" className="sessionContainer white contactPart">
+                    <div style={windowHeight} id="Contact" className="sessionContainer contactPart">
                         <div id="contactPart">
 
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
@@ -266,7 +267,7 @@ class Homepage extends React.Component {
                                     <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
                                 </a>
                             </div>
-                            <div style={row}>
+                            <div style={row} className="black">
                                 <h2> wangxbella0108@gmail.com</h2>
                                 <h2> +1 (908) 391 – 6750</h2>
                             </div>
