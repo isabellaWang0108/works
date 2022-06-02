@@ -73,9 +73,8 @@ p a {
 br {
   line-height: 2em;
 }
-
-li:hover {
-  text-decoration: underline;
+li{
+  margin:8px 0;
 }
 
 .grey {
@@ -131,14 +130,17 @@ li:hover {
   border-right: 1px solid #fc229338;
   z-index: 8;
   position: fixed;
+  left:0;
+  top:0px;
   padding:4px 16px;
   height:90vh;
 }
 
-.left-nav .icon{
+.icon{
   display:flex;
   text-decoration: none;
   align-items: center;
+  padding:8px;
 }
 
 
@@ -200,15 +202,6 @@ li a:hover {
   font-size: 13px;
 }
 
-.mobile-navi {
-  background-color: rgba(255, 182, 193, 0.507);
-  position: fixed;
-  top: 0em;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  z-index: 9;
-}
 
 .dropdown {
   display: none;
@@ -246,12 +239,6 @@ li a:hover {
 
 }
 
-.Intro2Project {
-  color: #FC2293;
-
-}
-
-
 .navigationMargin {
   margin-right: 24px;
   font-size: 18px;
@@ -265,21 +252,6 @@ li a:hover {
   color: white;
 }
 
-.arrowDown {
-  margin-top: -6px;
-  animation-name: arrowDownAnimeample;
-  animation-duration: 1.2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-.arr2op {
-  animation-delay: .4s;
-}
-
-.arr3op {
-  animation-delay: .8s;
-}
 
 .AboutProj {
   text-decoration: none;
@@ -304,16 +276,6 @@ li a:hover {
   to {
     opacity: .333;
   }
-}
-
-.HP_downArr {
-  font-family: SuisseIntl-Regular;
-  margin-top: 2em;
-  color: #FF1493;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  position: relative;
 }
 
 /* Homepage CSS */
@@ -477,73 +439,6 @@ li a:hover {
   background-color: #333c4a;
 }
 
-.coder {
-  font-family: Courier-Regular;
-  color: white;
-  width: 90%;
-  line-height: normal;
-}
-
-#coder {
-  background-color: black;
-  width: 90%;
-  padding-left: 10%;
-  overflow-wrap: break-word;
-  padding-top: 5vh;
-}
-
-.codeDefineIndent {
-  margin-left: -150px;
-}
-
-.greenCode {
-  color: #95ee0f;
-  font-family: Courier-Regular;
-  font-size: 18px;
-}
-
-.blueCode {
-  color: #53dcf6;
-  font-family: Courier-Regular;
-  font-size: 18px;
-  font-weight: bolder;
-}
-
-.greyCode {
-  color: grey;
-  font-size: 21px;
-  font-family: Courier-Regular;
-  font-weight: bolder;
-}
-
-.pinkCode {
-  color: #f92672;
-  font-family: Courier-Regular;
-  font-size: 18px;
-  font-weight: bolder;
-}
-
-.yellowCode {
-  color: #f2911f;
-  font-family: Courier-Regular;
-  font-size: 18px;
-  font-weight: bolder;
-}
-
-.indentInCoder {
-  margin-left: 170px;
-}
-
-#Venture,
-#Thesis,
-#DODCornell,
-#coder {
-  z-Index: 100;
-}
-
-#Venture {
-  background-color: white;
-}
 
 #HomapageTopNavi {
   height: 60px;
@@ -573,7 +468,7 @@ li a:hover {
   width: 40%;
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 769px) {
 
   .card {
     width: 80%;
@@ -608,58 +503,11 @@ li a:hover {
     width: 90%
   }
 
-  .indentInCoder {
-    margin-left: 42px;
-  }
-
-  .codeDefineIndent {
-    margin-left: -42px;
-  }
 
   .HP_Intro {
     font-size: 36px;
   }
 
-  .HP_descrip,
-  .Alllinks,
-  .Alllinks {
-    font-size: 18px;
-  }
-
-
-}
-
-@media only screen and (max-width: 700px) {
-
-  .left-nav {
-    display: none;
-    position: fixed;
-    width: 100%;
-    z-index: 7;
-    background: white;
-  }
-
-  #content {
-    position: absolute;
-    top: 8%;
-  }
-
-  #info {
-    left: 5%;
-    width: 90%;
-  }
-
-  .dropdown {
-    display: inherit;
-    position: fixed;
-    right: 5%;
-    color: #FC2293;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 5px 1vw;
-    font-size: 12px;
-    background-color: white;
-  }
 
   .IsabellaW {
     margin-top: 3em;
@@ -667,12 +515,6 @@ li a:hover {
 
   .campy {
     left: 48px;
-  }
-
-  .indentInCoder {
-    overflow: inherit;
-    /* flex-wrap:wrap; */
-    width: 300px
   }
 
   .sessionContainer {
@@ -690,12 +532,7 @@ li a:hover {
     font-size: 18px;
   }
 
-  .img {
-    width: 50%;
-  }
-
-  .DODCornellImg,
-  .img {
+  .DODCornellImg{
     margin-bottom: 24px;
   }
 
@@ -758,14 +595,55 @@ li a:hover {
     width: 100%;
     min-width: 300px;
   }
+
+/* Content page */
+.left-nav {
+  width: 100%;
+  z-index: 8;
+  position: relative;
+  height:auto;
+  top:0px;
+  padding:4px 16px;
+  border-right: 0px solid #fc229338;
+  border-left: 2px solid #fc229338;
+}
+
+.left-nav ul {
+  margin: 18px 4px;
+  font-size: 24px;
+}
+
+.left-nav li{
+  font-size: 18px;
+}
+
+.content-layout {
+  margin-top: 24px;
+  margin-left: 0%;
+  padding: 100px 24px;
+}
+
+.content-block {
+  margin-top: 2em;
+}
+
 }
 
 
 @media only screen and (max-width: 450px) {
-  .left-nav {
-    top: 50px;
-  }
 
+  .dropdown {
+    display: inherit;
+    position: fixed;
+    right: 5%;
+    color: #FC2293;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 1vw;
+    font-size: 12px;
+    background-color: white;
+  }
+  
   .mobile-navi,
   #HomapageTopNavi {
     height: 50px;
