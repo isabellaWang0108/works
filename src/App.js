@@ -5,9 +5,10 @@ import Homepage from "./views/homepage"
 import Contact from "./views/contact.js"
 
 import Vogether from "./views/projects/vogether"
-import Recruitment from "./views/projects/Recruitment"
-import Thesis from "./views/projects/Campy"
-import Venture from "./views/projects/Venture"
+import ProductStudio from "./views/projects/ProductStudio"
+import Thesis from "./views/projects/Thesis"
+import DS from "./views/projects/DS"
+import Voice from "./views/projects/Voice"
 
 class App extends Component {
   state = {
@@ -33,10 +34,11 @@ class App extends Component {
           <Switch>
             <Route exact path={process.env.PUBLIC_URL + "/"} component={Homepage} />
             <Route exact path={process.env.PUBLIC_URL + "/vogether"} component={Vogether} />
-            <Route exact path={process.env.PUBLIC_URL + "/smoothHire"} component={Recruitment} />
+            <Route exact path={process.env.PUBLIC_URL + "/product-studio"} component={ProductStudio} />
             <Route exact path={process.env.PUBLIC_URL + "/thesis"} component={Thesis} />
             <Route exact path={process.env.PUBLIC_URL + "/contact"} component={Contact} />
-            <Route exact path={process.env.PUBLIC_URL + "/venture"} component={Venture} />
+            <Route exact path={process.env.PUBLIC_URL + "/design-system"} component={DS} />
+            <Route exact path={process.env.PUBLIC_URL + "/voice"} component={Voice} />
           </Switch>
         </HashRouter>
       )

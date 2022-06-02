@@ -5,25 +5,20 @@ import { Canvas, useFrame } from 'react-three-fiber'
 import niceColors from 'nice-color-palettes'
 import * as THREE from 'three'
 
-import TimeStamp from "../../components/timeStampInHP"
+import Labeling from "../../components/labeling"
 import NavigationBar from "../../components/navigation"
-// import LandingPageAnimation from "../../components/landingPageAnimation"
 
 import CampyBG from "../../assets/images/home/CampyBG.svg"
 import Campy from "../../assets/images/home/logoCampy.gif"
 import Vogether from "../../assets/images/vogether/2-record.gif"
-// import Thesis from "../../assets/images/home/Thesis.svg"
-import Venture from "../../assets/images/home/venture.png"
-import VentureBG from "../../assets/images/home/ventureBG.svg"
 import DODCornell from "../../assets/images/home/DODCornell.svg"
 import Copyright from "../../assets/copyright/home_copyright.json"
-import Voice from "../../assets/images/home/voice.svg"
+// import Voice from "../../assets/images/home/voice.svg"
 import AwareHealth from "../../assets/images/home/awareHealth.svg"
 import PinkButton from "../../components/pinkButton"
 
 import Github from "../../assets/images/contact/github.svg"
 import Linkedin from "../../assets/images/contact/linkedin.svg"
-import ReactGA from 'react-ga';
 
 
 const windowHeight = {
@@ -96,21 +91,11 @@ class Homepage extends React.Component {
         timeLineHeight: $(document).height()
     }
 
-    componentDidMount() {
-        ReactGA.initialize('UA-148443721-2', { testMode: true });
-        ReactGA.pageview(window.location.pathname + window.location.search);
-
-    }
-
-    cursorMove() {
-        console.log('hi')
-    }
-
     render() {
         return (
 
 
-            <div id="parallaxScroll" onMouseMove={this.cursorMove.bind(this)}>
+            <div id="parallaxScroll" >
 
                 {/* navigation bar */}
                 <NavigationBar href="#contactPart" contact />
@@ -125,7 +110,7 @@ class Homepage extends React.Component {
                         <div id="landingPart">
                             <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
 
-                               I am a product person who designs, codes, and iterates based on the research.
+                                I am a product person who designs, codes, and iterates based on the research.
 
                             </div>
 
@@ -143,13 +128,41 @@ class Homepage extends React.Component {
                         </Canvas>
                     </div>
 
+
+                    {/* Thesis Campy */}
+                    <div id="Thesis" className="black sessionContainer" style={windowHeight}>
+
+                        <div className="contentblock">
+                            <Labeling
+                                time="Thesis, my passion"
+                                color='black'
+                            />
+                            <h3 >Technology for designers</h3>
+                            <p>The exploration of the relationship between human and technology in the near future by going across theories, existing implementation and conceptual mechanization.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="Documentation"
+                                    link="thesis"
+
+                                />
+                            </p>
+                        </div>
+                        <div className="contentblock">
+                            <img src={Campy} alt="campy" className="campy img" />
+                        </div>
+                        <img src={CampyBG} style={{ position: 'absolute', top: 0, left: -60 }} className={CampyBG} alt="campyBG"></img>
+                    </div>
+
+
+
                     {/* Voice */}
-                    <div id="voice" className="black sessionContainer voice" style={windowHeight} >
+                    {/* <div id="voice" className="black sessionContainer voice" style={windowHeight} >
                         <div className="imgBlock">
                             <img src={Voice} style={{ width: '100%' }} alt="voice"></img>
                         </div>
                         <div className="textBlock">
-                            <TimeStamp
+                            <Labeling
                                 time="Product design"
                                 color="black"
                             />
@@ -159,7 +172,7 @@ class Homepage extends React.Component {
                             </p>
                         </div>
 
-                    </div>
+                    </div> */}
 
 
 
@@ -168,7 +181,7 @@ class Homepage extends React.Component {
                     <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
 
                         <div className="contentblock awareHealthText" >
-                            <TimeStamp
+                            <Labeling
                                 time="Fullstack engineering"
                                 color="black"
                             />
@@ -193,97 +206,22 @@ class Homepage extends React.Component {
                             <img src={DODCornell} className="DODCornellImg" alt="DODCornell"></img>
                         </div>
                         <div className="contentblock">
-                            <TimeStamp
+                            <Labeling
                                 time="Product management"
                                 color="black"
                             />
-                            <h3>{Copyright.dodCornell.title}</h3>
+                            <h3>How to hire millennial technical talents</h3>
                             <p>
-                                {Copyright.dodCornell.content}
+                                This is a collaborative project sponsored by the US Department of defense to explore the key to capturing millennial technical talents' hearts in the job market.
                                 <br />
-                                <PinkButton
-                                    onClick={() => {
-                                        console.log('product studio from homeBlock')
-                                        ReactGA.event({
-                                            category: 'direct to link',
-                                            action: 'product studio from homeBlock'
-                                        })
-                                    }}
+                                {/* <PinkButton
+                                  
                                     innerLink={true}
                                     label="See process"
                                     link={Copyright.dodCornell.link}
-                                />
+                                /> */}
                             </p>
                         </div>
-
-                    </div>
-
-                    {/* Thesis Campy */}
-                    <div id="Thesis" className="black sessionContainer" style={windowHeight}>
-
-                        <div className="contentblock">
-                            <TimeStamp
-                                time="Thesis"
-                                color='black'
-                            />
-                            <h3 >Research on technology for designers</h3>
-                            <p>{Copyright.thesis.content}
-                                <br />
-                                <PinkButton
-                                    onClick={() => {
-                                        console.log('thesis from homeBlock')
-                                        ReactGA.event({
-                                            category: 'direct to link',
-                                            action: 'thesis from homeBlock'
-                                        })
-                                    }}
-                                    innerLink={true}
-                                    label="Documentation"
-                                    link="thesis"
-
-                                />
-                            </p>
-                        </div>
-                        <div className="contentblock">
-                            <img src={Campy} alt="campy" className="campy img" />
-                        </div>
-                        <img src={CampyBG} style={{ position: 'absolute', top: 0, left: -60 }} className={CampyBG} alt="campyBG"></img>
-                    </div>
-
-
-
-
-                    {/* startup studio */}
-                    <div id="Venture" className="black sessionContainer" style={windowHeight}>
-
-
-                        <div className="contentblock">
-                            <img src={Venture} alt="venture" className="img ventureImg"></img>
-                        </div>
-
-                        <div className="contentblock">
-                            <TimeStamp
-                                time="Entrepreneur"
-                                color="black"
-                            />
-                            <h3 >{Copyright.venture.title}</h3>
-                            <p >
-                                {Copyright.venture.content}
-                            </p>
-                            <PinkButton
-                                onClick={() => {
-                                    console.log('venture from homeBlock')
-                                    ReactGA.event({
-                                        category: 'direct to link',
-                                        action: 'venture from homeBlock'
-                                    })
-                                }}
-                                innerLink={true}
-                                label="Read insights"
-                                link="venture"
-                            />
-                        </div>
-                        <img src={VentureBG} style={{ bottom: 0, left: 0, position: 'absolute', opacity: 1 }} className={VentureBG} alt="VentureBG"></img>
 
                     </div>
 
@@ -292,26 +230,20 @@ class Homepage extends React.Component {
                     {/* Vogether */}
                     <div id="Vogether" className="white sessionContainer" style={windowHeight}>
                         <div className="contentblock">
-                            <TimeStamp
-                                time={Copyright.vogether.time}
+                            <Labeling
+                                time="UX/UI design"
                                 color="white"
                             />
-                            <h3 style={{ color: 'white' }}>{Copyright.vogether.title}</h3>
+                            <h3 style={{ color: 'white' }}>UI that satisfies people's need for attentions</h3>
                             <p style={{ color: 'white' }}>
-                                {Copyright.vogether.content}
+                                A visually focus experimental project using the most updated tools, like Sketch, InVision, and Principles.
                             </p>
-                            <PinkButton
-                                onClick={() => {
-                                    console.log('Vogetherfrom homeBlock')
-                                    ReactGA.event({
-                                        category: 'direct to link',
-                                        action: 'Vogetherfrom from homeBlock'
-                                    })
-                                }}
+                            {/* <PinkButton
+                               
                                 innerLink={true}
                                 label="View project"
                                 link={Copyright.vogether.link}
-                            />
+                            /> */}
                         </div>
                         <div className="contentblock" style={{ overflow: 'hidden' }}>
                             <img src={Vogether} alt="vogether" className="img ventureImg"></img>
@@ -344,9 +276,6 @@ class Homepage extends React.Component {
 
 
                 </div>
-                {/* <div id="backgrounds">
-                    <LandingPageAnimation backgroundNmb={this.state.background} />
-                </div> */}
 
             </div >
         );

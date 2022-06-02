@@ -1,28 +1,14 @@
 {
-    "landingPage": {
-        "title": "I’m a product designer with full-stack development experience, looking to join a technology-driven organization."
-    },
-    "thesis": {
-        "title": "Technology for designers",
-        "content": "The exploration of the relationship between human and technology in the near future by going across theories, existing implementation and conceptual mechanization.",
-        "time": "software design",
-        "link": "https://thesiscampy.webflow.io"
-    },
+    
     "venture": {
         "title": "What do designers early in their career need to grow",
         "content": "My first effort to initiate a company, Alwa. There are rewards from customer discovery, growth in business thinking and lessons on idea validation.",
         "time": "Product management",
         "link":"venture"
     },
-    "vogether": {
-        "title": "Have all basic techniques ready",
-        "content": "A visually focus experimental project using the most updated tools, like Sketch, InVision, and Principles.",
-        "time": "UX/UI design",
-        "link":"vogether"
-    },
     "dodCornell": {
-        "title": "How to hire millennial technical talents",
-        "content": "A career-changing experience requiring me to step out of design comfort zone. From the collaboration with MBA, CS and CM students, I learned what a digital product needs to tackle beyond design.",
+        "title": "",
+        "content": "",
         "time": "UX design",
         "link":"smoothHire"
     },
