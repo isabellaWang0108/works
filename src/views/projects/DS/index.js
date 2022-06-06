@@ -7,9 +7,9 @@ import Pic1 from "../../../assets/images/DesignSystem/ds_pic1.svg"
 import Pic2 from "../../../assets/images/DesignSystem/ds_pic2.svg"
 import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.svg"
 import Pic4 from "../../../assets/images/DesignSystem/ds_pic4.svg"
-import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.svg"
-import Pic6 from "../../../assets/images/DesignSystem/ds_pic6.svg"
-import Pic7 from "../../../assets/images/DesignSystem/ds_pic7.svg"
+import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.jpg"
+import Pic6 from "../../../assets/images/DesignSystem/ds_pic6.jpg"
+import Pic7 from "../../../assets/images/DesignSystem/ds_pic7.jpg"
 
 class DS extends React.Component {
 
@@ -132,11 +132,11 @@ class DS extends React.Component {
                             <p>Below is a detailed example of each step to give a better idea of my process.</p>
                             <h3>1. Auditing</h3>
                             <p>Auditing let me know what is out there. I came up with a spread sheet that archives all the typography styles and usages across the products.</p>
-                            <img src={Pic2} width="100%"/>
+                            <img src={Pic3} width="100%"/>
                             <br />
                             <h3>2. Take a stab at the system</h3>
                             <p>Based on the auditing, I identified the styles to keep and built a semantic system with the minimum complexity that still allows enough flexibility for designers.</p>
-                            <img src={Pic3} width="100%"/>
+                            <img src={Pic4} width="100%"/>
                             <br />
                             <h3>3. Experiment with the design solutions</h3>
                             <p>I selected iconic pages and implamented the system into the prototypes myself to ensure the usability and flexibility of the system. The experimentation includes:</p>
@@ -146,17 +146,17 @@ class DS extends React.Component {
                                 <li>Accessibility</li>
                                 <li>Nomenclature</li>
                             </ol>
-                            <img src={Pic4} width="100%"/>
+                            <img src={Pic5} width="100%"/>
                             <br />
                             <h3>4. Review and iterate</h3>
                             <p>This is the hardest part of my typography system work -- the system not only needs to be logical but also lovable. If no users are willing to use the seemingly ideal system, it is merely a piece of artwork. I reviewed my solution with 22 designers on the team to identify any problems that may stop them from using the system. It took three months, millions of review and iterations to reach the point that our designers like it and will use it. </p>
                             <p>* As we took an incremental approach, I came up with 1:1 mapping and ultimate redesign to help the team see both the near future and the future.</p>
-                            <img src={Pic5} width="100%"/>
+                            <img src={Pic6} width="100%"/>
                             <br />
                             <h3>5. Documentation</h3>
                             <p>To make the system scalable, I wrote up documentation around usage and the system itself, so designers and engineers can refer to the document whenever they need references or have questions. If the entire product design and front-end team(50+ people) come to me to ask questions, things get out of control quickly.</p>
                             <p>Check out the final outcome:<a href="https://terra.vts.com/foundation/typography/overview">terra.vts.com/foundation/typography/overview</a></p>
-                            <img src={Pic6} width="100%"/>
+                            <img src={Pic7} width="100%"/>
                             <br />
                             <h3>6. Introduce the system and educate people</h3>
                             <p>People often don’t get complex things immediately, so it’s important to repeat as many times it takes for people to understand the system. I run workshops and meetings to ensure people know how to use the typography tokens as part of my maintenance. This step often reveals new problems and needs—for instance, a new typography style, ambiguity in the documentation, or confusion around the usage.</p>

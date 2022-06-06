@@ -13,7 +13,6 @@ import DesignSystem from "../../assets/images/home/ds.png"
 // import Vogether from "../../assets/images/vogether/2-record.gif"
 import ProductStudio from "../../assets/images/home/ProductStudio.svg"
 import Voice from "../../assets/images/home/voice.svg"
-import AwareHealth from "../../assets/images/home/awareHealth.svg"
 import PinkButton from "../../components/pinkButton"
 
 import Github from "../../assets/images/contact/github.svg"
@@ -112,98 +111,96 @@ class Homepage extends React.Component {
 
                         </div>
                         <Canvas
-                            style={{ position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 450 ? "100%" : "60%", zIndex: 1, }}
-                            // gl={{ antialias: false, alpha: false }}
-                        camera={{ position: [3, 5, 15] }}
-                        // onCreated={({ gl }) => gl.setClearColor('lightpink')}
+                            style={{ position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 450 ? "60%" : "100%", zIndex: 1, }}
+                            camera={{ position: [3, 5, 15] }}
                         >
-                        <ambientLight color="#FFFFFF" />
-                        <pointLight position={[150, 150, 150]} intensity={0.8} />
-                        <Boxes />
-                    </Canvas>
-                </div>
+                            <ambientLight color="#FFFFFF" />
+                            <pointLight position={[150, 150, 150]} intensity={0.8} />
+                            <Boxes />
+                        </Canvas>
+                    </div>
 
 
-                {/* Thesis Campy */}
-                <div id="Thesis" className="black sessionContainer bg-yellow" style={windowHeight}>
+                    {/* Thesis Campy */}
+                    <div id="Thesis" className="black sessionContainer bg-yellow" style={windowHeight}>
 
-                    <div className="contentblock">
-                        <Labeling
-                            time="Thesis"
-                            color='black'
-                        />
-                        <h1>What will we become, now that life means living with computers?</h1>
-                        <p>This is a one-year research and self-exploration journey that ultimately defined my passion and research interest.
-                            <br />
-                            <PinkButton
-                                innerLink={true}
-                                label="See works"
-                                link="thesis"
-
+                        <div className="contentblock">
+                            <Labeling
+                                time="Thesis"
+                                color='black'
                             />
-                        </p>
+                            <h1>What will we become, now that life means living with computers?</h1>
+                            <p>This is a one-year research and self-exploration journey that ultimately defined my passion and research interest.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="See works"
+                                    link="thesis"
+
+                                />
+                            </p>
+                        </div>
+                        <div className="imgBlock">
+                            <img src={Thesis} alt="thesis" className="campy img" />
+                        </div>
                     </div>
-                    <div className="imgBlock">
-                        <img src={Thesis} alt="thesis" className="campy img" />
-                    </div>
-                </div>
 
-                {/* Desigin system */}
-                <div id="Design-system" className="black sessionContainer reverse bg-white" style={windowHeight}>
+                    {/* Desigin system */}
+                    <div id="Design-system" className="black sessionContainer reverse bg-white" style={windowHeight}>
 
-                    <div className="contentblock">
-                        <Labeling
-                            time="Professional specialty"
-                            color='black'
-                        />
-                        <h1>Building a typography system</h1>
-                        <p>Through my three years of professional working experience, I have developed my specialty in product design -- Design Systems. This case study is one of my work at VTS.
-                            <br />
-                            <PinkButton
-                                innerLink={true}
-                                label="Read details"
-                                link="design-system"
-
+                        <div className="contentblock">
+                            <Labeling
+                                time="Professional specialty"
+                                color='black'
                             />
-                        </p>
+                            <h1>Building a typography system</h1>
+                            <p>Through my three years of professional working experience, I have developed my specialty in product design -- Design Systems. This case study is one of my work at VTS.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="Read details"
+                                    link="design-system"
+
+                                />
+                            </p>
+                        </div>
+                        <div className="imgBlock">
+                            <img src={DesignSystem} alt="design system" className="ds img" />
+                        </div>
                     </div>
-                    <div className="imgBlock">
-                        <img src={DesignSystem} alt="design system" className="ds img" />
-                    </div>
-                </div>
 
 
 
 
-                {/* Voice */}
-                <div id="Voice" className="black sessionContainer bg-purple" style={windowHeight}>
+                    {/* Voice */}
+                    <div id="Voice" className="black sessionContainer bg-purple" style={windowHeight}>
 
-                    <div className="contentblock">
-                        <Labeling
-                            time="Product design"
-                            color='black'
-                        />
-                        <h1>Designing an NFT creation feature for everyday users</h1>
-                        <p>This case study demonstrates my workflow in a generic product design project. It is selected from my projects at Voice.
-                            <br />
-                            <PinkButton
-                                innerLink={true}
-                                label="Read more"
-                                link="voice"
-
+                        <div className="contentblock">
+                            <Labeling
+                                time="Product design"
+                                color='black'
                             />
-                        </p>
+                            <h1>Designing an NFT creation feature for everyday users</h1>
+                            <p>This case study demonstrates my workflow in a generic product design project. It is selected from my projects at Voice.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="Read more"
+                                    link="voice"
+
+                                />
+                            </p>
+                        </div>
+                        <div className="imgBlock">
+                            <img src={Voice} alt="voice" className="img" />
+                        </div>
                     </div>
-                    <div className="imgBlock">
-                        <img src={Voice} alt="voice" className="img" />
-                    </div>
-                </div>
 
 
 
 
-                {/* awareHealth */}
-                {/* <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
+                    {/* awareHealth */}
+                    {/* <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
 
                         <div className="contentblock awareHealthText" >
                             <Labeling
@@ -225,54 +222,54 @@ class Homepage extends React.Component {
 
 
 
-                {/* product studio */}
-                <div id="ProductStudio" className="black sessionContainer reverse bg-smokewhite" style={windowHeight} >
-                    <div className="contentblock">
-                        <Labeling
-                            time="Product discovery"
-                            color="black"
-                        />
-                        <h1>How to hire millennial technical talents?</h1>
-                        <p>
-                            This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
-                            <br />
-                            <PinkButton
-                                innerLink={true}
-                                label="See process"
-                                link="product-studio"
+                    {/* product studio */}
+                    <div id="ProductStudio" className="black sessionContainer reverse bg-smokewhite" style={windowHeight} >
+                        <div className="contentblock">
+                            <Labeling
+                                time="Product discovery"
+                                color="black"
                             />
-                        </p>
-                    </div>
-                    <div className="imgblock">
-                        <img src={ProductStudio} className="DODCornellImg" alt="ProductStudio"></img>
-                    </div>
-                </div>
-
-
-
-                {/* contact */}
-                <div style={windowHeight} id="Contact" className="sessionContainer contactPart">
-                    <div id="contactPart">
-
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                            <a href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
-                                <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
-                            </a>
-
-                            <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
-                                <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
-                            </a>
+                            <h1>How to hire millennial technical talents?</h1>
+                            <p>
+                                This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="See process"
+                                    link="product-studio"
+                                />
+                            </p>
                         </div>
-                        <div className="black">
-                            <h2> wangxbella0108@gmail.com</h2>
-                            <h2> +1 (908) 391 – 6750</h2>
+                        <div className="imgblock">
+                            <img src={ProductStudio} className="DODCornellImg" alt="ProductStudio"></img>
                         </div>
                     </div>
+
+
+
+                    {/* contact */}
+                    <div style={windowHeight} id="Contact" className="sessionContainer contactPart">
+                        <div id="contactPart">
+
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
+                                <a href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
+                                    <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
+                                    <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
+                                </a>
+                            </div>
+                            <div className="black">
+                                <h2> wangxbella0108@gmail.com</h2>
+                                <h2> +1 (908) 391 – 6750</h2>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
-
-
-
-            </div>
 
             </div >
         );

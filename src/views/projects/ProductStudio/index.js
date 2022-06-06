@@ -173,7 +173,7 @@ class ProductStudio extends React.Component {
                             <p>Luck knocked on our door this time. Based on our statistic chart, the value of transparency is valid! </p>
                             <img src={Pic8} width="100%" />
                         </div>
-                        <div className="content-block" id="section8">
+                        <div className="content-block" id="section9">
                             <h2>Build</h2>
                             <p>After the riskest assumption is validated, we proceeded to build the prototype.
                                 We made a prototype of a job board includes different elements of transparency in addition to the primary job description, like the recruitment process, day-to-day-life samples.</p>

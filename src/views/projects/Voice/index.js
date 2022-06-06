@@ -7,8 +7,8 @@ import Pic1 from "../../../assets/images/Voice/voice_pic1.svg"
 import Pic2 from "../../../assets/images/Voice/voice_pic2.svg"
 import Pic3 from "../../../assets/images/Voice/voice_pic3.svg"
 import Pic4 from "../../../assets/images/Voice/voice_pic4.svg"
-import Pic5 from "../../../assets/images/Voice/voice_pic5.svg"
-import Pic6 from "../../../assets/images/Voice/voice_pic6.svg"
+import Pic5 from "../../../assets/images/Voice/voice_pic5.jpg"
+import Pic6 from "../../../assets/images/Voice/voice_pic6.jpg"
 import Pdf1 from "../../../assets/images/Voice/competitive-analysis.pdf"
 
 class Voice extends React.Component {
