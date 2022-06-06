@@ -62,6 +62,13 @@ class ProductStudio extends React.Component {
             this.turnPink('p' + i);
         }
     }
+
+    menuItem(val) {
+        const selectPosition = $("#section" + val).position().top;
+        const scrollposition = $('.page-container').scrollTop();
+        $('.page-container').animate({ scrollTop: selectPosition + scrollposition }, 100);
+    }
+
     handleScroll = e => {
         e.preventDefault();
         this.scrollCheck();
@@ -75,7 +82,7 @@ class ProductStudio extends React.Component {
                 <NavigationBar
                     projects
                 />
-                <Back2Top />
+                <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div >
 
                     {/*contect itself ==============================================================================================                  */}
@@ -89,8 +96,8 @@ class ProductStudio extends React.Component {
                             <ul>Content
                                 {this.content.map((item, index) => {
                                     return (
-                                        <li key={index} className={"p" + (index + 1)}>
-                                            <a to={"#" + item.id}>{item.title}</a>
+                                        <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
+                                            <a >{item.title}</a>
                                         </li>
                                     )
                                 })}

@@ -35,7 +35,6 @@ class Thesis extends React.Component {
     }
 
     scrollCheck() {
-
         // for all the item in the menu except for the last one\
         for (var i = 1; i < this.content.length; i++) {
             if ($("#section" + i).position().top < 0 && $("#section" + (i + 1)).position().top > 0) {
@@ -57,9 +56,16 @@ class Thesis extends React.Component {
             this.turnPink('p' + i);
         }
     }
+    
+    menuItem(val) {
+        const selectPosition = $("#section" + val).position().top;
+        const scrollposition = $('.page-container').scrollTop();
+        $('.page-container').animate({ scrollTop: selectPosition + scrollposition }, 100);
+    }
+
     handleScroll = e => {
         e.preventDefault();
-        this.scrollCheck();
+        this.scrollCheck($('.page-container').scrollTop());
     }
 
 
@@ -70,7 +76,7 @@ class Thesis extends React.Component {
                 <NavigationBar
                     projects
                 />
-                <Back2Top />
+                <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div >
 
                     {/*contect itself ==============================================================================================                  */}
@@ -84,8 +90,8 @@ class Thesis extends React.Component {
                             <ul>Content
                                 {this.content.map((item, index) => {
                                     return (
-                                        <li key={index} className={"p" + (index + 1)}>
-                                            <a href={"#" + item.id}>{item.title}</a>
+                                        <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
+                                            <a >{item.title}</a>
                                         </li>
                                     )
                                 })}
@@ -95,7 +101,7 @@ class Thesis extends React.Component {
                         <div className="content-block" id="section1">
                             <h2>Journey summary</h2>
                             <p>My journey started from responding to a common theme in sci-fi, "Will AI replace humans?". I was inspired to make the Data Wall and Black Box while figuring out where the current technology stands. After I better understood artificial intelligence's limitations, I shifted my focus to the human aspect of the relationship. As an entry point to understanding human perspective, I started by emphasizing my most familiar audience, designers. I learned about the relationship between AI and designers from the world's ongoing projects, which eventually led to an envisioning piece, Integrated Assistant. By the end of the thesis, I formed a firm belief that "Technology will become the best human assistant." The journey continues regardless of my thesis's due. Today's technology falls short of being human's best assistant, so I am committed to exploring what makes an assistant good.</p>
-                            <img src={Pic1} width="100%"/>
+                            <img src={Pic1} width="100%" />
                         </div>
 
                         <div className="content-block" id="section2">
