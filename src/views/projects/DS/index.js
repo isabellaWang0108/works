@@ -3,21 +3,32 @@ import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import $ from 'jquery';
-import Pic1 from "../../../assets/images/DesignSystem/ds_pic1.svg"
+import Pic1 from "../../../assets/images/DesignSystem/ds_pic1.jpg"
 import Pic2 from "../../../assets/images/DesignSystem/ds_pic2.svg"
-import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.svg"
+import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.png"
 import Pic4 from "../../../assets/images/DesignSystem/ds_pic4.svg"
-import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.jpg"
-import Pic6 from "../../../assets/images/DesignSystem/ds_pic6.jpg"
-import Pic7 from "../../../assets/images/DesignSystem/ds_pic7.jpg"
-
+import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.png"
+import Pic6 from "../../../assets/images/DesignSystem/ds_pic6.png"
+import Pic7 from "../../../assets/images/DesignSystem/ds_pic7.png"
+import Pic8 from "../../../assets/images/DesignSystem/ds_pic8.png"
+import Pic9 from "../../../assets/images/DesignSystem/ds_pic9.svg"
+import Pic10 from "../../../assets/images/DesignSystem/ds_pic10.svg"
+import Pic11 from "../../../assets/images/DesignSystem/ds_pic11.svg"
+import Pic12 from "../../../assets/images/DesignSystem/ds_pic12.svg"
+import Pic13 from "../../../assets/images/DesignSystem/ds_pic13.png"
+import Pic14 from "../../../assets/images/DesignSystem/ds_pic14.png"
+import Pic15 from "../../../assets/images/DesignSystem/ds_pic15.png"
+import Pic16 from "../../../assets/images/DesignSystem/ds_pic16.png"
 class DS extends React.Component {
 
     content = [
-        { title: "The problems", id: "section1" },
+        { title: "Defining the problems", id: "section1" },
         { title: "My goal and process", id: "section2" },
-        { title: "Detailed example", id: "section3" },
-        { title: "The biggest challenge", id: "section4" },
+        { title: "Finding the solutions", id: "section3" },
+        { title: "The solution", id: "section4" },
+        { title: "Technical implamentation", id: "section5" },
+        { title: "Soft implamentation", id: "section6" },
+        { title: "The biggest challenge", id: "section7" },
     ]
 
 
@@ -82,8 +93,8 @@ class DS extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <h1 id="title">Building a typography system </h1>
-                        <p>Through my three years of professional working experience, I have developed my specialty in product design -- Design Systems. A design system intends to manage design at scale through reusable components, patterns, and usage guidance. A system designer needs to have system thinking and people skills on top of all the general skills a product designer needs. </p>
-                        <p>Checkout my design system work:
+                        <p>Through my three years of professional working experience, I have developed my specialty -- Design Systems. A design system streamlines the design-engineering hand-off process, sets the building blocks for a scalablility, and unify the design from the front end. </p>
+                        <p>Checkout my design system works:
                             <br />
                             <b>VTS design system</b>: <a href="https://terra.vts.com">terra.vts.com</a>
                             <br />
@@ -112,67 +123,104 @@ class DS extends React.Component {
                         </div>
 
                         <div className="content-block" id="section1">
-                            <h2>The problems</h2>
-                            <ol>
-                                <li>There is no coherent typography usage across the products. Thus the pages look disconnected.</li>
-                                <li>The current system is like an archive with random styles, so designers feel hard to use.</li>
-                                <li>There is no visual connection between different products’ systems, so the company's visual identity is not coherent.</li>
-                            </ol>
+                            <h2>Defining the problem</h2>
+                            <h3>1. Auditing</h3>
+                            <p>Auditing let me know what is out there, so I can have a better sense of the issues’ scope and come up with more targeted solutions.
+                                I archived all the typography styles and usages across the products in a spreadsheet as part of the process.</p>
                             <img src={Pic2} width="100%" />
+                            <p>Below are the issues I found from my auditing.</p>
+                            <p><b>Issue 1: </b>There is no coherent typography usage within the same product. The pages look disconnected.</p>
+                            <img src={Pic3} width="100%" />
+                            <p><b>Issue 2: </b>Different products use different typographies, so the company's visual identity is not coherent.</p>
+                            <img src={Pic4} width="100%" />
+                            <p><b>Issue 3: </b>The current system is like an archive with random styles. There is no clear guideline about the usage of the styels, so designers feel hard to use.</p>
+                            <img src={Pic5} width="100%" />
                         </div>
 
                         <div className="content-block" id="section2">
                             <h2 >My goal and process</h2>
-                            <p>My goal was to develop a single system that ensures a coherent implementation across the pages and products. The system should be semantic so designers won’t be confused with the usage. At the same time, I have to evaluate the typography itself to ensure it reflects the company’s identity and messages to clients.</p>
-                            <p>In general, my process includes:</p>
-                            <ol>
-                                <li>Auditing</li>
-                                <li>Take a stab at the system</li>
-                                <li>Experiment with the design solutions</li>
-                                <li>Review and iterate</li>
-                                <li>Documenting</li>
-                                <li>Educating the usage</li>
-                                <li>Addressing new problems and go back to step 2</li>
-                            </ol>
+                            <p>
+                                My goal was to solve all the point points.
+                                <ol>
+                                    <li>In response to lack of consistancy and visual connection between products, I needed to develop a single system that ensures a coherent implementation across the pages and products. </li>
+                                    <li>As a solution to lack of guideline, I aim to build usage into the style, so designers won’t be confused with the usage. </li>
+
+                                </ol>
+                            </p>
+                            <p>
+                                My process includes:
+                                <ol>
+                                    <li>Research</li>
+                                    <li>Experimenting</li>
+                                    <li>Review and iteration</li>
+                                    <li>Documenting</li>
+                                    <li>Introducing the system and educate people</li>
+                                </ol>
+                            </p>
+
                         </div>
                         <div className="content-block" id="section3">
-                            <h2 >Detailed example</h2>
-                            <p>Below is a detailed example of each step to give a better idea of my process.</p>
-                            <h3>1. Auditing</h3>
-                            <p>Auditing let me know what is out there. I came up with a spread sheet that archives all the typography styles and usages across the products.</p>
-                            <img src={Pic3} width="100%" />
-                            <br />
-                            <h3>2. Take a stab at the system</h3>
-                            <p>Based on the auditing, I identified the styles to keep and built a semantic system with the minimum complexity that still allows enough flexibility for designers.</p>
-                            <img src={Pic4} width="100%" />
-                            <br />
-                            <h3>3. Experiment with the design solutions</h3>
-                            <p>I selected iconic pages and implamented the system into the prototypes myself to ensure the usability and flexibility of the system. The experimentation includes:</p>
-                            <ol>
-                                <li>The system itself</li>
-                                <li>Font choice</li>
-                                <li>Accessibility</li>
-                                <li>Nomenclature</li>
-                            </ol>
-                            <img src={Pic5} width="100%" />
-                            <br />
-                            <h3>4. Review and iterate</h3>
-                            <p>This is the hardest part of my typography system work -- the system not only needs to be logical but also lovable. If no users are willing to use the seemingly ideal system, it is merely a piece of artwork. I reviewed my solution with 22 designers on the team to identify any problems that may stop them from using the system. It took three months, millions of review and iterations to reach the point that our designers like it and will use it. </p>
-                            <p>* As we took an incremental approach, I came up with 1:1 mapping and ultimate redesign to help the team see both the near future and the future.</p>
+                            <h2 >Finding the solution</h2>
+
+                            <h3>Research</h3>
+                            <p>I did 2 types of research to gather knowledge and identify the solutions: workshop and competitive analysis.
+                            </p>
+                            <p> In the workshop, I gathered the entire design team, including the marketing designers, to identify the common ground for different products, hence landing on the same page regarding identity and tones.
+                            </p>
+                            <p>In competitive analysis, I learned about other companies’ approaches and spotted what would work for us.
+                            </p>
                             <img src={Pic6} width="100%" />
-                            <br />
-                            <h3>5. Documentation</h3>
-                            <p>To make the system scalable, I wrote up documentation around usage and the system itself, so designers and engineers can refer to the document whenever they need references or have questions. If the entire product design and front-end team(50+ people) come to me to ask questions, things get out of control quickly.</p>
-                            <p>Check out the final outcome:<a href="https://terra.vts.com/foundation/typography/overview">terra.vts.com/foundation/typography/overview</a></p>
+
+                            <h3>Experimenting</h3>
+                            <p>
+                                As part of the problem of incoherence, different products use different fonts. I aimed to find one font that reflects the identity of different fonts and the company’s brand. I did a workshop as research to gather the requirements and learnings from the team. After 2 months of review and iteration, we landed on the Proxima Nova as title and IBM Plex as body combination.
+                            </p>
                             <img src={Pic7} width="100%" />
                             <br />
-                            <h3>6. Introduce the system and educate people</h3>
-                            <p>People often don’t get complex things immediately, so it’s important to repeat as many times it takes for people to understand the system. I run workshops and meetings to ensure people know how to use the typography tokens as part of my maintenance. This step often reveals new problems and needs—for instance, a new typography style, ambiguity in the documentation, or confusion around the usage.</p>
+                            <h3>Review and iterate</h3>
+                            <p>This is one of the hardest part of my typography system work -- the system not only needs to be logical but also lovable. If no users are willing to use the seemingly ideal system, it is merely a piece of artwork. I reviewed my solution with 22 designers on the team to identify any problems that may stop them from using the system. It took three months, millions of review and iterations to reach the point that our designers like it and will use it. </p>
+                            <p>* As we took an incremental approach, I came up with 1:1 mapping and ultimate redesign to help the team see both the near future and the future.</p>
+                            <img src={Pic8} width="100%" />
                             <br />
-                            <h3>7. Address the new problem and go back to step 2</h3>
-                            <p>System work never ends. There is no perfect system. The process infinitely repeats itself as the problems and needs endlessly occur. </p>
                         </div>
                         <div className="content-block" id="section4">
+                            <h2>The solution</h2>
+                            <p>Below is the solution we landed on after 2 months of review and iterate.</p>
+                            <h3>A unified type system</h3>
+                            <p>As part of the problem of incoherence, different products use different fonts. The new font conmob reflects the identity of different fonts and the company’s brand. </p>
+                            <img src={Pic9} width="100%" />
+                            <h3>Semantic naming convention</h3>
+                            <p>In response to the designers’ pain point of feeling hard to use the current system, I built the style and the usage into the name itself.</p>
+                            <img src={Pic10} width="100%" />
+                            <h3>Bonus point: accessible</h3>
+                            <p>The new typography choice has more clarity on the letters, ligature and symbol designs. Thus, a bonus point from this typography revamp is accessibility. </p>
+                            <img src={Pic11} width="100%" />
+                        </div>
+
+                        <div className="content-block" id="section5">
+                            <h2>Technical implamentation</h2>
+                            <p>To bring the design to practice, the outcome needs to be in a tangible format. The typography solution was implemented within the tool people use daily. Below is the tech stack of the tools for both engineers and designers.</p>
+                            <img src={Pic12} width="100%" />
+                            <h3>1. Documentation Website</h3>
+                            <p>A usage and system documentation is crucial to scalability, as designers and engineers can refer to the document whenever they need references or have questions. If the entire product design and front-end team(50+ people) come to me to ask questions, things get out of control quickly.</p>
+                            <p>Check out the final outcome: <a href="https://terra.vts.com/foundation/typography/overview">terra.vts.com/foundation/typography/overview</a></p>
+                            <img src={Pic13} width="100%" />
+                            <h3>2. Style dictionary</h3>
+                            <p>This tool is specific to developers. It’s the package they can import and use without re-defining the style every time. </p>
+                            <img src={Pic14} width="100%" />
+                            <h3>3. Figma library</h3>
+                            <p>This tool is specific to designers. I set up the master components so the designers can pick and choose the newly defined styles without effort or repetitive work.</p>
+                            <img src={Pic15} width="100%" />
+                        </div>
+
+                        <div className="content-block" id="section6">
+                            <h2>Soft implamentation</h2>
+                            <p>People often don’t get complex things immediately, so it’s important to repeat as many times it takes for people to understand the system. I run workshops and meetings to ensure people know how to use the typography tokens as part of my maintenance. This step often reveals new problems and needs—for instance, a new typography style, ambiguity in the documentation, or confusion around the usage.</p>
+                            <p>System work never ends. There is no perfect system. The process infinitely repeats itself as the problems and needs endlessly occur. </p>
+                            <img src={Pic16} width="100%" />
+                        </div>
+
+                        <div className="content-block" id="section7">
                             <h2>The biggest challenge</h2>
                             <p>My biggest challenge of the work was launching the system. From experience, I learned people naturally resist changes.</p>
                             <p>The story starts from the launching date. After 3 months of review and iterations with the design team, we are finally ready to launch and make a real change in the live product. My team submitted a pull request in the morning. 20 mins later, we are flooded with urgent emails and messages from the sales, clients, and product management teams. They all freaked out about the change and wanted us to change back. To calm the situation, we reverted the change immediately. My team received tons of feedback on the typography with people's feathers ruffled: it is not readable or looks ugly. </p>
@@ -183,8 +231,8 @@ class DS extends React.Component {
 
                     </ContentLayout>
 
-                </div>
-            </div>
+                </div >
+            </div >
         );
     }
 }

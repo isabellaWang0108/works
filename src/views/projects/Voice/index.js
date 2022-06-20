@@ -85,7 +85,7 @@ class Voice extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <h1 id="title">Designing an NFT creation feature for everyday users</h1>
-                        <p>This case study demonstrates my workflow in a generic product design project. You will see one of my works at Voice: designing an NFT minting feature for everyday users.</p>
+                        <p>This case study demonstrates my workflow in a generic product design project. You will learn about how I leverage different technologies at different stages to design and validate a solution to the user pain points.</p>
 
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
@@ -103,9 +103,8 @@ class Voice extends React.Component {
 
                         <div className="content-block" id="section1">
                             <h2>Overview</h2>
-                            <p>Determined by the business and marketing decision, my product manager brought me a task, “designing an NFT minting feature for everyday users.” I started this project with an abstract goal and a list of product requirements.
-                            </p>
-                            <p>  Below is a brief of my workflow. It is a double-diamond process in general. Research is to discover the problem. Competitive analysis is to define the pain points. Product and UX alignment is to loop in early feedback from a cross-functional team. As projects usually have a short amount of time to work on at a startup, for me, rapid prototyping serves as both ideation and “wireframe” to explore the potential solutions. If time allows, I recruit users through usertesting.com to validate my design and iterate to address the issues before I deliver. I hand off pixel-perfect prototypes in the delivery and set up success metrics with PM to pave for future iterations. Just like most of the design, it’s a never-ending journey. After delivery, the project keeps going. It usually can go back to any step within the process based on our feedback.</p>
+                            <p>Determined by the business and marketing decision, my product manager brought me a task, “designing an NFT minting feature for everyday users.” I started this project with an abstract goal and a list of product requirements. </p>
+                            <p> My workflow is a double-diamond process in general. Research is to discover the problem. Competitive analysis is to define the pain points. Product and UX alignment is to loop in early feedback from a cross-functional team. As projects usually have a short amount of time to work on at a startup, for me, rapid prototyping serves as both ideation and “wireframe” to explore the potential solutions. If time allows, I recruit users through usertesting.com to validate the concept and discover issues before I deliver. I hand off pixel-perfect prototypes in the delivery and set up success metrics with PM to pave for future iterations. Just like most of the design, it’s a never-ending journey. After delivery, the project keeps going. It usually can go back to any step within the process based on our feedback.</p>
                             <img src={Pic1} />
                         </div>
 

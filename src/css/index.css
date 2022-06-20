@@ -74,8 +74,9 @@ p a {
 br {
   line-height: 2em;
 }
-li{
-  margin:8px 0;
+
+li {
+  margin: 8px 0;
 }
 
 .grey {
@@ -83,7 +84,7 @@ li{
 }
 
 .pink {
-  color: #E83E91;
+  color: #FC2293;
 }
 
 .blue {
@@ -93,6 +94,22 @@ li{
 
 .black {
   color: #171717;
+}
+
+.bg-yellow {
+  background-color: #FFF0C9;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-purple {
+  background-color: #C8CDFF;
+}
+
+.bg-smokewhite {
+  background-color: whitesmoke;
 }
 
 .card {
@@ -131,18 +148,18 @@ li{
   border-right: 1px solid #fc229338;
   z-index: 8;
   position: fixed;
-  left:0;
-  top:0px;
-  padding:4px 16px;
-  height:90vh;
+  left: 0;
+  top: 0px;
+  padding: 4px 16px;
+  height: 90vh;
   z-index: 0;
 }
 
-.icon{
-  display:flex;
+.icon {
+  display: flex;
   text-decoration: none;
   align-items: center;
-  padding:8px;
+  padding: 8px;
 }
 
 
@@ -165,12 +182,22 @@ a:hover {
   color: #FC2293;
 }
 
+.landing-hero {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 60%;
+  z-index: 1;
+}
+
 .page-container {
   width: 100vw;
   height: 100vh;
   position: fixed;
   overflow: scroll;
-  left:0;
+  left: 0;
+  top: 0;
+  scroll-behavior: smooth;
 }
 
 .content-layout {
@@ -208,10 +235,6 @@ a:hover {
 
 .dropdown {
   display: none;
-}
-
-.changOpx:hover {
-  opacity: .5;
 }
 
 .IsabellaW {
@@ -261,24 +284,21 @@ a:hover {
   min-width: 180px;
 }
 
-.AboutProj:hover {
-  background-color: lightcoral;
-  color: white;
+.AboutProj-content {
+  padding: 6px 4px;
+  margin-right: 24px;
+}
+
+.AboutProj-content:hover {
+  border: 2px solid #171717;
+  border-radius: 4px;
+  color: black;
+  padding: 4px 2px;
 }
 
 .threecolumn {
   display: flex;
-  margin-top: 12px;
-}
-
-@keyframes arrowDownAnimeample {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: .333;
-  }
+  margin-top: 48px;
 }
 
 /* Homepage CSS */
@@ -314,10 +334,6 @@ a:hover {
 
 .Alllinks {
   font-size: 21px;
-}
-
-.pink {
-  color: #FC2293;
 }
 
 .HP_Intro {
@@ -358,17 +374,19 @@ a:hover {
   box-orient: horizontal;
   flex-wrap: wrap;
   align-items: center;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding: 0 5%;
   left: 0;
   position: absolute;
-  /* width:95%; */
-  z-index: 100;
   overflow: hidden;
+  z-index: 100;
+}
+
+.reverse {
+  flex-direction: row-reverse;
 }
 
 .contentblock {
-  width: 46%;
+  width: 35%;
   padding: 2%;
   margin-right: 0;
   align-content: space-around;
@@ -397,12 +415,6 @@ a:hover {
   margin-left: 8%;
 }
 
-.ventureImg {
-  width: 100%;
-  margin-left: -10%;
-  z-index: 3;
-}
-
 .pinkSquare {
   margin-left: 0px;
 }
@@ -411,31 +423,10 @@ a:hover {
   margin-left: 40px;
 }
 
-#Thesis {
-  background: #fbfbfb;
-  margin-left: 0;
-  margin-top: 0;
-  flex-wrap: wrap;
-  overflow: hidden;
-  z-index: 100;
-}
-
-.CampyBG {
-  width: 100%;
-  top: 0;
-  z-index: 5;
-  margin-left: -100;
-  margin-top: 30
-}
-
-.DODCornell {
-  background-color: whitesmoke;
-  align-items: flex-start;
-  padding-top: 18vh;
-}
 
 .DODCornellImg {
   width: 100%;
+  margin-left: 0%;
 }
 
 #Vogether {
@@ -454,13 +445,6 @@ a:hover {
   opacity: .2;
 }
 
-#voice,
-#awareHealth {
-  padding-left: 0%;
-  padding-top: 0;
-  background-color: white;
-}
-
 #awareHealth {
   background-color: #F9FBFF;
   flex-direction: row;
@@ -469,6 +453,10 @@ a:hover {
 .awareHealthText {
   margin-left: 5%;
   width: 40%;
+}
+
+.threecolumn-row {
+  width: 30%;
 }
 
 @media only screen and (max-width: 769px) {
@@ -535,7 +523,7 @@ a:hover {
     font-size: 18px;
   }
 
-  .DODCornellImg{
+  .DODCornellImg {
     margin-bottom: 24px;
   }
 
@@ -582,10 +570,9 @@ a:hover {
 
   .textBlock,
   .contentblock,
-  .imgBlock,
-  .awareHealthText {
+  .imgBlock{
     width: 100%;
-    margin-left: 0px;
+    margin: 20px 0px;
   }
 
   .threecolumn {
@@ -594,41 +581,44 @@ a:hover {
     flex-direction: column;
   }
 
+  .threecolumn-row {
+    width: 100%;
+  }
+
   .AboutProj {
     width: 100%;
     min-width: 300px;
   }
 
-/* Content page */
-.left-nav {
-  width: 100%;
-  z-index: 8;
-  position: relative;
-  height:auto;
-  top:0px;
-  padding:4px 16px;
-  border-right: 0px solid #fc229338;
-  border-left: 2px solid #fc229338;
-}
+  /* Content page */
+  .left-nav {
+    width: 90%;
+    z-index: 8;
+    position: relative;
+    height: auto;
+    top: 0px;
+    border-right: 0px solid #fc229338;
+    border-left: 2px solid #fc229338;
+  }
 
-.left-nav ul {
-  margin: 18px 4px;
-  font-size: 24px;
-}
+  .left-nav ul {
+    margin: 18px 4px;
+    font-size: 24px;
+  }
 
-.left-nav li{
-  font-size: 18px;
-}
+  .left-nav li {
+    font-size: 18px;
+  }
 
-.content-layout {
-  margin-top: 24px;
-  margin-left: 0%;
-  padding: 100px 24px;
-}
+  .content-layout {
+    margin-top: 24px;
+    margin-left: 0%;
+    padding: 100px 24px;
+  }
 
-.content-block {
-  margin-top: 2em;
-}
+  .content-block {
+    margin-top: 2em;
+  }
 
 }
 
@@ -646,7 +636,7 @@ a:hover {
     font-size: 12px;
     background-color: white;
   }
-  
+
   .mobile-navi,
   #HomapageTopNavi {
     height: 50px;
@@ -672,36 +662,22 @@ a:hover {
     left: 12px;
   }
 
-  .pinkSquare {
-    margin-left: 1px;
-  }
-
-  #coder {
-    padding-left: 12px;
-    width: 100%;
-  }
-
   .sessionContainer {
-    width: 95%;
-    padding-left: 5%;
+    width: 90%;
   }
 
   .img {
     width: 70%;
   }
 
-  .ventureImg {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .DODCornell {
-    padding-top: 0;
-    flex-direction: column;
-  }
 
   #landingPart,
   #contactPart {
     width: 80%;
   }
+
+  .AboutProj-content {
+    margin-right: 0px;
+  }
+
 }

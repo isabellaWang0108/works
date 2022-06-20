@@ -129,8 +129,8 @@ class Homepage extends React.Component {
                                 time="Thesis"
                                 color='black'
                             />
-                            <h1>What will we become, now that life means living with computers?</h1>
-                            <p>This is a one-year research and self-exploration journey that ultimately defined my passion and research interest.
+                            <h1>Researching the future of technology and humanity.</h1>
+                            <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest. 
                                 <br />
                                 <PinkButton
                                     innerLink={true}
@@ -153,8 +153,8 @@ class Homepage extends React.Component {
                                 time="Professional specialty"
                                 color='black'
                             />
-                            <h1>Building a typography system</h1>
-                            <p>Through my three years of professional working experience, I have developed my specialty in product design -- Design Systems. This case study is one of my work at VTS.
+                            <h1>Building an enterprise design system</h1>
+                            <p>This case study presents my professional specialty: building a system that bridges the gap between design and engineering and ensures organizational unity and scalability.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
@@ -180,8 +180,8 @@ class Homepage extends React.Component {
                                 time="Product design"
                                 color='black'
                             />
-                            <h1>Designing an NFT creation feature for everyday users</h1>
-                            <p>This case study demonstrates my workflow in a generic product design project. It is selected from my projects at Voice.
+                            <h1>Designing an NFT creating feature for non-technical users</h1>
+                            <p>This case study demonstrates my process and how I leverage different skills and technology at different stages in product development.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
@@ -198,30 +198,6 @@ class Homepage extends React.Component {
 
 
 
-
-                    {/* awareHealth */}
-                    {/* <div id="awareHealth" className="black sessionContainer awareHealth" style={windowHeight} >
-
-                        <div className="contentblock awareHealthText" >
-                            <Labeling
-                                time="Fullstack engineering"
-                                color="black"
-                            />
-                            <h1>Developed my first go-to-production mobile app</h1>
-                            <p>
-                                At AwareHealth, I worked as a front-end engineer developed the authentication, chatting, community features of a GDPR compliant <a href="https://apps.apple.com/us/app/getawarehealth/id1507236576" target="_blank" rel="noopener noreferrer">mental well-being platform</a> using React Native, AWS, Cognito, Amplify, Redux.
-                            </p>
-                        </div>
-
-                        <div className="contentblock">
-                            <img src={AwareHealth} style={{ width: '100%' }} alt="voice"></img>
-                        </div>
-
-                    </div> */}
-
-
-
-
                     {/* product studio */}
                     <div id="ProductStudio" className="black sessionContainer reverse bg-smokewhite" style={windowHeight} >
                         <div className="contentblock">
@@ -229,9 +205,9 @@ class Homepage extends React.Component {
                                 time="Product discovery"
                                 color="black"
                             />
-                            <h1>How to hire millennial technical talents?</h1>
+                            <h1>How to hire millennial technical talents</h1>
                             <p>
-                                This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
+                            This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
                                 <br />
                                 <PinkButton
                                     innerLink={true}

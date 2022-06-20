@@ -6,26 +6,27 @@ const button = {
     borderWidth: 2,
     padding: 12,
     cursor: 'pointer',
-    borderColor: "#FF1493",
-    color: "#FF1493",
+    borderColor: "",
+    color: "black",
     fontSize: 21,
     borderRadius: 12,
     marginLeft: 0,
     marginTop: 24,
     position: 'relative',
     zIndex: 80,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    borderColor:'black'
 }
 
 
 class PinkButton extends React.Component {
 
     mouseEnter(e) {
-        $(".pinkButton").css('borderColor', 'lightpink')
+        $(".pinkButton").css('background-color', 'rgba(255, 182, 193, 0.507)')
     }
     mouseOut() {
         $(".pinkButton").css('background-color', 'transparent');
-        $(".pinkButton").css('borderColor', '#FC2293')
+        $(".pinkButton").css('borderColor', 'black')
     }
     onClick(data) {
         window.open(data, '_blank');

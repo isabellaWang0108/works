@@ -33,7 +33,6 @@ class App extends Component {
         <HashRouter basename='/'>
           <Switch>
             <Route exact path={process.env.PUBLIC_URL + "/"} component={Homepage} />
-            <Route exact path={process.env.PUBLIC_URL + "/vogether"} component={Vogether} />
             <Route exact path={process.env.PUBLIC_URL + "/product-studio"} component={ProductStudio} />
             <Route exact path={process.env.PUBLIC_URL + "/thesis"} component={Thesis} />
             <Route exact path={process.env.PUBLIC_URL + "/contact"} component={Contact} />

@@ -16,9 +16,8 @@ const navigation = {
     width: "100%",
     display: 'flex',
     flexDirection: 'row',
-    // height: window.innerWidth > 450 ? 60 : 50,
     justifyContent: 'flex-end',
-    padding: '24px 12px',
+    padding: '20px 12px',
     backgroundColor: 'rgba(250, 220, 224, 0.6)'
 }
 
@@ -33,6 +32,10 @@ const logo = {
 
 class NavigationBar extends Component {
 
+    handleBack() {
+        window.history.back()
+    }
+
     render() {
         return (
             <div style={container}>
@@ -42,20 +45,16 @@ class NavigationBar extends Component {
                         <div style={logo} className="logo bold pink">Isabella Wang</div>
                     </Link>
 
-                    <Link to="/" style={this.props.projects ? { textDecoration: 'none' } : { textDecoration: 'underlined' }} >
-                        <a href="/" className="bold navigationMargin">Projects</a>
-                    </Link>
-
                     <Link to="/contact" style={this.props.contact ? { textDecoration: 'none' } : { textDecoration: 'underlined' }}>
-                        <a href="/" className="bold pink navigationMargin">About Me</a>
+                        <a href="/" className="bold pink navigationMargin">Project list</a>
                     </Link>
                 </div >
-                {window.location.hash === '#/' ? null : <Link to="/" className="icon grey">
-                    <span class="material-symbols-outlined grey">
+                {window.location.hash === '#/' ? null : <a onClick={this.handleBack} className="icon grey">
+                    <span className="material-symbols-outlined grey">
                         arrow_back
                     </span>
                     &nbsp; Back
-                </Link>}
+                </a>}
             </div>
 
         )
