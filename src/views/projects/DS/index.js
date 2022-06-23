@@ -2,6 +2,7 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
+import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/DesignSystem/ds_pic1.jpg"
 import Pic2 from "../../../assets/images/DesignSystem/ds_pic2.svg"
@@ -92,7 +93,7 @@ class DS extends React.Component {
 
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
-                        <h1 id="title">Building a typography system </h1>
+                        <h1 id="title">Building an enterprise design system </h1>
                         <p>Through my three years of professional working experience, I have developed my specialty -- Design Systems. A design system streamlines the design-engineering hand-off process, sets the building blocks for a scalablility, and unify the design from the front end. </p>
                         <p>Checkout my design system works:
                             <br />
@@ -100,6 +101,10 @@ class DS extends React.Component {
                             <br />
                             <b>Voice design system</b>: <a href="https://design-system.voiceuxdesigns.com/">design-system.voiceuxdesigns.com/</a>
                         </p>
+
+                        <div className="content-block" id="section1">
+                        <h2>Typography system case study</h2>
+                        <ProjectContext duration="4.5 months" team="2 engineers, 2 designers" role="designer/part-time engineer"></ProjectContext>
                         <p>I selected my Typography system at VTS as a case study, to display my work’s process, outcomes, and challenges.
                             My job was to:</p>
                         <ul>
@@ -108,6 +113,7 @@ class DS extends React.Component {
                             <li>Educate and persuade designers and engineers to adopt the new system  of building the typography system. </li>
                         </ul>
                         <img src={Pic1} width="100%" />
+                        </div>
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}
@@ -122,7 +128,7 @@ class DS extends React.Component {
                             </ul>
                         </div>
 
-                        <div className="content-block" id="section1">
+                        <div className="content-block" id="section2">
                             <h2>Defining the problem</h2>
                             <h3>1. Auditing</h3>
                             <p>Auditing let me know what is out there, so I can have a better sense of the issues’ scope and come up with more targeted solutions.
@@ -137,7 +143,7 @@ class DS extends React.Component {
                             <img src={Pic5} width="100%" />
                         </div>
 
-                        <div className="content-block" id="section2">
+                        <div className="content-block" id="section3">
                             <h2 >My goal and process</h2>
                             <p>
                                 My goal was to solve all the point points.
@@ -159,7 +165,7 @@ class DS extends React.Component {
                             </p>
 
                         </div>
-                        <div className="content-block" id="section3">
+                        <div className="content-block" id="section4">
                             <h2 >Finding the solution</h2>
 
                             <h3>Research</h3>
@@ -183,7 +189,7 @@ class DS extends React.Component {
                             <img src={Pic8} width="100%" />
                             <br />
                         </div>
-                        <div className="content-block" id="section4">
+                        <div className="content-block" id="section5">
                             <h2>The solution</h2>
                             <p>Below is the solution we landed on after 2 months of review and iterate.</p>
                             <h3>A unified type system</h3>
@@ -197,7 +203,7 @@ class DS extends React.Component {
                             <img src={Pic11} width="100%" />
                         </div>
 
-                        <div className="content-block" id="section5">
+                        <div className="content-block" id="section6">
                             <h2>Technical implamentation</h2>
                             <p>To bring the design to practice, the outcome needs to be in a tangible format. The typography solution was implemented within the tool people use daily. Below is the tech stack of the tools for both engineers and designers.</p>
                             <img src={Pic12} width="100%" />
@@ -213,14 +219,14 @@ class DS extends React.Component {
                             <img src={Pic15} width="100%" />
                         </div>
 
-                        <div className="content-block" id="section6">
+                        <div className="content-block" id="section7">
                             <h2>Soft implamentation</h2>
                             <p>People often don’t get complex things immediately, so it’s important to repeat as many times it takes for people to understand the system. I run workshops and meetings to ensure people know how to use the typography tokens as part of my maintenance. This step often reveals new problems and needs—for instance, a new typography style, ambiguity in the documentation, or confusion around the usage.</p>
                             <p>System work never ends. There is no perfect system. The process infinitely repeats itself as the problems and needs endlessly occur. </p>
                             <img src={Pic16} width="100%" />
                         </div>
 
-                        <div className="content-block" id="section7">
+                        <div className="content-block" id="section8">
                             <h2>The biggest challenge</h2>
                             <p>My biggest challenge of the work was launching the system. From experience, I learned people naturally resist changes.</p>
                             <p>The story starts from the launching date. After 3 months of review and iterations with the design team, we are finally ready to launch and make a real change in the live product. My team submitted a pull request in the morning. 20 mins later, we are flooded with urgent emails and messages from the sales, clients, and product management teams. They all freaked out about the change and wanted us to change back. To calm the situation, we reverted the change immediately. My team received tons of feedback on the typography with people's feathers ruffled: it is not readable or looks ugly. </p>

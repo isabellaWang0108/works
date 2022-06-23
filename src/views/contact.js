@@ -21,7 +21,7 @@ class Contact extends React.Component {
                 <div id="HP_container" className='HP_container' >
                     <div className="black" style={{ margin: '5% 5%', padding: "72px 0px" }}>
                         <h2>About me</h2>
-                        <p style={{ width: '80%', maxWidth:900 }}>I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
+                        <p style={{ width: '80%', maxWidth: 900 }}>I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
                             <br /><br />
                             Below is a selection of my works for you to get to know me:
                         </p>
@@ -29,15 +29,24 @@ class Contact extends React.Component {
                             <div className="threecolumn-row">
                                 <h2>Design projects</h2>
 
-                                <Link target="_blank" className="AboutProj">
+
+                                <Link to="thesis" target="_blank" className="AboutProj">
                                     <p className="AboutProj-content">
-                                        <b>Typography system</b>
+                                        <b>Thesis </b>
                                         <br />
-                                        A case study on building a design system.
+                                        A one-year research project that defines my focus on the human-technology relationship.
                                     </p>
                                 </Link>
 
-                                <Link target="_blank" className="AboutProj">
+                                <Link to="design-system" target="_blank" className="AboutProj">
+                                    <p className="AboutProj-content">
+                                        <b>Enterprise design system</b>
+                                        <br />
+                                        A case study on building a typography system.
+                                    </p>
+                                </Link>
+
+                                <Link to="voice" target="_blank" className="AboutProj">
                                     <p className="AboutProj-content">
                                         <b>NFT creation feature </b>
                                         <br />
@@ -46,7 +55,7 @@ class Contact extends React.Component {
                                 </Link>
 
 
-                                <Link target="_blank" className="AboutProj">
+                                <Link to="product-studio" target="_blank" className="AboutProj">
                                     <p className="AboutProj-content">
                                         <b>Reimagining the recruitement UX</b>
                                         <br />
@@ -73,7 +82,15 @@ class Contact extends React.Component {
                                     <p className="AboutProj-content">
                                         <b>Mobile app development</b>
                                         <br />
-                                        A GDPR compliant mental well-being platform using React Native, AWS, Cognito, Amplify, Redux.
+                                        A GDPR compliant mental well-being mobile platform using React Native, AWS, Cognito, Amplify, Redux.
+                                    </p>
+                                </a>
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellaWang0108/flocker" className="AboutProj">
+                                    <p className="AboutProj-content">
+                                        <b>Web app development</b>
+                                        <br />
+                                        A matching app developed using React, SQL, and Cloudinary.
                                     </p>
                                 </a>
 
@@ -81,14 +98,6 @@ class Contact extends React.Component {
 
                             <div className="threecolumn-row">
                                 <h2>Others</h2>
-
-                                <Link to="thesis" target="_blank" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>Thesis </b>
-                                        <br />
-                                        A one-year research project that defines my focus on the human-technology relationship.
-                                    </p>
-                                </Link>
 
 
                                 <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" target="_blank" className="AboutProj">
@@ -109,7 +118,7 @@ class Contact extends React.Component {
                             </div>
 
                         </div>
-                        <div style={{ alignContent: 'center', textAlign: 'center', width: '100%' , marginTop:24}}>
+                        <div style={{ alignContent: 'center', textAlign: 'center', width: '100%', marginTop: 24 }}>
                             <p style={{ marginBottom: 0 }}>Happy to connect !</p>
                             <a style={{ color: 'black', fontSize: '16px', textDecoration: 'none', marginTop: 0 }} href="mailto:wangxbella0108@gmail.co">
                                 <p style={{ marginTop: 0 }}>wangxbella0108@gmail.com</p></a>

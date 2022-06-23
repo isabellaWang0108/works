@@ -45,9 +45,15 @@ class NavigationBar extends Component {
                         <div style={logo} className="logo bold pink">Isabella Wang</div>
                     </Link>
 
-                    <Link to="/contact" style={this.props.contact ? { textDecoration: 'none' } : { textDecoration: 'underlined' }}>
+                    <Link to="/contact">
                         <a href="/" className="bold pink navigationMargin">Project list</a>
                     </Link>
+
+
+                    <a style={{ marginRight: 16 }} href="https://drive.google.com/file/d/1BGWVh9lmns557Z8x1tEE8SdfjmPdULOZ/view?usp=sharing" target="_blank" className="bold pink">Resume</a>
+
+
+
                 </div >
                 {window.location.hash === '#/' ? null : <a onClick={this.handleBack} className="icon grey">
                     <span className="material-symbols-outlined grey">

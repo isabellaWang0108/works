@@ -2,6 +2,7 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
+import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/Voice/voice_pic1.svg"
 import Pic2 from "../../../assets/images/Voice/voice_pic2.svg"
@@ -86,7 +87,7 @@ class Voice extends React.Component {
                     <ContentLayout>
                         <h1 id="title">Designing an NFT creation feature for everyday users</h1>
                         <p>This case study demonstrates my workflow in a generic product design project. You will learn about how I leverage different technologies at different stages to design and validate a solution to the user pain points.</p>
-
+                        <ProjectContext duration="3 weeks" team="1 PM, 3 engineers, 1 designer, 1 UX researcher" role="designer"></ProjectContext>
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}

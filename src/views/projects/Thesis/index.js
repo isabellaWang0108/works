@@ -2,6 +2,7 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
+import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/Thesis/thesis_pic1.svg"
 import Pic2 from "../../../assets/images/Thesis/thesis_pic2.svg"
@@ -83,7 +84,7 @@ class Thesis extends React.Component {
                     <ContentLayout>
                         <h1 id="title">Researching the future of technology and humanity.</h1>
                         <p>My thesis is a one-year research journey and self-exploration that ultimately defined my passion and research focus. It is around the subject matter “What will we become, now that life means living with computers?” You will find a collection of works in different medias that reflect my stand on the topic on this page.</p>
-
+                        <ProjectContext duration="1 year" team="just me" role="designer/researcher"></ProjectContext>
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}

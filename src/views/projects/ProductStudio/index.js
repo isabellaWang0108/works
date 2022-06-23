@@ -2,6 +2,7 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
+import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/ProductStudio/ps_pic1.jpg"
 import Pic2 from "../../../assets/images/ProductStudio/ps_pic2.jpg"
@@ -89,7 +90,7 @@ class ProductStudio extends React.Component {
                     <ContentLayout>
                         <h1 id="title">How to hire millennial technical talents? </h1>
                         <p>This is a four-month product challenge given by the US Department of Defense to investigate how to hire millennial technical talents and make a product that represents the solution. In this project, I worked on a team of four and mainly took charge of doing research and designing experimentation.</p>
-
+                        <ProjectContext duration="4 months" team="1 MBA, 1 engineer, 1 designer, 1 CM student" role="designer"></ProjectContext>
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}
