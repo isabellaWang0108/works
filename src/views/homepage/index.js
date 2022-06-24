@@ -130,7 +130,7 @@ class Homepage extends React.Component {
                                 color='black'
                             />
                             <h1>Researching the future of technology and humanity.</h1>
-                            <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest. 
+                            <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
@@ -207,7 +207,7 @@ class Homepage extends React.Component {
                             />
                             <h1>How to hire millennial technical talents</h1>
                             <p>
-                            This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
+                                This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
@@ -221,6 +221,21 @@ class Homepage extends React.Component {
                         </div>
                     </div>
 
+                    {/* See more */}
+                    <div id="seeMore" className="black sessionContainer bg-coral" style={{ height: 450, position: 'relative' }} >
+                        <div style={{ width: '90%', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
+                            <h1>Haven’t seen enough?</h1>
+                            <p>
+                                Click below if you’d like to see more of my coding and writing work. You will find them in my project list.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="See more projects"
+                                    link="contact"
+                                />
+                            </p>
+                        </div>
+                    </div>
 
 
                     {/* contact */}

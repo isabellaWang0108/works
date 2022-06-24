@@ -27,7 +27,7 @@ const logo = {
     fontSize: 24,
     position: 'fixed',
     left: 12,
-    top: 20,
+    top: window.innerWidth > 450 ? 20 : 14,
 }
 
 class NavigationBar extends Component {
@@ -48,7 +48,6 @@ class NavigationBar extends Component {
                     <Link to="/contact">
                         <a href="/" className="bold pink navigationMargin">Project list</a>
                     </Link>
-
 
                     <a style={{ marginRight: 16 }} href="https://drive.google.com/file/d/1BGWVh9lmns557Z8x1tEE8SdfjmPdULOZ/view?usp=sharing" target="_blank" className="bold pink">Resume</a>
 

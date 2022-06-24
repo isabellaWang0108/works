@@ -112,6 +112,10 @@ li {
   background-color: whitesmoke;
 }
 
+.bg-coral {
+  background-color: #FFA399;
+}
+
 .card {
   display: inline-block;
   box-shadow: 1px 2px 24px 0 #BDBBBE;
@@ -570,7 +574,7 @@ a:hover {
 
   .textBlock,
   .contentblock,
-  .imgBlock{
+  .imgBlock {
     width: 100%;
     margin: 20px 0px;
   }
@@ -679,5 +683,11 @@ a:hover {
   .AboutProj-content {
     margin-right: 0px;
   }
+
+  .navigationMargin {
+    margin-right: 12px;
+    font-size: 16px;
+  }
+
 
 }
