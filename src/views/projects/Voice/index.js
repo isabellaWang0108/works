@@ -137,7 +137,7 @@ class Voice extends React.Component {
                                 <li>Letting users sign up through Google or Facebook.</li>
                             </ol>
                             <br />
-                            <p>To make the terminology friendly, I proposed</p>
+                            <p>To make the terminology friendly, I prßoposed</p>
                             <ol>
                                 <li>Using alternative vocabulary if applicable.</li>
                                 <li>Adding helper text or tooltips beside jargon so users can learn as they create.</li>
