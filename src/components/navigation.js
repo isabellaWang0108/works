@@ -54,12 +54,14 @@ class NavigationBar extends Component {
 
 
                 </div >
-                {window.location.hash === '#/' ? null : <a onClick={this.handleBack} className="icon grey">
-                    <span className="material-symbols-outlined grey">
-                        arrow_back
-                    </span>
-                    &nbsp; Back
-                </a>}
+                {window.location.hash === '#/' ? null :
+                    <a onClick={this.handleBack} className="icon grey" style={{ width: 100 }}>
+                        <span className="material-symbols-outlined grey">
+                            arrow_back
+                        </span>
+                        &nbsp; Back
+                    </a>
+                }
             </div>
 
         )
