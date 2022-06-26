@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 
 const container = {
     display: 'flex',
     flexDirection: 'row',
     marginTop:0,
-    columnGap:24
+    columnGap:12
 }
 
 class ProjectContext extends Component {

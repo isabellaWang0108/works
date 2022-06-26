@@ -694,5 +694,10 @@ a:hover {
     font-size: 16px;
   }
 
+  .right-border {
+    padding: 0px 16px 0px 0px;
+    min-width: 70px;
+  }
+
 
 }
