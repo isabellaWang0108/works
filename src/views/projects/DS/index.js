@@ -104,7 +104,7 @@ class DS extends React.Component {
 
                         <div className="content-block">
                             <h2>Typography system case study</h2>
-                            <ProjectContext duration="8 months" team="2 engineers, 2 designers" role="designer/part-time engineer"></ProjectContext>
+                            <ProjectContext duration="> 1 year" team="2 engineers, 2 designers" role="designer/part-time engineer"></ProjectContext>
                             <p>I selected my Typography system at VTS as a case study, to display my work’s process, outcomes, and challenges.
                                 My job was to:</p>
                             <ul>
