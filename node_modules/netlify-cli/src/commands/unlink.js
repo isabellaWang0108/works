@@ -14,21 +14,21 @@ class UnlinkCommand extends Command {
     await this.config.runHook('analytics', {
       eventName: 'command',
       payload: {
-        command: 'unlink'
-      }
+        command: 'unlink',
+      },
     })
 
     let siteData = {}
     try {
       siteData = await this.netlify.api.getSite({ siteId })
-    } catch (e) {
+    } catch (error) {
       // ignore errors if we can't get the site
     }
 
     state.delete('siteId')
 
     await track('sites_unlinked', {
-      siteId: siteData.id || siteId
+      siteId: siteData.id || siteId,
     })
 
     if (site) {

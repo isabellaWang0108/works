@@ -1,31 +1,21 @@
 const path = require('path')
-const fs = require('fs')
+
 const parseIgnore = require('parse-gitignore')
-const { promisify } = require('util')
-const readFile = promisify(fs.readFile)
-const writeFile = promisify(fs.writeFile)
 
-function fileExists(filePath) {
-  return new Promise((resolve, reject) => {
-    fs.access(filePath, fs.F_OK, err => {
-      if (err) return resolve(false)
-      return resolve(true)
-    })
-  })
-}
+const { readFileAsync, writeFileAsync, fileExistsAsync } = require('../lib/fs')
 
-async function hasGitIgnore(dir) {
+const hasGitIgnore = async function (dir) {
   const gitIgnorePath = path.join(dir, '.gitignore')
-  const hasIgnore = await fileExists(gitIgnorePath)
+  const hasIgnore = await fileExistsAsync(gitIgnorePath)
   return hasIgnore
 }
 
-function parser(input, fn = line => line) {
-  let lines = input.toString().split(/\r?\n/)
+const parser = function (input, fn = (line) => line) {
+  const lines = input.toString().split(/\r?\n/)
   let section = { name: 'default', patterns: [] }
-  let state = { patterns: [], sections: [section] }
+  const state = { patterns: [], sections: [section] }
 
-  for (let line of lines) {
+  for (const line of lines) {
     if (line.charAt(0) === '#') {
       section = { name: line.slice(1).trim(), patterns: [] }
       state.sections.push(section)
@@ -33,7 +23,7 @@ function parser(input, fn = line => line) {
     }
 
     if (line.trim() !== '') {
-      let pattern = fn(line, section, state)
+      const pattern = fn(line, section, state)
       section.patterns.push(pattern)
       state.patterns.push(pattern)
     }
@@ -41,9 +31,9 @@ function parser(input, fn = line => line) {
   return state
 }
 
-function stringify(state) {
-  return parseIgnore.stringify(state.sections, section => {
-    if (!section.patterns.length) {
+const stringify = function (state) {
+  return parseIgnore.stringify(state.sections, (section) => {
+    if (section.patterns.length === 0) {
       return ''
     }
 
@@ -51,23 +41,23 @@ function stringify(state) {
   })
 }
 
-function parse(input, fn) {
+const parse = function (input, fn) {
   const state = parser(input, fn)
 
-  state.concat = i => {
-    const newState = parser(i, fn)
+  state.concat = (stateInput) => {
+    const newState = parser(stateInput, fn)
 
-    for (let s2 in newState.sections) {
+    for (const s2 in newState.sections) {
       const sec2 = newState.sections[s2]
 
       let sectionExists = false
-      for (let s1 in state.sections) {
+      for (const s1 in state.sections) {
         const sec1 = state.sections[s1]
 
         // Join sections under common name
         if (sec1.name === sec2.name) {
           sectionExists = true
-          sec1.patterns = Array.from(new Set(sec1.patterns.concat(sec2.patterns)))
+          sec1.patterns = [...new Set(sec1.patterns.concat(sec2.patterns))]
         }
       }
 
@@ -83,34 +73,34 @@ function parse(input, fn) {
   return state
 }
 
-async function ensureNetlifyIgnore(dir) {
+const ensureNetlifyIgnore = async function (dir) {
   const gitIgnorePath = path.join(dir, '.gitignore')
   const ignoreContent = '# Local Netlify folder\n.netlify'
 
   /* No .gitignore file. Create one and ignore .netlify folder */
   if (!(await hasGitIgnore(dir))) {
-    await writeFile(gitIgnorePath, ignoreContent, 'utf8')
+    await writeFileAsync(gitIgnorePath, ignoreContent, 'utf8')
     return false
   }
 
   let gitIgnoreContents
   let ignorePatterns
   try {
-    gitIgnoreContents = await readFile(gitIgnorePath, 'utf8')
+    gitIgnoreContents = await readFileAsync(gitIgnorePath, 'utf8')
     ignorePatterns = parseIgnore.parse(gitIgnoreContents)
-  } catch (e) {
+  } catch (error) {
     // ignore
   }
   /* Not ignoring .netlify folder. Add to .gitignore */
   if (!ignorePatterns || !ignorePatterns.patterns.includes('.netlify')) {
     const newContents = `${gitIgnoreContents}\n${ignoreContent}`
-    await writeFile(gitIgnorePath, newContents, 'utf8')
+    await writeFileAsync(gitIgnorePath, newContents, 'utf8')
   }
 }
 
 module.exports = {
-  parse: parse,
-  stringify: stringify,
+  parse,
+  stringify,
   format: parseIgnore.format,
-  ensureNetlifyIgnore
+  ensureNetlifyIgnore,
 }

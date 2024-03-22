@@ -1,28 +1,31 @@
 /* Import faunaDB sdk */
-const faunadb = require('faunadb')
+const process = require('process')
 
-const q = faunadb.query
-const client = new faunadb.Client({
-  secret: process.env.FAUNADB_SERVER_SECRET
+const { query, Client } = require('faunadb')
+
+const client = new Client({
+  secret: process.env.FAUNADB_SERVER_SECRET,
 })
 
-exports.handler = async (event, context) => {
-  const id = event.id
+const handler = async (event) => {
+  const { id } = event
   console.log(`Function 'read' invoked. Read id: ${id}`)
   return client
-    .query(q.Get(q.Ref(`classes/items/${id}`)))
-    .then(response => {
+    .query(query.Get(query.Ref(`classes/items/${id}`)))
+    .then((response) => {
       console.log('success', response)
       return {
         statusCode: 200,
-        body: JSON.stringify(response)
+        body: JSON.stringify(response),
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.log('error', error)
       return {
         statusCode: 400,
-        body: JSON.stringify(error)
+        body: JSON.stringify(error),
       }
     })
 }
+
+module.exports = { handler }

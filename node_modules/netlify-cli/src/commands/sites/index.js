@@ -1,10 +1,11 @@
 const { Command } = require('@oclif/command')
-const showHelp = require('../../utils/show-help')
+
 const { isEmptyCommand } = require('../../utils/check-command-inputs')
+const showHelp = require('../../utils/show-help')
 
 class SitesCommand extends Command {
   async run() {
-    const { flags, args } = this.parse(SitesCommand) // { args: {}, argv: [], flags: {}, raw: [] }
+    const { flags, args } = this.parse(SitesCommand)
 
     // Show help on empty sub command
     if (isEmptyCommand(flags, args)) {
@@ -15,8 +16,8 @@ class SitesCommand extends Command {
     await this.config.runHook('analytics', {
       eventName: 'command',
       payload: {
-        command: 'sites'
-      }
+        command: 'sites',
+      },
     })
   }
 }
@@ -27,9 +28,9 @@ The sites command will help you manage all your sites
 
 SitesCommand.examples = [
   'netlify sites:create --name my-new-site',
-  //'netlify sites:update --name my-new-site',
-  //'netlify sites:delete --name my-new-site',
-  'netlify sites:list'
+  // 'netlify sites:update --name my-new-site',
+  // 'netlify sites:delete --name my-new-site',
+  'netlify sites:list',
 ]
 
 module.exports = SitesCommand

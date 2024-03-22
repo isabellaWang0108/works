@@ -4,3 +4,13 @@
 npm install
 npm start
 '''
+
+##build
+'''
+npm run build
+'''
+
+##Deploy
+'''
+netlify deploy --prod
+'''

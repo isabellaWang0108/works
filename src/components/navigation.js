@@ -18,6 +18,7 @@ const navigation = {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     padding: '20px 12px',
+    alignItems: 'center',
     backgroundColor: 'rgba(250, 220, 224, 0.6)'
 }
 
@@ -45,7 +46,7 @@ class NavigationBar extends Component {
                         <div style={logo} className="logo bold pink">Isabella Wang</div>
                     </Link>
 
-                    <Link to="/contact">
+                    <Link className="pink" to="/contact">
                         <a href="/" className="bold pink navigationMargin">Project list</a>
                     </Link>
 

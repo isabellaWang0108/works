@@ -1,18 +1,22 @@
-const path = require('path')
 const { spawn } = require('child_process')
-const isValidEventName = require('./validation')
-const globalConfig = require('../global-config')
+const path = require('path')
+const process = require('process')
+
 const ci = require('ci-info')
+
+const globalConfig = require('../global-config')
+
+const isValidEventName = require('./validation')
 
 const IS_INSIDE_CI = ci.isCI
 
 const DEBUG = false
 
-function send(type, payload) {
+const send = function (type, payload) {
   const requestFile = path.join(__dirname, 'request.js')
   const options = JSON.stringify({
     data: payload,
-    type: type
+    type,
   })
 
   if (DEBUG) {
@@ -23,7 +27,7 @@ function send(type, payload) {
   // spawn detached child process to handle send
   spawn(process.execPath, [requestFile, options], {
     detached: true,
-    stdio: 'ignore'
+    stdio: 'ignore',
   }).unref()
 
   return Promise.resolve()
@@ -34,12 +38,14 @@ const eventConfig = {
   projectName: 'cli',
   // Allowed objects
   objects: [
-    'sites', // example cli:sites_created
-    'user' // example cli:user_signup
-  ]
+    // example cli:sites_created
+    'sites',
+    // example cli:user_signup
+    'user',
+  ],
 }
 
-function track(eventName, payload) {
+const track = function (eventName, payload) {
   const properties = payload || {}
 
   if (IS_INSIDE_CI) {
@@ -59,7 +65,7 @@ function track(eventName, payload) {
   }
 
   let userId = properties.userID
-  let cliId = properties.cliId
+  let { cliId } = properties
 
   if (!userId) {
     userId = globalConfig.get('userId')
@@ -70,13 +76,12 @@ function track(eventName, payload) {
   }
 
   // automatically add `cli:` prefix if missing
-  if (eventName.indexOf('cli:') === -1) {
+  if (!eventName.includes('cli:')) {
     eventName = `cli:${eventName}`
   }
 
-  const allowed = () => true
   // event 'cli:command' bypasses validation
-  const isValid = eventName === 'cli:command' ? allowed : isValidEventName
+  const isValid = eventName === 'cli:command' ? () => true : isValidEventName
   // to ensure clean data, validate event name
   if (!isValid(eventName, eventConfig)) {
     return false
@@ -90,15 +95,15 @@ function track(eventName, payload) {
 
   const defaultData = {
     event: eventName,
-    userId: userId,
+    userId,
     anonymousId: cliId,
-    properties: Object.assign({}, defaultProperties, properties)
+    properties: { ...defaultProperties, ...properties },
   }
 
   return send('track', defaultData)
 }
 
-function identify(payload) {
+const identify = function (payload) {
   const data = payload || {}
 
   if (IS_INSIDE_CI) {
@@ -118,7 +123,7 @@ function identify(payload) {
   }
 
   let userId = data.userID
-  let cliId = data.cliId
+  let { cliId } = data
 
   if (!userId) {
     userId = globalConfig.get('userId')
@@ -133,8 +138,8 @@ function identify(payload) {
   const defaultTraits = {
     name: userProfile.name,
     email: userProfile.email,
-    cliId: cliId,
-    telemetryDisabled: TELEMETRY_DISABLED
+    cliId,
+    telemetryDisabled: TELEMETRY_DISABLED,
   }
 
   // remove force key
@@ -143,14 +148,14 @@ function identify(payload) {
   // Payload to send to segment
   const identifyData = {
     anonymousId: cliId,
-    userId: userId,
-    traits: Object.assign({}, defaultTraits, data)
+    userId,
+    traits: { ...defaultTraits, ...data },
   }
 
   return send('identify', identifyData)
 }
 
 module.exports = {
-  track: track,
-  identify: identify
+  track,
+  identify,
 }

@@ -1,7 +1,9 @@
+const process = require('process')
+
 const axios = require('axios')
 const qs = require('qs')
 
-exports.handler = async function(event, context) {
+const handler = async function (event) {
   // apply our function to the queryStringParameters and assign it to a variable
   const API_PARAMS = qs.stringify(event.queryStringParameters)
   console.log('API_PARAMS', API_PARAMS)
@@ -21,13 +23,15 @@ exports.handler = async function(event, context) {
     //    axios.post('/user', { firstName: 'Fred' })
     return {
       statusCode: 200,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     }
   } catch (error) {
     const { status, statusText, headers, data } = error.response
     return {
       statusCode: error.response.status,
-      body: JSON.stringify({ status, statusText, headers, data })
+      body: JSON.stringify({ status, statusText, headers, data }),
     }
   }
 }
+
+module.exports = { handler }

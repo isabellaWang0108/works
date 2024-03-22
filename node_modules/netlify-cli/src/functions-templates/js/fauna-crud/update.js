@@ -1,29 +1,32 @@
 /* Import faunaDB sdk */
-const faunadb = require('faunadb')
+const process = require('process')
 
-const q = faunadb.query
-const client = new faunadb.Client({
-  secret: process.env.FAUNADB_SERVER_SECRET
+const { query, Client } = require('faunadb')
+
+const client = new Client({
+  secret: process.env.FAUNADB_SERVER_SECRET,
 })
 
-exports.handler = async (event, context) => {
+const handler = async (event) => {
   const data = JSON.parse(event.body)
-  const id = event.id
+  const { id } = event
   console.log(`Function 'update' invoked. update id: ${id}`)
   return client
-    .query(q.Update(q.Ref(`classes/items/${id}`), { data }))
-    .then(response => {
+    .query(query.Update(query.Ref(`classes/items/${id}`), { data }))
+    .then((response) => {
       console.log('success', response)
       return {
         statusCode: 200,
-        body: JSON.stringify(response)
+        body: JSON.stringify(response),
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.log('error', error)
       return {
         statusCode: 400,
-        body: JSON.stringify(error)
+        body: JSON.stringify(error),
       }
     })
 }
+
+module.exports = { handler }

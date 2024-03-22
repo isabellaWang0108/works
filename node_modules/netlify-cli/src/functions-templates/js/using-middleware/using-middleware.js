@@ -9,12 +9,12 @@ const businessLogic = (event, context, callback) => {
     statusCode: 200,
     body: JSON.stringify({
       result: 'success',
-      message: `Hi ${name} ⊂◉‿◉つ`
-    })
+      message: `Hi ${name} ⊂◉‿◉つ`,
+    }),
   })
 }
 
-/* Input & Output Schema */
+/* Export inputSchema & outputSchema for automatic documentation */
 const schema = {
   input: {
     type: 'object',
@@ -23,11 +23,11 @@ const schema = {
         type: 'object',
         required: ['name'],
         properties: {
-          name: { type: 'string' }
-        }
-      }
+          name: { type: 'string' },
+        },
+      },
     },
-    required: ['body']
+    required: ['body'],
   },
   output: {
     type: 'object',
@@ -37,18 +37,15 @@ const schema = {
         required: ['result', 'message'],
         properties: {
           result: { type: 'string' },
-          message: { type: 'string' }
-        }
-      }
+          message: { type: 'string' },
+        },
+      },
     },
-    required: ['body']
-  }
+    required: ['body'],
+  },
 }
 
-/* Export inputSchema & outputSchema for automatic documentation */
-exports.schema = schema
-
-exports.handler = middy(businessLogic)
+const handler = middy(businessLogic)
   .use(httpHeaderNormalizer())
   // parses the request body when it's a JSON and converts it to an object
   .use(jsonBodyParser())
@@ -56,3 +53,8 @@ exports.handler = middy(businessLogic)
   .use(validator({ inputSchema: schema.input }))
   // handles common http errors and returns proper responses
   .use(httpErrorHandler())
+
+module.exports = {
+  schema,
+  handler,
+}

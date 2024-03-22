@@ -1,21 +1,26 @@
 const { sign } = require('jsonwebtoken')
-const { Strategy: GitHubStrategy } = require('passport-github2')
 const passport = require('passport')
+const { Strategy: GitHubStrategy } = require('passport-github2')
 const passportJwt = require('passport-jwt')
 
 const { BASE_URL, ENDPOINT, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, SECRET } = require('./config')
 
-function authJwt(email) {
+const authJwt = function (email) {
   return sign({ user: { email } }, SECRET)
 }
 
-passport.use(
-  new GitHubStrategy(
+const applyPassportStrategies = function () {
+  passport.use(getGitHubStrategy())
+  passport.use(getJwtStrategy())
+}
+
+const getGitHubStrategy = function () {
+  return new GitHubStrategy(
     {
       clientID: GITHUB_CLIENT_ID,
       clientSecret: GITHUB_CLIENT_SECRET,
       callbackURL: `${BASE_URL}${ENDPOINT}/auth/github/callback`,
-      scope: ['user:email']
+      scope: ['user:email'],
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -28,18 +33,18 @@ passport.use(
       } catch (error) {
         return done(error)
       }
-    }
+    },
   )
-)
+}
 
-passport.use(
-  new passportJwt.Strategy(
+const getJwtStrategy = function () {
+  return new passportJwt.Strategy(
     {
       jwtFromRequest(req) {
         if (!req.cookies) throw new Error('Missing cookie-parser middleware')
         return req.cookies.jwt
       },
-      secretOrKey: SECRET
+      secretOrKey: SECRET,
     },
     async ({ user: { email } }, done) => {
       try {
@@ -51,6 +56,10 @@ passport.use(
       } catch (error) {
         return done(error)
       }
-    }
+    },
   )
-)
+}
+
+module.exports = {
+  applyPassportStrategies,
+}

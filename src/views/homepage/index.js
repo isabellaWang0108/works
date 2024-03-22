@@ -37,13 +37,12 @@ function Boxes() {
     )
 
     const ref = useRef()
-
     useFrame(state => {
         const time = state.clock.getElapsedTime()
-        ref.current.position.x = Math.sin(time / 4) * 2
+        ref.current.position.x = Math.sin(time / 8) * 2
         ref.current.position.y = Math.sin(time / 2)
-        ref.current.rotation.x += .007
-        ref.current.rotation.y += .007
+        ref.current.rotation.x += .002
+        ref.current.rotation.y += .002
 
         let i = 0
         for (let x = 0; x < 10; x++)
@@ -101,7 +100,7 @@ class Homepage extends React.Component {
 
                     {/* landing page */}
                     <div style={windowHeight} className="black sessionContainer" >
-                        <div id="landingPart">
+                        <div id="landingPart" >
                             <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
 
                             I design, test, and iterate based on research.
@@ -111,11 +110,11 @@ class Homepage extends React.Component {
 
                         </div>
                         <Canvas
-                            style={{ position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 450 ? "60%" : "100%", zIndex: 1, }}
+                            style={{ zIndex:1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 768 ? "60%" : "100%", zIndex: 1, }}
                             camera={{ position: [3, 5, 15] }}
                         >
                             <ambientLight color="#FFFFFF" />
-                            <pointLight position={[150, 150, 150]} intensity={0.8} />
+                            <pointLight position={[150, 150, 150]} intensity={1} />
                             <Boxes />
                         </Canvas>
                     </div>
