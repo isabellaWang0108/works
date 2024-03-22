@@ -104,7 +104,7 @@ class Homepage extends React.Component {
                         <div id="landingPart">
                             <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
 
-                                I design, code, and iterate based on the research.
+                            I design, test, and iterate based on research.
 
                             </div>
 
@@ -120,30 +120,6 @@ class Homepage extends React.Component {
                         </Canvas>
                     </div>
 
-
-                    {/* Thesis Campy */}
-                    <div id="Thesis" className="black sessionContainer bg-yellow" style={windowHeight}>
-
-                        <div className="contentblock">
-                            <Labeling
-                                time="Thesis"
-                                color='black'
-                            />
-                            <h1>Researching the future of technology and humanity.</h1>
-                            <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest.
-                                <br />
-                                <PinkButton
-                                    innerLink={true}
-                                    label="See works"
-                                    link="thesis"
-
-                                />
-                            </p>
-                        </div>
-                        <div className="imgBlock">
-                            <img src={Thesis} alt="thesis" className="campy img" />
-                        </div>
-                    </div>
 
                     {/* Desigin system */}
                     <div id="Design-system" className="black sessionContainer reverse bg-white" style={windowHeight}>
@@ -221,6 +197,30 @@ class Homepage extends React.Component {
                         </div>
                     </div>
 
+
+                    {/* Thesis Campy */}
+                    <div id="Thesis" className="black sessionContainer bg-yellow" style={windowHeight}>
+
+                        <div className="contentblock">
+                            <Labeling
+                                time="Personal interest"
+                                color='black'
+                            />
+                            <h1>Researching the future of technology and humanity.</h1>
+                            <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest.
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="See works"
+                                    link="thesis"
+
+                                />
+                            </p>
+                        </div>
+                        <div className="imgBlock">
+                            <img src={Thesis} alt="thesis" className="campy img" />
+                        </div>
+                    </div>
                     {/* See more */}
                     <div id="seeMore" className="black sessionContainer bg-coral" style={{ height: 450, position: 'relative' }} >
                         <div style={{ width: '90%', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
