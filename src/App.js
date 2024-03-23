@@ -4,7 +4,7 @@ import Loading from "./components/loading"
 import Homepage from "./views/homepage"
 import Contact from "./views/contact.js"
 
-import Vogether from "./views/projects/vogether"
+import Vogether from "./views/projects/Vogether"
 import ProductStudio from "./views/projects/ProductStudio"
 import Thesis from "./views/projects/Thesis"
 import DS from "./views/projects/DS"
@@ -38,6 +38,7 @@ class App extends Component {
             <Route exact path={process.env.PUBLIC_URL + "/contact"} component={Contact} />
             <Route exact path={process.env.PUBLIC_URL + "/design-system"} component={DS} />
             <Route exact path={process.env.PUBLIC_URL + "/voice"} component={Voice} />
+            <Route exact path={process.env.PUBLIC_URL + "/vogether"} component={Vogether} />
           </Switch>
         </HashRouter>
       )

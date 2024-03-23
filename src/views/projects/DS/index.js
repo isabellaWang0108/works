@@ -94,7 +94,8 @@ class DS extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <h1 id="title">Building an enterprise design system </h1>
-                        <p>Through my three years of professional working experience, I have developed my specialty -- Design Systems. A design system streamlines the design-engineering hand-off process, sets the building blocks for scalablility, and unifies the design from the front end. </p>
+                        <p>Through my three years of professional working experience, I have one consistant responsibility -- Design Systems. A design system streamlines the design-engineering hand-off process, sets the building blocks for scalablility, and unifies the design from the front end. </p>
+                        <p>This experience builds my ability to handle complex, big-scale, high-stake design challenges that involve a broad spectrum of stakeholders</p>
                         <p>Checkout my design system works:
                             <br />
                             <b>VTS design system</b>: <a href="https://terra.vts.com" target="_blank">terra.vts.com</a>

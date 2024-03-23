@@ -125,11 +125,11 @@ class Homepage extends React.Component {
 
                         <div className="contentblock">
                             <Labeling
-                                time="Professional specialty"
+                                time="Design case study"
                                 color='black'
                             />
                             <h1>Building an enterprise design system</h1>
-                            <p>This case study presents my professional specialty: building a system that bridges the gap between design and engineering and ensures organizational unity and scalability.
+                            <p>This case study presents my experience and process in handling complex, big-scale, high-stakes design challenges that involve a broad spectrum of stakeholders.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
@@ -152,11 +152,11 @@ class Homepage extends React.Component {
 
                         <div className="contentblock">
                             <Labeling
-                                time="Product design"
+                                time="Design case study"
                                 color='black'
                             />
                             <h1>Designing an NFT creating feature for non-technical users</h1>
-                            <p>This case study demonstrates my process and how I leverage different skills and technology at different stages in product development.
+                            <p>This case study demonstrates my process in a general product development setting.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
@@ -177,12 +177,12 @@ class Homepage extends React.Component {
                     <div id="ProductStudio" className="black sessionContainer reverse bg-smokewhite" style={windowHeight} >
                         <div className="contentblock">
                             <Labeling
-                                time="Product discovery"
+                                time="Product research"
                                 color="black"
                             />
                             <h1>How to hire millennial technical talents</h1>
                             <p>
-                                This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
+                                This is a four-month product design challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
@@ -202,7 +202,7 @@ class Homepage extends React.Component {
 
                         <div className="contentblock">
                             <Labeling
-                                time="Personal interest"
+                                time="Passion projects"
                                 color='black'
                             />
                             <h1>Researching the future of technology and humanity.</h1>
