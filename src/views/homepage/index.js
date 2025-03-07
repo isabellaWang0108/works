@@ -13,6 +13,8 @@ import DesignSystem from "../../assets/images/home/ds.png"
 // import Vogether from "../../assets/images/vogether/2-record.gif"
 import ProductStudio from "../../assets/images/home/ProductStudio.svg"
 import Voice from "../../assets/images/home/voice.svg"
+import Kiosk_img from "../../assets/images/home/kiosk.svg"
+
 import PinkButton from "../../components/pinkButton"
 
 import Github from "../../assets/images/contact/github.svg"
@@ -120,22 +122,45 @@ class Homepage extends React.Component {
                     </div>
 
 
+                    {/* Kiosk */}
+                    <div id="Kiosk" className="black sessionContainer bg-sky" style={windowHeight}>
+
+                        <div className="contentblock">
+                            <Labeling
+                                time="Project case study"
+                                color='black'
+                            />
+                            <h1>Kiosk Check-In Experience</h1>
+                            <p>This UX/UI case study from my last job showcases my design approach when physical interaction and different hardware devices are involved. 
+                                <br />
+                                <PinkButton
+                                    innerLink={true}
+                                    label="Read the case"
+                                    link="kiosk"
+                                />
+                            </p>
+                        </div>
+                        <div className="imgBlock">
+                            <img src={Kiosk_img} alt="kiosk checkin" className="kiosk img" />
+                        </div>
+                    </div>
+
+
                     {/* Desigin system */}
                     <div id="Design-system" className="black sessionContainer reverse bg-white" style={windowHeight}>
 
                         <div className="contentblock">
                             <Labeling
-                                time="Design case study"
+                                time="Project case study"
                                 color='black'
                             />
-                            <h1>Building an enterprise design system</h1>
+                            <h1>Enterprise design system</h1>
                             <p>This case study presents my experience and process in handling complex, big-scale, high-stakes design challenges that involve a broad spectrum of stakeholders.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
-                                    label="Read details"
+                                    label="Read the case"
                                     link="design-system"
-
                                 />
                             </p>
                         </div>
@@ -152,17 +177,16 @@ class Homepage extends React.Component {
 
                         <div className="contentblock">
                             <Labeling
-                                time="Design case study"
+                                time="Project case study"
                                 color='black'
                             />
-                            <h1>Designing an NFT creating feature for non-technical users</h1>
+                            <h1>NFT creation feature for non-technical users</h1>
                             <p>This case study demonstrates my process in a general product development setting.
                                 <br />
                                 <PinkButton
                                     innerLink={true}
-                                    label="Read more"
+                                    label="Read the case"
                                     link="voice"
-
                                 />
                             </p>
                         </div>
@@ -186,7 +210,7 @@ class Homepage extends React.Component {
                                 <br />
                                 <PinkButton
                                     innerLink={true}
-                                    label="See process"
+                                    label="Read the case"
                                     link="product-studio"
                                 />
                             </p>

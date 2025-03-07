@@ -9,6 +9,7 @@ import ProductStudio from "./views/projects/ProductStudio"
 import Thesis from "./views/projects/Thesis"
 import DS from "./views/projects/DS"
 import Voice from "./views/projects/Voice"
+import Kiosk from "./views/projects/Kiosk"
 
 class App extends Component {
   state = {
@@ -39,6 +40,7 @@ class App extends Component {
             <Route exact path={process.env.PUBLIC_URL + "/design-system"} component={DS} />
             <Route exact path={process.env.PUBLIC_URL + "/voice"} component={Voice} />
             <Route exact path={process.env.PUBLIC_URL + "/vogether"} component={Vogether} />
+            <Route exact path={process.env.PUBLIC_URL + "/kiosk"} component={Kiosk} />
           </Switch>
         </HashRouter>
       )

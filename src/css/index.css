@@ -116,6 +116,10 @@ li {
   background-color: #FFA399;
 }
 
+.bg-sky {
+  background-color: #DDEEFF;
+}
+
 .right-border {
   border-right: 1px solid lightgray;
   padding: 0px 16px 0px 0px;
