@@ -11,6 +11,7 @@ import Pic4 from "../../../assets/images/Voice/voice_pic4.svg"
 import Pic5 from "../../../assets/images/Voice/voice_pic5.jpg"
 import Pic6 from "../../../assets/images/Voice/voice_pic6.jpg"
 import Pdf1 from "../../../assets/images/Voice/competitive-analysis.pdf"
+import InpageContactMe from "../../../components/inpage_contactme"
 
 class Voice extends React.Component {
 
@@ -106,7 +107,7 @@ class Voice extends React.Component {
                             <h2>Overview</h2>
                             <p>Determined by the business and marketing decision, my product manager brought me a task, “designing an NFT minting feature for everyday users.” I started this project with an abstract goal and a list of product requirements. </p>
                             <p> My workflow is a double-diamond process in general. Research is to discover the problem. Competitive analysis is to define the pain points. Product and UX alignment is to loop in early feedback from a cross-functional team. As projects usually have a short amount of time to work on at a startup, for me, rapid prototyping serves as both ideation and wireframe to explore the potential solutions. If time allows, I would recruit users through usertesting.com to validate the concept and discover issues before I deliver. I hand off pixel-perfect prototypes in the delivery and set up success metrics with PMs to pave for future iterations. Just like most of the design, design is a never-ending journey. After delivery, the project keeps going. It usually can go back to any step within the process based on the feedback.</p>
-                            <img src={Pic1} />
+                            <img alt="prototypes" src={Pic1} />
                         </div>
 
                         <div className="content-block" id="section2">
@@ -129,7 +130,7 @@ class Voice extends React.Component {
                         <div className="content-block" id="section4">
                             <h2 >Product and UX alignment</h2>
                             <p>After learning from the user research, I did a workshop with my product manager and engineers on creating a user flow to ensure my design not only addressed my solution but also captured the feature and technical requirements.</p>
-                            <img src={Pic2} width="100%" />
+                            <img alt="prototypes" src={Pic2} width="100%" />
                             <p> For the lengthy process pain point, I proposed different ways to shorten the steps by:</p>
                             <ol>
                                 <li>Making authentification optional in the creation.</li>
@@ -142,7 +143,7 @@ class Voice extends React.Component {
                                 <li>Using alternative vocabulary if applicable.</li>
                                 <li>Adding helper text or tooltips beside jargon so users can learn as they create.</li>
                             </ol>
-                            <img src={Pic3} width="100%" />
+                            <img alt="prototypes" src={Pic3} width="100%" />
                             <p>However, some ideas got pushed back by engineers due to technical constraints. For example, we did not want to cut certain data for simplicity because there was a required data model for information to log into the blockchain in the first place. Some ideas were pushed back from PMs because a simpler UX would compromise the business’ selling point. For example, we didn't want to compromise the authentification before users could sell the NFT because “real users” was one major selling point to ensure the authenticity of the NFTs on our platform. </p>
                             <p>In the end, the best thing I could do at the moment was to divide the information into digestible pieces. The minting process was lengthy, but the technical requirement didn't allow the total number of steps to be shortened; Terminologies were unfriendly, but most of them had no daily-vocabulary alternative.</p>
                         </div>
@@ -150,15 +151,15 @@ class Voice extends React.Component {
                             <h2 >Rapid prototyping</h2>
                             <p> I started prototyping with a clear idea about what I needed to address. Below is a screenshot of my exploration board.
                             </p>
-                            <img src={Pic4} width="100%" />
+                            <img alt="prototypes" src={Pic4} width="100%" />
                         </div>
                         <div className="content-block" id="section6">
                             <h2 >User testing</h2>
                             <p>
                                 The user testing and prototyping always go hand-in-hand. Below is one of the user tests I ran to A/B test the most intuitive interaction of splitting creator share in the creation flow.{' '}
-                                <a href="https://github.com/isabellaWang0108/Multi-authorship-UX-testing-autoFill" target="_blank">See Github page for details</a>.
+                                <a href="https://github.com/isabellaWang0108/Multi-authorship-UX-testing-autoFill" rel="noopener noreferrer" target="_blank">See Github page for details</a>.
                             </p>
-                            <img src={Pic5} width="100%" />
+                            <img alt="prototypes" src={Pic5} width="100%" />
                         </div>
                         <div className="content-block" id="section7">
                             <h2>Iteration</h2>
@@ -171,7 +172,7 @@ class Voice extends React.Component {
                                     <li>Providing tooltips on potentially tricky vocabularies.</li>
                                 </ol>
                                 <p>See the prototype below.</p>
-                                <iframe src="https://drive.google.com/file/d/1X6v-gczHJYD-1jD5jTj0HUrgqYf8EWfv/preview" width="100%" height="480"></iframe>
+                                <iframe src="https://drive.google.com/file/d/1X6v-gczHJYD-1jD5jTj0HUrgqYf8EWfv/preview" title="user flow" width="100%" height="480"></iframe>
                             </p>
                         </div>
                         <div className="content-block" id="section8">
@@ -183,12 +184,17 @@ class Voice extends React.Component {
                                     <li>Errors when editing the credits.</li>
                                 </ol>
                             </p>
-                            <img src={Pic6} width="100%" />
+                            <img alt="prototypes" src={Pic6} width="100%" />
                         </div>
                         <div className="content-block" id="section9">
                             <h2>To be continued</h2>
                             <p>Just like all the design projects, design is a never-ending process. Delivery is a pause, not an end. Upon delivery, I set up a success metric with my product manager to track the potential improvements in the future. For this creation project, the quantitative data was a high success rate in the creation from users uploading media to minting it successfully. The qualitative data was a creator’s feeling. We kept track of data and received user feedbacks to keep improving the feature.</p>
                         </div>
+
+                        <div className="content-block" >
+                            <InpageContactMe />
+                        </div>
+
                     </ContentLayout>
 
                 </div>

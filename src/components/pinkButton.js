@@ -6,7 +6,6 @@ const button = {
     borderWidth: 2,
     padding: 12,
     cursor: 'pointer',
-    borderColor: "#4A4A4A",
     color: "black",
     fontSize: 21,
     borderRadius: 12,

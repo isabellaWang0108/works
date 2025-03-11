@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Contact() {
 
     return (
-        <Link className="bold contactpage" to="/contact">About Me</Link>
+        <Link className="bold contactpage" to="/contact" >About Me</Link>
     )
 }
 

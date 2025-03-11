@@ -13,7 +13,7 @@ import DesignSystem from "../../assets/images/home/ds.png"
 // import Vogether from "../../assets/images/vogether/2-record.gif"
 import ProductStudio from "../../assets/images/home/ProductStudio.svg"
 import Voice from "../../assets/images/home/voice.svg"
-import Kiosk_img from "../../assets/images/home/kiosk.svg"
+import Kiosk_img from "../../assets/images/home/kiosk.png"
 
 import PinkButton from "../../components/pinkButton"
 
@@ -85,6 +85,18 @@ class Homepage extends React.Component {
         background: 0,
         timeLineHeight: $(document).height()
     }
+    componentDidMount() {
+        const savedScrollPosition = sessionStorage.getItem("homepageScrollPosition");
+        if (savedScrollPosition) {
+            window.scrollTo(0, parseInt(savedScrollPosition, 10));
+            sessionStorage.removeItem("homepageScrollPosition");
+        }
+    }
+
+    // Save scroll position when the homepage is about to unmount
+    componentWillUnmount() {
+        sessionStorage.setItem("homepageScrollPosition", window.pageYOffset);
+    }
 
     render() {
         return (
@@ -103,7 +115,7 @@ class Homepage extends React.Component {
                     {/* landing page */}
                     <div style={windowHeight} className="black sessionContainer" >
                         <div id="landingPart" >
-                            <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
+                            <div className='landingpage_Intro'>
 
                             I design, test, and iterate based on research.
 
@@ -112,7 +124,7 @@ class Homepage extends React.Component {
 
                         </div>
                         <Canvas
-                            style={{ zIndex:1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 768 ? "60%" : "100%", zIndex: 1, }}
+                            style={{ zIndex:1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 768 ? "60%" : "100%" }}
                             camera={{ position: [3, 5, 15] }}
                         >
                             <ambientLight color="#FFFFFF" />

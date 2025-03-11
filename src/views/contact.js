@@ -100,7 +100,7 @@ class Contact extends React.Component {
                                 <h2>Others</h2>
 
 
-                                <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" target="_blank" className="AboutProj">
+                                <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" rel="noopener noreferrer" target="_blank" className="AboutProj">
                                     <p className="AboutProj-content">
                                         <b>Integrated system </b>
                                         <br />
@@ -108,7 +108,7 @@ class Contact extends React.Component {
                                     </p>
                                 </a>
 
-                                <a href="https://wangxbella0108.medium.com/ui-vs-logo-gradient-ec0f67d10e21" target="_blank" className="AboutProj">
+                                <a href="https://wangxbella0108.medium.com/ui-vs-logo-gradient-ec0f67d10e21" rel="noopener noreferrer" target="_blank" className="AboutProj">
                                     <p className="AboutProj-content">
                                         <b>Gradient research</b>
                                         <br />

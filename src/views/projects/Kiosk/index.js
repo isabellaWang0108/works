@@ -4,7 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
-import Pic1 from "../../../assets/images/Kiosk/img_01.svg"
+import Pic1 from "../../../assets/images/Kiosk/img_01.png"
 import Pic2 from "../../../assets/images/Kiosk/img_02.svg"
 import Pic3 from "../../../assets/images/Kiosk/img_03.svg"
 import Pic4 from "../../../assets/images/Kiosk/img_04.svg"
@@ -19,6 +19,7 @@ import Pic12 from "../../../assets/images/Kiosk/img_12.svg"
 import Pic13 from "../../../assets/images/Kiosk/img_13.svg"
 import Pic14 from "../../../assets/images/Kiosk/img_14.svg"
 import Pic15 from "../../../assets/images/Kiosk/img_15.svg"
+import InpageContactMe from "../../../components/inpage_contactme"
 
 
 class Kiosk extends React.Component {
@@ -94,13 +95,13 @@ class Kiosk extends React.Component {
                     <ContentLayout>
                         <h1 id="title">Kiosk Check-In</h1>
                         <p>
-                            The Kiosk Check-In project showcases my design approach when physical interaction and multiple devices are involved. The end-to-end experience involves various devices, different platforms and products across the company.
+                            The Kiosk Check-In project automates visitor check-in, delivering a faster experience while reducing workload for both the front desk and visitors. The end-to-end experience involves various devices, different platforms and products across the company.
                         </p>
                         <p>
                             Please contact me for the full story and design.
                         </p>
                         <ProjectContext duration="1.5 months" team="1 PM, 5 engineers, 1 designer, other teams" role="designer"></ProjectContext>
-                        <img src={Pic1} />
+                        <img alt="prototype" width="100%" src={Pic1} />
 
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
@@ -133,7 +134,7 @@ class Kiosk extends React.Component {
                             </ol>
                             <p>For this project, my workflow revisited product and UX alignment heavily due to the engineering specifics and the need to collaborate with designers from other teams. In general, I followed the standard UX design steps. Since the project had very detailed predetermined specifics—such as using a QR code for check-in on the iPad—wireframing was not involved in the process.
                             </p>
-                            <img src={Pic2} />
+                            <img alt="prototype" width="100%" src={Pic2} />
                         </div>
 
                         <div className="content-block" id="section2">
@@ -155,7 +156,7 @@ class Kiosk extends React.Component {
                                     <span className="bold">Office workers</span>  register and send their visitors QR codes.
                                 </li>
                             </ul>
-                            <img src={Pic3} />
+                            <img alt="prototype" width="100%" src={Pic3} />
                         </div>
 
                         <div className="content-block" id="section3">
@@ -180,20 +181,20 @@ class Kiosk extends React.Component {
                                     The ideal scanning distance is typically a 1:10 ratio; however, due to engineering constraints, engineers recommend a distance of 5 inches.
                                 </li>
                             </ol>
-                            <img src={Pic4} />
+                            <img alt="prototype" width="100%" src={Pic4} />
 
 
                             <h3>Physical blind spot</h3>
                             <p>
                                 When putting a phone in front of an iPad, there are blind spots on the screen due to physical overlapping. It’s important to understand what screen areas are visible to users so they can see the visual feedback to accomplish necessary tasks.
                             </p>
-                            <img src={Pic5} />
+                            <img alt="prototype" width="100%" src={Pic5} />
 
                             <h3>UI that reflects physical distance </h3>
                             <p>
                                 It’s important to determine the exact size at which the QR code appears on camera to design a UI that effectively guides users on distance.
                             </p>
-                            <img src={Pic6} />
+                            <img alt="prototype" width="100%" src={Pic6} />
                         </div>
 
                         <div className="content-block" id="section4">
@@ -201,7 +202,7 @@ class Kiosk extends React.Component {
                             <p>
                                 I explored various UI layouts, interaction elements, and visual design options for every screen in the complete flow. The screenshot below demonstrates the breadth of exploration, and I'll present a detailed case study on my design decision making process.
                             </p>
-                            <img width="100%" src={Pic7} />
+                            <img alt="prototype" width="100%" src={Pic7} />
 
                             <h3>Deciding the design for the “Activating QR reader” screen</h3>
                             <p>
@@ -227,13 +228,13 @@ class Kiosk extends React.Component {
                                     The design needs to follow the existing design system.
                                 </li>
                             </ol>
-                            <img src={Pic8} />
+                            <img alt="prototype" width="100%" src={Pic8} />
 
                             <h3>Dropping designs E & F due to potential illegibility issues. </h3>
                             <p>
                                 All interactive elements and key messages must remain legible, especially when clients have the ability to customize images. Design E and F risk making buttons and messages illegible based on the images clients select. Although overlays can help mitigate this problem, they are not the ideal solution.
                             </p>
-                            <img src={Pic9} />
+                            <img alt="prototype" width="100%" src={Pic9} />
                             <br />
                             <h3>Function over branding</h3>
                             <p>
@@ -251,7 +252,7 @@ class Kiosk extends React.Component {
                             <p>
                                 The team liked the remaining two designs equally. Both met the branding customization requirements, so we set them up for A/B testing to determine which one users prefer.
                             </p>
-                            <img src={Pic10} />
+                            <img alt="prototype" width="100%" src={Pic10} />
                             <p>In the test, we set up 2 criteria to determine which design to go with usability and preference</p>
 
                             <h3>Usability</h3>
@@ -259,31 +260,37 @@ class Kiosk extends React.Component {
                                 In the usability test, we assigned users the following task for each design: “Activate the QR scanner.”
                                 Design B won on both interaction accuracy and the time taken to perform the task.
                             </p>
-                            <img src={Pic11} />
+                            <img alt="prototype" width="100%" src={Pic11} />
 
                             <h3>Preference</h3>
                             <p>
                                 We simply asked users which design they prefer. Design B was a clear winner here as well.
                             </p>
-                            <img src={Pic12} />
+                            <img alt="prototype" width="100%" src={Pic12} />
                             <p className="bold">With the result of user testing, we moved forward with Design B. </p>
 
                         </div>
                         <div className="content-block" id="section6">
                             <h2>Delivery</h2>
                             <p>Below are the final screens for the initial successful office visitors QR code scanning flow, which ideally occurs every time.</p>
-                            <img src={Pic13} />
+                            <img alt="prototype" width="100%" src={Pic13} />
 
                             <h3>Error states</h3>
                             <p>Things don’t always go smoothly and we need to be ready for all the possible errors.</p>
-                            <img src={Pic14} />
+                            <img alt="prototype" width="100%" src={Pic14} />
 
                             <h3>Responsive design</h3>
                             <p>
                                 The iPad can be used in both horizontal and vertical orientations. It’s important to have a design that clearly communicates these requirements to the engineering team.
                             </p>
-                            <img src={Pic15} />
+                            <img alt="prototype" width="100%" src={Pic15} />
+
                         </div>
+                        <div className="content-block" >
+                            <InpageContactMe />
+                        </div>
+
+
                     </ContentLayout>
 
                 </div>

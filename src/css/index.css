@@ -401,6 +401,21 @@ a:hover {
   max-height: 100vh;
 }
 
+.contact_me_inpage{
+   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width:400pt;
+}
+
+.contact_me_inpage .icons{
+  justify-content:space-evenly; 
+  width:160pt;
+  display:flex; 
+  flex-direction:row;
+ }
+ 
+
 .reverse {
   flex-direction: row-reverse;
 }
@@ -714,6 +729,19 @@ a:hover {
     padding: 0px 16px 0px 0px;
     min-width: 70px;
   }
+
+  .contact_me_inpage{
+    display: flex;
+   flex-direction:column;
+   justify-content: center;
+   align-items: center;
+   width:100%;
+ }
+
+ .contact_me_inpage .icons{
+  width:100%;
+ }
+ 
 
 
 }

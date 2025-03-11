@@ -13,6 +13,8 @@ import Pic6 from "../../../assets/images/ProductStudio/ps_pic6.svg"
 import Pic7 from "../../../assets/images/ProductStudio/ps_pic7.svg"
 import Pic8 from "../../../assets/images/ProductStudio/ps_pic8.svg"
 import Pic9 from "../../../assets/images/ProductStudio/ps_pic9.jpg"
+import InpageContactMe from "../../../components/inpage_contactme"
+
 
 class ProductStudio extends React.Component {
 
@@ -125,7 +127,7 @@ class ProductStudio extends React.Component {
                         <div className="content-block" id="section2">
                             <h2 >Getting to know our users</h2>
                             <p>As a strategy of getting to know our users, we came up with a rich picture to identify the potential stakeholders involved in the recruitment process. Then we sourced and conducted qualitative interviews with people identified as a stakeholder. </p>
-                            <img src={Pic1} width="100%" />
+                            <img src={Pic1} width="100%" alt="img" />
                         </div>
                         <div className="content-block" id="section3">
                             <h2 >Pain points</h2>
@@ -142,7 +144,7 @@ class ProductStudio extends React.Component {
                                 <li>Automation is dangerous. Candidates want a touch of humans during the recruitment, but automation struggles with giving personal messages.</li>
                                 <li>Recruitment is a two-sided market, but we have to pick our side. We could either help recruiters do their jobs easier or provide a better experience for candidates.</li>
                             </ol>
-                            <img src={Pic2} width="100%" />
+                            <img src={Pic2} width="100%" alt="img" />
                         </div>
                         <div className="content-block" id="section5">
                             <h2 >Ideating</h2>
@@ -153,7 +155,7 @@ class ProductStudio extends React.Component {
                                 <li>The execution need to be scalable.</li>
                             </ul>
                             <p>Below is a sneak peek at our collaboration of voting out the best idea.</p>
-                            <img src={Pic3} width="100%" />
+                            <img src={Pic3} width="100%" alt="img" />
                             <p>By the end, we reached one idea we all liked: A transparent and time-restricted recruitment process.</p>
                             <p>To execute this idea, we would make a job board that reveals a detailed recruitment process and estimated time for each stage to take. Thus, the candidates would be guaranteed to get a callback once the clock hits the promised time.</p>
                         </div>
@@ -161,15 +163,15 @@ class ProductStudio extends React.Component {
                             <h2>Finding risks</h2>
                             <p>So far, the idea was based on four people’s collective assumptions and judgments. Before investing in engineering powers, we decided to conduct experiments to prove our riskiest assumption. </p>
                             <p>After putting together a chart to rank the riskiness of the assumptions, the riskiest hypothesis was that recruiters can support speed and transparency by putting out the recruitment process, team structure, company culture and committing to getting back to candidates in a limited time.</p>
-                            <img src={Pic4} width="100%" />
+                            <img src={Pic4} width="100%" alt="img" />
                         </div>
                         <div className="content-block" id="section7">
                             <h2>Validating the assumption</h2>
                             <p>We designed our first experiment to test whether the company could commit to the time constraint: We pitched six startups and asked them to run their recruitment process. 1/2 of the startups were super interested, and they immediately shared the breakdown of their recruitment process. However, they were afraid to commit to the 3-week time limit when it was real! </p>
-                            <img src={Pic5} width="100%" />
+                            <img src={Pic5} width="100%" alt="img" />
                             <p>The hypothesis on the recruiter side seemed not to be working. How about candidates?</p>
                             <p>We sent out emails with a job with the 3-week guaranteed callback to candidates. However, we found that candidates could not commit either.</p>
-                            <img src={Pic6} width="100%" />
+                            <img src={Pic6} width="100%" alt="img" />
                         </div>
                         <div className="content-block" id="section8">
                             <h2>After a total failure</h2>
@@ -177,15 +179,18 @@ class ProductStudio extends React.Component {
                             <p>We conducted a 404-page experiment. The concept was to send out emails containing a job description with elements of transparency. All clicks were tracked by analytics, but they would direct candidates to a 404 page. From the analytics, we could see who clicked on what in what order. If candidates cared about transparency, they would click on the link to see more information; If they did not care, they would apply directly. Once we could prove more than 54% of people care, the value was validated.
                             </p>
                             <p>We sent out a total of 120 emails with shuffled order of links.</p>
-                            <img src={Pic7} width="100%" />
+                            <img src={Pic7} width="100%" alt="img" />
                             <p>Luck knocked on our door this time. Based on our statistic chart, the value of transparency was valid! </p>
-                            <img src={Pic8} width="100%" />
+                            <img src={Pic8} width="100%" alt="img" />
                         </div>
                         <div className="content-block" id="section9">
                             <h2>Build</h2>
                             <p>After the riskiest assumption was validated, we proceeded to build the prototype.
                                 We made a prototype of a job board including different elements of transparency in addition to the primary job description, like the recruitment process and day-to-day-life samples.</p>
-                            <img src={Pic9} width="100%" />
+                            <img src={Pic9} width="100%" alt="img"/>
+                        </div>
+                        <div className="content-block" >
+                            <InpageContactMe />
                         </div>
                     </ContentLayout>
 
