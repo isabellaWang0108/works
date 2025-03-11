@@ -26,11 +26,11 @@ class Kiosk extends React.Component {
 
     content = [
         { title: "Overview", id: "section1" },
+        { title: "Final design", id: "section6" },
         { title: "Product/UX alignment", id: "section2" },
-        { title: "Research", id: "section3" },
+        { title: "Research/Learning", id: "section3" },
         { title: "Prototyping", id: "section4" },
         { title: "Testing", id: "section5" },
-        { title: "Delivery", id: "section6" }
     ]
 
 
@@ -137,6 +137,23 @@ class Kiosk extends React.Component {
                             <img alt="prototype" width="100%" src={Pic2} />
                         </div>
 
+                        <div className="content-block" id="section6">
+                            <h2>Final design</h2>
+                            <p>Below are the final screens for the initial successful office visitors QR code scanning flow, which ideally occurs every time.</p>
+                            <img alt="prototype" width="100%" src={Pic13} />
+
+                            <h3>Error states</h3>
+                            <p>Things don’t always go smoothly and we need to be ready for all the possible errors.</p>
+                            <img alt="prototype" width="100%" src={Pic14} />
+
+                            <h3>Responsive design</h3>
+                            <p>
+                                The iPad can be used in both horizontal and vertical orientations. It’s important to have a design that clearly communicates these requirements to the engineering team.
+                            </p>
+                            <img alt="prototype" width="100%" src={Pic15} />
+
+                        </div>
+
                         <div className="content-block" id="section2">
                             <h2 >Product/UX alignment</h2>
                             <p>I utilized user flow as an efficient tool to align the UX and vision with engineers, PMs, and designers from other teams.
@@ -160,7 +177,8 @@ class Kiosk extends React.Component {
                         </div>
 
                         <div className="content-block" id="section3">
-                            <h2>Research</h2>
+                            <h2>Research/Learning</h2>
+                            <p>Below is a compilation of finding I got from user research, design critiques, and hands-on experimentation with devices.</p>
 
                             <h3>QR code scanning convention</h3>
                             <p>Many users have established mental models of using QR codes, particularly in the post-COVID era, so it’s crucial to replicate familiar interactions rather than introduce entirely novel ones. From my secondary research, I found: </p>
@@ -270,22 +288,7 @@ class Kiosk extends React.Component {
                             <p className="bold">With the result of user testing, we moved forward with Design B. </p>
 
                         </div>
-                        <div className="content-block" id="section6">
-                            <h2>Delivery</h2>
-                            <p>Below are the final screens for the initial successful office visitors QR code scanning flow, which ideally occurs every time.</p>
-                            <img alt="prototype" width="100%" src={Pic13} />
-
-                            <h3>Error states</h3>
-                            <p>Things don’t always go smoothly and we need to be ready for all the possible errors.</p>
-                            <img alt="prototype" width="100%" src={Pic14} />
-
-                            <h3>Responsive design</h3>
-                            <p>
-                                The iPad can be used in both horizontal and vertical orientations. It’s important to have a design that clearly communicates these requirements to the engineering team.
-                            </p>
-                            <img alt="prototype" width="100%" src={Pic15} />
-
-                        </div>
+                       
                         <div className="content-block" >
                             <InpageContactMe />
                         </div>

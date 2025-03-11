@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.57adec6c.chunk.css",
-    "main.js": "/static/js/main.82ad6199.chunk.js",
-    "main.js.map": "/static/js/main.82ad6199.chunk.js.map",
+    "main.js": "/static/js/main.416afc77.chunk.js",
+    "main.js.map": "/static/js/main.416afc77.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ed9d8f35.js",
     "runtime-main.js.map": "/static/js/runtime-main.ed9d8f35.js.map",
     "static/js/2.ab39376f.chunk.js": "/static/js/2.ab39376f.chunk.js",
     "static/js/2.ab39376f.chunk.js.map": "/static/js/2.ab39376f.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.52ce44f3706f6b598044c3812a425271.js": "/precache-manifest.52ce44f3706f6b598044c3812a425271.js",
+    "precache-manifest.b3918bb404590533ed336db016d4ed1e.js": "/precache-manifest.b3918bb404590533ed336db016d4ed1e.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.57adec6c.chunk.css.map": "/static/css/main.57adec6c.chunk.css.map",
     "static/js/2.ab39376f.chunk.js.LICENSE.txt": "/static/js/2.ab39376f.chunk.js.LICENSE.txt",
@@ -52,7 +52,7 @@
     "static/media/img_13.svg": "/static/media/img_13.9f2a9220.svg",
     "static/media/img_14.svg": "/static/media/img_14.cb8968f5.svg",
     "static/media/img_15.svg": "/static/media/img_15.1c92e711.svg",
-    "static/media/kiosk.png": "/static/media/kiosk.8a0bbd64.png",
+    "static/media/kiosk.png": "/static/media/kiosk.70ae2c51.png",
     "static/media/linkedin.svg": "/static/media/linkedin.d295db73.svg",
     "static/media/ps_pic1.jpg": "/static/media/ps_pic1.cb5c5458.jpg",
     "static/media/ps_pic2.jpg": "/static/media/ps_pic2.2ff4fd9c.jpg",
@@ -68,7 +68,7 @@
     "static/media/thesis_pic2.svg": "/static/media/thesis_pic2.4f029037.svg",
     "static/media/thesis_pic3.svg": "/static/media/thesis_pic3.b1d1a1fa.svg",
     "static/media/thesis_pic4.svg": "/static/media/thesis_pic4.b2cbdb2a.svg",
-    "static/media/voice.svg": "/static/media/voice.73594ae3.svg",
+    "static/media/voice.png": "/static/media/voice.c882f619.png",
     "static/media/voice_pic1.svg": "/static/media/voice_pic1.80ff14db.svg",
     "static/media/voice_pic2.svg": "/static/media/voice_pic2.be4ce124.svg",
     "static/media/voice_pic3.svg": "/static/media/voice_pic3.a6a335a8.svg",
@@ -80,6 +80,6 @@
     "static/js/runtime-main.ed9d8f35.js",
     "static/js/2.ab39376f.chunk.js",
     "static/css/main.57adec6c.chunk.css",
-    "static/js/main.82ad6199.chunk.js"
+    "static/js/main.416afc77.chunk.js"
   ]
 }
