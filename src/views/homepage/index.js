@@ -12,7 +12,7 @@ import Thesis from "../../assets/images/home/thesis.png"
 import DesignSystem from "../../assets/images/home/ds.png"
 // import Vogether from "../../assets/images/vogether/2-record.gif"
 import ProductStudio from "../../assets/images/home/ProductStudio.svg"
-import Voice from "../../assets/images/home/voice.svg"
+import Voice from "../../assets/images/home/voice.png"
 import Kiosk_img from "../../assets/images/home/kiosk.png"
 
 import PinkButton from "../../components/pinkButton"
