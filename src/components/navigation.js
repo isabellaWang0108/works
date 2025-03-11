@@ -50,7 +50,9 @@ class NavigationBar extends Component {
                         <a href="/" className="bold pink navigationMargin">Project list</a>
                     </Link>
 
-                    <a style={{ marginRight: 16 }} href="https://drive.google.com/file/d/1BGWVh9lmns557Z8x1tEE8SdfjmPdULOZ/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bold pink">Resume</a>
+                    <a style={{ marginRight: 16 }} href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bold pink">
+                        Resume
+                    </a>
 
 
 
