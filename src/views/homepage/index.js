@@ -2,7 +2,6 @@ import React, { useRef, useMemo } from "react";
 import $ from 'jquery';
 import "../../css/index.css"
 import { Canvas, useFrame } from 'react-three-fiber'
-import niceColors from 'nice-color-palettes'
 import * as THREE from 'three'
 
 import Labeling from "../../components/labeling"
@@ -10,15 +9,12 @@ import NavigationBar from "../../components/navigation"
 
 import Thesis from "../../assets/images/home/thesis.png"
 import DesignSystem from "../../assets/images/home/ds.png"
-// import Vogether from "../../assets/images/vogether/2-record.gif"
-import ProductStudio from "../../assets/images/home/ProductStudio.svg"
 import Voice from "../../assets/images/home/voice.png"
 import Kiosk_img from "../../assets/images/home/kiosk.png"
-
-import PinkButton from "../../components/pinkButton"
-
+import Button from "../../components/myButton"
 import Github from "../../assets/images/contact/github.svg"
 import Linkedin from "../../assets/images/contact/linkedin.svg"
+import { Link } from "react-router-dom";
 
 
 const windowHeight = {
@@ -28,9 +24,10 @@ const windowHeight = {
 }
 
 
+
 const tempObject = new THREE.Object3D()
 const tempColor = new THREE.Color()
-const colors = new Array(1000).fill().map(() => niceColors[13][Math.floor(Math.random() * 5)])
+const colors = new Array(1000).fill().map(() => ["#555152", "#A8A8A8", "#161219", "#B24973"][Math.floor(Math.random() * 5)])
 
 
 function Boxes() {
@@ -106,7 +103,6 @@ class Homepage extends React.Component {
 
                 {/* navigation bar */}
                 <NavigationBar href="#contactPart" contact />
-                <div id="HomapageTopNavi" style={{ backgroundColor: ' linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1))' }}></div>
 
                 <div id="HP_container" className='black HP_container' >
 
@@ -117,182 +113,206 @@ class Homepage extends React.Component {
                         <div id="landingPart" >
                             <div className='landingpage_Intro'>
 
-                            I design, test, and iterate based on research.
+                                I design, test, and iterate based on research.
 
                             </div>
 
 
                         </div>
                         <Canvas
-                            style={{ zIndex:1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 768 ? "60%" : "100%" }}
+                            style={{ zIndex: 1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 768 ? "60%" : "100%" }}
                             camera={{ position: [3, 5, 15] }}
                         >
-                            <ambientLight color="#FFFFFF" />
-                            <pointLight position={[150, 150, 150]} intensity={1} />
+                            <hemisphereLight intensity={0.2} groundColor="#555" />
+                            <pointLight position={[150, 150, 150]} intensity={0.1} />
                             <Boxes />
                         </Canvas>
                     </div>
 
+                    <div className="sessionContainer" style={{ height: '58pt', padding: '10pt 28pt', backgrounColor: 'rgb()', backdropFilter: 'blur(11px)' }}>   <h1>Professional work</h1></div>
+                    <div className="projectRow">
+                        {/* Kiosk */}
+                        <div id="Kiosk" className="sessionContainer bg-kiosk">
+                            <div className="contentblock">
+                                <img src={Kiosk_img} alt="kiosk checkin" className="img" />
+                            </div>
+                            <div className="contentblock">
 
-                    {/* Kiosk */}
-                    <div id="Kiosk" className="black sessionContainer bg-sky" style={windowHeight}>
+                                <h1 className="text-white">Kiosk Check-In </h1>
+                                <p className="text-white">This project showcases my design approach when physical interaction and different hardware devices are involved.
+                                    <br />
 
-                        <div className="contentblock">
-                            <Labeling
-                                time="Project case study"
-                                color='black'
-                            />
-                            <h1>Kiosk Check-In Experience</h1>
-                            <p>This UX/UI case study from my last job showcases my design approach when physical interaction and different hardware devices are involved. 
-                                <br />
-                                <PinkButton
-                                    innerLink={true}
+                                </p>
+                            </div>
+                            <div className="contentblock">
+                                <Button
+                                    underLined={true}
                                     label="Read the case"
                                     link="kiosk"
                                 />
-                            </p>
+                            </div>
+
                         </div>
-                        <div className="imgBlock">
-                            <img src={Kiosk_img} alt="kiosk checkin" className="kiosk img" />
-                        </div>
-                    </div>
 
 
-                    {/* Desigin system */}
-                    <div id="Design-system" className="black sessionContainer reverse bg-white" style={windowHeight}>
+                        {/* Desigin system */}
+                        <div id="Design-system" className="sessionContainer bg-ds">
+                            <div className="contentblock">
+                                <img src={DesignSystem} alt="design system" className="img" />
+                            </div>
+                            <div className="contentblock">
+                                <h1>Design system</h1>
+                                <p>This case study presents my experience and process in handling complex, big-scale, high-stakes design challenges that involve a broad spectrum of stakeholders.
+                                    <br />
 
-                        <div className="contentblock">
-                            <Labeling
-                                time="Project case study"
-                                color='black'
-                            />
-                            <h1>Enterprise design system</h1>
-                            <p>This case study presents my experience and process in handling complex, big-scale, high-stakes design challenges that involve a broad spectrum of stakeholders.
-                                <br />
-                                <PinkButton
-                                    innerLink={true}
+                                </p>
+                            </div>
+                            <div className="contentblock">
+                                <Button
+                                    underLined={true}
                                     label="Read the case"
                                     link="design-system"
                                 />
-                            </p>
+                            </div>
+
                         </div>
-                        <div className="imgBlock">
-                            <img src={DesignSystem} alt="design system" className="ds img" />
-                        </div>
+
+
                     </div>
 
+                    <div className="projectRow">
+                        {/* Voice */}
+                        <div id="Voice" className="sessionContainer bg-voice" >
+                            <div className="contentblock">
+                                <img src={Voice} alt="voice" className="img" />
+                            </div>
 
+                            <div className="contentblock">
+                                <h1>NFT creation feature</h1>
+                                <p>This case study demonstrates my process in a general product development setting.
+                                </p>
+                            </div>
 
-
-                    {/* Voice */}
-                    <div id="Voice" className="black sessionContainer bg-purple" style={windowHeight}>
-
-                        <div className="contentblock">
-                            <Labeling
-                                time="Project case study"
-                                color='black'
-                            />
-                            <h1>NFT creation feature for non-technical users</h1>
-                            <p>This case study demonstrates my process in a general product development setting.
-                                <br />
-                                <PinkButton
-                                    innerLink={true}
+                            <div className="contentblock">
+                                <Button
+                                    underLined={true}
                                     label="Read the case"
                                     link="voice"
                                 />
-                            </p>
+                            </div>
+
+
                         </div>
-                        <div className="imgBlock">
-                            <img src={Voice} alt="voice" className="img" />
-                        </div>
-                    </div>
 
 
 
-                    {/* product studio */}
-                    <div id="ProductStudio" className="black sessionContainer reverse bg-smokewhite" style={windowHeight} >
-                        <div className="contentblock">
-                            <Labeling
-                                time="Product research"
-                                color="black"
-                            />
-                            <h1>How to hire millennial technical talents</h1>
-                            <p>
-                                This is a four-month product design challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
-                                <br />
-                                <PinkButton
-                                    innerLink={true}
-                                    label="Read the case"
-                                    link="product-studio"
-                                />
-                            </p>
-                        </div>
-                        <div className="imgblock">
-                            <img src={ProductStudio} className="DODCornellImg" alt="ProductStudio"></img>
-                        </div>
-                    </div>
-
-
-                    {/* Thesis Campy */}
-                    <div id="Thesis" className="black sessionContainer bg-yellow" style={windowHeight}>
-
-                        <div className="contentblock">
-                            <Labeling
-                                time="Passion projects"
-                                color='black'
-                            />
-                            <h1>Researching the future of technology and humanity.</h1>
-                            <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest.
-                                <br />
-                                <PinkButton
-                                    innerLink={true}
+                        {/* Thesis Campy */}
+                        <div id="Thesis" className="sessionContainer bg-thesis">
+                            <div className="contentblock">
+                                <img src={Thesis} alt="thesis" className="campy img" />
+                            </div>
+                            <div className="contentblock">
+                                <h1>Researching the future of technology and humanity.</h1>
+                                <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest.
+                                </p>
+                            </div>
+                            <div className="contentblock">
+                                <Button
+                                    underLined={true}
                                     label="See works"
                                     link="thesis"
-
                                 />
-                            </p>
+                            </div>
+
                         </div>
-                        <div className="imgBlock">
-                            <img src={Thesis} alt="thesis" className="campy img" />
-                        </div>
+
+
                     </div>
-                    {/* See more */}
-                    <div id="seeMore" className="black sessionContainer bg-coral" style={{ height: 450, position: 'relative' }} >
-                        <div style={{ width: '90%', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
+
+
+                    {/* About Me */}
+                    <div id="seeMore" className="sessionContainer" style={{ height: 'auto', position: 'relative'}} >
+                        <div className="seeMore">
+                            <h1>About me</h1>
+                            <div>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
+                                    <a href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
+                                        <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
+                                    </a>
+
+                                    <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
+                                        <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
+                                    </a>
+                                </div>
+                            </div>
+                            <p style={{maxWidth:'700pt'}}>
+                                I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
+                            </p>
+                       
+                            <p>I have more work for you to get to know me:</p>
+
+                            <div className="threecolumn">
+                            <div className="threecolumn-row">
+                                <h2>Freelance Design work</h2>
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://anote.ai/" className="AboutProj bg-seeMore">
+                                    <p className="AboutProj-content">
+                                        <b className="text-black">Branding + web design</b>
+                                        <div> </div>
+                                        I developed a comprehensive branding style guide and designed a cutting-edge website product for an innovative AI startup based in New York City.
+                                    </p>
+                                </a>
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.thewellnessroomnyc.com/" className="AboutProj bg-seeMore">
+                                    <p className="AboutProj-content">
+                                        <b className="text-black">Web design + development</b>
+                                        <div> </div>
+                                        I designed and developed a marketing website for a massage clinic, showcasing their services and taking customer inquiries.
+                                    </p>
+                                </a>
+
+                            </div>
+
+
+                            <div className="threecolumn-row">
+                                <h2>Passion projects</h2>
+
+
+                                <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
+                                    <p className="AboutProj-content">
+                                        <b className="text-black">Integrated system </b>
+                                        <div> </div>
+                                        A home automation passion project that reflects the automation status quo.
+                                    </p>
+                                </a>
+                                <Link to="thesis" className="AboutProj">
+                                    <p className="AboutProj-content">
+                                        <b className="text-black">Thesis </b>
+                                        <div> </div>
+                                        A one-year research project that defines my focus on the human-technology relationship.
+                                    </p>
+                                </Link>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+
+                    {/* Contact */}
+                    <div id="seeMore" className="sessionContainer bg-seeMore" style={{ height: '300pt', position: 'relative' }} >
+                        <div className="seeMore">
                             <h1>Haven’t seen enough?</h1>
                             <p>
-                                Click below if you’d like to see more of my coding and writing work. You will find them in my project list.
+                                DM me. I will show you more.
                                 <br />
-                                <PinkButton
-                                    innerLink={true}
-                                    label="See more projects"
-                                    link="contact"
-                                />
                             </p>
+                            <Button
+                                underLined={false}
+                                label="Contact me"
+                                link="mailto: wangxbella0108@gmail.com"
+                            />
                         </div>
                     </div>
-
-
-                    {/* contact */}
-                    <div style={windowHeight} id="Contact" className="sessionContainer contactPart">
-                        <div id="contactPart">
-
-                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                                <a href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
-                                    <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
-                                </a>
-
-                                <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
-                                    <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
-                                </a>
-                            </div>
-                            <div className="black">
-                                <h2> wangxbella0108@gmail.com</h2>
-                                <h2> +1 (908) 391 – 6750</h2>
-                            </div>
-                        </div>
-                    </div>
-
 
 
                 </div>
@@ -304,3 +324,28 @@ class Homepage extends React.Component {
 }
 
 export default Homepage;
+
+
+
+{/* product studio
+                    <div id="ProductStudio" className="black sessionContainer reverse bg-cornell" style={windowHeight} >
+                        <div className="contentblock">
+                            <Labeling
+                                time="Product research"
+                                color="black"
+                            />
+                            <h1>How to hire millennial technical talents</h1>
+                            <p>
+                                This is a four-month product design challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
+                                <br />
+                                <Button
+                                    underLined={true}
+                                    label="Read the case"
+                                    link="product-studio"
+                                />
+                            </p>
+                        </div>
+                        <div className="imgblock">
+                            <img src={ProductStudio} className="DODCornellImg" alt="ProductStudio"></img>
+                        </div>
+                    </div> */}

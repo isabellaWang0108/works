@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Github from "../assets/images/contact/github.svg"
 import Linkedin from "../assets/images/contact/linkedin.svg"
 import Email from "../assets/images/contact/email.svg"
-import PinkButton from "./pinkButton"
+import Button from "./myButton"
 
 
 class InpageContactMe extends Component {
@@ -27,8 +27,8 @@ class InpageContactMe extends Component {
 
                     <h3 className="bold" style={{ marginTop: '28pt', marginRight: '16pt' }}>or</h3>
 
-                    <PinkButton
-                        innerLink={true}
+                    <Button
+                        underLined={false}
                         label="See other projects"
                         link="/"
                     />

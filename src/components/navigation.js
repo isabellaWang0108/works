@@ -13,13 +13,13 @@ const container = {
 }
 
 const navigation = {
-    width: "100%",
+    width: "96%",
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
     padding: '20px 12px',
     alignItems: 'center',
-    backgroundColor: 'rgba(250, 220, 224, 0.6)'
+    backdropFilter: 'blur(15pt)'
 }
 
 const logo = {
@@ -46,11 +46,11 @@ class NavigationBar extends Component {
                         <div style={logo} className="logo bold pink">Isabella Wang</div>
                     </Link>
 
-                    <Link className="pink" to="/contact">
+                    {/* <Link className="pink" to="/contact">
                         <a href="/" className="bold pink navigationMargin">Project list</a>
-                    </Link>
+                    </Link> */}
 
-                    <a style={{ marginRight: 16 }} href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bold pink">
+                    <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bold pink">
                         Resume
                     </a>
 
