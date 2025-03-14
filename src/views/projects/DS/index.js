@@ -11,7 +11,7 @@ import Pic4 from "../../../assets/images/DesignSystem/ds_pic4.png"
 import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.png"
 import Pic6 from "../../../assets/images/DesignSystem/ds_pic6.png"
 import Pic7 from "../../../assets/images/DesignSystem/ds_pic7.png"
-import Pic8 from "../../../assets/images/DesignSystem/ds_pic8.png"
+import Pic8 from "../../../assets/images/DesignSystem/ds_pic8.svg"
 import Pic9 from "../../../assets/images/DesignSystem/ds_pic9.svg"
 import Pic10 from "../../../assets/images/DesignSystem/ds_pic10.svg"
 import Pic11 from "../../../assets/images/DesignSystem/ds_pic11.svg"
@@ -153,56 +153,66 @@ class DS extends React.Component {
 
                             <img src={Pic5} width="100%" alt="img" />
                             <br />
-                            <h3>Review and iteration</h3>
-                            <p>This is one of the hardest parts of my typography system work -- the system not only needs to be logical but also lovable. If no users are willing to use the seemingly ideal system, it is merely a piece of artwork. I reviewed my solution with 22 designers on the team to identify any problems that may stop them from using the system. It took three months, millions of review and iterations to reach the point that our designers like it and will use it. </p>
-                            <p>* As we took an incremental approach, I came up with 1:1 mapping and ultimate redesign to help the team see both the near future and the future.</p>
+                            <h3>Decide on the approach</h3>
+                            <p>To compared the pros and cons of incremental and radical change with the design and engineering manager. Given our limited resources, we chose the incremental approach.</p>
                             <img src={Pic8} width="100%" alt="img" />
                             <br />
                         </div>
                         <div className="content-block" id="section3">
                             <h2>The solution</h2>
-                            <p>Below is the solution we landed on after 2 months of review and iteration.</p>
                             <h3>A unified type system</h3>
-                            <p>As a solution to incoherence. The new font combo reflects the identity of different products and the company’s brand. </p>
+                            <p>As a solution to incoherence. The new system reflects the identity of the company and the needs of different products. </p>
                             <img src={Pic9} width="100%" alt="img" />
                             <h3>Semantic naming convention</h3>
                             <p>In response to the designer’s pain point that the current system was hard to use, I built the style and the usage into the name itself.</p>
                             <img src={Pic10} width="100%" alt="img" />
-                            <h3>Bonus point: accessibility</h3>
-                            <p>The new typography choice had more clarity on the letters, ligatures and symbols. Thus, a bonus point from this typography revamp is accessibility. </p>
+                            <h3>Accessibility</h3>
+                            <p>The new typography choice had more clarity on the letters, ligatures and symbols, which makes it friendly to people with dyslexia.  </p>
                             <img src={Pic11} width="100%" alt="img" />
                         </div>
 
                         <div className="content-block" id="section4">
                             <h2>Technical implementation</h2>
-                            <p>To bring the design to practice, the outcome needs to be in a tangible format. The typography solution was implemented within the tool people use daily. Below is the tech stack of the tools for both engineers and designers.</p>
+                            <p>To translate the design into practice, the typography solution was integrated directly into the tools used daily. The implementation includes:
+                            </p>
+                            <ul>
+                                <li>A documentation website for guidelines and reference</li>
+                                <li>A style dictionary to maintain consistency across platforms</li>
+                                <li>A Figma library for seamless adoption by designers and engineers</li>
+                            </ul>
                             <img src={Pic12} width="100%" alt="img" />
                             <h3>1. Documentation Website</h3>
-                            <p>Usage and system documentation is crucial to scalability, as designers and engineers can refer to the document whenever they need references or have questions. If the entire product design and front-end team(50+ people) come to me to ask questions, things get out of control quickly.</p>
-                            <p>Check out the final outcome: <a href="https://terra.vts.com/foundation/typography/overview">terra.vts.com/foundation/typography/overview</a></p>
+                            <p>Scalable design relies on solid documentation, enabling a 50+ person team to find answers independently. Without it, constant inquiries would create bottlenecks. A well-structured system ensures consistency, efficiency, and smooth workflows.</p>
+                            <p>Check out the shipped documentation: <a href="https://terra.vts.com/foundation/typography/overview">terra.vts.com/foundation/typography/overview</a></p>
                             <img src={Pic13} width="100%" alt="img" />
                             <h3>2. Style dictionary</h3>
-                            <p>This tool is specific to developers. It’s the package they can import and use without re-defining the style every time. </p>
+                            <p>Developers can import and use a package without re-defining the style every time. </p>
                             <img src={Pic14} width="100%" alt="img" />
                             <h3>3. Figma library</h3>
-                            <p>This tool is specific to designers. It lets designers pick the newly defined styles without designing from zero.</p>
+                            <p> Designers can pick the pre-defined styles without designing from zero.</p>
                             <img src={Pic15} width="100%" alt="img" />
                         </div>
 
                         <div className="content-block" id="section5">
                             <h2>Soft implementation</h2>
-                            <p>People often don’t get complex things immediately, so it’s important to repeat as many times as it takes for people to understand the system. I ran workshops and meetings to ensure people know how to use the typography tokens as part of my maintenance. This step often reveals new problems and needs—for instance, a new typography style, ambiguity in the documentation, or confusion around the usage.</p>
-                            <p>System work never ends. There is no perfect system. The process infinitely repeats itself as the problems and needs endlessly occur. </p>
+                            <p>   Understanding complex systems takes time, so repetition is key. I ran workshops and meetings to ensure adoption of typography tokens, often uncovering new issues—whether missing styles, unclear documentation, or usage confusion.
+                            </p>
+                            <p>
+                                System work is never truly finished. There is no perfect solution—only continuous iteration as new challenges emerge.
+                            </p>
                             <img src={Pic16} width="100%" alt="img" />
                         </div>
 
                         <div className="content-block" id="section6">
                             <h2>The biggest challenge</h2>
-                            <p>My biggest challenge of the work was launching the system. From experience, I learned people naturally resist changes.</p>
-                            <p>The story started from the launching date. After 4 months of review and iterations with the design team, we were finally ready to launch and make a real impact. My team submitted a pull request in the morning. 20 mins later, we were flooded with urgent emails and messages from the sales, clients, and product management teams. They all freaked out about the change and wanted us to change back. To calm the situation, we reverted the change immediately. My team received tons of feedback on the typography as people's feathers ruffled: it was not readable or looked ugly. </p>
-                            <p>But is that true? We had design research and experimentations to back us up on the readability and aesthetics. Lots of feedback were out of emotional response rather than rational evaluation. Just like when Apple released the flat UI or Google redesigned their App logos, people hated them. People hated them because things were different, not because the change was not good. </p>
-                            <p>So what's the solution here? Communication. After the incident, we did lots and lots of communications with all the teams across the company. We conducted meetings with the product team to explain the rationale, we talked to the sales team to set up a release plan, and we also asked the C-suites to back us up. Finally, we got to release the changes. It took almost 8 months to release the typography system eventually. </p>
-                            <p>I also learned a valuable lesson that explanations and communications are important when it comes to change. People are change-averse by nature. Being a system designer means being good at persuading people to adopt changes. </p>
+                            <p>Launching the system was the biggest challenge—people resist change.</p>
+                            <p>    After months of iterations and alignment withint the product, design, and engineering team, we pushed the update. Within 20 minutes, panic erupted—sales, clients, and product managers flooded us with complaints, forcing an immediate rollback. Claims of unreadability and ugliness surfaced, but our research proved otherwise. The backlash was emotional, not rational—just like reactions to Apple’s flat UI or Google’s logo redesign.
+                            </p>
+                            <p>
+                                The solution? Communication. We joined calls with the sales and secured C-suite support. Eight months later, the system finally launched.
+                            </p>
+                            <p>
+                                Lesson learned: A system designer’s job isn’t just building—it’s driving adoption. </p>
                         </div>
 
                         <div className="content-block" >

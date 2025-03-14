@@ -139,7 +139,7 @@ class Homepage extends React.Component {
                         </Canvas>
                     </div>
 
-                    <div id="professionalW" style={{ display:'flex', flexDirection:'column', width:'100vw',position:'relative', margin: '24px auto 2px auto', alignItems:'center', zIndex:100, background: '#3725369a', backdropFilter: 'blur(11px)' }}>
+                    <div id="professionalW" style={{ display:'flex', flexDirection:'column', width:'100vw',position:'relative', margin: '24px auto 2px auto', alignItems:'center', zIndex:100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}>
                         <h1>Professional work</h1>
                     </div>
                     <div className="projectRow">
@@ -272,7 +272,7 @@ class Homepage extends React.Component {
                                     <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@wangxbella0108/experiment-of-chatgpts-effects-on-decisions-confidence-399ae25c3ad1" className="AboutProj bg-seeMore">
                                         <p className="AboutProj-content">
                                             <b className="text-black">AI on decision making</b>
-                                            <div> </div>
+                                            &#13;&#10;
                                             This is a research project to understand whether advice from AI has an impact on decision-making or confidence levels in people.
                                         </p>
                                     </a>
@@ -280,7 +280,7 @@ class Homepage extends React.Component {
                                     <a target="_blank" rel="noopener noreferrer" href="https://www.figma.com/proto/BGDErRAzTp8rVP3IySHUH4/GPT-Explanation?page-id=10%3A2&node-id=33-2&viewport=492%2C81%2C0.03&t=EmuS1i0dIl5eAal3-1&scaling=scale-down-width&content-scaling=fixed" className="AboutProj bg-seeMore">
                                         <p className="AboutProj-content">
                                             <b className="text-black">Visually explaining how ChatGPT works</b>
-                                            <div> </div>
+                                            &#13;&#10;
                                             This project provides a visualized, step-by-step explanation designed to help non-technical audiences understand how ChatGPT works.
                                         </p>
                                     </a>
@@ -295,14 +295,14 @@ class Homepage extends React.Component {
                                     <a href="https://medium.com/@wangxbella0108/how-smart-to-be-a-smart-home-d4c53322e1ff" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
                                         <p className="AboutProj-content">
                                             <b className="text-black">Integrated system </b>
-                                            <div> </div>
+                                            &#13;&#10;
                                             A home automation passion project that reflects the automation status quo.
                                         </p>
                                     </a>
                                     <Link to="thesis" className="AboutProj">
                                         <p className="AboutProj-content">
                                             <b className="text-black">Thesis </b>
-                                            <div> </div>
+                                            &#13;&#10;
                                             A one-year research project that defines my focus on the human-technology relationship.
                                         </p>
                                     </Link>

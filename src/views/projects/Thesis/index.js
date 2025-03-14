@@ -28,11 +28,11 @@ class Thesis extends React.Component {
 
 
     turnPink = (theclass) => {
-        $("." + theclass + " a").css("color", "#FC2293")
+        $("." + theclass + " a").css("color", "#ff65b5")
             .css("font-weight", "bold")
     }
     neutral = () => {
-        $("li a").css("color", "black")
+        $("li a").css("color", "white")
             .css("text-decoration", "none")
             .css("font-weight", "normal")
     }
