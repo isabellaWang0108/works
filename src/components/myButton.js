@@ -48,7 +48,7 @@ class Button extends React.Component {
                         style={button}
                         onMouseEnter={this.mouseEnter}
                         onMouseOut={this.mouseOut}
-                        onClick={(e) => e.stopPropagation()} // Prevent bubbling issues
+                        onClick={(e) => e.stopPropagation()} 
                     >
                         {this.props.label}
                     </button>
@@ -58,10 +58,7 @@ class Button extends React.Component {
                     style={button}
                     onMouseEnter={this.mouseEnter}
                     onMouseOut={this.mouseOut}
-                    onClick={(e) => {
-                        e.preventDefault();
-                        window.open(this.props.link, "_blank");
-                    }}
+                    onClick={this.onClick}
                 >
                     {this.props.label}
                 </button>

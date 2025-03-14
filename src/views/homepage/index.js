@@ -139,7 +139,7 @@ class Homepage extends React.Component {
                         </Canvas>
                     </div>
 
-                    <div id="professionalW" style={{ display:'flex', flexDirection:'column', width:'100vw',position:'relative', margin: '24px auto 2px auto', alignItems:'center', zIndex:100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}>
+                    <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}>
                         <h1>Professional work</h1>
                     </div>
                     <div className="projectRow">
@@ -229,12 +229,12 @@ class Homepage extends React.Component {
                                 </p>
                             </div>
                             <div className="contentblock">
-                            
-                                    <UnderlineBtn
-                                        innerLink={false}
-                                        label="See the website"
-                                        link="https://anote.ai/"
-                                    />
+
+                                <UnderlineBtn
+                                    innerLink={false}
+                                    label="See the website"
+                                    link="https://anote.ai/"
+                                />
 
                             </div>
 
@@ -250,11 +250,11 @@ class Homepage extends React.Component {
                             <h1>About me</h1>
                             <div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                                    <a  target="_blank" rel="noopener noreferrer" href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
                                         <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
                                     </a>
 
-                                    <a  target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/isabella-wang-310181149/">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/isabella-wang-310181149/">
                                         <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
                                     </a>
                                 </div>
@@ -270,19 +270,21 @@ class Homepage extends React.Component {
                                     <h2>AI relevent research</h2>
 
                                     <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@wangxbella0108/experiment-of-chatgpts-effects-on-decisions-confidence-399ae25c3ad1" className="AboutProj bg-seeMore">
-                                        <p className="AboutProj-content">
-                                            <b className="text-black">AI on decision making</b>
-                                            &#13;&#10;
-                                            This is a research project to understand whether advice from AI has an impact on decision-making or confidence levels in people.
-                                        </p>
+                                        <div className="AboutProj-content">
+                                            <p className="text-black bold">AI's impact on decision making</p>
+                                            <p className="text-black">
+                                                This is a research project to understand whether advice from AI has an impact on decision-making or confidence levels in people.
+                                            </p>
+                                        </div>
                                     </a>
+                                    <p> </p>
 
                                     <a target="_blank" rel="noopener noreferrer" href="https://www.figma.com/proto/BGDErRAzTp8rVP3IySHUH4/GPT-Explanation?page-id=10%3A2&node-id=33-2&viewport=492%2C81%2C0.03&t=EmuS1i0dIl5eAal3-1&scaling=scale-down-width&content-scaling=fixed" className="AboutProj bg-seeMore">
-                                        <p className="AboutProj-content">
-                                            <b className="text-black">Visually explaining how ChatGPT works</b>
-                                            &#13;&#10;
-                                            This project provides a visualized, step-by-step explanation designed to help non-technical audiences understand how ChatGPT works.
-                                        </p>
+                                        <div className="AboutProj-content">
+                                            <p className="text-black bold">Visually explaining how ChatGPT works</p>
+                                            <p className="text-black">     This project provides a visualized, step-by-step explanation designed to help non-technical audiences understand how ChatGPT works.
+                                            </p>
+                                        </div>
                                     </a>
 
                                 </div>
@@ -293,18 +295,18 @@ class Homepage extends React.Component {
 
 
                                     <a href="https://medium.com/@wangxbella0108/how-smart-to-be-a-smart-home-d4c53322e1ff" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
-                                        <p className="AboutProj-content">
-                                            <b className="text-black">Integrated system </b>
-                                            &#13;&#10;
-                                            A home automation passion project that reflects the automation status quo.
-                                        </p>
+                                        <div className="AboutProj-content">
+                                            <p className="text-black bold">Integrated system</p>
+                                            <p className="text-black"> This is a blogging post on my home automation project. I have reflected my thoughts on IoT's status quo in my writing.</p>
+                                        </div>
                                     </a>
+                                    <p> </p>
+
                                     <Link to="thesis" className="AboutProj">
-                                        <p className="AboutProj-content">
-                                            <b className="text-black">Thesis </b>
-                                            &#13;&#10;
-                                            A one-year research project that defines my focus on the human-technology relationship.
-                                        </p>
+                                        <div className="AboutProj-content">
+                                            <p className="text-black bold">Digital art</p>
+                                            <p className="text-black">  This is a one-year art project that captures my opinions on the human-technology relationship.</p>
+                                        </div>
                                     </Link>
                                 </div>
                             </div>
