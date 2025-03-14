@@ -154,7 +154,7 @@ class Kiosk extends React.Component {
 
                         <div className="content-block" id="section3">
                             <h2>Research</h2>
-                            <p>Below is a compilation of finding I got from user research, design critiques, and hands-on experimentation with devices.</p>
+                            <p>Below is a compilation of findings I got from user research, design critiques, and hands-on experimentation with devices.</p>
 
                             <h3>1. QR code scanning convention</h3>
                             <p>Many users have established mental models of using QR codes, particularly in the post-COVID era, so it’s crucial to replicate familiar interactions rather than introduce entirely novel ones. </p>
@@ -203,7 +203,7 @@ class Kiosk extends React.Component {
 
                             <h3>No room for illegibility risk.  </h3>
                             <p>
-                                The first design posts illegibility risks based on the customer’s image selection.
+                                The first design poses illegibility risks based on the customer’s image selection.
                             </p>
                             <img alt="prototype" width="100%" src={Pic9} />
 
@@ -227,7 +227,7 @@ class Kiosk extends React.Component {
                                 The team decided to use data to determine whether the benefits of breaking the design system justify the potential risks.
                             </p>
                             <img alt="prototype" width="100%" src={Pic12} />
-                            <p>In the test, we set up 2 criteria to determine which design to go with usability and preference</p>
+                            <p>In the test, we set up 2 criteria to determine which design to go with: usability and preference.</p>
 
                             <h3>Test 1: Usability</h3>
                             <p>
@@ -251,7 +251,7 @@ class Kiosk extends React.Component {
                             <img alt="prototype" width="100%" src={Pic15} />
 
                             <h3>Error states</h3>
-                            <p>Things don’t always go smoothly and we need to be ready for all the possible errors.</p>
+                            <p>Things don’t always go smoothly, and we need to be ready for all the possible errors.</p>
                             <img alt="prototype" width="100%" src={Pic16} />
 
                             <h3>Responsive design</h3>
