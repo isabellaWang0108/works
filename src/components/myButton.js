@@ -42,27 +42,43 @@ class Button extends React.Component {
         $(e.currentTarget).css('fontSize', 24);
         $(e.currentTarget).css('opacity', '1');
     }
-    onClick(data) {
-        window.open(data, '_blank');
-    }
+
     render() {
 
         return (
-            this.props.underLined ?
-                <NavLink to={this.props.link}>
-                    <button
-                        className="myButton"
-                        style={underLined}
-                        href={this.props.link}
-                        onMouseEnter={(e) => this.mouseEnter(e)}
-                        onMouseOut={(e) => this.mouseOut(e)}
-                        onClick={this.props.onClick}>
-                        {this.props.label}
-                        <span style={{ margin: '0pt 4pt' }}>
-                            <img style={{ width: '13pt', color:'black' }} src={NewPage} />
-                        </span>
-                    </button>
-                </NavLink> :
+            this.props.underLined ? (
+                this.props.link.startsWith('https') ? (
+                    <a href={this.props.link} target="_blank" rel="noopener noreferrer">
+                        <button
+                            className="myButton"
+                            style={underLined}
+                            onMouseEnter={(e) => this.mouseEnter(e)}
+                            onMouseOut={(e) => this.mouseOut(e)}
+                            onClick={this.props.onClick}
+                        >
+                            {this.props.label}
+                            <span style={{ margin: '0pt 4pt' }}>
+                                <img style={{ width: '13pt', color: 'black' }} src={NewPage} alt="new page" />
+                            </span>
+                        </button>
+                    </a>
+                ) : (
+                    <NavLink to={this.props.link}>
+                        <button
+                            className="myButton"
+                            style={underLined}
+                            onMouseEnter={(e) => this.mouseEnter(e)}
+                            onMouseOut={(e) => this.mouseOut(e)}
+                            onClick={this.props.onClick}
+                        >
+                            {this.props.label}
+                            <span style={{ margin: '0pt 4pt' }}>
+                                <img style={{ width: '13pt', color: 'black' }} src={NewPage} alt="new page" />
+                            </span>
+                        </button>
+                    </NavLink>
+                )
+            ) :
                 <button
                     style={button}
                     className="myButton"

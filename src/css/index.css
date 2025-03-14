@@ -53,12 +53,12 @@ a {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 28px;
   line-height: 32px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 28px;
 }
 
@@ -82,7 +82,7 @@ li {
 }
 
 .grey {
-  color: #575757;
+  color: #d5d5d5;
 }
 
 .pink {
@@ -172,7 +172,7 @@ li {
   width: 20%;
   border: 0;
   outline: 0;
-  border-right: 1px solid #fc229338;
+  border-right: 1px solid #fd6bb7;
   z-index: 8;
   position: fixed;
   left: 0;
@@ -329,6 +329,8 @@ a:hover {
 .projectRow {
   display: flex;
   flex-direction: row;
+  width:100vw;
+  overflow: hidden;
 }
 
 /* Homepage CSS */
@@ -411,7 +413,7 @@ a:hover {
   position: relative;
   overflow: hidden;
   z-index: 100;
-  padding: 54pt 28pt;
+  padding: 54pt 0pt;
   width: 100vw;
   height: 400pt;
 }
@@ -477,7 +479,8 @@ a:hover {
   width: 50%;
 }
 
-@media only screen and (max-width: 769px) {
+
+@media only screen and (max-width: 780px) {
 
   .card {
     width: 80%;
@@ -529,14 +532,6 @@ a:hover {
     font-size: 18px;
   }
 
-  .DODCornellImg {
-    margin-bottom: 24px;
-  }
-
-  .ventureImg {
-    width: 80%
-  }
-
   .DODCornell {
     align-items: center;
     flex-direction: column;
@@ -565,10 +560,6 @@ a:hover {
 
   }
 
-  .timeLine {
-    margin-left: 0px;
-  }
-
 
   .threecolumn {
     display: flex;
@@ -588,7 +579,7 @@ a:hover {
   }
 
   .seeMore{
-    width:95vw;
+    width:86vw;
   }
 
   /* Content page */
@@ -620,11 +611,6 @@ a:hover {
   .content-block {
     margin-top: 2em;
   }
-
-}
-
-
-@media only screen and (max-width: 780px) {
 
   .dropdown {
     display: inherit;
@@ -669,7 +655,7 @@ a:hover {
   .landingpage_Intro {
     font-size: 5em;
     line-height: 1.2;
-    margin-left: 0%;
+    margin-left: 5%;
   }
 
   .AboutProj-content {

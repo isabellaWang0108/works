@@ -7,7 +7,7 @@ import * as THREE from 'three'
 import Labeling from "../../components/labeling"
 import NavigationBar from "../../components/navigation"
 
-import Thesis from "../../assets/images/home/thesis.png"
+import Anote from "../../assets/images/home/anote.png"
 import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
 import Kiosk_img from "../../assets/images/home/kiosk.png"
@@ -104,23 +104,32 @@ class Homepage extends React.Component {
                 {/* navigation bar */}
                 <NavigationBar href="#contactPart" contact />
 
-                <div id="HP_container" className='black HP_container' >
+                <div id="HP_container" className='HP_container' >
 
 
 
                     {/* landing page */}
-                    <div style={windowHeight} className="black sessionContainer" >
+                    <div style={windowHeight} className="sessionContainer" >
                         <div id="landingPart" >
                             <div className='landingpage_Intro'>
 
                                 I design, test, and iterate based on research.
+                                <div> </div>
 
+                                <Button
+                                    underLined={false}
+                                    label="See my work"
+                                    onClick={() =>
+                                        document.getElementById("professionalW")?.scrollIntoView({
+                                            behavior: "smooth",
+                                        })
+                                    }
+                                />
                             </div>
-
 
                         </div>
                         <Canvas
-                            style={{ zIndex: 1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 768 ? "60%" : "100%" }}
+                            style={{ zIndex: 1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 780 ? "60%" : "100%" }}
                             camera={{ position: [3, 5, 15] }}
                         >
                             <hemisphereLight intensity={0.2} groundColor="#555" />
@@ -129,7 +138,9 @@ class Homepage extends React.Component {
                         </Canvas>
                     </div>
 
-                    <div className="sessionContainer" style={{ height: '58pt', padding: '10pt 28pt', backgrounColor: 'rgb()', backdropFilter: 'blur(11px)' }}>   <h1>Professional work</h1></div>
+                    <div id="professionalW" className="sessionContainer" style={{ height: '58pt', backgrounColor: 'rgb()', backdropFilter: 'blur(11px)' }}>
+                        <h1>Professional work</h1>
+                    </div>
                     <div className="projectRow">
                         {/* Kiosk */}
                         <div id="Kiosk" className="sessionContainer bg-kiosk">
@@ -207,21 +218,23 @@ class Homepage extends React.Component {
 
 
                         {/* Thesis Campy */}
-                        <div id="Thesis" className="sessionContainer bg-thesis">
+                        <div id="Anote" className="sessionContainer bg-thesis">
                             <div className="contentblock">
-                                <img src={Thesis} alt="thesis" className="campy img" />
+                                <img src={Anote} alt="thesis" className="campy img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Researching the future of technology and humanity.</h1>
-                                <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest.
+                                <h1>A futuristic website for an AI startup</h1>
+                                <p> I developed the style strategy and designed a marketing website for an innovative AI startup to introduce their products.
                                 </p>
                             </div>
                             <div className="contentblock">
-                                <Button
-                                    underLined={true}
-                                    label="See works"
-                                    link="thesis"
-                                />
+                            
+                                    <Button
+                                        underLined={true}
+                                        label="See the website"
+                                        link="https://anote.ai/"
+                                    />
+
                             </div>
 
                         </div>
@@ -231,7 +244,7 @@ class Homepage extends React.Component {
 
 
                     {/* About Me */}
-                    <div id="seeMore" className="sessionContainer" style={{ height: 'auto', position: 'relative'}} >
+                    <div id="seeMore" className="sessionContainer" style={{ height: 'auto', position: 'relative' }} >
                         <div className="seeMore">
                             <h1>About me</h1>
                             <div>
@@ -245,55 +258,55 @@ class Homepage extends React.Component {
                                     </a>
                                 </div>
                             </div>
-                            <p style={{maxWidth:'700pt'}}>
+                            <p style={{ maxWidth: '700pt' }}>
                                 I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
                             </p>
-                       
+
                             <p>I have more work for you to get to know me:</p>
 
                             <div className="threecolumn">
-                            <div className="threecolumn-row">
-                                <h2>Freelance Design work</h2>
+                                <div className="threecolumn-row">
+                                    <h2>AI relevent research</h2>
 
-                                <a target="_blank" rel="noopener noreferrer" href="https://anote.ai/" className="AboutProj bg-seeMore">
-                                    <p className="AboutProj-content">
-                                        <b className="text-black">Branding + web design</b>
-                                        <div> </div>
-                                        I developed a comprehensive branding style guide and designed a cutting-edge website product for an innovative AI startup based in New York City.
-                                    </p>
-                                </a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@wangxbella0108/experiment-of-chatgpts-effects-on-decisions-confidence-399ae25c3ad1" className="AboutProj bg-seeMore">
+                                        <p className="AboutProj-content">
+                                            <b className="text-black">AI on decision making</b>
+                                            <div> </div>
+                                            This is a research project to understanding whether advice from AI has a comparable impact on decision-making or confidence levels in people.
+                                        </p>
+                                    </a>
 
-                                <a target="_blank" rel="noopener noreferrer" href="https://www.thewellnessroomnyc.com/" className="AboutProj bg-seeMore">
-                                    <p className="AboutProj-content">
-                                        <b className="text-black">Web design + development</b>
-                                        <div> </div>
-                                        I designed and developed a marketing website for a massage clinic, showcasing their services and taking customer inquiries.
-                                    </p>
-                                </a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.figma.com/proto/BGDErRAzTp8rVP3IySHUH4/GPT-Explanation?page-id=10%3A2&node-id=33-2&viewport=492%2C81%2C0.03&t=EmuS1i0dIl5eAal3-1&scaling=scale-down-width&content-scaling=fixed" className="AboutProj bg-seeMore">
+                                        <p className="AboutProj-content">
+                                            <b className="text-black">Visually explaining how ChatGPT works</b>
+                                            <div> </div>
+                                            This project provides a visualized, step-by-step explanation designed to help non-technical audient understand how ChatGPT works.
+                                        </p>
+                                    </a>
 
+                                </div>
+
+
+                                <div className="threecolumn-row">
+                                    <h2>Passion projects</h2>
+
+
+                                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
+                                        <p className="AboutProj-content">
+                                            <b className="text-black">Integrated system </b>
+                                            <div> </div>
+                                            A home automation passion project that reflects the automation status quo.
+                                        </p>
+                                    </a>
+                                    <Link to="thesis" className="AboutProj">
+                                        <p className="AboutProj-content">
+                                            <b className="text-black">Thesis </b>
+                                            <div> </div>
+                                            A one-year research project that defines my focus on the human-technology relationship.
+                                        </p>
+                                    </Link>
+                                </div>
                             </div>
-
-
-                            <div className="threecolumn-row">
-                                <h2>Passion projects</h2>
-
-
-                                <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
-                                    <p className="AboutProj-content">
-                                        <b className="text-black">Integrated system </b>
-                                        <div> </div>
-                                        A home automation passion project that reflects the automation status quo.
-                                    </p>
-                                </a>
-                                <Link to="thesis" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b className="text-black">Thesis </b>
-                                        <div> </div>
-                                        A one-year research project that defines my focus on the human-technology relationship.
-                                    </p>
-                                </Link>
-                            </div>
-                        </div>
                         </div>
 
                     </div>
