@@ -1,13 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import $ from 'jquery';
+import NewPage from "../assets/icons/newPage.svg"
 
 const button = {
     borderWidth: 2,
     padding: 12,
     cursor: 'pointer',
     color: "white",
-    fontSize: 21,
+    fontSize: 24,
     borderRadius: 12,
     marginLeft: 0,
     marginTop: 24,
@@ -18,9 +19,18 @@ const button = {
     boxSizing: 'border-box'
 }
 
+const underLined = {
+    textDecoration: 'underline',
+    borderWidth: 0,
+    fontSize: 24,
+    marginLeft: 0,
+    padding: 0,
+    marginTop: 24,
+    backgroundColor: 'transparent',
+    cursor: 'pointer',
+}
 
-class Button extends React.Component {
-
+class underLinedBtn extends React.Component {
 
     mouseEnter(e) {
         $(e.currentTarget).css('fontWeight', '800');
@@ -33,29 +43,24 @@ class Button extends React.Component {
         $(e.currentTarget).css('opacity', '1');
     }
 
-    onClick = (e) => {
-        e.preventDefault()
-        if (this.props.onClick) {
-            this.props.onClick();
-        }
-    }
-
     render() {
         return (
             this.props.innerLink ? (
                 <NavLink to={this.props.link}>
                     <button
-                        style={button}
+                        style={underLined}
                         onMouseEnter={this.mouseEnter}
                         onMouseOut={this.mouseOut}
                         onClick={(e) => e.stopPropagation()} // Prevent bubbling issues
                     >
-                        {this.props.label}
+                        {this.props.label} <span style={{ margin: '0pt 4pt' }}>
+                            <img style={{ width: '13pt', color: 'black' }} src={NewPage} alt="new page" />
+                        </span>
                     </button>
                 </NavLink>
             ) : (
                 <button
-                    style={button}
+                    style={underLined}
                     onMouseEnter={this.mouseEnter}
                     onMouseOut={this.mouseOut}
                     onClick={(e) => {
@@ -63,7 +68,9 @@ class Button extends React.Component {
                         window.open(this.props.link, "_blank");
                     }}
                 >
-                    {this.props.label}
+                    {this.props.label} <span style={{ margin: '0pt 4pt' }}>
+                            <img style={{ width: '13pt', color: 'black' }} src={NewPage} alt="new page" />
+                        </span>
                 </button>
             )
         );
@@ -72,4 +79,4 @@ class Button extends React.Component {
 
 
 
-export default Button;
+export default underLinedBtn;

@@ -12,6 +12,7 @@ import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
 import Kiosk_img from "../../assets/images/home/kiosk.png"
 import Button from "../../components/myButton"
+import UnderlineBtn from "../../components/underLinedBtn"
 import Github from "../../assets/images/contact/github.svg"
 import Linkedin from "../../assets/images/contact/linkedin.svg"
 import { Link } from "react-router-dom";
@@ -117,7 +118,7 @@ class Homepage extends React.Component {
                                 <div> </div>
 
                                 <Button
-                                    underLined={false}
+                                    innerLink={false}
                                     label="See my work"
                                     onClick={() =>
                                         document.getElementById("professionalW")?.scrollIntoView({
@@ -156,8 +157,8 @@ class Homepage extends React.Component {
                                 </p>
                             </div>
                             <div className="contentblock">
-                                <Button
-                                    underLined={true}
+                                <UnderlineBtn
+                                    innerLink={true}
                                     label="Read the case"
                                     link="kiosk"
                                 />
@@ -179,8 +180,8 @@ class Homepage extends React.Component {
                                 </p>
                             </div>
                             <div className="contentblock">
-                                <Button
-                                    underLined={true}
+                                <UnderlineBtn
+                                    innerLink={true}
                                     label="Read the case"
                                     link="design-system"
                                 />
@@ -205,8 +206,8 @@ class Homepage extends React.Component {
                             </div>
 
                             <div className="contentblock">
-                                <Button
-                                    underLined={true}
+                                <UnderlineBtn
+                                    innerLink={true}
                                     label="Read the case"
                                     link="voice"
                                 />
@@ -217,7 +218,7 @@ class Homepage extends React.Component {
 
 
 
-                        {/* Thesis Campy */}
+                        {/* Anote*/}
                         <div id="Anote" className="sessionContainer bg-thesis">
                             <div className="contentblock">
                                 <img src={Anote} alt="thesis" className="campy img" />
@@ -229,8 +230,8 @@ class Homepage extends React.Component {
                             </div>
                             <div className="contentblock">
                             
-                                    <Button
-                                        underLined={true}
+                                    <UnderlineBtn
+                                        innerLink={false}
                                         label="See the website"
                                         link="https://anote.ai/"
                                     />
@@ -249,11 +250,11 @@ class Homepage extends React.Component {
                             <h1>About me</h1>
                             <div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                                    <a href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
+                                    <a  target="_blank" rel="noopener noreferrer" href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
                                         <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
                                     </a>
 
-                                    <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
+                                    <a  target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/isabella-wang-310181149/">
                                         <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
                                     </a>
                                 </div>
@@ -272,7 +273,7 @@ class Homepage extends React.Component {
                                         <p className="AboutProj-content">
                                             <b className="text-black">AI on decision making</b>
                                             <div> </div>
-                                            This is a research project to understanding whether advice from AI has a comparable impact on decision-making or confidence levels in people.
+                                            This is a research project to understand whether advice from AI has an impact on decision-making or confidence levels in people.
                                         </p>
                                     </a>
 
@@ -280,7 +281,7 @@ class Homepage extends React.Component {
                                         <p className="AboutProj-content">
                                             <b className="text-black">Visually explaining how ChatGPT works</b>
                                             <div> </div>
-                                            This project provides a visualized, step-by-step explanation designed to help non-technical audient understand how ChatGPT works.
+                                            This project provides a visualized, step-by-step explanation designed to help non-technical audiences understand how ChatGPT works.
                                         </p>
                                     </a>
 
@@ -291,7 +292,7 @@ class Homepage extends React.Component {
                                     <h2>Passion projects</h2>
 
 
-                                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
+                                    <a href="https://medium.com/@wangxbella0108/how-smart-to-be-a-smart-home-d4c53322e1ff" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
                                         <p className="AboutProj-content">
                                             <b className="text-black">Integrated system </b>
                                             <div> </div>
@@ -312,17 +313,13 @@ class Homepage extends React.Component {
                     </div>
 
                     {/* Contact */}
-                    <div id="seeMore" className="sessionContainer bg-seeMore" style={{ height: '300pt', position: 'relative' }} >
+                    <div id="seeMore" className="sessionContainer" style={{ height: '300pt', position: 'relative' }} >
                         <div className="seeMore">
-                            <h1>Haven’t seen enough?</h1>
-                            <p>
-                                DM me. I will show you more.
-                                <br />
-                            </p>
+                            <h1>Do you want to learn more?</h1>
                             <Button
-                                underLined={false}
+                                innerLink={false}
                                 label="Contact me"
-                                link="mailto: wangxbella0108@gmail.com"
+                                link="mailto:wangxbella0108@gmail.com"
                             />
                         </div>
                     </div>
@@ -352,7 +349,6 @@ export default Homepage;
                                 This is a four-month product design challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
                                 <br />
                                 <Button
-                                    underLined={true}
                                     label="Read the case"
                                     link="product-studio"
                                 />
