@@ -139,12 +139,12 @@ class Homepage extends React.Component {
                         </Canvas>
                     </div>
 
-                    <div id="professionalW" className="sessionContainer" style={{ height: '58pt', backgrounColor: 'rgb()', backdropFilter: 'blur(11px)' }}>
+                    <div id="professionalW" style={{ display:'flex', flexDirection:'column', width:'100vw',position:'relative', margin: '24px auto 2px auto', alignItems:'center', zIndex:100, background: '#3725369a', backdropFilter: 'blur(11px)' }}>
                         <h1>Professional work</h1>
                     </div>
                     <div className="projectRow">
                         {/* Kiosk */}
-                        <div id="Kiosk" className="sessionContainer bg-kiosk">
+                        <div id="Kiosk" className="sessionContainer bg-project-card">
                             <div className="contentblock">
                                 <img src={Kiosk_img} alt="kiosk checkin" className="img" />
                             </div>
@@ -168,7 +168,7 @@ class Homepage extends React.Component {
 
 
                         {/* Desigin system */}
-                        <div id="Design-system" className="sessionContainer bg-ds">
+                        <div id="Design-system" className="sessionContainer bg-project-card">
                             <div className="contentblock">
                                 <img src={DesignSystem} alt="design system" className="img" />
                             </div>
@@ -194,7 +194,7 @@ class Homepage extends React.Component {
 
                     <div className="projectRow">
                         {/* Voice */}
-                        <div id="Voice" className="sessionContainer bg-voice" >
+                        <div id="Voice" className="sessionContainer bg-project-card" >
                             <div className="contentblock">
                                 <img src={Voice} alt="voice" className="img" />
                             </div>
@@ -219,7 +219,7 @@ class Homepage extends React.Component {
 
 
                         {/* Anote*/}
-                        <div id="Anote" className="sessionContainer bg-thesis">
+                        <div id="Anote" className="sessionContainer bg-project-card">
                             <div className="contentblock">
                                 <img src={Anote} alt="thesis" className="campy img" />
                             </div>

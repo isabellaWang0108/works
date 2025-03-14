@@ -102,34 +102,10 @@ li {
   color: #171717;
 }
 
-.bg-thesis {
-  background-color: #252c3797;
+.bg-project-card{
+  background-color: #3725369a;
   backdrop-filter: blur(11px);
-}
-
-.bg-ds {
-  background-color: #302939cd;
-  backdrop-filter: blur(11px);
-}
-
-.bg-voice {
-  background-color: #000000;
-  backdrop-filter: blur(11px);
-}
-
-.bg-cornell {
-  background-color: whitesmoke;
-  backdrop-filter: blur(11px);
-}
-
-.bg-kiosk {
-  background-color: #ddeeff33;
-  backdrop-filter: blur(11px);
-}
-
-.bg-seeMore {
-  background-color: #1b1b1b33;
-  backdrop-filter: blur(11px);
+  margin:2px 2px 2px 2px;
 }
 
 .right-border {
