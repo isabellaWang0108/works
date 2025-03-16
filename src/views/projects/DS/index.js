@@ -20,29 +20,36 @@ import Pic13 from "../../../assets/images/DesignSystem/ds_pic13.png"
 import Pic14 from "../../../assets/images/DesignSystem/ds_pic14.png"
 import Pic15 from "../../../assets/images/DesignSystem/ds_pic15.png"
 import Pic16 from "../../../assets/images/DesignSystem/ds_pic16.png"
+
+import Impact1 from "../../../assets/images/DesignSystem/impact_1.svg"
+import Impact2 from "../../../assets/images/DesignSystem/impact_2.svg"
+import Impact3 from "../../../assets/images/DesignSystem/impact_3.svg"
+import Impact4 from "../../../assets/images/DesignSystem/impact_4.svg"
+
 import InpageContactMe from "../../../components/inpage_contactme"
 
 
 class DS extends React.Component {
 
     content = [
-        { title: "Defining the problems", id: "section1" },
+        { title: "Identifying the problems", id: "section1" },
         { title: "Finding the solutions", id: "section2" },
         { title: "The solution", id: "section3" },
-        { title: "Technical implementation", id: "section4" },
-        { title: "Soft implementation", id: "section5" },
-        { title: "The biggest lesson", id: "section6" },
+        { title: "Implementation", id: "section4" },
+        { title: "People work", id: "section5" },
+        { title: "Impact", id: "section6" },
+        { title: "The biggest lesson", id: "section7" },
     ]
 
 
 
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "bold")
-                                    .css("border", "solid 1px #BDBBBE")
+            .css("border", "solid 1px #BDBBBE")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
-                      .css("border", "solid 1px transparent")
+            .css("border", "solid 1px transparent")
     }
 
     scrollCheck() {
@@ -96,13 +103,9 @@ class DS extends React.Component {
                     <ContentLayout>
                         <h1 id="title">Building a design system </h1>
                         <ProjectContext duration="1 year" team="2 engineers, 2 designers" role="designer"></ProjectContext>
-                        <p>I selected my Typography work at VTS as a case study to showcase my ability to simplify a complex system while introducing accessibility. You can find all my shipped design system work here: <a href="https://terra.vts.com" target="_blank" rel="noopener noreferrer">terra.vts.com</a>.
-                            During my time at VTS, I achieved the following:</p>
-                        <ol>
-                            <li><p>Unify the components across 4+ products.</p></li>
-                            <li><p>Create a sustainable and scalable component library in Figma and in code.</p></li>
-                            <li><p>Streamlined the design to engineering hand-off. </p></li>
-                        </ol>
+                        <p>VTS has 4+ independently developed products with 100+ web pages, each influenced by different design teams, leading to inconsistent styles and legacy design systems across products.</p>
+                       <p>The outcome of my work was to unify the styles across the products and make design system part of the company's design process.   <a href="https://terra.vts.com/">Check out deployed system site here.</a></p>
+                     
                         <img src={Pic1} width="100%" alt="img" />
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
@@ -111,7 +114,7 @@ class DS extends React.Component {
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                           <button className="inpage_menu_item">{item.title}</button>
+                                            <button className="inpage_menu_item">{item.title}</button>
                                         </li>
                                     )
                                 })}
@@ -119,14 +122,14 @@ class DS extends React.Component {
                         </div>
 
                         <div className="content-block" id="section1">
-                            <h2>Defining the problem</h2>
+                            <h2>Identifying the problems</h2>
                             <h3>Issue 1: Incoherent typography usage within the same product </h3>
                             <img src={Pic3} width="100%" alt="img" />
 
                             <h3>Issue 2: Different products used different design systems</h3>
                             <img src={Pic4} width="100%" alt="img" />
 
-                         
+
                         </div>
 
                         <div className="content-block" id="section2">
@@ -170,7 +173,7 @@ class DS extends React.Component {
                         </div>
 
                         <div className="content-block" id="section4">
-                            <h2>Technical implementation</h2>
+                            <h2>Implementation</h2>
                             <p>To translate the design into practice, the typography solution was integrated directly into the tools used daily. The implementation includes:
                             </p>
                             <ul>
@@ -192,7 +195,7 @@ class DS extends React.Component {
                         </div>
 
                         <div className="content-block" id="section5">
-                            <h2>Soft implementation</h2>
+                            <h2>People work</h2>
                             <p>   Understanding complex systems takes time, so repetition is key. I ran workshops and meetings to ensure adoption of typography tokens, often uncovering new issues—whether missing styles, unclear documentation, or usage confusion.
                             </p>
                             <p>
@@ -202,6 +205,17 @@ class DS extends React.Component {
                         </div>
 
                         <div className="content-block" id="section6">
+                            <h2>Impact</h2>
+                        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
+                            <img alt="prototypes" src={Impact1} width="383" />
+                            <img alt="prototypes" src={Impact2} width="468" />
+                            <img alt="prototypes" src={Impact3} width="383" />
+                            <img alt="prototypes" src={Impact4} width="440" />
+                        </div>
+                        </div>
+
+
+                        <div className="content-block" id="section7">
                             <h2>The biggest lesson</h2>
                             <p>Launching the system was the biggest challenge—people resist change.</p>
                             <p>    After months of iterations and alignment withint the product, design, and engineering team, we pushed the update. Within 20 minutes, panic erupted—sales, clients, and product managers flooded us with complaints, forcing an immediate rollback. Claims of unreadability and ugliness surfaced, but our research proved otherwise. The backlash was emotional, not rational—just like reactions to Apple’s flat UI or Google’s logo redesign.
