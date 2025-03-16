@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import $ from 'jquery';
 
 const button = {
+    border:'solid',
     borderWidth: 2,
     padding: 12,
     cursor: 'pointer',

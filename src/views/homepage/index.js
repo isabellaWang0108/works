@@ -4,7 +4,6 @@ import "../../css/index.css"
 import { Canvas, useFrame } from 'react-three-fiber'
 import * as THREE from 'three'
 
-import Labeling from "../../components/labeling"
 import NavigationBar from "../../components/navigation"
 
 import Anote from "../../assets/images/home/anote.png"
@@ -151,7 +150,7 @@ class Homepage extends React.Component {
                             <div className="contentblock">
 
                                 <h1 className="text-white">Kiosk Check-In </h1>
-                                <p className="text-white">This project showcases my design approach when physical interaction and different hardware devices are involved.
+                                <p className="text-white">This project shows my design approach when physical interaction and different hardware devices are involved.
                                     <br />
 
                                 </p>
@@ -200,8 +199,8 @@ class Homepage extends React.Component {
                             </div>
 
                             <div className="contentblock">
-                                <h1>NFT creation feature</h1>
-                                <p>This case study demonstrates my process in a general product development setting.
+                                <h1>Lower the NFT creation barrier</h1>
+                                <p>I designed an NFT marketplace aimed at empowering emerging artists from ground up.
                                 </p>
                             </div>
 
@@ -337,26 +336,3 @@ class Homepage extends React.Component {
 
 export default Homepage;
 
-
-
-{/* product studio
-                    <div id="ProductStudio" className="black sessionContainer reverse bg-cornell" style={windowHeight} >
-                        <div className="contentblock">
-                            <Labeling
-                                time="Product research"
-                                color="black"
-                            />
-                            <h1>How to hire millennial technical talents</h1>
-                            <p>
-                                This is a four-month product design challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
-                                <br />
-                                <Button
-                                    label="Read the case"
-                                    link="product-studio"
-                                />
-                            </p>
-                        </div>
-                        <div className="imgblock">
-                            <img src={ProductStudio} className="DODCornellImg" alt="ProductStudio"></img>
-                        </div>
-                    </div> */}

@@ -64,8 +64,9 @@ h3 {
 
 
 p {
+  font-weight: 400;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 28px;
   color: white;
 }
 
@@ -102,10 +103,10 @@ li {
   color: #171717;
 }
 
-.bg-project-card{
+.bg-project-card {
   background-color: #7c7c7c1f;
   backdrop-filter: blur(11px);
-  margin:2px 2px 2px 2px;
+  margin: 2px 2px 2px 2px;
 }
 
 .right-border {
@@ -145,7 +146,7 @@ li {
 }
 
 .left-nav {
-  width: 20%;
+  width: 15%;
   border: 0;
   outline: 0;
   border-right: 1px solid #fd6bb7;
@@ -156,6 +157,40 @@ li {
   padding: 4px 16px;
   height: 90vh;
   z-index: 0;
+}
+
+button {
+  background: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border:none;
+}
+
+.inpage_menu_item {
+  font-size: 18px;
+  color: white;
+  border: solid 1px transparent;
+  text-align: left;
+  padding: 8px 8px;
+  border-radius: 8px;
+}
+
+.inpage_menu_item:hover {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 7px 8px;
+  color:#BDBBBE;
+}
+
+.backbtn{
+  font-size: 16px;
+}
+
+.backbtn:hover{
+  font-size: 18px;
+  font-weight: bold;
+  color:#BDBBBE;
 }
 
 .icon {
@@ -216,8 +251,8 @@ a:hover {
   margin-top: 4em;
 }
 
-.seeMore{
-  width:70%
+.seeMore {
+  width: 70%
 }
 
 #recommend {
@@ -294,7 +329,7 @@ a:hover {
 
 .AboutProj-content:hover {
   background-color: #dc7dae;
-  font-size:18px;
+  font-size: 18px;
 }
 
 .threecolumn {
@@ -305,7 +340,7 @@ a:hover {
 .projectRow {
   display: flex;
   flex-direction: row;
-  width:100vw;
+  width: 100vw;
   overflow: hidden;
 }
 
@@ -554,8 +589,8 @@ a:hover {
     min-width: 300px;
   }
 
-  .seeMore{
-    width:86vw;
+  .seeMore {
+    width: 86vw;
   }
 
   /* Content page */

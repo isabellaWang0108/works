@@ -28,13 +28,12 @@ class Thesis extends React.Component {
 
 
     turnPink = (theclass) => {
-        $("." + theclass + " a").css("color", "#ff65b5")
-            .css("font-weight", "bold")
+        $("." + theclass + " button").css("font-weight", "bold")
+            .css("border", "solid 1px #BDBBBE")
     }
     neutral = () => {
-        $("li a").css("color", "white")
-            .css("text-decoration", "none")
-            .css("font-weight", "normal")
+        $("li button").css("font-weight", "normal")
+            .css("border", "solid 1px transparent")
     }
 
     scrollCheck() {
@@ -94,7 +93,7 @@ class Thesis extends React.Component {
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                            <a >{item.title}</a>
+                                            <button className="inpage_menu_item">{item.title}</button>
                                         </li>
                                     )
                                 })}

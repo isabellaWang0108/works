@@ -46,9 +46,6 @@ class NavigationBar extends Component {
                         <div style={logo} className="logo bold pink">Isabella Wang</div>
                     </Link>
 
-                    {/* <Link className="pink" to="/contact">
-                        <a href="/" className="bold pink navigationMargin">Project list</a>
-                    </Link> */}
 
                     <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bold pink">
                         Resume
@@ -58,12 +55,12 @@ class NavigationBar extends Component {
 
                 </div >
                 {window.location.hash === '#/' ? null :
-                    <a onClick={this.handleBack} className="icon grey" style={{ width: 100 }}>
-                        <span className="material-symbols-outlined grey">
+                    <button onClick={this.handleBack} className="icon backbtn">
+                        <span className="material-symbols-outlined">
                             arrow_back
                         </span>
-                        &nbsp; Back
-                    </a>
+                         Back
+                    </button>
                 }
             </div>
 

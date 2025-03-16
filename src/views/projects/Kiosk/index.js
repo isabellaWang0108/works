@@ -41,13 +41,12 @@ class Kiosk extends React.Component {
 
 
     turnPink = (theclass) => {
-        $("." + theclass + " a").css("color", "#ff65b5")
-            .css("font-weight", "bold")
+        $("." + theclass + " button").css("font-weight", "bold")
+                                    .css("border", "solid 1px #BDBBBE")
     }
     neutral = () => {
-        $("li a").css("color", "white")
-            .css("text-decoration", "none")
-            .css("font-weight", "normal")
+        $("li button").css("font-weight", "normal")
+                      .css("border", "solid 1px transparent")
     }
 
     scrollCheck() {
@@ -114,7 +113,7 @@ class Kiosk extends React.Component {
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                            <a >{item.title}</a>
+                                            <button className="inpage_menu_item">{item.title}</button>
                                         </li>
                                     )
                                 })}
@@ -185,8 +184,6 @@ class Kiosk extends React.Component {
 
                         <div className="content-block" id="section5">
                             <h2>Iterations</h2>
-                            <img alt="prototype" width="100%" src={Pic7} />
-
                             <p>I'll present selected screens to demonstrate my iterations.</p>
                             <p>
                                 Below is a summary of all prerequisites:
@@ -224,7 +221,7 @@ class Kiosk extends React.Component {
                         <div className="content-block" id="section6">
                             <h2>Testing</h2>
                             <p>
-                                The team decided to use data to determine whether the benefits of breaking the design system justify the potential risks.
+                               I decided to use data to determine whether the benefits of breaking the design system justify the potential risks.
                             </p>
                             <img alt="prototype" width="100%" src={Pic12} />
                             <p>In the test, we set up 2 criteria to determine which design to go with: usability and preference.</p>

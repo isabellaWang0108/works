@@ -10,7 +10,7 @@ import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.png"
 import Pic4 from "../../../assets/images/DesignSystem/ds_pic4.png"
 import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.png"
 import Pic6 from "../../../assets/images/DesignSystem/ds_pic6.png"
-import Pic7 from "../../../assets/images/DesignSystem/ds_pic7.png"
+// import Pic7 from "../../../assets/images/DesignSystem/ds_pic7.png"
 import Pic8 from "../../../assets/images/DesignSystem/ds_pic8.svg"
 import Pic9 from "../../../assets/images/DesignSystem/ds_pic9.svg"
 import Pic10 from "../../../assets/images/DesignSystem/ds_pic10.svg"
@@ -31,19 +31,18 @@ class DS extends React.Component {
         { title: "The solution", id: "section3" },
         { title: "Technical implementation", id: "section4" },
         { title: "Soft implementation", id: "section5" },
-        { title: "The biggest challenge", id: "section6" },
+        { title: "The biggest lesson", id: "section6" },
     ]
 
 
 
     turnPink = (theclass) => {
-        $("." + theclass + " a").css("color", "#ff65b5")
-            .css("font-weight", "bold")
+        $("." + theclass + " button").css("font-weight", "bold")
+                                    .css("border", "solid 1px #BDBBBE")
     }
     neutral = () => {
-        $("li a").css("color", "white")
-            .css("text-decoration", "none")
-            .css("font-weight", "normal")
+        $("li button").css("font-weight", "normal")
+                      .css("border", "solid 1px transparent")
     }
 
     scrollCheck() {
@@ -112,7 +111,7 @@ class DS extends React.Component {
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                            <a >{item.title}</a>
+                                           <button className="inpage_menu_item">{item.title}</button>
                                         </li>
                                     )
                                 })}
@@ -204,7 +203,7 @@ class DS extends React.Component {
                         </div>
 
                         <div className="content-block" id="section6">
-                            <h2>The biggest challenge</h2>
+                            <h2>The biggest lesson</h2>
                             <p>Launching the system was the biggest challenge—people resist change.</p>
                             <p>    After months of iterations and alignment withint the product, design, and engineering team, we pushed the update. Within 20 minutes, panic erupted—sales, clients, and product managers flooded us with complaints, forcing an immediate rollback. Claims of unreadability and ugliness surfaced, but our research proved otherwise. The backlash was emotional, not rational—just like reactions to Apple’s flat UI or Google’s logo redesign.
                             </p>

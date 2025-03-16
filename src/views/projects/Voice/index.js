@@ -4,38 +4,39 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
-import Pic1 from "../../../assets/images/Voice/voice_pic1.svg"
-import Pic2 from "../../../assets/images/Voice/voice_pic2.svg"
-import Pic3 from "../../../assets/images/Voice/voice_pic3.svg"
-import Pic4 from "../../../assets/images/Voice/voice_pic4.svg"
-import Pic5 from "../../../assets/images/Voice/voice_pic5.jpg"
-import Pic6 from "../../../assets/images/Voice/voice_pic6.jpg"
-import Pdf1 from "../../../assets/images/Voice/competitive-analysis.pdf"
+import Pic1 from "../../../assets/images/Voice/pic_1.png"
+import Pic2 from "../../../assets/images/Voice/pic_2.svg"
+import Pic3 from "../../../assets/images/Voice/pic_3.png"
+import Pic4 from "../../../assets/images/Voice/pic_4.png"
+import Pic5 from "../../../assets/images/Voice/pic_5.svg"
+import Pic6 from "../../../assets/images/Voice/pic_6.png"
+import Pic7 from "../../../assets/images/Voice/pic_7.png"
+import Pic8 from "../../../assets/images/Voice/pic_8.png"
+import Pic9 from "../../../assets/images/Voice/pic_9.png"
+import Pic10 from "../../../assets/images/Voice/pic_10.png"
+import Pain1 from "../../../assets/images/Voice/pain_1.svg"
+import Pain2 from "../../../assets/images/Voice/pain_2.svg"
+import Pain3 from "../../../assets/images/Voice/pain_3.svg"
 import InpageContactMe from "../../../components/inpage_contactme"
 
 class Voice extends React.Component {
 
     content = [
-        { title: "Overview", id: "section1" },
-        { title: "Research", id: "section2" },
-        { title: "Competitive analysis", id: "section3" },
-        { title: "Product and UX alignment", id: "section4" },
-        { title: "Rapid prototyping", id: "section5" },
-        { title: "User testing", id: "section6" },
-        { title: "Iteration", id: "section7" },
-        { title: "To be continued", id: "section8" }
+        { title: "Pain points", id: "section1" },
+        { title: "Friendlier UX", id: "section2" },
+        { title: "Key design steps", id: "section3" },
+        { title: "Impacts", id: "section4" },
+        { title: "Key learnings", id: "section5" }
     ]
 
 
-
     turnPink = (theclass) => {
-        $("." + theclass + " a").css("color", "#ff65b5")
-            .css("font-weight", "bold")
+        $("." + theclass + " button").css("font-weight", "bold")
+            .css("border", "solid 1px #BDBBBE")
     }
     neutral = () => {
-        $("li a").css("color", "white")
-            .css("text-decoration", "none")
-            .css("font-weight", "normal")
+        $("li button").css("font-weight", "normal")
+            .css("border", "solid 1px transparent")
     }
 
     scrollCheck() {
@@ -86,9 +87,11 @@ class Voice extends React.Component {
 
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
-                        <h1 id="title">Designing an NFT creation feature for everyday users</h1>
-                        <p>This case study demonstrates my workflow in a generic product design project. You will learn about how I leverage different technologies at different stages to design and validate a solution to the user pain points.</p>
-                        <ProjectContext duration="3 weeks" team="1 PM, 3 engineers, 1 designer, 1 UX researcher" role="designer"></ProjectContext>
+                        <h1 id="title">Lower the barrier to create an NFT</h1>
+                        <p>In 2021, Voice launched a social NFT marketplace aimed at empowering emerging artists by offering a unique, free minting feature powered by the EOSIO protocol. I had the opportunity to take ownership in shaping the platform, from designing the artwork creation process to viewing experience from the ground up.
+                        </p>
+                        <ProjectContext duration="1 month" team="1 PM, 6 engineers, 2 designers, 1 UX researcher" role="designer"></ProjectContext>
+                        <img alt="prototypes" src={Pic1} width='100%' />
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}
@@ -96,7 +99,7 @@ class Voice extends React.Component {
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                            <a >{item.title}</a>
+                                            <button className="inpage_menu_item">{item.title}</button>
                                         </li>
                                     )
                                 })}
@@ -104,92 +107,64 @@ class Voice extends React.Component {
                         </div>
 
                         <div className="content-block" id="section1">
-                            <h2>Overview</h2>
-                            <p>Determined by the business and marketing decision, my product manager brought me a task, “designing an NFT minting feature for everyday users.” I started this project with an abstract goal and a list of product requirements. </p>
-                            <p> My workflow is a double-diamond process in general. Research is to discover the problem. Competitive analysis is to define the pain points. Product and UX alignment is to loop in early feedback from a cross-functional team. As projects usually have a short amount of time to work on at a startup, for me, rapid prototyping serves as both ideation and wireframe to explore the potential solutions. If time allows, I would recruit users through usertesting.com to validate the concept and discover issues before I deliver. I hand off pixel-perfect prototypes in the delivery and set up success metrics with PMs to pave for future iterations. Just like most of the design, design is a never-ending journey. After delivery, the project keeps going. It usually can go back to any step within the process based on the feedback.</p>
-                            <img alt="prototypes" src={Pic1} />
+                            <h2>Pain points</h2>
+                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
+                                <img alt="prototypes" src={Pain1} width="295" />
+                                <img alt="prototypes" src={Pain2} width="319" />
+                                <img alt="prototypes" src={Pain3} width="264" />
+                            </div>
                         </div>
 
                         <div className="content-block" id="section2">
-                            <h2 >Research</h2>
-                            <p>Partnered with a user researcher and consultant from the marketing team, we put together some general personas of “everyday users”. As the persona details are confidential, I won’t list them out here. From the interviews with our target users, we came to top three pain points that our users are facing:</p>
-                            <ol>
-                                <li>Lengthy process (On average it takes more than 7 steps to mint an NFT )</li>
-                                <li>Unintuitive terminology ( e.g. gas fee, minting fee, royalty fee... )</li>
-                                <li>Expensive ( $150 minting fee, 20% transaction fee )</li>
-                            </ol>
-                            <p>As Voice had a patented blockchain with a low gas fee, we were at a unique position offering a cheaper and affordable platform. Hence, my focus really came down to bringing down the barrier and complexity of the NFT space for non-techy, non-crypto-savvy users.</p>
+                            <h2 >Friendlier UX </h2>
+                            <h3>1. Simpler UX to create an NFT</h3>
+                            <p>
+                                One major pain point of minting NFTs is the lengthy process, often requiring over 8 steps. I simplified our platform’s process to enable users to publish artwork in just 4 steps, with the option to exclude sales.
+                            </p>
+                            <img alt="prototypes" src={Pic2} width='100%' />
+
+                            <h3>2. Allows co-listing the collaboration work</h3>
+                            <img alt="prototypes" src={Pic3} width='100%' />
+
+                            <h3>3. Explains all the terminologies</h3>
+                            <p>
+                                I identified technical terms in the NFT minting process that might be unfamiliar to non-technical users and ensured that all unavoidable jargon was accompanied by clear explanations to enhance user confidence.
+                            </p>
+                            <img alt="prototypes" src={Pic4} width='100%' />
 
                         </div>
                         <div className="content-block" id="section3">
-                            <h2 >Competitive analysis</h2>
-                            <p>With insights on user pain points, I looked into the existing platforms and saw what we could do differently to be better than other NFT minting platforms. </p>
-                            <p>From the analysis, I learned that a less daunting creation and better-explained terminologies were needed. But how could we do that?</p>
-                            <iframe width="100%" height="450px" src={Pdf1} title="Black box" name="Back box"></iframe>
+                            <h2 >Key design steps</h2>
+                            <img alt="prototypes" src={Pic5} width='100%' />
+
+                            <h3>Wireframing to explore different concepts</h3>
+                            <img alt="prototypes" src={Pic6} width='100%' />
+
+                            <h3>User testing</h3>
+                            <img alt="prototypes" src={Pic7} width='100%' />
+
+                            <h3>Design system elements</h3>
+                            <img alt="prototypes" src={Pic8} width='100%' />
+
+                            <h3>Prototypes</h3>
+                            <img alt="prototypes" src={Pic9} width='100%' />
+
                         </div>
                         <div className="content-block" id="section4">
-                            <h2 >Product and UX alignment</h2>
-                            <p>After learning from the user research, I did a workshop with my product manager and engineers on creating a user flow to ensure my design not only addressed my solution but also captured the feature and technical requirements.</p>
-                            <img alt="prototypes" src={Pic2} width="100%" />
-                            <p> For the lengthy process pain point, I proposed different ways to shorten the steps by:</p>
-                            <ol>
-                                <li>Making authentification optional in the creation.</li>
-                                <li>Reducing the amount of data we ask from the users.</li>
-                                <li>Letting users sign up through Google or Facebook.</li>
-                            </ol>
-                            <br />
-                            <p>To make the terminology friendly, I prßoposed</p>
-                            <ol>
-                                <li>Using alternative vocabulary if applicable.</li>
-                                <li>Adding helper text or tooltips beside jargon so users can learn as they create.</li>
-                            </ol>
-                            <img alt="prototypes" src={Pic3} width="100%" />
-                            <p>However, some ideas got pushed back by engineers due to technical constraints. For example, we did not want to cut certain data for simplicity because there was a required data model for information to log into the blockchain in the first place. Some ideas were pushed back from PMs because a simpler UX would compromise the business’ selling point. For example, we didn't want to compromise the authentification before users could sell the NFT because “real users” was one major selling point to ensure the authenticity of the NFTs on our platform. </p>
-                            <p>In the end, the best thing I could do at the moment was to divide the information into digestible pieces. The minting process was lengthy, but the technical requirement didn't allow the total number of steps to be shortened; Terminologies were unfriendly, but most of them had no daily-vocabulary alternative.</p>
+                            <h2 >Impact</h2>
+                            <p>The Platform has gained popularity among emerging artist and it has secured a partnership with <a href="https://www.vogue.com/article/2023-photovogue-digital-art-collection-voice">Vogue art residency</a>.</p>
+                            <img alt="prototypes" src={Pic10} width='100%' />
                         </div>
                         <div className="content-block" id="section5">
-                            <h2 >Rapid prototyping</h2>
-                            <p> I started prototyping with a clear idea about what I needed to address. Below is a screenshot of my exploration board.
+                            <h2 >Key learnings</h2>
+                            <h3>1. Explain technical terms</h3>
+                            <p>When technical terms are unavoidable, providing tooltips with clear explanations is essential to making the technology accessible to non-technical users.
+                                <h3>2. Take different levels of expertise into considerations. </h3>
                             </p>
-                            <img alt="prototypes" src={Pic4} width="100%" />
+                            <p>Since users have varying levels of experience, designing tailored user flows is crucial to prevents user drop-off.</p>
+
                         </div>
-                        <div className="content-block" id="section6">
-                            <h2 >User testing</h2>
-                            <p>
-                                The user testing and prototyping always go hand-in-hand. Below is one of the user tests I ran to A/B test the most intuitive interaction of splitting creator share in the creation flow.{' '}
-                                <a href="https://github.com/isabellaWang0108/Multi-authorship-UX-testing-autoFill" rel="noopener noreferrer" target="_blank">See Github page for details</a>.
-                            </p>
-                            <img alt="prototypes" src={Pic5} width="100%" />
-                        </div>
-                        <div className="content-block" id="section7">
-                            <h2>Iteration</h2>
-                            <p>After several design reviews and iterations, I landed on the below prototype for the release. </p>
-                            <p>In the design, I addressed the pain points by
-                                <ol>
-                                    <li>Splitting the form into multiple steps so the information does not overload the users.</li>
-                                    <li>Making sure each step doesn't contain more than 5 items so users don't feel the page is daunting.</li>
-                                    <li>Having preview on the side to provide instant feedback on every action, so users keep motivated.</li>
-                                    <li>Providing tooltips on potentially tricky vocabularies.</li>
-                                </ol>
-                                <p>See the prototype below.</p>
-                                <iframe src="https://drive.google.com/file/d/1X6v-gczHJYD-1jD5jTj0HUrgqYf8EWfv/preview" title="user flow" width="100%" height="480"></iframe>
-                            </p>
-                        </div>
-                        <div className="content-block" id="section8">
-                            <h2>Delivery</h2>
-                            <p>In addition to handling the prototype and interaction specs, I also thought about the error and edge cases handling. In this case, it contained:
-                                <ol>
-                                    <li>Thumbnails representing different media types.</li>
-                                    <li>Visuals for an extreme large number of creators displaying.</li>
-                                    <li>Errors when editing the credits.</li>
-                                </ol>
-                            </p>
-                            <img alt="prototypes" src={Pic6} width="100%" />
-                        </div>
-                        <div className="content-block" id="section9">
-                            <h2>To be continued</h2>
-                            <p>Just like all the design projects, design is a never-ending process. Delivery is a pause, not an end. Upon delivery, I set up a success metric with my product manager to track the potential improvements in the future. For this creation project, the quantitative data was a high success rate in the creation from users uploading media to minting it successfully. The qualitative data was a creator’s feeling. We kept track of data and received user feedbacks to keep improving the feature.</p>
-                        </div>
+
 
                         <div className="content-block" >
                             <InpageContactMe />

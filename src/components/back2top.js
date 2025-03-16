@@ -11,7 +11,7 @@ class Back2Top extends Component {
     render() {
         return (
             <div id="back2Top" style={{position:'fixed', bottom:30, right: 30, zIndex:100, display:"none"}}>
-                <a onClick={this.props.onClick}><img alt="back to the top" src={Button}  width="42px"/></a>
+                <button onClick={this.props.onClick}><img alt="back to the top" src={Button}  width="42px"/></button>
             </div>
         )
     }
