@@ -167,6 +167,12 @@ button {
   border:none;
 }
 
+button:hover{
+  background: initial;
+  font-weight: bold;
+  background-color: #dc7dae36;
+}
+
 .inpage_menu_item {
   font-size: 18px;
   color: white;
@@ -176,22 +182,10 @@ button {
   border-radius: 8px;
 }
 
-.inpage_menu_item:hover {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 7px 8px;
-  color:#BDBBBE;
-}
-
 .backbtn{
   font-size: 16px;
 }
 
-.backbtn:hover{
-  font-size: 18px;
-  font-weight: bold;
-  color:#BDBBBE;
-}
 
 .icon {
   display: flex;
@@ -531,6 +525,7 @@ a:hover {
 
   .campy {
     left: 48px;
+    color:#1717178e
   }
 
 

@@ -21,17 +21,13 @@ const button = {
 
 
 class Button extends React.Component {
-
-
     mouseEnter(e) {
         $(e.currentTarget).css('fontWeight', '800');
-        $(e.currentTarget).css('fontSize', 26);
-        $(e.currentTarget).css('opacity', '.8');
+        $(e.currentTarget).css('backgroundColor', '#dc7dae36');
     }
     mouseOut(e) {
-        $(e.currentTarget).css('fontWeight', '500')
-        $(e.currentTarget).css('fontSize', 24);
-        $(e.currentTarget).css('opacity', '1');
+        $(e.currentTarget).css('fontWeight', '500');
+        $(e.currentTarget).css('backgroundColor', 'transparent');
     }
 
     onClick = (e) => {

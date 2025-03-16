@@ -20,7 +20,7 @@ const navigation = {
     padding: '20px 0px',
     alignItems: 'center',
     backgroundColor:'#171717c9',
-    backdropFilter: 'blur(15pt)'
+    backdropFilter: 'blur(10pt)'
 }
 
 const logo = {
@@ -48,7 +48,7 @@ class NavigationBar extends Component {
                     </Link>
 
 
-                    <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{marginRight:'16px'}} className="bold pink">
+                    <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{marginRight:'16px', textDecoration:'none' }} className="bold pink">
                         Resume
                     </a>
 
@@ -56,7 +56,7 @@ class NavigationBar extends Component {
 
                 </div >
                 {window.location.hash === '#/' ? null :
-                    <button onClick={this.handleBack} className="icon backbtn">
+                    <button onClick={this.handleBack} className="icon backbtn" style={{width:'88px'}}>
                         <span className="material-symbols-outlined">
                             arrow_back
                         </span>
