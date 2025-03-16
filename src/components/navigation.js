@@ -7,18 +7,19 @@ const container = {
     flexDirection: 'column',
     position: "fixed",
     top: 0,
-    width: "100%",
+    width: "100vw",
     left: 0,
     zIndex: 999
 }
 
 const navigation = {
-    width: "96%",
+    width: "100%",
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    padding: '20px 12px',
+    padding: '20px 0px',
     alignItems: 'center',
+    backgroundColor:'#171717c9',
     backdropFilter: 'blur(15pt)'
 }
 
@@ -47,7 +48,7 @@ class NavigationBar extends Component {
                     </Link>
 
 
-                    <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bold pink">
+                    <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{marginRight:'16px'}} className="bold pink">
                         Resume
                     </a>
 

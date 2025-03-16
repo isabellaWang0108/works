@@ -88,7 +88,7 @@ class Voice extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <h1 id="title">Lower the barrier to create an NFT</h1>
-                        <p>In 2021, Voice launched a social NFT marketplace aimed at empowering emerging artists by offering a unique, free minting feature powered by the EOSIO protocol. I had the opportunity to take ownership in shaping the platform, from designing the artwork creation process to viewing experience from the ground up.
+                        <p>In 2021, Voice launched a social NFT marketplace aimed at empowering emerging artists by offering a unique, free minting feature powered by the EOSIO protocol. I had the opportunity to take ownership in shaping the platform, from designing the artwork creation process to shaping the viewing experience from the ground up.
                         </p>
                         <ProjectContext duration="1 month" team="1 PM, 6 engineers, 2 designers, 1 UX researcher" role="designer"></ProjectContext>
                         <img alt="prototypes" src={Pic1} width='100%' />
@@ -109,9 +109,9 @@ class Voice extends React.Component {
                         <div className="content-block" id="section1">
                             <h2>Pain points</h2>
                             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
-                                <img alt="prototypes" src={Pain1} width="295" />
+                                <img alt="prototypes" src={Pain1} width="307" />
                                 <img alt="prototypes" src={Pain2} width="319" />
-                                <img alt="prototypes" src={Pain3} width="264" />
+                                <img alt="prototypes" src={Pain3} width="267" />
                             </div>
                         </div>
 
@@ -123,10 +123,10 @@ class Voice extends React.Component {
                             </p>
                             <img alt="prototypes" src={Pic2} width='100%' />
 
-                            <h3>2. Allows co-listing the collaboration work</h3>
+                            <h3>2. Allows co-listing with collaborators</h3>
                             <img alt="prototypes" src={Pic3} width='100%' />
 
-                            <h3>3. Explains all the terminologies</h3>
+                            <h3>3. Explains all terminology</h3>
                             <p>
                                 I identified technical terms in the NFT minting process that might be unfamiliar to non-technical users and ensured that all unavoidable jargon was accompanied by clear explanations to enhance user confidence.
                             </p>
@@ -152,16 +152,16 @@ class Voice extends React.Component {
                         </div>
                         <div className="content-block" id="section4">
                             <h2 >Impact</h2>
-                            <p>The Platform has gained popularity among emerging artist and it has secured a partnership with <a href="https://www.vogue.com/article/2023-photovogue-digital-art-collection-voice">Vogue art residency</a>.</p>
+                            <p>The platform has gained popularity among emerging artists, and it has secured a partnership with <a href="https://www.vogue.com/article/2023-photovogue-digital-art-collection-voice">Vogue art residency</a>.</p>
                             <img alt="prototypes" src={Pic10} width='100%' />
                         </div>
                         <div className="content-block" id="section5">
                             <h2 >Key learnings</h2>
                             <h3>1. Explain technical terms</h3>
                             <p>When technical terms are unavoidable, providing tooltips with clear explanations is essential to making the technology accessible to non-technical users.
-                                <h3>2. Take different levels of expertise into considerations. </h3>
+                                <h3>2. Take different levels of expertise into consideration </h3>
                             </p>
-                            <p>Since users have varying levels of experience, designing tailored user flows is crucial to prevents user drop-off.</p>
+                            <p>Since users have varying levels of experience, designing tailored user flows is crucial to prevent user drop-off.</p>
 
                         </div>
 

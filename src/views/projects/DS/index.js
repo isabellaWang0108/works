@@ -104,7 +104,8 @@ class DS extends React.Component {
                         <h1 id="title">Building a design system </h1>
                         <ProjectContext duration="1 year" team="2 engineers, 2 designers" role="designer"></ProjectContext>
                         <p>VTS has 4+ independently developed products with 100+ web pages, each influenced by different design teams, leading to inconsistent styles and legacy design systems across products.</p>
-                       <p>The outcome of my work was to unify the styles across the products and make design system part of the company's design process.   <a href="https://terra.vts.com/">Check out deployed system site here.</a></p>
+                       <p>The outcome of my work was to unify the styles across the products and make design system part of the company's design process.  
+                        <a href="https://terra.vts.com/">Check out the deployed system site here.</a></p>
                      
                         <img src={Pic1} width="100%" alt="img" />
                         {/* menu bar ==============================================================================================  */}
@@ -136,13 +137,13 @@ class DS extends React.Component {
                             <h2 >Finding the solution</h2>
 
                             <h3>Gathering insights</h3>
-                            <p>I conducted primary research by gathering the design team to identify the need for different products.
+                            <p>I conducted primary research by gathering the design team to identify the needs for different products.
                                 I performed competitive analysis by studying other companies’ approaches and spotting ideas that could work for us. </p>
                             <img src={Pic6} width="100%" alt="img" />
 
                             <h3>Experimentation</h3>
                             <p>
-                                I selected iconic pages and implemented the system into the prototypes to ensure the usability and flexibility of the system. The experimentation includes:
+                                I selected iconic pages and implemented the system into prototypes to ensure the usability and flexibility of the system. The experimentation included:
                             </p>
                             <ol>
                                 <li>The system itself</li>
@@ -155,17 +156,17 @@ class DS extends React.Component {
                             <img src={Pic5} width="100%" alt="img" />
                             <br />
                             <h3>Decide on the approach</h3>
-                            <p>To compared the pros and cons of incremental and radical change with the design and engineering manager. Given our limited resources, we chose the incremental approach.</p>
+                            <p>I compared the pros and cons of incremental and radical change with the design and engineering managers. Given our limited resources, we chose the incremental approach.</p>
                             <img src={Pic8} width="100%" alt="img" />
                             <br />
                         </div>
                         <div className="content-block" id="section3">
                             <h2>The solution</h2>
                             <h3>A unified type system</h3>
-                            <p>As a solution to incoherence. The new system reflects the identity of the company and the needs of different products. </p>
+                            <p>The new system reflects the identity of the company and the needs of different products. </p>
                             <img src={Pic9} width="100%" alt="img" />
                             <h3>Semantic naming convention</h3>
-                            <p>In response to the designer’s pain point that the current system was hard to use, I built the style and the usage into the name itself.</p>
+                            <p>In response to the designers’ pain points that the current system was hard to use, I built the style and the usage into the name itself.</p>
                             <img src={Pic10} width="100%" alt="img" />
                             <h3>Accessibility</h3>
                             <p>The new typography choice had more clarity on the letters, ligatures and symbols, which makes it friendly to people with dyslexia.  </p>
@@ -218,10 +219,10 @@ class DS extends React.Component {
                         <div className="content-block" id="section7">
                             <h2>The biggest lesson</h2>
                             <p>Launching the system was the biggest challenge—people resist change.</p>
-                            <p>    After months of iterations and alignment withint the product, design, and engineering team, we pushed the update. Within 20 minutes, panic erupted—sales, clients, and product managers flooded us with complaints, forcing an immediate rollback. Claims of unreadability and ugliness surfaced, but our research proved otherwise. The backlash was emotional, not rational—just like reactions to Apple’s flat UI or Google’s logo redesign.
+                            <p> After months of iterations and alignment within the product, design, and engineering teams, we pushed the update. Within 20 minutes, panic erupted—sales, clients, and product managers flooded us with complaints, forcing an immediate rollback. Claims of unreadability and ugliness surfaced, but our research proved otherwise. The backlash was emotional, not rational—just like reactions to Apple’s flat UI or Google’s logo redesign.
                             </p>
                             <p>
-                                The solution? Communication. We joined calls with the sales and secured C-suite support. Eight months later, the system finally launched.
+                                The solution? Communication. We joined calls with sales and secured C-suite support. Three months later, the system finally launched.
                             </p>
                             <h3>
                                 A system designer’s job isn’t just building the system — it’s driving adoption. </h3>
