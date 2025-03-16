@@ -223,8 +223,8 @@ class DS extends React.Component {
                             <p>
                                 The solution? Communication. We joined calls with the sales and secured C-suite support. Eight months later, the system finally launched.
                             </p>
-                            <p>
-                                Lesson learned: A system designer’s job isn’t just building—it’s driving adoption. </p>
+                            <h3>
+                                A system designer’s job isn’t just building the system — it’s driving adoption. </h3>
                         </div>
 
                         <div className="content-block" >
