@@ -120,20 +120,19 @@ class DS extends React.Component {
 
                         <div className="content-block" id="section1">
                             <h2>Defining the problem</h2>
-                            <h3>1. Auditing</h3>
-                            <p>Auditing let me know what is out there, so I can have a better sense of the issues’ scope and come up with more targeted solutions.
-                                I archived all the typography styles and usages across the products in a spreadsheet as part of the process.</p>
-                            <img src={Pic2} width="100%" alt="img" />
-                            <p><b>Issue 1: </b>There was no coherent typography usage within the same product. The pages looked disconnected.</p>
+                            <h3>Issue 1: Incoherent typography usage within the same product </h3>
                             <img src={Pic3} width="100%" alt="img" />
-                            <p><b>Issue 2: </b>Different products used different typographies, so the company's visual identity was not coherent.</p>
+
+                            <h3>Issue 2: Different products used different design systems</h3>
                             <img src={Pic4} width="100%" alt="img" />
+
+                         
                         </div>
 
                         <div className="content-block" id="section2">
                             <h2 >Finding the solution</h2>
 
-                            <h3>Research</h3>
+                            <h3>Gathering insights</h3>
                             <p>I conducted primary research by gathering the design team to identify the need for different products.
                                 I performed competitive analysis by studying other companies’ approaches and spotting ideas that could work for us. </p>
                             <img src={Pic6} width="100%" alt="img" />
