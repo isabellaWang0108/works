@@ -13,7 +13,7 @@ const container = {
 }
 
 const navigation = {
-    width: "100%",
+    width: "100vw",
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -48,7 +48,7 @@ class NavigationBar extends Component {
                     </Link>
 
 
-                    <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{marginRight:'16px', textDecoration:'none' }} className="bold pink">
+                    <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{marginRight:'16pt', textDecoration:'none' }} className="bold pink">
                         Resume
                     </a>
 

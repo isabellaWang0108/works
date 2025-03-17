@@ -42,11 +42,11 @@ class Kiosk extends React.Component {
 
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "bold")
-                                    .css("border", "solid 1px #BDBBBE")
+            .css("border", "solid 1px #BDBBBE")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
-                      .css("border", "solid 1px transparent")
+            .css("border", "solid 1px transparent")
     }
 
     scrollCheck() {
@@ -97,14 +97,22 @@ class Kiosk extends React.Component {
 
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
-                        <h1 id="title">Kiosk Check-In</h1>
-                        <p>
-                            The Kiosk Check-In project showcases my design approach when physical interaction and multiple devices are involved. The end-to-end experience involves various devices, different platforms and products across the company. Please contact me for the full story and design.
-                        </p>
-                        <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075"><p>Available on Apple store.</p> </a>
+                        <h1 id="title">Automating Office Check-in</h1>
 
-                        <ProjectContext duration="1.5 months" team="1 PM, 5 engineers, 1 designer, other teams" role="designer"></ProjectContext>
-                        <img alt="prototype" width="100%" src={Pic1} />
+                        <div className="inpage_hero_container">
+                            <div className="inpage_hero_box">
+                                <ProjectContext duration="1 month" team="1 PM, 5 engineers, 1 designer" role="Designer"></ProjectContext>
+                                <p>
+                                    The Kiosk Check-in project showcases my design approach when physical interaction and multiple devices are involved. The end-to-end experience involves various devices, different platforms and products across the company. Please contact me for the full story and design.
+                                </p>
+                                <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
+                                    <p>Available on App Store.</p>
+                                </a>
+                            </div>
+                            <div className="inpage_hero_box">
+                                <img src={Pic1} className="inpage_hero_img" alt="img" />
+                            </div>
+                        </div>
 
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
@@ -221,7 +229,7 @@ class Kiosk extends React.Component {
                         <div className="content-block" id="section6">
                             <h2>Testing</h2>
                             <p>
-                               I decided to use data to determine whether the benefits of breaking the design system justify the potential risks.
+                                I decided to use data to determine whether the benefits of breaking the design system justify the potential risks.
                             </p>
                             <img alt="prototype" width="100%" src={Pic12} />
                             <p>In the test, we set up 2 criteria to determine which design to go with: usability and preference.</p>

@@ -20,17 +20,16 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #000000;
+  background-color: #171717;
 }
 
 a,
 span,
-button,
 p,
 li,
 ul {
   color: white;
-  font-family: SuisseIntl-Regular;
+  font-family: SuisseIntl-Thin;
 }
 
 .bold,
@@ -38,14 +37,15 @@ ul,
 h1,
 h2,
 h3,
+button,
 b {
   color: white;
-  font-family: SuisseIntl-SemiBold;
+  font-family: SuisseIntl-Regular;
 }
 
 h1 {
-  font-size: 36px;
-  line-height: 42px;
+  font-size: 32px;
+  line-height: 62px;
 }
 
 a {
@@ -66,7 +66,7 @@ h3 {
 p {
   font-weight: 400;
   font-size: 18px;
-  line-height: 28px;
+  line-height: 32px;
   color: white;
 }
 
@@ -92,6 +92,42 @@ li {
 
 .text-black {
   color: black;
+}
+
+.images {
+  max-width: 800px;
+  width: 100%;
+}
+
+.png {
+  max-width: 800px;
+  height: auto;
+  display: inline-block;
+  transform-origin: top left;
+  position: relative;
+  left: 0;
+  margin-left: 0%;
+  margin-top: 0%;
+}
+
+.inpage_hero_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+}
+
+.inpage_hero_box {
+  width: 48%;
+  margin-right: 2%;
+}
+
+.inpage_hero_img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .blue {
@@ -146,16 +182,15 @@ li {
 }
 
 .left-nav {
-  width: 15%;
+  width: 100pt;
   border: 0;
   outline: 0;
-  border-right: 1px solid #fd6bb7;
   z-index: 8;
   position: fixed;
-  left: 0;
+  right: 1vw;
   top: 0px;
   padding: 4px 16px;
-  height: 90vh;
+  height: 80vh;
   z-index: 0;
 }
 
@@ -164,25 +199,25 @@ button {
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  border:none;
+  border: none;
 }
 
-button:hover{
+button:hover {
   background: initial;
   font-weight: bold;
   background-color: #dc7dae36;
 }
 
 .inpage_menu_item {
-  font-size: 18px;
+  font-size: 13px;
   color: white;
   border: solid 1px transparent;
   text-align: left;
   padding: 8px 8px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
-.backbtn{
+.backbtn {
   font-size: 16px;
 }
 
@@ -196,14 +231,22 @@ button:hover{
 
 
 .left-nav ul {
-  margin: 80px 0px;
+  margin: 80pt 0px;
   padding-left: 0px;
+
 }
 
 .left-nav li {
   list-style-type: none;
-  padding-left: 24px;
-  margin: 16px 0px;
+  margin: 0px 0px;
+
+}
+
+.left_nav_title {
+  font-size: 16px;
+  font-weight: bolder;
+  margin-left: 8px;
+  margin-bottom: 8px;
 }
 
 li a {
@@ -232,11 +275,17 @@ a:hover {
   scroll-behavior: smooth;
 }
 
+.page-container h1 {
+  font-size: 52px;
+}
+
 .content-layout {
   margin-top: 16px;
-  margin-left: 20%;
+  margin-left: auto;
+  margin-right: auto;
   padding: 100px 4em;
   max-width: 56em;
+  width: 70%;
   height: 100%;
   z-index: 0;
 }
@@ -484,8 +533,21 @@ a:hover {
   width: 50%;
 }
 
+@media only screen and (max-width: 1100px) {
+  .inpage_hero_container {
+    flex-direction: column;
+  }
+  .inpage_hero_box {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+}
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 850px) {
+  .images {
+    width: 100%;
+  }
 
   .card {
     width: 80%;
@@ -525,7 +587,12 @@ a:hover {
 
   .campy {
     left: 48px;
-    color:#1717178e
+    color: #1717178e
+  }
+
+
+  .inpage_hero_box {
+    width: 100%;
   }
 
 
@@ -609,7 +676,16 @@ a:hover {
     font-size: 18px;
   }
 
+  .left_nav_title {
+    font-size: 22px;
+  }
+
+  .inpage_menu_item {
+    font-size: 16px;
+  }
+
   .content-layout {
+    width: 94%;
     margin-top: 24px;
     margin-left: 0%;
     padding: 100px 24px;

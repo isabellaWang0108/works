@@ -6,7 +6,7 @@ import NewPage from "../assets/icons/newPage.svg"
 const underLined = {
     textDecoration: 'underline',
     borderWidth: 0,
-    fontSize: 24,
+    fontSize: 21,
     marginLeft: 0,
     padding: '16px 0px',
     marginTop: 24,

@@ -101,17 +101,25 @@ class DS extends React.Component {
 
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
+
                         <h1 id="title">Building a design system </h1>
-                        <ProjectContext duration="1 year" team="2 engineers, 2 designers" role="designer"></ProjectContext>
-                        <p>VTS has 4+ independently developed products with 100+ web pages, each influenced by different design teams, leading to inconsistent styles and legacy design systems across products.</p>
-                       <p>The outcome of my work was to unify the styles across the products and make design system part of the company's design process.  
-                        <a href="https://terra.vts.com/">Check out the deployed system site here.</a></p>
-                     
-                        <img src={Pic1} width="100%" alt="img" />
+                        <div className="inpage_hero_container">
+                            <div className="inpage_hero_box">
+                                <ProjectContext duration="1 year" team="2 engineers, 2 designers" role="Designer"></ProjectContext>
+                                <p>VTS has 4+ independently developed products with 100+ web pages, each influenced by different design teams, leading to inconsistent styles and legacy design systems across products.</p>
+                                <p>The outcome of my work was to unify the styles across the products and make design system part of the company's design process.{' '}
+                                    <a href="https://terra.vts.com/">Check out the deployed system site here.</a></p>
+                            </div>
+                            <div className="inpage_hero_box">
+                                <img src={Pic1} className="inpage_hero_img" alt="img" />
+                            </div>
+                        </div>
+
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}
-                            <ul>Content
+                            <ul>
+                                <p className="left_nav_title">Content</p>
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
@@ -125,10 +133,10 @@ class DS extends React.Component {
                         <div className="content-block" id="section1">
                             <h2>Identifying the problems</h2>
                             <h3>Issue 1: Incoherent typography usage within the same product </h3>
-                            <img src={Pic3} width="100%" alt="img" />
+                            <img src={Pic3} className="images png" alt="img" />
 
                             <h3>Issue 2: Different products used different design systems</h3>
-                            <img src={Pic4} width="100%" alt="img" />
+                            <img src={Pic4} className="images png" alt="img" />
 
 
                         </div>
@@ -139,7 +147,7 @@ class DS extends React.Component {
                             <h3>Gathering insights</h3>
                             <p>I conducted primary research by gathering the design team to identify the needs for different products.
                                 I performed competitive analysis by studying other companies’ approaches and spotting ideas that could work for us. </p>
-                            <img src={Pic6} width="100%" alt="img" />
+                            <img src={Pic6} className="images png" alt="img" />
 
                             <h3>Experimentation</h3>
                             <p>
@@ -153,24 +161,24 @@ class DS extends React.Component {
                             </ol>
 
 
-                            <img src={Pic5} width="100%" alt="img" />
+                            <img src={Pic5} className="images png" alt="img" />
                             <br />
                             <h3>Decide on the approach</h3>
                             <p>I compared the pros and cons of incremental and radical change with the design and engineering managers. Given our limited resources, we chose the incremental approach.</p>
-                            <img src={Pic8} width="100%" alt="img" />
+                            <img src={Pic8} className="images" alt="img" />
                             <br />
                         </div>
                         <div className="content-block" id="section3">
                             <h2>The solution</h2>
                             <h3>A unified type system</h3>
                             <p>The new system reflects the identity of the company and the needs of different products. </p>
-                            <img src={Pic9} width="100%" alt="img" />
+                            <img src={Pic9} className="images" alt="img" />
                             <h3>Semantic naming convention</h3>
                             <p>In response to the designers’ pain points that the current system was hard to use, I built the style and the usage into the name itself.</p>
-                            <img src={Pic10} width="100%" alt="img" />
+                            <img src={Pic10} className="images" alt="img" />
                             <h3>Accessibility</h3>
                             <p>The new typography choice had more clarity on the letters, ligatures and symbols, which makes it friendly to people with dyslexia.  </p>
-                            <img src={Pic11} width="100%" alt="img" />
+                            <img src={Pic11} className="images" alt="img" />
                         </div>
 
                         <div className="content-block" id="section4">
@@ -182,17 +190,17 @@ class DS extends React.Component {
                                 <li>A style dictionary to maintain consistency across platforms</li>
                                 <li>A Figma library for seamless adoption by designers and engineers</li>
                             </ul>
-                            <img src={Pic12} width="100%" alt="img" />
+                            <img src={Pic12} className="images" alt="img" />
                             <h3>1. Documentation Website</h3>
                             <p>Scalable design relies on solid documentation, enabling a 50+ person team to find answers independently. Without it, constant inquiries would create bottlenecks. A well-structured system ensures consistency, efficiency, and smooth workflows.</p>
                             <p>Check out the shipped documentation: <a href="https://terra.vts.com/foundation/typography/overview">terra.vts.com/foundation/typography/overview</a></p>
-                            <img src={Pic13} width="100%" alt="img" />
+                            <img src={Pic13} className="images png" alt="img" />
                             <h3>2. Style dictionary</h3>
                             <p>Developers can import and use a package without re-defining the style every time. </p>
-                            <img src={Pic14} width="100%" alt="img" />
+                            <img src={Pic14} className="images png" alt="img" />
                             <h3>3. Figma library</h3>
                             <p> Designers can pick the pre-defined styles without designing from zero.</p>
-                            <img src={Pic15} width="100%" alt="img" />
+                            <img src={Pic15} className="images png" alt="img" />
                         </div>
 
                         <div className="content-block" id="section5">
@@ -202,17 +210,17 @@ class DS extends React.Component {
                             <p>
                                 System work is never truly finished. There is no perfect solution—only continuous iteration as new challenges emerge.
                             </p>
-                            <img src={Pic16} width="100%" alt="img" />
+                            <img src={Pic16} className="images png" alt="img" />
                         </div>
 
                         <div className="content-block" id="section6">
                             <h2>Impact</h2>
-                        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
-                            <img alt="prototypes" src={Impact1} width="383" />
-                            <img alt="prototypes" src={Impact2} width="468" />
-                            <img alt="prototypes" src={Impact3} width="383" />
-                            <img alt="prototypes" src={Impact4} width="440" />
-                        </div>
+                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
+                                <img alt="prototypes" src={Impact1} width="383" />
+                                <img alt="prototypes" src={Impact2} width="377" />
+                                <img alt="prototypes" src={Impact3} width="383" />
+                                <img alt="prototypes" src={Impact4} width="377" />
+                            </div>
                         </div>
 
 

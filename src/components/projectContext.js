@@ -4,8 +4,13 @@ import React, { Component } from "react";
 const container = {
     display: 'flex',
     flexDirection: 'row',
-    marginTop:0,
-    columnGap:12
+    flexWrap: 'wrap',
+    marginTop: 0,
+    columnGap: 12
+}
+const title = {
+    fontSize: '13px',
+    marginTop: '8px'
 }
 
 class ProjectContext extends Component {
@@ -14,9 +19,18 @@ class ProjectContext extends Component {
     render() {
         return (
             <div style={container}>
-                <p className="grey right-border">Duration: <br/> {this.props.duration}</p>
-                <p className="grey right-border">My role: <br/>{this.props.role}</p>
-                <p className="grey">Team: <br/>{this.props.team}</p>
+                <div className="grey right-border bold">
+                    <div style={title}>Duration:</div>
+                    <div>{this.props.duration}</div>
+                </div>
+                <div className="grey right-border bold">
+                    <div style={title}>My role:</div>
+                    <div>{this.props.role}</div>
+                </div>
+                <div className="grey bold">
+                    <div style={title}>Team:</div>
+                    <div>{this.props.team}</div>
+                </div>
             </div>
 
         )

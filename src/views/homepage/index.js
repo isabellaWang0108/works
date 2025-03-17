@@ -149,7 +149,7 @@ class Homepage extends React.Component {
                             </div>
                             <div className="contentblock">
 
-                                <h1 className="text-white">Kiosk Check-In </h1>
+                                <h1 className="text-white">Automating Office Check-in </h1>
                                 <p className="text-white">This project shows my design approach when physical interaction and different hardware devices are involved.
                                     <br />
 
@@ -172,7 +172,7 @@ class Homepage extends React.Component {
                                 <img src={DesignSystem} alt="design system" className="img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Design system</h1>
+                                <h1>Building a design system</h1>
                                 <p>This case study presents my experience and process in handling complex, big-scale, high-stakes design challenges that involve a broad spectrum of stakeholders.
                                     <br />
 
