@@ -32,7 +32,6 @@ ul {
   font-family: SuisseIntl-Thin;
 }
 
-.bold,
 ul,
 h1,
 h2,
@@ -41,6 +40,12 @@ button,
 b {
   color: white;
   font-family: SuisseIntl-Regular;
+}
+
+
+.bold{
+  color: white;
+  font-family: SuisseIntl-SemiBold;
 }
 
 h1 {

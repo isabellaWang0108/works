@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import $ from 'jquery';
 
 const button = {
-    border:'solid',
+    border: 'solid',
     borderWidth: 2,
     padding: 12,
     cursor: 'pointer',
@@ -45,7 +45,7 @@ class Button extends React.Component {
                         style={button}
                         onMouseEnter={this.mouseEnter}
                         onMouseOut={this.mouseOut}
-                        onClick={(e) => e.stopPropagation()} 
+                        onClick={(e) => e.stopPropagation()}
                     >
                         {this.props.label}
                     </button>

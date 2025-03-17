@@ -22,6 +22,7 @@ import Pic15 from "../../../assets/images/Kiosk/img_15.png"
 import Pic16 from "../../../assets/images/Kiosk/img_16.png"
 import Pic17 from "../../../assets/images/Kiosk/img_17.png"
 import Pic18 from "../../../assets/images/Kiosk/img_18.png"
+import Pic19 from "../../../assets/images/Kiosk/img_19.png"
 import InpageContactMe from "../../../components/inpage_contactme"
 
 
@@ -29,13 +30,14 @@ class Kiosk extends React.Component {
 
     content = [
         { title: "Overview", id: "section1" },
-        { title: "Product/UX alignment", id: "section2" },
-        { title: "Research/Learning", id: "section3" },
-        { title: "Prototyping", id: "section4" },
-        { title: "Iterations", id: "section5" },
-        { title: "Testing", id: "section6" },
-        { title: "Delivery", id: "section7" },
-        { title: "Post-deployment learning", id: "section8" },
+        { title: "Early concepts", id: "section2" },
+        { title: "Product/UX alignment", id: "section3" },
+        { title: "Research/Learning", id: "section4" },
+        { title: "Prototyping", id: "section5" },
+        { title: "Iterations", id: "section6" },
+        { title: "Testing", id: "section7" },
+        { title: "Delivery", id: "section8" },
+        { title: "Post-deployment learning", id: "section9" },
     ]
 
 
@@ -133,11 +135,15 @@ class Kiosk extends React.Component {
                             <p><span className="bold">Outcome</span>: This project introduces a self-service visitor management kiosk that streamlines the check-in process, freeing up valuable time for front desk staff.</p>
 
                             <p>For this project, my workflow revisited product and UX alignment heavily due to the engineering specifics and the need to collaborate with designers from other teams.    </p>
-                            <img alt="prototype" width="100%" src={Pic2} />
+                            <img alt="prototype" className="images" src={Pic2} />
                         </div>
 
-
                         <div className="content-block" id="section2">
+                            <h2>Early concepts</h2>
+                            <img alt="prototype" className="images png" src={Pic19} />
+                        </div>
+
+                        <div className="content-block" id="section3">
                             <h2 >Product/UX alignment</h2>
                             <p>I utilized user flow as an efficient tool to align the UX and vision with engineers, PMs, and designers from other teams.
                                 The total experience involves 4 user categories:
@@ -156,32 +162,32 @@ class Kiosk extends React.Component {
                                     <span className="bold">Office workers</span>  register and send their visitors QR codes.
                                 </li>
                             </ul>
-                            <img alt="prototype" width="100%" src={Pic3} />
+                            <img alt="prototype" className="images png" src={Pic3} />
                         </div>
 
-                        <div className="content-block" id="section3">
+                        <div className="content-block" id="section4">
                             <h2>Research</h2>
                             <p>Below is a compilation of findings I got from user research, design critiques, and hands-on experimentation with devices.</p>
 
                             <h3>1. QR code scanning convention</h3>
                             <p>Many users have established mental models of using QR codes, particularly in the post-COVID era, so it’s crucial to replicate familiar interactions rather than introduce entirely novel ones. </p>
-                            <img alt="prototype" width="100%" src={Pic4} />
+                            <img alt="prototype" className="images png" src={Pic4} />
 
 
                             <h3>2. Physical blind spot</h3>
                             <p>
                                 When putting a phone in front of an iPad, there are blind spots on the screen due to physical overlapping. It’s important to understand what screen areas are visible to users so they can see the visual feedback to accomplish necessary tasks.
                             </p>
-                            <img alt="prototype" width="100%" src={Pic5} />
+                            <img alt="prototype" className="images png" src={Pic5} />
 
                             <h3>3. UI that reflects physical distance </h3>
                             <p>
                                 It’s helpful to know the exact size at which the QR code appears on camera to design a UI that effectively guides users on distance.    </p>
-                            <img alt="prototype" width="100%" src={Pic6} />
+                            <img alt="prototype" className="images png" src={Pic6} />
                         </div>
 
 
-                        <div className="content-block" id="section4">
+                        <div className="content-block" id="section5">
                             <h2>Prototyping</h2>
                             <p>
                                 I explored various UI layouts, interaction elements, and visual design options for every screen in the complete flow. The screenshot below demonstrates the breadth of exploration.
@@ -190,7 +196,7 @@ class Kiosk extends React.Component {
                             <img alt="prototype" width="100%" src={Pic7} />
                         </div>
 
-                        <div className="content-block" id="section5">
+                        <div className="content-block" id="section6">
                             <h2>Iterations</h2>
                             <p>I'll present selected screens to demonstrate my iterations.</p>
                             <p>
@@ -226,7 +232,7 @@ class Kiosk extends React.Component {
                             <img alt="prototype" width="100%" src={Pic11} />
                         </div>
 
-                        <div className="content-block" id="section6">
+                        <div className="content-block" id="section7">
                             <h2>Testing</h2>
                             <p>
                                 I decided to use data to determine whether the benefits of breaking the design system justify the potential risks.
@@ -250,7 +256,7 @@ class Kiosk extends React.Component {
 
                         </div>
 
-                        <div className="content-block" id="section7">
+                        <div className="content-block" id="section8">
                             <h2>Delivery</h2>
                             <p>Below are the final screens for the initial successful office visitors QR code scanning flow, which ideally occurs every time.</p>
                             <img alt="prototype" width="100%" src={Pic15} />
@@ -267,7 +273,7 @@ class Kiosk extends React.Component {
 
                         </div>
 
-                        <div className="content-block" id="section8">
+                        <div className="content-block" id="section9">
                             <h2>Learning after deployment</h2>
                         </div>
                         <p>After deploying the product into beta testing, we received two reports on scenarios we hadn't anticipated. This experience revealed the critical edge cases that needed to be addressed.</p>

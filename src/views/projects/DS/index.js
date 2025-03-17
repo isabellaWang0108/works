@@ -5,7 +5,7 @@ import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/DesignSystem/ds_pic1.png"
-import Pic2 from "../../../assets/images/DesignSystem/ds_pic2.png"
+// import Pic2 from "../../../assets/images/DesignSystem/ds_pic2.png"
 import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.png"
 import Pic4 from "../../../assets/images/DesignSystem/ds_pic4.png"
 import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.png"

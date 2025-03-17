@@ -23,6 +23,10 @@ const windowHeight = {
     position: 'relative',
 }
 
+const aboutCardSpacing={
+    marginBottom:'4px',
+    lineHeight:'22px'
+}
 
 
 const tempObject = new THREE.Object3D()
@@ -270,19 +274,19 @@ class Homepage extends React.Component {
 
                                     <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@wangxbella0108/experiment-of-chatgpts-effects-on-decisions-confidence-399ae25c3ad1" className="AboutProj bg-seeMore">
                                         <div className="AboutProj-content">
-                                            <p className="text-black bold">AI's impact on decision making</p>
-                                            <p className="text-black">
+                                            <div className="text-black bold" style={aboutCardSpacing}>AI's impact on decision making</div>
+                                            <div className="text-black" style={aboutCardSpacing}>
                                                 This is a research project to understand whether advice from AI has an impact on decision-making or confidence levels in people.
-                                            </p>
+                                            </div>
                                         </div>
                                     </a>
                                     <p> </p>
 
                                     <a target="_blank" rel="noopener noreferrer" href="https://www.figma.com/proto/BGDErRAzTp8rVP3IySHUH4/GPT-Explanation?page-id=10%3A2&node-id=33-2&viewport=492%2C81%2C0.03&t=EmuS1i0dIl5eAal3-1&scaling=scale-down-width&content-scaling=fixed" className="AboutProj bg-seeMore">
                                         <div className="AboutProj-content">
-                                            <p className="text-black bold">Visually explaining how ChatGPT works</p>
-                                            <p className="text-black">     This project provides a visualized, step-by-step explanation designed to help non-technical audiences understand how ChatGPT works.
-                                            </p>
+                                            <div className="text-black bold" style={aboutCardSpacing}>Visually explaining how ChatGPT works</div>
+                                            <div className="text-black" style={aboutCardSpacing}>     This project provides a visualized, step-by-step explanation designed to help non-technical audiences understand how ChatGPT works.
+                                            </div>
                                         </div>
                                     </a>
 
@@ -295,16 +299,16 @@ class Homepage extends React.Component {
 
                                     <a href="https://medium.com/@wangxbella0108/how-smart-to-be-a-smart-home-d4c53322e1ff" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
                                         <div className="AboutProj-content">
-                                            <p className="text-black bold">Integrated system</p>
-                                            <p className="text-black"> This is a blogging post on my home automation project. I have reflected my thoughts on IoT's status quo in my writing.</p>
+                                            <div className="text-black bold" style={aboutCardSpacing}>Integrated system</div>
+                                            <div className="text-black" style={aboutCardSpacing}> This is a blogging post on my home automation project. I have reflected my thoughts on IoT's status quo in my writing.</div>
                                         </div>
                                     </a>
                                     <p> </p>
 
                                     <Link to="thesis" className="AboutProj">
                                         <div className="AboutProj-content">
-                                            <p className="text-black bold">Digital art</p>
-                                            <p className="text-black">  This is a one-year art project that captures my opinions on the human-technology relationship.</p>
+                                            <div className="text-black bold" style={aboutCardSpacing}>Digital art</div>
+                                            <div className="text-black" style={aboutCardSpacing}>  This is a one-year art project that captures my opinions on the human-technology relationship.</div>
                                         </div>
                                     </Link>
                                 </div>
@@ -321,6 +325,7 @@ class Homepage extends React.Component {
                                 innerLink={false}
                                 label="Contact me"
                                 link="mailto:wangxbella0108@gmail.com"
+                                onClick={(e)=> {window.location.href = "mailto:wangxbella0108@gmail.com"}}
                             />
                         </div>
                     </div>
