@@ -106,10 +106,11 @@ class Kiosk extends React.Component {
                                 <ProjectContext duration="1 month" team="1 PM, 5 engineers, 1 designer" role="Designer"></ProjectContext>
                                 <p>
                                     The Kiosk Check-in project showcases my design approach when physical interaction and multiple devices are involved. The end-to-end experience involves various devices, different platforms and products across the company. Please contact me for the full story and design.
-                                </p>
-                                <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
-                                    <p>Available on App Store.</p>
+                                   {' '} <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
+                                    Available on App Store.
                                 </a>
+                                </p>
+                              
                             </div>
                             <div className="inpage_hero_box">
                                 <img src={Pic1} className="inpage_hero_img" alt="img" />

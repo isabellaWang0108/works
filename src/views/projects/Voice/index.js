@@ -91,10 +91,12 @@ class Voice extends React.Component {
 
                         <div className="inpage_hero_container">
                             <div className="inpage_hero_box">
-                            <ProjectContext duration="3 months" team="1 PM, 6 engineers, 2 designers, 1 UX researcher" role="designer"></ProjectContext>
-                            <p>In 2021, Voice launched a social NFT marketplace aimed at empowering emerging artists by offering a unique, free minting feature powered by the EOSIO protocol. I had the opportunity to take ownership in shaping the platform, from designing the artwork creation process to shaping the viewing experience from the ground up.
-                        </p>
-                                 </div>
+                                <ProjectContext duration="3 months" team="1 PM, 6 engineers, 2 designers, 1 UX researcher" role="designer"></ProjectContext>
+                                <p>In 2021, Voice launched a social NFT marketplace aimed at empowering emerging artists by offering a unique, free minting feature powered by the EOSIO protocol. I had the opportunity to take ownership in shaping the platform, from designing the artwork creation process to shaping the viewing experience from the ground up.{' '}
+                                    <a href="https://web.archive.org/web/20211118223756/https://www.voice.com/" target="_blank" rel="noopener noreferrer">See archived product</a>
+                                </p>
+
+                            </div>
                             <div className="inpage_hero_box">
                                 <img src={Pic1} className="inpage_hero_img" alt="img" />
                             </div>
