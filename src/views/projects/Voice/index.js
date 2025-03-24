@@ -25,7 +25,7 @@ class Voice extends React.Component {
         { title: "Pain points", id: "section1" },
         { title: "Friendlier UX", id: "section2" },
         { title: "Key design steps", id: "section3" },
-        { title: "Impacts", id: "section4" },
+        { title: "Impact", id: "section4" },
         { title: "Key learnings", id: "section5" }
     ]
 
@@ -87,9 +87,9 @@ class Voice extends React.Component {
 
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
-                        <h1 id="title">Lower the NFT creation barrier</h1>
+                        <h1 id="title" className="fade-in">Lower the NFT creation barrier</h1>
 
-                        <div className="inpage_hero_container">
+                        <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <ProjectContext duration="3 months" team="1 PM, 6 engineers, 2 designers, 1 UX researcher" role="designer"></ProjectContext>
                                 <p>In 2021, Voice launched a social NFT marketplace aimed at empowering emerging artists by offering a unique, free minting feature powered by the EOSIO protocol. I had the opportunity to take ownership in shaping the platform, from designing the artwork creation process to shaping the viewing experience from the ground up.{' '}
@@ -106,7 +106,8 @@ class Voice extends React.Component {
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}
-                            <ul>Content
+                            <ul>
+                                <p className="left_nav_title">Content</p>
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
@@ -117,7 +118,7 @@ class Voice extends React.Component {
                             </ul>
                         </div>
 
-                        <div className="content-block" id="section1">
+                        <div className="content-block fade-in" id="section1">
                             <h2>Pain points</h2>
                             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
                                 <img alt="prototypes" src={Pain1} width="307" />

@@ -1,10 +1,11 @@
-import React, { useRef, useMemo } from "react";
+import React from "react";
 import $ from 'jquery';
 import "../../css/index.css"
-import { Canvas, useFrame } from 'react-three-fiber'
-import * as THREE from 'three'
+import { Canvas } from "@react-three/fiber";
+// import * as THREE from 'three'
 
 import NavigationBar from "../../components/navigation"
+import Animation3D from '../../components/animation3D'
 
 import Anote from "../../assets/images/home/anote.png"
 import DesignSystem from "../../assets/images/home/ds.png"
@@ -23,57 +24,10 @@ const windowHeight = {
     position: 'relative',
 }
 
-const aboutCardSpacing={
-    marginBottom:'4px',
-    lineHeight:'22px'
+const aboutCardSpacing = {
+    marginBottom: '4px',
+    lineHeight: '22px'
 }
-
-
-const tempObject = new THREE.Object3D()
-const tempColor = new THREE.Color()
-const colors = new Array(1000).fill().map(() => ["#555152", "#A8A8A8", "#161219", "#B24973"][Math.floor(Math.random() * 5)])
-
-
-function Boxes() {
-    const colorArray = useMemo(() =>
-        Float32Array.from(new Array(1500).fill().flatMap((_, i) => tempColor.set(colors[i]).toArray())), []
-    )
-
-    const ref = useRef()
-    useFrame(state => {
-        const time = state.clock.getElapsedTime()
-        ref.current.position.x = Math.sin(time / 8) * 2
-        ref.current.position.y = Math.sin(time / 2)
-        ref.current.rotation.x += .002
-        ref.current.rotation.y += .002
-
-        let i = 0
-        for (let x = 0; x < 10; x++)
-
-            for (let y = 0; y < 10; y++)
-
-                for (let z = 0; z < 10; z++) {
-                    const id = i++
-                    tempObject.position.set(5 - x, 5 - y, 5 - z)
-
-                    tempObject.position.multiplyScalar(Math.sin(time) / 10 + 1.2)
-
-                    tempObject.updateMatrix()
-                    ref.current.setMatrixAt(id, tempObject.matrix)
-                }
-        ref.current.instanceMatrix.needsUpdate = true
-    })
-
-    return (
-        <instancedMesh ref={ref} args={[null, null, 1000]}>
-            <sphereBufferGeometry args={[.3, 30, 30]} attach="geometry" >
-                <instancedBufferAttribute attachObject={['attributes', 'color']} args={[colorArray, 3]} />
-            </sphereBufferGeometry>
-            <meshPhongMaterial attach="material" vertexColors={THREE.VertexColors} />
-        </instancedMesh>
-    )
-}
-
 
 class Homepage extends React.Component {
 
@@ -86,6 +40,8 @@ class Homepage extends React.Component {
         background: 0,
         timeLineHeight: $(document).height()
     }
+
+
     componentDidMount() {
         const savedScrollPosition = sessionStorage.getItem("homepageScrollPosition");
         if (savedScrollPosition) {
@@ -98,14 +54,14 @@ class Homepage extends React.Component {
     componentWillUnmount() {
         sessionStorage.setItem("homepageScrollPosition", window.pageYOffset);
     }
-
+    
     render() {
         return (
-
 
             <div id="parallaxScroll" >
 
                 {/* navigation bar */}
+
                 <NavigationBar href="#contactPart" contact />
 
                 <div id="HP_container" className='HP_container' >
@@ -115,7 +71,7 @@ class Homepage extends React.Component {
                     {/* landing page */}
                     <div style={windowHeight} className="sessionContainer" >
                         <div id="landingPart" >
-                            <div className='landingpage_Intro'>
+                            <div className='landingpage_Intro fade-in'>
 
                                 I design, test, and iterate based on research.
                                 <div> </div>
@@ -136,9 +92,9 @@ class Homepage extends React.Component {
                             style={{ zIndex: 1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 780 ? "60%" : "100%" }}
                             camera={{ position: [3, 5, 15] }}
                         >
-                            <hemisphereLight intensity={0.2} groundColor="#555" />
-                            <pointLight position={[150, 150, 150]} intensity={0.1} />
-                            <Boxes />
+                            <hemisphereLight intensity={.7} groundColor="#555" />
+                            <pointLight position={[50, 0, 0]} intensity={10} />
+                            <Animation3D />
                         </Canvas>
                     </div>
 
@@ -164,6 +120,7 @@ class Homepage extends React.Component {
                                     innerLink={true}
                                     label="Read the case"
                                     link="kiosk"
+                                     className="readCases"
                                 />
                             </div>
 
@@ -187,6 +144,7 @@ class Homepage extends React.Component {
                                     innerLink={true}
                                     label="Read the case"
                                     link="design-system"
+                                     className="readCases"
                                 />
                             </div>
 
@@ -213,6 +171,7 @@ class Homepage extends React.Component {
                                     innerLink={true}
                                     label="Read the case"
                                     link="voice"
+                                    className="readCases"
                                 />
                             </div>
 
@@ -231,14 +190,14 @@ class Homepage extends React.Component {
                                 <p> I developed the style strategy and designed a marketing website for an innovative AI startup to introduce their products.
                                 </p>
                             </div>
-                            <div className="contentblock">
-
-                                <UnderlineBtn
-                                    innerLink={false}
-                                    label="See the website"
-                                    link="https://anote.ai/"
-                                />
-
+                            <div className="contentblock ">
+                            
+                                    <UnderlineBtn
+                                        innerLink={false}
+                                        label="See the website"
+                                        link="https://anote.ai/"
+                                        className="readCases"
+                                    />
                             </div>
 
                         </div>
@@ -325,7 +284,7 @@ class Homepage extends React.Component {
                                 innerLink={false}
                                 label="Contact me"
                                 link="mailto:wangxbella0108@gmail.com"
-                                onClick={(e)=> {window.location.href = "mailto:wangxbella0108@gmail.com"}}
+                                onClick={(e) => { window.location.href = "mailto:wangxbella0108@gmail.com" }}
                             />
                         </div>
                     </div>

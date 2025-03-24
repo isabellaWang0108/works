@@ -1,6 +1,5 @@
 import React from "react";
 import $ from 'jquery';
-import { Link } from "react-router-dom";
 
 import Github from "../assets/images/contact/github.svg"
 import Linkedin from "../assets/images/contact/linkedin.svg"
@@ -25,99 +24,7 @@ class Contact extends React.Component {
                             <br /><br />
                             Below is a selection of my works for you to get to know me:
                         </p>
-                        <div className="threecolumn">
-                            <div className="threecolumn-row">
-                                <h2>Design projects</h2>
-
-
-                                <Link to="thesis" target="_blank" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>Thesis </b>
-                                        <br />
-                                        A one-year research project that defines my focus on the human-technology relationship.
-                                    </p>
-                                </Link>
-
-                                <Link to="design-system" target="_blank" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>Enterprise design system</b>
-                                        <br />
-                                        A case study on building a typography system.
-                                    </p>
-                                </Link>
-
-                                <Link to="voice" target="_blank" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>NFT creation feature </b>
-                                        <br />
-                                        A case study on designing a product feature for an NFT Marketplace.
-                                    </p>
-                                </Link>
-
-
-                                <Link to="product-studio" target="_blank" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>Reimagining the recruitement UX</b>
-                                        <br />
-                                        A product challenge about designing a better job hunting experience for millennial technical talents.
-                                    </p>
-                                </Link>
-                            </div>
-
-
-
-                            <div className="threecolumn-row">
-                                <h2>Coding work</h2>
-
-
-                                <a target="_blank" rel="noopener noreferrer" href="https://isabellawang0108.github.io/3Dprogramming/" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>3D programming </b>
-                                        <br />
-                                        A simple interactive project to let users experience the black box in ML.
-                                    </p>
-                                </a>
-
-                                <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/getawarehealth/id1507236576" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>Mobile app development</b>
-                                        <br />
-                                        A GDPR compliant mental well-being mobile platform using React Native, AWS, Cognito, Amplify, Redux.
-                                    </p>
-                                </a>
-
-                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellaWang0108/flocker" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>Web app development</b>
-                                        <br />
-                                        A matching app developed using React, SQL, and Cloudinary.
-                                    </p>
-                                </a>
-
-                            </div>
-
-                            <div className="threecolumn-row">
-                                <h2>Others</h2>
-
-
-                                <a href="https://www.linkedin.com/feed/update/urn:li:activity:6912159571595730944/" rel="noopener noreferrer" target="_blank" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>Integrated system </b>
-                                        <br />
-                                        A home automation passion project that reflects the automation status quo.
-                                    </p>
-                                </a>
-
-                                <a href="https://wangxbella0108.medium.com/ui-vs-logo-gradient-ec0f67d10e21" rel="noopener noreferrer" target="_blank" className="AboutProj">
-                                    <p className="AboutProj-content">
-                                        <b>Gradient research</b>
-                                        <br />
-                                        My featuring writing in my design research blogs.
-                                    </p>
-                                </a>
-                            </div>
-
-                        </div>
+                        
                         <div style={{ alignContent: 'center', textAlign: 'center', width: '100%', marginTop: 24 }}>
                             <p style={{ marginBottom: 0 }}>Happy to connect !</p>
                             <a style={{ color: 'black', fontSize: '16px', textDecoration: 'none', marginTop: 0 }} href="mailto:wangxbella0108@gmail.co">

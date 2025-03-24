@@ -7,8 +7,7 @@ const underLined = {
     textDecoration: 'underline',
     borderWidth: 0,
     fontSize: 21,
-    marginLeft: 0,
-    padding: '16px 0px',
+    padding: '16px 4px 16px 8px',
     marginTop: 24,
     backgroundColor: 'transparent',
     cursor: 'pointer',
@@ -32,6 +31,7 @@ class underLinedBtn extends React.Component {
                 <NavLink to={this.props.link}>
                     <button
                         style={underLined}
+                        className={this.props.className}
                         onMouseEnter={this.mouseEnter}
                         onMouseOut={this.mouseOut}
                         onClick={(e) => e.stopPropagation()} // Prevent bubbling issues
@@ -44,6 +44,7 @@ class underLinedBtn extends React.Component {
             ) : (
                 <button
                     style={underLined}
+                    className={this.props.className}
                     onMouseEnter={this.mouseEnter}
                     onMouseOut={this.mouseOut}
                     onClick={(e) => {
@@ -52,8 +53,8 @@ class underLinedBtn extends React.Component {
                     }}
                 >
                     {this.props.label}<span style={{ margin: '0pt 4pt' }}>
-                            <img style={{ width: '13pt', color: 'black' }} src={NewPage} alt="new page" />
-                        </span>
+                        <img style={{ width: '13pt', color: 'black' }} src={NewPage} alt="new page" />
+                    </span>
                 </button>
             )
         );

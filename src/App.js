@@ -1,51 +1,51 @@
-import React, { Component } from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import React, { useState, useEffect, Suspense, lazy } from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Loading from "./components/loading"
-import Homepage from "./views/homepage"
-import Contact from "./views/contact.js"
 
-import Vogether from "./views/projects/Vogether"
-import ProductStudio from "./views/projects/ProductStudio"
-import Thesis from "./views/projects/Thesis"
-import DS from "./views/projects/DS"
-import Voice from "./views/projects/Voice"
-import Kiosk from "./views/projects/Kiosk"
 
-class App extends Component {
-  state = {
-    isLoading: true
+const Homepage = lazy(() => import("./views/homepage"));
+const Contact = lazy(() => import("./views/contact.js"));
+const Vogether = lazy(() => import("./views/projects/Vogether"));
+const ProductStudio = lazy(() => import("./views/projects/ProductStudio"));
+const Thesis = lazy(() => import("./views/projects/Thesis"));
+const DS = lazy(() => import("./views/projects/DS"));
+const Voice = lazy(() => import("./views/projects/Voice"));
+const Kiosk = lazy(() => import("./views/projects/Kiosk"));
+
+
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const minLoadingTime = 2000; 
+
+    Promise.all([
+      new Promise((resolve) => setTimeout(resolve, minLoadingTime)),
+    ]).then(() => {
+      setIsLoading(false);
+    });
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
   }
 
-  constructor() {
-    super();
-    this.state = { isLoading: true }
-  }
+  return (
+    <HashRouter>
+    <Suspense fallback={null}>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/product-studio" element={<ProductStudio />} />
+        <Route path="/thesis" element={<Thesis />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/design-system" element={<DS />} />
+        <Route path="/voice" element={<Voice />} />
+        <Route path="/vogether" element={<Vogether />} />
+        <Route path="/kiosk" element={<Kiosk />} />
+      </Routes>
+    </Suspense>
+  </HashRouter>
+  );
+};
 
-  componentDidMount() {
-    setTimeout(() => { this.setState({ isLoading: false }) }, 2000)
-  }
-
-
-  render() {
-    if (this.state.isLoading === true) {
-      return <Loading />
-    } else {
-      return (
-        <HashRouter basename='/'>
-          <Switch>
-            <Route exact path={process.env.PUBLIC_URL + "/"} component={Homepage} />
-            <Route exact path={process.env.PUBLIC_URL + "/product-studio"} component={ProductStudio} />
-            <Route exact path={process.env.PUBLIC_URL + "/thesis"} component={Thesis} />
-            <Route exact path={process.env.PUBLIC_URL + "/contact"} component={Contact} />
-            <Route exact path={process.env.PUBLIC_URL + "/design-system"} component={DS} />
-            <Route exact path={process.env.PUBLIC_URL + "/voice"} component={Voice} />
-            <Route exact path={process.env.PUBLIC_URL + "/vogether"} component={Vogether} />
-            <Route exact path={process.env.PUBLIC_URL + "/kiosk"} component={Kiosk} />
-          </Switch>
-        </HashRouter>
-      )
-    }
-
-  }
-}
 export default App;

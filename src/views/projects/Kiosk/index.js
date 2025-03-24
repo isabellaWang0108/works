@@ -32,12 +32,12 @@ class Kiosk extends React.Component {
         { title: "Overview", id: "section1" },
         { title: "Early concepts", id: "section2" },
         { title: "Product/UX alignment", id: "section3" },
-        { title: "Research/Learning", id: "section4" },
+        { title: "Research", id: "section4" },
         { title: "Prototyping", id: "section5" },
         { title: "Iterations", id: "section6" },
         { title: "Testing", id: "section7" },
         { title: "Delivery", id: "section8" },
-        { title: "Post-deployment learning", id: "section9" },
+        { title: "Learning after deployment", id: "section9" },
     ]
 
 
@@ -99,18 +99,18 @@ class Kiosk extends React.Component {
 
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
-                        <h1 id="title">Automating Office Check-in</h1>
+                        <h1 id="title" className="fade-in">Automating Office Check-in</h1>
 
-                        <div className="inpage_hero_container">
+                        <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <ProjectContext duration="1 month" team="1 PM, 5 engineers, 1 designer" role="Designer"></ProjectContext>
                                 <p>
                                     The Kiosk Check-in project showcases my design approach when physical interaction and multiple devices are involved. The end-to-end experience involves various devices, different platforms and products across the company. Please contact me for the full story and design.
-                                   {' '} <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
-                                    Available on App Store.
-                                </a>
+                                    {' '} <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
+                                        Available on App Store.
+                                    </a>
                                 </p>
-                              
+
                             </div>
                             <div className="inpage_hero_box">
                                 <img src={Pic1} className="inpage_hero_img" alt="img" />
@@ -120,7 +120,8 @@ class Kiosk extends React.Component {
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}
-                            <ul>Content
+                            <ul>
+                                <p className="left_nav_title">Content</p>
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
@@ -131,7 +132,7 @@ class Kiosk extends React.Component {
                             </ul>
                         </div>
 
-                        <div className="content-block" id="section1">
+                        <div className="content-block fade-in" id="section1">
                             <h2>Overview</h2>
                             <p><span className="bold">Outcome</span>: This project introduces a self-service visitor management kiosk that streamlines the check-in process, freeing up valuable time for front desk staff.</p>
 

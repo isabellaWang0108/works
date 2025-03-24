@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 
 const container = {
@@ -19,7 +19,7 @@ const navigation = {
     justifyContent: 'flex-end',
     padding: '20px 0px',
     alignItems: 'center',
-    backgroundColor:'#171717c9',
+    backgroundColor: '#171717c9',
     backdropFilter: 'blur(10pt)'
 }
 
@@ -32,42 +32,45 @@ const logo = {
     top: window.innerWidth > 450 ? 20 : 14,
 }
 
-class NavigationBar extends Component {
 
-    handleBack = () => {
-        window.history.back();
-    }
+const NavigationBar = () => {
+    const location = useLocation();
+    const isHomePage = location.pathname === "/"; // Adjust if needed
 
-    render() {
-        return (
-            <div style={container}>
-                <div style={navigation}>
-                    {/* logo */}
-                    <Link to="/">
-                        <div style={logo} className="logo bold pink">Isabella Wang</div>
-                    </Link>
-
-
-                    <a href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{marginRight:'16pt', textDecoration:'none' }} className="bold pink">
-                        Resume
-                    </a>
-
-
-
-                </div >
-                {window.location.hash === '#/' ? null :
-                    <button onClick={this.handleBack} className="icon backbtn" style={{width:'88px'}}>
-                        <span className="material-symbols-outlined">
-                            arrow_back
-                        </span>
-                         Back
-                    </button>
-                }
+    return (
+        <div style={container} className="fade-in">
+            <div style={navigation}>
+                {/* Logo */}
+                <Link to="/">
+                    <div style={logo} className="logo bold pink">
+                        Isabella Wang
+                    </div>
+                </Link>
+                <a
+                    href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ marginRight: '16pt', textDecoration: 'none' }}
+                    className="bold pink"
+                >
+                    Resume
+                </a>
             </div>
 
-        )
-    }
-
-}
+            {!isHomePage && (
+                <button
+                    onClick={() =>( window.history.back())}
+                    className="icon backbtn"
+                    style={{ width: '88px' }}
+                >
+                    <span className="material-symbols-outlined">
+                        arrow_back
+                    </span>
+                    Back
+                </button>
+            )}
+        </div>
+    );
+};
 
 export default NavigationBar;

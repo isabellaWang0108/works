@@ -28,9 +28,10 @@ class InpageContactMe extends Component {
                     <h3 className="bold" style={{ marginTop: '28pt', marginRight: '16pt' }}>or</h3>
 
                     <Button
-                        innerLink={true}
+                        innerLink={false}
                         label="See other projects"
                         link="/#professionalW"
+                        onClick={() =>( window.history.back())}
                     />
                 </div>
             </>

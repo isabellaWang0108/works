@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/loading.css"
+import "../css/index.css"
 
 class Loading extends React.Component {
 
@@ -10,8 +10,9 @@ class Loading extends React.Component {
             "I like stand-up comedy",
             "I have two parakeets"
         ]
+        
         return (
-            <div className="loadingpage">
+            <div className="loadingpage fade-out">
                 <div className="loader circle"></div>
                 <h2 style={{color:'white'}}>{facts[Math.floor(Math.random() * 4)]}
                 </h2>

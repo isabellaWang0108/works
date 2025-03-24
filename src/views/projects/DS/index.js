@@ -11,7 +11,7 @@ import Pic4 from "../../../assets/images/DesignSystem/ds_pic4.png"
 import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.png"
 import Pic6 from "../../../assets/images/DesignSystem/ds_pic6.png"
 // import Pic7 from "../../../assets/images/DesignSystem/ds_pic7.png"
-import Pic8 from "../../../assets/images/DesignSystem/ds_pic8.svg"
+import Pic8 from "../../../assets/images/DesignSystem/ds_pic8.png"
 import Pic9 from "../../../assets/images/DesignSystem/ds_pic9.svg"
 import Pic10 from "../../../assets/images/DesignSystem/ds_pic10.svg"
 import Pic11 from "../../../assets/images/DesignSystem/ds_pic11.svg"
@@ -102,8 +102,8 @@ class DS extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
 
-                        <h1 id="title">Building a design system </h1>
-                        <div className="inpage_hero_container">
+                        <h1 id="title" className="fade-in">Building a design system </h1>
+                        <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <ProjectContext duration="1 year" team="2 engineers, 2 designers" role="Designer"></ProjectContext>
                                 <p>VTS has 4+ independently developed products with 100+ web pages, each influenced by different design teams, leading to inconsistent styles and legacy design systems across products.</p>
@@ -130,7 +130,7 @@ class DS extends React.Component {
                             </ul>
                         </div>
 
-                        <div className="content-block" id="section1">
+                        <div className="content-block fade-in" id="section1">
                             <h2>Identifying the problems</h2>
                             <h3>Issue 1: Incoherent typography usage within the same product </h3>
                             <img src={Pic3} className="images png" alt="img" />

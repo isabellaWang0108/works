@@ -89,7 +89,8 @@ class Thesis extends React.Component {
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
                             {/* menu */}
-                            <ul>Content
+                            <ul>
+                                <p className="left_nav_title">Content</p>
                                 {this.content.map((item, index) => {
                                     return (
                                         <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
