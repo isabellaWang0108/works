@@ -148,20 +148,17 @@ class Kiosk extends React.Component {
                         <div className="content-block" id="section3">
                             <h2 >Product/UX alignment</h2>
                             <p>I utilized user flow as an efficient tool to align the UX and vision with engineers, PMs, and designers from other teams.
-                                The total experience involves 4 user categories:
+                                The total experience involves 3 user categories:
                             </p>
                             <ul>
                                 <li>
-                                    <span className="bold">Office visitors</span> will check in using a QR code sent by the office admin through email.
+                                    <span className="bold">Office visitors</span> will check in using a QR code sent by the office worker through app.
                                 </li>
                                 <li>
                                     <span className="bold">System admins</span> register the kiosk device.
                                 </li>
                                 <li>
-                                    <span className="bold">Front-desks</span>  register visitors and set up the kiosk itself (I took charge of this flow).
-                                </li>
-                                <li>
-                                    <span className="bold">Office workers</span>  register and send their visitors QR codes.
+                                    <span className="bold">Office workers</span>  register and send their visitors QR codes thorugh the app.
                                 </li>
                             </ul>
                             <img alt="prototype" className="images png" src={Pic3} />
