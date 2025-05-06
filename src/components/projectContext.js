@@ -20,10 +20,6 @@ class ProjectContext extends Component {
         return (
             <div style={container}>
                 <div className="grey right-border bold">
-                    <div style={title}>Duration:</div>
-                    <div>{this.props.duration}</div>
-                </div>
-                <div className="grey right-border bold">
                     <div style={title}>My role:</div>
                     <div>{this.props.role}</div>
                 </div>

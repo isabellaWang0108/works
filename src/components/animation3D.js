@@ -1,3 +1,93 @@
+// import React, { useRef, useMemo } from "react";
+// import { Canvas, useFrame } from "@react-three/fiber";
+// import * as THREE from "three";
+
+// function FloatingNetwork() {
+//   const nodesRef = useRef([]);
+//   const linesRef = useRef([]);
+
+//   // Define fixed node positions
+//   const positions = useMemo(() => [
+//     new THREE.Vector3(-10, 0, 0),
+//     new THREE.Vector3(-2, 6, 0),
+//     new THREE.Vector3(-6, -6, 0),
+//   ], []);
+
+//   // Define edges by index pairs
+//   const links = useMemo(() => [
+//     [0, 1], [1, 2], [2, 3], [0, 2]
+//   ], []);
+
+//   // Store animation parameters per node
+//   const floatParams = useMemo(() => positions.map(() => ({
+//     speed: 0.5 + Math.random(),
+//     amplitude: 0.3 + Math.random() * 0.2,
+//     phase: Math.random() * Math.PI * 2
+//   })), [positions]);
+
+//   useFrame(({ clock }) => {
+//     const t = clock.getElapsedTime();
+//     // Update nodes
+//     nodesRef.current.forEach((mesh, i) => {
+//       if (!mesh) return;
+//       const base = positions[i];
+//       const { speed, amplitude, phase } = floatParams[i];
+//       mesh.position.set(base.x, base.y + Math.sin(t * speed + phase) * amplitude, base.z);
+//     });
+
+//     // Update lines to match floating nodes
+//     linesRef.current.forEach((line, i) => {
+//       const [startIdx, endIdx] = links[i];
+//       const start = nodesRef.current[startIdx]?.position;
+//       const end = nodesRef.current[endIdx]?.position;
+//       if (start && end && line) {
+//         line.geometry.setFromPoints([start, end]);
+//         line.geometry.verticesNeedUpdate = true;
+//       }
+//     });
+//   });
+
+//   return (
+//     <>
+//       {/* Nodes */}
+//       {positions.map((pos, i) => (
+//         <mesh
+//           key={i}
+//           ref={el => nodesRef.current[i] = el}
+//           position={pos}
+//         >
+//           <sphereGeometry args={[0.5, 16, 16]} />
+//           <meshBasicMaterial color="white" />
+//         </mesh>
+//       ))}
+
+//       {/* Links */}
+//       {links.map(([i, j], idx) => (
+//         <line
+//           key={idx}
+//           ref={el => linesRef.current[idx] = el}
+//         >
+//           <bufferGeometry />
+//           <lineBasicMaterial color="#888888" />
+//         </line>
+//       ))}
+//     </>
+//   );
+// }
+
+// export default function Animation3D() {
+//   return (
+//     <>
+
+//       <ambientLight />
+//       <FloatingNetwork />
+//     </>
+
+//   );
+// }
+
+
+// Old animation
 import React, { useRef, useMemo, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -79,3 +169,5 @@ function Animation3D() {
 }
 
 export default Animation3D;
+
+

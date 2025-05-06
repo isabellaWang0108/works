@@ -29,15 +29,14 @@ import InpageContactMe from "../../../components/inpage_contactme"
 class Kiosk extends React.Component {
 
     content = [
-        { title: "Overview", id: "section1" },
-        { title: "Early concepts", id: "section2" },
-        { title: "Product/UX alignment", id: "section3" },
-        { title: "Research", id: "section4" },
-        { title: "Prototyping", id: "section5" },
-        { title: "Iterations", id: "section6" },
-        { title: "Testing", id: "section7" },
-        { title: "Delivery", id: "section8" },
-        { title: "Learning after deployment", id: "section9" },
+        { title: "My Design Flow", id: "section1" },
+        { title: "Picking the Tech", id: "section2" },
+        { title: "Cross-functional Collaborate", id: "section3" },
+        { title: "Findings", id: "section4" },
+        { title: "Design Iterations", id: "section5" },
+        { title: "A/B Testing", id: "section6" },
+        { title: "Delivered Design", id: "section7" },
+        { title: "Reflection", id: "section8" },
     ]
 
 
@@ -105,8 +104,9 @@ class Kiosk extends React.Component {
                             <div className="inpage_hero_box">
                                 <ProjectContext duration="1 month" team="1 PM, 5 engineers, 1 designer" role="Designer"></ProjectContext>
                                 <p>
-                                    The Kiosk Check-in project showcases my design approach when physical interaction and multiple devices are involved. The end-to-end experience involves various devices, different platforms and products across the company. Please contact me for the full story and design.
-                                    {' '} <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
+                                    This project introduces a self-service visitor management kiosk that streamlines the check-in process, freeing up valuable time for front desk staff and improving efficiency for the visitors.
+                                    <br />
+                                    <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
                                         Available on App Store.
                                     </a>
                                 </p>
@@ -133,130 +133,87 @@ class Kiosk extends React.Component {
                         </div>
 
                         <div className="content-block fade-in" id="section1">
-                            <h2>Overview</h2>
-                            <p><span className="bold">Outcome</span>: This project introduces a self-service visitor management kiosk that streamlines the check-in process, freeing up valuable time for front desk staff.</p>
-
-                            <p>For this project, my workflow revisited product and UX alignment heavily due to the engineering specifics and the need to collaborate with designers from other teams.    </p>
+                            <h2>My Design Flow</h2>
                             <img alt="prototype" className="images" src={Pic2} />
                         </div>
 
                         <div className="content-block" id="section2">
-                            <h2>Early concepts</h2>
+                            <h2>Picking the Tech</h2>
+                            <p>I participated in strategic discussions to ensure user experience was a consideration in selecting technologies for the self-check-in process. The team explored options like facial recognition and ID scanning, but ultimately chose QR code check-in via an iPad stand—balancing usability with business constraints.</p>
                             <img alt="prototype" className="images png" src={Pic19} />
                         </div>
 
                         <div className="content-block" id="section3">
-                            <h2 >Product/UX alignment</h2>
-                            <p>I utilized user flow as an efficient tool to align the UX and vision with engineers, PMs, and designers from other teams.
-                                The total experience involves 3 user categories:
+                            <h2 >Cross-functional Collaboration</h2>
+                            <p>I used user flows chart as an efficient tool to align UX and product vision across engineers, PMs, and cross-functional designers. By stripping away visuals, user flows helped focus the team on core ideas, and because they’re accessible, everyone could contribute to shaping the experience.
                             </p>
-                            <ul>
-                                <li>
-                                    <span className="bold">Office visitors</span> will check in using a QR code sent by the office worker through app.
-                                </li>
-                                <li>
-                                    <span className="bold">System admins</span> register the kiosk device.
-                                </li>
-                                <li>
-                                    <span className="bold">Office workers</span>  register and send their visitors QR codes thorugh the app.
-                                </li>
-                            </ul>
+
                             <img alt="prototype" className="images png" src={Pic3} />
                         </div>
 
                         <div className="content-block" id="section4">
-                            <h2>Research</h2>
-                            <p>Below is a compilation of findings I got from user research, design critiques, and hands-on experimentation with devices.</p>
-
-                            <h3>1. QR code scanning convention</h3>
-                            <p>Many users have established mental models of using QR codes, particularly in the post-COVID era, so it’s crucial to replicate familiar interactions rather than introduce entirely novel ones. </p>
+                            <h2>Findings</h2>
+                            <p>I did secondary researches to find out design convention, technical limitation, and accessibility guidance before jumping straight into prototyping.</p>
+                            <h3>Finding 1: QR Code Scanning is Familiar — No Education Needed in the Primary Flow. </h3>
                             <img alt="prototype" className="images png" src={Pic4} />
 
 
-                            <h3>2. Physical blind spot</h3>
-                            <p>
-                                When putting a phone in front of an iPad, there are blind spots on the screen due to physical overlapping. It’s important to understand what screen areas are visible to users so they can see the visual feedback to accomplish necessary tasks.
-                            </p>
+                            <h3>Finding 2: Phone Placement Can Obstruct Key Visual Feedback on the iPad. </h3>
                             <img alt="prototype" className="images png" src={Pic5} />
 
-                            <h3>3. UI that reflects physical distance </h3>
-                            <p>
-                                It’s helpful to know the exact size at which the QR code appears on camera to design a UI that effectively guides users on distance.    </p>
+                            <h3>Finding 3: UI needs to Reflect Physical Distance. </h3>
                             <img alt="prototype" className="images png" src={Pic6} />
                         </div>
 
 
+                
                         <div className="content-block" id="section5">
-                            <h2>Prototyping</h2>
-                            <p>
-                                I explored various UI layouts, interaction elements, and visual design options for every screen in the complete flow. The screenshot below demonstrates the breadth of exploration.
-                            </p>
-
-                            <img alt="prototype" width="100%" src={Pic7} />
-                        </div>
-
-                        <div className="content-block" id="section6">
-                            <h2>Iterations</h2>
-                            <p>I'll present selected screens to demonstrate my iterations.</p>
-                            <p>
-                                Below is a summary of all prerequisites:
-                            </p>
-                            <ol>
-                                <li>
-                                    The camera cannot always be active due to power constraints; hence, a tap-to-activate feature is inevitable.
-                                </li>
-                                <li>
-                                    Companies must be able to customize their background image.
-                                </li>
-                            </ol>
+                            <h2>Design Iterations</h2>
+                            <p>I have selected a few key iterations to showcase my design decision-making process and how I approach problem-solving.</p>
+                          
                             <img alt="prototype" width="100%" src={Pic8} />
 
-                            <h3>No room for illegibility risk.  </h3>
+                            <h3>No Room for Illegibility Risk.  </h3>
                             <p>
-                                The first design poses illegibility risks based on the customer’s image selection.
+                            Since clients can customize background image, it introduces potential accessibility challenges in the design.
                             </p>
                             <img alt="prototype" width="100%" src={Pic9} />
 
 
-                            <h3>Function over branding</h3>
+                            <h3>Reflecting the Product Value: Function over Branding</h3>
                             <p>
                                 The iterated design solves the illegibility issue, but it places a strong emphasis on the image over text and buttons, which misaligned with the product’s primary purpose.  </p>
                             <br />
                             <img alt="prototype" width="100%" src={Pic10} />
 
-                            <h3>The better design broke the design system</h3>
+                            <h3>Design Trade-off: Design System Compliance vs Usability</h3>
                             <p>
-                                I developed a new design that not only enhances visual appeal but also meets all functional requirements. However, it breaks our design system by introducing a specific use-case scenario, making it a significant decision for the team.
+                            I designed a solution that enhanced visual appeal and met all functional requirements, but it introduced a one-off use case that diverged from our design system. To support this decision, I relied on A/B testing results as evidence.
                             </p>
                             <img alt="prototype" width="100%" src={Pic11} />
                         </div>
 
-                        <div className="content-block" id="section7">
-                            <h2>Testing</h2>
-                            <p>
-                                I decided to use data to determine whether the benefits of breaking the design system justify the potential risks.
-                            </p>
-                            <img alt="prototype" width="100%" src={Pic12} />
-                            <p>In the test, we set up 2 criteria to determine which design to go with: usability and preference.</p>
-
+                        <div className="content-block" id="section6">
+                            <h2>A/B Testing</h2>
+                            <img alt="prototype" width="100%" src={Pic12} />             
                             <h3>Test 1: Usability</h3>
                             <p>
-                                In the usability test, we assigned users the following task for each design: “Activate the QR scanner.”
+                                In the usability test, I assigned users the following task for each design: “Activate the QR scanner.”
                                 Design B won on both interaction accuracy and the time taken to perform the task.
                             </p>
                             <img alt="prototype" width="100%" src={Pic13} />
 
                             <h3>Test 2: Preference</h3>
                             <p>
-                                We simply asked users which design they prefer. Design B was a clear winner here as well.
+                                I simply asked users which design they prefer. Design B was a clear winner here as well.
                             </p>
                             <img alt="prototype" width="100%" src={Pic14} />
-                            <p className="bold">With the result of user testing, we moved forward with Design B. </p>
-
+                            <h3>With the result of user testing, I moved forward with Design B.</h3>
+                            <img alt="prototype" width="100%" src={Pic18} />
                         </div>
 
-                        <div className="content-block" id="section8">
-                            <h2>Delivery</h2>
+                        <div className="content-block" id="section7">
+                            <h2>Delivered Design</h2>
                             <p>Below are the final screens for the initial successful office visitors QR code scanning flow, which ideally occurs every time.</p>
                             <img alt="prototype" width="100%" src={Pic15} />
 
@@ -266,17 +223,16 @@ class Kiosk extends React.Component {
 
                             <h3>Responsive design</h3>
                             <p>
-                                The iPad can be used in both horizontal and vertical orientations. It’s important to have a design that clearly communicates these requirements to the engineering team.
+                                The iPad can be used in both horizontal and vertical orientations. 
                             </p>
                             <img alt="prototype" width="100%" src={Pic17} />
 
                         </div>
 
-                        <div className="content-block" id="section9">
-                            <h2>Learning after deployment</h2>
+                        <div className="content-block" id="section8">
+                            <h2>Reflection</h2>
                         </div>
-                        <p>After deploying the product into beta testing, we received two reports on scenarios we hadn't anticipated. This experience revealed the critical edge cases that needed to be addressed.</p>
-                        <img alt="prototype" width="100%" src={Pic18} />
+                        <p>This project improves check-in efficiency, but it comes with security trade-offs. It assumes guests have no malicious intent, yet the iPad alone cannot prevent someone from bypassing the process and entering the office uninvited. A more future-forward solution would integrate the iPad with the door system—granting access only after a successful passcode scan, directly enhancing security.</p>
 
                         <div className="content-block" >
                             <InpageContactMe />

@@ -19,8 +19,8 @@ import { Link } from "react-router-dom";
 
 
 const windowHeight = {
-    height: window.innerWidth < 990 ? window.innerHeight * 1.2 : window.innerHeight,
-    minHeight: 600,
+    height: window.innerWidth < 990 ? window.innerHeight : window.innerHeight * 0.8,
+    minHeight: 500,
     position: 'relative',
 }
 
@@ -54,7 +54,7 @@ class Homepage extends React.Component {
     componentWillUnmount() {
         sessionStorage.setItem("homepageScrollPosition", window.pageYOffset);
     }
-    
+
     render() {
         return (
 
@@ -72,10 +72,13 @@ class Homepage extends React.Component {
                     <div style={windowHeight} className="sessionContainer" >
                         <div id="landingPart" >
                             <div className='landingpage_Intro fade-in'>
+                          Designing Thoughtful, Scalable, and Efficient UX
+                                
+                                <h3 style={{letterSpacing:.25, lineHeight:1.8}}> 
+                                I'm passionate about designing products that make life easier, with a focus on systemic sustainability, efficient user patterns, and context-aware accessibility.
 
-                                I design, test, and iterate based on research.
+                                </h3>
                                 <div> </div>
-
                                 <Button
                                     innerLink={false}
                                     label="See my work"
@@ -110,7 +113,7 @@ class Homepage extends React.Component {
                             <div className="contentblock">
 
                                 <h1 className="text-white">Automating Office Check-in </h1>
-                                <p className="text-white">This project shows my design approach when physical interaction and different hardware devices are involved.
+                                <p className="text-white">This project reduced reliance on front desk staff and improved operational efficiency by revamping end-to-end service design to enable visitor self check-in.
                                     <br />
 
                                 </p>
@@ -120,7 +123,7 @@ class Homepage extends React.Component {
                                     innerLink={true}
                                     label="Read the case"
                                     link="kiosk"
-                                     className="readCases"
+                                    className="readCases"
                                 />
                             </div>
 
@@ -144,7 +147,13 @@ class Homepage extends React.Component {
                                     innerLink={true}
                                     label="Read the case"
                                     link="design-system"
-                                     className="readCases"
+                                    className="readCases"
+                                />
+                                   <UnderlineBtn
+                                    innerLink={false}
+                                    label="See the live site"
+                                    link="https://terra.vts.com/"
+                                    className="readCases"
                                 />
                             </div>
 
@@ -191,13 +200,13 @@ class Homepage extends React.Component {
                                 </p>
                             </div>
                             <div className="contentblock ">
-                            
-                                    <UnderlineBtn
-                                        innerLink={false}
-                                        label="See the website"
-                                        link="https://anote.ai/"
-                                        className="readCases"
-                                    />
+
+                                <UnderlineBtn
+                                    innerLink={false}
+                                    label="See the website"
+                                    link="https://anote.ai/"
+                                    className="readCases"
+                                />
                             </div>
 
                         </div>
@@ -205,10 +214,13 @@ class Homepage extends React.Component {
 
                     </div>
 
+                    {/* <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}> */}
+
 
                     {/* About Me */}
-                    <div id="seeMore" className="sessionContainer" style={{ height: 'auto', position: 'relative' }} >
+                    <div id="seeMore" className="sessionContainer" style={{ height: 'auto', position: 'relative', background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }} >
                         <div className="seeMore">
+
                             <h1>About me</h1>
                             <div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
@@ -225,7 +237,11 @@ class Homepage extends React.Component {
                                 I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
                             </p>
 
-                            <p>I have more work for you to get to know me:</p>
+                            <p>Contact me:{' '}<a href="mailto:wangxbella0108@gmail.com" target="_blank" rel="noopener noreferrer" >wangxbella0108@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div className="sessionContainer" style={{ height: 'auto', position: 'relative' }} >
+                        <div className="seeMore">
 
                             <div className="threecolumn">
                                 <div className="threecolumn-row">
@@ -278,15 +294,7 @@ class Homepage extends React.Component {
 
                     {/* Contact */}
                     <div id="seeMore" className="sessionContainer" style={{ height: '300pt', position: 'relative' }} >
-                        <div className="seeMore">
-                            <h1>Do you want to learn more?</h1>
-                            <Button
-                                innerLink={false}
-                                label="Contact me"
-                                link="mailto:wangxbella0108@gmail.com"
-                                onClick={(e) => { window.location.href = "mailto:wangxbella0108@gmail.com" }}
-                            />
-                        </div>
+
                     </div>
 
 

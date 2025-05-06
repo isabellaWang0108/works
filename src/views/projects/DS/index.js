@@ -227,10 +227,10 @@ class DS extends React.Component {
                         <div className="content-block" id="section7">
                             <h2>The biggest lesson</h2>
                             <p>Launching the system was the biggest challenge—people resist change.</p>
-                            <p> After months of iterations and alignment within the product, design, and engineering teams, we pushed the update. Within 20 minutes, panic erupted—sales, clients, and product managers flooded us with complaints, forcing an immediate rollback. Claims of unreadability and ugliness surfaced, but our research proved otherwise. The backlash was emotional, not rational—just like reactions to Apple’s flat UI or Google’s logo redesign.
+                            <p> After months of iterations and alignment within the product, design, and engineering teams, the design system team published the update. Within 20 minutes, panic erupted—sales, clients, and product managers flooded us with complaints, forcing an immediate rollback. Claims of unreadability and ugliness surfaced, but our research proved otherwise. The backlash was emotional, not rational—just like reactions to Apple’s flat UI or Google’s logo redesign.
                             </p>
                             <p>
-                                The solution? Communication. We joined calls with sales and secured C-suite support. Three months later, the system finally launched.
+                                The solution? Communication. I joined calls along with my engineers with sales and secured C-suite support. Three months later, the system finally launched.
                             </p>
                             <h3>
                                 A system designer’s job isn’t just building the system — it’s driving adoption. </h3>

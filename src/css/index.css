@@ -149,6 +149,7 @@ li {
   background-color: #7c7c7c1f;
   backdrop-filter: blur(11px);
   margin: 2px 2px 2px 2px;
+  padding: 54pt 0pt;
 }
 
 .right-border {
@@ -409,23 +410,23 @@ a:hover {
 
 #landingPart,
 #contactPart {
-  /* margin-top: 10%; */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   align-self: flex-start;
-  width: 80%;
+  max-width: 730pt;
+  width: 70%;
   height: 100%;
   z-Index: 2;
   align-content: center;
   justify-content: center;
 
-  /* background-color: rgba(250, 220, 224, 0.4); */
 }
 
 .landingpage_Intro {
-  font-size: 6em;
-  letter-spacing: -0.03em;
+  margin-top: 10%;
+  font-size: 4.5em;
+  letter-spacing: -0.02em;
   align-self: center;
   vertical-align: middle;
   color: white;
@@ -472,10 +473,11 @@ a:hover {
   position: relative;
   overflow: hidden;
   z-index: 100;
-  padding: 54pt 0pt;
+
   width: 100%;
   height: 400pt;
 }
+
 
 .contact_me_inpage {
   display: flex;
@@ -1205,7 +1207,7 @@ a:hover {
   }
 
   .landingpage_Intro {
-    font-size: 5em;
+    font-size: 3.5em;
     line-height: 1.2;
     margin-left: 5%;
   }
