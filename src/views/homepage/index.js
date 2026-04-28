@@ -270,12 +270,6 @@ class Homepage extends React.Component {
                                     </a>
                                     <p> </p>
 
-                                    <Link to="thesis" className="AboutProj">
-                                        <div className="AboutProj-content">
-                                            <div className="text-black bold" style={aboutCardSpacing}>Digital art</div>
-                                            <div className="text-black" style={aboutCardSpacing}>  This is a one-year art project that captures my opinions on the human-technology relationship.</div>
-                                        </div>
-                                    </Link>
                                 </div>
                             </div>
                         </div>

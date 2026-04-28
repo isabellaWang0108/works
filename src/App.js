@@ -7,7 +7,6 @@ import PasswordGate from "./components/PasswordGate"
 const Homepage = lazy(() => import("./views/homepage"));
 const Contact = lazy(() => import("./views/contact.js"));
 const ProductStudio = lazy(() => import("./views/projects/ProductStudio"));
-const Thesis = lazy(() => import("./views/projects/Thesis"));
 const DS = lazy(() => import("./views/projects/DS"));
 const Voice = lazy(() => import("./views/projects/Voice"));
 const AIResearchGuide = lazy(() => import("./views/projects/AIResearchGuide"));
@@ -22,7 +21,6 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/product-studio" element={<ProductStudio />} />
-            <Route path="/thesis" element={<Thesis />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/design-system" element={<DS />} />
             <Route path="/voice" element={<Voice />} />
