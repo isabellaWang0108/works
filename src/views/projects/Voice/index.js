@@ -121,9 +121,9 @@ class Voice extends React.Component {
                         <div className="content-block fade-in" id="section1">
                             <h2>Pain points</h2>
                             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
-                                <img alt="prototypes" src={Pain1} width="307" />
-                                <img alt="prototypes" src={Pain2} width="319" />
-                                <img alt="prototypes" src={Pain3} width="267" />
+                                <img loading="lazy" alt="prototypes" src={Pain1} width="307" />
+                                <img loading="lazy" alt="prototypes" src={Pain2} width="319" />
+                                <img loading="lazy" alt="prototypes" src={Pain3} width="267" />
                             </div>
                         </div>
 
@@ -133,39 +133,39 @@ class Voice extends React.Component {
                             <p>
                                 One major pain point of minting NFTs is the lengthy process, often requiring over 8 steps. I simplified our platform’s process to enable users to publish artwork in just 4 steps, with the option to exclude sales.
                             </p>
-                            <img alt="prototypes" src={Pic2} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic2} width='100%' />
 
                             <h3>2. Allows co-listing with collaborators</h3>
-                            <img alt="prototypes" src={Pic3} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic3} width='100%' />
 
                             <h3>3. Explains all terminology</h3>
                             <p>
                                 I identified technical terms in the NFT minting process that might be unfamiliar to non-technical users and ensured that all unavoidable jargon was accompanied by clear explanations to enhance user confidence.
                             </p>
-                            <img alt="prototypes" src={Pic4} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic4} width='100%' />
 
                         </div>
                         <div className="content-block" id="section3">
                             <h2 >Key design steps</h2>
-                            <img alt="prototypes" src={Pic5} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic5} width='100%' />
 
                             <h3>Wireframing to explore different concepts</h3>
-                            <img alt="prototypes" src={Pic6} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic6} width='100%' />
 
                             <h3>User testing</h3>
-                            <img alt="prototypes" src={Pic7} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic7} width='100%' />
 
                             <h3>Design system elements</h3>
-                            <img alt="prototypes" src={Pic8} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic8} width='100%' />
 
                             <h3>Prototypes</h3>
-                            <img alt="prototypes" src={Pic9} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic9} width='100%' />
 
                         </div>
                         <div className="content-block" id="section4">
                             <h2 >Impact</h2>
                             <p>The platform has gained popularity among emerging artists, and it has secured a partnership with <a href="https://www.vogue.com/article/2023-photovogue-digital-art-collection-voice">Vogue art residency</a>.</p>
-                            <img alt="prototypes" src={Pic10} width='100%' />
+                            <img loading="lazy" alt="prototypes" src={Pic10} width='100%' />
                         </div>
                         <div className="content-block" id="section5">
                             <h2 >Key learnings</h2>

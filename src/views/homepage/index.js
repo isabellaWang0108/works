@@ -7,6 +7,8 @@ import { Canvas } from "@react-three/fiber";
 import NavigationBar from "../../components/navigation"
 import Animation3D from '../../components/animation3D'
 
+import { ReactComponent as LeverGuide } from "../../assets/images/home/LeverGuide.svg"
+import { ReactComponent as Janus } from "../../assets/images/home/Janus.svg"
 import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
 import Button from "../../components/myButton"
@@ -36,7 +38,8 @@ class Homepage extends React.Component {
         cursorRotation: 'rotate(0deg)',
         password: '0',
         background: 0,
-        timeLineHeight: $(document).height()
+        timeLineHeight: $(document).height(),
+        canvasReady: false,
     }
 
 
@@ -46,6 +49,8 @@ class Homepage extends React.Component {
             window.scrollTo(0, parseInt(savedScrollPosition, 10));
             sessionStorage.removeItem("homepageScrollPosition");
         }
+        // Defer Three.js canvas creation until after the first paint
+        requestAnimationFrame(() => this.setState({ canvasReady: true }));
     }
 
     // Save scroll position when the homepage is about to unmount
@@ -91,24 +96,71 @@ class Homepage extends React.Component {
                             </div>
 
                         </div>
-                        <Canvas
-                            style={{ zIndex: 1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 780 ? "60%" : "100%" }}
-                            camera={{ position: [3, 5, 15] }}
-                        >
-                            <hemisphereLight intensity={.7} groundColor="#555" />
-                            <pointLight position={[50, 0, 0]} intensity={10} />
-                            <Animation3D />
-                        </Canvas>
+                        {this.state.canvasReady && (
+                            <Canvas
+                                style={{ zIndex: 1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 780 ? "60%" : "100%" }}
+                                camera={{ position: [3, 5, 15] }}
+                            >
+                                <hemisphereLight intensity={.7} groundColor="#555" />
+                                <pointLight position={[50, 0, 0]} intensity={10} />
+                                <Animation3D />
+                            </Canvas>
+                        )}
                     </div>
 
                     <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}>
                         <h1>Professional work</h1>
                     </div>
+
+
+                    <div className="projectRow">
+                        {/* AI Research Guide */}
+                        <div id="AIResearchGuide" className="sessionContainer bg-project-card">
+                            <div className="contentblock">
+                                 <LeverGuide className="img project-card-img" />
+                            </div>
+                            <div className="contentblock">
+                                <h1>AI-Powered Research Guide</h1>
+                                <p>Designing a product with fully AI-generated content, transparency and trust built in from the start.
+                                </p>
+                            </div>
+                            <div className="contentblock">
+                                <UnderlineBtn
+                                    innerLink={true}
+                                    label="Read the case"
+                                    link="ai-research-guide"
+                                    className="readCases"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Platforms Integration */}
+                        <div id="PlatformsIntegration" className="sessionContainer bg-project-card">
+                            <div className="contentblock">
+                                 <Janus className="img project-card-img" />
+                            </div>
+                            <div className="contentblock">
+                                <h1>Platforms Integration</h1>
+                                <p>Integrating 6 enterprise platforms into one streamlined tool with AI services, where critical actions are unmissable.
+                                </p>
+                            </div>
+                            <div className="contentblock">
+                                <UnderlineBtn
+                                    innerLink={true}
+                                    label="Read the case"
+                                    link="platforms-integration"
+                                    className="readCases"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div className="projectRow">
                         {/* Design system */}
                         <div id="Design-system" className="sessionContainer bg-project-card">
                             <div className="contentblock">
-                                <img src={DesignSystem} alt="design system" className="img" />
+                                <img loading="lazy" src={DesignSystem} alt="design system" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
                                 <h1>Building a design system</h1>
@@ -134,7 +186,7 @@ class Homepage extends React.Component {
                         {/* Voice */}
                         <div id="Voice" className="sessionContainer bg-project-card">
                             <div className="contentblock">
-                                <img src={Voice} alt="voice" className="img" />
+                                <img loading="lazy" src={Voice} alt="voice" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
                                 <h1>Lower the NFT creation barrier</h1>
@@ -152,46 +204,6 @@ class Homepage extends React.Component {
                         </div>
                     </div>
 
-                    <div className="projectRow">
-                        {/* AI Research Guide */}
-                        <div id="AIResearchGuide" className="sessionContainer bg-project-card">
-                            <div className="contentblock">
-                            </div>
-                            <div className="contentblock">
-                                <h1>AI Research Guide</h1>
-                                <p>[Placeholder description — replace with a short summary of this project.]
-                                </p>
-                            </div>
-                            <div className="contentblock">
-                                <UnderlineBtn
-                                    innerLink={true}
-                                    label="Read the case"
-                                    link="ai-research-guide"
-                                    className="readCases"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Platforms Integration */}
-                        <div id="PlatformsIntegration" className="sessionContainer bg-project-card">
-                            <div className="contentblock">
-                            </div>
-                            <div className="contentblock">
-                                <h1>Platforms Integration</h1>
-                                <p>[Placeholder description — replace with a short summary of this project.]
-                                </p>
-                            </div>
-                            <div className="contentblock">
-                                <UnderlineBtn
-                                    innerLink={true}
-                                    label="Read the case"
-                                    link="platforms-integration"
-                                    className="readCases"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
                     {/* <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}> */}
 
 
@@ -203,11 +215,11 @@ class Homepage extends React.Component {
                             <div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
                                     <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
-                                        <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
+                                        <img loading="lazy" style={{ width: '36pt' }} src={Github} alt="icon"></img>
                                     </a>
 
                                     <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/isabella-wang-310181149/">
-                                        <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
+                                        <img loading="lazy" style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
                                     </a>
                                 </div>
                             </div>

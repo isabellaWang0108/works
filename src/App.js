@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Loading from "./components/loading"
 import PasswordGate from "./components/PasswordGate"
@@ -15,26 +15,10 @@ const PlatformsIntegration = lazy(() => import("./views/projects/PlatformsIntegr
 
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const minLoadingTime = 2000;
-
-    Promise.all([
-      new Promise((resolve) => setTimeout(resolve, minLoadingTime)),
-    ]).then(() => {
-      setIsLoading(false);
-    });
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <PasswordGate>
       <HashRouter>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/product-studio" element={<ProductStudio />} />

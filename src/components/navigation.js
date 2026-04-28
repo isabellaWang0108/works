@@ -35,7 +35,7 @@ const logo = {
 
 const NavigationBar = () => {
     const location = useLocation();
-    const isHomePage = location.pathname === "/"; // Adjust if needed
+    const isHomePage = location.pathname === "/";
 
     return (
         <div style={container} className="fade-in">
@@ -50,7 +50,7 @@ const NavigationBar = () => {
                     href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ marginRight: '16pt', textDecoration: 'none' }}
+                    style={{ marginRight: '32pt', textDecoration: 'none' }}
                     className="bold pink"
                 >
                     Resume
@@ -59,13 +59,10 @@ const NavigationBar = () => {
 
             {!isHomePage && (
                 <button
-                    onClick={() =>( window.history.back())}
-                    className="icon backbtn"
-                    style={{ width: '88px' }}
+                    onClick={() => window.history.back()}
+                    className="icon backbtn back-btn-fixed"
                 >
-                    <span className="material-symbols-outlined">
-                        arrow_back
-                    </span>
+                    <span className="material-symbols-outlined">arrow_back</span>
                     Back
                 </button>
             )}
@@ -73,4 +70,4 @@ const NavigationBar = () => {
     );
 };
 
-export default NavigationBar;
+export default React.memo(NavigationBar);
