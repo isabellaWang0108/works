@@ -7,10 +7,8 @@ import { Canvas } from "@react-three/fiber";
 import NavigationBar from "../../components/navigation"
 import Animation3D from '../../components/animation3D'
 
-import Anote from "../../assets/images/home/anote.png"
 import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
-import Kiosk_img from "../../assets/images/home/kiosk.png"
 import Button from "../../components/myButton"
 import UnderlineBtn from "../../components/underLinedBtn"
 import Github from "../../assets/images/contact/github.svg"
@@ -72,10 +70,12 @@ class Homepage extends React.Component {
                     <div style={windowHeight} className="sessionContainer" >
                         <div id="landingPart" >
                             <div className='landingpage_Intro fade-in'>
-                          Designing Thoughtful, Scalable, and Efficient UX
+                         AI Fluent. 
+                         <br/>
+                         Systems Driven.
                                 
                                 <h3 style={{letterSpacing:.25, lineHeight:1.8}}> 
-                                I'm passionate about designing products that make life easier, with a focus on systemic sustainability, efficient user patterns, and context-aware accessibility.
+                               I design AI features, work with AI tools, and think in systems — turning complex user flows into coherent, scalable experiences.
 
                                 </h3>
                                 <div> </div>
@@ -105,32 +105,7 @@ class Homepage extends React.Component {
                         <h1>Professional work</h1>
                     </div>
                     <div className="projectRow">
-                        {/* Kiosk */}
-                        <div id="Kiosk" className="sessionContainer bg-project-card">
-                            <div className="contentblock">
-                                <img src={Kiosk_img} alt="kiosk checkin" className="img" />
-                            </div>
-                            <div className="contentblock">
-
-                                <h1 className="text-white">Automating Office Check-in </h1>
-                                <p className="text-white">This project reduced reliance on front desk staff and improved operational efficiency by revamping end-to-end service design to enable visitor self check-in.
-                                    <br />
-
-                                </p>
-                            </div>
-                            <div className="contentblock">
-                                <UnderlineBtn
-                                    innerLink={true}
-                                    label="Read the case"
-                                    link="kiosk"
-                                    className="readCases"
-                                />
-                            </div>
-
-                        </div>
-
-
-                        {/* Desigin system */}
+                        {/* Design system */}
                         <div id="Design-system" className="sessionContainer bg-project-card">
                             <div className="contentblock">
                                 <img src={DesignSystem} alt="design system" className="img" />
@@ -138,8 +113,6 @@ class Homepage extends React.Component {
                             <div className="contentblock">
                                 <h1>Building a design system</h1>
                                 <p>This case study presents my experience and process in handling complex, big-scale, high-stakes design challenges that involve a broad spectrum of stakeholders.
-                                    <br />
-
                                 </p>
                             </div>
                             <div className="contentblock">
@@ -149,32 +122,25 @@ class Homepage extends React.Component {
                                     link="design-system"
                                     className="readCases"
                                 />
-                                   <UnderlineBtn
+                                <UnderlineBtn
                                     innerLink={false}
                                     label="See the live site"
                                     link="https://terra.vts.com/"
                                     className="readCases"
                                 />
                             </div>
-
                         </div>
 
-
-                    </div>
-
-                    <div className="projectRow">
                         {/* Voice */}
-                        <div id="Voice" className="sessionContainer bg-project-card" >
+                        <div id="Voice" className="sessionContainer bg-project-card">
                             <div className="contentblock">
                                 <img src={Voice} alt="voice" className="img" />
                             </div>
-
                             <div className="contentblock">
                                 <h1>Lower the NFT creation barrier</h1>
-                                <p>I designed an NFT marketplace aimed at empowering emerging artists from ground up.
+                                <p>I designed an NFT marketplace aimed at empowering emerging artists from the ground up.
                                 </p>
                             </div>
-
                             <div className="contentblock">
                                 <UnderlineBtn
                                     innerLink={true}
@@ -183,35 +149,47 @@ class Homepage extends React.Component {
                                     className="readCases"
                                 />
                             </div>
-
-
                         </div>
+                    </div>
 
-
-
-                        {/* Anote*/}
-                        <div id="Anote" className="sessionContainer bg-project-card">
+                    <div className="projectRow">
+                        {/* AI Research Guide */}
+                        <div id="AIResearchGuide" className="sessionContainer bg-project-card">
                             <div className="contentblock">
-                                <img src={Anote} alt="thesis" className="campy img" />
                             </div>
                             <div className="contentblock">
-                                <h1>A futuristic website for an AI startup</h1>
-                                <p> I developed the style strategy and designed a marketing website for an innovative AI startup to introduce their products.
+                                <h1>AI Research Guide</h1>
+                                <p>[Placeholder description — replace with a short summary of this project.]
                                 </p>
                             </div>
-                            <div className="contentblock ">
-
+                            <div className="contentblock">
                                 <UnderlineBtn
-                                    innerLink={false}
-                                    label="See the website"
-                                    link="https://anote.ai/"
+                                    innerLink={true}
+                                    label="Read the case"
+                                    link="ai-research-guide"
                                     className="readCases"
                                 />
                             </div>
-
                         </div>
 
-
+                        {/* Platforms Integration */}
+                        <div id="PlatformsIntegration" className="sessionContainer bg-project-card">
+                            <div className="contentblock">
+                            </div>
+                            <div className="contentblock">
+                                <h1>Platforms Integration</h1>
+                                <p>[Placeholder description — replace with a short summary of this project.]
+                                </p>
+                            </div>
+                            <div className="contentblock">
+                                <UnderlineBtn
+                                    innerLink={true}
+                                    label="Read the case"
+                                    link="platforms-integration"
+                                    className="readCases"
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     {/* <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}> */}

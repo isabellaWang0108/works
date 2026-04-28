@@ -59,9 +59,9 @@ class ProductStudio extends React.Component {
         }
 
         // for the last item in the menu
-        if ($("#section" + (this.content.length)).position().top < 30) {
+        if ($("#section" + this.content.length).position().top < 30) {
             this.neutral();
-            this.turnPink('p' + i);
+            this.turnPink('p' + this.content.length);
         }
     }
 
