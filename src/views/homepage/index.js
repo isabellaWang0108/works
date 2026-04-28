@@ -1,77 +1,33 @@
-import React, { useRef, useMemo } from "react";
+import React from "react";
 import $ from 'jquery';
 import "../../css/index.css"
-import { Canvas, useFrame } from 'react-three-fiber'
-import niceColors from 'nice-color-palettes'
-import * as THREE from 'three'
+import { Canvas } from "@react-three/fiber";
+// import * as THREE from 'three'
 
-import Labeling from "../../components/labeling"
 import NavigationBar from "../../components/navigation"
+import Animation3D from '../../components/animation3D'
 
-import Thesis from "../../assets/images/home/thesis.png"
+import Anote from "../../assets/images/home/anote.png"
 import DesignSystem from "../../assets/images/home/ds.png"
-// import Vogether from "../../assets/images/vogether/2-record.gif"
-import ProductStudio from "../../assets/images/home/ProductStudio.svg"
-import Voice from "../../assets/images/home/voice.svg"
-import PinkButton from "../../components/pinkButton"
-
+import Voice from "../../assets/images/home/voice.png"
+import Kiosk_img from "../../assets/images/home/kiosk.png"
+import Button from "../../components/myButton"
+import UnderlineBtn from "../../components/underLinedBtn"
 import Github from "../../assets/images/contact/github.svg"
 import Linkedin from "../../assets/images/contact/linkedin.svg"
+import { Link } from "react-router-dom";
 
 
 const windowHeight = {
-    height: window.innerWidth < 990 ? window.innerHeight * 1.2 : window.innerHeight,
-    minHeight: 600,
+    height: window.innerWidth < 990 ? window.innerHeight : window.innerHeight * 0.8,
+    minHeight: 500,
     position: 'relative',
 }
 
-
-const tempObject = new THREE.Object3D()
-const tempColor = new THREE.Color()
-const colors = new Array(1000).fill().map(() => niceColors[13][Math.floor(Math.random() * 5)])
-
-
-function Boxes() {
-    const colorArray = useMemo(() =>
-        Float32Array.from(new Array(1500).fill().flatMap((_, i) => tempColor.set(colors[i]).toArray())), []
-    )
-
-    const ref = useRef()
-
-    useFrame(state => {
-        const time = state.clock.getElapsedTime()
-        ref.current.position.x = Math.sin(time / 4) * 2
-        ref.current.position.y = Math.sin(time / 2)
-        ref.current.rotation.x += .007
-        ref.current.rotation.y += .007
-
-        let i = 0
-        for (let x = 0; x < 10; x++)
-
-            for (let y = 0; y < 10; y++)
-
-                for (let z = 0; z < 10; z++) {
-                    const id = i++
-                    tempObject.position.set(5 - x, 5 - y, 5 - z)
-
-                    tempObject.position.multiplyScalar(Math.sin(time) / 10 + 1.2)
-
-                    tempObject.updateMatrix()
-                    ref.current.setMatrixAt(id, tempObject.matrix)
-                }
-        ref.current.instanceMatrix.needsUpdate = true
-    })
-
-    return (
-        <instancedMesh ref={ref} args={[null, null, 1000]}>
-            <sphereBufferGeometry args={[.3, 30, 30]} attach="geometry" >
-                <instancedBufferAttribute attachObject={['attributes', 'color']} args={[colorArray, 3]} />
-            </sphereBufferGeometry>
-            <meshPhongMaterial attach="material" vertexColors={THREE.VertexColors} />
-        </instancedMesh>
-    )
+const aboutCardSpacing = {
+    marginBottom: '4px',
+    lineHeight: '22px'
 }
-
 
 class Homepage extends React.Component {
 
@@ -85,164 +41,261 @@ class Homepage extends React.Component {
         timeLineHeight: $(document).height()
     }
 
+
+    componentDidMount() {
+        const savedScrollPosition = sessionStorage.getItem("homepageScrollPosition");
+        if (savedScrollPosition) {
+            window.scrollTo(0, parseInt(savedScrollPosition, 10));
+            sessionStorage.removeItem("homepageScrollPosition");
+        }
+    }
+
+    // Save scroll position when the homepage is about to unmount
+    componentWillUnmount() {
+        sessionStorage.setItem("homepageScrollPosition", window.pageYOffset);
+    }
+
     render() {
         return (
-
 
             <div id="parallaxScroll" >
 
                 {/* navigation bar */}
-                <NavigationBar href="#contactPart" contact />
-                <div id="HomapageTopNavi" style={{ backgroundColor: ' linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1))' }}></div>
 
-                <div id="HP_container" className='black HP_container' >
+                <NavigationBar href="#contactPart" contact />
+
+                <div id="HP_container" className='HP_container' >
 
 
 
                     {/* landing page */}
-                    <div style={windowHeight} className="black sessionContainer" >
-                        <div id="landingPart">
-                            <div className='landingpage_Intro animate__animated animate__fadeInLeft'>
+                    <div style={windowHeight} className="sessionContainer" >
+                        <div id="landingPart" >
+                            <div className='landingpage_Intro fade-in'>
+                          Designing Thoughtful, Scalable, and Efficient UX
+                                
+                                <h3 style={{letterSpacing:.25, lineHeight:1.8}}> 
+                                I'm passionate about designing products that make life easier, with a focus on systemic sustainability, efficient user patterns, and context-aware accessibility.
 
-                                I design, code, and iterate based on the research.
-
+                                </h3>
+                                <div> </div>
+                                <Button
+                                    innerLink={false}
+                                    label="See my work"
+                                    onClick={() =>
+                                        document.getElementById("professionalW")?.scrollIntoView({
+                                            behavior: "smooth",
+                                        })
+                                    }
+                                />
                             </div>
-
 
                         </div>
                         <Canvas
-                            style={{ position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 450 ? "60%" : "100%", zIndex: 1, }}
+                            style={{ zIndex: 1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 780 ? "60%" : "100%" }}
                             camera={{ position: [3, 5, 15] }}
                         >
-                            <ambientLight color="#FFFFFF" />
-                            <pointLight position={[150, 150, 150]} intensity={0.8} />
-                            <Boxes />
+                            <hemisphereLight intensity={.7} groundColor="#555" />
+                            <pointLight position={[50, 0, 0]} intensity={10} />
+                            <Animation3D />
                         </Canvas>
                     </div>
 
-
-                    {/* Thesis Campy */}
-                    <div id="Thesis" className="black sessionContainer bg-yellow" style={windowHeight}>
-
-                        <div className="contentblock">
-                            <Labeling
-                                time="Thesis"
-                                color='black'
-                            />
-                            <h1>Researching the future of technology and humanity.</h1>
-                            <p>This is my one-year research and self-exploration journey, presented in multi-media formats, ultimately defining my passion and interest. 
-                                <br />
-                                <PinkButton
-                                    innerLink={true}
-                                    label="See works"
-                                    link="thesis"
-
-                                />
-                            </p>
-                        </div>
-                        <div className="imgBlock">
-                            <img src={Thesis} alt="thesis" className="campy img" />
-                        </div>
+                    <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}>
+                        <h1>Professional work</h1>
                     </div>
+                    <div className="projectRow">
+                        {/* Kiosk */}
+                        <div id="Kiosk" className="sessionContainer bg-project-card">
+                            <div className="contentblock">
+                                <img src={Kiosk_img} alt="kiosk checkin" className="img" />
+                            </div>
+                            <div className="contentblock">
 
-                    {/* Desigin system */}
-                    <div id="Design-system" className="black sessionContainer reverse bg-white" style={windowHeight}>
+                                <h1 className="text-white">Automating Office Check-in </h1>
+                                <p className="text-white">This project reduced reliance on front desk staff and improved operational efficiency by revamping end-to-end service design to enable visitor self check-in.
+                                    <br />
 
-                        <div className="contentblock">
-                            <Labeling
-                                time="Professional specialty"
-                                color='black'
-                            />
-                            <h1>Building an enterprise design system</h1>
-                            <p>This case study presents my professional specialty: building a system that bridges the gap between design and engineering and ensures organizational unity and scalability.
-                                <br />
-                                <PinkButton
+                                </p>
+                            </div>
+                            <div className="contentblock">
+                                <UnderlineBtn
                                     innerLink={true}
-                                    label="Read details"
+                                    label="Read the case"
+                                    link="kiosk"
+                                    className="readCases"
+                                />
+                            </div>
+
+                        </div>
+
+
+                        {/* Desigin system */}
+                        <div id="Design-system" className="sessionContainer bg-project-card">
+                            <div className="contentblock">
+                                <img src={DesignSystem} alt="design system" className="img" />
+                            </div>
+                            <div className="contentblock">
+                                <h1>Building a design system</h1>
+                                <p>This case study presents my experience and process in handling complex, big-scale, high-stakes design challenges that involve a broad spectrum of stakeholders.
+                                    <br />
+
+                                </p>
+                            </div>
+                            <div className="contentblock">
+                                <UnderlineBtn
+                                    innerLink={true}
+                                    label="Read the case"
                                     link="design-system"
-
+                                    className="readCases"
                                 />
-                            </p>
+                                   <UnderlineBtn
+                                    innerLink={false}
+                                    label="See the live site"
+                                    link="https://terra.vts.com/"
+                                    className="readCases"
+                                />
+                            </div>
+
                         </div>
-                        <div className="imgBlock">
-                            <img src={DesignSystem} alt="design system" className="ds img" />
-                        </div>
+
+
                     </div>
 
+                    <div className="projectRow">
+                        {/* Voice */}
+                        <div id="Voice" className="sessionContainer bg-project-card" >
+                            <div className="contentblock">
+                                <img src={Voice} alt="voice" className="img" />
+                            </div>
 
+                            <div className="contentblock">
+                                <h1>Lower the NFT creation barrier</h1>
+                                <p>I designed an NFT marketplace aimed at empowering emerging artists from ground up.
+                                </p>
+                            </div>
 
-
-                    {/* Voice */}
-                    <div id="Voice" className="black sessionContainer bg-purple" style={windowHeight}>
-
-                        <div className="contentblock">
-                            <Labeling
-                                time="Product design"
-                                color='black'
-                            />
-                            <h1>Designing an NFT creating feature for non-technical users</h1>
-                            <p>This case study demonstrates my process and how I leverage different skills and technology at different stages in product development.
-                                <br />
-                                <PinkButton
+                            <div className="contentblock">
+                                <UnderlineBtn
                                     innerLink={true}
-                                    label="Read more"
+                                    label="Read the case"
                                     link="voice"
-
+                                    className="readCases"
                                 />
-                            </p>
+                            </div>
+
+
                         </div>
-                        <div className="imgBlock">
-                            <img src={Voice} alt="voice" className="img" />
-                        </div>
-                    </div>
 
 
 
-                    {/* product studio */}
-                    <div id="ProductStudio" className="black sessionContainer reverse bg-smokewhite" style={windowHeight} >
-                        <div className="contentblock">
-                            <Labeling
-                                time="Product discovery"
-                                color="black"
-                            />
-                            <h1>How to hire millennial technical talents</h1>
-                            <p>
-                            This is a four-month product challenge given by the US Department of Defense when I joined product studio as a designer at Cornell Tech.
-                                <br />
-                                <PinkButton
-                                    innerLink={true}
-                                    label="See process"
-                                    link="product-studio"
+                        {/* Anote*/}
+                        <div id="Anote" className="sessionContainer bg-project-card">
+                            <div className="contentblock">
+                                <img src={Anote} alt="thesis" className="campy img" />
+                            </div>
+                            <div className="contentblock">
+                                <h1>A futuristic website for an AI startup</h1>
+                                <p> I developed the style strategy and designed a marketing website for an innovative AI startup to introduce their products.
+                                </p>
+                            </div>
+                            <div className="contentblock ">
+
+                                <UnderlineBtn
+                                    innerLink={false}
+                                    label="See the website"
+                                    link="https://anote.ai/"
+                                    className="readCases"
                                 />
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    {/* <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}> */}
+
+
+                    {/* About Me */}
+                    <div id="seeMore" className="sessionContainer" style={{ height: 'auto', position: 'relative', background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }} >
+                        <div className="seeMore">
+
+                            <h1>About me</h1>
+                            <div>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
+                                        <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
+                                    </a>
+
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/isabella-wang-310181149/">
+                                        <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
+                                    </a>
+                                </div>
+                            </div>
+                            <p style={{ maxWidth: '700pt' }}>
+                                I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
                             </p>
-                        </div>
-                        <div className="imgblock">
-                            <img src={ProductStudio} className="DODCornellImg" alt="ProductStudio"></img>
-                        </div>
-                    </div>
 
-
-
-                    {/* contact */}
-                    <div style={windowHeight} id="Contact" className="sessionContainer contactPart">
-                        <div id="contactPart">
-
-                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                                <a href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
-                                    <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
-                                </a>
-
-                                <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
-                                    <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
-                                </a>
-                            </div>
-                            <div className="black">
-                                <h2> wangxbella0108@gmail.com</h2>
-                                <h2> +1 (908) 391 – 6750</h2>
-                            </div>
+                            <p>Contact me:{' '}<a href="mailto:wangxbella0108@gmail.com" target="_blank" rel="noopener noreferrer" >wangxbella0108@gmail.com</a></p>
                         </div>
                     </div>
+                    <div className="sessionContainer" style={{ height: 'auto', position: 'relative' }} >
+                        <div className="seeMore">
 
+                            <div className="threecolumn">
+                                <div className="threecolumn-row">
+                                    <h2>AI relevent research</h2>
+
+                                    <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@wangxbella0108/experiment-of-chatgpts-effects-on-decisions-confidence-399ae25c3ad1" className="AboutProj bg-seeMore">
+                                        <div className="AboutProj-content">
+                                            <div className="text-black bold" style={aboutCardSpacing}>AI's impact on decision making</div>
+                                            <div className="text-black" style={aboutCardSpacing}>
+                                                This is a research project to understand whether advice from AI has an impact on decision-making or confidence levels in people.
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <p> </p>
+
+                                    <a target="_blank" rel="noopener noreferrer" href="https://www.figma.com/proto/BGDErRAzTp8rVP3IySHUH4/GPT-Explanation?page-id=10%3A2&node-id=33-2&viewport=492%2C81%2C0.03&t=EmuS1i0dIl5eAal3-1&scaling=scale-down-width&content-scaling=fixed" className="AboutProj bg-seeMore">
+                                        <div className="AboutProj-content">
+                                            <div className="text-black bold" style={aboutCardSpacing}>Visually explaining how ChatGPT works</div>
+                                            <div className="text-black" style={aboutCardSpacing}>     This project provides a visualized, step-by-step explanation designed to help non-technical audiences understand how ChatGPT works.
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+
+
+                                <div className="threecolumn-row">
+                                    <h2>Passion projects</h2>
+
+
+                                    <a href="https://medium.com/@wangxbella0108/how-smart-to-be-a-smart-home-d4c53322e1ff" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
+                                        <div className="AboutProj-content">
+                                            <div className="text-black bold" style={aboutCardSpacing}>Integrated system</div>
+                                            <div className="text-black" style={aboutCardSpacing}> This is a blogging post on my home automation project. I have reflected my thoughts on IoT's status quo in my writing.</div>
+                                        </div>
+                                    </a>
+                                    <p> </p>
+
+                                    <Link to="thesis" className="AboutProj">
+                                        <div className="AboutProj-content">
+                                            <div className="text-black bold" style={aboutCardSpacing}>Digital art</div>
+                                            <div className="text-black" style={aboutCardSpacing}>  This is a one-year art project that captures my opinions on the human-technology relationship.</div>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {/* Contact */}
+                    <div id="seeMore" className="sessionContainer" style={{ height: '300pt', position: 'relative' }} >
+
+                    </div>
 
 
                 </div>
@@ -254,3 +307,4 @@ class Homepage extends React.Component {
 }
 
 export default Homepage;
+

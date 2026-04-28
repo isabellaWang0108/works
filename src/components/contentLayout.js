@@ -1,4 +1,5 @@
 import React from "react";
+
 class ContentLayout extends React.Component {
   
     render() {
