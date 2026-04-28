@@ -57,9 +57,9 @@ class Voice extends React.Component {
         }
 
         // for the last item in the menu
-        if ($("#section" + (this.content.length)).position().top < 0) {
+        if ($("#section" + this.content.length).position().top < 0) {
             this.neutral();
-            this.turnPink('p' + i);
+            this.turnPink('p' + this.content.length);
         }
     }
 

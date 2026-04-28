@@ -27,7 +27,7 @@ class Contact extends React.Component {
                         
                         <div style={{ alignContent: 'center', textAlign: 'center', width: '100%', marginTop: 24 }}>
                             <p style={{ marginBottom: 0 }}>Happy to connect !</p>
-                            <a style={{ color: 'black', fontSize: '16px', textDecoration: 'none', marginTop: 0 }} href="mailto:wangxbella0108@gmail.co">
+                            <a style={{ color: 'black', fontSize: '16px', textDecoration: 'none', marginTop: 0 }} href="mailto:wangxbella0108@gmail.com">
                                 <p style={{ marginTop: 0 }}>wangxbella0108@gmail.com</p></a>
 
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>

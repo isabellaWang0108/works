@@ -53,9 +53,9 @@ class Thesis extends React.Component {
         }
 
         // for the last item in the menu
-        if ($("#section" + (this.content.length)).position().top < 0) {
+        if ($("#section" + this.content.length).position().top < 0) {
             this.neutral();
-            this.turnPink('p' + i);
+            this.turnPink('p' + this.content.length);
         }
     }
 
@@ -104,7 +104,7 @@ class Thesis extends React.Component {
                         <div className="content-block" id="section1">
                             <h2>Journey summary</h2>
                             <h3>Video presentation</h3>
-                            <iframe src="https://player.vimeo.com/video/722287427?h=17c87ffe1e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style={{ width: "80%", height: 420 }} title="Thesis presentation"></iframe>
+                            <iframe src="https://player.vimeo.com/video/722287427?h=17c87ffe1e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{ width: "80%", height: 420 }} title="Thesis presentation"></iframe>
                             <br /><br />
                             <h3>Text summary</h3>
                             <p>My journey started from responding to a common theme in sci-fi, "Will AI replace humans?". I was inspired to make the Data Wall and Black Box while figuring out where the current technology stands. After I better understood artificial intelligence's limitations, I shifted my focus to the human aspect of the relationship. As an entry point to understanding human perspective, I started by emphasizing my most familiar audience, designers. I learned about the relationship between AI and designers from the world's ongoing projects, which eventually led to an envisioning piece, Integrated Assistant. By the end of the thesis, I formed a firm belief that "Technology will become the best human assistant." The journey continued regardless of my thesis completion. Today's technology falls short of being human's best assistant, so I am committed to exploring what makes an assistant good.</p>

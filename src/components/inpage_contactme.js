@@ -13,7 +13,7 @@ class InpageContactMe extends Component {
                 <h2>Contact Me!</h2>
                 <div className="contact_me_inpage">
                     <div className="icons">
-                        <a href="mailto: wangxbella0108@gmail.com">
+                        <a href="mailto:wangxbella0108@gmail.com">
                             <img style={{ width: '36pt', marginTop: '24pt' }} src={Email} alt="email icon"></img>
                         </a>
                         <a href="https://github.com/isabellawang0108">
