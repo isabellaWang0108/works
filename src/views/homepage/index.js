@@ -15,7 +15,6 @@ import Button from "../../components/myButton"
 import UnderlineBtn from "../../components/underLinedBtn"
 import Github from "../../assets/images/contact/github.svg"
 import Linkedin from "../../assets/images/contact/linkedin.svg"
-import { Link } from "react-router-dom";
 
 
 const windowHeight = {
