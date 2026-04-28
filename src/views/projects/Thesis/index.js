@@ -5,12 +5,13 @@ import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/Thesis/thesis_pic1.svg"
-import Pic2 from "../../../assets/images/Thesis/thesis_pic2.svg"
-import Pic3 from "../../../assets/images/Thesis/thesis_pic3.svg"
-import Pic4 from "../../../assets/images/Thesis/thesis_pic4.svg"
 import Gallary1 from "../../../assets/images/Thesis/gallery1.jpg"
 import Gallary2 from "../../../assets/images/Thesis/gallery2.jpg"
 import InpageContactMe from "../../../components/inpage_contactme"
+
+const Pic2 = React.lazy(() => import("./ThesisPic2"));
+const Pic3 = React.lazy(() => import("./ThesisPic3"));
+const Pic4 = React.lazy(() => import("./ThesisPic4"));
 
 
 
@@ -108,14 +109,14 @@ class Thesis extends React.Component {
                             <br /><br />
                             <h3>Text summary</h3>
                             <p>My journey started from responding to a common theme in sci-fi, "Will AI replace humans?". I was inspired to make the Data Wall and Black Box while figuring out where the current technology stands. After I better understood artificial intelligence's limitations, I shifted my focus to the human aspect of the relationship. As an entry point to understanding human perspective, I started by emphasizing my most familiar audience, designers. I learned about the relationship between AI and designers from the world's ongoing projects, which eventually led to an envisioning piece, Integrated Assistant. By the end of the thesis, I formed a firm belief that "Technology will become the best human assistant." The journey continued regardless of my thesis completion. Today's technology falls short of being human's best assistant, so I am committed to exploring what makes an assistant good.</p>
-                            <img alt="previews" src={Pic1} width="100%" />
+                            <img loading="lazy" alt="previews" src={Pic1} width="100%" />
                         </div>
 
                         <div className="content-block" id="section2">
                             <h2 >Media 1: Data Wall</h2>
                             <p>Inspired by the data mining and chemical rocket concept, I made a data visualization piece that conveys a sense of the scale of the data consumption of a machine learning project. I intend to evoke audiences questioning the source and process by visualizing conceptual classification models and databases used to implement artificial intelligence in automating the design decision process. When you see the data, you know it can hardly replace humans in creativity.</p>
-                            <img alt="previews" src={Gallary1} width="100%" />
-                            <img alt="previews" src={Gallary2} width="100%" />
+                            <img loading="lazy" alt="previews" src={Gallary1} width="100%" />
+                            <img loading="lazy" alt="previews" src={Gallary2} width="100%" />
                         </div>
                         <div className="content-block" id="section3">
                             <h2 >Media 2: Black box</h2>
@@ -129,7 +130,7 @@ class Thesis extends React.Component {
                             <p>This project intends to demonstrate a vision of the future designer-technology relationship. It is presented in a format of a descriptive marketing page demonstrating the features of the conceptual digital assistant. The website communicates the product’s form, usage, interaction, and pain points it tries to solve.
                                 <a href="https://thesiscampy.webflow.io/" rel="noopener noreferrer" target="_blank">Click here for details.</a>
                             </p>
-                            <img alt="previews" src={Pic2} width="100%" />
+                            <React.Suspense fallback={null}><Pic2 width="100%" /></React.Suspense>
                         </div>
                         <div className="content-block" id="section5">
                             <h2 >After thesis ends</h2>
@@ -150,11 +151,11 @@ class Thesis extends React.Component {
                             <p>Most of my inspirations came from real-world products, scientific research papers, and chatting with people. I had a
                                 <a href="https://wangxbella.tumblr.com/post/616766731539693568/thesis-case-studies-ai-computer-vision-based" rel="noopener noreferrer" target="_blank">Tumblr page</a>
                                 documenting my take-away from some of the case studies if you want to see more details.</p>
-                            <img alt="previews" src={Pic3} width="100%" />
+                            <React.Suspense fallback={null}><Pic3 width="100%" /></React.Suspense>
                             <br />
                             <h3>Ideation</h3>
                             <p>My mind kept spinning while I was absorbing new information. I kept a list of ideas and evolved them through time. They were usually in the format of written notes, sketches, and mind-map. Below is one example of the efforts it takes to get one fruit.</p>
-                            <img alt="previews" src={Pic4} width="100%" />
+                            <React.Suspense fallback={null}><Pic4 width="100%" /></React.Suspense>
                             <br />
                             <h3>Iteration</h3>
                             <p>I treat my work seriously. I always figure out a way to make them better. Certain methodologies have been proven efficient for me: Pausing and reviewing with a fresh brain; Talking to people; Learning more.</p>

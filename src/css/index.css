@@ -125,15 +125,19 @@ li {
 }
 
 .inpage_hero_box {
-  width: 48%;
+  width: 38%;
   margin-right: 2%;
+}
+
+.inpage_hero_box:last-child {
+  width: 60%;
+  margin-right: 0;
 }
 
 .inpage_hero_img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
 }
 
 .blue {
@@ -149,7 +153,7 @@ li {
   background-color: #7c7c7c1f;
   backdrop-filter: blur(11px);
   margin: 2px 2px 2px 2px;
-  padding: 54pt 0pt;
+  padding: 40pt 0pt;
 }
 
 .right-border {
@@ -192,9 +196,8 @@ li {
   width: 100pt;
   border: 0;
   outline: 0;
-  z-index: 8;
   position: fixed;
-  right: 1vw;
+  left: 2vw;
   top: 0px;
   padding: 4px 16px;
   height: 80vh;
@@ -286,11 +289,18 @@ a:hover {
   font-size: 52px;
 }
 
+.back-btn-fixed {
+  position: fixed;
+  left: clamp(16px, 3.5vw, 48px);
+  top: 72px;
+  z-index: 998;
+}
+
 .content-layout {
   margin-top: 16px;
   margin-left: auto;
   margin-right: auto;
-  padding: 100px 4em;
+  padding: 16px 4em 4em 4em;
   max-width: 56em;
   width: 70%;
   height: 100%;
@@ -515,6 +525,11 @@ a:hover {
   height: auto;
   width: 80%;
   margin-left: 8%;
+}
+
+.project-card-img {
+  width: 92%;
+  margin-left: 4%;
 }
 
 .pinkSquare {
@@ -1002,7 +1017,8 @@ a:hover {
     flex-direction: column;
   }
 
-  .inpage_hero_box {
+  .inpage_hero_box,
+  .inpage_hero_box:last-child {
     width: 100%;
     margin-right: 0;
   }
@@ -1062,7 +1078,8 @@ a:hover {
   }
 
 
-  .inpage_hero_box {
+  .inpage_hero_box,
+  .inpage_hero_box:last-child {
     width: 100%;
   }
 
@@ -1157,9 +1174,9 @@ a:hover {
 
   .content-layout {
     width: auto;
-    margin-top: 24px;
+    margin-top: 0;
     margin-left: 0%;
-    padding: 100px 24px;
+    padding: 16px 24px 24px 24px;
   }
 
   .content-block {
@@ -1198,6 +1215,11 @@ a:hover {
 
   .img {
     width: 70%;
+  }
+
+  .project-card-img {
+    width: 86%;
+    margin-left: 0;
   }
 
 

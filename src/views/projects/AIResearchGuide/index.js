@@ -6,6 +6,7 @@ import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
+import { ReactComponent as Pic1 } from "../../../assets/images/home/LeverGuide.svg"
 
 class AIResearchGuide extends React.Component {
 
@@ -76,6 +77,10 @@ class AIResearchGuide extends React.Component {
                                 <p>
                                     [Placeholder overview. Describe what this project is about, the context, and why it matters. Replace this with the actual project description.]
                                 </p>
+                            </div>
+
+                            <div className="inpage_hero_box">
+                                <Pic1 className="inpage_hero_img" />
                             </div>
                         </div>
 

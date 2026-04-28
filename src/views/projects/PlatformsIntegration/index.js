@@ -6,6 +6,7 @@ import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
+import { ReactComponent as Pic1 } from "../../../assets/images/home/Janus.svg"
 
 class PlatformsIntegration extends React.Component {
 
@@ -77,6 +78,9 @@ class PlatformsIntegration extends React.Component {
                                 <p>
                                     [Placeholder overview. Describe what this project is about, the platforms involved, and the integration challenge being addressed. Replace this with the actual project description.]
                                 </p>
+                            </div>
+                            <div className="inpage_hero_box">
+                                <Pic1 className="inpage_hero_img" />
                             </div>
                         </div>
 
