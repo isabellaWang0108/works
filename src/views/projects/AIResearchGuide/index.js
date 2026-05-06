@@ -70,12 +70,12 @@ class AIResearchGuide extends React.Component {
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <ProjectContext
-                                    duration="[Placeholder duration]"
-                                    team="[Placeholder team]"
-                                    role="[Placeholder role]"
+                                    duration="6 months"
+                                    team="1 PM, 2 Engineer, 1 Design"
+                                    role="Design lead"
                                 />
                                 <p>
-                                    [Placeholder overview. Describe what this project is about, the context, and why it matters. Replace this with the actual project description.]
+                                   This 0→1 AI-powered project accelerates learning for generalist consultants working outside their domain expertise to move from exploration to action with greater speed and confidence.
                                 </p>
                             </div>
 
@@ -97,18 +97,25 @@ class AIResearchGuide extends React.Component {
                         </div>
 
                         <div className="content-block fade-in" id="section1">
-                            <h2>Overview</h2>
-                            <p>[Placeholder: Provide a high-level summary of the project goals, the problem being solved, and the outcome.]</p>
+                            <h2>Context</h2>
+                            <p>Consulting engagements often require practitioners to quickly evaluate unfamiliar industries, functions, and organizational structures. Practitioners entering new domains piece together insights manually through fragmented documents, ad hoc guidance, and limited access to domain experts.</p>
+                            <div className="bullet-callout">
+                                <p className="bullet-lead">As a result, early-stage analysis is often:</p>
+                                <ul>
+                                    <li>Slow to ramp</li>
+                                    <li>Dependent on individual experience</li>
+                                    <li>Difficult to scale across multiple engagements</li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div className="content-block" id="section2">
-                            <h2>Research methodology</h2>
-                            <p>[Placeholder: Describe the research methods used — interviews, surveys, secondary research, etc. — and why they were chosen.]</p>
-                            <h3>User interviews</h3>
-                            <p>[Placeholder: Summarize the interview process, number of participants, and key questions asked.]</p>
-                            <h3>Secondary research</h3>
-                            <p>[Placeholder: Describe any desk research, literature review, or competitive analysis conducted.]</p>
-                        </div>
+                            <h2>Solution</h2>
+                             <p>This product rethinks this workflow by turning expert knowledge into a structured, AI-powered system, giving generalist consultants fast, reliable guidance to move from exploration to action.</p>
+                      
+
+                            <h3> Product model</h3>
+                         </div>
 
                         <div className="content-block" id="section3">
                             <h2>Key findings</h2>
