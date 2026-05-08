@@ -8,7 +8,7 @@ import NavigationBar from "../../components/navigation"
 import Animation3D from '../../components/animation3D'
 
 import { ReactComponent as LeverGuide } from "../../assets/images/home/LeverGuide.svg"
-import { ReactComponent as Janus } from "../../assets/images/home/Janus.svg"
+import Kiosk_img from "../../assets/images/home/kiosk.png"
 import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
 import Button from "../../components/myButton"
@@ -133,21 +133,21 @@ class Homepage extends React.Component {
                             </div>
                         </div>
 
-                        {/* Platforms Integration */}
-                        <div id="PlatformsIntegration" className="sessionContainer bg-project-card">
+                        {/* Kiosk */}
+                        <div id="Kiosk" className="sessionContainer bg-project-card">
                             <div className="contentblock">
-                                 <Janus className="img project-card-img" />
+                                <img loading="lazy" src={Kiosk_img} alt="kiosk checkin" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Platforms Integration</h1>
-                                <p>Integrating 6 enterprise platforms into one streamlined tool with AI services, where critical actions are unmissable.
+                                <h1>Automating Office Check-in</h1>
+                                <p>This project reduced reliance on front desk staff and improved operational efficiency by revamping end-to-end service design to enable visitor self check-in.
                                 </p>
                             </div>
                             <div className="contentblock">
                                 <UnderlineBtn
                                     innerLink={true}
                                     label="Read the case"
-                                    link="platforms-integration"
+                                    link="kiosk"
                                     className="readCases"
                                 />
                             </div>
