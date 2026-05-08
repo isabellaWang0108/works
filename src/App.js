@@ -11,6 +11,7 @@ const DS = lazy(() => import("./views/projects/DS"));
 const Voice = lazy(() => import("./views/projects/Voice"));
 const AIResearchGuide = lazy(() => import("./views/projects/AIResearchGuide"));
 const PlatformsIntegration = lazy(() => import("./views/projects/PlatformsIntegration"));
+const Kiosk = lazy(() => import("./views/projects/Kiosk"));
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/voice" element={<Voice />} />
             <Route path="/ai-research-guide" element={<AIResearchGuide />} />
             <Route path="/platforms-integration" element={<PlatformsIntegration />} />
+            <Route path="/kiosk" element={<Kiosk />} />
           </Routes>
         </Suspense>
       </HashRouter>
