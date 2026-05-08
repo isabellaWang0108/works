@@ -103,6 +103,16 @@ li {
   font-family: SuisseIntl-SemiBold;
 }
 
+.pull-quote {
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: #d5d5d5;
+  border-left: 3px solid #d5d5d5;
+  padding: 4px 0 4px 20px;
+  margin: 16px 0;
+}
+
 .grey {
   color: #d5d5d5;
 }
