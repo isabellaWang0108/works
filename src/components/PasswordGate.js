@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Animation3DEdge from "./animation3DEdge";
 
-const PASSWORD_HASH = "872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4";
+const PASSWORD_HASH = "bade44aafc581068f83d2971b0eea6460bf0667c1db26b82aad2d4629e2fd6f0";
 const SESSION_KEY = "portfolio_auth";
 
 async function sha256(text) {
