@@ -174,6 +174,31 @@ function PasswordGate({ children }) {
                         Enter
                     </button>
                 </form>
+                <a
+                    href="mailto:wangxbella0108@gmail.com"
+                    style={{
+                        marginTop: 16,
+                        padding: "10px 16px",
+                        fontSize: 14,
+                        borderRadius: 6,
+                        backgroundColor: "transparent",
+                        color: "#ffffff",
+                        cursor: "pointer",
+                        fontWeight: 500,
+                        textDecoration: "none",
+                        display: "inline-block",
+                        fontFamily: "SuisseIntl-Regular",
+                        transition: "color 0.15s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                        e.target.style.color = "#FF8CC4";
+                    }}
+                    onMouseLeave={(e) => {
+                        e.target.style.color = "#ffffff";
+                    }}
+                >
+                    Email me for issues
+                </a>
             </div>
         </div>
     );
