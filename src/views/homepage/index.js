@@ -8,7 +8,7 @@ import NavigationBar from "../../components/navigation"
 import Animation3D from '../../components/animation3D'
 
 import { ReactComponent as LeverGuide } from "../../assets/images/home/LeverGuide.svg"
-import Kiosk_img from "../../assets/images/home/kiosk.png"
+import { ReactComponent as Janus } from "../../assets/images/home/Janus.svg"
 import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
 import Button from "../../components/myButton"
@@ -78,7 +78,7 @@ class Homepage extends React.Component {
                          <br/>
                          Systems Driven.
                                 
-                                <h3 style={{letterSpacing:.25, lineHeight:1.8}}> 
+                                <h3 style={{letterSpacing:.25, lineHeight:1.8, fontSize: window.innerWidth < 990 ? 22 : 28}}> 
                                I design AI features, work with AI tools, and think in systems — turning complex user flows into coherent, scalable experiences.
 
                                 </h3>
@@ -133,21 +133,21 @@ class Homepage extends React.Component {
                             </div>
                         </div>
 
-                        {/* Kiosk */}
-                        <div id="Kiosk" className="sessionContainer bg-project-card">
+                        {/* Platforms Integration */}
+                        <div id="PlatformsIntegration" className="sessionContainer bg-project-card">
                             <div className="contentblock">
-                                <img loading="lazy" src={Kiosk_img} alt="kiosk checkin" className="img project-card-img" />
+                                <Janus className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Automating Office Check-in</h1>
-                                <p>This project reduced reliance on front desk staff and improved operational efficiency by revamping end-to-end service design to enable visitor self check-in.
+                                <h1>Platforms Integration</h1>
+                                <p>Unified fragmented consulting tools into a single AI-assisted workspace for end-to-end Org Transformation assessments.
                                 </p>
                             </div>
                             <div className="contentblock">
                                 <UnderlineBtn
                                     innerLink={true}
                                     label="Read the case"
-                                    link="kiosk"
+                                    link="platforms-integration"
                                     className="readCases"
                                 />
                             </div>
