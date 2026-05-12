@@ -10,6 +10,40 @@ async function sha256(text) {
     return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 }
 
+async function matchesPasswordCaseAgnostic(value) {
+    const directHash = await sha256(value);
+    if (directHash === PASSWORD_HASH) return true;
+
+    const letterIndexes = [];
+    for (let i = 0; i < value.length; i += 1) {
+        if (/[a-z]/i.test(value[i])) letterIndexes.push(i);
+    }
+
+    if (letterIndexes.length === 0) return false;
+
+    const permutationCount = 2 ** letterIndexes.length;
+    if (permutationCount > 4096) {
+        const lowerHash = await sha256(value.toLowerCase());
+        const upperHash = await sha256(value.toUpperCase());
+        return lowerHash === PASSWORD_HASH || upperHash === PASSWORD_HASH;
+    }
+
+    const originalChars = value.split("");
+    for (let mask = 0; mask < permutationCount; mask += 1) {
+        const candidateChars = [...originalChars];
+        for (let bit = 0; bit < letterIndexes.length; bit += 1) {
+            const idx = letterIndexes[bit];
+            const ch = originalChars[idx];
+            candidateChars[idx] = (mask & (1 << bit)) ? ch.toUpperCase() : ch.toLowerCase();
+        }
+
+        const hash = await sha256(candidateChars.join(""));
+        if (hash === PASSWORD_HASH) return true;
+    }
+
+    return false;
+}
+
 function PasswordGate({ children }) {
     const [authenticated, setAuthenticated] = useState(
         () => sessionStorage.getItem(SESSION_KEY) === "true"
@@ -17,11 +51,12 @@ function PasswordGate({ children }) {
     const [input, setInput] = useState("");
     const [error, setError] = useState(false);
     const [focused, setFocused] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const hash = await sha256(input);
-        if (hash === PASSWORD_HASH) {
+        const isMatch = await matchesPasswordCaseAgnostic(input);
+        if (isMatch) {
             sessionStorage.setItem(SESSION_KEY, "true");
             setAuthenticated(true);
         } else {
@@ -76,7 +111,7 @@ function PasswordGate({ children }) {
                             Enter password
                         </label>
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             value={input}
                             onChange={(e) => { setInput(e.target.value); setError(false); }}
                             onFocus={() => setFocused(true)}
@@ -85,7 +120,7 @@ function PasswordGate({ children }) {
                             style={{
                                 width: "100%",
                                 boxSizing: "border-box",
-                                padding: "14px 16px",
+                                padding: "14px 88px 14px 16px",
                                 fontSize: 16,
                                 fontFamily: "SuisseIntl-Regular",
                                 border: `1.5px solid ${borderColor}`,
@@ -96,10 +131,31 @@ function PasswordGate({ children }) {
                                 transition: "border-color 0.15s ease",
                             }}
                         />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword((prev) => !prev)}
+                            aria-label={showPassword ? "Hide password" : "Show password"}
+                            style={{
+                                position: "absolute",
+                                right: 10,
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                                border: "none",
+                                background: "transparent",
+                                color: "#FF8CC4",
+                                fontSize: 12,
+                                fontWeight: 700,
+                                letterSpacing: 0.3,
+                                cursor: "pointer",
+                                padding: "6px 8px",
+                            }}
+                        >
+                            {showPassword ? "HIDE" : "SHOW"}
+                        </button>
                     </div>
                     {error && (
                         <p style={{ color: "#e05c5c", margin: 0, fontSize: 14, textAlign: "left" }}>
-                            Incorrect password. Please try again.
+                            Incorrect password. Check what's written on the resume and try again.
                         </p>
                     )}
                     <button
