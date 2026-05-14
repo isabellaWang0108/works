@@ -24,6 +24,12 @@ html {
   background-color: #171717;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 a,
 span,
 p,
@@ -304,7 +310,9 @@ a:hover {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   left: 0;
   top: 0;
   scroll-behavior: smooth;
@@ -319,6 +327,13 @@ a:hover {
   left: clamp(16px, 3.5vw, 48px);
   top: 72px;
   z-index: 998;
+  background-color: rgba(23, 23, 23, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 8px 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 
 .content-layout {
@@ -426,6 +441,13 @@ a:hover {
   flex-direction: row;
   width: 100vw;
   overflow: hidden;
+}
+
+.projectRow .sessionContainer {
+  height: auto;
+  min-height: 400pt;
+  overflow: visible;
+  padding-bottom: 16px;
 }
 
 /* Homepage CSS */
@@ -555,6 +577,21 @@ a:hover {
 .project-card-img {
   width: 92%;
   margin-left: 4%;
+}
+
+.projectRow .contentblock:first-child {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectRow .project-card-img {
+  width: auto;
+  max-width: 92%;
+  height: auto;
+  max-height: 100%;
+  margin-left: 0;
 }
 
 .pinkSquare {
@@ -1171,11 +1208,13 @@ a:hover {
 
   /* Content page */
   .left-nav {
-    width: 90%;
+    width: 100%;
     z-index: 8;
     position: relative;
     height: auto;
     top: 0px;
+    left: 0;
+    padding: 0 0 0 12px;
     border-right: 0px solid #fc229338;
     border-left: 2px solid #fc229338;
   }
@@ -1198,10 +1237,32 @@ a:hover {
   }
 
   .content-layout {
-    width: auto;
+    width: 100%;
+    max-width: none;
     margin-top: 0;
     margin-left: 0%;
-    padding: 16px 24px 24px 24px;
+    padding: 88px 16px 24px 16px;
+  }
+
+  .page-container h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .back-btn-fixed {
+    top: 68px;
+    left: 10px;
+    font-size: 14px;
   }
 
   .content-block {
@@ -1245,6 +1306,15 @@ a:hover {
   .project-card-img {
     width: 86%;
     margin-left: 0;
+  }
+
+  .projectRow .contentblock:first-child {
+    height: 180px;
+  }
+
+  .projectRow .project-card-img {
+    max-width: 100%;
+    max-height: 100%;
   }
 
 
