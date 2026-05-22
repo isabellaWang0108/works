@@ -5,7 +5,7 @@ import Back2Top from "../../../components/back2top"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
-import { ReactComponent as Pic1 } from "../../../assets/images/home/Janus.svg"
+import Pic1 from "../../../assets/images/home/Janus.svg?react"
 
 import Pic2 from "../../../assets/images/Janus/img_2.svg"
 import Pic3 from "../../../assets/images/Janus/img_3.svg"

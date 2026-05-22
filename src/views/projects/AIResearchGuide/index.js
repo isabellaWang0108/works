@@ -6,7 +6,7 @@ import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
-import { ReactComponent as Pic1 } from "../../../assets/images/home/LeverGuide.svg"
+import Pic1 from "../../../assets/images/home/LeverGuide.svg?react"
 import Pic2 from "../../../assets/images/LeverGuide/img_1.png"
 import Pic3 from "../../../assets/images/LeverGuide/img_2.svg"
 import Pic4 from "../../../assets/images/LeverGuide/img_3.svg"

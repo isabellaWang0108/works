@@ -7,8 +7,8 @@ import { Canvas } from "@react-three/fiber";
 import NavigationBar from "../../components/navigation"
 import Animation3D from '../../components/animation3D'
 
-import { ReactComponent as LeverGuide } from "../../assets/images/home/LeverGuide.svg"
-import { ReactComponent as Janus } from "../../assets/images/home/Janus.svg"
+import LeverGuide from "../../assets/images/home/LeverGuide.svg?react"
+import Janus from "../../assets/images/home/Janus.svg?react"
 import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
 import Button from "../../components/myButton"
@@ -290,4 +290,3 @@ class Homepage extends React.Component {
 }
 
 export default Homepage;
-
