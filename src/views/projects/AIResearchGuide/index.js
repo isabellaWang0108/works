@@ -66,12 +66,17 @@ class AIResearchGuide extends React.Component {
 
     render() {
         return (
-            <div className="page-container" onScroll={this.handleScroll}>
+            <div className="page-container project-page" onScroll={this.handleScroll}>
                 <NavigationBar />
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div>
                     <ContentLayout>
                         <h1 id="title" className="fade-in">AI Research Guide</h1>
+                        <div className="badgeRow" style={{ marginTop: 8 }}>
+                            <span className="projectBadge">AI-generated content</span>
+                            <span className="projectBadge">Knowledge product</span>
+                            <span className="projectBadge">B2B</span>
+                        </div>
 
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
@@ -81,7 +86,7 @@ class AIResearchGuide extends React.Component {
                                     role="Design lead"
                                 />
                                 <p>
-                                   This 0→1 AI-powered project accelerates learning for generalist consultants working outside their domain expertise to move from exploration to action with greater speed and confidence.
+                                   This 0→1 AI-powered project accelerates learning for generalist consultants working outside their domain expertise, turning fragmented knowledge into clear, actionable guidance.
                                 </p>
                             </div>
 
@@ -149,6 +154,7 @@ class AIResearchGuide extends React.Component {
                                     <li>Scalable access to institutional knowledge</li>
                                 </ul>
                             </div>
+                            <p>This pilot helped the team move from fragmented discovery to a more reliable, grounded workflow that supports confident decision-making.</p>
                         </div>
 
                         <div className="content-block" id="section5">

@@ -88,7 +88,7 @@ class Kiosk extends React.Component {
 
     render() {
         return (
-            <div className="page-container" onScroll={this.handleScroll}>
+            <div className="page-container project-page" onScroll={this.handleScroll}>
                 {/* navigation bar  */}
                 <NavigationBar
                     projects
@@ -99,12 +99,18 @@ class Kiosk extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <h1 id="title" className="fade-in">Automating Office Check-in</h1>
+                        <div className="badgeRow" style={{ marginTop: 8 }}>
+                            <span className="projectBadge">Hardware integration</span>
+                            <span className="projectBadge">IoT</span>
+                            <span className="projectBadge">B2B</span>
+                            <span className="projectBadge">Usability</span>
+                        </div>
 
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <ProjectContext duration="1 month" team="1 PM, 5 engineers, 1 designer" role="Designer"></ProjectContext>
                                 <p>
-                                    This project introduces a self-service visitor management kiosk that streamlines the check-in process, freeing up valuable time for front desk staff and improving efficiency for the visitors.
+                                    This project introduced a self-service visitor kiosk to make office check-in faster, reduce front desk workload, and improve the guest experience. I designed the flow, validated key usability tradeoffs, and created a polished iPad experience that could work in real office environments.
                                     <br />
                                     <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
                                         Available on App Store.
@@ -233,6 +239,7 @@ class Kiosk extends React.Component {
                             <h2>Reflection</h2>
                         </div>
                         <p>This project improves check-in efficiency, but it comes with security trade-offs. It assumes guests have no malicious intent, yet the iPad alone cannot prevent someone from bypassing the process and entering the office uninvited. A more future-forward solution would integrate the iPad with the door system—granting access only after a successful passcode scan, directly enhancing security.</p>
+                        <p>This experience reinforced that successful kiosk design must balance convenience, security, and physical context, not just visual polish.</p>
 
                         <div className="content-block" >
                             <InpageContactMe />

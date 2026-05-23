@@ -83,15 +83,11 @@ class Homepage extends React.Component {
 
                                 </h3>
                                 <div> </div>
-                                <Button
-                                    innerLink={false}
-                                    label="See my work"
-                                    onClick={() =>
-                                        document.getElementById("professionalW")?.scrollIntoView({
-                                            behavior: "smooth",
-                                        })
-                                    }
-                                />
+                                <div className="heroBadges">
+                                    <span>AI product design</span>
+                                    <span>Systems thinking</span>
+                                    <span>Autonomous Designer</span>
+                                </div>
                             </div>
 
                         </div>
@@ -107,10 +103,6 @@ class Homepage extends React.Component {
                         )}
                     </div>
 
-                    <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}>
-                        <h1>Professional work</h1>
-                    </div>
-
 
                     <div className="projectRow">
                         {/* AI Research Guide */}
@@ -119,8 +111,13 @@ class Homepage extends React.Component {
                                  <LeverGuide className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>AI-Powered Research Guide</h1>
-                                <p>Designing a product with fully AI-generated content, transparency and trust built in from the start.
+                                <h1>AI-Powered Knowledge Tool for Faster Consulting Discovery</h1>
+                                <div className="badgeRow">
+                                    <span className="projectBadge">Generative AI</span>
+                                    <span className="projectBadge">Knowledge product</span>
+                                    <span className="projectBadge">B2B</span>
+                                </div>
+                                <p>Turned fragmented domain expertise into guided workflows, source-backed answers, and scannable recommendations for generalist consultants.
                                 </p>
                             </div>
                             <div className="contentblock">
@@ -139,8 +136,13 @@ class Homepage extends React.Component {
                                 <Janus className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Platforms Integration</h1>
-                                <p>Unified fragmented consulting tools into a single AI-assisted workspace for end-to-end Org Transformation assessments.
+                                <h1>Unifying Consulting Tools into One AI-assisted Workspace</h1>
+                                <div className="badgeRow">
+                                    <span className="projectBadge">Workflow orchestration</span>
+                                    <span className="projectBadge">AI-assisted</span>
+                                    <span className="projectBadge">Enterprise SaaS</span>
+                                </div>
+                                <p>Mapped messy enterprise workflows into a continuous assessment experience that preserved context across systems and reduced tool-switching friction.
                                 </p>
                             </div>
                             <div className="contentblock">
@@ -162,8 +164,13 @@ class Homepage extends React.Component {
                                 <img loading="lazy" src={DesignSystem} alt="design system" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Building a design system</h1>
-                                <p>This case study presents my experience and process in handling complex, big-scale, high-stakes design challenges that involve a broad spectrum of stakeholders.
+                                <h1>Scaling Product Consistency with a Design System</h1>
+                                <div className="badgeRow">
+                                    <span className="projectBadge">Design system</span>
+                                    <span className="projectBadge">DesignOps</span>
+                                    <span className="projectBadge">Platform</span>
+                                </div>
+                                <p>Built shared foundations, component guidance, and adoption practices for 50+ designers and engineers working across a complex product suite.
                                 </p>
                             </div>
                             <div className="contentblock">
@@ -188,8 +195,13 @@ class Homepage extends React.Component {
                                 <img loading="lazy" src={Voice} alt="voice" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Lower the NFT creation barrier</h1>
-                                <p>I designed an NFT marketplace aimed at empowering emerging artists from the ground up.
+                                <h1>Making NFT Creation Easier for Emerging Artists</h1>
+                                <div className="badgeRow">
+                                    <span className="projectBadge">Creator tools</span>
+                                    <span className="projectBadge">NFT marketplace</span>
+                                    <span className="projectBadge">Web3</span>
+                                </div>
+                                <p>Translated blockchain-heavy workflows into approachable creation, publishing, and viewing patterns for artists with different levels of technical fluency.
                                 </p>
                             </div>
                             <div className="contentblock">
@@ -207,35 +219,37 @@ class Homepage extends React.Component {
 
 
                     {/* About Me */}
-                    <div id="seeMore" className="sessionContainer" style={{ height: 'auto', position: 'relative', background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }} >
-                        <div className="seeMore">
-
-                            <h1>About me</h1>
+                    <div id="seeMore" className="sessionContainer about-section">
+                        <div className="seeMore about-panel">
                             <div>
-                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellawang0108" style={{ marginRight: '36pt' }}>
-                                        <img loading="lazy" style={{ width: '36pt' }} src={Github} alt="icon"></img>
-                                    </a>
-
-                                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/isabella-wang-310181149/">
-                                        <img loading="lazy" style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
-                                    </a>
-                                </div>
+                                <h1>About me</h1>
+                                <p>
+                                    I deeply care about the human-technology relationship and aim to help define more thoughtful ways people work with intelligent systems. Research, creative experimentation, and data-driven iteration sit at the heart of my design process.
+                                </p>
+                                <p>
+                                    I’m currently exploring product design opportunities where I can shape thoughtful AI and systems-driven experiences. If my work resonates, I’d love to connect.
+                                </p>
                             </div>
-                            <p style={{ maxWidth: '700pt' }}>
-                                I deeply care about the human-technology relationship and aim to be part of the entity to define it. In-depth research, creative experimentation, and data-driven iteration are at the heart of my design. My approach to questions always starts from answering the Why, ideating the How, and eventually designing the What.
-                            </p>
 
-                            <p>Contact me:{' '}<a href="mailto:wangxbella0108@gmail.com" target="_blank" rel="noopener noreferrer" >wangxbella0108@gmail.com</a></p>
+                            <div className="about-actions">
+                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/isabellawang0108" aria-label="GitHub">
+                                    <img loading="lazy" src={Github} alt="GitHub icon"></img>
+                                </a>
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/isabella-wang-310181149/" aria-label="LinkedIn">
+                                    <img loading="lazy" src={Linkedin} alt="LinkedIn icon"></img>
+                                </a>
+
+                                <a className="about-email" href="mailto:wangxbella0108@gmail.com" target="_blank" rel="noopener noreferrer">wangxbella0108@gmail.com</a>
+                            </div>
                         </div>
                     </div>
-                    <div className="sessionContainer" style={{ height: 'auto', position: 'relative' }} >
+                    <div className="sessionContainer extra-projects-section">
                         <div className="seeMore">
+                            <h2>Passion projects</h2>
 
                             <div className="threecolumn">
                                 <div className="threecolumn-row">
-                                    <h2>AI relevent research</h2>
-
                                     <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@wangxbella0108/experiment-of-chatgpts-effects-on-decisions-confidence-399ae25c3ad1" className="AboutProj bg-seeMore">
                                         <div className="AboutProj-content">
                                             <div className="text-black bold" style={aboutCardSpacing}>AI's impact on decision making</div>
@@ -258,9 +272,6 @@ class Homepage extends React.Component {
 
 
                                 <div className="threecolumn-row">
-                                    <h2>Passion projects</h2>
-
-
                                     <a href="https://medium.com/@wangxbella0108/how-smart-to-be-a-smart-home-d4c53322e1ff" rel="noopener noreferrer" target="_blank" className="AboutProj bg-seeMore">
                                         <div className="AboutProj-content">
                                             <div className="text-black bold" style={aboutCardSpacing}>Integrated system</div>

@@ -79,7 +79,7 @@ class ProductStudio extends React.Component {
 
     render() {
         return (
-            <div className="page-container" onScroll={this.handleScroll}>
+            <div className="page-container project-page" onScroll={this.handleScroll}>
                 {/* navigation bar  */}
                 <NavigationBar
                     projects
@@ -90,7 +90,12 @@ class ProductStudio extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <h1 id="title">How to hire millennial technical talents? </h1>
-                        <p>This is a four-month product challenge given by the US Department of Defense to investigate how to hire millennial technical talents and make a product that represents the solution. In this project, I worked on a team of four and mainly took charge of doing research and designing experimentation.</p>
+                        <div className="badgeRow" style={{ marginTop: 8 }}>
+                            <span className="projectBadge">Research-led</span>
+                            <span className="projectBadge">Experimentation</span>
+                            <span className="projectBadge">Human-centered</span>
+                        </div>
+                        <p>This four-month DoD product sprint explored how to help recruiters and candidates make hiring more transparent and trustworthy. I led research synthesis, experimentation design, and prototype delivery to uncover a more honest recruitment experience.</p>
                         <ProjectContext duration="4 months" team="1 MBA, 1 engineer, 1 designer, 1 CM student" role="designer"></ProjectContext>
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">
@@ -108,9 +113,9 @@ class ProductStudio extends React.Component {
 
                         <div className="content-block" id="section1">
                             <h2>Process and goal</h2>
-                            <p>In this project, our goal was to validate the key pain points in the recruitment process and develop a solution.
+                            <p>Recruiters were overwhelmed by inconsistent applications, and candidates lacked clarity about company culture and timing. Our goal was to validate those pain points and design a hiring experience that felt transparent, trustworthy, and easy to engage with.
                                 <br />
-                                Our process involves:
+                                Our process involved:
                             </p>
                             <ul>
                                 <li>User research</li>
@@ -174,12 +179,11 @@ class ProductStudio extends React.Component {
                         </div>
                         <div className="content-block" id="section8">
                             <h2>After a total failure</h2>
-                            <p>With a total failure in validating speed commitment from both recruiter and candidate sides, we had to think about the workaround. After several discussions, we decided to take transparency apart from speed and test whether openness matters. If neither speed nor transparency could be validated, we would have to pivot to other ideas.</p>
-                            <p>We conducted a 404-page experiment. The concept was to send out emails containing a job description with elements of transparency. All clicks were tracked by analytics, but they would direct candidates to a 404 page. From the analytics, we could see who clicked on what in what order. If candidates cared about transparency, they would click on the link to see more information; If they did not care, they would apply directly. Once we could prove more than 54% of people care, the value was validated.
-                            </p>
+                            <p>Our first experiment failed to validate speed commitment from both recruiter and candidate sides. That failure forced us to rethink the problem and separate speed from transparency. If neither speed nor transparency held up, we would need to pivot to something else.</p>
+                            <p>We conducted a 404-page experiment. The concept was to send out emails containing a job description with elements of transparency. All clicks were tracked by analytics, but they would direct candidates to a 404 page. From the analytics, we could see who clicked on what in what order. If candidates cared about transparency, they would click on the link to see more information; if they did not care, they would apply directly. Once we could prove more than 54% of people care, the value was validated.</p>
                             <p>We sent out a total of 120 emails with shuffled order of links.</p>
                             <Pic7 width="100%" />
-                            <p>Luck knocked on our door this time. Based on our statistic chart, the value of transparency was valid! </p>
+                            <p>Based on our statistics, we proved that transparency was the stronger signal. This taught us that a better hiring experience starts by making information honest and easy to explore, even before speed is guaranteed.</p>
                             <Pic8 width="100%" />
                         </div>
                         <div className="content-block" id="section9">

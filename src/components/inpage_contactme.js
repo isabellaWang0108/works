@@ -9,32 +9,35 @@ class InpageContactMe extends Component {
 
     render() {
         return (
-            <>
-                <h2>Contact Me!</h2>
+            <div className="inpage-contact-card">
+                <div>
+                    <p className="inpage-contact-kicker">Next step</p>
+                    <h2>Contact Me!</h2>
+                    <p className="inpage-contact-copy">Interested in the thinking behind this work or want to chat about AI product design? I am happy to connect.</p>
+                </div>
                 <div className="contact_me_inpage">
                     <div className="icons">
-                        <a href="mailto:wangxbella0108@gmail.com">
-                            <img style={{ width: '36pt', marginTop: '24pt' }} src={Email} alt="email icon"></img>
+                        <a href="mailto:wangxbella0108@gmail.com" aria-label="Email Isabella">
+                            <img src={Email} alt="email icon"></img>
                         </a>
-                        <a href="https://github.com/isabellawang0108">
-                            <img style={{ width: '36pt', marginTop: '24pt' }} src={Github} alt="github icon"></img>
+                        <a href="https://github.com/isabellawang0108" aria-label="GitHub">
+                            <img src={Github} alt="github icon"></img>
                         </a>
 
-                        <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
-                            <img style={{ width: '36pt', marginTop: '24pt' }} src={Linkedin} alt="linkedin icon"></img>
+                        <a href="https://www.linkedin.com/in/isabella-wang-310181149/" aria-label="LinkedIn">
+                            <img src={Linkedin} alt="linkedin icon"></img>
                         </a>
                     </div>
-
-                    <h3 className="bold" style={{ marginTop: '28pt', marginRight: '16pt' }}>or</h3>
 
                     <Button
                         innerLink={false}
                         label="See other projects"
                         link="/#professionalW"
                         onClick={() =>( window.history.back())}
+                        className="inpage-contact-button"
                     />
                 </div>
-            </>
+            </div>
 
 
         )

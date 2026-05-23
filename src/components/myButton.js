@@ -1,35 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import $ from 'jquery';
-
-const button = {
-    border: 'solid',
-    borderWidth: 2,
-    padding: 12,
-    cursor: 'pointer',
-    color: "white",
-    fontSize: 21,
-    borderRadius: 12,
-    marginLeft: 0,
-    marginTop: 24,
-    position: 'relative',
-    zIndex: 80,
-    backgroundColor: 'transparent',
-    borderColor: 'white',
-    boxSizing: 'border-box'
-}
-
 
 class Button extends React.Component {
-    mouseEnter(e) {
-        $(e.currentTarget).css('fontWeight', '800');
-        $(e.currentTarget).css('backgroundColor', '#dc7dae36');
-    }
-    mouseOut(e) {
-        $(e.currentTarget).css('fontWeight', '500');
-        $(e.currentTarget).css('backgroundColor', 'transparent');
-    }
-
     onClick = (e) => {
         e.preventDefault()
         if (this.props.onClick) {
@@ -42,9 +14,7 @@ class Button extends React.Component {
             this.props.innerLink ? (
                 <NavLink to={this.props.link}>
                     <button
-                        style={button}
-                        onMouseEnter={this.mouseEnter}
-                        onMouseOut={this.mouseOut}
+                        className={`portfolio-button ${this.props.className || ""}`}
                         onClick={(e) => e.stopPropagation()}
                     >
                         {this.props.label}
@@ -52,9 +22,7 @@ class Button extends React.Component {
                 </NavLink>
             ) : (
                 <button
-                    style={button}
-                    onMouseEnter={this.mouseEnter}
-                    onMouseOut={this.mouseOut}
+                    className={`portfolio-button ${this.props.className || ""}`}
                     onClick={this.onClick}
                 >
                     {this.props.label}

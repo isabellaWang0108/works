@@ -1,34 +1,27 @@
 import React, { Component } from "react";
 
-
-const container = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 0,
-    columnGap: 12
-}
-const title = {
-    fontSize: '13px',
-    marginTop: '8px'
-}
-
 class ProjectContext extends Component {
 
 
     render() {
-        return (
-            <div style={container}>
-                <div className="grey right-border bold">
-                    <div style={title}>My role:</div>
-                    <div>{this.props.role}</div>
-                </div>
-                <div className="grey bold">
-                    <div style={title}>Team:</div>
-                    <div>{this.props.team}</div>
-                </div>
-            </div>
+        const items = [
+            { label: "Role", value: this.props.role },
+            { label: "Team", value: this.props.team },
+        ];
 
+        if (this.props.duration) {
+            items.unshift({ label: "Duration", value: this.props.duration });
+        }
+
+        return (
+            <div className="project-context">
+                {items.map((item) => (
+                    <div className="project-context-item" key={item.label}>
+                        <div className="project-context-label">{item.label}</div>
+                        <div className="project-context-value">{item.value}</div>
+                    </div>
+                ))}
+            </div>
         )
     }
 

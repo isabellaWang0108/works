@@ -77,7 +77,7 @@ class Voice extends React.Component {
 
     render() {
         return (
-            <div className="page-container" onScroll={this.handleScroll}>
+            <div className="page-container project-page" onScroll={this.handleScroll}>
                 {/* navigation bar  */}
                 <NavigationBar
                     projects
@@ -88,11 +88,16 @@ class Voice extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <h1 id="title" className="fade-in">Lower the NFT creation barrier</h1>
+                        <div className="badgeRow" style={{ marginTop: 8 }}>
+                            <span className="projectBadge">Creator tools</span>
+                            <span className="projectBadge">Consumer</span>
+                            <span className="projectBadge">Blockchain (EOSIO)</span>
+                        </div>
 
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <ProjectContext duration="3 months" team="1 PM, 6 engineers, 2 designers, 1 UX researcher" role="designer"></ProjectContext>
-                                <p>In 2021, Voice launched a social NFT marketplace aimed at empowering emerging artists by offering a unique, free minting feature powered by the EOSIO protocol. I had the opportunity to take ownership in shaping the platform, from designing the artwork creation process to shaping the viewing experience from the ground up.{' '}
+                                <p>In 2021, Voice launched a social NFT marketplace to empower emerging artists with a simpler, more accessible minting experience. I shaped the artwork creation flow, removed jargon, and designed a platform that helped artists publish NFTs with greater confidence.{' '}
                                     <a href="https://web.archive.org/web/20211118223756/https://www.voice.com/" target="_blank" rel="noopener noreferrer">See archived product</a>
                                 </p>
 
@@ -164,15 +169,14 @@ class Voice extends React.Component {
                         </div>
                         <div className="content-block" id="section4">
                             <h2 >Impact</h2>
-                            <p>The platform has gained popularity among emerging artists, and it has secured a partnership with <a href="https://www.vogue.com/article/2023-photovogue-digital-art-collection-voice">Vogue art residency</a>.</p>
+                            <p>The platform gained traction among emerging artists and helped the product earn a high-profile partnership with <a href="https://www.vogue.com/article/2023-photovogue-digital-art-collection-voice">Vogue art residency</a>.</p>
                             <img loading="lazy" alt="prototypes" src={Pic10} width='100%' />
                         </div>
                         <div className="content-block" id="section5">
                             <h2 >Key learnings</h2>
                             <h3>1. Explain technical terms</h3>
-                            <p>When technical terms are unavoidable, providing tooltips with clear explanations is essential to making the technology accessible to non-technical users.
-                                <h3>2. Take different levels of expertise into consideration </h3>
-                            </p>
+                            <p>When technical terms are unavoidable, providing tooltips with clear explanations is essential to making the technology accessible to non-technical users.</p>
+                            <h3>2. Take different levels of expertise into consideration </h3>
                             <p>Since users have varying levels of experience, designing tailored user flows is crucial to prevent user drop-off.</p>
 
                         </div>

@@ -67,44 +67,27 @@ class PlatformsIntegration extends React.Component {
 
     render() {
         return (
-            <div className="page-container" onScroll={this.handleScroll}>
+            <div className="page-container project-page" onScroll={this.handleScroll}>
                 <NavigationBar />
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div>
                     <ContentLayout>
                         <h1 id="title" className="fade-in">Platforms Integration</h1>
+                        <div className="badgeRow" style={{ marginTop: 8 }}>
+                            <span className="projectBadge">Workflow orchestration</span>
+                            <span className="projectBadge">AI-assisted</span>
+                            <span className="projectBadge">Enterprise SaaS</span>
+                        </div>
 
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <p>
                                   Designed a platform integration project that unified fragmented consulting tools into a single AI-assisted workspace for running end-to-end Org Transformation assessments.
                                 </p>
-                                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 16px", marginTop: 20 }}>
-                                    {[
-                                        "Platform Integration",
-                                        "Workflow Orchestration",
-                                        "Enterprise UX",
-                                        "AI-Assisted Workflow",
-                                        "Systems Design",
-                                    ].map((label) => (
-                                        <span
-                                            key={label}
-                                            style={{
-                                                display: "inline-flex",
-                                                alignItems: "center",
-                                                padding: 0,
-                                                color: "#ffffff",
-                                                fontFamily: "SuisseIntl-Regular",
-                                                fontSize: 12,
-                                                letterSpacing: 0.8,
-                                                lineHeight: 1,
-                                                textTransform: "uppercase",
-                                            }}
-                                        >
-                                            {label}
-                                        </span>
-                                    ))}
-                                </div>
+                                <p>
+                                  Janus aimed to reduce manual context switching and preserve workflow continuity across legacy systems, helping consultants stay focused on outcomes instead of tool juggling.
+                                </p>
+                                
                             </div>
                             <div className="inpage_hero_box">
                                 <Pic1 className="inpage_hero_img" />
@@ -245,6 +228,7 @@ class PlatformsIntegration extends React.Component {
                             <p>One of the biggest learnings from this project was that the best workflow is not always the theoretically simplest one, but the one users can most easily understand and adopt based on their existing mental models and operational habits.</p>
                             <h3>Enterprise workflows can be non-linear</h3>
                             <p>Although the assessment process appeared linear at a high level, the real consulting workflow was highly iterative, requiring the platform to balance operational structure with enough flexibility to support how consultants actually revisit information, evolve hypotheses, and move between workflows.</p>
+                            <p>This reinforced that successful enterprise design must align system design with how people actually do the work, not just how the product strategy wants it to look.</p>
                         </div>
 
                         

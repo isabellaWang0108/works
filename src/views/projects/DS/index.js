@@ -89,7 +89,7 @@ class DS extends React.Component {
 
     render() {
         return (
-            <div className="page-container" onScroll={this.handleScroll}>
+            <div className="page-container project-page" onScroll={this.handleScroll}>
                 {/* navigation bar  */}
                 <NavigationBar
                     projects
@@ -101,11 +101,16 @@ class DS extends React.Component {
                     <ContentLayout>
 
                         <h1 id="title" className="fade-in">Building a design system </h1>
+                        <div className="badgeRow" style={{ marginTop: 8 }}>
+                            <span className="projectBadge">Design system</span>
+                            <span className="projectBadge">Enterprise UX</span>
+                            <span className="projectBadge">Platform</span>
+                        </div>
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <ProjectContext duration="1 year" team="2 engineers, 2 designers" role="Designer"></ProjectContext>
-                                <p>VTS has 4+ independently developed products with 100+ web pages, each influenced by different design teams, leading to inconsistent styles and legacy design systems across products.</p>
-                                <p>The outcome of my work was to unify the styles across the products and make design system part of the company's design process.{' '}
+                                <p>VTS had 4+ independently developed products and 100+ pages built by multiple teams, which caused inconsistent typography, duplicated UI patterns, and confusing product experiences.</p>
+                                <p>I led the design system effort to unify styles across products, embed shared design language into daily workflows, and make consistent design an operational capability for the company.{' '}
                                     <a href="https://terra.vts.com/">Check out the deployed system site here.</a></p>
                             </div>
                             <div className="inpage_hero_box">
@@ -218,6 +223,13 @@ class DS extends React.Component {
                                 <img loading="lazy" alt="prototypes" src={Impact2} width="377" />
                                 <img loading="lazy" alt="prototypes" src={Impact3} width="383" />
                                 <img loading="lazy" alt="prototypes" src={Impact4} width="377" />
+                            </div>
+                            <div className="bullet-callout" style={{ marginTop: '24px' }}>
+                                <ul>
+                                    <li>Reduced cross-product inconsistency by centralizing typography and style patterns.</li>
+                                    <li>Enabled 50+ designers and engineers to adopt shared guidelines through documentation and libraries.</li>
+                                    <li>Shifted the effort from a one-off redesign into an operating design system embedded in delivery.</li>
+                                </ul>
                             </div>
                         </div>
 
