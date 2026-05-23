@@ -196,7 +196,7 @@ li {
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, filter 0.25s ease;
   overflow: hidden;
   contain: paint;
   background-clip: padding-box;
@@ -227,13 +227,13 @@ li {
 }
 
 .bg-project-card:hover {
-  transform: translateY(-6px);
   border-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 34px 100px rgba(0, 0, 0, 0.28);
+  filter: saturate(1.04);
 }
 
 .bg-project-card:hover .project-card-img {
-  transform: translateY(-4px) scale(1.015);
+  filter: drop-shadow(0 18px 34px rgba(255, 140, 196, 0.12));
 }
 
 .right-border {
@@ -312,13 +312,13 @@ button {
   font-size: 15px;
   line-height: 1;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  transition: box-shadow 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
 }
 
 .portfolio-button:hover,
 .password-submit:hover {
-  transform: translateY(-2px);
   filter: saturate(1.08);
+  border-color: rgba(255, 255, 255, 0.54);
   box-shadow: 0 16px 34px rgba(145, 189, 255, 0.26);
 }
 
@@ -336,7 +336,6 @@ button {
 
 .backbtn:hover {
   background: initial;
-  font-weight: bold;
   background-color: #dc7dae36;
 }
 
@@ -347,6 +346,14 @@ button {
   text-align: left;
   padding: 8px 8px;
   border-radius: 4px;
+  min-height: 34px;
+  width: 100%;
+  transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.inpage_menu_item:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
 }
 
 .backbtn {
@@ -688,7 +695,7 @@ a:hover {
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 18px 54px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
 }
 
 .AboutProj-content::before {
@@ -725,7 +732,6 @@ a:hover {
 }
 
 .AboutProj-content:hover {
-  transform: translateY(-4px);
   border-color: rgba(255, 140, 196, 0.35);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
 }
@@ -854,6 +860,72 @@ a:hover {
   max-width: 100%;
   color: #d1d1d1;
   font-weight: 400;
+}
+
+.landing-tech-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.55;
+}
+
+.landing-tech-layer::before,
+.landing-tech-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.landing-tech-layer::before {
+  background:
+    repeating-linear-gradient(90deg, rgba(145, 189, 255, 0.08) 0 1px, transparent 1px 84px),
+    repeating-linear-gradient(180deg, rgba(255, 140, 196, 0.06) 0 1px, transparent 1px 72px);
+  mask-image: linear-gradient(90deg, transparent 0%, black 46%, black 100%);
+  animation: dataGridDrift 14s linear infinite;
+}
+
+.landing-tech-layer::after {
+  width: 42%;
+  left: 58%;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(145, 189, 255, 0.16) 50%, transparent 100%),
+    repeating-linear-gradient(180deg, transparent 0 18px, rgba(255, 255, 255, 0.16) 19px, transparent 20px);
+  opacity: 0.4;
+  filter: blur(0.3px);
+  animation: landingScan 5.5s ease-in-out infinite;
+}
+
+.landing-tech-layer span {
+  position: absolute;
+  top: -18%;
+  right: var(--data-x);
+  color: rgba(194, 218, 255, 0.64);
+  font-family: CourierStd, monospace;
+  font-size: var(--data-size);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 14px rgba(145, 189, 255, 0.36);
+  writing-mode: vertical-rl;
+  animation: dataRain var(--data-speed) linear infinite;
+  animation-delay: var(--data-delay);
+}
+
+.landing-tech-layer span:nth-child(1) { --data-x: 8%; --data-size: 13px; --data-speed: 9s; --data-delay: -4s; }
+.landing-tech-layer span:nth-child(2) { --data-x: 15%; --data-size: 11px; --data-speed: 12s; --data-delay: -9s; }
+.landing-tech-layer span:nth-child(3) { --data-x: 24%; --data-size: 14px; --data-speed: 8.5s; --data-delay: -1s; }
+.landing-tech-layer span:nth-child(4) { --data-x: 33%; --data-size: 10px; --data-speed: 11s; --data-delay: -6s; }
+.landing-tech-layer span:nth-child(5) { --data-x: 43%; --data-size: 12px; --data-speed: 10s; --data-delay: -3s; }
+.landing-tech-layer span:nth-child(6) { --data-x: 54%; --data-size: 11px; --data-speed: 13s; --data-delay: -7s; }
+.landing-tech-layer span:nth-child(7) { --data-x: 67%; --data-size: 13px; --data-speed: 9.5s; --data-delay: -2s; }
+.landing-tech-layer span:nth-child(8) { --data-x: 78%; --data-size: 10px; --data-speed: 12.5s; --data-delay: -10s; }
+
+.ambient-hero-canvas {
+  pointer-events: none;
+  opacity: 0.54;
+  filter: blur(2px) saturate(1.08);
+  mix-blend-mode: screen;
 }
 
 @media (max-width: 990px) {
@@ -1022,13 +1094,13 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.07);
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .about-actions a:not(.about-email):hover {
-  transform: translateY(-3px);
   background: rgba(255, 140, 196, 0.14);
   border-color: rgba(255, 140, 196, 0.35);
+  box-shadow: 0 10px 28px rgba(255, 140, 196, 0.12);
 }
 
 .about-actions img {
@@ -1179,13 +1251,13 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.07);
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact_me_inpage .icons a:hover {
-  transform: translateY(-3px);
   background: rgba(255, 140, 196, 0.14);
   border-color: rgba(255, 140, 196, 0.35);
+  box-shadow: 0 10px 28px rgba(255, 140, 196, 0.12);
 }
 
 .contact_me_inpage .icons img {
@@ -1243,7 +1315,7 @@ a:hover {
   max-height: 210px;
   object-fit: contain;
   margin-left: 0;
-  transition: transform 0.25s ease;
+  transition: filter 0.25s ease;
 }
 
 .projectRow .badgeRow {
@@ -1333,7 +1405,9 @@ a:hover {
   width: 100% !important;
   height: 100% !important;
   z-index: 0;
-  opacity: 0.52;
+  opacity: 0.28;
+  filter: blur(4px) saturate(0.86);
+  mix-blend-mode: screen;
 }
 
 .password-grid {
@@ -1348,7 +1422,7 @@ a:hover {
     radial-gradient(circle, transparent 0 48%, rgba(255, 140, 196, 0.12) 49%, transparent 50%),
     conic-gradient(from 90deg, rgba(255, 140, 196, 0.18), rgba(93, 158, 255, 0.1), rgba(255, 255, 255, 0.03), rgba(255, 140, 196, 0.18));
   filter: blur(0.2px);
-  opacity: 0.65;
+  opacity: 0.36;
   transform: translate3d(var(--cursor-drift-x), var(--cursor-drift-y), 0);
   animation: passwordOrbit 16s linear infinite;
   z-index: 0;
@@ -1359,7 +1433,7 @@ a:hover {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: calc(0.08 + (var(--glitch-intensity) * 0.38));
+  opacity: calc(0.035 + (var(--glitch-intensity) * 0.16));
   mix-blend-mode: screen;
   background:
     linear-gradient(90deg, rgba(255, 50, 150, 0.22), transparent 18%, rgba(90, 180, 255, 0.18) 36%, transparent 55%),
@@ -2076,6 +2150,77 @@ a:hover {
 
   100% {
     clip-path: polygon(0 4%, 100% 4%, 100% 11%, 0 11%, 0 28%, 100% 28%, 100% 32%, 0 32%, 0 62%, 100% 62%, 100% 68%, 0 68%, 0 86%, 100% 86%, 100% 91%, 0 91%);
+  }
+}
+
+@keyframes dataRain {
+  0% {
+    transform: translate3d(0, -18vh, 0);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.8;
+  }
+
+  82% {
+    opacity: 0.46;
+  }
+
+  100% {
+    transform: translate3d(0, 118vh, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes dataGridDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(84px, 72px, 0);
+  }
+}
+
+@keyframes landingScan {
+  0%,
+  100% {
+    transform: translate3d(0, -18%, 0);
+    opacity: 0.16;
+  }
+
+  48% {
+    transform: translate3d(-2%, 18%, 0);
+    opacity: 0.42;
+  }
+
+  52% {
+    transform: translate3d(2%, 20%, 0);
+    opacity: 0.62;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .ambient-hero-canvas,
+  .landing-tech-layer,
+  .password-canvas,
+  .password-glitch {
+    display: none !important;
+  }
+
+  .password-grid {
+    animation: none !important;
+    opacity: 0.16;
   }
 }
 

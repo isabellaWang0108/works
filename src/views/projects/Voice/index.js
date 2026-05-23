@@ -31,42 +31,38 @@ class Voice extends React.Component {
 
 
     turnPink = (theclass) => {
-        $("." + theclass + " button").css("font-weight", "bold")
+        $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
+            .css("background", "rgba(255, 140, 196, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
             .css("border", "solid 1px transparent")
+            .css("background", "transparent")
     }
 
     scrollCheck() {
-
-        // for all the item in the menu except for the last one\
-        for (var i = 1; i < this.content.length; i++) {
-            if ($("#section" + i).position().top < 0 && $("#section" + (i + 1)).position().top > 0) {
-                this.neutral();
-                this.turnPink('p' + i);
-                //open backtotop button after scrolling
-                if (i >= 2) {
-                    $('#back2Top').css("display", "inherit");
-                } else {
-                    $('#back2Top').css("display", "none");
-                }
+        const activeOffset = 120;
+        let activeSection = 1;
+        for (var i = 1; i <= this.content.length; i++) {
+            const section = $("#section" + i);
+            if (section.length && section.position().top <= activeOffset) {
+                activeSection = i;
             }
-
         }
 
-        // for the last item in the menu
-        if ($("#section" + this.content.length).position().top < 0) {
-            this.neutral();
-            this.turnPink('p' + this.content.length);
-        }
+        this.neutral();
+        this.turnPink('p' + activeSection);
+        $('#back2Top').css("display", activeSection >= 2 ? "inherit" : "none");
     }
 
     menuItem(val) {
         const selectPosition = $("#section" + val).position().top;
         const scrollposition = $('.page-container').scrollTop();
-        $('.page-container').animate({ scrollTop: selectPosition + scrollposition }, 100);
+        this.neutral();
+        this.turnPink('p' + val);
+        $('#back2Top').css("display", val >= 2 ? "inherit" : "none");
+        $('.page-container').animate({ scrollTop: selectPosition + scrollposition }, 100, () => this.scrollCheck());
     }
 
     handleScroll = e => {

@@ -47,6 +47,7 @@ async function matchesPasswordCaseAgnostic(value) {
 function PasswordGate({ children }) {
     const gateRef = useRef(null);
     const pointerRef = useRef({ x: 50, y: 50, time: 0, timeout: null });
+    const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const [authenticated, setAuthenticated] = useState(
         () => sessionStorage.getItem(SESSION_KEY) === "true"
     );
@@ -110,16 +111,18 @@ function PasswordGate({ children }) {
             className="password-gate"
             onMouseMove={handlePointerMove}
         >
-            <Canvas
-                className="password-canvas"
-                camera={{ position: [0, 0, 25] }}
-            >
-                <hemisphereLight intensity={0.7} groundColor="#555" />
-                <pointLight position={[50, 0, 0]} intensity={10} />
-                <Animation3DEdge />
-            </Canvas>
+            {!prefersReducedMotion && (
+                <Canvas
+                    className="password-canvas"
+                    camera={{ position: [0, 0, 27] }}
+                >
+                    <hemisphereLight intensity={0.38} groundColor="#20232c" />
+                    <pointLight position={[18, 8, 8]} intensity={3} />
+                    <Animation3DEdge />
+                </Canvas>
+            )}
             <div className="password-grid" />
-            <div className="password-glitch" />
+            {!prefersReducedMotion && <div className="password-glitch" />}
             <div className="password-card">
                 <div className="password-kicker">Portfolio access</div>
                 <div className="logo bold pink password-brand">Isabella Wang</div>

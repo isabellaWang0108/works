@@ -8,7 +8,6 @@ function Animation3D() {
   // Reuse a single temporary Object3D for updating instance transforms.
   const tempObject = useMemo(() => new THREE.Object3D(), []);
 
-  // Use a cube grid of 8 x 8 x 8 for a perfect cube (512 instances).
   const gridCount = 8;
   const instanceCount = gridCount * gridCount * gridCount;
 
@@ -16,7 +15,7 @@ function Animation3D() {
   const colorArray = useMemo(() => {
     const array = new Float32Array(instanceCount * 3);
     const tempColor = new THREE.Color();
-    const colors = ["#DBDBDB", "#757474", "#757474", "#161219", "#FF8CC4"];
+    const colors = ["#e8eef7", "#91bdff", "#757474", "#2d2634", "#ff8cc4"];
     for (let i = 0; i < instanceCount; i++) {
       tempColor.set(colors[Math.floor(Math.random() * colors.length)]);
       tempColor.toArray(array, i * 3);
@@ -38,25 +37,25 @@ function Animation3D() {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     if (meshRef.current) {
-      // Update overall mesh position and rotation.
-      meshRef.current.position.x = Math.sin(time / 8) * 2;
-      meshRef.current.position.y = Math.sin(time / 2);
-      meshRef.current.rotation.x += 0.002;
-      meshRef.current.rotation.y += 0.002;
+      meshRef.current.position.x = 2.9 + Math.sin(time / 10) * 1.1;
+      meshRef.current.position.y = -0.4 + Math.sin(time / 7) * 0.45;
+      meshRef.current.position.z = -1.8;
+      meshRef.current.rotation.x += 0.001;
+      meshRef.current.rotation.y += 0.0014;
+      meshRef.current.rotation.z += 0.00045;
 
       let i = 0;
-      // Create an 8x8x8 cube grid.
+      // Create a soft cube grid of points.
       for (let x = 0; x < gridCount; x++) {
         for (let y = 0; y < gridCount; y++) {
           for (let z = 0; z < gridCount; z++) {
-            // Center the grid by subtracting half the gridCount.
             tempObject.position.set(
               x - gridCount / 2,
               y - gridCount / 2,
               z - gridCount / 2
             );
-            // Optionally, scale the positions based on time.
-            tempObject.position.multiplyScalar(Math.sin(time) / 10 + 1.6);
+            const wave = Math.sin(time * 0.55 + x * 0.7 + y * 0.35 + z * 0.25);
+            tempObject.position.multiplyScalar(1.42 + wave * 0.06);
             tempObject.updateMatrix();
             meshRef.current.setMatrixAt(i++, tempObject.matrix);
           }
@@ -72,12 +71,10 @@ function Animation3D() {
       args={[null, null, instanceCount]}
       instanceColor={instanceColorAttribute}
     >
-      <sphereGeometry args={[0.3, 16, 16]} />
-      <meshStandardMaterial color="white" />
+      <sphereGeometry args={[0.18, 16, 16]} />
+      <meshStandardMaterial color="white" transparent opacity={0.62} roughness={0.76} />
     </instancedMesh>
   );
 }
 
 export default Animation3D;
-
-

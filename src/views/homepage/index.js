@@ -48,6 +48,7 @@ class Homepage extends React.Component {
             window.scrollTo(0, parseInt(savedScrollPosition, 10));
             sessionStorage.removeItem("homepageScrollPosition");
         }
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         // Defer Three.js canvas creation until after the first paint
         requestAnimationFrame(() => this.setState({ canvasReady: true }));
     }
@@ -72,6 +73,16 @@ class Homepage extends React.Component {
 
                     {/* landing page */}
                     <div style={windowHeight} className="sessionContainer" >
+                        <div className="landing-tech-layer" aria-hidden="true">
+                            <span>0101</span>
+                            <span>AI_FLOW</span>
+                            <span>SYS</span>
+                            <span>UX</span>
+                            <span>1010</span>
+                            <span>MODEL</span>
+                            <span>0101</span>
+                            <span>DESIGN</span>
+                        </div>
                         <div id="landingPart" >
                             <div className='landingpage_Intro fade-in'>
                          AI Fluent. 
@@ -93,11 +104,12 @@ class Homepage extends React.Component {
                         </div>
                         {this.state.canvasReady && (
                             <Canvas
-                                style={{ zIndex: 1, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 780 ? "60%" : "100%" }}
-                                camera={{ position: [3, 5, 15] }}
+                                className="ambient-hero-canvas"
+                                style={{ zIndex: 0, position: 'fixed', right: '0px', top: '0px', width: window.innerWidth > 780 ? "64%" : "100%" }}
+                                camera={{ position: [3, 5, 17] }}
                             >
-                                <hemisphereLight intensity={.7} groundColor="#555" />
-                                <pointLight position={[50, 0, 0]} intensity={10} />
+                                <hemisphereLight intensity={0.5} groundColor="#20232c" />
+                                <pointLight position={[18, 8, 8]} intensity={4.2} />
                                 <Animation3D />
                             </Canvas>
                         )}

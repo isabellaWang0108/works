@@ -6,13 +6,13 @@ function Animation3DEdge() {
     const meshRef = useRef();
     const tempObject = useMemo(() => new THREE.Object3D(), []);
 
-    const gridCount = 6;
+    const gridCount = 5;
     const instanceCount = gridCount * gridCount * gridCount;
 
     const colorArray = useMemo(() => {
         const array = new Float32Array(instanceCount * 3);
         const tempColor = new THREE.Color();
-        const colors = ["#DBDBDB", "#757474", "#757474", "#161219", "#FF8CC4"];
+        const colors = ["#e8eef7", "#91bdff", "#757474", "#2d2634", "#ff8cc4"];
         for (let i = 0; i < instanceCount; i++) {
             tempColor.set(colors[Math.floor(Math.random() * colors.length)]);
             tempColor.toArray(array, i * 3);
@@ -34,18 +34,16 @@ function Animation3DEdge() {
     useFrame((state) => {
         const time = state.clock.getElapsedTime();
         if (meshRef.current) {
-            // Superellipse path with reduced amplitude so the cluster stays
-            // mostly on-screen and orbits through the mid-zone between center and edge.
-            const t = time / 12;
+            const t = time / 18;
             const cosT = Math.cos(t);
             const sinT = Math.sin(t);
             const n = 0.65;
-            meshRef.current.position.x = 13 * Math.sign(cosT) * Math.pow(Math.abs(cosT), n);
-            meshRef.current.position.y = 9 * Math.sign(sinT) * Math.pow(Math.abs(sinT), n);
-            meshRef.current.position.z = 0;
+            meshRef.current.position.x = 9 * Math.sign(cosT) * Math.pow(Math.abs(cosT), n);
+            meshRef.current.position.y = 6 * Math.sign(sinT) * Math.pow(Math.abs(sinT), n);
+            meshRef.current.position.z = -5;
 
-            meshRef.current.rotation.x += 0.003;
-            meshRef.current.rotation.y += 0.003;
+            meshRef.current.rotation.x += 0.001;
+            meshRef.current.rotation.y += 0.0012;
 
             let i = 0;
             for (let x = 0; x < gridCount; x++) {
@@ -56,7 +54,8 @@ function Animation3DEdge() {
                             y - gridCount / 2,
                             z - gridCount / 2
                         );
-                        tempObject.position.multiplyScalar(Math.sin(time) / 10 + 1.3);
+                        const wave = Math.sin(time * 0.45 + x * 0.8 + y * 0.4 + z * 0.25);
+                        tempObject.position.multiplyScalar(1.1 + wave * 0.04);
                         tempObject.updateMatrix();
                         meshRef.current.setMatrixAt(i++, tempObject.matrix);
                     }
@@ -72,8 +71,8 @@ function Animation3DEdge() {
             args={[null, null, instanceCount]}
             instanceColor={instanceColorAttribute}
         >
-            <sphereGeometry args={[0.25, 16, 16]} />
-            <meshStandardMaterial color="white" />
+            <sphereGeometry args={[0.14, 16, 16]} />
+            <meshStandardMaterial color="white" transparent opacity={0.48} roughness={0.85} />
         </instancedMesh>
     );
 }
