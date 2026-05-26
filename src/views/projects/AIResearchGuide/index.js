@@ -7,7 +7,7 @@ import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
 import Pic1 from "../../../assets/images/home/LeverGuide.svg?react"
-import Pic2 from "../../../assets/images/LeverGuide/img_1.png"
+import Pic2 from "../../../assets/images/LeverGuide/img_1.svg"
 import Pic3 from "../../../assets/images/LeverGuide/img_2.svg"
 import Pic4 from "../../../assets/images/LeverGuide/img_3.svg"
 import Pic5 from "../../../assets/images/LeverGuide/img_4.svg"
@@ -132,7 +132,7 @@ class AIResearchGuide extends React.Component {
                             <p>Keeping AI transparent for critical thinking and honest auditing</p>
                             <img src={Pic5} alt="xx" style={{ width: "100%", display: "block", marginBottom: "1rem" }} />
                             <p>Sub-functions are deeper content layers within a function, not separate sections added alongside it. </p> 
-                            <img src={Pic4} alt="xx" style={{ width: "100%", display: "block",  marginTop: "-2rem"}} />
+                            <img src={Pic4} alt="xx" style={{ width: "100%", display: "block"}} />
                          </div>
 
 
