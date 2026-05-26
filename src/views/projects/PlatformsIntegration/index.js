@@ -20,10 +20,12 @@ import Pic10 from "../../../assets/images/Janus/img_10.svg"
 class PlatformsIntegration extends React.Component {
 
     content = [
-        { title: "Context", id: "section1" },
-        { title: "Product Strategy", id: "section2" },
-        { title: "Challenges", id: "section3" },
-        { title: "Reflection", id: "section4" },
+        { title: "Fragmented tools", id: "section1" },
+        { title: "Platform opportunity", id: "section2" },
+        { title: "Workflow-first strategy", id: "section3" },
+        { title: "AI-assisted workflow layer", id: "section4" },
+        { title: "Design challenges", id: "section5" },
+        { title: "Reflection", id: "section6" },
     ]
 
     turnPink = (theclass) => {
@@ -83,10 +85,7 @@ class PlatformsIntegration extends React.Component {
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <p>
-                                  Designed a platform integration project that unified fragmented consulting tools into a single AI-assisted workspace for running end-to-end Org Transformation assessments.
-                                </p>
-                                <p>
-                                  Janus aimed to reduce manual context switching and preserve workflow continuity across legacy systems, helping consultants stay focused on outcomes instead of tool juggling.
+                                  Janus unified fragmented consulting tools into one AI-assisted workspace for running end-to-end Org Transformation assessments.
                                 </p>
                                 
                             </div>
@@ -108,8 +107,8 @@ class PlatformsIntegration extends React.Component {
                         </div>
 
                         <div className="content-block fade-in" id="section1">
-                            <h2>Context</h2>
-                            <p>Org Transformation engagements relied on a fragmented ecosystem of specialized enterprise tools.</p>
+                            <h2>Fragmented tools</h2>
+                            <p>Org Transformation assessments depended on specialized tools for research, data intake, org visualization, financial modeling, and initiative tracking.</p>
                             <div style={{ overflowX: "auto", marginTop: 24, marginBottom: 48, border: "1px solid rgba(255, 255, 255, 0.4)", borderRadius: 16 }}>
                                 <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 520, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>
                                     <thead>
@@ -146,15 +145,15 @@ class PlatformsIntegration extends React.Component {
                                     </tbody>
                                 </table>
                             </div>
-                            <h3 >Pain points</h3>
-                            <p>Each product solved a narrow operational need independently, but the workflow between them remained highly fragmented. Practitioners constantly rebuilt context between systems, reconciled versions manually, and recreated deliverables from disconnected outputs. </p>
-                            <p>This created operational inefficiencies and communication gaps.</p>
+                            <h3>The problem was between the tools</h3>
+                            <p>The tools worked individually, but the handoffs did not. Consultants had to rebuild context, reconcile versions, and recreate deliverables from disconnected outputs.</p>
+                            <p>This created friction exactly when teams needed shared context to make assessment decisions.</p>
                             <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
-                         
+                        </div>
 
-                            <h3 >Opportunities</h3>
-                            <p>The opportunity was not to redesign a single tool, but to integrate fragmented workflows into a more continuous operational platform.</p>
-                            <p>Janus aimed to become the orchestration layer across the consulting workflow:</p>
+                        <div className="content-block" id="section2">
+                            <h2>Platform opportunity</h2>
+                            <p>The opportunity was not another point solution. Janus needed to become the orchestration layer across the consulting workflow by:</p>
                             <div className="bullet-callout">
                                 <ul>
                                     <li>Connecting existing systems</li>
@@ -164,72 +163,86 @@ class PlatformsIntegration extends React.Component {
                                     <li>Embedding AI assistance directly into operational processes</li>
                                 </ul>
                             </div>
-                          </div>
+                            <p>The goal was simple: keep consultants focused on assessment outcomes instead of reconstructing context across systems.</p>
+                        </div>
 
-                        <div className="content-block" id="section2">
-                            <h2>Product Strategy</h2>
+                        <div className="content-block" id="section3">
+                            <h2>Workflow-first strategy</h2>
                             <h3 style={{ marginTop: 40 }}>Workflow-first platform architecture</h3>
-                            <p>Rather than organizing the platform around individual products, Janus was structured around the actual progression of an Org Transformation assessment.</p>
+                            <p>The core decision was to organize Janus around the assessment journey, not existing product boundaries.</p>
                             <img src={Pic3} alt="Core workflow" style={{ width: "100%", display: "block"}} />
-                            <p>This core workflow is reflected on the navigation of the product.</p>
+                            <p>The workflow became the product navigation, so users could move through the work instead of remembering which tool owned each task.</p>
                             <img src={Pic4} alt="Core workflow" style={{ width: "100%", display: "block"}} />
-                            <h3 style={{ marginTop: 40 }}>AI Chatbot with canon engagement data</h3>
-                            <p>Janice was embedded directly into the workflow layer rather than treated as a standalone chatbot experience.</p>
-                            <p>As a result of its feature importance, the janice chatbot always sits inline with the content. </p>
+                        </div>
+
+                        <div className="content-block" id="section4">
+                            <h2>AI-assisted workflow layer</h2>
+                            <h3 style={{ marginTop: 40 }}>AI support at the moment of work</h3>
+                            <p>Janice was embedded inside the workflow instead of separated into a chatbot destination, so AI support stayed close to the assessment decisions consultants were making.</p>
                             <img src={Pic5} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                          
-                         <p>The AI chatbot supported:</p>
-                            <div className="bullet-callout">
-                                <ul>
-                                    <li>contextual guidance</li>
-                                    <li>cohort suggestions</li>
-                                    <li>workflow assistance</li>
-                                    <li>operational actions</li>
-                                    <li>natural language interactions</li>
-                                </ul>
+                         <h3 style={{ marginTop: 40 }}>Core interaction strategy</h3>
+                         <p>The most important design decision was defining what the AI layer should do. We framed Janice around three interaction modes:</p>
+                            <div className="interaction-strategy-grid">
+                                <div className="interaction-strategy-card">
+                                    <span className="interaction-strategy-index">01</span>
+                                    <h4>Chat with data</h4>
+                                    <p>Users ask questions and get answers grounded in canonical engagement data.</p>
+                                </div>
+                                <div className="interaction-strategy-card">
+                                    <span className="interaction-strategy-index">02</span>
+                                    <h4>Actions that manipulate data</h4>
+                                    <p>Users request workflow actions, such as "create an assessment area for finance, FP&A, and AP."</p>
+                                </div>
+                                <div className="interaction-strategy-card">
+                                    <span className="interaction-strategy-index">03</span>
+                                    <h4>Suggestions</h4>
+                                    <p>Janice surfaces suggested prompts in the right content area at the right moment.</p>
+                                </div>
                             </div>
-                             <p>The chatbot stays focused on plain text interaction. For actions involving new UI elements, like visualizations or creating assessment areas, it links users to the relevant page rather than handling it inline, keeping the experience clean and focused. </p>
+                             <p>For visual or workflow-heavy actions, Janice routed users to the relevant page instead of forcing every task into chat.</p>
                             <img src={Pic6} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                          
                         </div>
 
-                        <div className="content-block" id="section3">
-                            <h2>Challenges</h2>
+                        <div className="content-block" id="section5">
+                            <h2>Design challenges</h2>
                             <h3 style={{ marginTop: 40 }}>Workflow-based vs product-based architecture</h3>
                             <p>
-                                One of the earliest challenges was deciding whether Janus should follow existing product boundaries or the consulting workflow itself.
+                                The first challenge was choosing between product-based architecture and workflow-based architecture. This was both a product decision and a change-management decision.
                             </p>
                             <p>
                                 Hands-on practitioners preferred flexible, self-directed workflows, while leadership prioritized standardized processes and operational efficiency.
                             </p>
                             <img src={Pic7} alt="Core workflow" style={{ width: "100%", display: "block" }} />
                             <p>
-                                Since the primary goal of Janus was improving productivity and scalability, the platform ultimately adopted a workflow-based architecture while remaining flexible enough to support iterative consulting workflows.
+                                Janus adopted a workflow-based architecture, but kept enough flexibility for consultants to move non-linearly through the work.
                             </p>
 
                             <h3 style={{ marginTop: 40 }}>Identifying core workflows across fragmented systems</h3>
-                            <p>Each system contained years of accumulated functionality, but not every feature contributed equally to the practitioner workflow. Simply consolidating screens would have created a bloated and disconnected experience.</p>
-                            <p>The team navigated this challenge through close collaboration across different product teams to align fragmented product features into a cohesive workflow through feature inventories and site maps looking like below.</p>
+                            <p>Each system had years of accumulated functionality, but not every feature mattered to the core assessment workflow.</p>
+                            <p>Feature inventories and site maps helped product teams decide what to carry forward, combine, or leave behind.</p>
                             <img src={Pic8} alt="Core workflow" style={{ width: "100%", display: "block" }} />
                             
                             
                             <h3 style={{ marginTop: 40 }}>Mapping real consultant workflows and mental models</h3>
-                            <p>While the assessment flow appeared linear at a high level, the actual consulting workflow was highly iterative, with practitioners constantly moving back and forth across different stages of the process.</p>
+                            <p>On paper, the assessment process looked linear. In practice, consultants moved back and forth across stages as they refined hypotheses, revisited data, and adjusted recommendations.</p>
                             <img src={Pic9} alt="Core workflow" style={{ width: "100%", display: "block" }} />
                             
-                            <p>As AI prototyping and vibe coding matured, teams rapidly explored different concepts through tools like Claude, creating a wide range of competing workflow directions. After multiple rounds of stakeholder and user interviews, the team ultimately aligned on the Assessment Area–based approach as the core operational model for the platform.</p>
+                            <p>Vibe coding with tools like Claude helped the team turn rough workflow ideas into quick prototypes. Instead of debating abstract diagrams, stakeholders could react to tangible flows and compare directions earlier.</p>
+                            <p>After multiple rounds of stakeholder and user interviews, the team aligned on the Assessment Area-based approach as the core operational model.</p>
                             <img src={Pic10} alt="Core workflow" style={{ width: "100%", display: "block" }} />
                         
                         
                         </div>
 
-                        <div className="content-block" id="section4">
+                        <div className="content-block" id="section6">
                             <h2>Reflection</h2>
                             <h3>Context matters</h3>
-                            <p>One of the biggest learnings from this project was that the best workflow is not always the theoretically simplest one, but the one users can most easily understand and adopt based on their existing mental models and operational habits.</p>
+                            <p>The best workflow is not always the theoretically simplest one. It is the one users can understand, trust, and adopt.</p>
                             <h3>Enterprise workflows can be non-linear</h3>
-                            <p>Although the assessment process appeared linear at a high level, the real consulting workflow was highly iterative, requiring the platform to balance operational structure with enough flexibility to support how consultants actually revisit information, evolve hypotheses, and move between workflows.</p>
-                            <p>This reinforced that successful enterprise design must align system design with how people actually do the work, not just how the product strategy wants it to look.</p>
+                            <p>Enterprise platforms need structure, but they also need room for how people actually work: revisiting information, evolving hypotheses, and moving between stages.</p>
+                            <p>This project reinforced that system design has to respect operating behavior, not just product strategy.</p>
                         </div>
 
                         

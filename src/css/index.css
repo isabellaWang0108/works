@@ -538,6 +538,58 @@ a:hover {
   z-index: 1;
 }
 
+.interaction-strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0 28px;
+}
+
+.interaction-strategy-card {
+  position: relative;
+  min-height: 190px;
+  padding: 18px 18px 20px;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+    rgba(255, 255, 255, 0.018);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+}
+
+.interaction-strategy-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, #ff8cc4, #91bdff);
+}
+
+.interaction-strategy-index {
+  display: inline-block;
+  margin-bottom: 28px;
+  font-family: SuisseIntl-SemiBold;
+  font-size: 12px;
+  line-height: 1;
+  color: #ff8cc4;
+}
+
+.interaction-strategy-card h4 {
+  margin: 0 0 12px;
+  color: white;
+  font-family: SuisseIntl-SemiBold;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.interaction-strategy-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #dcdcdc;
+}
+
 .project-context {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
@@ -2433,6 +2485,14 @@ a:hover {
 
   .inpage_menu_item {
     font-size: 16px;
+  }
+
+  .interaction-strategy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .interaction-strategy-card {
+    min-height: 0;
   }
 
   .content-layout {
