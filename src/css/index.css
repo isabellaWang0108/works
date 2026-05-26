@@ -273,13 +273,13 @@ li {
 }
 
 .left-nav {
-  width: 100pt;
+  width: 190px;
   border: 0;
   outline: 0;
   position: fixed;
   left: 2vw;
   top: 0px;
-  padding: 4px 16px;
+  padding: 4px 12px;
   height: 80vh;
   z-index: 0;
 }
@@ -603,7 +603,7 @@ a:hover {
   margin-right: auto;
   padding: 16px 4em 4em 4em;
   max-width: 56em;
-  width: 70%;
+  width: 64%;
   height: 100%;
   z-index: 0;
 }
