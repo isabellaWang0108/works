@@ -125,7 +125,7 @@ class AIResearchGuide extends React.Component {
                             <h2>Solution</h2>
                              <p>This product rethinks this workflow by turning expert knowledge into a structured, AI-powered system, giving generalist consultants fast, reliable guidance to move from exploration to action.</p>
                             <h3>Core workflow</h3>
-                            <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block", marginLeft: "-5%", marginTop: "-5rem", marginBottom: "-1rem" }} />
+                            <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                             <h3>Key design decisions</h3>
                             <p>Pre-defined content guide early discovery. Open-ended AI exploration powers advanced and edge-case needs.</p>
                             <img src={Pic3} alt="xx" style={{ width: "100%", display: "block", marginBottom: "1rem"}} />
