@@ -12,7 +12,7 @@ class Loading extends React.Component {
         ]
         
         return (
-            <div className="loadingpage fade-out">
+            <div className="loadingpage">
                 <div className="loader circle"></div>
                 <h2 style={{color:'white'}}>{facts[Math.floor(Math.random() * 4)]}
                 </h2>
