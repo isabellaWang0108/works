@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
+import StrategyCard from "../../../components/strategyCard"
 
 import Pic1 from "../../../assets/images/home/Janus.svg?react"
 
@@ -23,7 +24,7 @@ class PlatformsIntegration extends React.Component {
         { title: "Fragmented tools", id: "section1" },
         { title: "Platform opportunity", id: "section2" },
         { title: "Workflow-first strategy", id: "section3" },
-        { title: "AI-assisted workflow layer", id: "section4" },
+        { title: "AI-assisted workflow", id: "section4" },
         { title: "Design challenges", id: "section5" },
         { title: "Reflection", id: "section6" },
     ]
@@ -85,7 +86,7 @@ class PlatformsIntegration extends React.Component {
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
                                 <p>
-                                  Janus unified fragmented consulting tools into one AI-assisted workspace for running end-to-end Org Transformation assessments.
+                             Unify fragmented consulting tools into one AI-assisted workspace, helping consultants run end-to-end Org Transformation assessments faster with less context switching and better context continuity.
                                 </p>
                                 
                             </div>
@@ -108,63 +109,25 @@ class PlatformsIntegration extends React.Component {
 
                         <div className="content-block fade-in" id="section1">
                             <h2>Fragmented tools</h2>
-                            <p>Org Transformation assessments depended on specialized tools for research, data intake, org visualization, financial modeling, and initiative tracking.</p>
-                            <div style={{ overflowX: "auto", marginTop: 24, marginBottom: 48, border: "1px solid rgba(255, 255, 255, 0.4)", borderRadius: 16 }}>
-                                <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 520, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>
-                                    <thead>
-                                        <tr style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.3)" }}>
-                                            <th style={{ textAlign: "left", padding: "12px 16px", fontSize: 14, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Tool</th>
-                                            <th style={{ textAlign: "left", padding: "12px 16px", fontSize: 14, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Purpose</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                         <tr style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.2)" }}>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", fontWeight: 600, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>LeverGuide</td>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Outside-in organizational intelligence </td>
-                                        </tr>
-                                          <tr style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.2)" }}>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", fontWeight: 600, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>OIDD</td>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Outside-in market intelligence </td>
-                                        </tr>
-                                        <tr style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.2)" }}>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", fontWeight: 600, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Vault</td>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>File and client data ingestion</td>
-                                        </tr>
-                                        <tr style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.2)" }}>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", fontWeight: 600, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Radial</td>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Org structure visualization</td>
-                                        </tr>
-                                        <tr style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.2)" }}>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", fontWeight: 600, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>RPM </td>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Lever selection and financial impact simulation</td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", fontWeight: 600, color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Elevation</td>
-                                            <td style={{ padding: "14px 16px", verticalAlign: "top", color: "#ffffff", fontFamily: "SuisseIntl-Regular" }}>Lever, initiative, and workstream tracking</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <h3>The problem was between the tools</h3>
-                            <p>The tools worked individually, but the handoffs did not. Consultants had to rebuild context, reconcile versions, and recreate deliverables from disconnected outputs.</p>
-                            <p>This created friction exactly when teams needed shared context to make assessment decisions.</p>
+                            <p>Org Transformation assessments depended on specialized tools for research, data intake, org visualization, financial modeling, and initiative tracking, including LeverGuide, OIDD, Vault, Radial, RPM, and Elevation. Each tool worked individually, but the handoffs between them stayed manual, forcing consultants to rebuild context, reconcile versions, and recreate deliverables from disconnected outputs right when teams needed shared context to make assessment decisions.</p>
                             <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                         </div>
 
                         <div className="content-block" id="section2">
                             <h2>Platform opportunity</h2>
-                            <p>The opportunity was not another point solution. Janus needed to become the orchestration layer across the consulting workflow by:</p>
-                            <div className="bullet-callout">
-                                <ul>
-                                    <li>Connecting existing systems</li>
-                                    <li>Preserving workflow continuity</li>
-                                    <li>Reducing operational friction</li>
-                                    <li>Centralizing assessment workflows</li>
-                                    <li>Embedding AI assistance directly into operational processes</li>
-                                </ul>
-                            </div>
                             <p>The goal was simple: keep consultants focused on assessment outcomes instead of reconstructing context across systems.</p>
-                        </div>
+                            <div className="strategy-card-grid">
+                                <StrategyCard index="01" title="Connected workspace">
+                                    Bring fragmented tools into one shared workflow layer per engagement.
+                                </StrategyCard>
+                                <StrategyCard index="02" title="Preserve context">
+                                    Carry context across assessment stages and handoffs.
+                                </StrategyCard>
+                                <StrategyCard index="03" title="Embed AI assistance">
+                                    Place guidance directly inside the operational workflow.
+                                </StrategyCard>
+                            </div>
+                           </div>
 
                         <div className="content-block" id="section3">
                             <h2>Workflow-first strategy</h2>
@@ -176,29 +139,23 @@ class PlatformsIntegration extends React.Component {
                         </div>
 
                         <div className="content-block" id="section4">
-                            <h2>AI-assisted workflow layer</h2>
+                            <h2>AI-assisted workflow</h2>
                             <h3 style={{ marginTop: 40 }}>AI support at the moment of work</h3>
                             <p>Janice was embedded inside the workflow instead of separated into a chatbot destination, so AI support stayed close to the assessment decisions consultants were making.</p>
                             <img src={Pic5} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                          
                          <h3 style={{ marginTop: 40 }}>Core interaction strategy</h3>
                          <p>The most important design decision was defining what the AI layer should do. We framed Janice around three interaction modes:</p>
-                            <div className="interaction-strategy-grid">
-                                <div className="interaction-strategy-card">
-                                    <span className="interaction-strategy-index">01</span>
-                                    <h4>Chat with data</h4>
-                                    <p>Users ask questions and get answers grounded in canonical engagement data.</p>
-                                </div>
-                                <div className="interaction-strategy-card">
-                                    <span className="interaction-strategy-index">02</span>
-                                    <h4>Actions that manipulate data</h4>
-                                    <p>Users request workflow actions, such as "create an assessment area for finance, FP&A, and AP."</p>
-                                </div>
-                                <div className="interaction-strategy-card">
-                                    <span className="interaction-strategy-index">03</span>
-                                    <h4>Suggestions</h4>
-                                    <p>Janice surfaces suggested prompts in the right content area at the right moment.</p>
-                                </div>
+                            <div className="strategy-card-grid">
+                                <StrategyCard index="01" title="Chat with data">
+                                    Users ask questions and get answers grounded in canonical engagement data.
+                                </StrategyCard>
+                                <StrategyCard index="02" title="Actions that manipulate data">
+                                    Users request workflow actions, such as "create an assessment area for finance, FP&A, and AP."
+                                </StrategyCard>
+                                <StrategyCard index="03" title="Suggestions">
+                                    Janice surfaces suggested prompts in the right content area at the right moment.
+                                </StrategyCard>
                             </div>
                              <p>For visual or workflow-heavy actions, Janice routed users to the relevant page instead of forcing every task into chat.</p>
                             <img src={Pic6} alt="Core workflow" style={{ width: "100%", display: "block"}} />
@@ -208,16 +165,22 @@ class PlatformsIntegration extends React.Component {
                         <div className="content-block" id="section5">
                             <h2>Design challenges</h2>
                             <h3 style={{ marginTop: 40 }}>Workflow-based vs product-based architecture</h3>
-                            <p>
-                                The first challenge was choosing between product-based architecture and workflow-based architecture. This was both a product decision and a change-management decision.
-                            </p>
-                            <p>
-                                Hands-on practitioners preferred flexible, self-directed workflows, while leadership prioritized standardized processes and operational efficiency.
-                            </p>
+                            <p>User interviews initially pointed us toward a product-based direction that preserved familiar tool boundaries. After turning that idea into a quick clickable Figma prototype, stakeholders pushed back: end users valued the flexibility and expertise of working across separate tools, while leadership cared more about reducing busy work, improving alignment, and creating a standardized process that could scale. We ultimately prioritized the stakeholder goal because Janus was meant to improve productivity across the full assessment journey, so the architecture shifted from product-based to workflow-based.</p>
+                            <div className="architecture-conflict">
+                                <div>
+                                    <span>Initial direction</span>
+                                    <b>Product-based structure</b>
+                                </div>
+                                <div>
+                                    <span>End users</span>
+                                    <b>Tool flexibility</b>
+                                </div>
+                                <div className="architecture-conflict-winner">
+                                    <span>Stakeholder priority</span>
+                                    <b>Workflow-first architecture</b>
+                                </div>
+                            </div>
                             <img src={Pic7} alt="Core workflow" style={{ width: "100%", display: "block" }} />
-                            <p>
-                                Janus adopted a workflow-based architecture, but kept enough flexibility for consultants to move non-linearly through the work.
-                            </p>
 
                             <h3 style={{ marginTop: 40 }}>Identifying core workflows across fragmented systems</h3>
                             <p>Each system had years of accumulated functionality, but not every feature mattered to the core assessment workflow.</p>

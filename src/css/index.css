@@ -538,14 +538,14 @@ a:hover {
   z-index: 1;
 }
 
-.interaction-strategy-grid {
+.strategy-card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin: 20px 0 28px;
 }
 
-.interaction-strategy-card {
+.strategy-card {
   position: relative;
   min-height: 190px;
   padding: 18px 18px 20px;
@@ -558,7 +558,7 @@ a:hover {
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
 }
 
-.interaction-strategy-card::before {
+.strategy-card::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;
@@ -566,7 +566,7 @@ a:hover {
   background: linear-gradient(90deg, #ff8cc4, #91bdff);
 }
 
-.interaction-strategy-index {
+.strategy-card-index {
   display: inline-block;
   margin-bottom: 28px;
   font-family: SuisseIntl-SemiBold;
@@ -575,7 +575,7 @@ a:hover {
   color: #ff8cc4;
 }
 
-.interaction-strategy-card h4 {
+.strategy-card h4 {
   margin: 0 0 12px;
   color: white;
   font-family: SuisseIntl-SemiBold;
@@ -583,11 +583,62 @@ a:hover {
   line-height: 1.25;
 }
 
-.interaction-strategy-card p {
+.strategy-card p {
   margin: 0;
   font-size: 15px;
   line-height: 1.6;
   color: #dcdcdc;
+}
+
+.architecture-conflict {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 24px;
+}
+
+.architecture-conflict div {
+  position: relative;
+  min-height: 104px;
+  padding: 16px;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.024)),
+    rgba(255, 255, 255, 0.018);
+}
+
+.architecture-conflict span {
+  display: block;
+  margin-bottom: 18px;
+  font-family: SuisseIntl-SemiBold;
+  font-size: 12px;
+  line-height: 1;
+  color: #ff8cc4;
+}
+
+.architecture-conflict b {
+  display: block;
+  color: white;
+  font-family: SuisseIntl-SemiBold;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.architecture-conflict-winner {
+  border-color: rgba(255, 140, 196, 0.34) !important;
+  background:
+    linear-gradient(145deg, rgba(255, 140, 196, 0.13), rgba(145, 189, 255, 0.04)),
+    rgba(255, 140, 196, 0.035) !important;
+}
+
+.architecture-conflict-winner::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, #ff8cc4, #91bdff);
 }
 
 .project-context {
@@ -2487,11 +2538,19 @@ a:hover {
     font-size: 16px;
   }
 
-  .interaction-strategy-grid {
+  .strategy-card-grid {
     grid-template-columns: 1fr;
   }
 
-  .interaction-strategy-card {
+  .strategy-card {
+    min-height: 0;
+  }
+
+  .architecture-conflict {
+    grid-template-columns: 1fr;
+  }
+
+  .architecture-conflict div {
     min-height: 0;
   }
 
