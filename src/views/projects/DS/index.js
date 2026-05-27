@@ -96,7 +96,7 @@ class DS extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
 
-                        <h1 id="title" className="fade-in">Building a design system </h1>
+                        <h1 id="title" className="fade-in">Scaling Product Consistency with a Design System</h1>
                         <div className="badgeRow" style={{ marginTop: 8 }}>
                             <span className="projectBadge">Design system</span>
                             <span className="projectBadge">Enterprise UX</span>

@@ -125,7 +125,7 @@ class PlatformsIntegration extends React.Component {
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div>
                     <ContentLayout>
-                        <h1 id="title" className="fade-in">Platforms Integration</h1>
+                        <h1 id="title" className="fade-in">Unifying Consulting Tools into One AI-assisted Workspace</h1>
                         <div className="badgeRow" style={{ marginTop: 8 }}>
                             <span className="projectBadge">Workflow orchestration</span>
                             <span className="projectBadge">AI-assisted</span>

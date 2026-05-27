@@ -83,7 +83,7 @@ class Voice extends React.Component {
 
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
-                        <h1 id="title" className="fade-in">Lower the NFT creation barrier</h1>
+                        <h1 id="title" className="fade-in">Making NFT Creation Easier for Emerging Artists</h1>
                         <div className="badgeRow" style={{ marginTop: 8 }}>
                             <span className="projectBadge">Creator tools</span>
                             <span className="projectBadge">Consumer</span>

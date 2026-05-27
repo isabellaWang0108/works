@@ -72,7 +72,7 @@ class AIResearchGuide extends React.Component {
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div>
                     <ContentLayout>
-                        <h1 id="title" className="fade-in">AI Research Guide</h1>
+                        <h1 id="title" className="fade-in">AI-Powered Knowledge Tool for Faster Consulting Discovery</h1>
                         <div className="badgeRow" style={{ marginTop: 8 }}>
                             <span className="projectBadge">AI-generated content</span>
                             <span className="projectBadge">Knowledge product</span>
