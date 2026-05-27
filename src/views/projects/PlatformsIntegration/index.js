@@ -5,28 +5,77 @@ import Back2Top from "../../../components/back2top"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 import StrategyCard from "../../../components/strategyCard"
+import WorkflowScreen from "../../../components/workflowScreen"
 
 import Pic1 from "../../../assets/images/home/Janus.svg?react"
 
 import Pic2 from "../../../assets/images/Janus/img_2.svg"
-import Pic3 from "../../../assets/images/Janus/img_3.svg"
-import Pic4 from "../../../assets/images/Janus/img_4.svg"
+import Pic4_1 from "../../../assets/images/Janus/img_4_1.svg"
+import Pic4_2 from "../../../assets/images/Janus/img_4_2.svg"
+import Pic4_3 from "../../../assets/images/Janus/img_4_3.svg"
+import Pic4_4 from "../../../assets/images/Janus/img_4_4.svg"
+import Pic4_5 from "../../../assets/images/Janus/img_4_5.svg"
+import Pic4_6 from "../../../assets/images/Janus/img_4_6.svg"
 import Pic5 from "../../../assets/images/Janus/img_5.svg"
 import Pic6 from "../../../assets/images/Janus/img_6.svg"
 import Pic7 from "../../../assets/images/Janus/img_7.svg"
-import Pic8 from "../../../assets/images/Janus/img_8.svg"
 import Pic9 from "../../../assets/images/Janus/img_9.svg"
 import Pic10 from "../../../assets/images/Janus/img_10.svg"
 
 class PlatformsIntegration extends React.Component {
 
     content = [
-        { title: "Fragmented tools", id: "section1" },
-        { title: "Platform opportunity", id: "section2" },
-        { title: "Workflow-first strategy", id: "section3" },
-        { title: "AI-assisted workflow", id: "section4" },
-        { title: "Design challenges", id: "section5" },
+        { title: "Platform opportunity", id: "section1" },
+        { title: "Core workflow screens", id: "section2" },
+        { title: "AI-assisted workflow", id: "section3" },
+        { title: "Strategic tradeoff", id: "section4" },
+        { title: "Rapid AI prototyping", id: "section5" },
         { title: "Reflection", id: "section6" },
+    ]
+
+    workflowScreens = [
+        {
+            image: Pic4_1,
+            alt: "Engagement setup screen",
+            index: "01",
+            title: "Engagement setup",
+            description: "Admins set up the project, then engagement members access the product through a shared link.",
+        },
+        {
+            image: Pic4_2,
+            alt: "Research market context screen",
+            index: "02",
+            title: "Learn the client company snapshot grounded in market context",
+            description: "Consultants start with a market-informed view of the client before moving into deeper organization analysis.",
+        },
+        {
+            image: Pic4_3,
+            alt: "Gather peer comparison info screen",
+            index: "03",
+            title: "Gather peer comparison info",
+            description: "Peer benchmarks give teams a clearer reference point before they inspect internal structure and performance.",
+        },
+        {
+            image: Pic4_4,
+            alt: "Explore organizational patterns and structure screen",
+            index: "04",
+            title: "Explore organizational patterns and structure",
+            description: "Org data becomes easier to inspect, compare, and connect to emerging assessment hypotheses.",
+        },
+        {
+            image: Pic4_5,
+            alt: "Audit assessment areas and financial impacts screen",
+            index: "05",
+            title: "Audit assessment areas and financial impacts",
+            description: "Teams connect findings to assessment areas and begin sizing the operational and financial implications.",
+        },
+        {
+            image: Pic4_6,
+            alt: "Model financial impact and prepare proposals screen",
+            index: "06",
+            title: "Model financial impact, refine assumptions, and prepare proposals",
+            description: "The workflow turns analysis into modeled impact, clearer assumptions, and proposal-ready recommendations.",
+        },
     ]
 
     turnPink = (theclass) => {
@@ -108,13 +157,11 @@ class PlatformsIntegration extends React.Component {
                         </div>
 
                         <div className="content-block fade-in" id="section1">
-                            <h2>Fragmented tools</h2>
+                            <h2>Platform opportunity</h2>
+                            <h3 style={{ marginTop: 40 }}>Fragmented tools</h3>
                             <p>Org Transformation assessments depended on specialized tools for research, data intake, org visualization, financial modeling, and initiative tracking, including LeverGuide, OIDD, Vault, Radial, RPM, and Elevation. Each tool worked individually, but the handoffs between them stayed manual, forcing consultants to rebuild context, reconcile versions, and recreate deliverables from disconnected outputs right when teams needed shared context to make assessment decisions.</p>
                             <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
-                        </div>
-
-                        <div className="content-block" id="section2">
-                            <h2>Platform opportunity</h2>
+                            <h3 style={{ marginTop: 40 }}>Platform opportunity</h3>
                             <p>The goal was simple: keep consultants focused on assessment outcomes instead of reconstructing context across systems.</p>
                             <div className="strategy-card-grid">
                                 <StrategyCard index="01" title="Connected workspace">
@@ -129,16 +176,26 @@ class PlatformsIntegration extends React.Component {
                             </div>
                            </div>
 
-                        <div className="content-block" id="section3">
-                            <h2>Workflow-first strategy</h2>
-                            <h3 style={{ marginTop: 40 }}>Workflow-first platform architecture</h3>
-                            <p>The core decision was to organize Janus around the assessment journey, not existing product boundaries.</p>
-                            <img src={Pic3} alt="Core workflow" style={{ width: "100%", display: "block"}} />
-                            <p>The workflow became the product navigation, so users could move through the work instead of remembering which tool owned each task.</p>
-                            <img src={Pic4} alt="Core workflow" style={{ width: "100%", display: "block"}} />
+                        <div className="content-block" id="section2">
+                            <h2>Core workflow screens</h2>
+                            <div className="workflow-showcase">
+                                <div className="workflow-screen-story">
+                                    {this.workflowScreens.map(screen => (
+                                        <WorkflowScreen
+                                            key={screen.index}
+                                            image={screen.image}
+                                            alt={screen.alt}
+                                            index={screen.index}
+                                            title={screen.title}
+                                        >
+                                            {screen.description}
+                                        </WorkflowScreen>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="content-block" id="section4">
+                        <div className="content-block" id="section3">
                             <h2>AI-assisted workflow</h2>
                             <h3 style={{ marginTop: 40 }}>AI support at the moment of work</h3>
                             <p>Janice was embedded inside the workflow instead of separated into a chatbot destination, so AI support stayed close to the assessment decisions consultants were making.</p>
@@ -162,41 +219,35 @@ class PlatformsIntegration extends React.Component {
                          
                         </div>
 
-                        <div className="content-block" id="section5">
-                            <h2>Design challenges</h2>
-                            <h3 style={{ marginTop: 40 }}>Workflow-based vs product-based architecture</h3>
-                            <p>User interviews initially pointed us toward a product-based direction that preserved familiar tool boundaries. After turning that idea into a quick clickable Figma prototype, stakeholders pushed back: end users valued the flexibility and expertise of working across separate tools, while leadership cared more about reducing busy work, improving alignment, and creating a standardized process that could scale. We ultimately prioritized the stakeholder goal because Janus was meant to improve productivity across the full assessment journey, so the architecture shifted from product-based to workflow-based.</p>
+                        <div className="content-block" id="section4">
+                            <h2>Strategic tradeoff</h2>
+                            <h3 style={{ marginTop: 40 }}>Tool flexibility vs stakeholder standardization</h3>
+                            <p>The initial direction was tool-based integration: connect existing products, let consultants choose their own path, and leave outputs flexible. Stakeholders pushed for standardization because that model still lacked guidance between tools and made outcomes inconsistent. Their voice won overall because Janus was meant to scale a repeatable assessment workflow across teams, not simply make existing tools easier to access. Built-in customization became the compromise for users who still needed flexibility in how they worked.</p>
                             <div className="architecture-conflict">
                                 <div>
                                     <span>Initial direction</span>
-                                    <b>Product-based structure</b>
+                                    <b>Tool-based integration</b>
                                 </div>
                                 <div>
-                                    <span>End users</span>
-                                    <b>Tool flexibility</b>
+                                    <span>User need</span>
+                                    <b>Flexible paths and outputs</b>
                                 </div>
                                 <div className="architecture-conflict-winner">
-                                    <span>Stakeholder priority</span>
-                                    <b>Workflow-first architecture</b>
+                                    <span>Final direction</span>
+                                    <b>Standardized workflow with customization</b>
                                 </div>
                             </div>
                             <img src={Pic7} alt="Core workflow" style={{ width: "100%", display: "block" }} />
+                        </div>
 
-                            <h3 style={{ marginTop: 40 }}>Identifying core workflows across fragmented systems</h3>
-                            <p>Each system had years of accumulated functionality, but not every feature mattered to the core assessment workflow.</p>
-                            <p>Feature inventories and site maps helped product teams decide what to carry forward, combine, or leave behind.</p>
-                            <img src={Pic8} alt="Core workflow" style={{ width: "100%", display: "block" }} />
-                            
-                            
-                            <h3 style={{ marginTop: 40 }}>Mapping real consultant workflows and mental models</h3>
-                            <p>On paper, the assessment process looked linear. In practice, consultants moved back and forth across stages as they refined hypotheses, revisited data, and adjusted recommendations.</p>
+                        <div className="content-block" id="section5">
+                            <h2>Rapid AI prototyping</h2>
+                            <h3 style={{ marginTop: 40 }}>The problem: designing for non-linear work</h3>
+                            <p>The team needed to design a workflow that felt structured enough to standardize assessments, but flexible enough for how consultants actually worked. On paper, the process looked linear. In practice, consultants moved back and forth as they refined hypotheses, revisited data, and adjusted recommendations.</p>
                             <img src={Pic9} alt="Core workflow" style={{ width: "100%", display: "block" }} />
-                            
-                            <p>Vibe coding with tools like Claude helped the team turn rough workflow ideas into quick prototypes. Instead of debating abstract diagrams, stakeholders could react to tangible flows and compare directions earlier.</p>
-                            <p>After multiple rounds of stakeholder and user interviews, the team aligned on the Assessment Area-based approach as the core operational model.</p>
+                            <h3 style={{ marginTop: 40 }}>How AI prototyping helped</h3>
+                            <p>Vibe coding with tools like Claude helped turn rough workflow ideas into clickable prototypes quickly. Instead of debating abstract diagrams, the team could brainstorm with tangible flows, compare directions, and validate assumptions with stakeholders earlier. This accelerated alignment around Assessment Areas as the core operational model.</p>
                             <img src={Pic10} alt="Core workflow" style={{ width: "100%", display: "block" }} />
-                        
-                        
                         </div>
 
                         <div className="content-block" id="section6">
