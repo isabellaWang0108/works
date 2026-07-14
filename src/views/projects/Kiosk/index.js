@@ -5,7 +5,6 @@ import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/Kiosk/img_01.png"
-import Pic2 from "../../../assets/images/Kiosk/img_02.svg"
 import Pic3 from "../../../assets/images/Kiosk/img_03.png"
 import Pic4 from "../../../assets/images/Kiosk/img_04.png"
 import Pic5 from "../../../assets/images/Kiosk/img_05.png"
@@ -22,21 +21,18 @@ import Pic15 from "../../../assets/images/Kiosk/img_15.png"
 import Pic16 from "../../../assets/images/Kiosk/img_16.png"
 import Pic17 from "../../../assets/images/Kiosk/img_17.png"
 import Pic18 from "../../../assets/images/Kiosk/img_18.png"
-import Pic19 from "../../../assets/images/Kiosk/img_19.png"
 import InpageContactMe from "../../../components/inpage_contactme"
 
 
 class Kiosk extends React.Component {
 
     content = [
-        { title: "My Design Flow", id: "section1" },
-        { title: "Picking the Tech", id: "section2" },
-        { title: "Cross-functional Collaborate", id: "section3" },
-        { title: "Findings", id: "section4" },
-        { title: "Design Iterations", id: "section5" },
-        { title: "A/B Testing", id: "section6" },
-        { title: "Delivered Design", id: "section7" },
-        { title: "Reflection", id: "section8" },
+        { title: "Findings", id: "section1" },
+        { title: "Design Iterations", id: "section2" },
+        { title: "A/B Testing", id: "section3" },
+        { title: "Delivered Design", id: "section4" },
+        { title: "Cross-functional Collaborate", id: "section5" },
+        { title: "Reflection", id: "section6" },
     ]
 
 
@@ -135,25 +131,6 @@ class Kiosk extends React.Component {
                         </div>
 
                         <div className="content-block fade-in" id="section1">
-                            <h2>My Design Flow</h2>
-                            <img alt="prototype" className="images" src={Pic2} />
-                        </div>
-
-                        <div className="content-block" id="section2">
-                            <h2>Picking the Tech</h2>
-                            <p>I participated in strategic discussions to ensure user experience was a consideration in selecting technologies for the self-check-in process. The team explored options like facial recognition and ID scanning, but ultimately chose QR code check-in via an iPad stand—balancing usability with business constraints.</p>
-                            <img alt="prototype" className="images png" src={Pic19} />
-                        </div>
-
-                        <div className="content-block" id="section3">
-                            <h2 >Cross-functional Collaboration</h2>
-                            <p>I used user flows chart as an efficient tool to align UX and product vision across engineers, PMs, and cross-functional designers. By stripping away visuals, user flows helped focus the team on core ideas, and because they’re accessible, everyone could contribute to shaping the experience.
-                            </p>
-
-                            <img alt="prototype" className="images png" src={Pic3} />
-                        </div>
-
-                        <div className="content-block" id="section4">
                             <h2>Findings</h2>
                             <p>I did secondary researches to find out design convention, technical limitation, and accessibility guidance before jumping straight into prototyping.</p>
                             <h3>Finding 1: QR Code Scanning is Familiar — No Education Needed in the Primary Flow. </h3>
@@ -169,7 +146,7 @@ class Kiosk extends React.Component {
 
 
                 
-                        <div className="content-block" id="section5">
+                        <div className="content-block" id="section2">
                             <h2>Design Iterations</h2>
                             <p>I have selected a few key iterations to showcase my design decision-making process and how I approach problem-solving.</p>
                           
@@ -195,7 +172,7 @@ class Kiosk extends React.Component {
                             <img alt="prototype" width="100%" src={Pic11} />
                         </div>
 
-                        <div className="content-block" id="section6">
+                        <div className="content-block" id="section3">
                             <h2>A/B Testing</h2>
                             <img alt="prototype" width="100%" src={Pic12} />             
                             <h3>Test 1: Usability</h3>
@@ -214,7 +191,7 @@ class Kiosk extends React.Component {
                             <img alt="prototype" width="100%" src={Pic18} />
                         </div>
 
-                        <div className="content-block" id="section7">
+                        <div className="content-block" id="section4">
                             <h2>Delivered Design</h2>
                             <p>Below are the final screens for the initial successful office visitors QR code scanning flow, which ideally occurs every time.</p>
                             <img alt="prototype" width="100%" src={Pic15} />
@@ -231,7 +208,15 @@ class Kiosk extends React.Component {
 
                         </div>
 
-                        <div className="content-block" id="section8">
+                        <div className="content-block" id="section5">
+                            <h2 >Cross-functional Collaboration</h2>
+                            <p>I used user flows chart as an efficient tool to align UX and product vision across engineers, PMs, and cross-functional designers. By stripping away visuals, user flows helped focus the team on core ideas, and because they’re accessible, everyone could contribute to shaping the experience.
+                            </p>
+
+                            <img alt="prototype" className="images png" src={Pic3} />
+                        </div>
+
+                        <div className="content-block" id="section6">
                             <h2>Reflection</h2>
                         </div>
                         <p>This project improves check-in efficiency, but it comes with security trade-offs. It assumes guests have no malicious intent, yet the iPad alone cannot prevent someone from bypassing the process and entering the office uninvited. A more future-forward solution would integrate the iPad with the door system—granting access only after a successful passcode scan, directly enhancing security.</p>

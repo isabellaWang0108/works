@@ -8,7 +8,7 @@ import NavigationBar from "../../components/navigation"
 import Animation3D from '../../components/animation3D'
 
 import LeverGuide from "../../assets/images/home/LeverGuide.svg?react"
-import Janus from "../../assets/images/home/Janus.svg?react"
+import Kiosk from "../../assets/images/home/kiosk.png"
 import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
 import Button from "../../components/myButton"
@@ -142,26 +142,26 @@ class Homepage extends React.Component {
                             </div>
                         </div>
 
-                        {/* Platforms Integration */}
-                        <div id="PlatformsIntegration" className="sessionContainer bg-project-card">
+                        {/* Kiosk */}
+                        <div id="Kiosk" className="sessionContainer bg-project-card">
                             <div className="contentblock">
-                                <Janus className="img project-card-img" />
+                                <img loading="lazy" src={Kiosk} alt="kiosk" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Unifying Consulting Tools into One AI-assisted Workspace</h1>
+                                <h1>Automating Office Check-in with a Self-service Kiosk</h1>
                                 <div className="badgeRow">
-                                    <span className="projectBadge">Workflow orchestration</span>
-                                    <span className="projectBadge">AI-assisted</span>
-                                    <span className="projectBadge">Enterprise SaaS</span>
+                                    <span className="projectBadge">Hardware integration</span>
+                                    <span className="projectBadge">IoT</span>
+                                    <span className="projectBadge">B2B</span>
                                 </div>
-                                <p>Mapped messy enterprise workflows into a continuous assessment experience that preserved context across systems and reduced tool-switching friction.
+                                <p>Designed an iPad check-in flow that reduced front desk workload, improved guest arrival, and balanced usability with real-world office security constraints.
                                 </p>
                             </div>
                             <div className="contentblock">
                                 <UnderlineBtn
                                     innerLink={true}
                                     label="Read the case"
-                                    link="platforms-integration"
+                                    link="kiosk"
                                     className="readCases"
                                 />
                             </div>
