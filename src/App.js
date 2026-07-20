@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Loading from "./components/loading"
-import PasswordGate from "./components/PasswordGate"
 
 
 const Homepage = lazy(() => import("./views/homepage"));
@@ -16,22 +15,20 @@ const Kiosk = lazy(() => import("./views/projects/Kiosk"));
 
 const App = () => {
   return (
-    <PasswordGate>
-      <HashRouter>
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/product-studio" element={<ProductStudio />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/design-system" element={<DS />} />
-            <Route path="/voice" element={<Voice />} />
-            <Route path="/ai-research-guide" element={<AIResearchGuide />} />
-            <Route path="/platforms-integration" element={<PlatformsIntegration />} />
-            <Route path="/kiosk" element={<Kiosk />} />
-          </Routes>
-        </Suspense>
-      </HashRouter>
-    </PasswordGate>
+    <HashRouter>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/product-studio" element={<ProductStudio />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/design-system" element={<DS />} />
+          <Route path="/voice" element={<Voice />} />
+          <Route path="/ai-research-guide" element={<AIResearchGuide />} />
+          <Route path="/platforms-integration" element={<PlatformsIntegration />} />
+          <Route path="/kiosk" element={<Kiosk />} />
+        </Routes>
+      </Suspense>
+    </HashRouter>
   );
 };
 

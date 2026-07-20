@@ -97,7 +97,7 @@ class Homepage extends React.Component {
                                 <div className="heroBadges">
                                     <span>AI product design</span>
                                     <span>Systems thinking</span>
-                                    <span>Autonomous Designer</span>
+                                    <span>Fullstack designer</span>
                                 </div>
                             </div>
 
