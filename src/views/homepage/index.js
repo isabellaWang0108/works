@@ -8,18 +8,19 @@ import NavigationBar from "../../components/navigation"
 import Animation3D from '../../components/animation3D'
 
 import LeverGuide from "../../assets/images/home/LeverGuide.svg?react"
-import Kiosk from "../../assets/images/home/kiosk.png"
+import NYTangoProduct from "../../assets/images/home/NYTango_product.svg"
+import NYTangoBackground from "../../assets/images/home/NY_Tango_Background.png"
 import DesignSystem from "../../assets/images/home/ds.png"
 import Voice from "../../assets/images/home/voice.png"
-import Button from "../../components/myButton"
-import UnderlineBtn from "../../components/underLinedBtn"
 import Github from "../../assets/images/contact/github.svg"
 import Linkedin from "../../assets/images/contact/linkedin.svg"
 
 
+const isCompactViewport = window.innerWidth < 990;
+
 const windowHeight = {
-    height: window.innerWidth < 990 ? window.innerHeight : window.innerHeight * 0.8,
-    minHeight: 500,
+    height: isCompactViewport ? 'auto' : window.innerHeight * 0.8,
+    minHeight: isCompactViewport ? 'auto' : 500,
     position: 'relative',
 }
 
@@ -39,6 +40,22 @@ class Homepage extends React.Component {
         background: 0,
         timeLineHeight: $(document).height(),
         canvasReady: false,
+    }
+
+    openProject = (link, isExternal = false) => {
+        if (isExternal) {
+            window.open(link, "_blank", "noopener,noreferrer");
+            return;
+        }
+
+        window.location.hash = `#/${link}`;
+    }
+
+    handleCardKeyDown = (event, link, isExternal = false) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            this.openProject(link, isExternal);
+        }
     }
 
 
@@ -72,7 +89,7 @@ class Homepage extends React.Component {
 
 
                     {/* landing page */}
-                    <div style={windowHeight} className="sessionContainer" >
+                    <div style={windowHeight} className="sessionContainer landing-session" >
                         <div className="landing-tech-layer" aria-hidden="true">
                             <span>0101</span>
                             <span>AI_FLOW</span>
@@ -117,113 +134,111 @@ class Homepage extends React.Component {
 
 
                     <div className="projectRow">
-                        {/* AI Research Guide */}
-                        <div id="AIResearchGuide" className="sessionContainer bg-project-card">
+                        {/* NY Tango */}
+                        <div
+                            id="NYTango"
+                            className="sessionContainer bg-project-card"
+                            role="link"
+                            tabIndex="0"
+                            onClick={() => this.openProject("https://nytango.vercel.app/", true)}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "https://nytango.vercel.app/", true)}
+                        >
                             <div className="contentblock">
-                                 <LeverGuide className="img project-card-img" />
+                                <img loading="lazy" src={NYTangoBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
+                                <img loading="lazy" src={NYTangoProduct} alt="NY Tango project calendar interface" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>AI-Powered Knowledge Tool for Faster Consulting Discovery</h1>
                                 <div className="badgeRow">
-                                    <span className="projectBadge">Generative AI</span>
-                                    <span className="projectBadge">Knowledge product</span>
-                                    <span className="projectBadge">B2B</span>
+                                    <span className="projectBadge">Consumer-facing</span>
+                                    <span className="projectBadge">Visual</span>
+                                    <span className="projectBadge">Made with AI tools</span>
                                 </div>
-                                <p>Turned fragmented domain expertise into guided workflows, source-backed answers, and scannable recommendations for generalist consultants.
-                                </p>
+                                <h1>
+                                    A live NYC tango calendar that helps dancers discover events faster and feel closer to the community.
+                                </h1>
                             </div>
-                            <div className="contentblock">
-                                <UnderlineBtn
-                                    innerLink={true}
-                                    label="Read the case"
-                                    link="ai-research-guide"
-                                    className="readCases"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Kiosk */}
-                        <div id="Kiosk" className="sessionContainer bg-project-card">
-                            <div className="contentblock">
-                                <img loading="lazy" src={Kiosk} alt="kiosk" className="img project-card-img" />
-                            </div>
-                            <div className="contentblock">
-                                <h1>Automating Office Check-in with a Self-service Kiosk</h1>
-                                <div className="badgeRow">
-                                    <span className="projectBadge">Hardware integration</span>
-                                    <span className="projectBadge">IoT</span>
-                                    <span className="projectBadge">B2B</span>
-                                </div>
-                                <p>Designed an iPad check-in flow that reduced front desk workload, improved guest arrival, and balanced usability with real-world office security constraints.
-                                </p>
-                            </div>
-                            <div className="contentblock">
-                                <UnderlineBtn
-                                    innerLink={true}
-                                    label="Read the case"
-                                    link="kiosk"
-                                    className="readCases"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div className="projectRow">
-                        {/* Design system */}
-                        <div id="Design-system" className="sessionContainer bg-project-card">
-                            <div className="contentblock">
-                                <img loading="lazy" src={DesignSystem} alt="design system" className="img project-card-img" />
-                            </div>
-                            <div className="contentblock">
-                                <h1>Scaling Product Consistency with a Design System</h1>
-                                <div className="badgeRow">
-                                    <span className="projectBadge">Design system</span>
-                                    <span className="projectBadge">DesignOps</span>
-                                    <span className="projectBadge">Platform</span>
-                                </div>
-                                <p>Built shared foundations, component guidance, and adoption practices for 50+ designers and engineers working across a complex product suite.
-                                </p>
-                            </div>
-                            <div className="contentblock">
-                                <UnderlineBtn
-                                    innerLink={true}
-                                    label="Read the case"
-                                    link="design-system"
-                                    className="readCases"
-                                />
-                                <UnderlineBtn
-                                    innerLink={false}
-                                    label="See the live site"
-                                    link="https://terra.vts.com/"
-                                    className="readCases"
-                                />
-                            </div>
+                            <div className="contentblock"></div>
                         </div>
 
                         {/* Voice */}
-                        <div id="Voice" className="sessionContainer bg-project-card">
+                        <div
+                            id="Voice"
+                            className="sessionContainer bg-project-card"
+                            role="link"
+                            tabIndex="0"
+                            onClick={() => this.openProject("voice")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "voice")}
+                        >
                             <div className="contentblock">
+                                <img loading="lazy" src={Voice} alt="" className="img project-card-backdrop" aria-hidden="true" />
                                 <img loading="lazy" src={Voice} alt="voice" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <h1>Making NFT Creation Easier for Emerging Artists</h1>
                                 <div className="badgeRow">
                                     <span className="projectBadge">Creator tools</span>
                                     <span className="projectBadge">NFT marketplace</span>
                                     <span className="projectBadge">Web3</span>
                                 </div>
-                                <p>Translated blockchain-heavy workflows into approachable creation, publishing, and viewing patterns for artists with different levels of technical fluency.
-                                </p>
+                                <h1>
+                                    A creator tool that helps artists turn artwork into NFTs and makes complex technology feel approachable.
+                                </h1>
+                            </div>
+                            <div className="contentblock"></div>
+                        </div>
+                    </div>
+
+
+                    <div className="projectRow">
+                        {/* AI Research Guide */}
+                        <div
+                            id="AIResearchGuide"
+                            className="sessionContainer bg-project-card"
+                            role="link"
+                            tabIndex="0"
+                            onClick={() => this.openProject("ai-research-guide")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "ai-research-guide")}
+                        >
+                            <div className="contentblock">
+                                <LeverGuide className="img project-card-backdrop" aria-hidden="true" />
+                                <LeverGuide className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <UnderlineBtn
-                                    innerLink={true}
-                                    label="Read the case"
-                                    link="voice"
-                                    className="readCases"
-                                />
+                                <div className="badgeRow">
+                                    <span className="projectBadge">Generative AI</span>
+                                    <span className="projectBadge">Knowledge product</span>
+                                    <span className="projectBadge">B2B</span>
+                                </div>
+                                <h1>
+                                    An AI knowledge tool for consulting onboarding that helps teams move from learning to execution faster.
+                                </h1>
                             </div>
+                            <div className="contentblock"></div>
+                        </div>
+
+                        {/* Design system */}
+                        <div
+                            id="Design-system"
+                            className="sessionContainer bg-project-card"
+                            role="link"
+                            tabIndex="0"
+                            onClick={() => this.openProject("design-system")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "design-system")}
+                        >
+                            <div className="contentblock">
+                                <img loading="lazy" src={DesignSystem} alt="" className="img project-card-backdrop" aria-hidden="true" />
+                                <img loading="lazy" src={DesignSystem} alt="design system" className="img project-card-img" />
+                            </div>
+                            <div className="contentblock">
+                                <div className="badgeRow">
+                                    <span className="projectBadge">Design system</span>
+                                    <span className="projectBadge">DesignOps</span>
+                                    <span className="projectBadge">Platform</span>
+                                </div>
+                                <h1>
+                                    A design system for a multi-product platform that helps teams ship more consistent experiences at scale.
+                                </h1>
+                            </div>
+                            <div className="contentblock"></div>
                         </div>
                     </div>
 
