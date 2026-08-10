@@ -7,11 +7,14 @@ import { Canvas } from "@react-three/fiber";
 import NavigationBar from "../../components/navigation"
 import Animation3D from '../../components/animation3D'
 
-import LeverGuide from "../../assets/images/home/LeverGuide.svg?react"
-import NYTangoProduct from "../../assets/images/home/NYTango_product.svg"
-import NYTangoBackground from "../../assets/images/home/NY_Tango_Background.png"
-import DesignSystem from "../../assets/images/home/ds.png"
-import Voice from "../../assets/images/home/voice.png"
+import NYTangoProduct from "../../assets/images/home/Project card/NYTango_product.svg"
+import NYTangoBackground from "../../assets/images/home/Project card/NY_Tango_Background.png"
+import VoiceProduct from "../../assets/images/home/Project card/Voice_product.svg"
+import VoiceBackground from "../../assets/images/home/Project card/Voice_background.png"
+import AIPlatformProduct from "../../assets/images/home/Project card/AIPlatform_product.svg"
+import AIPlatformBackground from "../../assets/images/home/Project card/AIPlatform_background.png"
+import DesignSystemProduct from "../../assets/images/home/Project card/DS_product.svg"
+import DesignSystemBackground from "../../assets/images/home/Project card/DS_background.png"
 import Github from "../../assets/images/contact/github.svg"
 import Linkedin from "../../assets/images/contact/linkedin.svg"
 
@@ -107,8 +110,7 @@ class Homepage extends React.Component {
                          Systems Driven.
                                 
                                 <h3 style={{letterSpacing:.25, lineHeight:1.8, fontSize: window.innerWidth < 990 ? 22 : 28}}> 
-                               I design AI features, work with AI tools, and think in systems — turning complex user flows into coherent, scalable experiences.
-
+                          I design AI features, work with AI tools, and think in systems to turn ambiguity into clear product moments.
                                 </h3>
                                 <div> </div>
                                 <div className="heroBadges">
@@ -149,46 +151,17 @@ class Homepage extends React.Component {
                             </div>
                             <div className="contentblock">
                                 <div className="badgeRow">
-                                    <span className="projectBadge">Consumer-facing</span>
-                                    <span className="projectBadge">Visual</span>
-                                    <span className="projectBadge">Made with AI tools</span>
+                                    <span className="projectBadge">Consumer app</span>
+                                    <span className="projectBadge">0 to 1 product</span>
+                                    <span className="projectBadge">AI-assisted design</span>
                                 </div>
                                 <h1>
-                                    A live NYC tango calendar that helps dancers discover events faster and feel closer to the community.
+                                    A tango calendar that helps dancers discover events and connect with the community.
                                 </h1>
                             </div>
                             <div className="contentblock"></div>
                         </div>
 
-                        {/* Voice */}
-                        <div
-                            id="Voice"
-                            className="sessionContainer bg-project-card"
-                            role="link"
-                            tabIndex="0"
-                            onClick={() => this.openProject("voice")}
-                            onKeyDown={(event) => this.handleCardKeyDown(event, "voice")}
-                        >
-                            <div className="contentblock">
-                                <img loading="lazy" src={Voice} alt="" className="img project-card-backdrop" aria-hidden="true" />
-                                <img loading="lazy" src={Voice} alt="voice" className="img project-card-img" />
-                            </div>
-                            <div className="contentblock">
-                                <div className="badgeRow">
-                                    <span className="projectBadge">Creator tools</span>
-                                    <span className="projectBadge">NFT marketplace</span>
-                                    <span className="projectBadge">Web3</span>
-                                </div>
-                                <h1>
-                                    A creator tool that helps artists turn artwork into NFTs and makes complex technology feel approachable.
-                                </h1>
-                            </div>
-                            <div className="contentblock"></div>
-                        </div>
-                    </div>
-
-
-                    <div className="projectRow">
                         {/* AI Research Guide */}
                         <div
                             id="AIResearchGuide"
@@ -199,21 +172,53 @@ class Homepage extends React.Component {
                             onKeyDown={(event) => this.handleCardKeyDown(event, "ai-research-guide")}
                         >
                             <div className="contentblock">
-                                <LeverGuide className="img project-card-backdrop" aria-hidden="true" />
-                                <LeverGuide className="img project-card-img" />
+                                <img loading="lazy" src={AIPlatformBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
+                                <img loading="lazy" src={AIPlatformProduct} alt="AI knowledge platform interface" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
                                 <div className="badgeRow">
-                                    <span className="projectBadge">Generative AI</span>
-                                    <span className="projectBadge">Knowledge product</span>
-                                    <span className="projectBadge">B2B</span>
+                                    <span className="projectBadge">AI product</span>
+                                    <span className="projectBadge">B2B platform</span>
+                                    <span className="projectBadge">Research workflow</span>
                                 </div>
                                 <h1>
-                                    An AI knowledge tool for consulting onboarding that helps teams move from learning to execution faster.
+                                    An AI knowledge tool for consulting teams move from onboarding to execution x3 faster.
                                 </h1>
                             </div>
                             <div className="contentblock"></div>
                         </div>
+
+                    </div>
+
+
+                    <div className="projectRow">
+                        
+                        {/* Voice */}
+                        <div
+                            id="Voice"
+                            className="sessionContainer bg-project-card"
+                            role="link"
+                            tabIndex="0"
+                            onClick={() => this.openProject("voice")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "voice")}
+                        >
+                            <div className="contentblock">
+                                <img loading="lazy" src={VoiceBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
+                                <img loading="lazy" src={VoiceProduct} alt="NFT creator tool interface" className="img project-card-img" />
+                            </div>
+                            <div className="contentblock">
+                                <div className="badgeRow">
+                                    <span className="projectBadge">Consumer-facing</span>
+                                    <span className="projectBadge">Technical workflow</span>
+                                    <span className="projectBadge">Digital marketplace</span>
+                                </div>
+                                <h1>
+                                    A marketplace that artists can sell their artwork as NFTs effortlessly.
+                                </h1>
+                            </div>
+                            <div className="contentblock"></div>
+                        </div>
+                        
 
                         {/* Design system */}
                         <div
@@ -225,17 +230,17 @@ class Homepage extends React.Component {
                             onKeyDown={(event) => this.handleCardKeyDown(event, "design-system")}
                         >
                             <div className="contentblock">
-                                <img loading="lazy" src={DesignSystem} alt="" className="img project-card-backdrop" aria-hidden="true" />
-                                <img loading="lazy" src={DesignSystem} alt="design system" className="img project-card-img" />
+                                <img loading="lazy" src={DesignSystemBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
+                                <img loading="lazy" src={DesignSystemProduct} alt="design system interface" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
                                 <div className="badgeRow">
-                                    <span className="projectBadge">Design system</span>
+                                    <span className="projectBadge">Design systems</span>
+                                    <span className="projectBadge">Platform UX</span>
                                     <span className="projectBadge">DesignOps</span>
-                                    <span className="projectBadge">Platform</span>
                                 </div>
                                 <h1>
-                                    A design system for a multi-product platform that helps teams ship more consistent experiences at scale.
+                                    A multi-product design system helps teams ship consistent UI/UX at scale.
                                 </h1>
                             </div>
                             <div className="contentblock"></div>
