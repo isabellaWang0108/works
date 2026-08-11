@@ -4,7 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
-import Pic1 from "../../../assets/images/DesignSystem/ds_pic1.png"
+import DesignSystemProduct from "../../../assets/images/home/Project card/DS_product.svg"
 import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.png"
 import Pic4 from "../../../assets/images/DesignSystem/ds_pic4.png"
 import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.png"
@@ -98,9 +98,9 @@ class DS extends React.Component {
 
                         <h1 id="title" className="fade-in">Scaling Product Consistency with a Design System</h1>
                         <div className="badgeRow" style={{ marginTop: 8 }}>
-                            <span className="projectBadge">Design system</span>
-                            <span className="projectBadge">Enterprise UX</span>
-                            <span className="projectBadge">Platform</span>
+                            <span className="projectBadge">Design systems</span>
+                            <span className="projectBadge">Platform UX</span>
+                            <span className="projectBadge">DesignOps</span>
                         </div>
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">
@@ -110,7 +110,7 @@ class DS extends React.Component {
                                     <a href="https://terra.vts.com/">Check out the deployed system site here.</a></p>
                             </div>
                             <div className="inpage_hero_box">
-                                <img src={Pic1} className="inpage_hero_img" alt="img" />
+                                <img src={DesignSystemProduct} className="inpage_hero_img" alt="Design system product interface" />
                             </div>
                         </div>
 

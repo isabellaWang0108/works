@@ -4,7 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
-import Pic1 from "../../../assets/images/Voice/pic_1.png"
+import VoiceProduct from "../../../assets/images/home/Project card/Voice_product.svg"
 import Pic2 from "../../../assets/images/Voice/pic_2.svg"
 import Pic3 from "../../../assets/images/Voice/pic_3.png"
 import Pic4 from "../../../assets/images/Voice/pic_4.png"
@@ -85,9 +85,9 @@ class Voice extends React.Component {
                     <ContentLayout>
                         <h1 id="title" className="fade-in">Making NFT Creation Easier for Emerging Artists</h1>
                         <div className="badgeRow" style={{ marginTop: 8 }}>
-                            <span className="projectBadge">Creator tools</span>
-                            <span className="projectBadge">Consumer</span>
-                            <span className="projectBadge">Blockchain (EOSIO)</span>
+                            <span className="projectBadge">Consumer-facing</span>
+                            <span className="projectBadge">Technical workflow</span>
+                            <span className="projectBadge">Digital marketplace</span>
                         </div>
 
                         <div className="inpage_hero_container fade-in">
@@ -99,7 +99,7 @@ class Voice extends React.Component {
 
                             </div>
                             <div className="inpage_hero_box">
-                                <img src={Pic1} className="inpage_hero_img" alt="img" />
+                                <img src={VoiceProduct} className="inpage_hero_img" alt="Voice NFT creator tool interface" />
                             </div>
                         </div>
 

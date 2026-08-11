@@ -6,7 +6,7 @@ import ProjectContext from "../../../components/projectContext"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
-import Pic1 from "../../../assets/images/home/LeverGuide.svg?react"
+import AIPlatformProduct from "../../../assets/images/home/Project card/AIPlatform_product.svg"
 import Pic2 from "../../../assets/images/LeverGuide/img_1.svg"
 import Pic3 from "../../../assets/images/LeverGuide/img_2.svg"
 import Pic4 from "../../../assets/images/LeverGuide/img_3.svg"
@@ -18,7 +18,7 @@ import Pic7 from "../../../assets/images/LeverGuide/img_6.svg"
 class AIResearchGuide extends React.Component {
 
     content = [
-        { title: "The starting point", id: "section1" },
+        { title: "Pain points", id: "section1" },
         { title: "Designing the guide", id: "section2" },
         { title: "UX in AI content", id: "section3" },
         { title: "Impact", id: "section4" },
@@ -74,9 +74,9 @@ class AIResearchGuide extends React.Component {
                     <ContentLayout>
                         <h1 id="title" className="fade-in">AI-Powered Knowledge Tool for Faster Consulting Discovery</h1>
                         <div className="badgeRow" style={{ marginTop: 8 }}>
-                            <span className="projectBadge">AI-generated content</span>
-                            <span className="projectBadge">Knowledge product</span>
-                            <span className="projectBadge">B2B</span>
+                            <span className="projectBadge">AI product</span>
+                            <span className="projectBadge">B2B platform</span>
+                            <span className="projectBadge">Research workflow</span>
                         </div>
 
                         <div className="inpage_hero_container fade-in">
@@ -92,7 +92,7 @@ class AIResearchGuide extends React.Component {
                             </div>
 
                             <div className="inpage_hero_box">
-                                <Pic1 className="inpage_hero_img" />
+                                <img src={AIPlatformProduct} className="inpage_hero_img" alt="AI knowledge platform interface" />
                             </div>
                         </div>
 
@@ -109,23 +109,31 @@ class AIResearchGuide extends React.Component {
                         </div>
 
                         <div className="content-block fade-in" id="section1">
-                            <h2>The starting point</h2>
-                            <p>A consultant might join a new engagement on Monday and be expected to discuss an unfamiliar function, industry, or operating model by the end of the week. The knowledge existed inside the firm, but it was spread across old decks, playbooks, and people’s past project experience.</p>
-                            <p>For senior specialists, this process was slow but familiar. For generalists or newer practitioners, it was much harder. They had to figure out what to read, whom to reach out to, and how to turn scattered information into a usable point of view.</p>
-                            <div className="bullet-callout">
-                                <p className="bullet-lead">Early discovery often became:</p>
-                                <ul>
-                                    <li>Slow, because consultants had to rebuild context from scratch</li>
-                                    <li>Uneven, because quality depended on who knew which expert or document</li>
-                                    <li>Hard to scale, because institutional knowledge was not packaged for repeat use</li>
-                                </ul>
+                            <h2>Pain points</h2>
+                            <p>Early discovery was painful for consultants who needed to ramp up on unfamiliar domains quickly. Useful knowledge existed, but it was scattered across old decks, playbooks, and individual experts.</p>
+                            <div className="discovery-infographic" aria-label="Early discovery pain points">
+                                <div className="discovery-pain-card">
+                                    <span className="discovery-pain-index">01</span>
+                                    <h3>Slow</h3>
+                                    <p>Teams rebuilt context from scratch.</p>
+                                </div>
+                                <div className="discovery-pain-card">
+                                    <span className="discovery-pain-index">02</span>
+                                    <h3>Uneven</h3>
+                                    <p>Quality depended on finding the right expert or document.</p>
+                                </div>
+                                <div className="discovery-pain-card">
+                                    <span className="discovery-pain-index">03</span>
+                                    <h3>Hard to scale</h3>
+                                    <p>Knowledge was not packaged for repeat use.</p>
+                                </div>
                             </div>
-                            <p>The design challenge was not simply “add AI.” It was to create a learning path that helped consultants move from confusion to confident exploration.</p>
+                            <p>The design challenge was to turn scattered institutional knowledge into a guided path consultants could explore with confidence.</p>
                         </div>
 
                         <div className="content-block" id="section2">
                             <h2>Designing the guide</h2>
-                            <p>We framed LeverGuide as a research companion, not an empty chat box or a static document. The experience followed how consultants build understanding: start with a domain map, explore recommended questions, then go deeper through chatbot follow-ups.</p>
+                            <p>Design</p>
                             <h3>Core workflow</h3>
                             <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                             <h3>Key design decisions</h3>

@@ -464,12 +464,26 @@ a:hover {
     linear-gradient(180deg, #111217 0%, #0d0f14 48%, #151518 100%);
 }
 
+.project-page .content-layout {
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 851px) {
+  .project-page .content-layout {
+    width: auto;
+    max-width: 1180px;
+    margin-left: clamp(244px, 17vw, 332px);
+    margin-right: clamp(28px, 5vw, 88px);
+  }
+}
+
 .project-page .inpage_hero_container {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  margin-top: 32px;
-  padding: 0 0 26px;
+  grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1.12fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  margin-top: clamp(28px, 4vw, 48px);
+  padding: 0 0 clamp(34px, 5vw, 64px);
 }
 
 .project-page .badgeRow {
@@ -504,9 +518,11 @@ a:hover {
 
 .project-page .inpage_hero_box:first-child {
   display: grid;
-  gap: 18px;
+  align-content: center;
+  gap: 20px;
   width: 100%;
-  padding: 26px 0 28px;
+  min-height: 100%;
+  padding: clamp(24px, 4vw, 42px) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.11);
   border-bottom: 1px solid rgba(255, 255, 255, 0.11);
 }
@@ -514,11 +530,11 @@ a:hover {
 .project-page .inpage_hero_box:first-child > p,
 .project-page .content-layout > p:first-of-type {
   width: 100%;
-  max-width: none;
+  max-width: 680px;
   margin: 0;
   color: rgba(239, 242, 252, 0.86);
-  font-size: clamp(18px, 1.35vw, 22px);
-  line-height: 1.72;
+  font-size: clamp(17px, 1.2vw, 20px);
+  line-height: 1.68;
 }
 
 .project-page .inpage_hero_box:first-child > p + p {
@@ -527,15 +543,22 @@ a:hover {
 
 .project-page .inpage_hero_box:last-child {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .project-page .inpage_hero_img {
   display: block;
   width: 100%;
+  max-width: 860px;
+  max-height: min(58vh, 560px);
+  object-fit: contain;
   height: auto;
   border-radius: 20px;
   border: 1px solid rgba(238, 244, 255, 0.12);
   background: rgba(255, 255, 255, 0.025);
+  padding: clamp(14px, 2.8vw, 32px);
+  box-sizing: border-box;
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.3);
   filter: saturate(1.02);
 }
@@ -792,6 +815,65 @@ a:hover {
   color: #dcdcdc;
 }
 
+.discovery-infographic {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.discovery-pain-card {
+  position: relative;
+  min-height: 168px;
+  padding: 18px 18px 20px;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255, 140, 196, 0.16), transparent 30%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+    rgba(255, 255, 255, 0.018);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+}
+
+.discovery-pain-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, #ff8cc4, #91bdff);
+}
+
+.discovery-pain-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 26px;
+  border-radius: 50%;
+  color: #111217;
+  background: linear-gradient(135deg, #ff8cc4, #91bdff);
+  font-family: SuisseIntl-SemiBold;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.discovery-pain-card h3 {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-family: SuisseIntl-SemiBold;
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.project-page .discovery-pain-card p {
+  margin: 0;
+  color: rgba(232, 235, 244, 0.82);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
 .architecture-conflict {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -915,7 +997,7 @@ a:hover {
 }
 
 .seeMore {
-  width: min(1120px, calc(100vw - 48px));
+  width: var(--home-content-width, min(1180px, calc(100vw - 48px)));
 }
 
 #recommend {
@@ -1051,7 +1133,7 @@ a:hover {
 .projectRow {
   display: grid;
   gap: 34px;
-  width: min(1180px, calc(100vw - 48px));
+  width: var(--home-content-width, min(1180px, calc(100vw - 48px)));
   grid-template-columns: repeat(2, minmax(0, 1fr));
   justify-items: stretch;
   align-items: stretch;
@@ -1116,6 +1198,7 @@ a:hover {
 /* Homepage CSS */
 
 #HP_container {
+  --home-content-width: min(1180px, calc(100vw - 48px));
   display: inline-block;
   flex-direction: row;
   width: 100%;
@@ -1136,7 +1219,7 @@ a:hover {
   align-items: center;
   align-self: flex-start;
   max-width: none;
-  width: min(1120px, calc(100vw - 48px));
+  width: var(--home-content-width);
   height: 100%;
   z-Index: 2;
   align-content: center;
@@ -1156,7 +1239,7 @@ a:hover {
   align-self: flex-start;
   vertical-align: middle;
   color: white;
-  margin-left: 10px;
+  margin-left: 0;
   max-width: 760px;
   width: min(100%, 760px);
   font-family: 'SuisseIntl-Semibold';
@@ -1324,7 +1407,7 @@ a:hover {
 
 .professionalInner {
   max-width: 1100px;
-  width: 92%;
+  width: var(--home-content-width, min(1180px, calc(100vw - 48px)));
   text-align: left;
 }
 
@@ -2798,7 +2881,33 @@ a:hover {
 
 }
 
+@media only screen and (max-width: 960px) {
+  .project-page .inpage_hero_container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 28px;
+    padding-bottom: 34px;
+  }
+
+  .project-page .inpage_hero_box:first-child {
+    padding: 24px 0 26px;
+  }
+
+  .project-page .inpage_hero_box:first-child > p,
+  .project-page .content-layout > p:first-of-type {
+    max-width: none;
+  }
+
+  .project-page .inpage_hero_img {
+    max-width: 100%;
+    max-height: none;
+  }
+}
+
 @media only screen and (max-width: 850px) {
+  #HP_container {
+    --home-content-width: min(92vw, 560px);
+  }
 
   p,
   a {
@@ -2879,7 +2988,7 @@ a:hover {
 
   #landingPart,
   #contactPart {
-    width: 90%;
+    width: var(--home-content-width);
   }
 
   #contactPart {
@@ -2915,7 +3024,7 @@ a:hover {
   }
 
   .seeMore {
-    width: min(92vw, 560px);
+    width: var(--home-content-width);
   }
 
   .about-panel {
@@ -2966,6 +3075,14 @@ a:hover {
   }
 
   .strategy-card {
+    min-height: 0;
+  }
+
+  .discovery-infographic {
+    grid-template-columns: 1fr;
+  }
+
+  .discovery-pain-card {
     min-height: 0;
   }
 
@@ -3074,7 +3191,7 @@ a:hover {
 
   .projectRow {
     grid-template-columns: 1fr;
-    width: min(92vw, 560px);
+    width: var(--home-content-width);
     gap: 28px;
     padding: 0 0 10px;
   }
@@ -3114,7 +3231,7 @@ a:hover {
 
   #landingPart,
   #contactPart {
-    width: min(92vw, 560px);
+    width: var(--home-content-width);
   }
 
   .landingpage_Intro {
