@@ -64,6 +64,14 @@ class Homepage extends React.Component {
             return;
         }
 
+        const isOverProjectCard = event.target.closest(".bg-project-card, .AboutProj");
+        this.cursorTraceRef.current?.classList.toggle("is-hidden", Boolean(isOverProjectCard));
+
+        if (isOverProjectCard) {
+            this.cursorTracePreviousPoint = null;
+            return;
+        }
+
         const now = performance.now();
         if (now - this.cursorTraceLast < 54) {
             return;
@@ -165,7 +173,8 @@ class Homepage extends React.Component {
 
                 <NavigationBar href="#contactPart" contact />
 
-                <div id="HP_container" className='HP_container'>
+                <div id="HP_container" className='HP_container' onPointerMove={this.handleHeroPointerMove}>
+                    <div className="cursor-trace-layer" ref={this.cursorTraceRef} aria-hidden="true"></div>
 
 
 
@@ -173,9 +182,7 @@ class Homepage extends React.Component {
                     <div
                         style={windowHeight}
                         className="sessionContainer landing-session"
-                        onPointerMove={this.handleHeroPointerMove}
                     >
-                        <div className="cursor-trace-layer" ref={this.cursorTraceRef} aria-hidden="true"></div>
                         <div className="landing-tech-layer" aria-hidden="true">
                             <span>0101</span>
                             <span>AI_FLOW</span>
@@ -308,7 +315,7 @@ class Homepage extends React.Component {
                                             <span className="passion-project-tag">AI Research</span>
                                             <div className="text-black bold" style={aboutCardSpacing}>AI's impact on decision making</div>
                                             <div className="text-black" style={aboutCardSpacing}>
-                                                This is a research project to understand whether advice from AI has an impact on decision-making or confidence levels in people.
+                                                Studying how AI advice shapes decision confidence.
                                             </div>
                                         </div>
                                     </a>
@@ -318,7 +325,7 @@ class Homepage extends React.Component {
                                         <div className="AboutProj-content">
                                             <span className="passion-project-tag">ML research</span>
                                             <div className="text-black bold" style={aboutCardSpacing}>Visually explaining how ChatGPT works</div>
-                                            <div className="text-black" style={aboutCardSpacing}>     This project provides a visualized, step-by-step explanation designed to help non-technical audiences understand how ChatGPT works.
+                                            <div className="text-black" style={aboutCardSpacing}>A step-by-step visual explainer for non-technical audiences.
                                             </div>
                                         </div>
                                     </a>
@@ -331,7 +338,7 @@ class Homepage extends React.Component {
                                         <div className="AboutProj-content">
                                             <span className="passion-project-tag">IoT Automation</span>
                                             <div className="text-black bold" style={aboutCardSpacing}>Integrated system</div>
-                                            <div className="text-black" style={aboutCardSpacing}> This is a blogging post on my home automation project. I have reflected my thoughts on IoT's status quo in my writing.</div>
+                                            <div className="text-black" style={aboutCardSpacing}>Reflections from a hands-on smart home automation build.</div>
                                         </div>
                                     </a>
                                     <p> </p>
