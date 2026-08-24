@@ -2,7 +2,7 @@ import React, { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-const DATA_LABELS = ["UX", "UI", "DATA", "B2B", "B2C", "AI", "OPS", "Technology", "CS", "ML", "Design"];
+const DATA_LABELS = ["AI", "UX", "DATA", "B2B", "B2C", "OPS", "CS", "ML", "DESIGN", "TECH"];
 
 const NODE_COORDS = [
   [0, -1.42, 0.42], [0.82, -1.16, 0.66], [1.36, -0.54, 0.74], [1.42, 0.28, 0.58],
@@ -33,19 +33,36 @@ const PULSE_EDGES = [1, 8, 21, 24, 31, 39, 42];
 function makeLabelTexture(label) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
-  const width = label.length > 4 ? 260 : 160;
-  const height = 72;
+  const width = label.length > 4 ? 220 : 150;
+  const height = 82;
 
   canvas.width = width;
   canvas.height = height;
   context.clearRect(0, 0, width, height);
-  context.font = "600 24px Courier, monospace";
+
+  const radius = 18;
+  context.beginPath();
+  context.roundRect(8, 16, width - 16, 44, radius);
+  context.fillStyle = "rgba(9, 12, 18, 0.82)";
+  context.fill();
+  context.strokeStyle = "rgba(255, 140, 196, 0.34)";
+  context.lineWidth = 2;
+  context.stroke();
+
+  const gradient = context.createLinearGradient(14, 16, width - 14, 60);
+  gradient.addColorStop(0, "rgba(252, 34, 147, 0.2)");
+  gradient.addColorStop(0.52, "rgba(255, 255, 255, 0.08)");
+  gradient.addColorStop(1, "rgba(145, 189, 255, 0.16)");
+  context.fillStyle = gradient;
+  context.fill();
+
+  context.font = "700 22px Courier, monospace";
   context.textAlign = "center";
   context.textBaseline = "middle";
-  context.shadowColor = "rgba(252, 34, 147, 0.55)";
-  context.shadowBlur = 16;
-  context.fillStyle = "rgba(255, 245, 251, 0.92)";
-  context.fillText(label.toUpperCase(), width / 2, height / 2 + 1);
+  context.shadowColor = "rgba(252, 34, 147, 0.72)";
+  context.shadowBlur = 12;
+  context.fillStyle = "rgba(255, 245, 251, 0.96)";
+  context.fillText(label, width / 2, 39);
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
@@ -55,11 +72,11 @@ function makeLabelTexture(label) {
 
 function LabelSprite({ label, position }) {
   const texture = useMemo(() => makeLabelTexture(label), [label]);
-  const width = label.length > 4 ? 0.72 : 0.44;
+  const width = label.length > 4 ? 0.56 : 0.42;
 
   return (
-    <sprite position={position} scale={[width, 0.2, 1]}>
-      <spriteMaterial map={texture} transparent opacity={0.78} depthWrite={false} />
+    <sprite position={position} scale={[width, 0.22, 1]}>
+      <spriteMaterial map={texture} transparent opacity={0.92} depthWrite={false} depthTest />
     </sprite>
   );
 }
@@ -67,8 +84,8 @@ function LabelSprite({ label, position }) {
 function Connection({ start, end, variant }) {
   const lineRef = useRef();
   const geometry = useMemo(() => new THREE.BufferGeometry().setFromPoints([start, end]), [start, end]);
-  const color = variant === "outer" ? "#fff1f8" : variant === "inner" ? "#ff8cc4" : "#91bdff";
-  const opacity = variant === "outer" ? 0.32 : variant === "inner" ? 0.22 : 0.13;
+  const color = variant === "outer" ? "#ffeaf6" : variant === "inner" ? "#ff8cc4" : "#91bdff";
+  const opacity = variant === "outer" ? 0.56 : variant === "inner" ? 0.42 : 0.28;
 
   React.useEffect(() => {
     lineRef.current?.computeLineDistances();
@@ -80,8 +97,8 @@ function Connection({ start, end, variant }) {
         color={color}
         transparent
         opacity={opacity}
-        dashSize={0.045}
-        gapSize={0.055}
+        dashSize={0.035}
+        gapSize={0.04}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
@@ -91,21 +108,34 @@ function Connection({ start, end, variant }) {
 
 function DataPulse({ start, end, offset }) {
   const ref = useRef();
+  const direction = useMemo(() => end.clone().sub(start).normalize(), [start, end]);
+  const quaternion = useMemo(() => new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(1, 0, 0), direction), [direction]);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
-    const t = (clock.elapsedTime * 0.18 + offset) % 1;
+    const t = (clock.elapsedTime * 0.13 + offset) % 1;
     ref.current.position.lerpVectors(start, end, t);
-    const scale = 0.65 + Math.sin(t * Math.PI) * 0.38;
-    ref.current.scale.setScalar(scale);
-    ref.current.material.opacity = 0.12 + Math.sin(t * Math.PI) * 0.78;
+    ref.current.quaternion.copy(quaternion);
+    const shimmer = 0.7 + Math.sin(clock.elapsedTime * 8 + offset * 12) * 0.28;
+    ref.current.scale.setScalar(shimmer);
   });
 
   return (
-    <mesh ref={ref}>
-      <sphereGeometry args={[0.035, 16, 16]} />
-      <meshBasicMaterial color="#fff4fb" transparent opacity={0.8} depthWrite={false} blending={THREE.AdditiveBlending} />
-    </mesh>
+    <group ref={ref}>
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[0.045, 18, 18]} />
+        <meshBasicMaterial color="#fff8fc" transparent opacity={0.96} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </mesh>
+      <mesh position={[-0.075, 0, 0]}>
+        <sphereGeometry args={[0.026, 14, 14]} />
+        <meshBasicMaterial color="#ff8cc4" transparent opacity={0.58} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </mesh>
+      <mesh position={[-0.14, 0, 0]}>
+        <sphereGeometry args={[0.016, 12, 12]} />
+        <meshBasicMaterial color="#91bdff" transparent opacity={0.38} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </mesh>
+      <pointLight color="#ff8cc4" intensity={0.28} distance={0.5} />
+    </group>
   );
 }
 
@@ -122,16 +152,20 @@ function NodePoint({ label, position, index }) {
   return (
     <group position={position}>
       <mesh ref={ref}>
-        <sphereGeometry args={[0.045, 18, 18]} />
+        <sphereGeometry args={[0.066, 24, 24]} />
         <meshStandardMaterial
-          color="#fff2f8"
+          color="#ffd8eb"
           emissive="#fc2293"
-          emissiveIntensity={0.52}
-          roughness={0.34}
-          metalness={0.18}
+          emissiveIntensity={0.38}
+          roughness={0.22}
+          metalness={0.42}
         />
       </mesh>
-      <LabelSprite label={label} position={[0, 0.12, 0.02]} />
+      <mesh scale={[1.35, 1.35, 1.35]}>
+        <sphereGeometry args={[0.066, 24, 24]} />
+        <meshBasicMaterial color="#fc2293" transparent opacity={0.08} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </mesh>
+      <LabelSprite label={label} position={[0, 0.15, 0.02]} />
     </group>
   );
 }
@@ -142,17 +176,13 @@ function BuckyballScene({ labels }) {
 
   useFrame(({ clock, pointer }) => {
     if (!groupRef.current) return;
-    groupRef.current.rotation.y = clock.elapsedTime * 0.105 + pointer.x * 0.08;
-    groupRef.current.rotation.x = -0.18 + pointer.y * 0.04;
-    groupRef.current.rotation.z = Math.sin(clock.elapsedTime * 0.08) * 0.035;
+    groupRef.current.rotation.y = clock.elapsedTime * 0.032 + pointer.x * 0.055;
+    groupRef.current.rotation.x = -0.16 + pointer.y * 0.035;
+    groupRef.current.rotation.z = Math.sin(clock.elapsedTime * 0.045) * 0.018;
   });
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
-      <mesh>
-        <sphereGeometry args={[1.72, 48, 48]} />
-        <meshBasicMaterial color="#fc2293" transparent opacity={0.025} depthWrite={false} />
-      </mesh>
       {EDGES.map(([start, end, variant], index) => (
         <Connection key={`edge-${index}`} start={points[start]} end={points[end]} variant={variant} />
       ))}
@@ -168,6 +198,12 @@ function BuckyballScene({ labels }) {
 }
 
 function HeroBuckyballGraph({ labels = DATA_LABELS }) {
+  const normalizedLabels = useMemo(() => labels.map((label) => {
+    if (label.toLowerCase() === "technology") return "TECH";
+    if (label.toLowerCase() === "design") return "DESIGN";
+    return label.toUpperCase();
+  }), [labels]);
+
   return (
     <div className="hero-buckyball" aria-hidden="true">
       <Canvas
@@ -175,10 +211,11 @@ function HeroBuckyballGraph({ labels = DATA_LABELS }) {
         camera={{ position: [0, 0.04, 5.6], fov: 43 }}
         gl={{ alpha: true, antialias: true }}
       >
-        <ambientLight intensity={0.55} />
-        <pointLight position={[2.8, 2.4, 3.6]} intensity={1.8} color="#ff8cc4" />
-        <pointLight position={[-2.2, -1.2, 2.8]} intensity={0.95} color="#91bdff" />
-        <BuckyballScene labels={labels} />
+        <ambientLight intensity={0.42} />
+        <pointLight position={[2.8, 2.4, 3.6]} intensity={2.05} color="#ff8cc4" />
+        <pointLight position={[-2.2, -1.2, 2.8]} intensity={1.15} color="#91bdff" />
+        <spotLight position={[0.2, 2.6, 4.2]} angle={0.46} penumbra={0.72} intensity={1.6} color="#fff4fb" />
+        <BuckyballScene labels={normalizedLabels} />
       </Canvas>
     </div>
   );
