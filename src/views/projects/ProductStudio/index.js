@@ -43,12 +43,27 @@ class ProductStudio extends React.Component {
                       .css("background", "transparent")
     }
 
+    getSectionScrollTop(section, container) {
+        if (!section.length || !container.length) {
+            return 0;
+        }
+
+        const sectionTop = section[0].getBoundingClientRect().top;
+        const containerTop = container[0].getBoundingClientRect().top;
+        return sectionTop - containerTop + container.scrollTop();
+    }
+
     scrollCheck() {
-        const activeOffset = 120;
+        const container = $(".page-container");
+        const activeOffset = 180;
+        const scrollTop = container.scrollTop();
         let activeSection = 1;
+
         for (var i = 1; i <= this.content.length; i++) {
             const section = $("#section" + i);
-            if (section.length && section.position().top <= activeOffset) {
+            const sectionTop = this.getSectionScrollTop(section, container);
+
+            if (section.length && sectionTop - scrollTop <= activeOffset) {
                 activeSection = i;
             }
         }
@@ -59,12 +74,12 @@ class ProductStudio extends React.Component {
     }
 
     menuItem(val) {
-        const selectPosition = $("#section" + val).position().top;
-        const scrollposition = $('.page-container').scrollTop();
+        const container = $('.page-container');
+        const selectPosition = this.getSectionScrollTop($("#section" + val), container);
         this.neutral();
         this.turnPink('p' + val);
         $('#back2Top').css("display", val >= 2 ? "inherit" : "none");
-        $('.page-container').animate({ scrollTop: selectPosition + scrollposition }, 100, () => this.scrollCheck());
+        container.animate({ scrollTop: Math.max(selectPosition - 96, 0) }, 100, () => this.scrollCheck());
     }
 
     handleScroll = e => {

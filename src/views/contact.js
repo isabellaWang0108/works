@@ -1,7 +1,6 @@
 import React from "react";
 import $ from 'jquery';
 
-import Github from "../assets/images/contact/github.svg"
 import Linkedin from "../assets/images/contact/linkedin.svg"
 import Navigation from "../components/navigation"
 
@@ -31,10 +30,6 @@ class Contact extends React.Component {
                                 <p style={{ marginTop: 0 }}>wangxbella0108@gmail.com</p></a>
 
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                                <a href="https://github.com/isabellawang0108" style={{ marginRight: '36px' }}>
-                                    <img style={{ width: '36pt' }} src={Github} alt="icon"></img>
-                                </a>
-
                                 <a href="https://www.linkedin.com/in/isabella-wang-310181149/">
                                     <img style={{ width: '36pt' }} src={Linkedin} alt="icon"></img>
                                 </a>

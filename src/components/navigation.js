@@ -1,65 +1,65 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Linkedin from "../assets/images/contact/linkedin.svg"
+import Email from "../assets/images/contact/email.svg"
 
-
-const container = {
-    display: 'flex',
-    flexDirection: 'column',
-    position: "fixed",
-    top: 0,
-    width: "100vw",
-    left: 0,
-    zIndex: 999
-}
-
-const navigation = {
-    width: "100vw",
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    padding: '20px 0px',
-    alignItems: 'center',
-    backgroundColor: '#171717c9',
-    backdropFilter: 'blur(10pt)'
-}
-
-const logo = {
-    cursor: 'pointer',
-    zIndex: 60,
-    fontSize: 24,
-    position: 'fixed',
-    left: 12,
-    top: window.innerWidth > 450 ? 20 : 14,
-}
-
+const RESUME_URL = "https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing";
 
 const NavigationBar = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const isHomePage = location.pathname === "/";
+    const goBack = () => {
+        if (window.history.length > 1) {
+            navigate(-1);
+            return;
+        }
+
+        navigate("/");
+    };
 
     return (
-        <div style={container} className="fade-in">
-            <div style={navigation}>
+        <div className="site-nav-shell fade-in">
+            <div className="site-nav-glass">
                 {/* Logo */}
-                <Link to="/">
-                    <div style={logo} className="logo bold pink">
+                <Link to="/" className="site-nav-brand-link">
+                    <div className="site-logo logo bold pink">
                         Isabella Wang
                     </div>
                 </Link>
-                <a
-                    href="https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ marginRight: '32pt', textDecoration: 'none' }}
-                    className="bold pink"
-                >
-                    Resume
-                </a>
+                <div className="site-nav-actions" aria-label="Contact links">
+                    <a
+                        href="https://www.linkedin.com/in/isabella-wang-310181149/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="site-nav-icon-link"
+                        aria-label="LinkedIn"
+                    >
+                        <img src={Linkedin} alt="" aria-hidden="true" />
+                    </a>
+                    <a
+                        href="mailto:wangxbella0108@gmail.com"
+                        className="site-nav-icon-link"
+                        aria-label="Email Isabella Wang"
+                    >
+                        <img src={Email} alt="" aria-hidden="true" />
+                    </a>
+                    <a
+                        href={RESUME_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="site-nav-link bold pink"
+                        aria-label="Resume"
+                    >
+                        Resume
+                    </a>
+                </div>
             </div>
 
             {!isHomePage && (
                 <button
-                    onClick={() => window.history.back()}
+                    type="button"
+                    onClick={goBack}
                     className="icon backbtn back-btn-fixed"
                 >
                     <span className="material-symbols-outlined">arrow_back</span>

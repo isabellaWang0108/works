@@ -3,6 +3,7 @@ import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
+import ProjectTags, { AI_RESEARCH_GUIDE_TAGS } from "../../../components/projectTags"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
@@ -36,12 +37,27 @@ class AIResearchGuide extends React.Component {
             .css("background", "transparent")
     }
 
+    getSectionScrollTop(section, container) {
+        if (!section.length || !container.length) {
+            return 0;
+        }
+
+        const sectionTop = section[0].getBoundingClientRect().top;
+        const containerTop = container[0].getBoundingClientRect().top;
+        return sectionTop - containerTop + container.scrollTop();
+    }
+
     scrollCheck() {
-        const activeOffset = 120;
+        const container = $(".page-container");
+        const activeOffset = 180;
+        const scrollTop = container.scrollTop();
         let activeSection = 1;
+
         for (var i = 1; i <= this.content.length; i++) {
             const section = $("#section" + i);
-            if (section.length && section.position().top <= activeOffset) {
+            const sectionTop = this.getSectionScrollTop(section, container);
+
+            if (section.length && sectionTop - scrollTop <= activeOffset) {
                 activeSection = i;
             }
         }
@@ -52,12 +68,12 @@ class AIResearchGuide extends React.Component {
     }
 
     menuItem(val) {
-        const selectPosition = $("#section" + val).position().top;
-        const scrollposition = $('.page-container').scrollTop();
+        const container = $('.page-container');
+        const selectPosition = this.getSectionScrollTop($("#section" + val), container);
         this.neutral();
         this.turnPink('p' + val);
         $('#back2Top').css("display", val >= 2 ? "inherit" : "none");
-        $('.page-container').animate({ scrollTop: selectPosition + scrollposition }, 100, () => this.scrollCheck());
+        container.animate({ scrollTop: Math.max(selectPosition - 96, 0) }, 100, () => this.scrollCheck());
     }
 
     handleScroll = e => {
@@ -73,11 +89,7 @@ class AIResearchGuide extends React.Component {
                 <div>
                     <ContentLayout>
                         <h1 id="title" className="fade-in">AI-Powered Knowledge Tool for Faster Consulting Discovery</h1>
-                        <div className="badgeRow" style={{ marginTop: 8 }}>
-                            <span className="projectBadge">AI product</span>
-                            <span className="projectBadge">B2B platform</span>
-                            <span className="projectBadge">Research workflow</span>
-                        </div>
+                        <ProjectTags tags={AI_RESEARCH_GUIDE_TAGS} style={{ marginTop: 8 }} />
 
                         <div className="inpage_hero_container fade-in">
                             <div className="inpage_hero_box">

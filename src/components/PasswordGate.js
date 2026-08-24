@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import Animation3DEdge from "./animation3DEdge";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
+
+const Canvas = lazy(() => import("@react-three/fiber").then((module) => ({ default: module.Canvas })));
+const Animation3DEdge = lazy(() => import("./animation3DEdge"));
 
 const PASSWORD_HASH = "bade44aafc581068f83d2971b0eea6460bf0667c1db26b82aad2d4629e2fd6f0";
 const SESSION_KEY = "portfolio_auth";
@@ -55,6 +56,19 @@ function PasswordGate({ children }) {
     const [error, setError] = useState(false);
     const [focused, setFocused] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [showAnimation, setShowAnimation] = useState(false);
+
+    useEffect(() => {
+        if (authenticated || prefersReducedMotion) {
+            return undefined;
+        }
+
+        const scheduleAnimation = window.requestIdleCallback || ((callback) => window.setTimeout(callback, 220));
+        const cancelAnimation = window.cancelIdleCallback || window.clearTimeout;
+        const animationHandle = scheduleAnimation(() => setShowAnimation(true));
+
+        return () => cancelAnimation(animationHandle);
+    }, [authenticated, prefersReducedMotion]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -111,15 +125,18 @@ function PasswordGate({ children }) {
             className="password-gate"
             onMouseMove={handlePointerMove}
         >
-            {!prefersReducedMotion && (
-                <Canvas
-                    className="password-canvas"
-                    camera={{ position: [0, 0, 27] }}
-                >
-                    <hemisphereLight intensity={0.38} groundColor="#20232c" />
-                    <pointLight position={[18, 8, 8]} intensity={3} />
-                    <Animation3DEdge />
-                </Canvas>
+            {!prefersReducedMotion && showAnimation && (
+                <Suspense fallback={null}>
+                    <Canvas
+                        className="password-canvas"
+                        camera={{ position: [0, 0, 27] }}
+                        dpr={[1, 1.25]}
+                    >
+                        <hemisphereLight intensity={0.38} groundColor="#20232c" />
+                        <pointLight position={[18, 8, 8]} intensity={3} />
+                        <Animation3DEdge />
+                    </Canvas>
+                </Suspense>
             )}
             <div className="password-grid" />
             {!prefersReducedMotion && <div className="password-glitch" />}
