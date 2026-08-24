@@ -38,7 +38,7 @@ class Homepage extends React.Component {
     cursorTraceLast = 0;
     cursorTracePoint = null;
     cursorTracePreviousPoint = null;
-    cursorTraceLabels = ["UX", "UI", "DATA", "B2B", "B2C", "AI", "OPS", "Technology", "CS", "ML", "Design"];
+    cursorTraceLabels = ["UX", "UI", "DATA", "B2B", "B2C", "AI", "RESEARCH", "Technology", "CS", "ML", "Design"];
 
     state = {
         top: 300,
@@ -129,6 +129,18 @@ class Homepage extends React.Component {
     }
 
     componentDidMount() {
+        const scrollTarget = sessionStorage.getItem("homepageScrollTarget");
+        if (scrollTarget) {
+            sessionStorage.removeItem("homepageScrollTarget");
+            sessionStorage.removeItem("homepageScrollPosition");
+            window.setTimeout(() => {
+                const targetElement = document.getElementById(scrollTarget);
+                targetElement?.scrollIntoView({ block: "start" });
+                targetElement?.focus({ preventScroll: true });
+            }, 80);
+            return;
+        }
+
         const savedScrollPosition = sessionStorage.getItem("homepageScrollPosition");
         if (savedScrollPosition) {
             window.scrollTo(0, parseInt(savedScrollPosition, 10));
@@ -180,21 +192,15 @@ class Homepage extends React.Component {
                                 <span className="heroTitleLine heroTitleLine-secondary">Systems Driven.</span>
                                 
                                 <h3>
-                                    AI-fluent Product Designer turning complex data &amp; workflows into faster, clearer product experiences.
+                                    Product Designer shaping complex data and ambiguous workflows into intuitive UX that speed up critical work.
                                 </h3>
-                                <div> </div>
-                                <div className="heroBadges">
-                                    <span>AI Product</span>
-                                    <span>Data Architecture</span>
-                                    <span>Workflow Systems</span>
-                                </div>
                             </div>
                             <HeroBuckyballGraph labels={this.cursorTraceLabels} />
                         </div>
                     </div>
 
 
-                    <div className="projectRow">
+                    <div id="projectsPart" className="projectRow" tabIndex="-1" aria-label="Selected projects">
                         {/* NY Tango */}
                         <div
                             id="NYTango"

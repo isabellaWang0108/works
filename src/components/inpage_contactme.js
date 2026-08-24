@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Linkedin from "../assets/images/contact/linkedin.svg"
 import Email from "../assets/images/contact/email.svg"
 
@@ -7,6 +8,13 @@ const RESUME_URL = "https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJo
 class InpageContactMe extends Component {
 
     render() {
+        const showOtherProjects = this.props.showProjectsButton !== false;
+        const finalButtonLabel = showOtherProjects ? "Other Projects" : "Resume";
+        const rememberProjectsTarget = () => {
+            sessionStorage.setItem("homepageScrollTarget", "projectsPart");
+            sessionStorage.removeItem("homepageScrollPosition");
+        };
+
         return (
             <div className="inpage-contact-card">
                 <div className="inpage-contact-text">
@@ -22,9 +30,25 @@ class InpageContactMe extends Component {
                         <img src={Email} alt="" aria-hidden="true"></img>
                         <span>Email</span>
                     </a>
-                    <a href={RESUME_URL} aria-label="Resume" target="_blank" rel="noopener noreferrer">
-                        <span>Resume</span>
-                    </a>
+                    {showOtherProjects ? (
+                        <Link
+                            to="/"
+                            className="contact-primary-action"
+                            aria-label="View other projects on the homepage"
+                            onClick={rememberProjectsTarget}
+                        >
+                            <span>{finalButtonLabel}</span>
+                        </Link>
+                    ) : (
+                        <a
+                            href={RESUME_URL}
+                            aria-label="Resume"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span>{finalButtonLabel}</span>
+                        </a>
+                    )}
                 </div>
             </div>
 

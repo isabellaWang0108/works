@@ -2,7 +2,10 @@ import React, { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-const DATA_LABELS = ["AI", "UX", "DATA", "B2B", "B2C", "OPS", "CS", "ML", "DESIGN", "TECH"];
+const DATA_LABELS = [
+  "AI", "UX", "DATA", "B2B", "B2C", "OPS", "CS", "ML", "DESIGN", "TECH",
+  "RESEARCH", "STRATEGY", "SYSTEMS", "AUTOMATION", "INSIGHTS", "PRODUCT", "USER",
+];
 
 const NODE_COORDS = [
   [0, -1.42, 0.42], [0.82, -1.16, 0.66], [1.36, -0.54, 0.74], [1.42, 0.28, 0.58],
@@ -26,116 +29,282 @@ const EDGES = [
   [25, 26, "rear"], [26, 27, "rear"], [27, 28, "rear"], [28, 25, "rear"],
   [0, 21, "inner"], [2, 22, "inner"], [5, 23, "inner"], [8, 24, "inner"],
   [11, 25, "rear"], [13, 26, "rear"], [16, 27, "rear"], [19, 28, "rear"],
+  [0, 22, "signal"], [1, 21, "signal"], [3, 22, "signal"], [4, 23, "signal"], [6, 24, "signal"],
+  [7, 23, "signal"], [9, 21, "signal"], [10, 24, "signal"], [12, 25, "signal"], [14, 26, "signal"],
+  [15, 27, "signal"], [17, 28, "signal"], [18, 27, "signal"], [20, 25, "signal"],
+  [21, 26, "cross"], [22, 27, "cross"], [23, 28, "cross"], [24, 25, "cross"],
+  [0, 14, "cross"], [2, 16, "cross"], [4, 18, "cross"], [6, 20, "cross"], [8, 12, "cross"], [10, 13, "cross"],
 ];
 
-const PULSE_EDGES = [1, 8, 21, 24, 31, 39, 42];
+const PULSE_EDGES = [1, 4, 8, 21, 24, 28, 31, 39, 42, 46, 52, 58, 64];
+
+const STAR_POINTS = [
+  [-1.7, -1.3, 0.2], [-1.45, 1.18, 0.98], [-0.82, -1.64, -0.52], [-0.36, 1.72, 0.62],
+  [0.44, -1.68, 0.96], [0.9, 1.5, -0.66], [1.62, -0.72, -0.18], [1.7, 0.9, 0.5],
+  [-1.84, 0.12, -0.92], [0.1, 1.86, -0.86], [1.28, -1.28, 0.2], [-1.2, -0.98, 1.14],
+];
+
+const SPARK_POINTS = [
+  [-1.55, -0.54, 0.92], [-1.1, 1.42, -0.24], [-0.62, 0.48, 1.58], [-0.18, -1.72, 0.22],
+  [0.18, 1.28, 1.14], [0.62, -0.86, -1.34], [1.08, 0.42, 1.1], [1.5, -0.18, -0.72],
+  [-1.62, 0.78, 0.18], [-0.48, -1.28, -1.04], [0.76, 1.7, 0.08], [1.36, 1.02, -0.46],
+];
+
+function createBuckyballTopology() {
+  const geometry = new THREE.IcosahedronGeometry(1.44, 1);
+  const positions = geometry.attributes.position;
+  const index = geometry.index;
+  const pointMap = new Map();
+  const points = [];
+  const faces = [];
+
+  const getPointIndex = (vertexIndex) => {
+    const point = new THREE.Vector3().fromBufferAttribute(positions, vertexIndex);
+    const key = `${point.x.toFixed(4)},${point.y.toFixed(4)},${point.z.toFixed(4)}`;
+
+    if (!pointMap.has(key)) {
+      pointMap.set(key, points.length);
+      points.push(point);
+    }
+
+    return pointMap.get(key);
+  };
+
+  if (index) {
+    for (let i = 0; i < index.count; i += 3) {
+      faces.push([
+        getPointIndex(index.getX(i)),
+        getPointIndex(index.getX(i + 1)),
+        getPointIndex(index.getX(i + 2)),
+      ]);
+    }
+  } else {
+    for (let i = 0; i < positions.count; i += 3) {
+      faces.push([getPointIndex(i), getPointIndex(i + 1), getPointIndex(i + 2)]);
+    }
+  }
+
+  const edgeMap = new Map();
+  const addEdge = (a, b) => {
+    const start = Math.min(a, b);
+    const end = Math.max(a, b);
+    edgeMap.set(`${start}-${end}`, [start, end]);
+  };
+
+  faces.forEach(([a, b, c]) => {
+    addEdge(a, b);
+    addEdge(b, c);
+    addEdge(c, a);
+  });
+
+  const edges = Array.from(edgeMap.values())
+    .sort(([aStart, aEnd], [bStart, bEnd]) => (aStart - bStart) || (aEnd - bEnd))
+    .map(([start, end], index) => {
+      const midpointZ = (points[start].z + points[end].z) / 2;
+      const variant = index % 7 === 0 ? "signal" : midpointZ < -0.54 ? "rear" : midpointZ > 0.54 ? "outer" : index % 5 === 0 ? "cross" : "inner";
+      return [start, end, variant];
+    });
+
+  const pulseEdges = edges
+    .map((edge, index) => [edge, index])
+    .filter(([[, , variant]], index) => variant === "signal" || index % 13 === 0)
+    .map(([, index]) => index)
+    .slice(0, 16);
+
+  return { points, edges, pulseEdges };
+}
 
 function makeLabelTexture(label) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
-  const width = label.length > 4 ? 220 : 150;
-  const height = 82;
+  const width = label.length > 8 ? 620 : label.length > 4 ? 500 : 340;
+  const height = 190;
+  const centerY = 95;
 
   canvas.width = width;
   canvas.height = height;
   context.clearRect(0, 0, width, height);
 
-  const radius = 18;
-  context.beginPath();
-  context.roundRect(8, 16, width - 16, 44, radius);
-  context.fillStyle = "rgba(9, 12, 18, 0.82)";
-  context.fill();
-  context.strokeStyle = "rgba(255, 140, 196, 0.34)";
-  context.lineWidth = 2;
-  context.stroke();
+  const glow = context.createRadialGradient(width / 2, centerY, 4, width / 2, centerY, width * 0.34);
+  glow.addColorStop(0, "rgba(238, 247, 255, 0.18)");
+  glow.addColorStop(0.28, "rgba(122, 197, 255, 0.12)");
+  glow.addColorStop(0.62, "rgba(252, 34, 147, 0.06)");
+  glow.addColorStop(0.84, "rgba(173, 143, 255, 0.03)");
+  glow.addColorStop(1, "rgba(122, 197, 255, 0)");
+  context.fillStyle = glow;
+  context.fillRect(0, 0, width, height);
 
-  const gradient = context.createLinearGradient(14, 16, width - 14, 60);
-  gradient.addColorStop(0, "rgba(252, 34, 147, 0.2)");
-  gradient.addColorStop(0.52, "rgba(255, 255, 255, 0.08)");
-  gradient.addColorStop(1, "rgba(145, 189, 255, 0.16)");
-  context.fillStyle = gradient;
-  context.fill();
+  const gradient = context.createLinearGradient(width * 0.18, centerY - 22, width * 0.82, centerY + 18);
+  gradient.addColorStop(0, "rgba(247, 251, 255, 0.94)");
+  gradient.addColorStop(0.5, "rgba(190, 220, 255, 0.88)");
+  gradient.addColorStop(1, "rgba(255, 154, 209, 0.82)");
 
-  context.font = "700 22px Courier, monospace";
+  context.font = "400 30px SuisseIntl-Regular, Inter, Helvetica Neue, Arial, sans-serif";
   context.textAlign = "center";
   context.textBaseline = "middle";
-  context.shadowColor = "rgba(252, 34, 147, 0.72)";
-  context.shadowBlur = 12;
-  context.fillStyle = "rgba(255, 245, 251, 0.96)";
-  context.fillText(label, width / 2, 39);
+  context.letterSpacing = "1.4px";
+  context.lineWidth = 1.8;
+  context.strokeStyle = "rgba(5, 7, 13, 0.72)";
+  context.shadowColor = "rgba(116, 196, 255, 0.34)";
+  context.shadowBlur = 8;
+  context.strokeText(label, width / 2, centerY);
+  context.fillStyle = gradient;
+  context.fillText(label, width / 2, centerY);
+
+  context.shadowBlur = 4;
+  context.strokeStyle = "rgba(122, 197, 255, 0.2)";
+  context.lineWidth = 1.1;
+  context.beginPath();
+  context.moveTo(width * 0.32, centerY + 27);
+  context.lineTo(width * 0.68, centerY + 27);
+  context.stroke();
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
   texture.needsUpdate = true;
   return texture;
 }
 
 function LabelSprite({ label, position }) {
   const texture = useMemo(() => makeLabelTexture(label), [label]);
-  const width = label.length > 4 ? 0.56 : 0.42;
+  const width = label.length > 8 ? 0.98 : label.length > 4 ? 0.79 : 0.54;
 
   return (
-    <sprite position={position} scale={[width, 0.22, 1]}>
-      <spriteMaterial map={texture} transparent opacity={0.92} depthWrite={false} depthTest />
+    <sprite position={position} scale={[width, 0.3, 1]}>
+      <spriteMaterial
+        map={texture}
+        transparent
+        opacity={0.82}
+        depthWrite={false}
+        depthTest={false}
+        blending={THREE.NormalBlending}
+      />
     </sprite>
   );
 }
 
 function Connection({ start, end, variant }) {
-  const lineRef = useRef();
-  const geometry = useMemo(() => new THREE.BufferGeometry().setFromPoints([start, end]), [start, end]);
-  const color = variant === "outer" ? "#ffeaf6" : variant === "inner" ? "#ff8cc4" : "#91bdff";
-  const opacity = variant === "outer" ? 0.56 : variant === "inner" ? 0.42 : 0.28;
+  const color = variant === "outer" ? "#9fd3ff" : variant === "inner" ? "#b8a8ff" : variant === "signal" ? "#d6f5ff" : variant === "cross" ? "#ff9ccc" : "#7fb6ff";
+  const opacity = variant === "outer" ? 0.58 : variant === "inner" ? 0.46 : variant === "signal" ? 0.54 : variant === "cross" ? 0.34 : 0.28;
+  const dotSpacing = variant === "signal" ? 0.072 : variant === "cross" ? 0.095 : 0.085;
+  const dotSize = variant === "signal" ? 0.01 : variant === "cross" ? 0.007 : 0.008;
+  const dots = useMemo(() => {
+    const distance = start.distanceTo(end);
+    const dotCount = Math.max(6, Math.round(distance / dotSpacing));
 
-  React.useEffect(() => {
-    lineRef.current?.computeLineDistances();
-  }, []);
+    return Array.from({ length: dotCount }, (_, index) => {
+      const t = (index + 1) / (dotCount + 1);
+      return start.clone().lerp(end, t);
+    });
+  }, [dotSpacing, start, end]);
 
   return (
-    <line ref={lineRef} geometry={geometry}>
-      <lineDashedMaterial
-        color={color}
-        transparent
-        opacity={opacity}
-        dashSize={0.035}
-        gapSize={0.04}
-        depthWrite={false}
-        blending={THREE.AdditiveBlending}
-      />
-    </line>
+    <group>
+      {dots.map((position, index) => (
+        <mesh key={`${variant}-${index}`} position={position}>
+          <sphereGeometry args={[dotSize, 8, 8]} />
+          <meshBasicMaterial
+            color={color}
+            transparent
+            opacity={opacity}
+            depthWrite={false}
+            blending={THREE.NormalBlending}
+          />
+        </mesh>
+      ))}
+    </group>
   );
 }
 
 function DataPulse({ start, end, offset }) {
   const ref = useRef();
+  const coreRef = useRef();
+  const glowRef = useRef();
+  const headRef = useRef();
+  const headGlowRef = useRef();
   const direction = useMemo(() => end.clone().sub(start).normalize(), [start, end]);
-  const quaternion = useMemo(() => new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(1, 0, 0), direction), [direction]);
+  const quaternion = useMemo(() => new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction), [direction]);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
-    const t = (clock.elapsedTime * 0.13 + offset) % 1;
-    ref.current.position.lerpVectors(start, end, t);
+    const t = (clock.elapsedTime * 0.28 + offset) % 1;
+    const tail = Math.max(0, t - 0.22);
+    const pulseStart = start.clone().lerp(end, tail);
+    const pulseEnd = start.clone().lerp(end, t);
+    const midpoint = pulseStart.clone().add(pulseEnd).multiplyScalar(0.5);
+    const length = Math.max(0.001, pulseStart.distanceTo(pulseEnd));
+    const headY = length / 2;
+    const shimmer = 0.9 + Math.sin(clock.elapsedTime * 3.2 + offset * 8) * 0.04;
+
+    ref.current.position.copy(midpoint);
     ref.current.quaternion.copy(quaternion);
-    const shimmer = 0.7 + Math.sin(clock.elapsedTime * 8 + offset * 12) * 0.28;
-    ref.current.scale.setScalar(shimmer);
+    coreRef.current?.scale.set(1, length, 1);
+    glowRef.current?.scale.set(1, length, 1);
+    if (headRef.current) {
+      headRef.current.position.set(0, headY, 0);
+      headRef.current.scale.setScalar(shimmer);
+    }
+    if (headGlowRef.current) {
+      headGlowRef.current.position.set(0, headY, 0);
+      headGlowRef.current.scale.setScalar(shimmer);
+    }
   });
 
   return (
     <group ref={ref}>
-      <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[0.045, 18, 18]} />
-        <meshBasicMaterial color="#fff8fc" transparent opacity={0.96} depthWrite={false} blending={THREE.AdditiveBlending} />
+      <mesh ref={glowRef}>
+        <cylinderGeometry args={[0.016, 0.002, 1, 12]} />
+        <meshBasicMaterial color="#9fd3ff" transparent opacity={0.13} depthWrite={false} blending={THREE.AdditiveBlending} />
       </mesh>
-      <mesh position={[-0.075, 0, 0]}>
-        <sphereGeometry args={[0.026, 14, 14]} />
-        <meshBasicMaterial color="#ff8cc4" transparent opacity={0.58} depthWrite={false} blending={THREE.AdditiveBlending} />
+      <mesh ref={coreRef}>
+        <cylinderGeometry args={[0.0065, 0.0012, 1, 12]} />
+        <meshBasicMaterial color="#d6f5ff" transparent opacity={0.54} depthWrite={false} blending={THREE.AdditiveBlending} />
       </mesh>
-      <mesh position={[-0.14, 0, 0]}>
-        <sphereGeometry args={[0.016, 12, 12]} />
-        <meshBasicMaterial color="#91bdff" transparent opacity={0.38} depthWrite={false} blending={THREE.AdditiveBlending} />
+      <mesh ref={headGlowRef}>
+        <sphereGeometry args={[0.03, 16, 16]} />
+        <meshBasicMaterial color="#9fd3ff" transparent opacity={0.14} depthWrite={false} blending={THREE.AdditiveBlending} />
       </mesh>
-      <pointLight color="#ff8cc4" intensity={0.28} distance={0.5} />
+      <mesh ref={headRef}>
+        <sphereGeometry args={[0.013, 16, 16]} />
+        <meshBasicMaterial color="#f2fbff" transparent opacity={0.66} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </mesh>
     </group>
+  );
+}
+
+function StarSpeck({ position, index }) {
+  const ref = useRef();
+
+  useFrame(({ clock }) => {
+    if (!ref.current) return;
+    ref.current.material.opacity = 0.12 + Math.max(0, Math.sin(clock.elapsedTime * 0.9 + index * 1.7)) * 0.34;
+  });
+
+  return (
+    <mesh ref={ref} position={position}>
+      <sphereGeometry args={[0.012, 8, 8]} />
+      <meshBasicMaterial color={index % 3 === 0 ? "#9fd3ff" : "#ff9ccc"} transparent opacity={0.16} depthWrite={false} blending={THREE.NormalBlending} />
+    </mesh>
+  );
+}
+
+function SignalGlint({ position, index }) {
+  const ref = useRef();
+
+  useFrame(({ clock }) => {
+    if (!ref.current) return;
+    const glow = 0.5 + Math.sin(clock.elapsedTime * 1.4 + index * 1.13) * 0.5;
+    ref.current.material.opacity = 0.03 + glow * glow * 0.2;
+    ref.current.scale.setScalar(0.72 + glow * 0.52);
+  });
+
+  return (
+    <mesh ref={ref} position={position}>
+      <sphereGeometry args={[0.015, 10, 10]} />
+      <meshBasicMaterial color={index % 2 === 0 ? "#d6f5ff" : "#b8a8ff"} transparent opacity={0.13} depthWrite={false} blending={THREE.NormalBlending} />
+    </mesh>
   );
 }
 
@@ -144,52 +313,44 @@ function NodePoint({ label, position, index }) {
 
   useFrame(({ clock, pointer }) => {
     if (!ref.current) return;
-    const pulse = 1 + Math.sin(clock.elapsedTime * 1.4 + index * 0.62) * 0.08;
-    const cursorLift = 1 + Math.max(0, 1 - Math.hypot(pointer.x, pointer.y)) * 0.08;
+    const pulse = 1 + Math.sin(clock.elapsedTime * 1.1 + index * 0.62) * 0.045;
+    const cursorLift = 1 + Math.max(0, 1 - Math.hypot(pointer.x, pointer.y)) * 0.06;
     ref.current.scale.setScalar(pulse * cursorLift);
   });
 
   return (
-    <group position={position}>
-      <mesh ref={ref}>
-        <sphereGeometry args={[0.066, 24, 24]} />
-        <meshStandardMaterial
-          color="#ffd8eb"
-          emissive="#fc2293"
-          emissiveIntensity={0.38}
-          roughness={0.22}
-          metalness={0.42}
-        />
-      </mesh>
-      <mesh scale={[1.35, 1.35, 1.35]}>
-        <sphereGeometry args={[0.066, 24, 24]} />
-        <meshBasicMaterial color="#fc2293" transparent opacity={0.08} depthWrite={false} blending={THREE.AdditiveBlending} />
-      </mesh>
-      <LabelSprite label={label} position={[0, 0.15, 0.02]} />
+    <group ref={ref} position={position}>
+      <LabelSprite label={label} position={[0, 0, 0]} />
     </group>
   );
 }
 
 function BuckyballScene({ labels }) {
   const groupRef = useRef();
-  const points = useMemo(() => NODE_COORDS.map((point) => new THREE.Vector3(...point)), []);
+  const { points, edges, pulseEdges } = useMemo(() => createBuckyballTopology(), []);
 
   useFrame(({ clock, pointer }) => {
     if (!groupRef.current) return;
-    groupRef.current.rotation.y = clock.elapsedTime * 0.032 + pointer.x * 0.055;
-    groupRef.current.rotation.x = -0.16 + pointer.y * 0.035;
-    groupRef.current.rotation.z = Math.sin(clock.elapsedTime * 0.045) * 0.018;
+    groupRef.current.rotation.y = clock.elapsedTime * 0.011 + pointer.x * 0.035;
+    groupRef.current.rotation.x = -0.14 + pointer.y * 0.028;
+    groupRef.current.rotation.z = Math.sin(clock.elapsedTime * 0.02) * 0.009;
   });
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
-      {EDGES.map(([start, end, variant], index) => (
+      {edges.map(([start, end, variant], index) => (
         <Connection key={`edge-${index}`} start={points[start]} end={points[end]} variant={variant} />
       ))}
-      {PULSE_EDGES.map((edgeIndex, index) => {
-        const [start, end] = EDGES[edgeIndex];
-        return <DataPulse key={`pulse-${edgeIndex}`} start={points[start]} end={points[end]} offset={index / PULSE_EDGES.length} />;
+      {pulseEdges.map((edgeIndex, index) => {
+        const [start, end] = edges[edgeIndex];
+        return <DataPulse key={`pulse-${edgeIndex}`} start={points[start]} end={points[end]} offset={index / pulseEdges.length} />;
       })}
+      {STAR_POINTS.map((point, index) => (
+        <StarSpeck key={`star-${index}`} position={point} index={index} />
+      ))}
+      {SPARK_POINTS.map((point, index) => (
+        <SignalGlint key={`glint-${index}`} position={point} index={index} />
+      ))}
       {points.map((point, index) => (
         <NodePoint key={`node-${index}`} label={labels[index % labels.length]} position={point} index={index} />
       ))}
@@ -197,12 +358,8 @@ function BuckyballScene({ labels }) {
   );
 }
 
-function HeroBuckyballGraph({ labels = DATA_LABELS }) {
-  const normalizedLabels = useMemo(() => labels.map((label) => {
-    if (label.toLowerCase() === "technology") return "TECH";
-    if (label.toLowerCase() === "design") return "DESIGN";
-    return label.toUpperCase();
-  }), [labels]);
+function HeroBuckyballGraph() {
+  const normalizedLabels = DATA_LABELS;
 
   return (
     <div className="hero-buckyball" aria-hidden="true">
@@ -211,10 +368,10 @@ function HeroBuckyballGraph({ labels = DATA_LABELS }) {
         camera={{ position: [0, 0.04, 5.6], fov: 43 }}
         gl={{ alpha: true, antialias: true }}
       >
-        <ambientLight intensity={0.42} />
-        <pointLight position={[2.8, 2.4, 3.6]} intensity={2.05} color="#ff8cc4" />
-        <pointLight position={[-2.2, -1.2, 2.8]} intensity={1.15} color="#91bdff" />
-        <spotLight position={[0.2, 2.6, 4.2]} angle={0.46} penumbra={0.72} intensity={1.6} color="#fff4fb" />
+        <ambientLight intensity={0.36} />
+        <pointLight position={[2.8, 2.4, 3.6]} intensity={1.35} color="#91bdff" />
+        <pointLight position={[-2.2, -1.2, 2.8]} intensity={1.05} color="#ff8cc4" />
+        <spotLight position={[0.2, 2.6, 4.2]} angle={0.46} penumbra={0.72} intensity={0.92} color="#c7a7ff" />
         <BuckyballScene labels={normalizedLabels} />
       </Canvas>
     </div>
