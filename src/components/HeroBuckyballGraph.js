@@ -36,8 +36,6 @@ const EDGES = [
   [0, 14, "cross"], [2, 16, "cross"], [4, 18, "cross"], [6, 20, "cross"], [8, 12, "cross"], [10, 13, "cross"],
 ];
 
-const PULSE_EDGES = [1, 4, 8, 21, 24, 28, 31, 39, 42, 46, 52, 58, 64];
-
 const STAR_POINTS = [
   [-1.7, -1.3, 0.2], [-1.45, 1.18, 0.98], [-0.82, -1.64, -0.52], [-0.36, 1.72, 0.62],
   [0.44, -1.68, 0.96], [0.9, 1.5, -0.66], [1.62, -0.72, -0.18], [1.7, 0.9, 0.5],
@@ -107,9 +105,9 @@ function createBuckyballTopology() {
 
   const pulseEdges = edges
     .map((edge, index) => [edge, index])
-    .filter(([[, , variant]], index) => variant === "signal" || index % 13 === 0)
+    .filter(([[, , variant]], index) => variant === "signal" || index % 17 === 0)
     .map(([, index]) => index)
-    .slice(0, 16);
+    .slice(0, 10);
 
   return { points, edges, pulseEdges };
 }
@@ -176,7 +174,7 @@ function LabelSprite({ label, position }) {
       <spriteMaterial
         map={texture}
         transparent
-        opacity={0.82}
+        opacity={0.92}
         depthWrite={false}
         depthTest={false}
         blending={THREE.NormalBlending}
@@ -187,9 +185,9 @@ function LabelSprite({ label, position }) {
 
 function Connection({ start, end, variant }) {
   const color = variant === "outer" ? "#9fd3ff" : variant === "inner" ? "#b8a8ff" : variant === "signal" ? "#d6f5ff" : variant === "cross" ? "#ff9ccc" : "#7fb6ff";
-  const opacity = variant === "outer" ? 0.58 : variant === "inner" ? 0.46 : variant === "signal" ? 0.54 : variant === "cross" ? 0.34 : 0.28;
+  const opacity = variant === "outer" ? 0.7 : variant === "inner" ? 0.56 : variant === "signal" ? 0.68 : variant === "cross" ? 0.42 : 0.36;
   const dotSpacing = variant === "signal" ? 0.072 : variant === "cross" ? 0.095 : 0.085;
-  const dotSize = variant === "signal" ? 0.01 : variant === "cross" ? 0.007 : 0.008;
+  const dotSize = variant === "signal" ? 0.0115 : variant === "cross" ? 0.008 : 0.009;
   const dots = useMemo(() => {
     const distance = start.distanceTo(end);
     const dotCount = Math.max(6, Math.round(distance / dotSpacing));
@@ -221,54 +219,34 @@ function Connection({ start, end, variant }) {
 function DataPulse({ start, end, offset }) {
   const ref = useRef();
   const coreRef = useRef();
-  const glowRef = useRef();
-  const headRef = useRef();
-  const headGlowRef = useRef();
+  const haloRef = useRef();
   const direction = useMemo(() => end.clone().sub(start).normalize(), [start, end]);
   const quaternion = useMemo(() => new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction), [direction]);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
-    const t = (clock.elapsedTime * 0.28 + offset) % 1;
-    const tail = Math.max(0, t - 0.22);
+    const t = (clock.elapsedTime * 0.22 + offset) % 1;
+    const tail = Math.max(0, t - 0.18);
     const pulseStart = start.clone().lerp(end, tail);
     const pulseEnd = start.clone().lerp(end, t);
     const midpoint = pulseStart.clone().add(pulseEnd).multiplyScalar(0.5);
     const length = Math.max(0.001, pulseStart.distanceTo(pulseEnd));
-    const headY = length / 2;
-    const shimmer = 0.9 + Math.sin(clock.elapsedTime * 3.2 + offset * 8) * 0.04;
 
     ref.current.position.copy(midpoint);
     ref.current.quaternion.copy(quaternion);
     coreRef.current?.scale.set(1, length, 1);
-    glowRef.current?.scale.set(1, length, 1);
-    if (headRef.current) {
-      headRef.current.position.set(0, headY, 0);
-      headRef.current.scale.setScalar(shimmer);
-    }
-    if (headGlowRef.current) {
-      headGlowRef.current.position.set(0, headY, 0);
-      headGlowRef.current.scale.setScalar(shimmer);
-    }
+    haloRef.current?.scale.set(1, length, 1);
   });
 
   return (
     <group ref={ref}>
-      <mesh ref={glowRef}>
-        <cylinderGeometry args={[0.016, 0.002, 1, 12]} />
-        <meshBasicMaterial color="#9fd3ff" transparent opacity={0.13} depthWrite={false} blending={THREE.AdditiveBlending} />
+      <mesh ref={haloRef}>
+        <cylinderGeometry args={[0.018, 0.004, 1, 12]} />
+        <meshBasicMaterial color="#9fd3ff" transparent opacity={0.17} depthWrite={false} blending={THREE.AdditiveBlending} />
       </mesh>
       <mesh ref={coreRef}>
-        <cylinderGeometry args={[0.0065, 0.0012, 1, 12]} />
-        <meshBasicMaterial color="#d6f5ff" transparent opacity={0.54} depthWrite={false} blending={THREE.AdditiveBlending} />
-      </mesh>
-      <mesh ref={headGlowRef}>
-        <sphereGeometry args={[0.03, 16, 16]} />
-        <meshBasicMaterial color="#9fd3ff" transparent opacity={0.14} depthWrite={false} blending={THREE.AdditiveBlending} />
-      </mesh>
-      <mesh ref={headRef}>
-        <sphereGeometry args={[0.013, 16, 16]} />
-        <meshBasicMaterial color="#f2fbff" transparent opacity={0.66} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <cylinderGeometry args={[0.008, 0.002, 1, 12]} />
+        <meshBasicMaterial color="#e6f8ff" transparent opacity={0.56} depthWrite={false} blending={THREE.AdditiveBlending} />
       </mesh>
     </group>
   );
@@ -279,13 +257,13 @@ function StarSpeck({ position, index }) {
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
-    ref.current.material.opacity = 0.12 + Math.max(0, Math.sin(clock.elapsedTime * 0.9 + index * 1.7)) * 0.34;
+    ref.current.material.opacity = 0.16 + Math.max(0, Math.sin(clock.elapsedTime * 0.9 + index * 1.7)) * 0.42;
   });
 
   return (
     <mesh ref={ref} position={position}>
       <sphereGeometry args={[0.012, 8, 8]} />
-      <meshBasicMaterial color={index % 3 === 0 ? "#9fd3ff" : "#ff9ccc"} transparent opacity={0.16} depthWrite={false} blending={THREE.NormalBlending} />
+      <meshBasicMaterial color={index % 3 === 0 ? "#9fd3ff" : "#ff9ccc"} transparent opacity={0.22} depthWrite={false} blending={THREE.NormalBlending} />
     </mesh>
   );
 }
@@ -296,30 +274,21 @@ function SignalGlint({ position, index }) {
   useFrame(({ clock }) => {
     if (!ref.current) return;
     const glow = 0.5 + Math.sin(clock.elapsedTime * 1.4 + index * 1.13) * 0.5;
-    ref.current.material.opacity = 0.03 + glow * glow * 0.2;
+    ref.current.material.opacity = 0.05 + glow * glow * 0.27;
     ref.current.scale.setScalar(0.72 + glow * 0.52);
   });
 
   return (
     <mesh ref={ref} position={position}>
       <sphereGeometry args={[0.015, 10, 10]} />
-      <meshBasicMaterial color={index % 2 === 0 ? "#d6f5ff" : "#b8a8ff"} transparent opacity={0.13} depthWrite={false} blending={THREE.NormalBlending} />
+      <meshBasicMaterial color={index % 2 === 0 ? "#d6f5ff" : "#b8a8ff"} transparent opacity={0.18} depthWrite={false} blending={THREE.NormalBlending} />
     </mesh>
   );
 }
 
-function NodePoint({ label, position, index }) {
-  const ref = useRef();
-
-  useFrame(({ clock, pointer }) => {
-    if (!ref.current) return;
-    const pulse = 1 + Math.sin(clock.elapsedTime * 1.1 + index * 0.62) * 0.045;
-    const cursorLift = 1 + Math.max(0, 1 - Math.hypot(pointer.x, pointer.y)) * 0.06;
-    ref.current.scale.setScalar(pulse * cursorLift);
-  });
-
+function NodePoint({ label, position }) {
   return (
-    <group ref={ref} position={position}>
+    <group position={position}>
       <LabelSprite label={label} position={[0, 0, 0]} />
     </group>
   );
@@ -352,7 +321,7 @@ function BuckyballScene({ labels }) {
         <SignalGlint key={`glint-${index}`} position={point} index={index} />
       ))}
       {points.map((point, index) => (
-        <NodePoint key={`node-${index}`} label={labels[index % labels.length]} position={point} index={index} />
+        <NodePoint key={`node-${index}`} label={labels[index % labels.length]} position={point} />
       ))}
     </group>
   );

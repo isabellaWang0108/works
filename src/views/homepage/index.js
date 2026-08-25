@@ -20,8 +20,8 @@ import DesignSystemBackground from "../../assets/images/home/Project card/DS_bac
 const isCompactViewport = window.innerWidth < 990;
 
 const windowHeight = {
-    height: isCompactViewport ? 'auto' : window.innerHeight * 0.8,
-    minHeight: isCompactViewport ? 'auto' : 500,
+    height: isCompactViewport ? 'auto' : Math.max(window.innerHeight * 0.92, 680),
+    minHeight: isCompactViewport ? 'auto' : 680,
     position: 'relative',
 }
 
@@ -33,11 +33,14 @@ const aboutCardSpacing = {
 const projectCardTags = ["Consumer app", "0 to 1 product", "AI-assisted design"];
 
 class Homepage extends React.Component {
-    cursorTraceRef = React.createRef();
-    cursorTraceFrame = null;
-    cursorTraceLast = 0;
-    cursorTracePoint = null;
-    cursorTracePreviousPoint = null;
+    cursorDistortionRef = React.createRef();
+    cursorDistortionHeadRef = React.createRef();
+    cursorDistortionTailRef = React.createRef();
+    cursorDistortionFrame = null;
+    cursorDistortionTarget = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    cursorDistortionHead = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    cursorDistortionTail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    cursorDistortionReady = false;
     cursorTraceLabels = ["UX", "UI", "DATA", "B2B", "B2C", "AI", "RESEARCH", "Technology", "CS", "ML", "Design"];
 
     state = {
@@ -64,69 +67,76 @@ class Homepage extends React.Component {
             return;
         }
 
-        const isOverProjectCard = event.target.closest(".bg-project-card, .AboutProj");
-        this.cursorTraceRef.current?.classList.toggle("is-hidden", Boolean(isOverProjectCard));
+        const layer = this.cursorDistortionRef.current;
 
-        if (isOverProjectCard) {
-            this.cursorTracePreviousPoint = null;
+        if (!layer) {
             return;
         }
 
-        const now = performance.now();
-        if (now - this.cursorTraceLast < 54) {
-            return;
+        const isInteractive = event.target.closest("a, button, [role='link'], .bg-project-card, .AboutProj");
+
+        this.cursorDistortionTarget = { x: event.clientX, y: event.clientY };
+
+        if (!this.cursorDistortionReady) {
+            this.cursorDistortionReady = true;
+            this.cursorDistortionHead = this.cursorDistortionTarget;
+            this.cursorDistortionTail = this.cursorDistortionTarget;
         }
 
-        this.cursorTraceLast = now;
-        this.cursorTracePoint = { x: event.clientX, y: event.clientY };
+        layer.classList.add("is-visible");
+        layer.classList.toggle("is-strong", Boolean(isInteractive));
 
-        if (!this.cursorTraceFrame) {
-            this.cursorTraceFrame = window.requestAnimationFrame(this.spawnCursorTrace);
+        if (!this.cursorDistortionFrame) {
+            this.cursorDistortionFrame = window.requestAnimationFrame(this.animateCursorDistortion);
         }
     }
 
-    spawnCursorTrace = () => {
-        this.cursorTraceFrame = null;
-        const layer = this.cursorTraceRef.current;
+    handleHeroPointerLeave = () => {
+        this.cursorDistortionRef.current?.classList.remove("is-visible", "is-strong");
+    }
 
-        if (!layer || !this.cursorTracePoint) {
+    animateCursorDistortion = () => {
+        const layer = this.cursorDistortionRef.current;
+        const head = this.cursorDistortionHeadRef.current;
+        const tail = this.cursorDistortionTailRef.current;
+
+        if (!layer || !head || !tail) {
+            this.cursorDistortionFrame = null;
             return;
         }
 
-        const point = this.cursorTracePoint;
-        const previousPoint = this.cursorTracePreviousPoint;
-        const node = document.createElement("span");
-        const nodeSize = Math.round(4 + Math.random() * 3);
+        const headEase = layer.classList.contains("is-strong") ? 0.24 : 0.2;
+        const tailEase = layer.classList.contains("is-strong") ? 0.12 : 0.095;
 
-        node.className = "cursor-trace-node";
-        node.textContent = this.cursorTraceLabels[Math.floor(Math.random() * this.cursorTraceLabels.length)];
-        node.style.left = `${point.x}px`;
-        node.style.top = `${point.y}px`;
-        node.style.setProperty("--node-size", `${nodeSize}px`);
-        node.style.setProperty("--node-drift-x", `${Math.round((Math.random() - 0.5) * 18)}px`);
-        node.style.setProperty("--node-drift-y", `${Math.round((Math.random() - 0.5) * 18)}px`);
-        layer.appendChild(node);
-        window.setTimeout(() => node.remove(), 760);
+        this.cursorDistortionHead = {
+            x: this.cursorDistortionHead.x + (this.cursorDistortionTarget.x - this.cursorDistortionHead.x) * headEase,
+            y: this.cursorDistortionHead.y + (this.cursorDistortionTarget.y - this.cursorDistortionHead.y) * headEase,
+        };
+        this.cursorDistortionTail = {
+            x: this.cursorDistortionTail.x + (this.cursorDistortionHead.x - this.cursorDistortionTail.x) * tailEase,
+            y: this.cursorDistortionTail.y + (this.cursorDistortionHead.y - this.cursorDistortionTail.y) * tailEase,
+        };
 
-        if (previousPoint) {
-            const deltaX = point.x - previousPoint.x;
-            const deltaY = point.y - previousPoint.y;
-            const distance = Math.hypot(deltaX, deltaY);
+        const tailDistance = Math.hypot(
+            this.cursorDistortionHead.x - this.cursorDistortionTail.x,
+            this.cursorDistortionHead.y - this.cursorDistortionTail.y
+        );
+        head.style.transform = `translate3d(${this.cursorDistortionHead.x}px, ${this.cursorDistortionHead.y}px, 0) translate(-50%, -50%)`;
+        tail.style.transform = `translate3d(${this.cursorDistortionTail.x}px, ${this.cursorDistortionTail.y}px, 0) translate(-50%, -50%)`;
 
-            if (distance > 8 && distance < 180) {
-                const link = document.createElement("span");
-
-                link.className = "cursor-trace-link";
-                link.style.left = `${previousPoint.x}px`;
-                link.style.top = `${previousPoint.y}px`;
-                link.style.width = `${distance}px`;
-                link.style.transform = `rotate(${Math.atan2(deltaY, deltaX)}rad)`;
-                layer.appendChild(link);
-                window.setTimeout(() => link.remove(), 620);
-            }
+        if (
+            layer.classList.contains("is-visible") ||
+            Math.hypot(
+                this.cursorDistortionTarget.x - this.cursorDistortionHead.x,
+                this.cursorDistortionTarget.y - this.cursorDistortionHead.y
+            ) > 0.8 ||
+            tailDistance > 0.8
+        ) {
+            this.cursorDistortionFrame = window.requestAnimationFrame(this.animateCursorDistortion);
+            return;
         }
 
-        this.cursorTracePreviousPoint = point;
+        this.cursorDistortionFrame = null;
     }
 
     handleCardKeyDown = (event, link, isExternal = false) => {
@@ -159,8 +169,8 @@ class Homepage extends React.Component {
     // Save scroll position when the homepage is about to unmount
     componentWillUnmount() {
         sessionStorage.setItem("homepageScrollPosition", window.pageYOffset);
-        if (this.cursorTraceFrame) {
-            window.cancelAnimationFrame(this.cursorTraceFrame);
+        if (this.cursorDistortionFrame) {
+            window.cancelAnimationFrame(this.cursorDistortionFrame);
         }
     }
 
@@ -173,8 +183,11 @@ class Homepage extends React.Component {
 
                 <NavigationBar href="#contactPart" contact />
 
-                <div id="HP_container" className='HP_container' onPointerMove={this.handleHeroPointerMove}>
-                    <div className="cursor-trace-layer" ref={this.cursorTraceRef} aria-hidden="true"></div>
+                <div id="HP_container" className='HP_container' onPointerMove={this.handleHeroPointerMove} onPointerLeave={this.handleHeroPointerLeave}>
+                    <div className="cursor-distortion-layer" ref={this.cursorDistortionRef} aria-hidden="true">
+                        <span className="cursor-liquid-distortion cursor-liquid-distortion-tail" ref={this.cursorDistortionTailRef}></span>
+                        <span className="cursor-liquid-distortion cursor-liquid-distortion-head" ref={this.cursorDistortionHeadRef}></span>
+                    </div>
 
 
 
