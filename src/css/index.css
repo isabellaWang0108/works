@@ -124,9 +124,36 @@ a {
   pointer-events: none;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.07), transparent 34%),
-    linear-gradient(90deg, rgba(255, 140, 196, 0.055), transparent 28%, rgba(159, 211, 255, 0.045));
+    linear-gradient(90deg, rgba(255, 140, 196, 0.05), transparent 34%, rgba(255, 255, 255, 0.035));
   opacity: 0.72;
   mix-blend-mode: screen;
+}
+
+.is-site-scrolling .site-nav-glass::before {
+  backdrop-filter: blur(24px) saturate(112%);
+  -webkit-backdrop-filter: blur(24px) saturate(112%);
+}
+
+.is-site-scrolling .bg-project-card,
+.is-site-scrolling .AboutProj-content,
+.is-site-scrolling .inpage-contact-card,
+.is-site-scrolling .about-panel,
+.is-site-scrolling .workflow-showcase-lead,
+.is-site-scrolling .strategy-card,
+.is-site-scrolling .discovery-pain-card,
+.is-site-scrolling .architecture-conflict div,
+.is-site-scrolling .project-page .bullet-callout,
+.is-site-scrolling .project-page .pull-quote,
+.is-site-scrolling .back-btn-fixed {
+  backdrop-filter: blur(8px) saturate(105%);
+  -webkit-backdrop-filter: blur(8px) saturate(105%);
+}
+
+.is-site-scrolling .cursor-liquid-distortion,
+.is-site-scrolling .project-card-backdrop,
+.is-site-scrolling .project-card-img,
+.is-site-scrolling .wireframe-background {
+  filter: none;
 }
 
 .site-logo,
@@ -141,7 +168,7 @@ a {
 .site-logo,
 .site-nav-link {
   text-decoration: none;
-  text-shadow: 0 1px 16px rgba(159, 211, 255, 0.16);
+  text-shadow: 0 1px 16px rgba(255, 255, 255, 0.12);
 }
 
 .site-nav-brand-link:hover {
@@ -169,7 +196,7 @@ a {
   width: 40px;
   min-height: 40px;
   padding: 0;
-  border: 1px solid rgba(204, 230, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   color: #fff;
   background: rgba(255, 255, 255, 0.035);
@@ -180,7 +207,7 @@ a {
   width: 19px;
   height: 19px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(159, 211, 255, 0.16));
+  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.1));
 }
 
 .site-nav-icon-link .material-symbols-outlined {
@@ -191,9 +218,9 @@ a {
 .site-nav-icon-link:hover,
 .site-nav-link:hover {
   transform: translateY(-1px);
-  border-color: rgba(159, 211, 255, 0.44);
-  background: rgba(159, 211, 255, 0.105);
-  box-shadow: 0 8px 24px rgba(114, 178, 255, 0.13);
+  border-color: rgba(255, 210, 233, 0.42);
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: 0 8px 24px rgba(255, 140, 196, 0.1);
 }
 
 .site-nav-link {
@@ -807,6 +834,8 @@ a:hover {
   padding: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 34px;
+  content-visibility: auto;
+  contain-intrinsic-size: 720px;
 }
 
 .project-page .content-block h2 {
@@ -1420,6 +1449,8 @@ a:hover {
   min-height: 560px;
   overflow: hidden;
   width: 100%;
+  content-visibility: auto;
+  contain-intrinsic-size: 560px;
 }
 
 .projectRow .contentblock {

@@ -29,6 +29,8 @@ import InpageContactMe from "../../../components/inpage_contactme"
 
 
 class DS extends React.Component {
+    activeSection = null;
+    scrollCheckFrame = null;
 
     content = [
         { title: "Identifying the problems", id: "section1" },
@@ -78,14 +80,18 @@ class DS extends React.Component {
             }
         }
 
-        this.neutral();
-        this.turnPink('p' + activeSection);
+        if (activeSection !== this.activeSection) {
+            this.activeSection = activeSection;
+            this.neutral();
+            this.turnPink('p' + activeSection);
+        }
         $('#back2Top').css("display", activeSection >= 2 ? "inherit" : "none");
     }
 
     menuItem(val) {
         const container = $('.page-container');
         const selectPosition = this.getSectionScrollTop($("#section" + val), container);
+        this.activeSection = val;
         this.neutral();
         this.turnPink('p' + val);
         $('#back2Top').css("display", val >= 2 ? "inherit" : "none");
@@ -93,9 +99,21 @@ class DS extends React.Component {
     }
 
 
-    handleScroll = e => {
-        e.preventDefault();
-        this.scrollCheck();
+    handleScroll = () => {
+        if (this.scrollCheckFrame) {
+            return;
+        }
+
+        this.scrollCheckFrame = window.requestAnimationFrame(() => {
+            this.scrollCheckFrame = null;
+            this.scrollCheck();
+        });
+    }
+
+    componentWillUnmount() {
+        if (this.scrollCheckFrame) {
+            window.cancelAnimationFrame(this.scrollCheckFrame);
+        }
     }
 
 
