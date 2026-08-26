@@ -20,6 +20,7 @@
 
 :root {
   --site-page-rail: max(clamp(24px, 7vw, 100px), calc((100vw - 1240px) / 2));
+  --site-nav-height: 64px;
 }
 
 html {
@@ -80,36 +81,89 @@ a {
   pointer-events: none;
 }
 
+.site-nav-distortion-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.site-nav-distortion-band {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: var(--site-nav-height);
+  overflow: hidden;
+  pointer-events: none;
+  background: rgba(3, 4, 5, 0.2);
+}
+
+.site-nav-distortion-clone {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  margin: 0 !important;
+  pointer-events: none !important;
+  filter: url("#site-nav-wave-distortion");
+  transform-origin: top left;
+  will-change: transform, filter;
+}
+
+.site-nav-distortion-clone,
+.site-nav-distortion-clone * {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
 .site-nav-glass {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
   width: 100%;
-  min-height: 64px;
+  min-height: var(--site-nav-height);
   margin: 0;
   padding-left: max(var(--site-page-rail), env(safe-area-inset-left));
   padding-right: max(var(--site-page-rail), env(safe-area-inset-right));
   border: 0;
   border-bottom: 1px solid rgba(236, 242, 255, 0.08);
   border-radius: 0;
-  background: rgba(7, 10, 16, 0.42);
+  background: rgba(7, 10, 16, 0.2);
   box-shadow:
     0 14px 38px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px) saturate(125%);
-  -webkit-backdrop-filter: blur(16px) saturate(125%);
   overflow: hidden;
   pointer-events: auto;
 }
 
 .site-nav-glass::before {
-  content: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(7, 10, 16, 0.42);
+  backdrop-filter: blur(18px) saturate(128%);
+  -webkit-backdrop-filter: blur(18px) saturate(128%);
+  transform: translateZ(0);
 }
 
 .site-nav-glass::after {
-  content: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), transparent 34%),
+    linear-gradient(90deg, rgba(255, 140, 196, 0.055), transparent 28%, rgba(159, 211, 255, 0.045));
+  opacity: 0.72;
+  mix-blend-mode: screen;
 }
 
 .site-logo,
@@ -188,6 +242,7 @@ a {
 @media (max-width: 560px) {
   :root {
     --site-page-rail: 20px;
+    --site-nav-height: 56px;
   }
 
   .site-nav-glass {
@@ -3533,6 +3588,7 @@ a:hover {
   .cursor-liquid-distortion,
   .hero-buckyball,
   .ambient-hero-canvas,
+  .site-nav-distortion-band,
   .landing-tech-layer,
   .content-background-grid,
   .cursor-matrix-layer,
@@ -3563,6 +3619,7 @@ a:hover {
     opacity: 0.72;
     transform: scaleX(1);
   }
+
 }
 
 .fade-out {
