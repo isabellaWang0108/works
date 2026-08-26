@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useId, useMemo, useRef, useState } from "react";
 
 const BASE_WIDTH = 1440;
 const BASE_HEIGHT = 900;
@@ -96,13 +96,14 @@ const getResponsiveWireframe = (width, height) => {
 };
 
 const WireframeBackground = () => {
-  const instanceId = useMemo(() => `wireframe-${Math.random().toString(36).slice(2)}`, []);
+  const instanceId = useId().replace(/:/g, "");
   const gradientId = `${instanceId}-center-ray-fade`;
   const maskId = `${instanceId}-fade-rays-to-center`;
   const [viewport, setViewport] = useState({
     width: typeof window === "undefined" ? BASE_WIDTH : window.innerWidth,
     height: typeof window === "undefined" ? BASE_HEIGHT : window.innerHeight,
   });
+  const viewportRef = useRef(viewport);
 
   useEffect(() => {
     let frameId;
@@ -110,15 +111,25 @@ const WireframeBackground = () => {
     const updateViewport = () => {
       window.cancelAnimationFrame(frameId);
       frameId = window.requestAnimationFrame(() => {
-        setViewport({
+        const nextViewport = {
           width: window.innerWidth,
           height: window.innerHeight,
-        });
+        };
+
+        if (
+          viewportRef.current.width === nextViewport.width &&
+          viewportRef.current.height === nextViewport.height
+        ) {
+          return;
+        }
+
+        viewportRef.current = nextViewport;
+        setViewport(nextViewport);
       });
     };
 
     updateViewport();
-    window.addEventListener("resize", updateViewport);
+    window.addEventListener("resize", updateViewport, { passive: true });
 
     return () => {
       window.cancelAnimationFrame(frameId);
@@ -189,4 +200,4 @@ const WireframeBackground = () => {
   );
 };
 
-export default WireframeBackground;
+export default React.memo(WireframeBackground);

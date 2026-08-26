@@ -4,21 +4,22 @@ import "../../css/index.css"
 
 import NavigationBar from "../../components/navigation"
 import InpageContactMe from "../../components/inpage_contactme"
-import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
 import WireframeBackground from "../../components/WireframeBackground"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, VOICE_TAGS } from "../../components/projectTags"
 
 import NYTangoProduct from "../../assets/images/home/Project card/NYTango_product.svg"
-import NYTangoBackground from "../../assets/images/home/Project card/NY_Tango_Background.png"
+import NYTangoBackground from "../../assets/images/home/Project card/optimized/NY_Tango_Background.webp"
 import VoiceProduct from "../../assets/images/home/Project card/Voice_product.svg"
-import VoiceBackground from "../../assets/images/home/Project card/Voice_background.png"
+import VoiceBackground from "../../assets/images/home/Project card/optimized/Voice_background.webp"
 import AIPlatformProduct from "../../assets/images/home/Project card/AIPlatform_product.svg"
-import AIPlatformBackground from "../../assets/images/home/Project card/AIPlatform_background.png"
+import AIPlatformBackground from "../../assets/images/home/Project card/optimized/AIPlatform_background.webp"
 import DesignSystemProduct from "../../assets/images/home/Project card/DS_product.svg"
-import DesignSystemBackground from "../../assets/images/home/Project card/DS_background.png"
+import DesignSystemBackground from "../../assets/images/home/Project card/optimized/DS_background.webp"
 
+const HeroBuckyballGraph = React.lazy(() => import("../../components/HeroBuckyballGraph"));
 
 const isCompactViewport = window.innerWidth < 990;
+const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const windowHeight = {
     height: isCompactViewport ? 'auto' : Math.max(window.innerHeight * 0.92, 680),
@@ -37,11 +38,6 @@ class Homepage extends React.Component {
     cursorDistortionRef = React.createRef();
     cursorDistortionHeadRef = React.createRef();
     cursorDistortionTailRef = React.createRef();
-    cursorDistortionFrame = null;
-    cursorDistortionTarget = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    cursorDistortionHead = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    cursorDistortionTail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    cursorDistortionReady = false;
     cursorTraceLabels = ["UX", "UI", "DATA", "B2B", "B2C", "AI", "RESEARCH", "Technology", "CS", "ML", "Design"];
 
     state = {
@@ -75,69 +71,22 @@ class Homepage extends React.Component {
         }
 
         const isInteractive = event.target.closest("a, button, [role='link'], .bg-project-card, .AboutProj");
-
-        this.cursorDistortionTarget = { x: event.clientX, y: event.clientY };
-
-        if (!this.cursorDistortionReady) {
-            this.cursorDistortionReady = true;
-            this.cursorDistortionHead = this.cursorDistortionTarget;
-            this.cursorDistortionTail = this.cursorDistortionTarget;
-        }
+        const cursorPosition = { x: event.clientX, y: event.clientY };
 
         layer.classList.add("is-visible");
         layer.classList.toggle("is-strong", Boolean(isInteractive));
 
-        if (!this.cursorDistortionFrame) {
-            this.cursorDistortionFrame = window.requestAnimationFrame(this.animateCursorDistortion);
+        const transform = `translate3d(${cursorPosition.x}px, ${cursorPosition.y}px, 0) translate(-50%, -50%)`;
+        if (this.cursorDistortionHeadRef.current) {
+            this.cursorDistortionHeadRef.current.style.transform = transform;
+        }
+        if (this.cursorDistortionTailRef.current) {
+            this.cursorDistortionTailRef.current.style.transform = transform;
         }
     }
 
     handleHeroPointerLeave = () => {
         this.cursorDistortionRef.current?.classList.remove("is-visible", "is-strong");
-    }
-
-    animateCursorDistortion = () => {
-        const layer = this.cursorDistortionRef.current;
-        const head = this.cursorDistortionHeadRef.current;
-        const tail = this.cursorDistortionTailRef.current;
-
-        if (!layer || !head || !tail) {
-            this.cursorDistortionFrame = null;
-            return;
-        }
-
-        const headEase = layer.classList.contains("is-strong") ? 0.24 : 0.2;
-        const tailEase = layer.classList.contains("is-strong") ? 0.12 : 0.095;
-
-        this.cursorDistortionHead = {
-            x: this.cursorDistortionHead.x + (this.cursorDistortionTarget.x - this.cursorDistortionHead.x) * headEase,
-            y: this.cursorDistortionHead.y + (this.cursorDistortionTarget.y - this.cursorDistortionHead.y) * headEase,
-        };
-        this.cursorDistortionTail = {
-            x: this.cursorDistortionTail.x + (this.cursorDistortionHead.x - this.cursorDistortionTail.x) * tailEase,
-            y: this.cursorDistortionTail.y + (this.cursorDistortionHead.y - this.cursorDistortionTail.y) * tailEase,
-        };
-
-        const tailDistance = Math.hypot(
-            this.cursorDistortionHead.x - this.cursorDistortionTail.x,
-            this.cursorDistortionHead.y - this.cursorDistortionTail.y
-        );
-        head.style.transform = `translate3d(${this.cursorDistortionHead.x}px, ${this.cursorDistortionHead.y}px, 0) translate(-50%, -50%)`;
-        tail.style.transform = `translate3d(${this.cursorDistortionTail.x}px, ${this.cursorDistortionTail.y}px, 0) translate(-50%, -50%)`;
-
-        if (
-            layer.classList.contains("is-visible") ||
-            Math.hypot(
-                this.cursorDistortionTarget.x - this.cursorDistortionHead.x,
-                this.cursorDistortionTarget.y - this.cursorDistortionHead.y
-            ) > 0.8 ||
-            tailDistance > 0.8
-        ) {
-            this.cursorDistortionFrame = window.requestAnimationFrame(this.animateCursorDistortion);
-            return;
-        }
-
-        this.cursorDistortionFrame = null;
     }
 
     handleCardKeyDown = (event, link, isExternal = false) => {
@@ -170,9 +119,6 @@ class Homepage extends React.Component {
     // Save scroll position when the homepage is about to unmount
     componentWillUnmount() {
         sessionStorage.setItem("homepageScrollPosition", window.pageYOffset);
-        if (this.cursorDistortionFrame) {
-            window.cancelAnimationFrame(this.cursorDistortionFrame);
-        }
     }
 
     render() {
@@ -199,14 +145,6 @@ class Homepage extends React.Component {
                     >
                         <div className="landing-tech-layer" aria-hidden="true">
                             <WireframeBackground />
-                            <span>0101</span>
-                            <span>AI_FLOW</span>
-                            <span>SYS</span>
-                            <span>UX</span>
-                            <span>1010</span>
-                            <span>MODEL</span>
-                            <span>0101</span>
-                            <span>DESIGN</span>
                         </div>
                         <div id="landingPart" >
                             <div className='landingpage_Intro fade-in'>
@@ -217,7 +155,11 @@ class Homepage extends React.Component {
                                     Product Designer shaping complex data and ambiguous workflows into intuitive UX that speed up critical work.
                                 </h3>
                             </div>
-                            <HeroBuckyballGraph labels={this.cursorTraceLabels} />
+                            {!isCompactViewport && !prefersReducedMotion() && (
+                                <React.Suspense fallback={null}>
+                                    <HeroBuckyballGraph labels={this.cursorTraceLabels} />
+                                </React.Suspense>
+                            )}
                         </div>
                     </div>
 
