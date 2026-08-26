@@ -1,4 +1,5 @@
 import React from "react";
+import WireframeBackground from "./WireframeBackground";
 
 class ContentLayout extends React.Component {
     layoutRef = React.createRef();
@@ -7,6 +8,7 @@ class ContentLayout extends React.Component {
         return (
             <div className="content-layout" ref={this.layoutRef}>
                 <div className="content-background-grid" aria-hidden="true">
+                    <WireframeBackground />
                     <span>0101</span>
                     <span>AI_FLOW</span>
                     <span>SYS</span>

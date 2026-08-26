@@ -1,0 +1,47 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" style="overflow: visible;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="center-ray-fade" cx="720" cy="450" r="210" gradientUnits="userSpaceOnUse" gradientTransform="translate(720 450) scale(1 0.62) translate(-720 -450)">
+      <stop offset="0" stop-color="black"/>
+      <stop offset="0.26" stop-color="black"/>
+      <stop offset="0.58" stop-color="#6A6A6A"/>
+      <stop offset="1" stop-color="white"/>
+    </radialGradient>
+    <mask id="fade-rays-to-center">
+      <rect x="-120" y="-75" width="1680" height="1050" fill="white"/>
+      <rect x="-120" y="-75" width="1680" height="1050" fill="url(#center-ray-fade)"/>
+    </mask>
+  </defs>
+  <g stroke="#3E454C" stroke-linecap="square" stroke-linejoin="miter">
+    <g mask="url(#fade-rays-to-center)">
+      <line x1="-120" y1="-75" x2="720" y2="450" stroke-width="1"/>
+      <line x1="1560" y1="-75" x2="720" y2="450" stroke-width="1"/>
+      <line x1="-120" y1="975" x2="720" y2="450" stroke-width="1"/>
+      <line x1="1560" y1="975" x2="720" y2="450" stroke-width="1"/>
+
+      <line x1="216" y1="-75" x2="720" y2="450" stroke-width="1"/>
+      <line x1="552" y1="-75" x2="720" y2="450" stroke-width="1"/>
+      <line x1="888" y1="-75" x2="720" y2="450" stroke-width="1"/>
+      <line x1="1224" y1="-75" x2="720" y2="450" stroke-width="1"/>
+
+      <line x1="216" y1="975" x2="720" y2="450" stroke-width="1"/>
+      <line x1="552" y1="975" x2="720" y2="450" stroke-width="1"/>
+      <line x1="888" y1="975" x2="720" y2="450" stroke-width="1"/>
+      <line x1="1224" y1="975" x2="720" y2="450" stroke-width="1"/>
+
+      <line x1="-120" y1="135" x2="720" y2="450" stroke-width="1"/>
+      <line x1="-120" y1="345" x2="720" y2="450" stroke-width="1"/>
+      <line x1="-120" y1="555" x2="720" y2="450" stroke-width="1"/>
+      <line x1="-120" y1="765" x2="720" y2="450" stroke-width="1"/>
+
+      <line x1="1560" y1="135" x2="720" y2="450" stroke-width="1"/>
+      <line x1="1560" y1="345" x2="720" y2="450" stroke-width="1"/>
+      <line x1="1560" y1="555" x2="720" y2="450" stroke-width="1"/>
+      <line x1="1560" y1="765" x2="720" y2="450" stroke-width="1"/>
+    </g>
+
+    <rect x="0" y="0" width="1440" height="900" stroke-width="1"/>
+    <rect x="220" y="138" width="1000" height="624" stroke-width="1"/>
+    <rect x="390" y="244" width="660" height="412" stroke-width="1"/>
+    <rect x="520" y="326" width="400" height="248" stroke="#252B30" stroke-width="1"/>
+  </g>
+</svg>

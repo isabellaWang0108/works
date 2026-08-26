@@ -5,6 +5,7 @@ import "../../css/index.css"
 import NavigationBar from "../../components/navigation"
 import InpageContactMe from "../../components/inpage_contactme"
 import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
+import WireframeBackground from "../../components/WireframeBackground"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, VOICE_TAGS } from "../../components/projectTags"
 
 import NYTangoProduct from "../../assets/images/home/Project card/NYTango_product.svg"
@@ -197,6 +198,7 @@ class Homepage extends React.Component {
                         className="sessionContainer landing-session"
                     >
                         <div className="landing-tech-layer" aria-hidden="true">
+                            <WireframeBackground />
                             <span>0101</span>
                             <span>AI_FLOW</span>
                             <span>SYS</span>

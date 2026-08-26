@@ -112,7 +112,7 @@ function createBuckyballTopology() {
   return { points, edges, pulseEdges };
 }
 
-function makeLabelTexture(label) {
+function makeLabelTexture(label, isRear = false) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
   const width = label.length > 8 ? 620 : label.length > 4 ? 500 : 340;
@@ -123,39 +123,28 @@ function makeLabelTexture(label) {
   canvas.height = height;
   context.clearRect(0, 0, width, height);
 
-  const glow = context.createRadialGradient(width / 2, centerY, 4, width / 2, centerY, width * 0.34);
-  glow.addColorStop(0, "rgba(238, 247, 255, 0.18)");
-  glow.addColorStop(0.28, "rgba(122, 197, 255, 0.12)");
-  glow.addColorStop(0.62, "rgba(252, 34, 147, 0.06)");
-  glow.addColorStop(0.84, "rgba(173, 143, 255, 0.03)");
-  glow.addColorStop(1, "rgba(122, 197, 255, 0)");
-  context.fillStyle = glow;
-  context.fillRect(0, 0, width, height);
-
   const gradient = context.createLinearGradient(width * 0.18, centerY - 22, width * 0.82, centerY + 18);
-  gradient.addColorStop(0, "rgba(247, 251, 255, 0.94)");
-  gradient.addColorStop(0.5, "rgba(190, 220, 255, 0.88)");
-  gradient.addColorStop(1, "rgba(255, 154, 209, 0.82)");
+  if (isRear) {
+    gradient.addColorStop(0, "#5B5964");
+    gradient.addColorStop(0.5, "#554C58");
+    gradient.addColorStop(1, "#664858");
+  } else {
+    gradient.addColorStop(0, "#C7BBC5");
+    gradient.addColorStop(0.5, "#AA98A8");
+    gradient.addColorStop(1, "#B77C98");
+  }
 
   context.font = "400 30px SuisseIntl-Regular, Inter, Helvetica Neue, Arial, sans-serif";
   context.textAlign = "center";
   context.textBaseline = "middle";
   context.letterSpacing = "1.4px";
   context.lineWidth = 1.8;
-  context.strokeStyle = "rgba(5, 7, 13, 0.72)";
-  context.shadowColor = "rgba(116, 196, 255, 0.34)";
-  context.shadowBlur = 8;
+  context.strokeStyle = isRear ? "#080A0E" : "#05070D";
+  context.shadowColor = isRear ? "#3D343A" : "#7A6470";
+  context.shadowBlur = isRear ? 24 : 48;
   context.strokeText(label, width / 2, centerY);
   context.fillStyle = gradient;
   context.fillText(label, width / 2, centerY);
-
-  context.shadowBlur = 4;
-  context.strokeStyle = "rgba(122, 197, 255, 0.2)";
-  context.lineWidth = 1.1;
-  context.beginPath();
-  context.moveTo(width * 0.32, centerY + 27);
-  context.lineTo(width * 0.68, centerY + 27);
-  context.stroke();
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
@@ -166,51 +155,86 @@ function makeLabelTexture(label) {
 }
 
 function LabelSprite({ label, position }) {
-  const texture = useMemo(() => makeLabelTexture(label), [label]);
+  const spriteRef = useRef();
+  const materialRef = useRef();
+  const worldPosition = useMemo(() => new THREE.Vector3(), []);
+  const frontTexture = useMemo(() => makeLabelTexture(label, false), [label]);
+  const rearTexture = useMemo(() => makeLabelTexture(label, true), [label]);
   const width = label.length > 8 ? 0.98 : label.length > 4 ? 0.79 : 0.54;
 
+  useFrame(() => {
+    if (!spriteRef.current || !materialRef.current) return;
+    spriteRef.current.getWorldPosition(worldPosition);
+    const nextTexture = worldPosition.z >= CONNECTION_DEPTH_SPLIT ? frontTexture : rearTexture;
+    if (materialRef.current.map !== nextTexture) {
+      materialRef.current.map = nextTexture;
+      materialRef.current.needsUpdate = true;
+    }
+  });
+
   return (
-    <sprite position={position} scale={[width, 0.3, 1]}>
+    <sprite ref={spriteRef} position={position} scale={[width, 0.3, 1]}>
       <spriteMaterial
-        map={texture}
+        ref={materialRef}
+        map={position.z >= CONNECTION_DEPTH_SPLIT ? frontTexture : rearTexture}
         transparent
-        opacity={0.92}
+        opacity={1}
         depthWrite={false}
-        depthTest={false}
+        depthTest
         blending={THREE.NormalBlending}
+        toneMapped={false}
       />
     </sprite>
   );
 }
 
+const CONNECTION_FRONT_COLOR = "#71848B";
+const CONNECTION_REAR_COLOR = "#343A42";
+const CONNECTION_DEPTH_SPLIT = 0;
+const CONNECTION_DOT_SPACING = 0.086;
+const CONNECTION_DOT_SIZE = 0.0095;
+
+function ConnectionDot({ position }) {
+  const meshRef = useRef();
+  const materialRef = useRef();
+  const worldPosition = useMemo(() => new THREE.Vector3(), []);
+
+  useFrame(() => {
+    if (!meshRef.current || !materialRef.current) return;
+    meshRef.current.getWorldPosition(worldPosition);
+    materialRef.current.color.set(worldPosition.z >= CONNECTION_DEPTH_SPLIT ? CONNECTION_FRONT_COLOR : CONNECTION_REAR_COLOR);
+  });
+
+  return (
+    <mesh ref={meshRef} position={position}>
+      <sphereGeometry args={[CONNECTION_DOT_SIZE, 8, 8]} />
+      <meshBasicMaterial
+        ref={materialRef}
+        color={position.z >= CONNECTION_DEPTH_SPLIT ? CONNECTION_FRONT_COLOR : CONNECTION_REAR_COLOR}
+        depthWrite
+        depthTest
+        blending={THREE.NormalBlending}
+        toneMapped={false}
+      />
+    </mesh>
+  );
+}
+
 function Connection({ start, end, variant }) {
-  const color = variant === "outer" ? "#9fd3ff" : variant === "inner" ? "#b8a8ff" : variant === "signal" ? "#d6f5ff" : variant === "cross" ? "#ff9ccc" : "#7fb6ff";
-  const opacity = variant === "outer" ? 0.7 : variant === "inner" ? 0.56 : variant === "signal" ? 0.68 : variant === "cross" ? 0.42 : 0.36;
-  const dotSpacing = variant === "signal" ? 0.072 : variant === "cross" ? 0.095 : 0.085;
-  const dotSize = variant === "signal" ? 0.0115 : variant === "cross" ? 0.008 : 0.009;
   const dots = useMemo(() => {
     const distance = start.distanceTo(end);
-    const dotCount = Math.max(6, Math.round(distance / dotSpacing));
+    const dotCount = Math.max(6, Math.round(distance / CONNECTION_DOT_SPACING));
 
     return Array.from({ length: dotCount }, (_, index) => {
       const t = (index + 1) / (dotCount + 1);
       return start.clone().lerp(end, t);
     });
-  }, [dotSpacing, start, end]);
+  }, [start, end]);
 
   return (
     <group>
       {dots.map((position, index) => (
-        <mesh key={`${variant}-${index}`} position={position}>
-          <sphereGeometry args={[dotSize, 8, 8]} />
-          <meshBasicMaterial
-            color={color}
-            transparent
-            opacity={opacity}
-            depthWrite={false}
-            blending={THREE.NormalBlending}
-          />
-        </mesh>
+        <ConnectionDot key={`${variant}-${index}`} position={position} />
       ))}
     </group>
   );
