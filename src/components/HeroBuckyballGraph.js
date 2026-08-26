@@ -266,11 +266,11 @@ function DataPulse({ start, end, offset }) {
     <group ref={ref}>
       <mesh ref={haloRef}>
         <cylinderGeometry args={[0.018, 0.004, 1, 12]} />
-        <meshBasicMaterial color="#9fd3ff" transparent opacity={0.17} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color="#ff8cc4" transparent opacity={0.17} depthWrite={false} blending={THREE.AdditiveBlending} />
       </mesh>
       <mesh ref={coreRef}>
         <cylinderGeometry args={[0.008, 0.002, 1, 12]} />
-        <meshBasicMaterial color="#e6f8ff" transparent opacity={0.56} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color="#ffe2f2" transparent opacity={0.56} depthWrite={false} blending={THREE.AdditiveBlending} />
       </mesh>
     </group>
   );
@@ -287,7 +287,7 @@ function StarSpeck({ position, index }) {
   return (
     <mesh ref={ref} position={position}>
       <sphereGeometry args={[0.012, 8, 8]} />
-      <meshBasicMaterial color={index % 3 === 0 ? "#9fd3ff" : "#ff9ccc"} transparent opacity={0.22} depthWrite={false} blending={THREE.NormalBlending} />
+      <meshBasicMaterial color={index % 3 === 0 ? "#ff8cc4" : "#ff9ccc"} transparent opacity={0.22} depthWrite={false} blending={THREE.NormalBlending} />
     </mesh>
   );
 }
@@ -305,7 +305,7 @@ function SignalGlint({ position, index }) {
   return (
     <mesh ref={ref} position={position}>
       <sphereGeometry args={[0.015, 10, 10]} />
-      <meshBasicMaterial color={index % 2 === 0 ? "#d6f5ff" : "#b8a8ff"} transparent opacity={0.18} depthWrite={false} blending={THREE.NormalBlending} />
+      <meshBasicMaterial color={index % 2 === 0 ? "#ffe2f2" : "#ff8cc4"} transparent opacity={0.18} depthWrite={false} blending={THREE.NormalBlending} />
     </mesh>
   );
 }
@@ -362,7 +362,7 @@ function HeroBuckyballGraph() {
         gl={{ alpha: true, antialias: true }}
       >
         <ambientLight intensity={0.36} />
-        <pointLight position={[2.8, 2.4, 3.6]} intensity={1.35} color="#91bdff" />
+        <pointLight position={[2.8, 2.4, 3.6]} intensity={1.35} color="#ff8cc4" />
         <pointLight position={[-2.2, -1.2, 2.8]} intensity={1.05} color="#ff8cc4" />
         <spotLight position={[0.2, 2.6, 4.2]} angle={0.46} penumbra={0.72} intensity={0.92} color="#c7a7ff" />
         <BuckyballScene labels={normalizedLabels} />

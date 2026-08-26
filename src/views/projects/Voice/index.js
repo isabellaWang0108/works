@@ -129,7 +129,7 @@ class Voice extends React.Component {
 
                             </div>
                             <div className="inpage_hero_box">
-                                <img src={VoiceProduct} className="inpage_hero_img" alt="Voice NFT creator tool interface" />
+                                <img src={VoiceProduct} className="inpage_hero_img" alt="Voice NFT creator tool interface" decoding="async" fetchPriority="high" />
                             </div>
                         </div>
 

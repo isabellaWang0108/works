@@ -117,12 +117,12 @@ class AIResearchGuide extends React.Component {
                                     role="Design lead"
                                 />
                                 <p>
-                                    A 0→1 AI knowledge tool that helps consultants quickly understand unfamiliar domains through guided, source-backed recommendations.
+                                    A 0→1 AI tool that helps consultants quickly explore unfamiliar domains through guided, source-backed recommendations.
                                 </p>
                             </div>
 
                             <div className="inpage_hero_box">
-                                <img src={AIPlatformProduct} className="inpage_hero_img" alt="AI knowledge platform interface" />
+                                <img src={AIPlatformProduct} className="inpage_hero_img" alt="AI knowledge platform interface" decoding="async" fetchPriority="high" />
                             </div>
                         </div>
 
@@ -140,16 +140,16 @@ class AIResearchGuide extends React.Component {
 
                         <div className="content-block fade-in" id="section1">
                             <h2>Pain points</h2>
-                            <p>Early discovery was painful for consultants who needed to ramp up on unfamiliar domains quickly. Useful knowledge existed, but it was scattered across old decks, playbooks, and individual experts.</p>
+                            <p>Consultants needed to ramp up on unfamiliar domains quickly, but useful knowledge was scattered across old decks, playbooks, and individual experts.</p>
                             <div className="discovery-infographic" aria-label="Early discovery pain points">
                                 <div className="discovery-pain-card">
                                     <span className="discovery-pain-index">01</span>
-                                    <h3>Slow</h3>
+                                    <h3>Slow data gathering</h3>
                                     <p>Teams rebuilt context from scratch.</p>
                                 </div>
                                 <div className="discovery-pain-card">
                                     <span className="discovery-pain-index">02</span>
-                                    <h3>Uneven</h3>
+                                    <h3>Uneven research quality</h3>
                                     <p>Quality depended on finding the right expert or document.</p>
                                 </div>
                                 <div className="discovery-pain-card">
@@ -158,37 +158,33 @@ class AIResearchGuide extends React.Component {
                                     <p>Knowledge was not packaged for repeat use.</p>
                                 </div>
                             </div>
-                            <p>The design challenge was to turn scattered institutional knowledge into a guided path consultants could explore with confidence.</p>
                         </div>
 
                         <div className="content-block" id="section2">
                             <h2>Designing the guide</h2>
-                            <p>Design</p>
                             <h3>Core workflow</h3>
                             <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                             <h3>Key design decisions</h3>
-                            <p>The first decision was to give users a clear starting path. Functions, sub-functions, and curated prompts helped them orient quickly before asking more specific questions.</p>
+                            <p>Functions, sub-functions, and curated prompts gave users a clear starting path before they asked more specific questions.</p>
                             <img src={Pic3} alt="xx" style={{ width: "100%", display: "block", marginBottom: "1rem"}} />
-                            <p>The second decision was transparency. Consultants needed to trust the information, but they also needed to challenge it. We designed the AI output to make sources, reasoning, and uncertainty easier to inspect instead of hiding the answer behind a polished summary.</p>
+                            <p>AI outputs made sources, reasoning, and uncertainty easier to inspect so consultants could trust and challenge the answer.</p>
                             <img src={Pic5} alt="xx" style={{ width: "100%", display: "block", marginBottom: "1rem" }} />
-                            <p>The third decision was information architecture. Sub-functions were treated as deeper layers within a function, not as separate sections competing for attention. This helped users drill down without losing the larger domain map.</p> 
+                            <p>Sub-functions stayed nested within each function, helping users drill down without losing the larger domain map.</p> 
                             <img src={Pic4} alt="xx" style={{ width: "100%", display: "block"}} />
                          </div>
 
 
                         <div className="content-block" id="section3">
                             <h2>UX in AI content </h2>
-                            <p>In this product, the interface was only part of the experience. Much of the UX lived inside the generated content itself: the headings, summaries, evidence, recommendations, and visual explanations users had to read and act on.</p>
-                            <p>I contributed through prompt engineering and content design, shaping how information was structured, surfaced, and formatted so consultants could scan quickly, compare options, and turn AI output into next steps.</p>
+                            <p>Much of the UX lived inside the generated content itself: headings, summaries, evidence, recommendations, and visual explanations users had to read and act on.</p>
                             <img src={Pic6} alt="xx" style={{ width: "100%", display: "block"}} />
                         
-                            <p>The quality and accuracy of the generated information extended beyond design ownership, but the process shaped how I thought about AI product design. The team used RAG (Retrieval-Augmented Generation) to ground outputs in relevant knowledge sources, then used internal validation loops where practitioners rated responses to improve consistency and reliability over time.</p>
-                            <p>That changed the design question from “does the answer look good?” to “can a consultant understand where this came from, judge whether it is useful, and confidently decide what to do next?”</p>
+                            <p>I shaped prompt structure and content patterns so consultants could scan quickly, compare options, and turn AI output into next steps.</p>
                         </div>
 
                         <div className="content-block" id="section4">
                             <h2>Impact</h2>
-                            <p>The pilot helped turn early-stage discovery into a more repeatable workflow. Consultants no longer had to begin with a blank search process; they could start with a guided path, inspect AI-generated recommendations, and build understanding faster.</p>
+                            <p>The pilot made early discovery more repeatable: consultants could start with a guided path, inspect AI recommendations, and build understanding faster.</p>
                             <div className="bullet-callout">
                                 <ul>
                                     <li>Faster ramp-up in unfamiliar domains</li>
@@ -197,16 +193,14 @@ class AIResearchGuide extends React.Component {
                                     <li>Scalable access to institutional knowledge</li>
                                 </ul>
                             </div>
-                            <p>Most importantly, LeverGuide made institutional knowledge feel more approachable. It helped users move from “I don’t know where to start” to “I know what questions to ask next.”</p>
                         </div>
 
                         <div className="content-block" id="section5">
                             <h2>What users wanted next</h2>
-                           <p>Once users saw AI-generated guidance inside their workflow, they quickly wanted more control over it. A common piece of pilot feedback was:</p>
+                           <p>Once users saw AI-generated guidance in their workflow, they wanted more control over it:</p>
                             <p className="pull-quote">“I wish I could change the content in this section.”</p>
                             <p className="pull-quote">“I wish I could change the choice of graph.”</p>
-                            <p>This revealed an important insight: users did not want AI-generated content to behave like static documentation or a fixed source of truth. They wanted to edit, challenge, refine, and reshape outputs based on their own client context and judgment.</p>
-                            <p>While the project did not progress far enough to implement this capability, I explored interaction concepts that would allow users to iteratively refine content and visualizations. That exploration pointed toward a more collaborative model, where AI generates a strong starting point and consultants shape it into client-ready thinking.</p>
+                            <p>Users did not want static AI output. They wanted to edit, challenge, and reshape it around their client context.</p>
                             <img src={Pic7} alt="xx" style={{ width: "100%", display: "block"}} />
                         
                         </div>

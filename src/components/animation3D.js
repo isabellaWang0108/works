@@ -72,7 +72,7 @@ function Animation3D() {
       instanceColor={instanceColorAttribute}
     >
       <sphereGeometry args={[0.18, 16, 16]} />
-      <meshStandardMaterial color="white" transparent opacity={0.62} roughness={0.76} />
+      <meshStandardMaterial color="#f2f0ed" transparent opacity={0.62} roughness={0.76} />
     </instancedMesh>
   );
 }

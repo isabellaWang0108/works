@@ -16,7 +16,7 @@ class ProjectContext extends Component {
         return (
             <div className="project-context">
                 {items.map((item) => (
-                    <div className="project-context-item" key={item.label}>
+                    <div className={`project-context-item project-context-item-${item.label.toLowerCase()}`} key={item.label}>
                         <div className="project-context-label">{item.label}</div>
                         <div className="project-context-value">{item.value}</div>
                     </div>

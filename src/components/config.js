@@ -18,7 +18,7 @@ class Config extends React.Component {
         }
         const submit={
             background:'#FC2293',
-            color:'white',
+            color:'#f2f0ed',
             padding:'.5em 2em',
             marginTop:'2em',
             cursor:"pointer"

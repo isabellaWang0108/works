@@ -140,7 +140,7 @@ class DS extends React.Component {
                                     <a href="https://terra.vts.com/">Check out the deployed system site here.</a></p>
                             </div>
                             <div className="inpage_hero_box">
-                                <img src={DesignSystemProduct} className="inpage_hero_img" alt="Design system product interface" />
+                                <img src={DesignSystemProduct} className="inpage_hero_img" alt="Design system product interface" decoding="async" fetchPriority="high" />
                             </div>
                         </div>
 

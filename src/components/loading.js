@@ -14,7 +14,7 @@ class Loading extends React.Component {
         return (
             <div className="loadingpage">
                 <div className="loader circle"></div>
-                <h2 style={{color:'white'}}>{facts[Math.floor(Math.random() * 4)]}
+                <h2 style={{color:'#f2f0ed'}}>{facts[Math.floor(Math.random() * 4)]}
                 </h2>
             </div>
 

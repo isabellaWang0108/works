@@ -72,7 +72,7 @@ function Animation3DEdge() {
             instanceColor={instanceColorAttribute}
         >
             <sphereGeometry args={[0.14, 16, 16]} />
-            <meshStandardMaterial color="white" transparent opacity={0.48} roughness={0.85} />
+            <meshStandardMaterial color="#f2f0ed" transparent opacity={0.48} roughness={0.85} />
         </instancedMesh>
     );
 }

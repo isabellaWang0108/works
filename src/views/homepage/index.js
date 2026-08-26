@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import $ from 'jquery';
 import "../../css/index.css"
 
@@ -28,16 +28,54 @@ const windowHeight = {
 }
 
 const aboutCardSpacing = {
-    marginBottom: '4px',
-    lineHeight: '22px'
+    marginBottom: '0.25rem',
+    lineHeight: '1.375rem'
 }
 
 const projectCardTags = ["Consumer app", "0 to 1 product", "AI-assisted design"];
 
+const LazyProductImage = ({ src, alt, className }) => {
+    const imgRef = useRef(null);
+    const [isReady, setIsReady] = useState(false);
+
+    useEffect(() => {
+        const image = imgRef.current;
+
+        if (!image || isReady) {
+            return undefined;
+        }
+
+        if (!("IntersectionObserver" in window)) {
+            setIsReady(true);
+            return undefined;
+        }
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setIsReady(true);
+                observer.disconnect();
+            }
+        }, { rootMargin: "360px 0px" });
+
+        observer.observe(image);
+
+        return () => observer.disconnect();
+    }, [isReady]);
+
+    return (
+        <img
+            ref={imgRef}
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
+            src={isReady ? src : undefined}
+            alt={alt}
+            className={className}
+        />
+    );
+};
+
 class Homepage extends React.Component {
-    cursorDistortionRef = React.createRef();
-    cursorDistortionHeadRef = React.createRef();
-    cursorDistortionTailRef = React.createRef();
     cursorTraceLabels = ["UX", "UI", "DATA", "B2B", "B2C", "AI", "RESEARCH", "Technology", "CS", "ML", "Design"];
 
     state = {
@@ -57,36 +95,6 @@ class Homepage extends React.Component {
         }
 
         window.location.hash = `#/${link}`;
-    }
-
-    handleHeroPointerMove = (event) => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.innerWidth < 768) {
-            return;
-        }
-
-        const layer = this.cursorDistortionRef.current;
-
-        if (!layer) {
-            return;
-        }
-
-        const isInteractive = event.target.closest("a, button, [role='link'], .bg-project-card, .AboutProj");
-        const cursorPosition = { x: event.clientX, y: event.clientY };
-
-        layer.classList.add("is-visible");
-        layer.classList.toggle("is-strong", Boolean(isInteractive));
-
-        const transform = `translate3d(${cursorPosition.x}px, ${cursorPosition.y}px, 0) translate(-50%, -50%)`;
-        if (this.cursorDistortionHeadRef.current) {
-            this.cursorDistortionHeadRef.current.style.transform = transform;
-        }
-        if (this.cursorDistortionTailRef.current) {
-            this.cursorDistortionTailRef.current.style.transform = transform;
-        }
-    }
-
-    handleHeroPointerLeave = () => {
-        this.cursorDistortionRef.current?.classList.remove("is-visible", "is-strong");
     }
 
     handleCardKeyDown = (event, link, isExternal = false) => {
@@ -130,13 +138,7 @@ class Homepage extends React.Component {
 
                 <NavigationBar href="#contactPart" contact />
 
-                <div id="HP_container" className='HP_container' onPointerMove={this.handleHeroPointerMove} onPointerLeave={this.handleHeroPointerLeave}>
-                    <div className="cursor-distortion-layer" ref={this.cursorDistortionRef} aria-hidden="true">
-                        <span className="cursor-liquid-distortion cursor-liquid-distortion-tail" ref={this.cursorDistortionTailRef}></span>
-                        <span className="cursor-liquid-distortion cursor-liquid-distortion-head" ref={this.cursorDistortionHeadRef}></span>
-                    </div>
-
-
+                <div id="HP_container" className='HP_container'>
 
                     {/* landing page */}
                     <div
@@ -176,7 +178,7 @@ class Homepage extends React.Component {
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={NYTangoBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
-                                <img loading="lazy" src={NYTangoProduct} alt="NY Tango project calendar interface" className="img project-card-img" />
+                                <LazyProductImage src={NYTangoProduct} alt="NY Tango project calendar interface" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
                                 <ProjectTags tags={projectCardTags} />
@@ -198,7 +200,7 @@ class Homepage extends React.Component {
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={AIPlatformBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
-                                <img loading="lazy" src={AIPlatformProduct} alt="AI knowledge platform interface" className="img project-card-img" />
+                                <LazyProductImage src={AIPlatformProduct} alt="AI knowledge platform interface" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
                                 <ProjectTags tags={AI_RESEARCH_GUIDE_TAGS} />
@@ -225,7 +227,7 @@ class Homepage extends React.Component {
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={VoiceBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
-                                <img loading="lazy" src={VoiceProduct} alt="NFT creator tool interface" className="img project-card-img" />
+                                <LazyProductImage src={VoiceProduct} alt="NFT creator tool interface" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
                                 <ProjectTags tags={VOICE_TAGS} />
@@ -248,7 +250,7 @@ class Homepage extends React.Component {
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={DesignSystemBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
-                                <img loading="lazy" src={DesignSystemProduct} alt="design system interface" className="img project-card-img" />
+                                <LazyProductImage src={DesignSystemProduct} alt="design system interface" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
                                 <ProjectTags tags={DESIGN_SYSTEM_TAGS} />
