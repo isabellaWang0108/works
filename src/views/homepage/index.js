@@ -139,6 +139,13 @@ class Homepage extends React.Component {
                 <NavigationBar href="#contactPart" contact />
 
                 <div id="HP_container" className='HP_container'>
+                    <div className="homepage-background-layer" aria-hidden="true">
+                        {!prefersReducedMotion() && (
+                            <React.Suspense fallback={null}>
+                                <HeroBuckyballGraph labels={this.cursorTraceLabels} />
+                            </React.Suspense>
+                        )}
+                    </div>
 
                     {/* landing page */}
                     <div
@@ -157,11 +164,6 @@ class Homepage extends React.Component {
                                     Product Designer shaping complex data and ambiguous workflows into intuitive UX that speed up critical work.
                                 </h3>
                             </div>
-                            {!prefersReducedMotion() && (
-                                <React.Suspense fallback={null}>
-                                    <HeroBuckyballGraph labels={this.cursorTraceLabels} />
-                                </React.Suspense>
-                            )}
                         </div>
                     </div>
 

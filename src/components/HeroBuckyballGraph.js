@@ -188,11 +188,11 @@ function LabelSprite({ label, position }) {
   );
 }
 
-const CONNECTION_FRONT_COLOR = "#71848B";
-const CONNECTION_REAR_COLOR = "#343A42";
+const CONNECTION_FRONT_COLOR = "#94A1A8";
+const CONNECTION_REAR_COLOR = "#575E6B";
 const CONNECTION_DEPTH_SPLIT = 0;
 const CONNECTION_DOT_SPACING = 0.086;
-const CONNECTION_DOT_SIZE = 0.022;
+const CONNECTION_DOT_SIZE = 0.027;
 
 function ConnectionCloud({ points, edges }) {
   const { positions, colors } = useMemo(() => {
