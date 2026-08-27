@@ -324,10 +324,10 @@ function BuckyballScene({ labels }) {
   const groupRef = useRef();
   const { points, edges, pulseEdges } = useMemo(() => createBuckyballTopology(), []);
 
-  useFrame(({ clock, pointer }) => {
+  useFrame(({ clock }) => {
     if (!groupRef.current) return;
-    groupRef.current.rotation.y = clock.elapsedTime * 0.011 + pointer.x * 0.035;
-    groupRef.current.rotation.x = -0.14 + pointer.y * 0.028;
+    groupRef.current.rotation.y = clock.elapsedTime * 0.011;
+    groupRef.current.rotation.x = -0.14;
     groupRef.current.rotation.z = Math.sin(clock.elapsedTime * 0.02) * 0.009;
   });
 
