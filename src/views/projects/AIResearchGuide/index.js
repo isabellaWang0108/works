@@ -7,7 +7,7 @@ import ProjectTags, { AI_RESEARCH_GUIDE_TAGS } from "../../../components/project
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
-import AIPlatformProduct from "../../../assets/images/home/anote.png"
+import AIPlatformProduct from "../../../assets/images/home/Project card/AIPlatform_product.svg"
 import Pic2 from "../../../assets/images/LeverGuide/img_1.svg"
 import Pic3 from "../../../assets/images/LeverGuide/img_2.svg"
 import Pic4 from "../../../assets/images/LeverGuide/img_3.svg"

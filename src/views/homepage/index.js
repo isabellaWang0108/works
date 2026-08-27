@@ -6,14 +6,14 @@ import InpageContactMe from "../../components/inpage_contactme"
 import WireframeBackground from "../../components/WireframeBackground"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, VOICE_TAGS } from "../../components/projectTags"
 
-import NYTangoProduct from "../../assets/images/home/ny-tango.png"
-import NYTangoBackground from "../../assets/images/home/Project card/optimized/NY_Tango_Background.webp"
-import VoiceProduct from "../../assets/images/home/voice.png"
-import VoiceBackground from "../../assets/images/home/Project card/optimized/Voice_background.webp"
-import AIPlatformProduct from "../../assets/images/home/anote.png"
-import AIPlatformBackground from "../../assets/images/home/Project card/optimized/AIPlatform_background.webp"
-import DesignSystemProduct from "../../assets/images/home/ds.png"
-import DesignSystemBackground from "../../assets/images/home/Project card/optimized/DS_background.webp"
+import NYTangoProduct from "../../assets/images/home/Project card/NYTango_product.svg"
+import NYTangoBackground from "../../assets/images/home/Project card/NY_Tango_Background.webp"
+import VoiceProduct from "../../assets/images/home/Project card/Voice_product.svg"
+import VoiceBackground from "../../assets/images/home/Project card/Voice_background.webp"
+import AIPlatformProduct from "../../assets/images/home/Project card/AIPlatform_product.svg"
+import AIPlatformBackground from "../../assets/images/home/Project card/AIPlatform_background.webp"
+import DesignSystemProduct from "../../assets/images/home/Project card/DS_product.svg"
+import DesignSystemBackground from "../../assets/images/home/Project card/DS_background.webp"
 
 const HeroBuckyballGraph = React.lazy(() => import("../../components/HeroBuckyballGraph"));
 

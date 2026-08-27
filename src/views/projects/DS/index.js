@@ -5,7 +5,7 @@ import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import ProjectTags, { DESIGN_SYSTEM_TAGS } from "../../../components/projectTags"
 import $ from 'jquery';
-import DesignSystemProduct from "../../../assets/images/home/ds.png"
+import DesignSystemProduct from "../../../assets/images/home/Project card/DS_product.svg"
 import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.png"
 import Pic4 from "../../../assets/images/DesignSystem/ds_pic4.png"
 import Pic5 from "../../../assets/images/DesignSystem/ds_pic5.png"

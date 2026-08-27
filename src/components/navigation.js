@@ -11,6 +11,7 @@ const NavigationBar = () => {
     const isHomePage = location.pathname === "/";
     const scrollFrameRef = useRef(null);
     const scrollTimeoutRef = useRef(null);
+    const isScrollingRef = useRef(false);
 
     useEffect(() => {
         const root = document.documentElement;
@@ -20,12 +21,17 @@ const NavigationBar = () => {
             }
 
             scrollFrameRef.current = window.requestAnimationFrame(() => {
-                root.classList.add("is-site-scrolling");
+                if (!isScrollingRef.current) {
+                    root.classList.add("is-site-scrolling");
+                    isScrollingRef.current = true;
+                }
+
                 scrollFrameRef.current = null;
 
                 window.clearTimeout(scrollTimeoutRef.current);
                 scrollTimeoutRef.current = window.setTimeout(() => {
                     root.classList.remove("is-site-scrolling");
+                    isScrollingRef.current = false;
                 }, 160);
             });
         };
@@ -39,6 +45,7 @@ const NavigationBar = () => {
             }
             window.clearTimeout(scrollTimeoutRef.current);
             root.classList.remove("is-site-scrolling");
+            isScrollingRef.current = false;
         };
     }, []);
 

@@ -1,5 +1,5 @@
-import React, { useMemo, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React, { useEffect, useMemo, useRef } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 const DATA_LABELS = [
@@ -219,14 +219,17 @@ function DataPulse({ start, end, offset }) {
   const haloRef = useRef();
   const direction = useMemo(() => end.clone().sub(start).normalize(), [start, end]);
   const quaternion = useMemo(() => new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction), [direction]);
+  const pulseStart = useMemo(() => new THREE.Vector3(), []);
+  const pulseEnd = useMemo(() => new THREE.Vector3(), []);
+  const midpoint = useMemo(() => new THREE.Vector3(), []);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
     const t = (clock.elapsedTime * 0.22 + offset) % 1;
     const tail = Math.max(0, t - 0.18);
-    const pulseStart = start.clone().lerp(end, tail);
-    const pulseEnd = start.clone().lerp(end, t);
-    const midpoint = pulseStart.clone().add(pulseEnd).multiplyScalar(0.5);
+    pulseStart.copy(start).lerp(end, tail);
+    pulseEnd.copy(start).lerp(end, t);
+    midpoint.copy(pulseStart).add(pulseEnd).multiplyScalar(0.5);
     const length = Math.max(0.001, pulseStart.distanceTo(pulseEnd));
 
     ref.current.position.copy(midpoint);
@@ -291,6 +294,42 @@ function NodePoint({ label, position }) {
   );
 }
 
+function HeroRenderScheduler() {
+  const invalidate = useThree((state) => state.invalidate);
+
+  useEffect(() => {
+    let isAnimating = true;
+    const frameDelay = window.matchMedia("(max-width: 620px)").matches ? 50 : 33;
+
+    const updateAnimationState = () => {
+      isAnimating = !document.hidden && window.scrollY < window.innerHeight * 1.25;
+      if (isAnimating) {
+        invalidate();
+      }
+    };
+
+    const frameTimer = window.setInterval(() => {
+      if (isAnimating) {
+        invalidate();
+      }
+    }, frameDelay);
+
+    updateAnimationState();
+    document.addEventListener("visibilitychange", updateAnimationState);
+    window.addEventListener("scroll", updateAnimationState, { passive: true });
+    window.addEventListener("resize", updateAnimationState, { passive: true });
+
+    return () => {
+      window.clearInterval(frameTimer);
+      document.removeEventListener("visibilitychange", updateAnimationState);
+      window.removeEventListener("scroll", updateAnimationState);
+      window.removeEventListener("resize", updateAnimationState);
+    };
+  }, [invalidate]);
+
+  return null;
+}
+
 function BuckyballScene({ labels }) {
   const groupRef = useRef();
   const { points, edges, pulseEdges } = useMemo(() => createBuckyballTopology(), []);
@@ -323,13 +362,23 @@ function BuckyballScene({ labels }) {
 }
 
 function HeroBuckyballGraph() {
+  const canvasDpr = useMemo(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 620px)").matches) {
+      return [1, 1.25];
+    }
+
+    return [1, 1.5];
+  }, []);
+
   return (
     <div className="hero-buckyball" aria-hidden="true">
       <Canvas
-        dpr={[1, 1.7]}
+        dpr={canvasDpr}
+        frameloop="demand"
         camera={{ position: [0, 0.04, 5.6], fov: 43 }}
         gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
       >
+        <HeroRenderScheduler />
         <ambientLight intensity={0.36} />
         <pointLight position={[2.8, 2.4, 3.6]} intensity={1.35} color="#ff8cc4" />
         <pointLight position={[-2.2, -1.2, 2.8]} intensity={1.05} color="#ff8cc4" />

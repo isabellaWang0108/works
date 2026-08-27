@@ -164,6 +164,18 @@ a {
   filter: none;
 }
 
+.is-site-scrolling .bg-project-card,
+.is-site-scrolling .project-card-backdrop,
+.is-site-scrolling .project-card-img {
+  transition-duration: 0.001ms;
+}
+
+.is-site-scrolling .bg-project-card {
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045);
+}
+
 .site-logo,
 .site-nav-link,
 .site-nav-icon-link,
@@ -414,7 +426,7 @@ li {
   box-shadow:
     0 24px 72px rgba(0, 0, 0, 0.24),
     inset 0 0 0 1px rgba(255, 255, 255, 0.045);
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, filter 0.28s ease;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
   overflow: hidden;
   contain: paint;
   background-clip: padding-box;
@@ -445,13 +457,11 @@ li {
   box-shadow:
     0 34px 96px rgba(0, 0, 0, 0.34),
     inset 0 0 0 1px rgba(255, 255, 255, 0.07);
-  filter: saturate(1.06);
   transform: translateY(-5px);
 }
 
 .bg-project-card:hover .project-card-img {
   transform: translateX(-50%) translateY(-4px) scale(1.035);
-  filter: saturate(1.16) contrast(1.08) drop-shadow(0 30px 52px rgba(0, 0, 0, 0.54));
 }
 
 .bg-project-card:focus-visible {
@@ -535,12 +545,11 @@ button {
   font-size: 15px;
   line-height: 1;
   text-decoration: none;
-  transition: box-shadow 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .portfolio-button:hover,
 .password-submit:hover {
-  filter: saturate(1.08);
   border-color: rgba(255, 255, 255, 0.54);
   box-shadow: 0 16px 34px rgba(145, 189, 255, 0.26);
 }
@@ -2351,7 +2360,7 @@ a:hover {
   max-height: none;
   object-position: center;
   margin-left: 0;
-  transition: transform 0.32s ease, filter 0.32s ease;
+  transition: transform 0.32s ease;
 }
 
 .projectRow .project-card-backdrop {
@@ -3984,13 +3993,17 @@ a:hover {
   }
 
   .projectRow {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     width: var(--home-content-width);
     gap: 28px;
     padding: 0 0 10px;
   }
 
   .projectRow .sessionContainer {
+    flex: 0 0 auto;
+    height: clamp(456px, 126vw, 540px);
     min-height: clamp(456px, 126vw, 540px);
   }
 
@@ -4064,7 +4077,9 @@ a:hover {
   }
 
   .projectRow {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .bg-project-card {
@@ -4448,10 +4463,15 @@ a:hover {
   }
 
   .projectRow {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 22px;
   }
 
   .projectRow .sessionContainer {
+    flex: 0 0 auto;
+    height: clamp(456px, 126vw, 540px);
     min-height: clamp(456px, 126vw, 540px);
   }
 
@@ -4506,6 +4526,7 @@ a:hover {
   }
 
   .projectRow .sessionContainer {
+    height: 444px;
     min-height: 444px;
   }
 }
