@@ -1601,13 +1601,11 @@ a:hover {
   text-shadow:
     0 0 30px rgba(159, 211, 255, 0.08),
     0 24px 86px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transform: translate3d(0, 34px, 0);
-  animation: heroTitleRise 680ms cubic-bezier(0.2, 0.72, 0.2, 1) forwards;
+  opacity: 1;
+  transform: none;
 }
 
 .heroTitleLine-secondary {
-  animation-delay: 90ms;
   color: #ffd2e8;
   text-shadow:
     0 0 34px rgba(252, 34, 147, 0.26),
@@ -1635,27 +1633,27 @@ a:hover {
   max-width: 700px;
   color: rgba(232, 239, 250, 0.84);
   font-weight: 400;
-  opacity: 0;
-  transform: translate3d(0, 20px, 0);
-  animation: heroCopyRise 680ms cubic-bezier(0.2, 0.72, 0.2, 1) 190ms forwards;
+  opacity: 1;
+  transform: none;
   text-shadow: 0 10px 32px rgba(0, 0, 0, 0.32);
 }
 
 .hero-buckyball {
   --hero-graph-opacity: 1;
-  position: fixed;
-  top: clamp(-42px, -3vh, -12px);
-  right: clamp(-92px, -3vw, 28px);
-  z-index: 0;
+  --hero-graph-x: 0;
+  --hero-graph-y: -50%;
+  position: absolute;
+  top: 50%;
+  right: clamp(-128px, -7vw, -28px);
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(760px, 58vw, 1040px);
+  width: clamp(680px, 56vw, 980px);
   aspect-ratio: 1;
   margin-top: 0;
-  opacity: 0;
-  transform: translate3d(18px, 18px, 0) scale(0.96);
-  animation: heroBuckyballEnter 900ms cubic-bezier(0.2, 0.72, 0.2, 1) 260ms forwards;
+  opacity: var(--hero-graph-opacity, 1);
+  transform: translate3d(var(--hero-graph-x), var(--hero-graph-y), 0) scale(1);
   isolation: isolate;
   pointer-events: none;
   mix-blend-mode: normal;
@@ -1788,9 +1786,14 @@ a:hover {
 
   .hero-buckyball {
     --hero-graph-opacity: 1;
-    top: clamp(92px, 13vh, 148px);
-    right: clamp(-148px, -17vw, -70px);
-    width: clamp(430px, 68vw, 590px);
+    --hero-graph-x: -50%;
+    --hero-graph-y: 0;
+    position: fixed;
+    top: calc(var(--site-nav-height) + clamp(1.25rem, 5vw, 3rem) + env(safe-area-inset-top));
+    left: 50%;
+    right: auto;
+    width: clamp(520px, 78vw, 760px);
+    max-width: none;
   }
 
 }
@@ -1804,12 +1807,12 @@ a:hover {
 
   .hero-buckyball {
     --hero-graph-opacity: 1;
+    --hero-graph-x: -50%;
+    --hero-graph-y: 0;
     top: clamp(56px, 9svh, 96px);
     right: auto;
     left: 50%;
     width: clamp(300px, 88vw, 390px);
-    transform: translate3d(-50%, 4px, 0) scale(0.94);
-    animation-name: heroBuckyballEnterMobile;
   }
 
   .landingpage_Intro {
@@ -3442,62 +3445,6 @@ a:hover {
   }
 }
 
-@keyframes heroTitleRise {
-  0% {
-    opacity: 0;
-    filter: blur(12px);
-    transform: translate3d(0, 34px, 0) scale(0.985);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@keyframes heroCopyRise {
-  0% {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translate3d(0, 20px, 0);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes heroBuckyballEnter {
-  0% {
-    opacity: 0;
-    filter: none;
-    transform: translate3d(18px, 18px, 0) scale(0.96);
-  }
-
-  100% {
-    opacity: var(--hero-graph-opacity, 0.42);
-    filter: none;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@keyframes heroBuckyballEnterMobile {
-  0% {
-    opacity: 0;
-    filter: none;
-    transform: translate3d(-50%, 18px, 0) scale(0.96);
-  }
-
-  100% {
-    opacity: var(--hero-graph-opacity, 0.42);
-    filter: none;
-    transform: translate3d(-50%, 0, 0) scale(1);
-  }
-}
-
 @keyframes cursorLiquidSwirl {
   0% {
     transform: rotate(-18deg) scale(0.9);
@@ -3864,6 +3811,21 @@ a:hover {
   .AboutProj {
     width: 100%;
     min-width: 300px;
+  }
+
+  .extra-projects-section,
+  .extra-projects-section .seeMore,
+  .extra-projects-section .threecolumn,
+  .extra-projects-section .threecolumn-row,
+  .extra-projects-section .AboutProj {
+    overflow: visible;
+  }
+
+  .extra-projects-section .AboutProj-content {
+    height: auto;
+    min-height: 9.5rem;
+    padding: 1.25rem 3rem 1.5rem 1.375rem;
+    overflow: visible;
   }
 
   .seeMore {
@@ -4460,17 +4422,42 @@ a:hover {
   }
 
   .hero-buckyball {
-    top: clamp(36px, 6svh, 64px);
+    --hero-graph-x: -50%;
+    --hero-graph-y: 0;
+    position: fixed;
+    top: calc(var(--site-nav-height) + clamp(2.25rem, 10vw, 4rem) + env(safe-area-inset-top));
     left: 50%;
     right: auto;
     width: 100vw;
     max-width: none;
-    transform: translate3d(-50%, 0, 0) scale(1);
-    animation-name: heroBuckyballEnterMobile;
   }
 
   #projectsPart.projectRow {
     margin-top: clamp(52px, 8svh, 82px);
+  }
+
+  .extra-projects-section {
+    padding-bottom: clamp(4.5rem, 16vw, 6.5rem);
+    margin-bottom: clamp(1.5rem, 7vw, 3rem);
+    overflow: visible;
+  }
+
+  .extra-projects-section .seeMore,
+  .extra-projects-section .threecolumn,
+  .extra-projects-section .threecolumn-row,
+  .extra-projects-section .AboutProj {
+    overflow: visible;
+  }
+
+  .extra-projects-section .AboutProj-content {
+    height: auto;
+    min-height: 9.5rem;
+    padding-bottom: 1.5rem;
+    overflow: visible;
+  }
+
+  .homepage-contact-section {
+    margin-top: clamp(1.5rem, 7vw, 3rem);
   }
 
   .projectRow {
@@ -4527,7 +4514,7 @@ a:hover {
   }
 
   .hero-buckyball {
-    top: 32px;
+    top: calc(var(--site-nav-height) + clamp(1.75rem, 9vw, 3.25rem) + env(safe-area-inset-top));
     width: 100vw;
   }
 

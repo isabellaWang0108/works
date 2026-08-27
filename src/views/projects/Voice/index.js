@@ -5,7 +5,7 @@ import Back2Top from "../../../components/back2top"
 import ProjectContext from "../../../components/projectContext"
 import ProjectTags, { VOICE_TAGS } from "../../../components/projectTags"
 import $ from 'jquery';
-import VoiceProduct from "../../../assets/images/home/Project card/Voice_product.svg"
+import VoiceProduct from "../../../assets/images/home/voice.png"
 import Pic2 from "../../../assets/images/Voice/pic_2.svg"
 import Pic3 from "../../../assets/images/Voice/pic_3.png"
 import Pic4 from "../../../assets/images/Voice/pic_4.png"

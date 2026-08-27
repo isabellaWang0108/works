@@ -7,13 +7,13 @@ import InpageContactMe from "../../components/inpage_contactme"
 import WireframeBackground from "../../components/WireframeBackground"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, VOICE_TAGS } from "../../components/projectTags"
 
-import NYTangoProduct from "../../assets/images/home/Project card/NYTango_product.svg"
+import NYTangoProduct from "../../assets/images/home/ny-tango.png"
 import NYTangoBackground from "../../assets/images/home/Project card/optimized/NY_Tango_Background.webp"
-import VoiceProduct from "../../assets/images/home/Project card/Voice_product.svg"
+import VoiceProduct from "../../assets/images/home/voice.png"
 import VoiceBackground from "../../assets/images/home/Project card/optimized/Voice_background.webp"
-import AIPlatformProduct from "../../assets/images/home/Project card/AIPlatform_product.svg"
+import AIPlatformProduct from "../../assets/images/home/anote.png"
 import AIPlatformBackground from "../../assets/images/home/Project card/optimized/AIPlatform_background.webp"
-import DesignSystemProduct from "../../assets/images/home/Project card/DS_product.svg"
+import DesignSystemProduct from "../../assets/images/home/ds.png"
 import DesignSystemBackground from "../../assets/images/home/Project card/optimized/DS_background.webp"
 
 const HeroBuckyballGraph = React.lazy(() => import("../../components/HeroBuckyballGraph"));
@@ -149,7 +149,7 @@ class Homepage extends React.Component {
                             <WireframeBackground />
                         </div>
                         <div id="landingPart" >
-                            <div className='landingpage_Intro fade-in'>
+                            <div className='landingpage_Intro'>
                                 <span className="heroTitleLine">AI Fluent.</span>
                                 <span className="heroTitleLine heroTitleLine-secondary">Systems Driven.</span>
                                 
@@ -157,7 +157,7 @@ class Homepage extends React.Component {
                                     Product Designer shaping complex data and ambiguous workflows into intuitive UX that speed up critical work.
                                 </h3>
                             </div>
-                            {!isCompactViewport && !prefersReducedMotion() && (
+                            {!prefersReducedMotion() && (
                                 <React.Suspense fallback={null}>
                                     <HeroBuckyballGraph labels={this.cursorTraceLabels} />
                                 </React.Suspense>

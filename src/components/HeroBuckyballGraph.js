@@ -192,51 +192,53 @@ const CONNECTION_FRONT_COLOR = "#71848B";
 const CONNECTION_REAR_COLOR = "#343A42";
 const CONNECTION_DEPTH_SPLIT = 0;
 const CONNECTION_DOT_SPACING = 0.086;
-const CONNECTION_DOT_SIZE = 0.0095;
+const CONNECTION_DOT_SIZE = 0.022;
 
-function ConnectionDot({ position }) {
-  const meshRef = useRef();
-  const materialRef = useRef();
-  const worldPosition = useMemo(() => new THREE.Vector3(), []);
+function ConnectionCloud({ points, edges }) {
+  const { positions, colors } = useMemo(() => {
+    const front = new THREE.Color(CONNECTION_FRONT_COLOR);
+    const rear = new THREE.Color(CONNECTION_REAR_COLOR);
+    const dotPositions = [];
+    const dotColors = [];
 
-  useFrame(() => {
-    if (!meshRef.current || !materialRef.current) return;
-    meshRef.current.getWorldPosition(worldPosition);
-    materialRef.current.color.set(worldPosition.z >= CONNECTION_DEPTH_SPLIT ? CONNECTION_FRONT_COLOR : CONNECTION_REAR_COLOR);
-  });
+    edges.forEach(([startIndex, endIndex]) => {
+      const start = points[startIndex];
+      const end = points[endIndex];
+      const distance = start.distanceTo(end);
+      const dotCount = Math.max(6, Math.round(distance / CONNECTION_DOT_SPACING));
+
+      for (let index = 0; index < dotCount; index += 1) {
+        const t = (index + 1) / (dotCount + 1);
+        const position = start.clone().lerp(end, t);
+        const color = position.z >= CONNECTION_DEPTH_SPLIT ? front : rear;
+
+        dotPositions.push(position.x, position.y, position.z);
+        dotColors.push(color.r, color.g, color.b);
+      }
+    });
+
+    return {
+      positions: new Float32Array(dotPositions),
+      colors: new Float32Array(dotColors),
+    };
+  }, [points, edges]);
 
   return (
-    <mesh ref={meshRef} position={position}>
-      <sphereGeometry args={[CONNECTION_DOT_SIZE, 8, 8]} />
-      <meshBasicMaterial
-        ref={materialRef}
-        color={position.z >= CONNECTION_DEPTH_SPLIT ? CONNECTION_FRONT_COLOR : CONNECTION_REAR_COLOR}
-        depthWrite
+    <points>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-color" args={[colors, 3]} />
+      </bufferGeometry>
+      <pointsMaterial
+        size={CONNECTION_DOT_SIZE}
+        vertexColors
+        transparent
+        opacity={0.82}
+        depthWrite={false}
         depthTest
-        blending={THREE.NormalBlending}
         toneMapped={false}
       />
-    </mesh>
-  );
-}
-
-function Connection({ start, end, variant }) {
-  const dots = useMemo(() => {
-    const distance = start.distanceTo(end);
-    const dotCount = Math.max(6, Math.round(distance / CONNECTION_DOT_SPACING));
-
-    return Array.from({ length: dotCount }, (_, index) => {
-      const t = (index + 1) / (dotCount + 1);
-      return start.clone().lerp(end, t);
-    });
-  }, [start, end]);
-
-  return (
-    <group>
-      {dots.map((position, index) => (
-        <ConnectionDot key={`${variant}-${index}`} position={position} />
-      ))}
-    </group>
+    </points>
   );
 }
 
@@ -331,9 +333,7 @@ function BuckyballScene({ labels }) {
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
-      {edges.map(([start, end, variant], index) => (
-        <Connection key={`edge-${index}`} start={points[start]} end={points[end]} variant={variant} />
-      ))}
+      <ConnectionCloud points={points} edges={edges} />
       {pulseEdges.map((edgeIndex, index) => {
         const [start, end] = edges[edgeIndex];
         return <DataPulse key={`pulse-${edgeIndex}`} start={points[start]} end={points[end]} offset={index / pulseEdges.length} />;
@@ -359,7 +359,7 @@ function HeroBuckyballGraph() {
       <Canvas
         dpr={[1, 1.7]}
         camera={{ position: [0, 0.04, 5.6], fov: 43 }}
-        gl={{ alpha: true, antialias: true }}
+        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
       >
         <ambientLight intensity={0.36} />
         <pointLight position={[2.8, 2.4, 3.6]} intensity={1.35} color="#ff8cc4" />
