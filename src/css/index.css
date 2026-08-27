@@ -1653,7 +1653,6 @@ a:hover {
 }
 
 .hero-buckyball {
-  --hero-graph-opacity: 1;
   --hero-graph-x: 0;
   --hero-graph-y: -50%;
   position: fixed;
@@ -1666,28 +1665,12 @@ a:hover {
   width: clamp(680px, 56vw, 980px);
   aspect-ratio: 1;
   margin-top: 0;
-  opacity: var(--hero-graph-opacity, 1);
   transform: translate3d(var(--hero-graph-x), var(--hero-graph-y), 0) scale(1);
   isolation: isolate;
   pointer-events: none;
   mix-blend-mode: normal;
   user-select: none;
   contain: layout paint;
-}
-
-.hero-buckyball::before,
-.hero-buckyball::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-.hero-buckyball::before {
-  content: none;
-}
-
-.hero-buckyball::after {
-  content: none;
 }
 
 .hero-buckyball canvas {
@@ -1800,7 +1783,6 @@ a:hover {
   }
 
   .hero-buckyball {
-    --hero-graph-opacity: 1;
     --hero-graph-x: -50%;
     --hero-graph-y: 0;
     position: fixed;
@@ -1818,16 +1800,6 @@ a:hover {
     min-height: max(680px, 100svh);
     padding-top: clamp(134px, 19svh, 176px);
     padding-bottom: clamp(48px, 8svh, 72px);
-  }
-
-  .hero-buckyball {
-    --hero-graph-opacity: 1;
-    --hero-graph-x: -50%;
-    --hero-graph-y: 0;
-    top: clamp(56px, 9svh, 96px);
-    right: auto;
-    left: 50%;
-    width: clamp(300px, 88vw, 390px);
   }
 
   .landingpage_Intro {

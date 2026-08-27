@@ -7,35 +7,6 @@ const DATA_LABELS = [
   "RESEARCH", "STRATEGY", "SYSTEMS", "AUTOMATION", "INSIGHTS", "PRODUCT", "USER",
 ];
 
-const NODE_COORDS = [
-  [0, -1.42, 0.42], [0.82, -1.16, 0.66], [1.36, -0.54, 0.74], [1.42, 0.28, 0.58],
-  [0.98, 1.02, 0.46], [0.26, 1.44, 0.38], [-0.58, 1.32, 0.5], [-1.24, 0.74, 0.68],
-  [-1.48, -0.08, 0.54], [-1.12, -0.88, 0.62], [-0.42, -1.32, 0.58],
-  [0.42, -1.32, -0.58], [1.12, -0.88, -0.62], [1.48, -0.08, -0.54], [1.24, 0.74, -0.68],
-  [0.58, 1.32, -0.5], [-0.26, 1.44, -0.38], [-0.98, 1.02, -0.46], [-1.42, 0.28, -0.58],
-  [-1.36, -0.54, -0.74], [-0.82, -1.16, -0.66],
-  [0, -0.64, 1.32], [0.74, 0, 1.22], [0, 0.7, 1.28], [-0.76, 0, 1.2],
-  [0, -0.7, -1.28], [0.76, 0, -1.2], [0, 0.64, -1.32], [-0.74, 0, -1.22],
-];
-
-const EDGES = [
-  [0, 1, "outer"], [1, 2, "outer"], [2, 3, "outer"], [3, 4, "outer"], [4, 5, "outer"],
-  [5, 6, "outer"], [6, 7, "outer"], [7, 8, "outer"], [8, 9, "outer"], [9, 10, "outer"], [10, 0, "outer"],
-  [11, 12, "rear"], [12, 13, "rear"], [13, 14, "rear"], [14, 15, "rear"], [15, 16, "rear"],
-  [16, 17, "rear"], [17, 18, "rear"], [18, 19, "rear"], [19, 20, "rear"], [20, 11, "rear"],
-  [0, 11, "inner"], [1, 12, "inner"], [2, 13, "inner"], [3, 14, "inner"], [4, 15, "inner"],
-  [5, 16, "inner"], [6, 17, "inner"], [7, 18, "inner"], [8, 19, "inner"], [9, 20, "inner"],
-  [21, 22, "inner"], [22, 23, "inner"], [23, 24, "inner"], [24, 21, "inner"],
-  [25, 26, "rear"], [26, 27, "rear"], [27, 28, "rear"], [28, 25, "rear"],
-  [0, 21, "inner"], [2, 22, "inner"], [5, 23, "inner"], [8, 24, "inner"],
-  [11, 25, "rear"], [13, 26, "rear"], [16, 27, "rear"], [19, 28, "rear"],
-  [0, 22, "signal"], [1, 21, "signal"], [3, 22, "signal"], [4, 23, "signal"], [6, 24, "signal"],
-  [7, 23, "signal"], [9, 21, "signal"], [10, 24, "signal"], [12, 25, "signal"], [14, 26, "signal"],
-  [15, 27, "signal"], [17, 28, "signal"], [18, 27, "signal"], [20, 25, "signal"],
-  [21, 26, "cross"], [22, 27, "cross"], [23, 28, "cross"], [24, 25, "cross"],
-  [0, 14, "cross"], [2, 16, "cross"], [4, 18, "cross"], [6, 20, "cross"], [8, 12, "cross"], [10, 13, "cross"],
-];
-
 const STAR_POINTS = [
   [-1.7, -1.3, 0.2], [-1.45, 1.18, 0.98], [-0.82, -1.64, -0.52], [-0.36, 1.72, 0.62],
   [0.44, -1.68, 0.96], [0.9, 1.5, -0.66], [1.62, -0.72, -0.18], [1.7, 0.9, 0.5],
@@ -352,8 +323,6 @@ function BuckyballScene({ labels }) {
 }
 
 function HeroBuckyballGraph() {
-  const normalizedLabels = DATA_LABELS;
-
   return (
     <div className="hero-buckyball" aria-hidden="true">
       <Canvas
@@ -365,7 +334,7 @@ function HeroBuckyballGraph() {
         <pointLight position={[2.8, 2.4, 3.6]} intensity={1.35} color="#ff8cc4" />
         <pointLight position={[-2.2, -1.2, 2.8]} intensity={1.05} color="#ff8cc4" />
         <spotLight position={[0.2, 2.6, 4.2]} angle={0.46} penumbra={0.72} intensity={0.92} color="#c7a7ff" />
-        <BuckyballScene labels={normalizedLabels} />
+        <BuckyballScene labels={DATA_LABELS} />
       </Canvas>
     </div>
   );

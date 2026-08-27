@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import $ from 'jquery';
 import "../../css/index.css"
 
 import NavigationBar from "../../components/navigation"
@@ -76,18 +75,6 @@ const LazyProductImage = ({ src, alt, className }) => {
 };
 
 class Homepage extends React.Component {
-    cursorTraceLabels = ["UX", "UI", "DATA", "B2B", "B2C", "AI", "RESEARCH", "Technology", "CS", "ML", "Design"];
-
-    state = {
-        top: 300,
-        left: 300,
-        cursorImg: ' ',
-        cursorRotation: 'rotate(0deg)',
-        password: '0',
-        background: 0,
-        timeLineHeight: $(document).height(),
-    }
-
     openProject = (link, isExternal = false) => {
         if (isExternal) {
             window.open(link, "_blank", "noopener,noreferrer");
@@ -142,7 +129,7 @@ class Homepage extends React.Component {
                     <div className="homepage-background-layer" aria-hidden="true">
                         {!prefersReducedMotion() && (
                             <React.Suspense fallback={null}>
-                                <HeroBuckyballGraph labels={this.cursorTraceLabels} />
+                                <HeroBuckyballGraph />
                             </React.Suspense>
                         )}
                     </div>
@@ -263,9 +250,6 @@ class Homepage extends React.Component {
                             <div className="contentblock"></div>
                         </div>
                     </div>
-
-                    {/* <div id="professionalW" style={{ display: 'flex', flexDirection: 'column', width: '100vw', position: 'relative', margin: '24px auto 2px auto', alignItems: 'center', zIndex: 100, background: '#7c7c7c1f', backdropFilter: 'blur(11px)' }}> */}
-
 
                     <div className="sessionContainer extra-projects-section">
                         <div className="seeMore">
