@@ -4,7 +4,7 @@ function WorkflowScreen({ image, alt, index, title, children }) {
     return (
         <figure className="workflow-screen">
             <div className="workflow-screen-image">
-                <img src={image} alt={alt} />
+                <img loading="lazy" decoding="async" src={image} alt={alt} />
             </div>
             <figcaption>
                 <span>{index}</span>

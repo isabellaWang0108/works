@@ -1,16 +1,17 @@
 import React, { Suspense, lazy } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Loading from "./components/loading"
+import { lazyWithMinimum } from "./utils/lazyWithMinimum";
 
 
-const Homepage = lazy(() => import("./views/homepage"));
-const Contact = lazy(() => import("./views/contact.js"));
-const ProductStudio = lazy(() => import("./views/projects/ProductStudio"));
-const DS = lazy(() => import("./views/projects/DS"));
-const Voice = lazy(() => import("./views/projects/Voice"));
-const AIResearchGuide = lazy(() => import("./views/projects/AIResearchGuide"));
-const PlatformsIntegration = lazy(() => import("./views/projects/PlatformsIntegration"));
-const Kiosk = lazy(() => import("./views/projects/Kiosk"));
+const Homepage = lazy(() => lazyWithMinimum(() => import("./views/homepage")));
+const Contact = lazy(() => lazyWithMinimum(() => import("./views/contact.js")));
+const ProductStudio = lazy(() => lazyWithMinimum(() => import("./views/projects/ProductStudio")));
+const DS = lazy(() => lazyWithMinimum(() => import("./views/projects/DS")));
+const Voice = lazy(() => lazyWithMinimum(() => import("./views/projects/Voice")));
+const AIResearchGuide = lazy(() => lazyWithMinimum(() => import("./views/projects/AIResearchGuide")));
+const PlatformsIntegration = lazy(() => lazyWithMinimum(() => import("./views/projects/PlatformsIntegration")));
+const Kiosk = lazy(() => lazyWithMinimum(() => import("./views/projects/Kiosk")));
 
 
 const App = () => {

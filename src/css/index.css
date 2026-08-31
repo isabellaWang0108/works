@@ -2392,7 +2392,7 @@ a:hover {
   min-height: 0;
   transform: translateX(-50%);
   object-fit: contain;
-  filter: saturate(1.12) contrast(1.06) drop-shadow(0 28px 48px rgba(0, 0, 0, 0.52));
+  filter: saturate(1.04) contrast(1.02) drop-shadow(0 16px 28px rgba(0, 0, 0, 0.34));
 }
 
 #NYTango .project-card-backdrop {
@@ -2407,7 +2407,7 @@ a:hover {
   max-width: calc(100% - 16px);
   height: calc(100% - 208px);
   max-height: calc(100% - 208px);
-  filter: saturate(1.08) contrast(1.04) drop-shadow(0 26px 44px rgba(0, 0, 0, 0.48));
+  filter: saturate(1.03) contrast(1.02) drop-shadow(0 14px 26px rgba(0, 0, 0, 0.32));
 }
 
 #AIResearchGuide {
@@ -2954,390 +2954,79 @@ a:hover {
 
 /* Loading animation */
 
-.loader {
-  display: inline-block;
-  font-size: 2em;
-  margin: 0 .5em;
-  position: relative;
-  height: .5em;
-  width: 1em;
-}
-
-.loader:before,
-.loader:after {
-  content: "";
-  display: block;
-  height: .5em;
-  position: absolute;
-  width: .5em;
-}
-
-.loader:before {
-  -webkit-animation: load-before 1.05s ease-in-out infinite, zoom-before .42s ease-in-out infinite;
-  -moz-animation: load-before 1.05s ease-in-out infinite, zoom-before .42s ease-in-out infinite;
-  -ms-animation: load-before 1.05s ease-in-out infinite, zoom-before .42s ease-in-out infinite;
-  -o-animation: load-before 1.05s ease-in-out infinite, zoom-before .42s ease-in-out infinite;
-  animation: load-before 1.05s ease-in-out infinite, zoom-before .42s ease-in-out infinite;
-  background: #FC2293;
-}
-
-.loader:after {
-  -webkit-animation: load-after 1.05s ease-in-out infinite, zoom-after .42s ease-in-out infinite;
-  -moz-animation: load-after 1.05s ease-in-out infinite, zoom-after .42s ease-in-out infinite;
-  -ms-animation: load-after 1.05s ease-in-out infinite, zoom-after .42s ease-in-out infinite;
-  -o-animation: load-after 1.05s ease-in-out infinite, zoom-after .42s ease-in-out infinite;
-  animation: load-after 1.05s ease-in-out infinite, zoom-after .42s ease-in-out infinite;
-  background: #C1C1C1;
-}
-
-.small {
-  font-size: 1em;
-}
-
-.large {
-  font-size: 4em;
-}
-
-.circle:before,
-.circle:after {
-  border-radius: 50%;
-}
-
-.circle-before:before {
-  border-radius: 50%;
-}
-
-.circle-after:after {
-  border-radius: 50%;
-}
-
-/* ---------- ANIMATION WEBKIT ---------- */
-
-@-webkit-keyframes load-before {
+@keyframes loadingGridRowsForm {
   0% {
-    left: 0;
-    -webkit-transform: scale(1.1);
+    clip-path: inset(50% 0 50% 0);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
   }
 
-  50% {
-    left: 100%;
-    -webkit-transform: scale(1);
+  14% {
+    clip-path: inset(32% 0 32% 0);
+    opacity: 0.36;
+    filter: drop-shadow(0 0 0.2rem rgba(255, 255, 255, 0.1));
+  }
+
+  46% {
+    clip-path: inset(0);
+    opacity: 0.62;
+    filter: drop-shadow(0 0 0.72rem rgba(255, 255, 255, 0.26));
+  }
+
+  76% {
+    clip-path: inset(0);
+    opacity: 0.54;
+    filter: drop-shadow(0 0 0.46rem rgba(255, 255, 255, 0.18));
+  }
+
+  90% {
+    clip-path: inset(0);
+    opacity: 0.12;
+    filter: drop-shadow(0 0 0.16rem rgba(255, 255, 255, 0.08));
   }
 
   100% {
-    left: 0;
-    -webkit-transform: scale(1.1);
+    clip-path: inset(50% 0 50% 0);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
   }
 }
 
-
-@-webkit-keyframes load-after {
+@keyframes loadingGridColumnsForm {
   0% {
-    left: 100%;
-    -webkit-transform: scale(1.1);
+    clip-path: inset(0 50% 0 50%);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
   }
 
-  50% {
-    left: 0;
-    -webkit-transform: scale(1);
+  14% {
+    clip-path: inset(0 32% 0 32%);
+    opacity: 0.32;
+    filter: drop-shadow(0 0 0.2rem rgba(255, 255, 255, 0.1));
+  }
+
+  46% {
+    clip-path: inset(0);
+    opacity: 0.58;
+    filter: drop-shadow(0 0 0.68rem rgba(255, 255, 255, 0.24));
+  }
+
+  76% {
+    clip-path: inset(0);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 0.42rem rgba(255, 255, 255, 0.17));
+  }
+
+  90% {
+    clip-path: inset(0);
+    opacity: 0.1;
+    filter: drop-shadow(0 0 0.14rem rgba(255, 255, 255, 0.07));
   }
 
   100% {
-    left: 100%;
-    -webkit-transform: scale(1.1);
-  }
-
-}
-
-@-webkit-keyframes zoom-before {
-  0% {
-    z-index: 0;
-  }
-
-  50% {
-    z-index: 1;
-  }
-
-  100% {
-    z-index: 0;
-  }
-}
-
-@-webkit-keyframes zoom-after {
-  0% {
-    z-index: 1;
-  }
-
-  50% {
-    z-index: 0;
-  }
-
-  100% {
-    z-index: 1;
-  }
-}
-
-/* ---------- ANIMATION MOZ ---------- */
-
-@-moz-keyframes load-before {
-  0% {
-    left: 0;
-    -moz-transform: scale(1.1);
-  }
-
-  50% {
-    left: 100%;
-    -moz-transform: scale(1);
-  }
-
-  100% {
-    left: 0;
-    -moz-transform: scale(1.1);
-  }
-}
-
-
-@-moz-keyframes load-after {
-  0% {
-    left: 100%;
-    -moz-transform: scale(1.1);
-  }
-
-  50% {
-    left: 0;
-    -moz-transform: scale(1);
-  }
-
-  100% {
-    left: 100%;
-    -moz-transform: scale(1.1);
-  }
-
-}
-
-@-moz-keyframes zoom-before {
-  0% {
-    z-index: 0;
-  }
-
-  50% {
-    z-index: 1;
-  }
-
-  100% {
-    z-index: 0;
-  }
-}
-
-@-moz-keyframes zoom-after {
-  0% {
-    z-index: 1;
-  }
-
-  50% {
-    z-index: 0;
-  }
-
-  100% {
-    z-index: 1;
-  }
-}
-
-/* ---------- ANIMATION MS ---------- */
-
-@-ms-keyframes load-before {
-  0% {
-    left: 0;
-    -ms-transform: scale(1.1);
-  }
-
-  50% {
-    left: 100%;
-    -ms-transform: scale(1);
-  }
-
-  100% {
-    left: 0;
-    -ms-transform: scale(1.1);
-  }
-}
-
-
-@-ms-keyframes load-after {
-  0% {
-    left: 100%;
-    -ms-transform: scale(1.1);
-  }
-
-  50% {
-    left: 0;
-    -ms-transform: scale(1);
-  }
-
-  100% {
-    left: 100%;
-    -ms-transform: scale(1.1);
-  }
-
-}
-
-@-ms-keyframes zoom-before {
-  0% {
-    z-index: 0;
-  }
-
-  50% {
-    z-index: 1;
-  }
-
-  100% {
-    z-index: 0;
-  }
-}
-
-@-ms-keyframes zoom-after {
-  0% {
-    z-index: 1;
-  }
-
-  50% {
-    z-index: 0;
-  }
-
-  100% {
-    z-index: 1;
-  }
-}
-
-/* ---------- ANIMATION O ---------- */
-
-@-o-keyframes load-before {
-  0% {
-    left: 0;
-    -o-transform: scale(1.1);
-  }
-
-  50% {
-    left: 100%;
-    -o-transform: scale(1);
-  }
-
-  100% {
-    left: 0;
-    -o-transform: scale(1.1);
-  }
-}
-
-
-@-o-keyframes load-after {
-  0% {
-    left: 100%;
-    -o-transform: scale(1.1);
-  }
-
-  50% {
-    left: 0;
-    -o-transform: scale(1);
-  }
-
-  100% {
-    left: 100%;
-    -o-transform: scale(1.1);
-  }
-
-}
-
-@-o-keyframes zoom-before {
-  0% {
-    z-index: 0;
-  }
-
-  50% {
-    z-index: 1;
-  }
-
-  100% {
-    z-index: 0;
-  }
-}
-
-@-o-keyframes zoom-after {
-  0% {
-    z-index: 1;
-  }
-
-  50% {
-    z-index: 0;
-  }
-
-  100% {
-    z-index: 1;
-  }
-}
-
-/* ---------- ANIMATION ---------- */
-
-@keyframes load-before {
-  0% {
-    left: 0;
-    transform: scale(1.1);
-  }
-
-  50% {
-    left: 100%;
-    transform: scale(1);
-  }
-
-  100% {
-    left: 0;
-    transform: scale(1.1);
-  }
-}
-
-
-@keyframes load-after {
-  0% {
-    left: 100%;
-    transform: scale(1.1);
-  }
-
-  50% {
-    left: 0;
-    transform: scale(1);
-  }
-
-  100% {
-    left: 100%;
-    transform: scale(1.1);
-  }
-
-}
-
-@keyframes zoom-before {
-  0% {
-    z-index: 0;
-  }
-
-  50% {
-    z-index: 1;
-  }
-
-  100% {
-    z-index: 0;
-  }
-}
-
-@keyframes zoom-after {
-  0% {
-    z-index: 1;
-  }
-
-  50% {
-    z-index: 0;
-  }
-
-  100% {
-    z-index: 1;
+    clip-path: inset(0 50% 0 50%);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
   }
 }
 
@@ -3637,18 +3326,39 @@ a:hover {
 }
 
 .loadingpage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-top: 40vh;
-  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  min-height: 100vh;
   width: 100%;
-  text-align: center;
   color: var(--color-text);
-  background-color: #171717;
-  background: #171717;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12), transparent 20rem),
+    #000;
+  overflow: hidden;
 }
 
+.loadingpage::before,
+.loadingpage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.loadingpage::before {
+  background: linear-gradient(rgba(255, 255, 255, 0.24) 1px, transparent 1px);
+  background-size: 100% clamp(2.25rem, 4.75vw, 4rem);
+  animation: loadingGridRowsForm 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  will-change: clip-path, opacity, filter;
+}
+
+.loadingpage::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px);
+  background-size: clamp(2.25rem, 4.75vw, 4rem) 100%;
+  animation: loadingGridColumnsForm 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  will-change: clip-path, opacity, filter;
+}
 
 @media only screen and (max-width: 1100px) {
   .inpage_hero_container {

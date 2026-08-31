@@ -1,25 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { preloadRouteAssets } from "../utils/preloadAssets";
 import "../css/index.css"
 
-class Loading extends React.Component {
+const Loading = () => {
+    const { pathname } = useLocation();
 
-    render() {
-        const facts = [
-            "I dance Argentine Tango",
-            "My favorite show is Love, Death, and Robots",
-            "I like stand-up comedy",
-            "I have two parakeets"
-        ]
-        
-        return (
-            <div className="loadingpage">
-                <div className="loader circle"></div>
-                <h2 style={{color:'#f2f0ed'}}>{facts[Math.floor(Math.random() * 4)]}
-                </h2>
-            </div>
+    useEffect(() => {
+        return preloadRouteAssets(pathname);
+    }, [pathname]);
 
-        );
-    }
+    return (
+        <div className="loadingpage" role="status" aria-label="Loading" />
+    );
 }
 
 export default Loading;

@@ -19,6 +19,7 @@ import Pic7 from "../../../assets/images/LeverGuide/img_6.svg"
 class AIResearchGuide extends React.Component {
     activeSection = null;
     scrollCheckFrame = null;
+    scrollCheckLastRun = 0;
 
     content = [
         { title: "Pain points", id: "section1" },
@@ -83,12 +84,18 @@ class AIResearchGuide extends React.Component {
     }
 
     handleScroll = () => {
+        const now = window.performance.now();
+        if (now - this.scrollCheckLastRun < 80) {
+            return;
+        }
+
         if (this.scrollCheckFrame) {
             return;
         }
 
         this.scrollCheckFrame = window.requestAnimationFrame(() => {
             this.scrollCheckFrame = null;
+            this.scrollCheckLastRun = window.performance.now();
             this.scrollCheck();
         });
     }
@@ -163,21 +170,21 @@ class AIResearchGuide extends React.Component {
                         <div className="content-block" id="section2">
                             <h2>Designing the guide</h2>
                             <h3>Core workflow</h3>
-                            <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
+                            <img loading="lazy" decoding="async" src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                             <h3>Key design decisions</h3>
                             <p>Functions, sub-functions, and curated prompts gave users a clear starting path before they asked more specific questions.</p>
-                            <img src={Pic3} alt="xx" style={{ width: "100%", display: "block", marginBottom: "1rem"}} />
+                            <img loading="lazy" decoding="async" src={Pic3} alt="xx" style={{ width: "100%", display: "block", marginBottom: "1rem"}} />
                             <p>AI outputs made sources, reasoning, and uncertainty easier to inspect so consultants could trust and challenge the answer.</p>
-                            <img src={Pic5} alt="xx" style={{ width: "100%", display: "block", marginBottom: "1rem" }} />
+                            <img loading="lazy" decoding="async" src={Pic5} alt="xx" style={{ width: "100%", display: "block", marginBottom: "1rem" }} />
                             <p>Sub-functions stayed nested within each function, helping users drill down without losing the larger domain map.</p> 
-                            <img src={Pic4} alt="xx" style={{ width: "100%", display: "block"}} />
+                            <img loading="lazy" decoding="async" src={Pic4} alt="xx" style={{ width: "100%", display: "block"}} />
                          </div>
 
 
                         <div className="content-block" id="section3">
                             <h2>UX in AI content </h2>
                             <p>Much of the UX lived inside the generated content itself: headings, summaries, evidence, recommendations, and visual explanations users had to read and act on.</p>
-                            <img src={Pic6} alt="xx" style={{ width: "100%", display: "block"}} />
+                            <img loading="lazy" decoding="async" src={Pic6} alt="xx" style={{ width: "100%", display: "block"}} />
                         
                             <p>I shaped prompt structure and content patterns so consultants could scan quickly, compare options, and turn AI output into next steps.</p>
                         </div>
@@ -201,7 +208,7 @@ class AIResearchGuide extends React.Component {
                             <p className="pull-quote">“I wish I could change the content in this section.”</p>
                             <p className="pull-quote">“I wish I could change the choice of graph.”</p>
                             <p>Users did not want static AI output. They wanted to edit, challenge, and reshape it around their client context.</p>
-                            <img src={Pic7} alt="xx" style={{ width: "100%", display: "block"}} />
+                            <img loading="lazy" decoding="async" src={Pic7} alt="xx" style={{ width: "100%", display: "block"}} />
                         
                         </div>
 

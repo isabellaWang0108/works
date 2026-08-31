@@ -3,8 +3,9 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 const DATA_LABELS = [
-  "AI", "UX", "DATA", "B2B", "B2C", "OPS", "CS", "ML", "DESIGN", "TECH",
-  "RESEARCH", "STRATEGY", "SYSTEMS", "AUTOMATION", "INSIGHTS", "PRODUCT", "USER",
+  "AI", "UX", "DATA", "B2B", "INFO", "MOBILE", "WEB", "APP", "B2C", "USERS",
+  "CS", "ML", "DESIGN", "TECH", "RESEARCH", "STRATEGY", "SYSTEMS", "AUTOMATION",
+  "INSIGHTS", "PRODUCT", "USER",
 ];
 
 const STAR_POINTS = [
@@ -296,13 +297,14 @@ function NodePoint({ label, position }) {
 
 function HeroRenderScheduler() {
   const invalidate = useThree((state) => state.invalidate);
+  const rootRef = useRef(null);
 
   useEffect(() => {
     let isAnimating = true;
-    const frameDelay = window.matchMedia("(max-width: 620px)").matches ? 50 : 33;
+    const frameDelay = window.matchMedia("(max-width: 620px)").matches ? 80 : 50;
 
     const updateAnimationState = () => {
-      isAnimating = !document.hidden && window.scrollY < window.innerHeight * 1.25;
+      isAnimating = !document.hidden && rootRef.current !== false;
       if (isAnimating) {
         invalidate();
       }
@@ -316,14 +318,21 @@ function HeroRenderScheduler() {
 
     updateAnimationState();
     document.addEventListener("visibilitychange", updateAnimationState);
-    window.addEventListener("scroll", updateAnimationState, { passive: true });
-    window.addEventListener("resize", updateAnimationState, { passive: true });
+
+    const canvasRoot = document.querySelector(".hero-buckyball");
+    const observer = "IntersectionObserver" in window && canvasRoot
+      ? new IntersectionObserver(([entry]) => {
+          rootRef.current = entry.isIntersecting;
+          updateAnimationState();
+        }, { rootMargin: "180px 0px" })
+      : null;
+
+    observer?.observe(canvasRoot);
 
     return () => {
       window.clearInterval(frameTimer);
       document.removeEventListener("visibilitychange", updateAnimationState);
-      window.removeEventListener("scroll", updateAnimationState);
-      window.removeEventListener("resize", updateAnimationState);
+      observer?.disconnect();
     };
   }, [invalidate]);
 
@@ -333,6 +342,10 @@ function HeroRenderScheduler() {
 function BuckyballScene({ labels }) {
   const groupRef = useRef();
   const { points, edges, pulseEdges } = useMemo(() => createBuckyballTopology(), []);
+  const nodeLabels = useMemo(
+    () => points.map(() => labels[Math.floor(Math.random() * labels.length)]),
+    [labels, points],
+  );
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return;
@@ -355,7 +368,7 @@ function BuckyballScene({ labels }) {
         <SignalGlint key={`glint-${index}`} position={point} index={index} />
       ))}
       {points.map((point, index) => (
-        <NodePoint key={`node-${index}`} label={labels[index % labels.length]} position={point} />
+        <NodePoint key={`node-${index}`} label={nodeLabels[index]} position={point} />
       ))}
     </group>
   );
@@ -364,10 +377,10 @@ function BuckyballScene({ labels }) {
 function HeroBuckyballGraph() {
   const canvasDpr = useMemo(() => {
     if (typeof window !== "undefined" && window.matchMedia("(max-width: 620px)").matches) {
-      return [1, 1.25];
+      return [1, 1.1];
     }
 
-    return [1, 1.5];
+    return [1, 1.25];
   }, []);
 
   return (
@@ -376,7 +389,7 @@ function HeroBuckyballGraph() {
         dpr={canvasDpr}
         frameloop="demand"
         camera={{ position: [0, 0.04, 5.6], fov: 43 }}
-        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
+        gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
       >
         <HeroRenderScheduler />
         <ambientLight intensity={0.36} />

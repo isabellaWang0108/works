@@ -25,6 +25,7 @@ import Pic10 from "../../../assets/images/Janus/img_10.svg"
 class PlatformsIntegration extends React.Component {
     activeSection = null;
     scrollCheckFrame = null;
+    scrollCheckLastRun = 0;
 
     content = [
         { title: "Platform opportunity", id: "section1" },
@@ -135,12 +136,18 @@ class PlatformsIntegration extends React.Component {
     }
 
     handleScroll = () => {
+        const now = window.performance.now();
+        if (now - this.scrollCheckLastRun < 80) {
+            return;
+        }
+
         if (this.scrollCheckFrame) {
             return;
         }
 
         this.scrollCheckFrame = window.requestAnimationFrame(() => {
             this.scrollCheckFrame = null;
+            this.scrollCheckLastRun = window.performance.now();
             this.scrollCheck();
         });
     }
@@ -193,7 +200,7 @@ class PlatformsIntegration extends React.Component {
                             <h2>Platform opportunity</h2>
                             <h3 style={{ marginTop: 40 }}>Fragmented tools</h3>
                             <p>Org Transformation assessments depended on specialized tools for research, data intake, org visualization, financial modeling, and initiative tracking, including LeverGuide, OIDD, Vault, Radial, RPM, and Elevation. Each tool worked individually, but the handoffs between them stayed manual, forcing consultants to rebuild context, reconcile versions, and recreate deliverables from disconnected outputs right when teams needed shared context to make assessment decisions.</p>
-                            <img src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
+                            <img loading="lazy" decoding="async" src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                             <h3 style={{ marginTop: 40 }}>Platform opportunity</h3>
                             <p>The goal was simple: keep consultants focused on assessment outcomes instead of reconstructing context across systems.</p>
                             <div className="strategy-card-grid">
@@ -232,7 +239,7 @@ class PlatformsIntegration extends React.Component {
                             <h2>AI-assisted workflow</h2>
                             <h3 style={{ marginTop: 40 }}>AI support at the moment of work</h3>
                             <p>Janice was embedded inside the workflow instead of separated into a chatbot destination, so AI support stayed close to the assessment decisions consultants were making.</p>
-                            <img src={Pic5} alt="Core workflow" style={{ width: "100%", display: "block"}} />
+                            <img loading="lazy" decoding="async" src={Pic5} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                          
                          <h3 style={{ marginTop: 40 }}>Core interaction strategy</h3>
                          <p>The most important design decision was defining what the AI layer should do. We framed Janice around three interaction modes:</p>
@@ -248,7 +255,7 @@ class PlatformsIntegration extends React.Component {
                                 </StrategyCard>
                             </div>
                              <p>For visual or workflow-heavy actions, Janice routed users to the relevant page instead of forcing every task into chat.</p>
-                            <img src={Pic6} alt="Core workflow" style={{ width: "100%", display: "block"}} />
+                            <img loading="lazy" decoding="async" src={Pic6} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                          
                         </div>
 
@@ -270,17 +277,17 @@ class PlatformsIntegration extends React.Component {
                                     <b>Standardized workflow with customization</b>
                                 </div>
                             </div>
-                            <img src={Pic7} alt="Core workflow" style={{ width: "100%", display: "block" }} />
+                            <img loading="lazy" decoding="async" src={Pic7} alt="Core workflow" style={{ width: "100%", display: "block" }} />
                         </div>
 
                         <div className="content-block" id="section5">
                             <h2>Rapid AI prototyping</h2>
                             <h3 style={{ marginTop: 40 }}>The problem: designing for non-linear work</h3>
                             <p>The team needed to design a workflow that felt structured enough to standardize assessments, but flexible enough for how consultants actually worked. On paper, the process looked linear. In practice, consultants moved back and forth as they refined hypotheses, revisited data, and adjusted recommendations.</p>
-                            <img src={Pic9} alt="Core workflow" style={{ width: "100%", display: "block" }} />
+                            <img loading="lazy" decoding="async" src={Pic9} alt="Core workflow" style={{ width: "100%", display: "block" }} />
                             <h3 style={{ marginTop: 40 }}>How AI prototyping helped</h3>
                             <p>Vibe coding with tools like Claude helped turn rough workflow ideas into clickable prototypes quickly. Instead of debating abstract diagrams, the team could brainstorm with tangible flows, compare directions, and validate assumptions with stakeholders earlier. This accelerated alignment around Assessment Areas as the core operational model.</p>
-                            <img src={Pic10} alt="Core workflow" style={{ width: "100%", display: "block" }} />
+                            <img loading="lazy" decoding="async" src={Pic10} alt="Core workflow" style={{ width: "100%", display: "block" }} />
                         </div>
 
                         <div className="content-block" id="section6">
