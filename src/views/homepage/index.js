@@ -4,6 +4,7 @@ import "../../css/index.css"
 import NavigationBar from "../../components/navigation"
 import InpageContactMe from "../../components/inpage_contactme"
 import WireframeBackground from "../../components/WireframeBackground"
+import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, VOICE_TAGS } from "../../components/projectTags"
 
 import NYTangoProduct from "../../assets/images/home/Project card/NYTango_product.svg"
@@ -14,8 +15,6 @@ import AIPlatformProduct from "../../assets/images/home/Project card/AIPlatform_
 import AIPlatformBackground from "../../assets/images/home/Project card/AIPlatform_background.webp"
 import DesignSystemProduct from "../../assets/images/home/Project card/DS_product.svg"
 import DesignSystemBackground from "../../assets/images/home/Project card/DS_background.webp"
-
-const HeroBuckyballGraph = React.lazy(() => import("../../components/HeroBuckyballGraph"));
 
 const isCompactViewport = window.innerWidth < 990;
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -128,9 +127,7 @@ class Homepage extends React.Component {
                 <div id="HP_container" className='HP_container'>
                     <div className="homepage-background-layer" aria-hidden="true">
                         {!prefersReducedMotion() && (
-                            <React.Suspense fallback={null}>
-                                <HeroBuckyballGraph />
-                            </React.Suspense>
+                            <HeroBuckyballGraph />
                         )}
                     </div>
 

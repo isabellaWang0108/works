@@ -42,8 +42,9 @@ import DSPic4 from "../assets/images/DesignSystem/ds_pic4.png";
 import DSPic6 from "../assets/images/DesignSystem/ds_pic6.png";
 
 const loadedImages = new Map();
-const loadedModules = new Set();
-const loadedFonts = new Set();
+const loadedModules = new Map();
+const loadedFonts = new Map();
+const CRITICAL_ASSET_TIMEOUT_MS = 2200;
 
 const sharedAssets = [LinkedinIcon, EmailIcon, BackToTopIcon];
 
@@ -61,7 +62,10 @@ const preloadSets = {
       DesignSystemBackground,
       DesignSystemProduct,
     ],
-    modules: [() => import("../components/HeroBuckyballGraph")],
+  },
+  "/contact": {
+    critical: [],
+    secondary: [],
   },
   "/product-studio": {
     critical: [ProductStudioPic1],
@@ -107,7 +111,7 @@ const runSoon = (callback) => {
 
 const preloadImage = (src, priority = "low") => {
   if (!src || loadedImages.has(src)) {
-    return;
+    return loadedImages.get(src)?.promise || Promise.resolve();
   }
 
   const image = new Image();
@@ -118,34 +122,84 @@ const preloadImage = (src, priority = "low") => {
     image.fetchPriority = priority;
   }
 
-  image.src = src;
-  loadedImages.set(src, image);
+  const promise = new Promise((resolve) => {
+    let isFinished = false;
+    const timeoutId = setTimeout(() => {
+      if (isFinished) {
+        return;
+      }
+
+      isFinished = true;
+      resolve();
+    }, CRITICAL_ASSET_TIMEOUT_MS);
+
+    const finish = () => {
+      if (isFinished) {
+        return;
+      }
+
+      isFinished = true;
+      clearTimeout(timeoutId);
+
+      if ("decode" in image) {
+        image.decode().catch(() => {}).finally(resolve);
+        return;
+      }
+
+      resolve();
+    };
+
+    image.onload = finish;
+    image.onerror = () => {
+      if (isFinished) {
+        return;
+      }
+
+      isFinished = true;
+      clearTimeout(timeoutId);
+      resolve();
+    };
+    image.src = src;
+
+    if (image.complete) {
+      finish();
+    }
+  });
+
+  loadedImages.set(src, { image, promise });
+  return promise;
 };
 
 const preloadFonts = () => {
   if (!("fonts" in document)) {
-    return;
+    return Promise.resolve();
   }
 
-  fontFaces.forEach((fontFace) => {
+  const promises = fontFaces.map((fontFace) => {
     if (loadedFonts.has(fontFace)) {
-      return;
+      return loadedFonts.get(fontFace);
     }
 
-    loadedFonts.add(fontFace);
-    document.fonts.load(fontFace).catch(() => {});
+    const promise = document.fonts.load(fontFace).catch(() => {});
+    loadedFonts.set(fontFace, promise);
+    return promise;
   });
+
+  return Promise.all(promises);
 };
 
 const preloadModules = (modules = []) => {
-  modules.forEach((loadModule) => {
+  const promises = modules.map((loadModule) => {
     if (loadedModules.has(loadModule)) {
-      return;
+      return loadedModules.get(loadModule);
     }
 
-    loadedModules.add(loadModule);
-    loadModule().catch(() => {});
+    const promise = loadModule().catch(() => {});
+    loadedModules.set(loadModule, promise);
+    return promise;
   });
+
+  return Promise.all(promises);
 };
 
 export const preloadRouteAssets = (pathname = "/") => {
@@ -159,4 +213,18 @@ export const preloadRouteAssets = (pathname = "/") => {
   return runSoon(() => {
     assets.secondary.forEach((src) => preloadImage(src, "low"));
   });
+};
+
+export const preloadRouteCriticalAssets = (pathname = "/") => {
+  const assets = preloadSets[pathname] || preloadSets["/"];
+  const criticalImages = [
+    ...sharedAssets.map((src) => preloadImage(src, "low")),
+    ...assets.critical.map((src) => preloadImage(src, "high")),
+  ];
+
+  return Promise.all([
+    preloadFonts(),
+    preloadModules(assets.modules),
+    ...criticalImages,
+  ]);
 };
