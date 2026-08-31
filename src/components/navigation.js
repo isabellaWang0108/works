@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Linkedin from "../assets/images/contact/linkedin.svg"
 import Email from "../assets/images/contact/email.svg"
@@ -9,45 +9,6 @@ const NavigationBar = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const isHomePage = location.pathname === "/";
-    const scrollFrameRef = useRef(null);
-    const scrollTimeoutRef = useRef(null);
-    const isScrollingRef = useRef(false);
-
-    useEffect(() => {
-        const root = document.documentElement;
-        const handleScroll = () => {
-            if (scrollFrameRef.current) {
-                return;
-            }
-
-            scrollFrameRef.current = window.requestAnimationFrame(() => {
-                if (!isScrollingRef.current) {
-                    root.classList.add("is-site-scrolling");
-                    isScrollingRef.current = true;
-                }
-
-                scrollFrameRef.current = null;
-
-                window.clearTimeout(scrollTimeoutRef.current);
-                scrollTimeoutRef.current = window.setTimeout(() => {
-                    root.classList.remove("is-site-scrolling");
-                    isScrollingRef.current = false;
-                }, 160);
-            });
-        };
-
-        document.addEventListener("scroll", handleScroll, { passive: true, capture: true });
-
-        return () => {
-            document.removeEventListener("scroll", handleScroll, { capture: true });
-            if (scrollFrameRef.current) {
-                window.cancelAnimationFrame(scrollFrameRef.current);
-            }
-            window.clearTimeout(scrollTimeoutRef.current);
-            root.classList.remove("is-site-scrolling");
-            isScrollingRef.current = false;
-        };
-    }, []);
 
     const goBack = () => {
         if (window.history.length > 1) {

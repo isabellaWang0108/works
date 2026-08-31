@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -19,6 +19,42 @@ const SPARK_POINTS = [
   [0.18, 1.28, 1.14], [0.62, -0.86, -1.34], [1.08, 0.42, 1.1], [1.5, -0.18, -0.72],
   [-1.62, 0.78, 0.18], [-0.48, -1.28, -1.04], [0.76, 1.7, 0.08], [1.36, 1.02, -0.46],
 ];
+
+const labelTextureCache = new Map();
+let dotTexture = null;
+const getStarColor = (index) => (index % 3 === 0 ? "#ff8cc4" : "#ff9ccc");
+const getGlintColor = (index) => (index % 2 === 0 ? "#ffe2f2" : "#ff8cc4");
+
+function makeSoftDotTexture() {
+  if (dotTexture) {
+    return dotTexture;
+  }
+
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  const size = 96;
+  const center = size / 2;
+
+  canvas.width = size;
+  canvas.height = size;
+
+  const gradient = context.createRadialGradient(center, center, 0, center, center, center);
+  gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+  gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.94)");
+  gradient.addColorStop(0.78, "rgba(255, 255, 255, 0.28)");
+  gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, size, size);
+
+  dotTexture = new THREE.CanvasTexture(canvas);
+  dotTexture.colorSpace = THREE.SRGBColorSpace;
+  dotTexture.minFilter = THREE.LinearFilter;
+  dotTexture.magFilter = THREE.LinearFilter;
+  dotTexture.generateMipmaps = false;
+  dotTexture.needsUpdate = true;
+  return dotTexture;
+}
 
 function createBuckyballTopology() {
   const geometry = new THREE.IcosahedronGeometry(1.44, 1);
@@ -75,16 +111,17 @@ function createBuckyballTopology() {
       return [start, end, variant];
     });
 
-  const pulseEdges = edges
-    .map((edge, index) => [edge, index])
-    .filter(([[, , variant]], index) => variant === "signal" || index % 17 === 0)
-    .map(([, index]) => index)
-    .slice(0, 10);
-
-  return { points, edges, pulseEdges };
+  return { points, edges };
 }
 
 function makeLabelTexture(label, isRear = false) {
+  const cacheKey = `${label}-${isRear ? "rear" : "front"}`;
+  const cachedTexture = labelTextureCache.get(cacheKey);
+
+  if (cachedTexture) {
+    return cachedTexture;
+  }
+
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
   const width = label.length > 8 ? 620 : label.length > 4 ? 500 : 340;
@@ -123,32 +160,18 @@ function makeLabelTexture(label, isRear = false) {
   texture.minFilter = THREE.LinearFilter;
   texture.magFilter = THREE.LinearFilter;
   texture.needsUpdate = true;
+  labelTextureCache.set(cacheKey, texture);
   return texture;
 }
 
-function LabelSprite({ label, position }) {
-  const spriteRef = useRef();
-  const materialRef = useRef();
-  const worldPosition = useMemo(() => new THREE.Vector3(), []);
-  const frontTexture = useMemo(() => makeLabelTexture(label, false), [label]);
-  const rearTexture = useMemo(() => makeLabelTexture(label, true), [label]);
+function LabelSprite({ isRear, label, position }) {
+  const texture = useMemo(() => makeLabelTexture(label, isRear), [isRear, label]);
   const width = label.length > 8 ? 0.98 : label.length > 4 ? 0.79 : 0.54;
 
-  useFrame(() => {
-    if (!spriteRef.current || !materialRef.current) return;
-    spriteRef.current.getWorldPosition(worldPosition);
-    const nextTexture = worldPosition.z >= CONNECTION_DEPTH_SPLIT ? frontTexture : rearTexture;
-    if (materialRef.current.map !== nextTexture) {
-      materialRef.current.map = nextTexture;
-      materialRef.current.needsUpdate = true;
-    }
-  });
-
   return (
-    <sprite ref={spriteRef} position={position} scale={[width, 0.3, 1]}>
+    <sprite position={position} scale={[width, 0.3, 1]}>
       <spriteMaterial
-        ref={materialRef}
-        map={position.z >= CONNECTION_DEPTH_SPLIT ? frontTexture : rearTexture}
+        map={texture}
         transparent
         opacity={1}
         depthWrite={false}
@@ -162,18 +185,42 @@ function LabelSprite({ label, position }) {
 
 const CONNECTION_FRONT_COLOR = "#94A1A8";
 const CONNECTION_REAR_COLOR = "#575E6B";
+const CONNECTION_SIGNAL_COLOR = "#F0BED3";
+const CONNECTION_CROSS_COLOR = "#A9B8FF";
+const CONNECTION_OUTER_COLOR = "#C8CFD5";
 const CONNECTION_DEPTH_SPLIT = 0;
 const CONNECTION_DOT_SPACING = 0.086;
-const CONNECTION_DOT_SIZE = 0.027;
+const CONNECTION_REAR_DOT_SIZE = 0.032;
+const CONNECTION_FRONT_DOT_SIZE = 0.04;
+const SCENE_TILT_X = -0.2;
+const SCENE_TILT_Y = -0.42;
+const FOREGROUND_PULSE_COUNT = 3;
+const BACKGROUND_PULSE_COUNT = 3;
+const PULSE_EDGE_STRIDE = 13;
+const PULSE_EDGE_OFFSET = 7;
+const PULSE_SPEED = 0.24;
+const PULSE_TRAIL_LENGTH = 0.18;
+
+function getTiltedDepth(position) {
+  const zAfterXTilt = position.y * Math.sin(SCENE_TILT_X) + position.z * Math.cos(SCENE_TILT_X);
+  return -position.x * Math.sin(SCENE_TILT_Y) + zAfterXTilt * Math.cos(SCENE_TILT_Y);
+}
 
 function ConnectionCloud({ points, edges }) {
-  const { positions, colors } = useMemo(() => {
-    const front = new THREE.Color(CONNECTION_FRONT_COLOR);
-    const rear = new THREE.Color(CONNECTION_REAR_COLOR);
-    const dotPositions = [];
-    const dotColors = [];
+  const pointTexture = useMemo(() => makeSoftDotTexture(), []);
+  const { frontPositions, frontColors, rearPositions, rearColors } = useMemo(() => {
+    const baseFront = new THREE.Color(CONNECTION_FRONT_COLOR);
+    const baseRear = new THREE.Color(CONNECTION_REAR_COLOR);
+    const signal = new THREE.Color(CONNECTION_SIGNAL_COLOR);
+    const cross = new THREE.Color(CONNECTION_CROSS_COLOR);
+    const outer = new THREE.Color(CONNECTION_OUTER_COLOR);
+    const color = new THREE.Color();
+    const frontDotPositions = [];
+    const frontDotColors = [];
+    const rearDotPositions = [];
+    const rearDotColors = [];
 
-    edges.forEach(([startIndex, endIndex]) => {
+    edges.forEach(([startIndex, endIndex, variant]) => {
       const start = points[startIndex];
       const end = points[endIndex];
       const distance = start.distanceTo(end);
@@ -182,7 +229,20 @@ function ConnectionCloud({ points, edges }) {
       for (let index = 0; index < dotCount; index += 1) {
         const t = (index + 1) / (dotCount + 1);
         const position = start.clone().lerp(end, t);
-        const color = position.z >= CONNECTION_DEPTH_SPLIT ? front : rear;
+        const isFront = getTiltedDepth(position) >= CONNECTION_DEPTH_SPLIT;
+
+        color.copy(isFront ? baseFront : baseRear);
+
+        if (variant === "signal") {
+          color.lerp(signal, isFront ? 0.42 : 0.2);
+        } else if (variant === "cross") {
+          color.lerp(cross, isFront ? 0.26 : 0.12);
+        } else if (variant === "outer" && isFront) {
+          color.lerp(outer, 0.18);
+        }
+
+        const dotPositions = isFront ? frontDotPositions : rearDotPositions;
+        const dotColors = isFront ? frontDotColors : rearDotColors;
 
         dotPositions.push(position.x, position.y, position.z);
         dotColors.push(color.r, color.g, color.b);
@@ -190,107 +250,225 @@ function ConnectionCloud({ points, edges }) {
     });
 
     return {
-      positions: new Float32Array(dotPositions),
-      colors: new Float32Array(dotColors),
+      frontPositions: new Float32Array(frontDotPositions),
+      frontColors: new Float32Array(frontDotColors),
+      rearPositions: new Float32Array(rearDotPositions),
+      rearColors: new Float32Array(rearDotColors),
     };
   }, [points, edges]);
 
   return (
-    <points>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-        <bufferAttribute attach="attributes-color" args={[colors, 3]} />
-      </bufferGeometry>
-      <pointsMaterial
-        size={CONNECTION_DOT_SIZE}
-        vertexColors
-        transparent
-        opacity={0.82}
-        depthWrite={false}
-        depthTest
-        toneMapped={false}
-      />
-    </points>
+    <>
+      <points>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[rearPositions, 3]} />
+          <bufferAttribute attach="attributes-color" args={[rearColors, 3]} />
+        </bufferGeometry>
+        <pointsMaterial
+          map={pointTexture}
+          size={CONNECTION_REAR_DOT_SIZE}
+          vertexColors
+          transparent
+          opacity={0.82}
+          alphaTest={0.02}
+          depthWrite={false}
+          depthTest
+          toneMapped={false}
+        />
+      </points>
+      <points>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[frontPositions, 3]} />
+          <bufferAttribute attach="attributes-color" args={[frontColors, 3]} />
+        </bufferGeometry>
+        <pointsMaterial
+          map={pointTexture}
+          size={CONNECTION_FRONT_DOT_SIZE}
+          vertexColors
+          transparent
+          opacity={0.92}
+          alphaTest={0.02}
+          depthWrite={false}
+          depthTest
+          toneMapped={false}
+        />
+      </points>
+    </>
   );
 }
 
-function DataPulse({ start, end, offset }) {
-  const ref = useRef();
-  const coreRef = useRef();
+function PulseLayer({
+  color,
+  count,
+  edgePaths,
+  haloArgs,
+  haloOpacity,
+  coreArgs,
+  coreOpacity,
+}) {
   const haloRef = useRef();
-  const direction = useMemo(() => end.clone().sub(start).normalize(), [start, end]);
-  const quaternion = useMemo(() => new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction), [direction]);
+  const coreRef = useRef();
+  const matrixObject = useMemo(() => new THREE.Object3D(), []);
   const pulseStart = useMemo(() => new THREE.Vector3(), []);
   const pulseEnd = useMemo(() => new THREE.Vector3(), []);
   const midpoint = useMemo(() => new THREE.Vector3(), []);
+  const pulseOffsets = useMemo(() => (
+    Array.from({ length: count }, (_, index) => index / count)
+  ), [count]);
+
+  const updatePulseMatrices = (elapsedTime) => {
+    if (!haloRef.current || !coreRef.current) return;
+
+    pulseOffsets.forEach((offset, index) => {
+      const progress = elapsedTime * PULSE_SPEED + offset;
+      const cycle = Math.floor(progress);
+      const edgeIndex = (cycle * PULSE_EDGE_STRIDE + index * PULSE_EDGE_OFFSET) % edgePaths.length;
+      const { start, end, quaternion } = edgePaths[edgeIndex];
+      const t = PULSE_TRAIL_LENGTH + (progress % 1) * (1 - PULSE_TRAIL_LENGTH);
+      const tail = t - PULSE_TRAIL_LENGTH;
+      pulseStart.copy(start).lerp(end, tail);
+      pulseEnd.copy(start).lerp(end, t);
+      midpoint.copy(pulseStart).add(pulseEnd).multiplyScalar(0.5);
+      const length = Math.max(0.001, pulseStart.distanceTo(pulseEnd));
+
+      matrixObject.position.copy(midpoint);
+      matrixObject.quaternion.copy(quaternion);
+
+      matrixObject.scale.set(1, length, 1);
+      matrixObject.updateMatrix();
+      haloRef.current.setMatrixAt(index, matrixObject.matrix);
+      coreRef.current.setMatrixAt(index, matrixObject.matrix);
+    });
+
+    haloRef.current.instanceMatrix.needsUpdate = true;
+    coreRef.current.instanceMatrix.needsUpdate = true;
+  };
+
+  useLayoutEffect(() => {
+    updatePulseMatrices(0);
+  });
 
   useFrame(({ clock }) => {
-    if (!ref.current) return;
-    const t = (clock.elapsedTime * 0.22 + offset) % 1;
-    const tail = Math.max(0, t - 0.18);
-    pulseStart.copy(start).lerp(end, tail);
-    pulseEnd.copy(start).lerp(end, t);
-    midpoint.copy(pulseStart).add(pulseEnd).multiplyScalar(0.5);
-    const length = Math.max(0.001, pulseStart.distanceTo(pulseEnd));
-
-    ref.current.position.copy(midpoint);
-    ref.current.quaternion.copy(quaternion);
-    coreRef.current?.scale.set(1, length, 1);
-    haloRef.current?.scale.set(1, length, 1);
+    updatePulseMatrices(clock.elapsedTime);
   });
 
   return (
-    <group ref={ref}>
-      <mesh ref={haloRef}>
-        <cylinderGeometry args={[0.018, 0.004, 1, 12]} />
-        <meshBasicMaterial color="#ff8cc4" transparent opacity={0.17} depthWrite={false} blending={THREE.AdditiveBlending} />
-      </mesh>
-      <mesh ref={coreRef}>
-        <cylinderGeometry args={[0.008, 0.002, 1, 12]} />
-        <meshBasicMaterial color="#ffe2f2" transparent opacity={0.56} depthWrite={false} blending={THREE.AdditiveBlending} />
-      </mesh>
-    </group>
+    <>
+      <instancedMesh ref={haloRef} args={[null, null, count]}>
+        <cylinderGeometry args={haloArgs} />
+        <meshBasicMaterial color={color} transparent opacity={haloOpacity} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </instancedMesh>
+      <instancedMesh ref={coreRef} args={[null, null, count]}>
+        <cylinderGeometry args={coreArgs} />
+        <meshBasicMaterial color={color} transparent opacity={coreOpacity} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </instancedMesh>
+    </>
   );
 }
 
-function StarSpeck({ position, index }) {
+function DataPulses({ points, edges }) {
+  const { foregroundPaths, backgroundPaths } = useMemo(() => {
+    const foreground = [];
+    const background = [];
+
+    edges.forEach(([startIndex, endIndex]) => {
+      const start = points[startIndex];
+      const end = points[endIndex];
+      const midpointDepth = (getTiltedDepth(start) + getTiltedDepth(end)) / 2;
+      const direction = end.clone().sub(start).normalize();
+      const path = {
+        start,
+        end,
+        quaternion: new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction),
+      };
+
+      if (midpointDepth >= CONNECTION_DEPTH_SPLIT) {
+        foreground.push(path);
+      } else {
+        background.push(path);
+      }
+    });
+
+    return {
+      foregroundPaths: foreground.length ? foreground : background,
+      backgroundPaths: background.length ? background : foreground,
+    };
+  }, [edges, points]);
+
+  return (
+    <>
+      <PulseLayer
+        color="#8f5f76"
+        count={BACKGROUND_PULSE_COUNT}
+        edgePaths={backgroundPaths}
+        haloArgs={[0.01, 0.0025, 1, 10]}
+        haloOpacity={0.11}
+        coreArgs={[0.004, 0.0012, 1, 8]}
+        coreOpacity={0.28}
+      />
+      <PulseLayer
+        color="#ffe5f2"
+        count={FOREGROUND_PULSE_COUNT}
+        edgePaths={foregroundPaths}
+        haloArgs={[0.018, 0.0042, 1, 10]}
+        haloOpacity={0.14}
+        coreArgs={[0.0072, 0.002, 1, 8]}
+        coreOpacity={0.38}
+      />
+    </>
+  );
+}
+
+function TwinkleField({ points, opacity, speed, scaleMin, scaleMax, colorForIndex, geometryArgs }) {
   const ref = useRef();
+  const matrixObject = useMemo(() => new THREE.Object3D(), []);
+
+  useLayoutEffect(() => {
+    if (!ref.current) return;
+
+    points.forEach((position, index) => {
+      matrixObject.position.set(position[0], position[1], position[2]);
+      matrixObject.scale.setScalar(scaleMin);
+      matrixObject.updateMatrix();
+      ref.current.setMatrixAt(index, matrixObject.matrix);
+      ref.current.setColorAt(index, new THREE.Color(colorForIndex(index)));
+    });
+
+    ref.current.instanceMatrix.needsUpdate = true;
+
+    if (ref.current.instanceColor) {
+      ref.current.instanceColor.needsUpdate = true;
+    }
+  }, [colorForIndex, matrixObject, points, scaleMin]);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
-    ref.current.material.opacity = 0.16 + Math.max(0, Math.sin(clock.elapsedTime * 0.9 + index * 1.7)) * 0.42;
+
+    points.forEach((position, index) => {
+      const glow = Math.max(0, Math.sin(clock.elapsedTime * speed + index * 1.43));
+      const scale = scaleMin + glow * (scaleMax - scaleMin);
+
+      matrixObject.position.set(position[0], position[1], position[2]);
+      matrixObject.scale.setScalar(scale);
+      matrixObject.updateMatrix();
+      ref.current.setMatrixAt(index, matrixObject.matrix);
+    });
+
+    ref.current.instanceMatrix.needsUpdate = true;
   });
 
   return (
-    <mesh ref={ref} position={position}>
-      <sphereGeometry args={[0.012, 8, 8]} />
-      <meshBasicMaterial color={index % 3 === 0 ? "#ff8cc4" : "#ff9ccc"} transparent opacity={0.22} depthWrite={false} blending={THREE.NormalBlending} />
-    </mesh>
+    <instancedMesh ref={ref} args={[null, null, points.length]}>
+      <sphereGeometry args={geometryArgs} />
+      <meshBasicMaterial vertexColors transparent opacity={opacity} depthWrite={false} blending={THREE.NormalBlending} />
+    </instancedMesh>
   );
 }
 
-function SignalGlint({ position, index }) {
-  const ref = useRef();
-
-  useFrame(({ clock }) => {
-    if (!ref.current) return;
-    const glow = 0.5 + Math.sin(clock.elapsedTime * 1.4 + index * 1.13) * 0.5;
-    ref.current.material.opacity = 0.05 + glow * glow * 0.27;
-    ref.current.scale.setScalar(0.72 + glow * 0.52);
-  });
-
-  return (
-    <mesh ref={ref} position={position}>
-      <sphereGeometry args={[0.015, 10, 10]} />
-      <meshBasicMaterial color={index % 2 === 0 ? "#ffe2f2" : "#ff8cc4"} transparent opacity={0.18} depthWrite={false} blending={THREE.NormalBlending} />
-    </mesh>
-  );
-}
-
-function NodePoint({ label, position }) {
+function NodePoint({ isRear, label, position }) {
   return (
     <group position={position}>
-      <LabelSprite label={label} position={[0, 0, 0]} />
+      <LabelSprite isRear={isRear} label={label} position={[0, 0, 0]} />
     </group>
   );
 }
@@ -340,35 +518,41 @@ function HeroRenderScheduler() {
 }
 
 function BuckyballScene({ labels }) {
-  const groupRef = useRef();
-  const { points, edges, pulseEdges } = useMemo(() => createBuckyballTopology(), []);
+  const { points, edges } = useMemo(() => createBuckyballTopology(), []);
   const nodeLabels = useMemo(
     () => points.map(() => labels[Math.floor(Math.random() * labels.length)]),
     [labels, points],
   );
 
-  useFrame(({ clock }) => {
-    if (!groupRef.current) return;
-    groupRef.current.rotation.y = clock.elapsedTime * 0.011;
-    groupRef.current.rotation.x = -0.14;
-    groupRef.current.rotation.z = Math.sin(clock.elapsedTime * 0.02) * 0.009;
-  });
-
   return (
-    <group ref={groupRef} position={[0, 0, 0]}>
+    <group position={[0, 0, 0]} rotation={[SCENE_TILT_X, SCENE_TILT_Y, 0]}>
       <ConnectionCloud points={points} edges={edges} />
-      {pulseEdges.map((edgeIndex, index) => {
-        const [start, end] = edges[edgeIndex];
-        return <DataPulse key={`pulse-${edgeIndex}`} start={points[start]} end={points[end]} offset={index / pulseEdges.length} />;
-      })}
-      {STAR_POINTS.map((point, index) => (
-        <StarSpeck key={`star-${index}`} position={point} index={index} />
-      ))}
-      {SPARK_POINTS.map((point, index) => (
-        <SignalGlint key={`glint-${index}`} position={point} index={index} />
-      ))}
+      <DataPulses points={points} edges={edges} />
+      <TwinkleField
+        points={STAR_POINTS}
+        opacity={0.28}
+        speed={0.9}
+        scaleMin={0.8}
+        scaleMax={1.34}
+        colorForIndex={getStarColor}
+        geometryArgs={[0.012, 8, 8]}
+      />
+      <TwinkleField
+        points={SPARK_POINTS}
+        opacity={0.22}
+        speed={1.4}
+        scaleMin={0.72}
+        scaleMax={1.24}
+        colorForIndex={getGlintColor}
+        geometryArgs={[0.015, 10, 10]}
+      />
       {points.map((point, index) => (
-        <NodePoint key={`node-${index}`} label={nodeLabels[index]} position={point} />
+        <NodePoint
+          key={`node-${index}`}
+          isRear={getTiltedDepth(point) < CONNECTION_DEPTH_SPLIT}
+          label={nodeLabels[index]}
+          position={point}
+        />
       ))}
     </group>
   );
@@ -377,10 +561,10 @@ function BuckyballScene({ labels }) {
 function HeroBuckyballGraph() {
   const canvasDpr = useMemo(() => {
     if (typeof window !== "undefined" && window.matchMedia("(max-width: 620px)").matches) {
-      return [1, 1.1];
+      return [1, 1.2];
     }
 
-    return [1, 1.25];
+    return [1, 1.4];
   }, []);
 
   return (
@@ -389,13 +573,9 @@ function HeroBuckyballGraph() {
         dpr={canvasDpr}
         frameloop="demand"
         camera={{ position: [0, 0.04, 5.6], fov: 43 }}
-        gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
+        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
       >
         <HeroRenderScheduler />
-        <ambientLight intensity={0.36} />
-        <pointLight position={[2.8, 2.4, 3.6]} intensity={1.35} color="#ff8cc4" />
-        <pointLight position={[-2.2, -1.2, 2.8]} intensity={1.05} color="#ff8cc4" />
-        <spotLight position={[0.2, 2.6, 4.2]} angle={0.46} penumbra={0.72} intensity={0.92} color="#c7a7ff" />
         <BuckyballScene labels={DATA_LABELS} />
       </Canvas>
     </div>

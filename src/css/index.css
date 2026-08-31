@@ -21,8 +21,8 @@
 :root {
   --site-page-rail: max(clamp(1.5rem, 7vw, 6.25rem), calc((100vw - 77.5rem) / 2));
   --site-nav-height: 4rem;
-  --site-card-backdrop: blur(16px) saturate(112%);
-  --site-card-surface: rgba(8, 10, 14, 0.48);
+  --site-card-backdrop: blur(1px);
+  --site-card-surface: rgba(5, 7, 11, 0.78);
   --color-text: #f2f0ed;
   --color-ink: #0b0d10;
   --scrollbar-track: #07080a;
@@ -128,7 +128,9 @@ a {
   border: 0;
   border-bottom: 1px solid rgba(236, 242, 255, 0.08);
   border-radius: 0;
-  background: rgba(7, 10, 16, 0.2);
+  background:
+    linear-gradient(180deg, rgba(10, 12, 18, 0.92), rgba(7, 9, 14, 0.78)),
+    rgba(7, 10, 16, 0.86);
   box-shadow:
     0 0.875rem 2.375rem rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -142,9 +144,9 @@ a {
   inset: -1.75rem 0;
   z-index: 0;
   pointer-events: none;
-  background: rgba(7, 10, 16, 0.5);
-  backdrop-filter: blur(4.25rem) saturate(140%);
-  -webkit-backdrop-filter: blur(4.25rem) saturate(140%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 58%),
+    rgba(7, 10, 16, 0.72);
   transform: translateZ(0);
 }
 
@@ -159,44 +161,6 @@ a {
     linear-gradient(90deg, rgba(255, 140, 196, 0.05), transparent 34%, rgba(255, 255, 255, 0.035));
   opacity: 0.72;
   mix-blend-mode: screen;
-}
-
-.is-site-scrolling .site-nav-glass::before {
-  backdrop-filter: blur(1.5rem) saturate(112%);
-  -webkit-backdrop-filter: blur(1.5rem) saturate(112%);
-}
-
-.is-site-scrolling .bg-project-card,
-.is-site-scrolling .AboutProj-content,
-.is-site-scrolling .inpage-contact-card,
-.is-site-scrolling .about-panel,
-.is-site-scrolling .workflow-showcase-lead,
-.is-site-scrolling .strategy-card,
-.is-site-scrolling .discovery-pain-card,
-.is-site-scrolling .architecture-conflict div,
-.is-site-scrolling .project-page .bullet-callout,
-.is-site-scrolling .project-page .pull-quote,
-.is-site-scrolling .back-btn-fixed {
-  backdrop-filter: blur(0.5rem) saturate(105%);
-  -webkit-backdrop-filter: blur(0.5rem) saturate(105%);
-}
-
-.is-site-scrolling .project-card-backdrop,
-.is-site-scrolling .project-card-img,
-.is-site-scrolling .wireframe-background {
-  filter: none;
-}
-
-.is-site-scrolling .bg-project-card,
-.is-site-scrolling .project-card-backdrop,
-.is-site-scrolling .project-card-img {
-  transition-duration: 0.001ms;
-}
-
-.is-site-scrolling .bg-project-card {
-  box-shadow:
-    0 12px 36px rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.045);
 }
 
 .site-logo,
@@ -250,7 +214,6 @@ a {
   width: 1.1875rem;
   height: 1.1875rem;
   object-fit: contain;
-  filter: drop-shadow(0 0.25rem 0.75rem rgba(255, 255, 255, 0.1));
 }
 
 .site-nav-icon-link .material-symbols-outlined {
@@ -435,11 +398,13 @@ li {
 .bg-project-card {
   --card-accent: #8fb9ff;
   --card-signature: var(--signature-pink, #FC2293);
-  --card-glass: rgba(255, 255, 255, 0.018);
+  --card-glass: rgba(5, 7, 11, 0.5);
   display: block;
   position: relative;
   isolation: isolate;
-  background: var(--card-glass);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.042), rgba(255, 255, 255, 0.01)),
+    var(--card-glass);
   margin: 8px 0 0;
   padding: 0;
   border-radius: 28px;
@@ -451,13 +416,21 @@ li {
   overflow: hidden;
   contain: paint;
   background-clip: padding-box;
+  backdrop-filter: var(--site-card-backdrop);
+  -webkit-backdrop-filter: var(--site-card-backdrop);
   cursor: pointer;
-  backdrop-filter: blur(16px) saturate(112%);
-  -webkit-backdrop-filter: blur(16px) saturate(112%);
 }
 
 .bg-project-card::before {
-  content: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.016) 48%, rgba(3, 5, 8, 0.44)),
+    linear-gradient(90deg, color-mix(in srgb, var(--card-accent) 9%, transparent), transparent 46%);
+  opacity: 0.9;
 }
 
 .bg-project-card::after {
@@ -700,10 +673,6 @@ a:hover {
     linear-gradient(180deg, #060912 0%, #080d16 48%, #0d1320 100%);
 }
 
-.project-page::before {
-  content: none;
-}
-
 .project-page .content-layout {
   box-sizing: border-box;
   position: relative;
@@ -719,53 +688,6 @@ a:hover {
 .project-page .left-nav {
   position: fixed;
   z-index: 20;
-}
-
-.project-page .scroll-reveal {
-  opacity: 1;
-  filter: none;
-  transform: none;
-  transition: none;
-  will-change: auto;
-}
-
-.project-page .scroll-reveal.is-scroll-visible {
-  opacity: 1;
-  filter: none;
-  transform: none;
-}
-
-.project-page .content-block.scroll-reveal:not(.left-nav)::after {
-  content: none;
-}
-
-.project-page .scroll-reveal .inpage_hero_img,
-.project-page .scroll-reveal .strategy-card,
-.project-page .scroll-reveal .discovery-pain-card,
-.project-page .scroll-reveal .architecture-conflict div,
-.project-page .scroll-reveal .workflow-screen {
-  transform: none;
-  transition: none;
-}
-
-.project-page .scroll-reveal.is-scroll-visible .inpage_hero_img,
-.project-page .scroll-reveal.is-scroll-visible .strategy-card,
-.project-page .scroll-reveal.is-scroll-visible .discovery-pain-card,
-.project-page .scroll-reveal.is-scroll-visible .architecture-conflict div,
-.project-page .scroll-reveal.is-scroll-visible .workflow-screen {
-  transform: none;
-}
-
-.project-page .scroll-reveal.is-scroll-visible .strategy-card:nth-child(2),
-.project-page .scroll-reveal.is-scroll-visible .discovery-pain-card:nth-child(2),
-.project-page .scroll-reveal.is-scroll-visible .architecture-conflict div:nth-child(2) {
-  transition-delay: 0ms;
-}
-
-.project-page .scroll-reveal.is-scroll-visible .strategy-card:nth-child(3),
-.project-page .scroll-reveal.is-scroll-visible .discovery-pain-card:nth-child(3),
-.project-page .scroll-reveal.is-scroll-visible .architecture-conflict div:nth-child(3) {
-  transition-delay: 0ms;
 }
 
 @media only screen and (min-width: 851px) {
@@ -882,7 +804,6 @@ a:hover {
   padding: clamp(14px, 2.8vw, 32px);
   box-sizing: border-box;
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.3);
-  filter: saturate(1.02);
 }
 
 .project-page .content-block:not(.left-nav) {
@@ -945,17 +866,6 @@ a:hover {
   box-shadow:
     inset 0 0 0 1px rgba(255, 140, 196, 0.2),
     0 18px 52px rgba(0, 0, 0, 0.18);
-}
-
-.workflow-showcase-lead::before {
-  content: "";
-  position: absolute;
-  top: 18px;
-  bottom: 18px;
-  left: 0;
-  width: 4px;
-  border-radius: 0 4px 4px 0;
-  background: #ff8cc4;
 }
 
 .workflow-showcase-lead span,
@@ -1062,23 +972,6 @@ a:hover {
   padding: 18px 22px 18px 26px;
 }
 
-.project-page .bullet-callout::before,
-.project-page .pull-quote::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, #ff8cc4 0%, #91bdff 58%, rgba(255, 255, 255, 0.18) 100%);
-  box-shadow: 0 0 24px rgba(255, 140, 196, 0.28);
-}
-
-.project-page .bullet-callout::after,
-.project-page .pull-quote::after {
-  content: none;
-}
-
 .project-page .bullet-callout > *,
 .project-page .pull-quote {
   position: relative;
@@ -1103,14 +996,6 @@ a:hover {
     linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
     rgba(255, 255, 255, 0.018);
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
-}
-
-.strategy-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: linear-gradient(90deg, #ff8cc4, #91bdff);
 }
 
 .strategy-card-index {
@@ -1156,14 +1041,6 @@ a:hover {
     linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
     rgba(255, 255, 255, 0.018);
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
-}
-
-.discovery-pain-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: linear-gradient(90deg, #ff8cc4, #91bdff);
 }
 
 .discovery-pain-index {
@@ -1239,14 +1116,6 @@ a:hover {
     rgba(255, 140, 196, 0.035) !important;
 }
 
-.architecture-conflict-winner::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: linear-gradient(90deg, #ff8cc4, #91bdff);
-}
-
 .project-context {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
@@ -1295,9 +1164,9 @@ a:hover {
   top: 76px;
   z-index: 998;
   pointer-events: auto;
-  background-color: rgba(23, 23, 23, 0.86);
-  backdrop-filter: blur(18px) saturate(116%);
-  -webkit-backdrop-filter: blur(18px) saturate(116%);
+  background:
+    linear-gradient(180deg, rgba(38, 39, 43, 0.94), rgba(18, 19, 22, 0.9)),
+    rgba(23, 23, 23, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   padding: 8px 12px;
@@ -1395,21 +1264,12 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 1rem;
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(0.875rem);
-  -webkit-backdrop-filter: blur(0.875rem);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.014)),
+    rgba(5, 7, 11, 0.76);
   box-shadow: 0 1.125rem 3.375rem rgba(0, 0, 0, 0.2);
   overflow: hidden;
   transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
-}
-
-.AboutProj-content::before {
-  content: none;
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: transparent;
-  opacity: 0.72;
 }
 
 .AboutProj-content::after {
@@ -1702,7 +1562,6 @@ a:hover {
   width: 100% !important;
   height: 100% !important;
   pointer-events: none;
-  filter: none;
 }
 
 .landing-tech-layer,
@@ -1730,7 +1589,6 @@ a:hover {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.08));
   contain: strict;
 }
 
@@ -2031,13 +1889,13 @@ a:hover {
   padding: clamp(26px, 4vw, 40px) clamp(24px, 4.5vw, 48px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 16px;
-  background: rgba(12, 14, 22, 0.68);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.044), rgba(255, 255, 255, 0.012)),
+    rgba(5, 7, 11, 0.78);
   box-shadow:
     0 22px 64px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     inset 0 -1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
   overflow: hidden;
 }
 
@@ -2057,15 +1915,15 @@ a:hover {
   isolation: isolate;
   border: 1px solid rgba(236, 242, 255, 0.18);
   background:
-    radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--panel-accent) 16%, transparent), transparent 32%),
-    linear-gradient(122deg, rgba(255, 255, 255, 0.062), transparent 42%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.042), rgba(255, 255, 255, 0.014)),
-    rgba(255, 255, 255, 0.018);
+    radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--panel-accent) 14%, transparent), transparent 32%),
+    linear-gradient(122deg, rgba(255, 255, 255, 0.058), transparent 42%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.046), rgba(255, 255, 255, 0.014)),
+    rgba(5, 7, 11, 0.68);
   box-shadow:
     0 24px 72px rgba(0, 0, 0, 0.24),
     inset 0 0 0 1px rgba(255, 255, 255, 0.045);
-  backdrop-filter: blur(16px) saturate(112%);
-  -webkit-backdrop-filter: blur(16px) saturate(112%);
+  backdrop-filter: var(--site-card-backdrop);
+  -webkit-backdrop-filter: var(--site-card-backdrop);
   background-clip: padding-box;
   overflow: hidden;
 }
@@ -2081,9 +1939,11 @@ a:hover {
   position: relative;
   isolation: isolate;
   border: 1px solid rgba(236, 242, 255, 0.18);
-  background: rgba(255, 255, 255, 0.018);
-  backdrop-filter: blur(16px) saturate(112%);
-  -webkit-backdrop-filter: blur(16px) saturate(112%);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.014)),
+    rgba(5, 7, 11, 0.76);
+  backdrop-filter: var(--site-card-backdrop);
+  -webkit-backdrop-filter: var(--site-card-backdrop);
   background-clip: padding-box;
 }
 
@@ -2091,9 +1951,11 @@ a:hover {
   position: relative;
   isolation: isolate;
   border: 1px solid rgba(236, 242, 255, 0.18);
-  background: rgba(12, 14, 22, 0.68);
-  backdrop-filter: blur(16px) saturate(112%);
-  -webkit-backdrop-filter: blur(16px) saturate(112%);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.044), rgba(255, 255, 255, 0.012)),
+    rgba(5, 7, 11, 0.78);
+  backdrop-filter: var(--site-card-backdrop);
+  -webkit-backdrop-filter: var(--site-card-backdrop);
   background-clip: padding-box;
 }
 
@@ -2269,16 +2131,11 @@ a:hover {
   overflow: hidden;
 }
 
-.projectRow .contentblock:first-child::before,
 .projectRow .contentblock:first-child::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-}
-
-.projectRow .contentblock:first-child::before {
-  content: none;
 }
 
 .projectRow .contentblock:first-child::after {
@@ -2307,8 +2164,7 @@ a:hover {
   inset: 0;
   object-fit: cover;
   transform: scale(1.1);
-  filter: blur(1.5px) saturate(0.72) brightness(0.54) contrast(1.08);
-  opacity: 0.54;
+  opacity: 0.4;
   -webkit-mask-image:
     linear-gradient(180deg, transparent 0%, #000 10%, #000 66%, transparent 100%),
     linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
@@ -2331,13 +2187,11 @@ a:hover {
   min-height: 0;
   transform: translateX(-50%);
   object-fit: contain;
-  filter: saturate(1.04) contrast(1.02) drop-shadow(0 16px 28px rgba(0, 0, 0, 0.34));
 }
 
 #NYTango .project-card-backdrop {
   transform: none;
-  filter: brightness(0.52) saturate(0.76) contrast(1.06);
-  opacity: 0.56;
+  opacity: 0.42;
 }
 
 #NYTango .project-card-img {
@@ -2346,7 +2200,6 @@ a:hover {
   max-width: calc(100% - 16px);
   height: calc(100% - 208px);
   max-height: calc(100% - 208px);
-  filter: saturate(1.03) contrast(1.02) drop-shadow(0 14px 26px rgba(0, 0, 0, 0.32));
 }
 
 #AIResearchGuide {
@@ -2379,12 +2232,6 @@ a:hover {
   background: transparent;
   box-shadow: none;
   overflow: visible;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-.projectRow .bg-project-card > .contentblock:nth-child(2)::before {
-  content: none;
 }
 
 .projectRow .bg-project-card > .contentblock:nth-child(2) > * {
@@ -2411,8 +2258,6 @@ a:hover {
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
 }
 
 .projectRow .projectBadge {
@@ -2470,10 +2315,6 @@ a:hover {
   bottom: 1.875rem;
 }
 
-.projectRow .bg-project-card > .contentblock:nth-child(2) h1::before {
-  content: none;
-}
-
 .projectRow .contentblock:last-child {
   position: absolute;
   top: auto;
@@ -2502,12 +2343,10 @@ a:hover {
   font-size: 13px !important;
   color: var(--color-text);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.09)),
-    rgba(159, 211, 255, 0.065);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.11)),
+    rgba(159, 211, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.32);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 24px rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(14px) saturate(1.15);
-  -webkit-backdrop-filter: blur(14px) saturate(1.15);
 }
 
 .projectRow .bg-project-card .contentblock:last-child .readCases + .readCases {
@@ -2587,7 +2426,6 @@ a:hover {
   height: 100% !important;
   z-index: 0;
   opacity: 0.28;
-  filter: blur(4px) saturate(0.86);
   mix-blend-mode: screen;
 }
 
@@ -2602,7 +2440,6 @@ a:hover {
   background:
     radial-gradient(circle, transparent 0 48%, rgba(255, 140, 196, 0.12) 49%, transparent 50%),
     conic-gradient(from 90deg, rgba(255, 140, 196, 0.18), rgba(93, 158, 255, 0.1), rgba(255, 255, 255, 0.03), rgba(255, 140, 196, 0.18));
-  filter: blur(0.2px);
   opacity: 0.36;
   transform: translate3d(var(--cursor-drift-x), var(--cursor-drift-y), 0);
   animation: passwordOrbit 16s linear infinite;
@@ -2656,7 +2493,6 @@ a:hover {
     radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255, 0, 128, 0.38), transparent 18%),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 7px);
   transform: translate3d(calc(var(--glitch-shift) * -0.65), 0, 0);
-  filter: hue-rotate(40deg);
 }
 
 .password-glitch::after {
@@ -2664,7 +2500,6 @@ a:hover {
     radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(0, 220, 255, 0.28), transparent 16%),
     linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.05), transparent);
   transform: translate3d(calc(var(--glitch-shift) * 0.8), 0, 0);
-  filter: hue-rotate(-36deg);
 }
 
 .password-card {
@@ -2676,11 +2511,9 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 22px;
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.028)),
-    var(--site-card-surface);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.036)),
+    rgba(8, 10, 14, 0.76);
   box-shadow: 0 30px 110px rgba(0, 0, 0, 0.42);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
 }
 
 .password-card::before {
@@ -2892,88 +2725,64 @@ a:hover {
 @keyframes loadingGridRowsForm {
   0% {
     clip-path: inset(0 50% 0 50%);
-    opacity: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    opacity: 0.08;
   }
 
   14% {
     clip-path: inset(0 32% 0 32%);
     opacity: 0.36;
-    filter: drop-shadow(0 0 0.2rem rgba(255, 255, 255, 0.1));
   }
 
   46% {
     clip-path: inset(0);
     opacity: 0.62;
-    filter: drop-shadow(0 0 0.72rem rgba(255, 255, 255, 0.26));
   }
 
   76% {
     clip-path: inset(0);
     opacity: 0.54;
-    filter: drop-shadow(0 0 0.46rem rgba(255, 255, 255, 0.18));
   }
 
-  90% {
+  92% {
     clip-path: inset(0);
-    opacity: 0.12;
-    filter: drop-shadow(0 0 0.16rem rgba(255, 255, 255, 0.08));
-  }
-
-  98% {
-    clip-path: inset(0);
-    opacity: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    opacity: 0.18;
   }
 
   100% {
-    clip-path: inset(0 50% 0 50%);
-    opacity: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    clip-path: inset(0);
+    opacity: 0.08;
   }
 }
 
 @keyframes loadingGridColumnsForm {
   0% {
     clip-path: inset(0 50% 0 50%);
-    opacity: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    opacity: 0.07;
   }
 
   14% {
     clip-path: inset(0 32% 0 32%);
     opacity: 0.32;
-    filter: drop-shadow(0 0 0.2rem rgba(255, 255, 255, 0.1));
   }
 
   46% {
     clip-path: inset(0);
     opacity: 0.58;
-    filter: drop-shadow(0 0 0.68rem rgba(255, 255, 255, 0.24));
   }
 
   76% {
     clip-path: inset(0);
     opacity: 0.5;
-    filter: drop-shadow(0 0 0.42rem rgba(255, 255, 255, 0.17));
   }
 
-  90% {
+  92% {
     clip-path: inset(0);
-    opacity: 0.1;
-    filter: drop-shadow(0 0 0.14rem rgba(255, 255, 255, 0.07));
-  }
-
-  98% {
-    clip-path: inset(0);
-    opacity: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    opacity: 0.16;
   }
 
   100% {
-    clip-path: inset(0 50% 0 50%);
-    opacity: 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    clip-path: inset(0);
+    opacity: 0.07;
   }
 }
 
@@ -3094,17 +2903,6 @@ a:hover {
     opacity: 0.16;
   }
 
-  .project-page .scroll-reveal,
-  .project-page .scroll-reveal .inpage_hero_img,
-  .project-page .scroll-reveal .strategy-card,
-  .project-page .scroll-reveal .discovery-pain-card,
-  .project-page .scroll-reveal .architecture-conflict div,
-  .project-page .scroll-reveal .workflow-screen {
-    opacity: 1 !important;
-    filter: none !important;
-    transform: none !important;
-  }
-
 }
 
 .fade-out {
@@ -3167,14 +2965,14 @@ a:hover {
 .loadingpage::before {
   background: linear-gradient(rgba(255, 255, 255, 0.24) 1px, transparent 1px);
   background-size: 100% var(--loader-grid-size);
-  animation: loadingGridRowsForm 1.12s cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: loadingGridRowsForm 1.12s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate both;
   will-change: clip-path, opacity, filter;
 }
 
 .loadingpage::after {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px);
   background-size: var(--loader-grid-size) 100%;
-  animation: loadingGridColumnsForm 1.12s cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: loadingGridColumnsForm 1.12s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate both;
   will-change: clip-path, opacity, filter;
 }
 
@@ -3627,10 +3425,6 @@ a:hover {
     border-radius: 0;
   }
 
-  .projectRow .bg-project-card > .contentblock:nth-child(2)::before {
-    content: none;
-  }
-
   .projectRow .bg-project-card > .contentblock:nth-child(2):has(+ .contentblock:empty) {
     min-height: 0;
   }
@@ -3775,15 +3569,6 @@ a:hover {
   border-right: 0;
 }
 
-.project-page .bullet-callout::before,
-.project-page .pull-quote::before,
-.workflow-showcase-lead::before,
-.strategy-card::before,
-.discovery-pain-card::before,
-.architecture-conflict-winner::before {
-  content: none;
-}
-
 .workflow-showcase-lead,
 .strategy-card,
 .discovery-pain-card,
@@ -3799,9 +3584,9 @@ a:hover {
   box-shadow:
     0 24px 72px rgba(0, 0, 0, 0.24),
     inset 0 0 0 1px rgba(255, 255, 255, 0.045);
-  background-clip: padding-box;
   backdrop-filter: var(--site-card-backdrop);
   -webkit-backdrop-filter: var(--site-card-backdrop);
+  background-clip: padding-box;
 }
 
 .workflow-showcase-lead::after,
@@ -3858,10 +3643,6 @@ a:hover {
   box-shadow: none;
 }
 
-.project-page .project-context::after {
-  content: none;
-}
-
 .project-page .project-context-item {
   position: relative;
   min-height: 0;
@@ -3870,8 +3651,6 @@ a:hover {
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
   overflow: visible;
 }
 
