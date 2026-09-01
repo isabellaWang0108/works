@@ -191,6 +191,8 @@ const PULSE_COUNT = 4;
 const PULSE_EDGE_STRIDE = 13;
 const PULSE_SPEED = 0.24;
 const PULSE_TRAIL_LENGTH = 0.28;
+const PULSE_FADE_IN_END = 0.08;
+const PULSE_NODE_FADE_START = 0.76;
 
 function ConnectionCloud({ points, edges }) {
   const pointTexture = useMemo(() => makeSoftDotTexture(), []);
@@ -282,11 +284,15 @@ function PulseLayer({
     pulseOffsets.forEach((offset, index) => {
       const progress = elapsedTime * PULSE_SPEED + offset;
       const cycle = Math.floor(progress);
+      const edgeProgress = progress % 1;
       const pathSpacing = Math.max(1, Math.floor(edgePaths.length / count));
       const edgeIndex = (cycle * PULSE_EDGE_STRIDE + pathOffset + index * pathSpacing) % edgePaths.length;
       const { start, end, quaternion } = edgePaths[edgeIndex];
-      const t = PULSE_TRAIL_LENGTH + (progress % 1) * (1 - PULSE_TRAIL_LENGTH);
-      const tail = t - PULSE_TRAIL_LENGTH;
+      const fadeIn = THREE.MathUtils.smoothstep(edgeProgress, 0, PULSE_FADE_IN_END);
+      const fadeOut = 1 - THREE.MathUtils.smoothstep(edgeProgress, PULSE_NODE_FADE_START, 1);
+      const visibleRatio = Math.max(0.001, Math.min(fadeIn, fadeOut));
+      const t = PULSE_TRAIL_LENGTH + edgeProgress * (1 - PULSE_TRAIL_LENGTH);
+      const tail = Math.max(0, t - PULSE_TRAIL_LENGTH * visibleRatio);
       pulseStart.copy(start).lerp(end, tail);
       pulseEnd.copy(start).lerp(end, t);
       midpoint.copy(pulseStart).add(pulseEnd).multiplyScalar(0.5);
@@ -295,7 +301,7 @@ function PulseLayer({
       matrixObject.position.copy(midpoint);
       matrixObject.quaternion.copy(quaternion);
 
-      matrixObject.scale.set(1, length, 1);
+      matrixObject.scale.set(visibleRatio, length, visibleRatio);
       matrixObject.updateMatrix();
       haloRef.current.setMatrixAt(index, matrixObject.matrix);
       coreRef.current.setMatrixAt(index, matrixObject.matrix);

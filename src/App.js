@@ -17,7 +17,7 @@ const Kiosk = lazy(() => lazyWithMinimum(() => import("./views/projects/Kiosk"),
 
 const LOADER_GRID_LOOP_MS = 2200;
 const LOADER_GRID_EXIT_START_MS = LOADER_GRID_LOOP_MS * 0.46;
-const LOADER_EXIT_FALLBACK_MS = 1560;
+const LOADER_EXIT_FALLBACK_MS = 820;
 const LOADER_EXIT_ALIGNMENT_EPSILON_MS = 24;
 
 const getLoaderExitDelay = (startedAt) => {

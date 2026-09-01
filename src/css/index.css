@@ -2759,80 +2759,47 @@ a:hover {
   }
 }
 
-@keyframes loadingGridEraseOutward {
-  0%,
-  50% {
-    clip-path: inset(0 50% 0 50%);
-    opacity: 0;
-  }
-
-  62% {
-    clip-path: inset(0 39% 0 39%);
-    opacity: 0.7;
-  }
-
-  82% {
-    clip-path: inset(0 13% 0 13%);
-    opacity: 0.86;
-  }
-
-  100% {
-    clip-path: inset(0);
-    opacity: 0.96;
-  }
-}
-
 @property --loader-clear-half {
   syntax: "<length>";
   inherits: false;
   initial-value: 0vw;
 }
 
+@property --loader-clear-feather {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 2vw;
+}
+
 @keyframes loadingPageClear {
   0% {
-    --loader-clear-half: 4vw;
-  }
-
-  34% {
-    --loader-clear-half: 19vw;
-  }
-
-  68% {
-    --loader-clear-half: 34vw;
-  }
-
-  100% {
-    --loader-clear-half: 48vw;
-  }
-}
-
-@keyframes loadingBackdropFade {
-  0% {
-    opacity: 0.94;
-  }
-
-  44% {
-    opacity: 0.52;
-  }
-
-  72%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes loadingGridExitFade {
-  0%,
-  52% {
+    --loader-clear-half: 0vw;
+    --loader-clear-feather: 2vw;
     opacity: 1;
   }
 
-  76% {
-    opacity: 0.5;
+  42% {
+    --loader-clear-half: 23.5vw;
+    --loader-clear-feather: 4.5vw;
+    opacity: 0.86;
+  }
+
+  68% {
+    --loader-clear-half: 38vw;
+    --loader-clear-feather: 6.1vw;
+    opacity: 0.54;
+  }
+
+  86% {
+    --loader-clear-half: 48vw;
+    --loader-clear-feather: 7.15vw;
+    opacity: 0.32;
   }
 
   100% {
-    opacity: 0;
+    --loader-clear-half: 56vw;
+    --loader-clear-feather: 8vw;
+    opacity: 0.2;
   }
 }
 
@@ -2938,37 +2905,24 @@ a:hover {
 
 .loadingpage {
   --loader-grid-size: clamp(2.25rem, 4.75vw, 4rem);
-  --loader-clear-half: 4vw;
-  --loader-clear-feather: clamp(16rem, 32vw, 46rem);
+  --loader-clear-half: 0vw;
+  --loader-clear-feather: 2vw;
   position: fixed;
   inset: 0;
   z-index: 1000;
   min-height: 100vh;
   width: 100%;
-  background: transparent;
+  background: #000;
   overflow: hidden;
   opacity: 1;
 }
 
-.loadingpage::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #000;
-  pointer-events: none;
-}
-
 .loadingpage--exit {
-  -webkit-mask-image: linear-gradient(90deg, #000 0 calc(50% - var(--loader-clear-half) - var(--loader-clear-feather)), rgba(0, 0, 0, 0.18) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.72)), rgba(0, 0, 0, 0.045) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.44)), rgba(0, 0, 0, 0.006) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.18)), transparent calc(50% - var(--loader-clear-half)), transparent calc(50% + var(--loader-clear-half)), rgba(0, 0, 0, 0.006) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.18)), rgba(0, 0, 0, 0.045) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.44)), rgba(0, 0, 0, 0.18) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.72)), #000 calc(50% + var(--loader-clear-half) + var(--loader-clear-feather)));
-  mask-image: linear-gradient(90deg, #000 0 calc(50% - var(--loader-clear-half) - var(--loader-clear-feather)), rgba(0, 0, 0, 0.18) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.72)), rgba(0, 0, 0, 0.045) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.44)), rgba(0, 0, 0, 0.006) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.18)), transparent calc(50% - var(--loader-clear-half)), transparent calc(50% + var(--loader-clear-half)), rgba(0, 0, 0, 0.006) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.18)), rgba(0, 0, 0, 0.045) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.44)), rgba(0, 0, 0, 0.18) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.72)), #000 calc(50% + var(--loader-clear-half) + var(--loader-clear-feather)));
-  animation: loadingPageClear 1400ms linear forwards;
+  -webkit-mask-image: linear-gradient(90deg, #000 0 calc(50% - var(--loader-clear-half) - var(--loader-clear-feather)), rgba(0, 0, 0, 0.42) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.72)), rgba(0, 0, 0, 0.16) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.44)), rgba(0, 0, 0, 0.035) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.18)), transparent calc(50% - var(--loader-clear-half)), transparent calc(50% + var(--loader-clear-half)), rgba(0, 0, 0, 0.035) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.18)), rgba(0, 0, 0, 0.16) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.44)), rgba(0, 0, 0, 0.42) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.72)), #000 calc(50% + var(--loader-clear-half) + var(--loader-clear-feather)));
+  mask-image: linear-gradient(90deg, #000 0 calc(50% - var(--loader-clear-half) - var(--loader-clear-feather)), rgba(0, 0, 0, 0.42) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.72)), rgba(0, 0, 0, 0.16) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.44)), rgba(0, 0, 0, 0.035) calc(50% - var(--loader-clear-half) - (var(--loader-clear-feather) * 0.18)), transparent calc(50% - var(--loader-clear-half)), transparent calc(50% + var(--loader-clear-half)), rgba(0, 0, 0, 0.035) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.18)), rgba(0, 0, 0, 0.16) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.44)), rgba(0, 0, 0, 0.42) calc(50% + var(--loader-clear-half) + (var(--loader-clear-feather) * 0.72)), #000 calc(50% + var(--loader-clear-half) + var(--loader-clear-feather)));
+  animation: loadingPageClear 700ms linear forwards;
   pointer-events: none;
-  will-change: -webkit-mask-image, mask-image;
-}
-
-.loadingpage--exit::before {
-  animation: loadingBackdropFade 1400ms linear forwards;
-  will-change: opacity;
+  will-change: opacity, -webkit-mask-image, mask-image;
 }
 
 .loading-grid-forming {
@@ -2977,8 +2931,7 @@ a:hover {
   pointer-events: none;
 }
 
-.loading-grid-forming::before,
-.loading-grid-forming::after {
+.loading-grid-forming::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -2994,29 +2947,6 @@ a:hover {
     var(--loader-grid-size) 100%;
   animation: loadingGridFormOutward 2.2s linear infinite both;
   will-change: clip-path, opacity;
-}
-
-.loading-grid-forming::after {
-  background:
-    linear-gradient(rgba(226, 229, 232, 0.085) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(226, 229, 232, 0.085) 1px, transparent 1px),
-    #000;
-  background-size:
-    100% var(--loader-grid-size),
-    var(--loader-grid-size) 100%,
-    auto;
-  animation: loadingGridEraseOutward 2.2s cubic-bezier(0.45, 0, 0.24, 1) infinite both;
-  will-change: clip-path, opacity;
-}
-
-.loadingpage--exit .loading-grid-forming {
-  animation: loadingGridExitFade 1400ms linear forwards;
-  will-change: opacity;
-}
-
-.loadingpage--exit .loading-grid-forming::after {
-  animation: none;
-  opacity: 0;
 }
 
 @media only screen and (max-width: 1100px) {
