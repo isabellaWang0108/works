@@ -7,9 +7,14 @@ const wait = (duration) => new Promise((resolve) => {
 });
 
 export const lazyWithMinimum = (loadModule, prepareRoute = () => Promise.resolve()) => (
-  trackRouteLoad(Promise.all([
-    loadModule(),
-    Promise.resolve().then(prepareRoute),
-    wait(MIN_ROUTE_LOADING_MS),
-  ]).then(([module]) => module))
+  trackRouteLoad(Promise.resolve()
+    .then(() => {
+      Promise.resolve(prepareRoute()).catch(() => {});
+
+      return Promise.all([
+        loadModule(),
+        wait(MIN_ROUTE_LOADING_MS),
+      ]);
+    })
+    .then(([module]) => module))
 );

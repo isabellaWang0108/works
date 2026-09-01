@@ -2,13 +2,13 @@ import LinkedinIcon from "../assets/images/contact/linkedin.svg";
 import EmailIcon from "../assets/images/contact/email.svg";
 import BackToTopIcon from "../assets/icons/Back2Top.svg";
 
-import NYTangoProduct from "../assets/images/home/Project card/NYTango_product.svg";
+import NYTangoProduct from "../assets/images/home/Project card/NYTango_product.png";
 import NYTangoBackground from "../assets/images/home/Project card/NY_Tango_Background.webp";
-import VoiceProduct from "../assets/images/home/Project card/Voice_product.svg";
+import VoiceProduct from "../assets/images/home/Project card/Voice_product.png";
 import VoiceBackground from "../assets/images/home/Project card/Voice_background.webp";
-import AIPlatformProduct from "../assets/images/home/Project card/AIPlatform_product.svg";
+import AIPlatformProduct from "../assets/images/home/Project card/AIPlatform_product.png";
 import AIPlatformBackground from "../assets/images/home/Project card/AIPlatform_background.webp";
-import DesignSystemProduct from "../assets/images/home/Project card/DS_product.svg";
+import DesignSystemProduct from "../assets/images/home/Project card/DS_product.png";
 import DesignSystemBackground from "../assets/images/home/Project card/DS_background.webp";
 
 import ProductStudioPic1 from "../assets/images/ProductStudio/ps_pic1.jpg";
@@ -45,6 +45,7 @@ const loadedImages = new Map();
 const loadedModules = new Map();
 const loadedFonts = new Map();
 const CRITICAL_ASSET_TIMEOUT_MS = 2200;
+const SECONDARY_ASSET_DELAY_MS = 900;
 
 const sharedAssets = [LinkedinIcon, EmailIcon, BackToTopIcon];
 
@@ -52,15 +53,11 @@ const preloadSets = {
   "/": {
     critical: [
       NYTangoBackground,
-      NYTangoProduct,
       AIPlatformBackground,
-      AIPlatformProduct,
     ],
     secondary: [
       VoiceBackground,
-      VoiceProduct,
       DesignSystemBackground,
-      DesignSystemProduct,
     ],
   },
   "/contact": {
@@ -101,11 +98,11 @@ const fontFaces = [
 
 const runSoon = (callback) => {
   if ("requestIdleCallback" in window) {
-    const idleId = window.requestIdleCallback(callback, { timeout: 700 });
+    const idleId = window.requestIdleCallback(callback, { timeout: SECONDARY_ASSET_DELAY_MS });
     return () => window.cancelIdleCallback(idleId);
   }
 
-  const timeoutId = window.setTimeout(callback, 120);
+  const timeoutId = window.setTimeout(callback, SECONDARY_ASSET_DELAY_MS);
   return () => window.clearTimeout(timeoutId);
 };
 
@@ -140,11 +137,6 @@ const preloadImage = (src, priority = "low") => {
 
       isFinished = true;
       clearTimeout(timeoutId);
-
-      if ("decode" in image) {
-        image.decode().catch(() => {}).finally(resolve);
-        return;
-      }
 
       resolve();
     };

@@ -15,14 +15,30 @@ const AIResearchGuide = lazy(() => lazyWithMinimum(() => import("./views/project
 const PlatformsIntegration = lazy(() => lazyWithMinimum(() => import("./views/projects/PlatformsIntegration"), () => preloadRouteCriticalAssets("/platforms-integration")));
 const Kiosk = lazy(() => lazyWithMinimum(() => import("./views/projects/Kiosk"), () => preloadRouteCriticalAssets("/kiosk")));
 
-const LOADER_EXIT_SETTLE_MS = 100;
-const LOADER_EXIT_FALLBACK_MS = 820;
+const LOADER_GRID_LOOP_MS = 2200;
+const LOADER_GRID_EXIT_START_MS = LOADER_GRID_LOOP_MS * 0.46;
+const LOADER_EXIT_FALLBACK_MS = 1560;
+const LOADER_EXIT_ALIGNMENT_EPSILON_MS = 24;
+
+const getLoaderExitDelay = (startedAt) => {
+  const elapsed = performance.now() - startedAt;
+  const loopProgress = elapsed % LOADER_GRID_LOOP_MS;
+
+  if (Math.abs(loopProgress - LOADER_GRID_EXIT_START_MS) <= LOADER_EXIT_ALIGNMENT_EPSILON_MS) {
+    return 0;
+  }
+
+  return loopProgress < LOADER_GRID_EXIT_START_MS
+    ? LOADER_GRID_EXIT_START_MS - loopProgress
+    : LOADER_GRID_LOOP_MS - loopProgress + LOADER_GRID_EXIT_START_MS;
+};
 
 function LoadingOverlay() {
   const [isVisible, setIsVisible] = useState(() => isRouteLoading());
   const [isExiting, setIsExiting] = useState(false);
   const exitTimerRef = useRef();
   const settleTimerRef = useRef();
+  const visibleStartedAtRef = useRef(performance.now());
   const visibleRef = useRef(isVisible);
   const isExitingRef = useRef(isExiting);
 
@@ -40,6 +56,10 @@ function LoadingOverlay() {
       window.clearTimeout(exitTimerRef.current);
 
       if (isLoading) {
+        if (!visibleRef.current) {
+          visibleStartedAtRef.current = performance.now();
+        }
+
         setIsVisible(true);
         setIsExiting(false);
         return;
@@ -57,7 +77,7 @@ function LoadingOverlay() {
         }, LOADER_EXIT_FALLBACK_MS);
       };
 
-      settleTimerRef.current = window.setTimeout(startExit, LOADER_EXIT_SETTLE_MS);
+      settleTimerRef.current = window.setTimeout(startExit, getLoaderExitDelay(visibleStartedAtRef.current));
     });
   }, []);
 

@@ -16,7 +16,9 @@ const Loading = ({ isExiting = false, onExitAnimationEnd }) => {
             role="status"
             aria-label="Loading"
             onAnimationEnd={onExitAnimationEnd}
-        />
+        >
+            <span className="loading-grid-forming" aria-hidden="true" />
+        </div>
     );
 }
 
