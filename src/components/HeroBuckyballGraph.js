@@ -114,8 +114,8 @@ function createBuckyballTopology() {
   return { points, edges };
 }
 
-function makeLabelTexture(label, isRear = false) {
-  const cacheKey = `${label}-${isRear ? "rear" : "front"}`;
+function makeLabelTexture(label) {
+  const cacheKey = label;
   const cachedTexture = labelTextureCache.get(cacheKey);
 
   if (cachedTexture) {
@@ -133,24 +133,18 @@ function makeLabelTexture(label, isRear = false) {
   context.clearRect(0, 0, width, height);
 
   const gradient = context.createLinearGradient(width * 0.18, centerY - 22, width * 0.82, centerY + 18);
-  if (isRear) {
-    gradient.addColorStop(0, "#5B5964");
-    gradient.addColorStop(0.5, "#554C58");
-    gradient.addColorStop(1, "#664858");
-  } else {
-    gradient.addColorStop(0, "#C7BBC5");
-    gradient.addColorStop(0.5, "#AA98A8");
-    gradient.addColorStop(1, "#B77C98");
-  }
+  gradient.addColorStop(0, "#C7BBC5");
+  gradient.addColorStop(0.5, "#AA98A8");
+  gradient.addColorStop(1, "#B77C98");
 
   context.font = "400 30px SuisseIntl-Regular, Inter, Helvetica Neue, Arial, sans-serif";
   context.textAlign = "center";
   context.textBaseline = "middle";
   context.letterSpacing = "1.4px";
   context.lineWidth = 1.8;
-  context.strokeStyle = isRear ? "#080A0E" : "#05070D";
-  context.shadowColor = isRear ? "#3D343A" : "#7A6470";
-  context.shadowBlur = isRear ? 24 : 48;
+  context.strokeStyle = "#05070D";
+  context.shadowColor = "#7A6470";
+  context.shadowBlur = 48;
   context.strokeText(label, width / 2, centerY);
   context.fillStyle = gradient;
   context.fillText(label, width / 2, centerY);
@@ -164,8 +158,8 @@ function makeLabelTexture(label, isRear = false) {
   return texture;
 }
 
-function LabelSprite({ isRear, label, position }) {
-  const texture = useMemo(() => makeLabelTexture(label, isRear), [isRear, label]);
+function LabelSprite({ label, position }) {
+  const texture = useMemo(() => makeLabelTexture(label), [label]);
   const width = label.length > 8 ? 0.98 : label.length > 4 ? 0.79 : 0.54;
 
   return (
@@ -176,6 +170,7 @@ function LabelSprite({ isRear, label, position }) {
         opacity={1}
         depthWrite={false}
         depthTest
+        fog
         blending={THREE.NormalBlending}
         toneMapped={false}
       />
@@ -184,41 +179,29 @@ function LabelSprite({ isRear, label, position }) {
 }
 
 const CONNECTION_FRONT_COLOR = "#94A1A8";
-const CONNECTION_REAR_COLOR = "#575E6B";
 const CONNECTION_SIGNAL_COLOR = "#F0BED3";
 const CONNECTION_CROSS_COLOR = "#A9B8FF";
 const CONNECTION_OUTER_COLOR = "#C8CFD5";
-const CONNECTION_DEPTH_SPLIT = 0;
 const CONNECTION_DOT_SPACING = 0.086;
-const CONNECTION_REAR_DOT_SIZE = 0.032;
-const CONNECTION_FRONT_DOT_SIZE = 0.04;
+const CONNECTION_FRONT_DOT_SIZE = 0.048;
 const SCENE_TILT_X = -0.2;
 const SCENE_TILT_Y = -0.42;
-const FOREGROUND_PULSE_COUNT = 3;
-const BACKGROUND_PULSE_COUNT = 3;
+const SCENE_ROTATION_SPEED = 0.011;
+const PULSE_COUNT = 4;
 const PULSE_EDGE_STRIDE = 13;
-const PULSE_EDGE_OFFSET = 7;
 const PULSE_SPEED = 0.24;
-const PULSE_TRAIL_LENGTH = 0.18;
-
-function getTiltedDepth(position) {
-  const zAfterXTilt = position.y * Math.sin(SCENE_TILT_X) + position.z * Math.cos(SCENE_TILT_X);
-  return -position.x * Math.sin(SCENE_TILT_Y) + zAfterXTilt * Math.cos(SCENE_TILT_Y);
-}
+const PULSE_TRAIL_LENGTH = 0.28;
 
 function ConnectionCloud({ points, edges }) {
   const pointTexture = useMemo(() => makeSoftDotTexture(), []);
-  const { frontPositions, frontColors, rearPositions, rearColors } = useMemo(() => {
+  const { positions, colors } = useMemo(() => {
     const baseFront = new THREE.Color(CONNECTION_FRONT_COLOR);
-    const baseRear = new THREE.Color(CONNECTION_REAR_COLOR);
     const signal = new THREE.Color(CONNECTION_SIGNAL_COLOR);
     const cross = new THREE.Color(CONNECTION_CROSS_COLOR);
     const outer = new THREE.Color(CONNECTION_OUTER_COLOR);
     const color = new THREE.Color();
-    const frontDotPositions = [];
-    const frontDotColors = [];
-    const rearDotPositions = [];
-    const rearDotColors = [];
+    const dotPositions = [];
+    const dotColors = [];
 
     edges.forEach(([startIndex, endIndex, variant]) => {
       const start = points[startIndex];
@@ -229,20 +212,16 @@ function ConnectionCloud({ points, edges }) {
       for (let index = 0; index < dotCount; index += 1) {
         const t = (index + 1) / (dotCount + 1);
         const position = start.clone().lerp(end, t);
-        const isFront = getTiltedDepth(position) >= CONNECTION_DEPTH_SPLIT;
 
-        color.copy(isFront ? baseFront : baseRear);
+        color.copy(baseFront);
 
         if (variant === "signal") {
-          color.lerp(signal, isFront ? 0.42 : 0.2);
+          color.lerp(signal, 0.42);
         } else if (variant === "cross") {
-          color.lerp(cross, isFront ? 0.26 : 0.12);
-        } else if (variant === "outer" && isFront) {
+          color.lerp(cross, 0.26);
+        } else if (variant === "outer") {
           color.lerp(outer, 0.18);
         }
-
-        const dotPositions = isFront ? frontDotPositions : rearDotPositions;
-        const dotColors = isFront ? frontDotColors : rearDotColors;
 
         dotPositions.push(position.x, position.y, position.z);
         dotColors.push(color.r, color.g, color.b);
@@ -250,50 +229,30 @@ function ConnectionCloud({ points, edges }) {
     });
 
     return {
-      frontPositions: new Float32Array(frontDotPositions),
-      frontColors: new Float32Array(frontDotColors),
-      rearPositions: new Float32Array(rearDotPositions),
-      rearColors: new Float32Array(rearDotColors),
+      positions: new Float32Array(dotPositions),
+      colors: new Float32Array(dotColors),
     };
   }, [points, edges]);
 
   return (
-    <>
-      <points>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" args={[rearPositions, 3]} />
-          <bufferAttribute attach="attributes-color" args={[rearColors, 3]} />
-        </bufferGeometry>
-        <pointsMaterial
-          map={pointTexture}
-          size={CONNECTION_REAR_DOT_SIZE}
-          vertexColors
-          transparent
-          opacity={0.82}
-          alphaTest={0.02}
-          depthWrite={false}
-          depthTest
-          toneMapped={false}
-        />
-      </points>
-      <points>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" args={[frontPositions, 3]} />
-          <bufferAttribute attach="attributes-color" args={[frontColors, 3]} />
-        </bufferGeometry>
-        <pointsMaterial
-          map={pointTexture}
-          size={CONNECTION_FRONT_DOT_SIZE}
-          vertexColors
-          transparent
-          opacity={0.92}
-          alphaTest={0.02}
-          depthWrite={false}
-          depthTest
-          toneMapped={false}
-        />
-      </points>
-    </>
+    <points>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-color" args={[colors, 3]} />
+      </bufferGeometry>
+      <pointsMaterial
+        map={pointTexture}
+        size={CONNECTION_FRONT_DOT_SIZE}
+        vertexColors
+        transparent
+        opacity={0.92}
+        alphaTest={0.02}
+        depthWrite={false}
+        depthTest
+        fog
+        toneMapped={false}
+      />
+    </points>
   );
 }
 
@@ -305,6 +264,7 @@ function PulseLayer({
   haloOpacity,
   coreArgs,
   coreOpacity,
+  pathOffset = 0,
 }) {
   const haloRef = useRef();
   const coreRef = useRef();
@@ -322,7 +282,8 @@ function PulseLayer({
     pulseOffsets.forEach((offset, index) => {
       const progress = elapsedTime * PULSE_SPEED + offset;
       const cycle = Math.floor(progress);
-      const edgeIndex = (cycle * PULSE_EDGE_STRIDE + index * PULSE_EDGE_OFFSET) % edgePaths.length;
+      const pathSpacing = Math.max(1, Math.floor(edgePaths.length / count));
+      const edgeIndex = (cycle * PULSE_EDGE_STRIDE + pathOffset + index * pathSpacing) % edgePaths.length;
       const { start, end, quaternion } = edgePaths[edgeIndex];
       const t = PULSE_TRAIL_LENGTH + (progress % 1) * (1 - PULSE_TRAIL_LENGTH);
       const tail = t - PULSE_TRAIL_LENGTH;
@@ -356,66 +317,41 @@ function PulseLayer({
     <>
       <instancedMesh ref={haloRef} args={[null, null, count]}>
         <cylinderGeometry args={haloArgs} />
-        <meshBasicMaterial color={color} transparent opacity={haloOpacity} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color={color} transparent opacity={haloOpacity} depthWrite={false} fog blending={THREE.AdditiveBlending} />
       </instancedMesh>
       <instancedMesh ref={coreRef} args={[null, null, count]}>
         <cylinderGeometry args={coreArgs} />
-        <meshBasicMaterial color={color} transparent opacity={coreOpacity} depthWrite={false} blending={THREE.AdditiveBlending} />
+        <meshBasicMaterial color={color} transparent opacity={coreOpacity} depthWrite={false} fog blending={THREE.AdditiveBlending} />
       </instancedMesh>
     </>
   );
 }
 
 function DataPulses({ points, edges }) {
-  const { foregroundPaths, backgroundPaths } = useMemo(() => {
-    const foreground = [];
-    const background = [];
-
-    edges.forEach(([startIndex, endIndex]) => {
+  const edgePaths = useMemo(() => (
+    edges.map(([startIndex, endIndex]) => {
       const start = points[startIndex];
       const end = points[endIndex];
-      const midpointDepth = (getTiltedDepth(start) + getTiltedDepth(end)) / 2;
       const direction = end.clone().sub(start).normalize();
-      const path = {
+      return {
         start,
         end,
         quaternion: new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction),
       };
-
-      if (midpointDepth >= CONNECTION_DEPTH_SPLIT) {
-        foreground.push(path);
-      } else {
-        background.push(path);
-      }
-    });
-
-    return {
-      foregroundPaths: foreground.length ? foreground : background,
-      backgroundPaths: background.length ? background : foreground,
-    };
-  }, [edges, points]);
+    })
+  ), [edges, points]);
 
   return (
-    <>
-      <PulseLayer
-        color="#8f5f76"
-        count={BACKGROUND_PULSE_COUNT}
-        edgePaths={backgroundPaths}
-        haloArgs={[0.01, 0.0025, 1, 10]}
-        haloOpacity={0.11}
-        coreArgs={[0.004, 0.0012, 1, 8]}
-        coreOpacity={0.28}
-      />
-      <PulseLayer
-        color="#ffe5f2"
-        count={FOREGROUND_PULSE_COUNT}
-        edgePaths={foregroundPaths}
-        haloArgs={[0.018, 0.0042, 1, 10]}
-        haloOpacity={0.14}
-        coreArgs={[0.0072, 0.002, 1, 8]}
-        coreOpacity={0.38}
-      />
-    </>
+    <PulseLayer
+      color="#fff2f8"
+      count={PULSE_COUNT}
+      edgePaths={edgePaths}
+      haloArgs={[0.018, 0.0042, 1, 10]}
+      haloOpacity={0.14}
+      coreArgs={[0.0072, 0.002, 1, 8]}
+      coreOpacity={0.38}
+      pathOffset={11}
+    />
   );
 }
 
@@ -465,10 +401,10 @@ function TwinkleField({ points, opacity, speed, scaleMin, scaleMax, colorForInde
   );
 }
 
-function NodePoint({ isRear, label, position }) {
+function NodePoint({ label, position }) {
   return (
     <group position={position}>
-      <LabelSprite isRear={isRear} label={label} position={[0, 0, 0]} />
+      <LabelSprite label={label} position={[0, 0, 0]} />
     </group>
   );
 }
@@ -518,14 +454,20 @@ function HeroRenderScheduler() {
 }
 
 function BuckyballScene({ labels }) {
+  const groupRef = useRef();
   const { points, edges } = useMemo(() => createBuckyballTopology(), []);
   const nodeLabels = useMemo(
     () => points.map(() => labels[Math.floor(Math.random() * labels.length)]),
     [labels, points],
   );
 
+  useFrame(({ clock }) => {
+    if (!groupRef.current) return;
+    groupRef.current.rotation.y = SCENE_TILT_Y + clock.elapsedTime * SCENE_ROTATION_SPEED;
+  });
+
   return (
-    <group position={[0, 0, 0]} rotation={[SCENE_TILT_X, SCENE_TILT_Y, 0]}>
+    <group ref={groupRef} position={[0, 0, 0]} rotation={[SCENE_TILT_X, SCENE_TILT_Y, 0]}>
       <ConnectionCloud points={points} edges={edges} />
       <DataPulses points={points} edges={edges} />
       <TwinkleField
@@ -549,7 +491,6 @@ function BuckyballScene({ labels }) {
       {points.map((point, index) => (
         <NodePoint
           key={`node-${index}`}
-          isRear={getTiltedDepth(point) < CONNECTION_DEPTH_SPLIT}
           label={nodeLabels[index]}
           position={point}
         />
@@ -575,6 +516,7 @@ function HeroBuckyballGraph() {
         camera={{ position: [0, 0.04, 5.6], fov: 43 }}
         gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
       >
+        <fog attach="fog" args={["#030405", 4.75, 8.15]} />
         <HeroRenderScheduler />
         <BuckyballScene labels={DATA_LABELS} />
       </Canvas>
