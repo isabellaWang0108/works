@@ -3676,41 +3676,45 @@ a:hover {
 @media only screen and (max-width: 620px) {
   #HP_container {
     --home-content-width: calc(100vw - (var(--site-page-rail) * 2));
+    --hero-graph-top-mobile: calc(var(--site-nav-height) - clamp(4.5rem, 18vw, 7rem) + env(safe-area-inset-top));
+    --hero-graph-size-mobile: clamp(460px, 138vw, 660px);
   }
 
   .landing-session {
     min-height: max(760px, 100svh);
-    padding-top: clamp(260px, 72vw, 330px);
-    padding-bottom: max(6px, env(safe-area-inset-bottom));
-    justify-content: flex-end;
+    padding-top: calc(var(--hero-graph-top-mobile) + var(--hero-graph-size-mobile) - clamp(7.4rem, 23vw, 10rem));
+    padding-bottom: max(clamp(1.5rem, 7svh, 4rem), env(safe-area-inset-bottom));
+    justify-content: flex-start;
   }
 
   #landingPart {
     min-height: 0;
     height: auto;
-    align-items: flex-end;
+    align-items: flex-start;
   }
 
   .landingpage_Intro {
     margin-top: 0;
     font-size: clamp(2.55rem, 11vw, 4.05rem);
     line-height: 1;
+    transform: none;
   }
 
   .landingpage_Intro h3 {
     width: min(100%, 34rem);
     font-size: clamp(1.08rem, 4.25vw, 1.22rem);
     line-height: 1.48;
+    margin-top: clamp(1.25rem, 4svh, 2.15rem);
   }
 
   .hero-buckyball {
     --hero-graph-x: -50%;
     --hero-graph-y: 0;
     position: fixed;
-    top: calc(var(--site-nav-height) - clamp(4.5rem, 18vw, 7rem) + env(safe-area-inset-top));
+    top: var(--hero-graph-top-mobile);
     left: 50%;
     right: auto;
-    width: clamp(460px, 138vw, 660px);
+    width: var(--hero-graph-size-mobile);
     max-width: none;
   }
 
@@ -3794,15 +3798,20 @@ a:hover {
 }
 
 @media only screen and (max-width: 390px) {
+  #HP_container {
+    --hero-graph-top-mobile: calc(var(--site-nav-height) - clamp(5.5rem, 24vw, 8rem) + env(safe-area-inset-top));
+    --hero-graph-size-mobile: clamp(430px, 138vw, 560px);
+  }
+
   .landing-session {
     min-height: max(720px, 100svh);
-    padding-top: clamp(238px, 70vw, 292px);
-    padding-bottom: max(6px, env(safe-area-inset-bottom));
+    padding-top: calc(var(--hero-graph-top-mobile) + var(--hero-graph-size-mobile) - clamp(6.7rem, 25vw, 8.5rem));
+    padding-bottom: max(clamp(1.25rem, 6svh, 3.25rem), env(safe-area-inset-bottom));
   }
 
   .hero-buckyball {
-    top: calc(var(--site-nav-height) - clamp(5.5rem, 24vw, 8rem) + env(safe-area-inset-top));
-    width: clamp(430px, 138vw, 560px);
+    top: var(--hero-graph-top-mobile);
+    width: var(--hero-graph-size-mobile);
   }
 
   .projectRow .sessionContainer {
