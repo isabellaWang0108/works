@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Linkedin from "../assets/images/contact/linkedin.svg"
 import Email from "../assets/images/contact/email.svg"
 
-const RESUME_URL = "https://drive.google.com/file/d/1dbaLfbp0ysq0jpxBCEXDLSYdyJorgTE_/view?usp=sharing";
+const RESUME_URL = "https://drive.google.com/file/d/1scc8XYAKv6EB3kbu5vvYko-CKHW35W3-/view?usp=sharing";
 
 const NavigationBar = () => {
     const location = useLocation();
