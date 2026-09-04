@@ -61,19 +61,6 @@ export const trackPortfolioKeywordSearch = ({ keyword, recommendation }) => {
 
   sendAnalyticsEvent("portfolio_keyword_search", {
     search_term: searchTerm,
-    match_status: recommendation ? "matched" : "no_match",
     matched_project: recommendation || "none",
-  });
-};
-
-export const trackProjectClick = ({ projectId, source = "unknown", destination }) => {
-  if (!projectId) {
-    return;
-  }
-
-  sendAnalyticsEvent("portfolio_project_click", {
-    project_id: projectId,
-    source,
-    destination: String(destination || ""),
   });
 };

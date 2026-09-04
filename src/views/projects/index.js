@@ -10,7 +10,6 @@ import {
   VOICE_TAGS,
 } from "../../components/projectTags";
 import WireframeBackground from "../../components/WireframeBackground";
-import { trackProjectClick } from "../../utils/analytics";
 
 import KioskProduct from "../../assets/images/home/kiosk.png";
 import PlatformsIntegrationProduct from "../../assets/images/home/Janus.svg";
@@ -82,14 +81,6 @@ const projects = [
 ];
 
 function AllProjectCard({ project }) {
-  const handleProjectClick = () => {
-    trackProjectClick({
-      projectId: project.id,
-      source: "all_projects_page",
-      destination: project.href,
-    });
-  };
-
   const content = (
     <>
       <div className="all-projects-card-media">
@@ -114,7 +105,6 @@ function AllProjectCard({ project }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Open ${project.id} project`}
-        onClick={handleProjectClick}
       >
         {content}
       </a>
@@ -127,7 +117,6 @@ function AllProjectCard({ project }) {
       className="sessionContainer bg-project-card all-projects-portfolio-card"
       to={project.href}
       aria-label={`Open ${project.id} case study`}
-      onClick={handleProjectClick}
     >
       {content}
     </Link>
