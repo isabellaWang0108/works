@@ -20,8 +20,8 @@ const SPARK_POINTS = [
   [-1.62, 0.78, 0.18], [-0.48, -1.28, -1.04], [0.76, 1.7, 0.08], [1.36, 1.02, -0.46],
 ];
 
-const labelTextureCache = new Map();
 let dotTexture = null;
+const labelTextureCache = new Map();
 const getStarColor = (index) => (index % 3 === 0 ? "#ff8cc4" : "#ff9ccc");
 const getGlintColor = (index) => (index % 2 === 0 ? "#ffe2f2" : "#ff8cc4");
 
@@ -115,8 +115,7 @@ function createBuckyballTopology() {
 }
 
 function makeLabelTexture(label) {
-  const cacheKey = label;
-  const cachedTexture = labelTextureCache.get(cacheKey);
+  const cachedTexture = labelTextureCache.get(label);
 
   if (cachedTexture) {
     return cachedTexture;
@@ -154,7 +153,7 @@ function makeLabelTexture(label) {
   texture.minFilter = THREE.LinearFilter;
   texture.magFilter = THREE.LinearFilter;
   texture.needsUpdate = true;
-  labelTextureCache.set(cacheKey, texture);
+  labelTextureCache.set(label, texture);
   return texture;
 }
 
@@ -258,6 +257,36 @@ function ConnectionCloud({ points, edges }) {
   );
 }
 
+function TwinkleField({ points, opacity, scale, colorForIndex, geometryArgs }) {
+  const ref = useRef();
+  const matrixObject = useMemo(() => new THREE.Object3D(), []);
+
+  useLayoutEffect(() => {
+    if (!ref.current) return;
+
+    points.forEach((position, index) => {
+      matrixObject.position.set(position[0], position[1], position[2]);
+      matrixObject.scale.setScalar(scale);
+      matrixObject.updateMatrix();
+      ref.current.setMatrixAt(index, matrixObject.matrix);
+      ref.current.setColorAt(index, new THREE.Color(colorForIndex(index)));
+    });
+
+    ref.current.instanceMatrix.needsUpdate = true;
+
+    if (ref.current.instanceColor) {
+      ref.current.instanceColor.needsUpdate = true;
+    }
+  }, [colorForIndex, matrixObject, points, scale]);
+
+  return (
+    <instancedMesh ref={ref} args={[null, null, points.length]}>
+      <sphereGeometry args={geometryArgs} />
+      <meshBasicMaterial vertexColors transparent opacity={opacity} depthWrite={false} blending={THREE.NormalBlending} />
+    </instancedMesh>
+  );
+}
+
 function PulseLayer({
   color,
   count,
@@ -300,7 +329,6 @@ function PulseLayer({
 
       matrixObject.position.copy(midpoint);
       matrixObject.quaternion.copy(quaternion);
-
       matrixObject.scale.set(visibleRatio, length, visibleRatio);
       matrixObject.updateMatrix();
       haloRef.current.setMatrixAt(index, matrixObject.matrix);
@@ -361,60 +389,6 @@ function DataPulses({ points, edges }) {
   );
 }
 
-function TwinkleField({ points, opacity, speed, scaleMin, scaleMax, colorForIndex, geometryArgs }) {
-  const ref = useRef();
-  const matrixObject = useMemo(() => new THREE.Object3D(), []);
-
-  useLayoutEffect(() => {
-    if (!ref.current) return;
-
-    points.forEach((position, index) => {
-      matrixObject.position.set(position[0], position[1], position[2]);
-      matrixObject.scale.setScalar(scaleMin);
-      matrixObject.updateMatrix();
-      ref.current.setMatrixAt(index, matrixObject.matrix);
-      ref.current.setColorAt(index, new THREE.Color(colorForIndex(index)));
-    });
-
-    ref.current.instanceMatrix.needsUpdate = true;
-
-    if (ref.current.instanceColor) {
-      ref.current.instanceColor.needsUpdate = true;
-    }
-  }, [colorForIndex, matrixObject, points, scaleMin]);
-
-  useFrame(({ clock }) => {
-    if (!ref.current) return;
-
-    points.forEach((position, index) => {
-      const glow = Math.max(0, Math.sin(clock.elapsedTime * speed + index * 1.43));
-      const scale = scaleMin + glow * (scaleMax - scaleMin);
-
-      matrixObject.position.set(position[0], position[1], position[2]);
-      matrixObject.scale.setScalar(scale);
-      matrixObject.updateMatrix();
-      ref.current.setMatrixAt(index, matrixObject.matrix);
-    });
-
-    ref.current.instanceMatrix.needsUpdate = true;
-  });
-
-  return (
-    <instancedMesh ref={ref} args={[null, null, points.length]}>
-      <sphereGeometry args={geometryArgs} />
-      <meshBasicMaterial vertexColors transparent opacity={opacity} depthWrite={false} blending={THREE.NormalBlending} />
-    </instancedMesh>
-  );
-}
-
-function NodePoint({ label, position }) {
-  return (
-    <group position={position}>
-      <LabelSprite label={label} position={[0, 0, 0]} />
-    </group>
-  );
-}
-
 function HeroRenderScheduler() {
   const invalidate = useThree((state) => state.invalidate);
   const rootRef = useRef(null);
@@ -459,12 +433,20 @@ function HeroRenderScheduler() {
   return null;
 }
 
-function BuckyballScene({ labels }) {
+function NodePoint({ label, position }) {
+  return (
+    <group position={position}>
+      <LabelSprite label={label} position={[0, 0, 0]} />
+    </group>
+  );
+}
+
+function BuckyballScene({ rich }) {
   const groupRef = useRef();
   const { points, edges } = useMemo(() => createBuckyballTopology(), []);
   const nodeLabels = useMemo(
-    () => points.map(() => labels[Math.floor(Math.random() * labels.length)]),
-    [labels, points],
+    () => points.map((_, index) => DATA_LABELS[index % DATA_LABELS.length]),
+    [points],
   );
 
   useFrame(({ clock }) => {
@@ -475,26 +457,22 @@ function BuckyballScene({ labels }) {
   return (
     <group ref={groupRef} position={[0, 0, 0]} rotation={[SCENE_TILT_X, SCENE_TILT_Y, 0]}>
       <ConnectionCloud points={points} edges={edges} />
-      <DataPulses points={points} edges={edges} />
+      {rich && <DataPulses points={points} edges={edges} />}
       <TwinkleField
         points={STAR_POINTS}
         opacity={0.28}
-        speed={0.9}
-        scaleMin={0.8}
-        scaleMax={1.34}
+        scale={1}
         colorForIndex={getStarColor}
         geometryArgs={[0.012, 8, 8]}
       />
       <TwinkleField
         points={SPARK_POINTS}
         opacity={0.22}
-        speed={1.4}
-        scaleMin={0.72}
-        scaleMax={1.24}
+        scale={0.9}
         colorForIndex={getGlintColor}
         geometryArgs={[0.015, 10, 10]}
       />
-      {points.map((point, index) => (
+      {rich && points.map((point, index) => (
         <NodePoint
           key={`node-${index}`}
           label={nodeLabels[index]}
@@ -505,7 +483,7 @@ function BuckyballScene({ labels }) {
   );
 }
 
-function HeroBuckyballGraph() {
+function HeroBuckyballGraph({ rich = false }) {
   const canvasDpr = useMemo(() => {
     if (typeof window !== "undefined" && window.matchMedia("(max-width: 620px)").matches) {
       return [1, 1.2];
@@ -515,7 +493,7 @@ function HeroBuckyballGraph() {
   }, []);
 
   return (
-    <div className="hero-buckyball" aria-hidden="true">
+    <div className={`hero-buckyball${rich ? " is-rich" : ""}`} aria-hidden="true">
       <Canvas
         dpr={canvasDpr}
         frameloop="demand"
@@ -524,7 +502,7 @@ function HeroBuckyballGraph() {
       >
         <fog attach="fog" args={["#030405", 4.75, 8.15]} />
         <HeroRenderScheduler />
-        <BuckyballScene labels={DATA_LABELS} />
+        <BuckyballScene rich={rich} />
       </Canvas>
     </div>
   );

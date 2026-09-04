@@ -1,0 +1,137 @@
+{
+  "profile": {
+    "name": "Isabella Wang",
+    "headline": "Product Designer shaping complex data and ambiguous workflows into intuitive UX that speeds up critical work.",
+    "positioning": [
+      "AI-fluent product design",
+      "Systems-driven UX",
+      "Enterprise and B2B workflow design",
+      "Design systems and adoption",
+      "Research-led product strategy",
+      "Rapid prototyping for ambiguous spaces"
+    ],
+    "skills": [
+      {
+        "name": "AI product UX",
+        "evidence": "Designed source-backed AI guidance, prompt/content structures, AI-assisted workflows, and explainable generated outputs."
+      },
+      {
+        "name": "Complex workflow design",
+        "evidence": "Mapped fragmented consulting, check-in, marketplace, and hiring workflows into clearer task flows and decision points."
+      },
+      {
+        "name": "Design systems",
+        "evidence": "Scaled shared UI patterns, typography tokens, documentation, and Figma libraries across multiple products."
+      },
+      {
+        "name": "Research and validation",
+        "evidence": "Used qualitative interviews, competitive analysis, A/B testing, usability testing, and stakeholder validation."
+      },
+      {
+        "name": "Cross-functional leadership",
+        "evidence": "Worked with PMs, engineers, researchers, executives, and stakeholders to align around product direction and adoption."
+      },
+      {
+        "name": "Accessible technical UX",
+        "evidence": "Made technical flows more understandable through progressive guidance, clearer terminology, and accessibility-aware UI choices."
+      }
+    ]
+  },
+  "caseStudies": [
+    {
+      "title": "AI-Powered Knowledge Tool for Faster Consulting Discovery",
+      "route": "/ai-research-guide",
+      "summary": "A 0-to-1 AI tool that helps consultants quickly explore unfamiliar domains through guided, source-backed recommendations.",
+      "role": "Design lead",
+      "team": "1 PM, 2 engineers, 1 designer",
+      "duration": "6 months",
+      "tags": ["AI product", "B2B", "Internal tool", "consulting", "knowledge management", "source-backed recommendations", "enterprise AI", "AI UX", "generative AI", "LLM UX", "AI copilot", "agentic workflow", "AI-assisted workflow", "knowledge platform", "expert system", "decision support", "workflow automation", "productivity tool", "data-heavy UX", "complex data", "information retrieval", "RAG", "retrieval augmented generation", "source citation", "explainable AI", "trustworthy AI", "responsible AI", "human-in-the-loop", "AI output quality", "confidence signal", "enterprise search", "semantic search", "research synthesis", "consulting enablement", "B2B SaaS", "internal SaaS", "workflow intelligence", "operational efficiency", "measurable impact", "0-to-1 product", "MVP", "product strategy", "problem framing", "design strategy", "product discovery", "rapid prototyping", "Figma prototype", "cross-functional collaboration", "PM partnership", "engineering partnership"],
+      "skills": ["AI product UX", "information architecture", "prompt/content design", "enterprise discovery", "trust and explainability", "AI interaction design", "conversational UX", "content strategy", "systems thinking", "data literacy", "business impact", "metrics-driven design", "research synthesis", "workflow mapping", "human-centered AI"],
+      "bestFor": ["AI product roles", "B2B SaaS", "knowledge tools", "consulting workflows", "enterprise discovery", "AI platform roles", "enterprise UX roles", "complex workflow roles", "internal tools roles", "AI copilot design", "product design strategy"],
+      "proof": [
+        "Turned scattered decks, playbooks, and expert knowledge into guided discovery paths.",
+        "Designed AI outputs with headings, summaries, evidence, recommendations, and uncertainty cues.",
+        "Helped make early discovery more repeatable and reduced dependency on senior experts."
+      ]
+    },
+    {
+      "title": "Unifying Consulting Tools into One AI-assisted Workspace",
+      "route": "/platforms-integration",
+      "summary": "A platform concept that connects fragmented consulting tools into a standardized, AI-assisted assessment workspace.",
+      "role": "Product designer",
+      "team": "Consulting workflow stakeholders and product partners",
+      "duration": "Concept and prototyping sprint",
+      "tags": ["AI workflow", "enterprise platform", "systems thinking", "consulting", "tool integration", "platform strategy", "enterprise UX", "B2B SaaS", "AI-assisted workspace", "workflow orchestration", "workflow automation", "complex workflows", "ambiguous problem space", "0-to-1 strategy", "product strategy", "product discovery", "service blueprint", "journey mapping", "process optimization", "operating model", "systems design", "tool consolidation", "integration strategy", "internal tools", "consultant workflow", "assessment workflow", "decision support", "AI copilot", "agentic system", "context engineering", "human-in-the-loop", "responsible AI", "data-informed UX", "dashboard UX", "enterprise collaboration", "stakeholder alignment", "executive storytelling", "design facilitation", "rapid prototyping", "AI prototyping", "concept validation", "MVP definition", "design partner collaboration", "business process design"],
+      "skills": ["workflow architecture", "AI interaction strategy", "stakeholder alignment", "rapid prototyping", "systems design", "product strategy", "service design", "information architecture", "enterprise research", "facilitation", "systems mapping", "concept development", "design storytelling", "cross-functional alignment"],
+      "bestFor": ["enterprise AI", "platform design", "ambiguous workflow strategy", "systems design", "consulting tools", "B2B SaaS roles", "AI workflow roles", "product strategy roles", "design lead roles", "enterprise platform roles"],
+      "proof": [
+        "Defined AI support around chat with data, workflow actions, and contextual suggestions.",
+        "Balanced tool flexibility with stakeholder needs for standardization.",
+        "Used rapid AI prototyping to align the team around tangible workflow directions."
+      ]
+    },
+    {
+      "title": "Scaling Product Consistency with a Design System",
+      "route": "/design-system",
+      "summary": "A design system effort that unified typography, patterns, documentation, and adoption across 4+ products and 100+ pages.",
+      "role": "Designer",
+      "team": "2 engineers, 2 designers",
+      "duration": "1 year",
+      "tags": ["Design systems", "Platform UX", "DesignOps", "accessibility", "documentation", "Figma library", "component library", "design tokens", "UI components", "component architecture", "pattern library", "enterprise design system", "multi-product design system", "design language", "governance", "design system adoption", "cross-product consistency", "scalable UI", "front-end partnership", "developer handoff", "design-to-code", "AI-assisted design systems", "generative AI workflow", "Figma variables", "accessibility compliance", "WCAG", "inclusive design", "usability standards", "quality assurance", "design QA", "spec writing", "documentation strategy", "enablement", "change management", "operational excellence", "platform scalability", "design operations", "systems thinking", "SaaS UX", "B2B platform", "product consistency", "visual systems", "interaction patterns", "enterprise UI", "measurable impact", "efficiency gains"],
+      "skills": ["design systems", "tokens", "accessibility", "documentation", "change management", "cross-functional adoption", "component strategy", "Figma library management", "design governance", "design QA", "developer collaboration", "systems thinking", "platform UX", "scalable documentation"],
+      "bestFor": ["design system roles", "platform teams", "DesignOps", "accessibility work", "scaling product consistency", "enterprise design system roles", "staff product designer roles", "senior product designer roles", "UI systems roles", "design infrastructure roles"],
+      "proof": [
+        "Scaled shared UI from 45% to 90% across 4 products.",
+        "Cut spec-writing time by 88% and raised WCAG 2.0 compliance to 100%.",
+        "Enabled 50+ designers and engineers to adopt shared guidelines through documentation and libraries."
+      ]
+    },
+    {
+      "title": "Automating Office Check-in",
+      "route": "/kiosk",
+      "summary": "A self-service visitor kiosk that made office check-in faster, reduced front desk workload, and improved the guest experience.",
+      "role": "Designer",
+      "team": "1 PM, 5 engineers, 1 designer",
+      "duration": "1 month",
+      "tags": ["Hardware integration", "IoT", "B2B", "usability", "kiosk", "iPad", "self-service", "visitor management", "office automation", "check-in workflow", "physical-digital UX", "touchscreen UX", "tablet UX", "mobile UX", "responsive states", "error states", "edge cases", "accessibility", "inclusive design", "service design", "operations design", "workflow automation", "front desk automation", "enterprise workplace", "proptech", "real estate technology", "security workflow", "QR code scanning", "device constraints", "hardware-aware design", "field constraints", "usability testing", "A/B testing", "experiment design", "interaction accuracy", "task completion", "measurable impact", "cross-functional delivery", "PM partnership", "engineering collaboration", "implementation-ready design", "real-world constraints"],
+      "skills": ["service design", "usability testing", "A/B testing", "hardware-aware UX", "accessibility", "cross-functional collaboration", "interaction design", "edge case design", "mobile interaction patterns", "operational workflow design", "experiment design", "technical constraints"],
+      "bestFor": ["B2B product design", "IoT or hardware-integrated UX", "service design", "usability-heavy roles", "operations UX roles", "mobile UX roles", "workplace technology roles", "proptech roles", "complex constraint roles"],
+      "proof": [
+        "Validated QR scanning behavior, phone placement, and physical-distance UI needs.",
+        "Used A/B testing to choose the design with better interaction accuracy and speed.",
+        "Delivered successful scan, error, and responsive iPad states."
+      ]
+    },
+    {
+      "title": "Making NFT Creation Easier for Emerging Artists",
+      "route": "/voice",
+      "summary": "A creator marketplace flow that made minting and selling NFT artwork feel clear, guided, and accessible.",
+      "role": "Designer",
+      "team": "1 PM, 6 engineers, 2 designers, 1 UX researcher",
+      "duration": "3 months",
+      "tags": ["Consumer-facing", "Technical workflow", "Digital marketplace", "creator tools", "NFT", "web3", "emerging technology", "0-to-1 product", "creator economy", "marketplace UX", "two-sided marketplace", "seller onboarding", "activation", "growth design", "conversion", "activation funnel", "onboarding flow", "technical onboarding", "non-technical users", "plain language UX", "content design", "trust building", "guided workflow", "step-by-step flow", "commerce UX", "digital commerce", "minting flow", "publishing workflow", "checkout-adjacent UX", "consumer product", "mobile-first thinking", "user education", "usability testing", "research-informed design", "design system", "MVP", "product-market learning", "early-stage product", "creator tools", "art marketplace", "community marketplace", "accessibility", "inclusive UX"],
+      "skills": ["consumer UX", "marketplace design", "technical terminology", "onboarding", "user testing", "design systems", "growth UX", "activation design", "content design", "plain language", "trust and safety UX", "technical concept simplification"],
+      "bestFor": ["consumer product roles", "creator tools", "marketplaces", "technical onboarding", "emerging technology UX", "growth design roles", "0-to-1 roles", "consumer marketplace roles", "web3-adjacent roles"],
+      "proof": [
+        "Simplified NFT publishing from a lengthy process into a 4-step flow with optional sales.",
+        "Explained unavoidable technical terms to improve confidence for non-technical artists.",
+        "Helped the product gain traction with emerging artists and a Vogue art residency partnership."
+      ]
+    },
+    {
+      "title": "NY Tango",
+      "route": "https://nytango.vercel.app/",
+      "summary": "A community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.",
+      "role": "Product designer",
+      "team": "Independent product build",
+      "duration": "Ongoing",
+      "tags": ["Consumer app", "0-to-1 product", "AI-assisted design", "community", "events", "event discovery", "local discovery", "calendar UX", "map UX", "location-based product", "consumer marketplace", "community platform", "creator admin", "CMS", "content management", "organizer workflow", "event operations", "operations automation", "self-serve admin", "mobile web", "responsive design", "information architecture", "search and filter", "faceted search", "discovery experience", "consumer UX", "product strategy", "MVP", "solo founder", "end-to-end design", "frontend implementation", "design engineering", "AI-assisted prototyping", "vibe coding", "rapid prototyping", "ship fast", "product launch", "operational efficiency", "manual workflow reduction", "business impact", "community growth", "retention", "engagement"],
+      "skills": ["0-to-1 product design", "event operations", "community UX", "workflow simplification", "AI-assisted design", "frontend implementation", "responsive UX", "search UX", "filter design", "map-based discovery", "CMS design", "product launch"],
+      "bestFor": ["0-to-1 product roles", "consumer community products", "operational workflow design", "consumer app roles", "design engineering roles", "founder-minded designer roles", "AI-assisted product design roles", "community platform roles"],
+      "proof": [
+        "Designed event discovery and organizer management workflows.",
+        "Reduced manual operations by 80%."
+      ]
+    }
+  ]
+}

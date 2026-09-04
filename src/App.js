@@ -1,19 +1,19 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Loading from "./components/loading"
 import { lazyWithMinimum } from "./utils/lazyWithMinimum";
 import { preloadRouteCriticalAssets } from "./utils/preloadAssets";
 import { isRouteLoading, subscribeToRouteLoading } from "./utils/routeLoadingState";
 
 
-const Homepage = lazy(() => lazyWithMinimum(() => import("./views/homepage"), () => preloadRouteCriticalAssets("/")));
+const Homepage = lazy(() => lazyWithMinimum(() => import("./views/homepage/index.js"), () => preloadRouteCriticalAssets("/")));
 const Contact = lazy(() => lazyWithMinimum(() => import("./views/contact.js"), () => preloadRouteCriticalAssets("/contact")));
-const ProductStudio = lazy(() => lazyWithMinimum(() => import("./views/projects/ProductStudio"), () => preloadRouteCriticalAssets("/product-studio")));
-const DS = lazy(() => lazyWithMinimum(() => import("./views/projects/DS"), () => preloadRouteCriticalAssets("/design-system")));
-const Voice = lazy(() => lazyWithMinimum(() => import("./views/projects/Voice"), () => preloadRouteCriticalAssets("/voice")));
-const AIResearchGuide = lazy(() => lazyWithMinimum(() => import("./views/projects/AIResearchGuide"), () => preloadRouteCriticalAssets("/ai-research-guide")));
-const PlatformsIntegration = lazy(() => lazyWithMinimum(() => import("./views/projects/PlatformsIntegration"), () => preloadRouteCriticalAssets("/platforms-integration")));
-const Kiosk = lazy(() => lazyWithMinimum(() => import("./views/projects/Kiosk"), () => preloadRouteCriticalAssets("/kiosk")));
+const DS = lazy(() => lazyWithMinimum(() => import("./views/projects/DS/index.js"), () => preloadRouteCriticalAssets("/design-system")));
+const Voice = lazy(() => lazyWithMinimum(() => import("./views/projects/Voice/index.js"), () => preloadRouteCriticalAssets("/voice")));
+const AIResearchGuide = lazy(() => lazyWithMinimum(() => import("./views/projects/AIResearchGuide/index.js"), () => preloadRouteCriticalAssets("/ai-research-guide")));
+const PlatformsIntegration = lazy(() => lazyWithMinimum(() => import("./views/projects/PlatformsIntegration/index.js"), () => preloadRouteCriticalAssets("/platforms-integration")));
+const Kiosk = lazy(() => lazyWithMinimum(() => import("./views/projects/Kiosk/index.js"), () => preloadRouteCriticalAssets("/kiosk")));
+const AllProjects = lazy(() => lazyWithMinimum(() => import("./views/projects/index.js"), () => preloadRouteCriticalAssets("/projects")));
 
 const LOADER_GRID_LOOP_MS = 2200;
 const LOADER_GRID_EXIT_START_MS = LOADER_GRID_LOOP_MS * 0.46;
@@ -105,18 +105,30 @@ function LoadingOverlay() {
 }
 
 function AppRoutes() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const legacyPath = window.location.hash;
+
+    if (!legacyPath.startsWith("#/")) {
+      return;
+    }
+
+    navigate(legacyPath.slice(1), { replace: true });
+  }, [navigate]);
+
   return (
     <>
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/product-studio" element={<ProductStudio />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/design-system" element={<DS />} />
           <Route path="/voice" element={<Voice />} />
           <Route path="/ai-research-guide" element={<AIResearchGuide />} />
           <Route path="/platforms-integration" element={<PlatformsIntegration />} />
           <Route path="/kiosk" element={<Kiosk />} />
+          <Route path="/projects" element={<AllProjects />} />
         </Routes>
       </Suspense>
       <LoadingOverlay />
@@ -126,9 +138,9 @@ function AppRoutes() {
 
 const App = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppRoutes />
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

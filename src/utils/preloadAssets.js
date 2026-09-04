@@ -10,17 +10,7 @@ import AIPlatformProduct from "../assets/images/home/Project card/AIPlatform_pro
 import AIPlatformBackground from "../assets/images/home/Project card/AIPlatform_background.webp";
 import DesignSystemProduct from "../assets/images/home/Project card/DS_product.png";
 import DesignSystemBackground from "../assets/images/home/Project card/DS_background.webp";
-
-import ProductStudioPic1 from "../assets/images/ProductStudio/ps_pic1.jpg";
-import ProductStudioPic2 from "../assets/images/ProductStudio/ps_pic2.jpg";
-import ProductStudioPic3 from "../assets/images/ProductStudio/ps_pic3.jpg";
-import ProductStudioPic4 from "../assets/images/ProductStudio/ps_pic4.jpg";
-import ProductStudioPic9 from "../assets/images/ProductStudio/ps_pic9.jpg";
-
-import KioskPic1 from "../assets/images/Kiosk/img_01.png";
-import KioskPic4 from "../assets/images/Kiosk/img_04.png";
-import KioskPic5 from "../assets/images/Kiosk/img_05.png";
-import KioskPic6 from "../assets/images/Kiosk/img_06.png";
+import KioskProduct from "../assets/images/home/kiosk.png";
 
 import VoicePic2 from "../assets/images/Voice/pic_2.svg";
 import VoicePic3 from "../assets/images/Voice/pic_3.png";
@@ -58,15 +48,22 @@ const preloadSets = {
     secondary: [
       VoiceBackground,
       DesignSystemBackground,
+      KioskProduct,
     ],
   },
   "/contact": {
     critical: [],
     secondary: [],
   },
-  "/product-studio": {
-    critical: [ProductStudioPic1],
-    secondary: [ProductStudioPic2, ProductStudioPic3, ProductStudioPic4, ProductStudioPic9],
+  "/projects": {
+    critical: [],
+    secondary: [
+      NYTangoBackground,
+      AIPlatformBackground,
+      VoiceBackground,
+      DesignSystemBackground,
+      KioskProduct,
+    ],
   },
   "/design-system": {
     critical: [DesignSystemProduct],
@@ -85,8 +82,8 @@ const preloadSets = {
     secondary: [JanusPic2, JanusPic4_1, JanusPic4_2],
   },
   "/kiosk": {
-    critical: [KioskPic1],
-    secondary: [KioskPic4, KioskPic5, KioskPic6],
+    critical: [KioskProduct],
+    secondary: [],
   },
 };
 

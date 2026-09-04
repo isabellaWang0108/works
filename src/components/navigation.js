@@ -28,7 +28,15 @@ const NavigationBar = () => {
                         Isabella Wang
                     </div>
                 </Link>
-                <div className="site-nav-actions" aria-label="Contact links">
+                <div className="site-nav-actions" aria-label="Primary links">
+                    <Link
+                        to="/projects"
+                        className="site-nav-text-link site-nav-projects-link"
+                        aria-label="All projects"
+                    >
+                        All projects
+                    </Link>
+                    <span className="site-nav-separator" aria-hidden="true">|</span>
                     <a
                         href="https://www.linkedin.com/in/isabella-wang-310181149/"
                         target="_blank"
