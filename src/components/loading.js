@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { preloadRouteAssets } from "../utils/preloadAssets";
-import "../css/index.css"
 
 const Loading = ({ isExiting = false, onExitAnimationEnd }) => {
     const { pathname } = useLocation();

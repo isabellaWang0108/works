@@ -1,6 +1,8 @@
 # Local Netlify folder
 .netlify
 node_modules
+.dev
+.tmp-tests
 .env.local
 .env.*.local
 .env

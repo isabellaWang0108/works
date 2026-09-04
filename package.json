@@ -11,9 +11,10 @@
     "three": "^0.184.0"
   },
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "test": "vitest run"
+    "start": "node scripts/dev.mjs",
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs"
   },
   "browserslist": {
     "production": [
@@ -28,14 +29,11 @@
     ]
   },
   "engines": {
-    "node": "20.x"
+    "node": ">=20"
   },
   "devDependencies": {
     "@types/react": "^19.2.15",
-    "@vitejs/plugin-react": "^5.2.0",
-    "jsdom": "^29.1.1",
-    "vite": "^7.3.3",
-    "vite-plugin-svgr": "^5.2.0",
-    "vitest": "^4.1.7"
+    "esbuild": "^0.27.7",
+    "jsdom": "^29.1.1"
   }
 }

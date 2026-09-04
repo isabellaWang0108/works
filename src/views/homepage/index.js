@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../../css/index.css"
 
 import NavigationBar from "../../components/navigation"
 import InpageContactMe from "../../components/inpage_contactme"
