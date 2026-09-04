@@ -6,6 +6,7 @@ import WireframeBackground from "../../components/WireframeBackground"
 import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
 import PortfolioChat from "../../components/PortfolioChat"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, KIOSK_TAGS, PLATFORMS_INTEGRATION_TAGS, VOICE_TAGS } from "../../components/projectTags"
+import { trackProjectClick } from "../../utils/analytics"
 
 import KioskProduct from "../../assets/images/home/kiosk.png"
 import PlatformsIntegrationProduct from "../../assets/images/home/Janus.svg"
@@ -169,7 +170,9 @@ class Homepage extends React.Component {
         hasNoSearchMatch: false
     }
 
-    openProject = (link, isExternal = false) => {
+    openProject = (link, isExternal = false, projectId = null, source = "homepage") => {
+        trackProjectClick({ projectId, source, destination: link });
+
         if (isExternal) {
             window.open(link, "_blank", "noopener,noreferrer");
             return;
@@ -178,10 +181,10 @@ class Homepage extends React.Component {
         window.location.assign(`/${link}`);
     }
 
-    handleCardKeyDown = (event, link, isExternal = false) => {
+    handleCardKeyDown = (event, link, isExternal = false, projectId = null, source = "homepage") => {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            this.openProject(link, isExternal);
+            this.openProject(link, isExternal, projectId, source);
         }
     }
 
@@ -405,7 +408,7 @@ class Homepage extends React.Component {
                                                 <button
                                                     type="button"
                                                     className={`case-study-trigger${isActive ? " is-active" : ""}`}
-                                                    onClick={() => this.openProject(project.link, project.isExternal)}
+                                                    onClick={() => this.openProject(project.link, project.isExternal, projectId, "landing_trigger")}
                                                     aria-label={`Open ${project.title} case study`}
                                                     aria-describedby={`${projectId}-preview`}
                                                 >
@@ -430,8 +433,19 @@ class Homepage extends React.Component {
                                     className="hero-recommendation-card trigger-preview-card"
                                     role="link"
                                     tabIndex="0"
-                                    onClick={() => this.openProject(activeHeroProjectLink, activeHeroProjectIsExternal)}
-                                    onKeyDown={(event) => this.handleCardKeyDown(event, activeHeroProjectLink, activeHeroProjectIsExternal)}
+                                    onClick={() => this.openProject(
+                                        activeHeroProjectLink,
+                                        activeHeroProjectIsExternal,
+                                        this.state.heroRecommendationId,
+                                        this.state.isTriggerPreviewActive ? "landing_preview" : "search_result"
+                                    )}
+                                    onKeyDown={(event) => this.handleCardKeyDown(
+                                        event,
+                                        activeHeroProjectLink,
+                                        activeHeroProjectIsExternal,
+                                        this.state.heroRecommendationId,
+                                        this.state.isTriggerPreviewActive ? "landing_preview" : "search_result"
+                                    )}
                                     aria-label={`Open ${activeHeroProject.title} case study`}
                                 >
                                     {activeHeroProject.background && (
@@ -479,8 +493,8 @@ class Homepage extends React.Component {
                             className="sessionContainer bg-project-card"
                             role="link"
                             tabIndex="0"
-                            onClick={() => this.openProject("https://nytango.vercel.app/", true)}
-                            onKeyDown={(event) => this.handleCardKeyDown(event, "https://nytango.vercel.app/", true)}
+                            onClick={() => this.openProject("https://nytango.vercel.app/", true, "NYTango", "homepage_project_card")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "https://nytango.vercel.app/", true, "NYTango", "homepage_project_card")}
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={NYTangoBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
@@ -501,8 +515,8 @@ class Homepage extends React.Component {
                             className="sessionContainer bg-project-card"
                             role="link"
                             tabIndex="0"
-                            onClick={() => this.openProject("ai-research-guide")}
-                            onKeyDown={(event) => this.handleCardKeyDown(event, "ai-research-guide")}
+                            onClick={() => this.openProject("ai-research-guide", false, "AIResearchGuide", "homepage_project_card")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "ai-research-guide", false, "AIResearchGuide", "homepage_project_card")}
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={AIPlatformBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
@@ -528,8 +542,8 @@ class Homepage extends React.Component {
                             className="sessionContainer bg-project-card"
                             role="link"
                             tabIndex="0"
-                            onClick={() => this.openProject("voice")}
-                            onKeyDown={(event) => this.handleCardKeyDown(event, "voice")}
+                            onClick={() => this.openProject("voice", false, "Voice", "homepage_project_card")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "voice", false, "Voice", "homepage_project_card")}
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={VoiceBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
@@ -551,8 +565,8 @@ class Homepage extends React.Component {
                             className="sessionContainer bg-project-card"
                             role="link"
                             tabIndex="0"
-                            onClick={() => this.openProject("https://terra.vts.com/", true)}
-                            onKeyDown={(event) => this.handleCardKeyDown(event, "https://terra.vts.com/", true)}
+                            onClick={() => this.openProject("https://terra.vts.com/", true, "Design-system", "homepage_project_card")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "https://terra.vts.com/", true, "Design-system", "homepage_project_card")}
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={DesignSystemBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />

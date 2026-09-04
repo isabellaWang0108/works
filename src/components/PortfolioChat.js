@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import sendButtonIcon from "../assets/icons/chatbox/send-button.svg";
 import sendArrowIcon from "../assets/icons/chatbox/send-arrow.svg";
 import portfolioKnowledge from "../data/portfolioKnowledge.json";
+import { trackPortfolioKeywordSearch } from "../utils/analytics";
 
 const projectIdByRoute = {
     "/ai-research-guide": "AIResearchGuide",
@@ -214,6 +215,7 @@ function PortfolioChat({ isExpanded = true, onExpand, onCollapse, onRecommend, o
     const handleSubmit = (event) => {
         event.preventDefault();
         const recommendation = findRecommendation(keyword);
+        trackPortfolioKeywordSearch({ keyword, recommendation });
 
         if (recommendation) {
             onRecommend(recommendation);
