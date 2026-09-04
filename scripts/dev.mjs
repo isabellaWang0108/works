@@ -60,6 +60,22 @@ const injectAssets = (html) => {
   );
 };
 
+const loadEnvFile = async (fileName) => {
+  try {
+    const content = await readFile(path.join(root, fileName), "utf8");
+    content.split(/\r?\n/).forEach((line) => {
+      const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/);
+      if (!match || process.env[match[1]]) {
+        return;
+      }
+
+      process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, "");
+    });
+  } catch {
+    // Local env files are optional.
+  }
+};
+
 const prepareFiles = async () => {
   await rm(devDir, { recursive: true, force: true });
   await mkdir(devDir, { recursive: true });
@@ -76,6 +92,8 @@ const sendFile = async (res, filePath) => {
 };
 
 await prepareFiles();
+await loadEnvFile(".env.local");
+await loadEnvFile(".env");
 
 const context = await esbuild.context({
   entryPoints: ["src/index.jsx"],
@@ -91,6 +109,7 @@ const context = await esbuild.context({
   loader: loaders,
   define: {
     "process.env.NODE_ENV": "\"development\"",
+    "process.env.PUBLIC_GA_MEASUREMENT_ID": JSON.stringify(process.env.PUBLIC_GA_MEASUREMENT_ID || ""),
   },
   sourcemap: true,
   logLevel: "info",

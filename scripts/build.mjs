@@ -27,6 +27,22 @@ const loaders = {
 
 const htmlTemplate = async () => readFile(path.join(root, "index.html"), "utf8");
 
+const loadEnvFile = async (fileName) => {
+  try {
+    const content = await readFile(path.join(root, fileName), "utf8");
+    content.split(/\r?\n/).forEach((line) => {
+      const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/);
+      if (!match || process.env[match[1]]) {
+        return;
+      }
+
+      process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, "");
+    });
+  } catch {
+    // Local env files are optional.
+  }
+};
+
 const injectAssets = (html, assets) => {
   const assetMarkup = [
     ...assets.css.map((href) => `  <link rel="stylesheet" href="${href}" />`),
@@ -48,6 +64,8 @@ const hrefFromOutput = (file) => `/${path.relative(distDir, file).split(path.sep
 await rm(distDir, { recursive: true, force: true });
 await mkdir(distDir, { recursive: true });
 await cp(publicDir, distDir, { recursive: true, force: true });
+await loadEnvFile(".env.local");
+await loadEnvFile(".env");
 
 const result = await esbuild.build({
   entryPoints: [entryPoint],
@@ -63,6 +81,7 @@ const result = await esbuild.build({
   loader: loaders,
   define: {
     "process.env.NODE_ENV": "\"production\"",
+    "process.env.PUBLIC_GA_MEASUREMENT_ID": JSON.stringify(process.env.PUBLIC_GA_MEASUREMENT_ID || ""),
   },
   minify: true,
   sourcemap: false,

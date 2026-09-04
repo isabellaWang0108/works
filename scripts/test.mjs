@@ -17,6 +17,9 @@ await esbuild.build({
   platform: "node",
   format: "esm",
   target: "node20",
+  define: {
+    "process.env.PUBLIC_GA_MEASUREMENT_ID": "\"\"",
+  },
   outfile,
   loader: {
     ".js": "jsx",

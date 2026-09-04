@@ -1,8 +1,8 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
-import { Analytics } from "@vercel/analytics/react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Loading from "./components/loading"
 import { lazyWithMinimum } from "./utils/lazyWithMinimum";
+import { trackPageView } from "./utils/analytics";
 import { preloadRouteCriticalAssets } from "./utils/preloadAssets";
 import { isRouteLoading, subscribeToRouteLoading } from "./utils/routeLoadingState";
 
@@ -106,6 +106,7 @@ function LoadingOverlay() {
 }
 
 function AppRoutes() {
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -117,6 +118,10 @@ function AppRoutes() {
 
     navigate(legacyPath.slice(1), { replace: true });
   }, [navigate]);
+
+  useEffect(() => {
+    trackPageView(`${location.pathname}${location.search}`);
+  }, [location.pathname, location.search]);
 
   return (
     <>
@@ -141,7 +146,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <AppRoutes />
-      <Analytics />
     </BrowserRouter>
   );
 };
