@@ -181,5 +181,7 @@ describe('App', () => {
     assert.equal(findRecommendation('agentic RAG copilot knowledge workflow'), 'AIResearchGuide');
     assert.equal(findRecommendation('design engineering local discovery cms'), 'NYTango');
     assert.equal(findRecommendation('zzzz qqqq banana'), null);
+    assert.equal(findRecommendation('poop'), null);
+    assert.equal(findRecommendation('poop random nonsense'), null);
   });
 });

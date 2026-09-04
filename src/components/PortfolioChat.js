@@ -98,6 +98,10 @@ const getFuzzyTokenScore = (queryToken, fieldTokens) => {
             return queryToken.length >= 4 && fieldToken.length >= 4;
         }
 
+        if (queryToken[0] !== fieldToken[0]) {
+            return false;
+        }
+
         const maxDistance = queryToken.length >= 7 ? 2 : 1;
         return editDistance(queryToken, fieldToken) <= maxDistance;
     }) ? 1 : 0;

@@ -458,10 +458,7 @@ class Homepage extends React.Component {
                                     <div className="no-search-match-content">
                                         <span className="no-search-match-emoji" aria-hidden="true">😢</span>
                                         <h2>No Project matches your criteria.</h2>
-                                        <p>
-                                            Try broader keywords,<br />
-                                            or Isabella might not be your designer.
-                                        </p>
+                                        <p>Try broader keywords.</p>
                                     </div>
                                 </div>
                             )}
