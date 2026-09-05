@@ -372,13 +372,16 @@ class Homepage extends React.Component {
                         >
                             <div className={`landingpage_Intro${this.state.isChatExpanded ? " is-searching" : ""}`}>
                                 <h1 className={`landing-title${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}${this.state.isChatExpanded ? " is-searching" : ""}`}>
-                                    <span className="landing-title-word">Ambiguity</span>
-                                    <span className="landing-title-arrow" aria-hidden="true">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor" focusable="false">
-                                            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-                                        </svg>
+                                    <span className="landing-title-word">
+                                        Ambiguity to Product
                                     </span>
-                                    <span className="landing-title-outcome">AI-powered Design to Frontend</span>
+                                    <span className="landing-title-outcome">
+                                        AI-powered Design
+                                        <svg className="landing-title-chevron" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor" focusable="false" aria-hidden="true">
+                                            <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
+                                        </svg>
+                                        Frontend
+                                    </span>
                                 </h1>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
                                     <span className="heroTitleLine">AI Fluent.</span>

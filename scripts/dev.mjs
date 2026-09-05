@@ -7,6 +7,8 @@ const root = process.cwd();
 const devDir = path.join(root, ".dev");
 const publicDir = path.join(root, "public");
 const port = Number(process.env.PORT || 3000);
+const liveReloadPath = "/__dev/events";
+const liveReloadClients = new Set();
 
 const loaders = {
   ".js": "jsx",
@@ -48,6 +50,12 @@ const injectAssets = (html) => {
   const assetMarkup = [
     '  <link rel="stylesheet" href="/assets/index.css" />',
     '  <script type="module" src="/assets/index.js"></script>',
+    `  <script>
+    (() => {
+      const source = new EventSource("${liveReloadPath}");
+      source.addEventListener("reload", () => window.location.reload());
+    })();
+  </script>`,
   ].join("\n");
 
   if (html.includes("<!-- APP_ASSETS -->")) {
@@ -58,6 +66,12 @@ const injectAssets = (html) => {
     /\s*<script type="module" src="\/src\/index\.jsx"><\/script>\s*/,
     `\n${assetMarkup}\n`,
   );
+};
+
+const notifyLiveReload = () => {
+  for (const res of liveReloadClients) {
+    res.write("event: reload\\ndata: now\\n\\n");
+  }
 };
 
 const loadEnvFile = async (fileName) => {
@@ -87,7 +101,7 @@ const prepareFiles = async () => {
 const sendFile = async (res, filePath) => {
   const file = await readFile(filePath);
   const contentType = mimeTypes.get(path.extname(filePath)) || "application/octet-stream";
-  res.writeHead(200, { "Content-Type": contentType });
+  res.writeHead(200, { "Content-Type": contentType, "Cache-Control": "no-store" });
   res.end(file);
 };
 
@@ -113,6 +127,18 @@ const context = await esbuild.context({
   },
   sourcemap: true,
   logLevel: "info",
+  plugins: [
+    {
+      name: "live-reload",
+      setup(build) {
+        build.onEnd((result) => {
+          if (result.errors.length === 0) {
+            notifyLiveReload();
+          }
+        });
+      },
+    },
+  ],
 });
 
 await context.rebuild();
@@ -121,6 +147,20 @@ await context.watch();
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url || "/", `http://localhost:${port}`);
+    if (url.pathname === liveReloadPath) {
+      res.writeHead(200, {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      });
+      res.write("\\n");
+      liveReloadClients.add(res);
+      req.on("close", () => {
+        liveReloadClients.delete(res);
+      });
+      return;
+    }
+
     const safePath = path
       .normalize(decodeURIComponent(url.pathname))
       .replace(/^(\.\.(\/|\\|$))+/, "");

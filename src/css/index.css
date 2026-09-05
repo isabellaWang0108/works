@@ -1573,25 +1573,26 @@ a:hover {
 }
 
 .landing-title {
-  max-width: calc(100vw - (var(--site-page-rail) * 2));
+  max-width: calc(100vw - clamp(1rem, 2vw, 2rem));
   margin: 0 auto;
-  font-family: SuisseIntl-SemiBold, SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
-  font-weight: 700;
-  font-size: min(6.2rem, calc((100vw - (var(--site-page-rail) * 2)) / 15.25));
+  font-family: SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
+  font-weight: 400;
+  font-size: min(7.1rem, calc((100vw - clamp(1rem, 2vw, 2rem)) / 10.8));
   line-height: 1;
   letter-spacing: 0;
+  font-synthesis: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  padding: 0.14em 0 0.18em;
+  gap: 0.18em;
+  padding: 0.14em 0 0.26em;
   color: rgba(255, 250, 253, 0.96);
   text-shadow: none;
   opacity: 1;
-  transform: none;
+  transform: translateY(clamp(1.4rem, 4.4svh, 3.2rem));
   filter: none;
-  max-height: 3.8em;
-  overflow: hidden;
+  max-height: 4em;
+  overflow: visible;
   transition: opacity 220ms ease, transform 220ms ease, max-height 260ms ease, padding 260ms ease, margin 260ms ease;
 }
 
@@ -1606,37 +1607,44 @@ a:hover {
   margin: 0;
   padding-top: 0;
   padding-bottom: 0;
+  overflow: hidden;
 }
 
 .landing-title span {
-  display: block;
-  max-width: 100%;
-  font-family: SuisseIntl-SemiBold, SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
-  font-weight: 700;
-  line-height: 1.08;
-  white-space: nowrap;
-}
-
-.landing-title-arrow {
-  color: #ff8cc4;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 0.62em;
+  max-width: 100%;
+  font-family: SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
+  font-weight: 400;
   line-height: 1;
-  margin: 0.03em 0;
-  text-shadow: none;
+  white-space: nowrap;
+  overflow: visible;
 }
 
-.landing-title-arrow svg {
-  display: block;
-  width: 0.72em;
-  height: 0.72em;
-  fill: currentColor;
+.landing-title-chevron {
+  flex: 0 0 auto;
+  width: 0.42em;
+  height: 0.42em;
+  margin: 0 0.1em;
+  color: rgba(255, 213, 236, 0.86);
+  opacity: 1;
+  transform: translateY(0.025em);
+}
+
+.landing-title-word {
+  font-family: SuisseIntl-Thin, SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.96em;
+  color: rgba(255, 250, 253, 0.96);
 }
 
 .landing-title-outcome {
-  line-height: 1.08;
+  font-size: 0.68em;
+  line-height: 1.22;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.08em;
+  overflow: visible;
 }
 
 .mobile-legacy-hero {
@@ -1644,11 +1652,11 @@ a:hover {
 }
 
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .landing-title-word,
   .landing-title-outcome {
-    background: linear-gradient(96deg, var(--color-text) 0%, #ff8cc4 54%, #9b7cff 112%);
+    background: linear-gradient(96deg, #fff7fb 0%, #ff8cc4 50%, #a984ff 106%);
     -webkit-background-clip: text;
     background-clip: text;
+    background-size: 100% 1.3em;
     color: transparent;
     -webkit-text-fill-color: transparent;
   }
@@ -1658,14 +1666,14 @@ a:hover {
   --hero-graph-x: -50%;
   --hero-graph-y: -50%;
   position: fixed;
-  top: 44%;
+  top: 39%;
   left: 50%;
   right: auto;
   z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(500px, 46vw, 780px);
+  width: clamp(420px, 38vw, 640px);
   aspect-ratio: 1;
   margin-top: 0;
   transform: translate3d(var(--hero-graph-x), var(--hero-graph-y), 0) scale(1);
@@ -1686,7 +1694,7 @@ a:hover {
 
 .hero-buckyball.is-rich {
   z-index: 1;
-  opacity: 0.86;
+  opacity: 0.78;
 }
 
 .landing-tech-layer,
@@ -2147,7 +2155,30 @@ a:hover {
 }
 
 .hero-recommendation-card.trigger-preview-card .hero-recommendation-content .badgeRow {
-  margin-bottom: 11px;
+  margin: 0 0 13px;
+  gap: 10px;
+}
+
+.hero-recommendation-card.trigger-preview-card .hero-recommendation-content .projectBadge {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 141, 202, 0.94);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  font-family: SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+  text-shadow: 0 0 22px rgba(255, 80, 166, 0.2);
+}
+
+.hero-recommendation-card.trigger-preview-card .hero-recommendation-content .projectBadge:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px;
+  color: rgba(255, 180, 222, 0.52);
 }
 
 .hero-recommendation-card.trigger-preview-card .hero-recommendation-content h2 {
@@ -2340,18 +2371,18 @@ a:hover {
   }
 
   .landing-title {
-    font-size: min(5.6rem, calc((100vw - (var(--site-page-rail) * 2)) / 15.25));
-    line-height: 1.08;
+    font-size: min(6.1rem, calc((100vw - clamp(1rem, 2vw, 2rem)) / 10.8));
+    line-height: 1;
   }
 
   .hero-buckyball {
     --hero-graph-x: -50%;
     --hero-graph-y: -50%;
     position: fixed;
-    top: 44%;
+    top: 40%;
     left: 50%;
     right: auto;
-    width: clamp(560px, 88vw, 840px);
+    width: clamp(440px, 68vw, 660px);
     max-width: none;
   }
 
@@ -2437,8 +2468,8 @@ a:hover {
   }
 
   .landing-title {
-    font-size: calc((100vw - (var(--site-page-rail) * 2)) / 15.25);
-    line-height: 1.08;
+    font-size: calc((100vw - clamp(1rem, 2vw, 2rem)) / 10.8);
+    line-height: 1;
   }
 
   #projectsPart.projectRow {

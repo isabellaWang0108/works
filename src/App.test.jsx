@@ -129,7 +129,7 @@ describe('App', () => {
 
     root.render(<App />);
     await waitFor(() => {
-      assert.match(div.textContent, /AmbiguityAI-powered Design to Frontend/);
+      assert.match(div.textContent, /Ambiguity to ProductAI-powered DesignFrontend/);
       assert.match(div.textContent, /Type in keywords/);
     }, { timeout: 5000 });
 
