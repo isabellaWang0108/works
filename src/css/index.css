@@ -1670,6 +1670,15 @@ a:hover {
   line-height: 1.26;
   letter-spacing: 0;
   text-shadow: 0 8px 28px rgba(0, 0, 0, 0.32);
+  opacity: 1;
+  transform: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.landing-supporting-copy.is-previewing {
+  opacity: 0;
+  transform: scale(0.92) translateY(-0.25rem);
+  pointer-events: none;
 }
 
 .mobile-legacy-hero {

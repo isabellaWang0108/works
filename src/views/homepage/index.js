@@ -379,7 +379,7 @@ class Homepage extends React.Component {
                                         Systems Driven.
                                     </span>
                                 </h1>
-                                <h3 className="landing-supporting-copy">
+                                <h3 className={`landing-supporting-copy${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}`}>
                                     Turning ambiguous problems into shipped products
                                 </h3>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
