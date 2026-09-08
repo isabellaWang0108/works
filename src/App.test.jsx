@@ -129,7 +129,8 @@ describe('App', () => {
 
     root.render(<App />);
     await waitFor(() => {
-      assert.match(div.textContent, /Ambiguity to ProductAI-powered DesignFrontend/);
+      assert.match(div.textContent, /AI Native\.\s*Systems Driven\./);
+      assert.match(div.textContent, /Turning ambiguous problems into shipped products/);
       assert.match(div.textContent, /Type in keywords/);
     }, { timeout: 5000 });
 

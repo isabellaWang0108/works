@@ -357,7 +357,7 @@ class Homepage extends React.Component {
                     {/* landing page */}
                     <div
                         style={windowHeight}
-                        className="sessionContainer landing-session"
+                        className={`sessionContainer landing-session${this.state.isChatExpanded ? " is-search-active" : ""}`}
                     >
                         <div className="landing-tech-layer" aria-hidden="true">
                             <WireframeBackground />
@@ -373,22 +373,19 @@ class Homepage extends React.Component {
                             <div className={`landingpage_Intro${this.state.isChatExpanded ? " is-searching" : ""}`}>
                                 <h1 className={`landing-title${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}${this.state.isChatExpanded ? " is-searching" : ""}`}>
                                     <span className="landing-title-word">
-                                        Ambiguity to Product
+                                        AI Native.
                                     </span>
-                                    <span className="landing-title-outcome">
-                                        AI-powered Design
-                                        <svg className="landing-title-chevron" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor" focusable="false" aria-hidden="true">
-                                            <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
-                                        </svg>
-                                        Frontend
+                                    <span className="landing-title-word landing-title-word-secondary">
+                                        Systems Driven.
                                     </span>
                                 </h1>
+                                <h3 className="landing-supporting-copy">
+                                    Turning ambiguous problems into shipped products
+                                </h3>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
-                                    <span className="heroTitleLine">AI Fluent.</span>
+                                    <span className="heroTitleLine">AI Native.</span>
                                     <span className="heroTitleLine heroTitleLine-secondary">Systems Driven.</span>
-                                    <h3>
-                                        Product Designer shaping complex data and ambiguous workflows into intuitive UX that speed up critical work.
-                                    </h3>
+                                    <span className="mobile-hero-outcome">Turning ambiguous problems into shipped products</span>
                                 </div>
                                 {!this.state.isChatExpanded && (
                                 <div className="case-study-triggers" aria-label="Preview case studies">
