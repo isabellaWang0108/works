@@ -1,5 +1,5 @@
 const MAX_KEYWORD_LENGTH = 80;
-const GA_MEASUREMENT_ID = process.env.PUBLIC_GA_MEASUREMENT_ID || "";
+const GA_MEASUREMENT_ID = process.env.PUBLIC_GA_MEASUREMENT_ID || "G-WKXGD4TKH1";
 
 const hasBrowserAnalytics = () => (
   typeof window !== "undefined"
