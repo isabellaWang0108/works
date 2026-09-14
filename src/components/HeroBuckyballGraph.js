@@ -2,12 +2,6 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
-const DATA_LABELS = [
-  "AI", "UX", "DATA", "B2B", "INFO", "MOBILE", "WEB", "APP", "B2C", "USERS",
-  "CS", "ML", "DESIGN", "TECH", "RESEARCH", "STRATEGY", "SYSTEMS", "AUTOMATION",
-  "INSIGHTS", "PRODUCT", "USER",
-];
-
 const STAR_POINTS = [
   [-1.7, -1.3, 0.2], [-1.45, 1.18, 0.98], [-0.82, -1.64, -0.52], [-0.36, 1.72, 0.62],
   [0.44, -1.68, 0.96], [0.9, 1.5, -0.66], [1.62, -0.72, -0.18], [1.7, 0.9, 0.5],
@@ -21,9 +15,8 @@ const SPARK_POINTS = [
 ];
 
 let dotTexture = null;
-const labelTextureCache = new Map();
-const getStarColor = (index) => (index % 3 === 0 ? "#ff8cc4" : "#ff9ccc");
-const getGlintColor = (index) => (index % 2 === 0 ? "#ffe2f2" : "#ff8cc4");
+const getStarColor = (index) => (index % 3 === 0 ? "#ff4fad" : index % 3 === 1 ? "#ff9bd1" : "#c277ff");
+const getGlintColor = (index) => (index % 2 === 0 ? "#ffd2e8" : "#ff5db6");
 
 function makeSoftDotTexture() {
   if (dotTexture) {
@@ -40,8 +33,8 @@ function makeSoftDotTexture() {
 
   const gradient = context.createRadialGradient(center, center, 0, center, center, center);
   gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-  gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.94)");
-  gradient.addColorStop(0.78, "rgba(255, 255, 255, 0.28)");
+  gradient.addColorStop(0.64, "rgba(255, 255, 255, 0.96)");
+  gradient.addColorStop(0.82, "rgba(255, 255, 255, 0.18)");
   gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
   context.fillStyle = gradient;
@@ -114,92 +107,37 @@ function createBuckyballTopology() {
   return { points, edges };
 }
 
-function makeLabelTexture(label) {
-  const cachedTexture = labelTextureCache.get(label);
-
-  if (cachedTexture) {
-    return cachedTexture;
-  }
-
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-  const width = label.length > 8 ? 620 : label.length > 4 ? 500 : 340;
-  const height = 190;
-  const centerY = 95;
-
-  canvas.width = width;
-  canvas.height = height;
-  context.clearRect(0, 0, width, height);
-
-  const gradient = context.createLinearGradient(width * 0.18, centerY - 22, width * 0.82, centerY + 18);
-  gradient.addColorStop(0, "#C7BBC5");
-  gradient.addColorStop(0.5, "#AA98A8");
-  gradient.addColorStop(1, "#B77C98");
-
-  context.font = "400 30px SuisseIntl-Regular, Inter, Helvetica Neue, Arial, sans-serif";
-  context.textAlign = "center";
-  context.textBaseline = "middle";
-  context.letterSpacing = "1.4px";
-  context.lineWidth = 1.8;
-  context.strokeStyle = "#05070D";
-  context.shadowColor = "#7A6470";
-  context.shadowBlur = 48;
-  context.strokeText(label, width / 2, centerY);
-  context.fillStyle = gradient;
-  context.fillText(label, width / 2, centerY);
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.minFilter = THREE.LinearFilter;
-  texture.magFilter = THREE.LinearFilter;
-  texture.needsUpdate = true;
-  labelTextureCache.set(label, texture);
-  return texture;
-}
-
-function LabelSprite({ label, position }) {
-  const texture = useMemo(() => makeLabelTexture(label), [label]);
-  const width = label.length > 8 ? 0.98 : label.length > 4 ? 0.79 : 0.54;
-
-  return (
-    <sprite position={position} scale={[width, 0.3, 1]}>
-      <spriteMaterial
-        map={texture}
-        transparent
-        opacity={1}
-        depthWrite={false}
-        depthTest
-        fog
-        blending={THREE.NormalBlending}
-        toneMapped={false}
-      />
-    </sprite>
-  );
-}
-
-const CONNECTION_FRONT_COLOR = "#94A1A8";
-const CONNECTION_SIGNAL_COLOR = "#F0BED3";
-const CONNECTION_CROSS_COLOR = "#A9B8FF";
-const CONNECTION_OUTER_COLOR = "#C8CFD5";
+const CONNECTION_WHITE_COLOR = "#FFF7FB";
+const CONNECTION_PINK_COLOR = "#FF63BA";
+const CONNECTION_HOT_PINK_COLOR = "#FF2F9E";
 const CONNECTION_DOT_SPACING = 0.086;
 const CONNECTION_FRONT_DOT_SIZE = 0.048;
+const NODE_DOT_SIZE = 0.028;
 const SCENE_TILT_X = -0.2;
 const SCENE_TILT_Y = -0.42;
 const SCENE_ROTATION_SPEED = 0.011;
-const PULSE_COUNT = 4;
+const PULSE_COUNT = 5;
 const PULSE_EDGE_STRIDE = 13;
-const PULSE_SPEED = 0.24;
+const PULSE_SPEED = 0.28;
 const PULSE_TRAIL_LENGTH = 0.28;
 const PULSE_FADE_IN_END = 0.08;
 const PULSE_NODE_FADE_START = 0.76;
 
+const getBuckyballGradientMix = (position) => (
+  THREE.MathUtils.clamp(((position.x + 1.62) / 3.24) * 0.74 + ((position.y + 1.62) / 3.24) * 0.26, 0, 1)
+);
+
+const setBuckyballGradientColor = (targetColor, white, pink, position) => {
+  targetColor.copy(white).lerp(pink, getBuckyballGradientMix(position));
+  return targetColor;
+};
+
 function ConnectionCloud({ points, edges }) {
   const pointTexture = useMemo(() => makeSoftDotTexture(), []);
   const { positions, colors } = useMemo(() => {
-    const baseFront = new THREE.Color(CONNECTION_FRONT_COLOR);
-    const signal = new THREE.Color(CONNECTION_SIGNAL_COLOR);
-    const cross = new THREE.Color(CONNECTION_CROSS_COLOR);
-    const outer = new THREE.Color(CONNECTION_OUTER_COLOR);
+    const white = new THREE.Color(CONNECTION_WHITE_COLOR);
+    const pink = new THREE.Color(CONNECTION_PINK_COLOR);
+    const hotPink = new THREE.Color(CONNECTION_HOT_PINK_COLOR);
     const color = new THREE.Color();
     const dotPositions = [];
     const dotColors = [];
@@ -213,15 +151,14 @@ function ConnectionCloud({ points, edges }) {
       for (let index = 0; index < dotCount; index += 1) {
         const t = (index + 1) / (dotCount + 1);
         const position = start.clone().lerp(end, t);
-
-        color.copy(baseFront);
+        setBuckyballGradientColor(color, white, pink, position);
 
         if (variant === "signal") {
-          color.lerp(signal, 0.42);
+          color.lerp(hotPink, 0.34);
         } else if (variant === "cross") {
-          color.lerp(cross, 0.26);
+          color.lerp(pink, 0.2);
         } else if (variant === "outer") {
-          color.lerp(outer, 0.18);
+          color.lerp(white, 0.16);
         }
 
         dotPositions.push(position.x, position.y, position.z);
@@ -247,6 +184,47 @@ function ConnectionCloud({ points, edges }) {
         vertexColors
         transparent
         opacity={0.92}
+        alphaTest={0.02}
+        depthWrite={false}
+        depthTest
+        fog
+        toneMapped={false}
+      />
+    </points>
+  );
+}
+
+function NodeBallField({ points }) {
+  const pointTexture = useMemo(() => makeSoftDotTexture(), []);
+  const colors = useMemo(() => {
+    const white = new THREE.Color(CONNECTION_WHITE_COLOR);
+    const pink = new THREE.Color(CONNECTION_PINK_COLOR);
+    const color = new THREE.Color();
+    const nodeColors = [];
+
+    points.forEach((position) => {
+      setBuckyballGradientColor(color, white, pink, position);
+      nodeColors.push(color.r, color.g, color.b);
+    });
+
+    return new Float32Array(nodeColors);
+  }, [points]);
+  const positions = useMemo(() => (
+    new Float32Array(points.flatMap((position) => [position.x, position.y, position.z]))
+  ), [points]);
+
+  return (
+    <points>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-color" args={[colors, 3]} />
+      </bufferGeometry>
+      <pointsMaterial
+        map={pointTexture}
+        size={NODE_DOT_SIZE}
+        vertexColors
+        transparent
+        opacity={0.94}
         alphaTest={0.02}
         depthWrite={false}
         depthTest
@@ -291,13 +269,10 @@ function PulseLayer({
   color,
   count,
   edgePaths,
-  haloArgs,
-  haloOpacity,
   coreArgs,
   coreOpacity,
   pathOffset = 0,
 }) {
-  const haloRef = useRef();
   const coreRef = useRef();
   const matrixObject = useMemo(() => new THREE.Object3D(), []);
   const pulseStart = useMemo(() => new THREE.Vector3(), []);
@@ -308,7 +283,7 @@ function PulseLayer({
   ), [count]);
 
   const updatePulseMatrices = (elapsedTime) => {
-    if (!haloRef.current || !coreRef.current) return;
+    if (!coreRef.current) return;
 
     pulseOffsets.forEach((offset, index) => {
       const progress = elapsedTime * PULSE_SPEED + offset;
@@ -331,11 +306,9 @@ function PulseLayer({
       matrixObject.quaternion.copy(quaternion);
       matrixObject.scale.set(visibleRatio, length, visibleRatio);
       matrixObject.updateMatrix();
-      haloRef.current.setMatrixAt(index, matrixObject.matrix);
       coreRef.current.setMatrixAt(index, matrixObject.matrix);
     });
 
-    haloRef.current.instanceMatrix.needsUpdate = true;
     coreRef.current.instanceMatrix.needsUpdate = true;
   };
 
@@ -348,16 +321,10 @@ function PulseLayer({
   });
 
   return (
-    <>
-      <instancedMesh ref={haloRef} args={[null, null, count]}>
-        <cylinderGeometry args={haloArgs} />
-        <meshBasicMaterial color={color} transparent opacity={haloOpacity} depthWrite={false} fog blending={THREE.AdditiveBlending} />
-      </instancedMesh>
-      <instancedMesh ref={coreRef} args={[null, null, count]}>
-        <cylinderGeometry args={coreArgs} />
-        <meshBasicMaterial color={color} transparent opacity={coreOpacity} depthWrite={false} fog blending={THREE.AdditiveBlending} />
-      </instancedMesh>
-    </>
+    <instancedMesh ref={coreRef} args={[null, null, count]}>
+      <cylinderGeometry args={coreArgs} />
+      <meshBasicMaterial color={color} transparent opacity={coreOpacity} depthWrite={false} fog blending={THREE.NormalBlending} toneMapped={false} />
+    </instancedMesh>
   );
 }
 
@@ -374,18 +341,36 @@ function DataPulses({ points, edges }) {
       };
     })
   ), [edges, points]);
+  const returnEdgePaths = useMemo(() => (
+    edgePaths.map(({ start, end }) => {
+      const direction = start.clone().sub(end).normalize();
+      return {
+        start: end,
+        end: start,
+        quaternion: new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction),
+      };
+    })
+  ), [edgePaths]);
 
   return (
-    <PulseLayer
-      color="#fff2f8"
-      count={PULSE_COUNT}
-      edgePaths={edgePaths}
-      haloArgs={[0.018, 0.0042, 1, 10]}
-      haloOpacity={0.14}
-      coreArgs={[0.0072, 0.002, 1, 8]}
-      coreOpacity={0.38}
-      pathOffset={11}
-    />
+    <>
+      <PulseLayer
+        color="#fff7fb"
+        count={PULSE_COUNT}
+        edgePaths={edgePaths}
+        coreArgs={[0.0076, 0.0022, 1, 8]}
+        coreOpacity={0.26}
+        pathOffset={11}
+      />
+      <PulseLayer
+        color="#ff63ba"
+        count={PULSE_COUNT}
+        edgePaths={returnEdgePaths}
+        coreArgs={[0.0068, 0.002, 1, 8]}
+        coreOpacity={0.24}
+        pathOffset={29}
+      />
+    </>
   );
 }
 
@@ -433,21 +418,9 @@ function HeroRenderScheduler() {
   return null;
 }
 
-function NodePoint({ label, position }) {
-  return (
-    <group position={position}>
-      <LabelSprite label={label} position={[0, 0, 0]} />
-    </group>
-  );
-}
-
-function BuckyballScene({ rich }) {
+function BuckyballScene() {
   const groupRef = useRef();
   const { points, edges } = useMemo(() => createBuckyballTopology(), []);
-  const nodeLabels = useMemo(
-    () => points.map((_, index) => DATA_LABELS[index % DATA_LABELS.length]),
-    [points],
-  );
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return;
@@ -457,7 +430,8 @@ function BuckyballScene({ rich }) {
   return (
     <group ref={groupRef} position={[0, 0, 0]} rotation={[SCENE_TILT_X, SCENE_TILT_Y, 0]}>
       <ConnectionCloud points={points} edges={edges} />
-      {rich && <DataPulses points={points} edges={edges} />}
+      <DataPulses points={points} edges={edges} />
+      <NodeBallField points={points} />
       <TwinkleField
         points={STAR_POINTS}
         opacity={0.28}
@@ -472,13 +446,6 @@ function BuckyballScene({ rich }) {
         colorForIndex={getGlintColor}
         geometryArgs={[0.015, 10, 10]}
       />
-      {rich && points.map((point, index) => (
-        <NodePoint
-          key={`node-${index}`}
-          label={nodeLabels[index]}
-          position={point}
-        />
-      ))}
     </group>
   );
 }
@@ -502,7 +469,7 @@ function HeroBuckyballGraph({ rich = false }) {
       >
         <fog attach="fog" args={["#030405", 4.75, 8.15]} />
         <HeroRenderScheduler />
-        <BuckyballScene rich={rich} />
+        <BuckyballScene />
       </Canvas>
     </div>
   );

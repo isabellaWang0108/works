@@ -33,6 +33,7 @@ const projects = [
     product: NYTangoProduct,
     background: NYTangoBackground,
     alt: "NY Tango project calendar interface",
+    title: "Event discovery + CMS",
     summary: "Designed a community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.",
   },
   {
@@ -42,6 +43,7 @@ const projects = [
     product: AIPlatformProduct,
     background: AIPlatformBackground,
     alt: "AI knowledge platform interface",
+    title: "AI-powered research tool",
     summary: "AI-powered knowledge platform that turns consulting discovery from hours into minutes.",
   },
   {
@@ -51,6 +53,7 @@ const projects = [
     product: VoiceProduct,
     background: VoiceBackground,
     alt: "NFT creator tool interface",
+    title: "NFT creator marketplace",
     summary: "A creator marketplace that makes minting and selling NFT artwork feel clear, guided, and effortless.",
   },
   {
@@ -60,6 +63,7 @@ const projects = [
     product: DesignSystemProduct,
     background: DesignSystemBackground,
     alt: "design system interface",
+    title: "Design system across 4 products",
     summary: "Scaled shared UI from 45% to 90% across 4 products, cutting spec-writing time by 88% and raising WCAG 2.0 compliance to 100%.",
   },
   {
@@ -68,6 +72,7 @@ const projects = [
     tags: KIOSK_TAGS,
     product: KioskProduct,
     alt: "office visitor kiosk check-in interface",
+    title: "Office visitor kiosk",
     summary: "Designed an iPad check-in flow that reduced front desk workload, improved guest arrival, and balanced usability with real-world office security constraints.",
   },
   {
@@ -76,22 +81,28 @@ const projects = [
     tags: PLATFORMS_INTEGRATION_TAGS,
     product: PlatformsIntegrationProduct,
     alt: "AI-assisted consulting workspace concept",
+    title: "AI-assisted workflow platform",
     summary: "Connected fragmented consulting tools into a standardized, AI-assisted assessment workspace for complex enterprise workflows.",
   },
 ];
 
-function AllProjectCard({ project }) {
+function AllProjectCard({ project, index }) {
   const content = (
     <>
+      <div className="all-projects-card-index" aria-hidden="true">
+        <span>{String(index + 1).padStart(2, "0")}</span>
+      </div>
+      <div className="all-projects-card-copy">
+        <p className="all-projects-tagline">{project.tags.join(" · ")}</p>
+        <h1>{project.title}</h1>
+        <p className="all-projects-card-summary">{project.summary}</p>
+        <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+      </div>
       <div className="all-projects-card-media">
         {project.background && (
           <img loading="lazy" src={project.background} alt="" className="all-projects-card-backdrop" aria-hidden="true" />
         )}
         <img loading="lazy" decoding="async" src={project.product} alt={project.alt} className="all-projects-card-product" />
-      </div>
-      <div className="all-projects-card-copy">
-        <p className="all-projects-tagline">{project.tags.join(" | ")}</p>
-        <h1>{project.summary}</h1>
       </div>
     </>
   );
@@ -136,8 +147,8 @@ function AllProjects() {
         </header>
 
         <section className="projectRow all-projects-card-grid" aria-label="All projects">
-          {projects.map((project) => (
-            <AllProjectCard key={project.id} project={project} />
+          {projects.map((project, index) => (
+            <AllProjectCard key={project.id} project={project} index={index} />
           ))}
         </section>
       </main>

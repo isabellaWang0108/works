@@ -129,9 +129,10 @@ describe('App', () => {
 
     root.render(<App />);
     await waitFor(() => {
-      assert.match(div.textContent, /AI Native\.\s*Systems Driven\./);
-      assert.match(div.textContent, /Turning ambiguous problems into shipped products/);
-      assert.match(div.textContent, /Type in keywords/);
+      assert.match(div.textContent, /Product Designer\s*\|\s*AI-Augmented/);
+      assert.match(div.textContent, /One designer\s*three disciplines/);
+      assert.match(div.textContent, /I bridge product strategy, design, and front-end execution/);
+      assert.match(div.textContent, /Selected Work/);
     }, { timeout: 5000 });
 
     root.unmount();

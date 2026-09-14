@@ -4,7 +4,7 @@ import NavigationBar from "../../components/navigation"
 import InpageContactMe from "../../components/inpage_contactme"
 import WireframeBackground from "../../components/WireframeBackground"
 import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
-import PortfolioChat from "../../components/PortfolioChat"
+import ProjectTriggerIconButton from "../../components/ProjectTriggerIconButton"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, KIOSK_TAGS, PLATFORMS_INTEGRATION_TAGS, VOICE_TAGS } from "../../components/projectTags"
 
 import KioskProduct from "../../assets/images/home/kiosk.png"
@@ -72,8 +72,8 @@ const heroRecommendations = {
     AIResearchGuide: {
         title: "AI Knowledge Platform",
         description: "AI-powered knowledge platform that turns consulting discovery from hours into minutes.",
-        triggerMetric: "60%",
-        triggerMetricLabel: "time saved",
+        triggerMetric: "Hrs → Mins",
+        triggerMetricLabel: "Research workflow",
         triggerSubtitle: "AI-powered research tool",
         tags: AI_RESEARCH_GUIDE_TAGS,
         product: AIPlatformProduct,
@@ -85,7 +85,7 @@ const heroRecommendations = {
         title: "Voice",
         description: "A creator marketplace that makes minting and selling NFT artwork feel clear, guided, and effortless.",
         triggerMetric: "2x",
-        triggerMetricLabel: "faster activation",
+        triggerMetricLabel: "Less activation effort",
         triggerSubtitle: "0 → 1 NFT marketplace",
         tags: VOICE_TAGS,
         product: VoiceProduct,
@@ -110,7 +110,7 @@ const heroRecommendations = {
     }
 };
 
-const heroTriggerOrder = ["AIResearchGuide", "Voice", "Design-system", "NYTango"];
+const heroTriggerOrder = ["AIResearchGuide", "Design-system", "Voice", "NYTango"];
 
 const LazyProductImage = ({ src, alt, className }) => {
     const imgRef = useRef(null);
@@ -370,58 +370,87 @@ class Homepage extends React.Component {
                             ref={this.landingRef}
                             className={`${this.state.isChatExpanded ? "is-search-centric" : ""}${hasSearchFeedback ? " has-hero-preview" : ""}`}
                         >
+                            <div className="landing-orbit-note landing-orbit-note-right" aria-hidden="true">
+                                <span>PM Thinking</span>
+                                <span>+</span>
+                                <span>UX Craft</span>
+                                <span>+</span>
+                                <span>Build Capability</span>
+                                <span>=</span>
+                                <span>Product Momentum</span>
+                            </div>
                             <div className={`landingpage_Intro${this.state.isChatExpanded ? " is-searching" : ""}`}>
                                 <h1 className={`landing-title${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}${this.state.isChatExpanded ? " is-searching" : ""}`}>
+                                    <span className="landing-title-word">One designer</span>
                                     <span className="landing-title-word">
-                                        AI Native.
-                                    </span>
-                                    <span className="landing-title-word landing-title-word-secondary">
-                                        Systems Driven.
+                                        three{" "}<span className="landing-title-word-secondary">disciplines</span>
                                     </span>
                                 </h1>
                                 <h3 className={`landing-supporting-copy${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}`}>
-                                    Turning ambiguous problems into shipped products
+                                    I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.
                                 </h3>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
-                                    <span className="heroTitleLine">AI Native.</span>
-                                    <span className="heroTitleLine heroTitleLine-secondary">Systems Driven.</span>
-                                    <span className="mobile-hero-outcome">Turning ambiguous problems into shipped products</span>
+                                    <span className="heroTitleLine">One designer</span>
+                                    <span className="heroTitleLine">three{" "}<span className="heroTitleLine-secondary">disciplines</span></span>
+                                    <span className="mobile-hero-outcome">I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.</span>
                                 </div>
                                 {!this.state.isChatExpanded && (
-                                <div className="case-study-triggers" aria-label="Preview case studies">
-                                    {heroTriggerOrder.map((projectId, index) => {
-                                        const project = heroRecommendations[projectId];
-                                        const isActive = this.state.heroRecommendationId === projectId;
+                                    <section className="landing-selected-work" aria-label="Work impact">
+                                        <div className="landing-selected-heading">
+                                            <span>Work Impact</span>
+                                        </div>
+                                        <div className="case-study-triggers">
+                                            {heroTriggerOrder.map((projectId, index) => {
+                                                const project = heroRecommendations[projectId];
+                                                const isActive = this.state.heroRecommendationId === projectId;
 
-                                        return (
-                                            <div
-                                                key={projectId}
-                                                className={`case-study-trigger-item case-study-trigger-item-${index}${isActive ? " is-active" : ""}`}
-                                                onMouseEnter={() => this.handleRecommendation(projectId, true)}
-                                                onFocus={() => this.handleRecommendation(projectId, true)}
-                                                onMouseLeave={this.clearRecommendation}
-                                                onBlur={this.handleTriggerBlur}
-                                            >
+                                                return (
+                                                    <div
+                                                        key={projectId}
+                                                        className={`case-study-trigger-item case-study-trigger-item-${index}${isActive ? " is-active" : ""}`}
+                                                        onMouseEnter={() => this.handleRecommendation(projectId, true)}
+                                                        onFocus={() => this.handleRecommendation(projectId, true)}
+                                                        onMouseLeave={this.clearRecommendation}
+                                                        onBlur={this.handleTriggerBlur}
+                                                    >
+                                                        <button
+                                                            type="button"
+                                                            className={`case-study-trigger${isActive ? " is-active" : ""}`}
+                                                            onClick={() => this.openProject(project.link, project.isExternal)}
+                                                            aria-label={`Open ${project.title} case study`}
+                                                            aria-describedby={`${projectId}-preview`}
+                                                        >
+                                                            <span className="case-study-trigger-copy">
+                                                                <span className="case-study-trigger-heading">
+                                                                    <strong>{project.triggerMetric}</strong>
+                                                                </span>
+                                                                <span className="case-study-trigger-subtitle">{project.triggerMetricLabel}</span>
+                                                            </span>
+                                                            <ProjectTriggerIconButton />
+                                                        </button>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </section>
+                                )}
+                                {!this.state.isChatExpanded && (
+                                    <div className="landing-mobile-selected" aria-label="Work impact shortcuts">
+                                        {heroTriggerOrder.map((projectId) => {
+                                            const project = heroRecommendations[projectId];
+
+                                            return (
                                                 <button
+                                                    key={projectId}
                                                     type="button"
-                                                    className={`case-study-trigger${isActive ? " is-active" : ""}`}
                                                     onClick={() => this.openProject(project.link, project.isExternal)}
-                                                    aria-label={`Open ${project.title} case study`}
-                                                    aria-describedby={`${projectId}-preview`}
                                                 >
-                                                    <span className="case-study-trigger-copy">
-                                                        <span className="case-study-trigger-heading">
-                                                            <strong>{project.triggerMetric}</strong>
-                                                            <span>{project.triggerMetricLabel}</span>
-                                                        </span>
-                                                        <span className="case-study-trigger-subtitle">{project.triggerSubtitle}</span>
-                                                    </span>
-                                                    <span className="case-study-trigger-icon" aria-hidden="true">↗</span>
+                                                    <strong>{project.triggerMetric}</strong>
+                                                    <span>{project.triggerMetricLabel}</span>
                                                 </button>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 )}
                             </div>
                             {activeHeroProject && (
@@ -446,6 +475,7 @@ class Homepage extends React.Component {
                                         <ProjectTags tags={activeHeroProject.tags} />
                                         <h2>{activeHeroProject.title}</h2>
                                         <p>{activeHeroProject.description}</p>
+                                        <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
                                     </div>
                                 </div>
                             )}
@@ -462,13 +492,6 @@ class Homepage extends React.Component {
                                     </div>
                                 </div>
                             )}
-                            <PortfolioChat
-                                isExpanded={this.state.isChatExpanded}
-                                onExpand={this.expandChat}
-                                onCollapse={this.collapseChat}
-                                onRecommend={this.handleRecommendation}
-                                onNoMatch={this.handleNoSearchMatch}
-                            />
                         </div>
                     </div>
 
@@ -493,7 +516,9 @@ class Homepage extends React.Component {
                                     Designed a community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.
                                 </h1>
                             </div>
-                            <div className="contentblock"></div>
+                            <div className="contentblock">
+                                <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+                            </div>
                         </div>
 
                         {/* AI Research Guide */}
@@ -515,7 +540,9 @@ class Homepage extends React.Component {
                                     AI-powered knowledge platform that turns consulting discovery from hours into minutes.
                                 </h1>
                             </div>
-                            <div className="contentblock"></div>
+                            <div className="contentblock">
+                                <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+                            </div>
                         </div>
 
                     </div>
@@ -542,7 +569,9 @@ class Homepage extends React.Component {
                                     A creator marketplace that makes minting and selling NFT artwork feel clear, guided, and effortless.
                                 </h1>
                             </div>
-                            <div className="contentblock"></div>
+                            <div className="contentblock">
+                                <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+                            </div>
                         </div>
                         
 
@@ -565,7 +594,9 @@ class Homepage extends React.Component {
                                     Scaled shared UI from 45% to 90% across 4 products, cutting spec-writing time by 88% and raising WCAG 2.0 compliance to 100%.
                                 </h1>
                             </div>
-                            <div className="contentblock"></div>
+                            <div className="contentblock">
+                                <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+                            </div>
                         </div>
                     </div>
 

@@ -24,8 +24,11 @@ const NavigationBar = () => {
             <div className="site-nav-glass">
                 {/* Logo */}
                 <Link to="/" className="site-nav-brand-link">
-                    <div className="site-logo logo bold pink">
-                        Isabella Wang
+                    <div className="site-nav-brand-lockup">
+                        <div className="site-logo logo bold pink">
+                            Isabella Wang
+                        </div>
+                        <span className="site-nav-role">Product Designer | AI-Augmented</span>
                     </div>
                 </Link>
                 <div className="site-nav-actions" aria-label="Primary links">
@@ -36,7 +39,30 @@ const NavigationBar = () => {
                     >
                         All projects
                     </Link>
-                    <span className="site-nav-separator" aria-hidden="true">|</span>
+                    <Link
+                        to="/contact"
+                        className="site-nav-text-link site-nav-about-link"
+                        aria-label="About"
+                    >
+                        About
+                    </Link>
+                    <Link
+                        to="/contact"
+                        className="site-nav-text-link site-nav-contact-link"
+                        aria-label="Contact"
+                    >
+                        Contact
+                    </Link>
+                    <a
+                        href={RESUME_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="site-nav-link bold pink"
+                        aria-label="Resume"
+                    >
+                        Resume
+                        <span className="site-nav-resume-arrow" aria-hidden="true">↗</span>
+                    </a>
                     <a
                         href="https://www.linkedin.com/in/isabella-wang-310181149/"
                         target="_blank"
@@ -52,15 +78,6 @@ const NavigationBar = () => {
                         aria-label="Email Isabella Wang"
                     >
                         <img src={Email} alt="" aria-hidden="true" />
-                    </a>
-                    <a
-                        href={RESUME_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="site-nav-link bold pink"
-                        aria-label="Resume"
-                    >
-                        Resume
                     </a>
                 </div>
             </div>

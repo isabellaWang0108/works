@@ -1,1 +1,0 @@
-var V="/assets/media/NYTango_product-FXBXJAQS.png";var s="/assets/media/NY_Tango_Background-2UHEJSRJ.webp";var F="/assets/media/Voice_background-3T5ZMZHI.webp";var Q="/assets/media/AIPlatform_background-GIQ2UE3I.webp";var t="/assets/media/DS_background-6FPYN3NI.webp";var H="/assets/media/kiosk-CLF25P3C.png";export{V as a,s as b,F as c,Q as d,t as e,H as f};
