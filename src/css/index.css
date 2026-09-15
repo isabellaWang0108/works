@@ -4713,47 +4713,37 @@ a:hover {
 }
 
 @media only screen and (max-width: 850px) {
+  .project-page .content-layout:has(.event-discovery-hero) {
+    padding: 132px 18px 32px;
+  }
+
   .project-page .event-discovery-hero {
-    min-height: min(54rem, calc(100svh - 0.75rem));
-    margin: clamp(0.5rem, 2vw, 1rem) calc(-1 * var(--site-page-rail)) clamp(2rem, 8vw, 3.25rem);
-    overflow: hidden;
+    min-height: 0;
+    margin: 0;
+    overflow: visible;
   }
 
   .project-page .event-discovery-hero::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0;
-    z-index: 3;
-    height: 64%;
-    pointer-events: none;
-    background:
-      linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.64) 38%, rgba(0, 0, 0, 0.94) 100%);
+    content: none;
   }
 
   .project-page .event-discovery-hero .project-hero-heading {
-    position: absolute;
-    left: max(var(--site-page-rail), env(safe-area-inset-left));
-    right: max(var(--site-page-rail), env(safe-area-inset-right));
-    bottom: clamp(1.2rem, 5.2vw, 2rem);
-    z-index: 4;
-    display: grid;
-    gap: clamp(0.45rem, 2vw, 0.75rem);
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    z-index: 2;
+    display: block;
   }
 
   .project-page .event-discovery-hero .project-hero-heading .badgeRow {
-    order: -1;
-    margin: 0;
+    margin: 14px 0 0;
   }
 
   .project-page .event-discovery-hero #title {
-    max-width: 11ch;
-    font-size: clamp(3.25rem, 15.5vw, 5.35rem);
-    line-height: 0.86;
-  }
-
-  .project-page .event-discovery-hero .event-title-line {
-    display: block;
-    white-space: normal;
+    max-width: 100%;
+    font-size: 36px;
+    line-height: 1.2;
   }
 
   .project-page .event-discovery-hero .project-hero-title-line {
@@ -4762,46 +4752,41 @@ a:hover {
   }
 
   .project-page .event-discovery-hero .project-hero-subtitle {
-    max-width: 24rem;
-    margin: 0;
-    display: block;
-    color: rgba(246, 248, 252, 0.9);
-    font-size: clamp(1.18rem, 4.8vw, 1.55rem);
-    line-height: 1.24;
-  }
-
-  .project-page .event-discovery-hero .inpage_hero_container {
-    position: absolute;
-    inset: 0;
-    display: block;
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .project-page .event-discovery-hero .inpage_hero_box:first-child {
     display: none;
   }
 
+  .project-page .event-discovery-hero .inpage_hero_container {
+    position: static;
+    inset: auto;
+    display: grid;
+    min-height: 0;
+    margin-top: 28px;
+    padding: 0 0 18px;
+    overflow: visible;
+  }
+
+  .project-page .event-discovery-hero .inpage_hero_box:first-child {
+    display: grid;
+  }
+
   .project-page .event-discovery-hero .inpage_hero_box:last-child {
-    position: absolute;
-    inset: 0;
-    display: block;
+    position: relative;
+    inset: auto;
+    display: flex;
     width: 100%;
   }
 
   .project-page .event-discovery-hero .inpage_hero_img {
     width: 100%;
     max-width: none;
-    height: 100%;
+    height: auto;
     max-height: none;
-    object-fit: cover;
-    object-position: center top;
-    opacity: 0.86;
+    object-fit: contain;
+    object-position: center;
+    opacity: 1;
   }
 
-  .project-page .project-detail-hero:not(.event-discovery-hero) .project-hero-subtitle {
+  .project-page .project-detail-hero .project-hero-subtitle {
     display: none;
   }
 
