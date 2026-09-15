@@ -28,7 +28,7 @@ const NavigationBar = () => {
                         <div className="site-logo logo bold pink">
                             Isabella Wang
                         </div>
-                        <span className="site-nav-role">Product Designer | AI-Augmented</span>
+                        {isHomePage && <span className="site-nav-role">Product Designer | AI-Augmented</span>}
                     </div>
                 </Link>
                 <div className="site-nav-actions" aria-label="Primary links">
@@ -39,20 +39,22 @@ const NavigationBar = () => {
                     >
                         All projects
                     </Link>
-                    <Link
-                        to="/contact"
-                        className="site-nav-text-link site-nav-about-link"
-                        aria-label="About"
+                    <a
+                        href="https://www.linkedin.com/in/isabella-wang-310181149/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="site-nav-icon-link site-nav-linkedin-link"
+                        aria-label="LinkedIn"
                     >
-                        About
-                    </Link>
-                    <Link
-                        to="/contact"
-                        className="site-nav-text-link site-nav-contact-link"
-                        aria-label="Contact"
+                        <img src={Linkedin} alt="" aria-hidden="true" />
+                    </a>
+                    <a
+                        href="mailto:wangxbella0108@gmail.com"
+                        className="site-nav-icon-link site-nav-email-link"
+                        aria-label="Email Isabella Wang"
                     >
-                        Contact
-                    </Link>
+                        <img src={Email} alt="" aria-hidden="true" />
+                    </a>
                     <a
                         href={RESUME_URL}
                         target="_blank"
@@ -62,22 +64,6 @@ const NavigationBar = () => {
                     >
                         Resume
                         <span className="site-nav-resume-arrow" aria-hidden="true">↗</span>
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/isabella-wang-310181149/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="site-nav-icon-link"
-                        aria-label="LinkedIn"
-                    >
-                        <img src={Linkedin} alt="" aria-hidden="true" />
-                    </a>
-                    <a
-                        href="mailto:wangxbella0108@gmail.com"
-                        className="site-nav-icon-link"
-                        aria-label="Email Isabella Wang"
-                    >
-                        <img src={Email} alt="" aria-hidden="true" />
                     </a>
                 </div>
             </div>
@@ -89,7 +75,7 @@ const NavigationBar = () => {
                     className="icon backbtn back-btn-fixed"
                 >
                     <span className="material-symbols-outlined">arrow_back</span>
-                    Back
+                    <span className="back-btn-label">Back</span>
                 </button>
             )}
         </div>

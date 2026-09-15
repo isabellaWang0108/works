@@ -2,8 +2,8 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
-import ProjectContext from "../../../components/projectContext"
-import ProjectTags, { EVENT_DISCOVERY_CMS_TAGS } from "../../../components/projectTags"
+import ProjectHero from "../../../components/projectHero"
+import { EVENT_DISCOVERY_CMS_TAGS } from "../../../components/projectTags"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
@@ -111,30 +111,23 @@ class EventDiscoveryCMS extends React.Component {
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div>
                     <ContentLayout>
-                        <div className="project-hero-shell event-discovery-hero">
-                            <div className="project-hero-heading">
-                                <h1 id="title" className="fade-in">Event discovery + CMS</h1>
-                                <p className="project-hero-subtitle fade-in">For community events that need to feel easy to find and easy to manage.</p>
-                                <ProjectTags tags={EVENT_DISCOVERY_CMS_TAGS} style={{ marginTop: 8 }} />
-                            </div>
-
-                            <div className="inpage_hero_container fade-in">
-                                <div className="inpage_hero_box">
-                                    <ProjectContext
-                                        duration="2 months"
-                                        team="1 AI-augmented designer"
-                                        role="Product design, Full-stack dev"
-                                    />
-                                    <p>
-                                        A 0→1 event platform with a responsive discovery experience for attendees and a CMS workflow for admin managing complex event schedules.
-                                    </p>
-                                </div>
-
-                                <div className="inpage_hero_box">
-                                    <img src={NYTangoProduct} className="inpage_hero_img" alt="NY Tango event discovery and management interface" decoding="async" fetchPriority="high" />
-                                </div>
-                            </div>
-                        </div>
+                        <ProjectHero
+                            className="event-discovery-hero"
+                            titleLines={["Event Discovery", "+ CMS"]}
+                            tags={EVENT_DISCOVERY_CMS_TAGS}
+                            duration="2 months"
+                            team="1 AI-augmented designer"
+                            role="Product design, Full-stack dev"
+                            summary="For community events that need to feel easy to find and easy to manage."
+                            image={NYTangoProduct}
+                            imageAlt="NY Tango event discovery and management interface"
+                            stats={[
+                                { label: "Duration", value: "2 mo" },
+                                { label: "Design + dev", value: "Lead" },
+                                { label: "AI-augmented designer", value: "1" },
+                                { label: "Community served", value: "14K people" },
+                            ]}
+                        />
 
                         <div className="animated slideInDown content-block left-nav">
                             <ul>

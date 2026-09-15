@@ -2,6 +2,8 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
+import ProjectHero from "../../../components/projectHero"
+import { PLATFORMS_INTEGRATION_TAGS } from "../../../components/projectTags"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 import StrategyCard from "../../../components/strategyCard"
@@ -165,24 +167,18 @@ class PlatformsIntegration extends React.Component {
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div>
                     <ContentLayout>
-                        <h1 id="title" className="fade-in">Unifying Consulting Tools into One AI-assisted Workspace</h1>
-                        <div className="badgeRow" style={{ marginTop: 8 }}>
-                            <span className="projectBadge">Workflow orchestration</span>
-                            <span className="projectBadge">AI-assisted</span>
-                            <span className="projectBadge">Enterprise SaaS</span>
-                        </div>
-
-                        <div className="inpage_hero_container fade-in">
-                            <div className="inpage_hero_box">
-                                <p>
-                             Unify fragmented consulting tools into one AI-assisted workspace, helping consultants run end-to-end Org Transformation assessments faster with less context switching and better context continuity.
-                                </p>
-                                
-                            </div>
-                            <div className="inpage_hero_box">
-                                <img className="inpage_hero_img" src={Pic1} alt="AI-assisted consulting workspace" />
-                            </div>
-                        </div>
+                        <ProjectHero
+                            title="Unifying Consulting Tools into One AI-assisted Workspace"
+                            tags={PLATFORMS_INTEGRATION_TAGS}
+                            summary="Unify fragmented consulting tools into one AI-assisted workspace, helping consultants run end-to-end Org Transformation assessments faster with less context switching and better context continuity."
+                            image={Pic1}
+                            imageAlt="AI-assisted consulting workspace"
+                            stats={[
+                                { label: "Workflow", value: "AI-Powered Workflow" },
+                                { label: "Mode", value: "AI-assisted" },
+                                { label: "Product", value: "Enterprise SaaS" },
+                            ]}
+                        />
 
                         {/* menu bar */}
                         <div className="animated slideInDown content-block left-nav">

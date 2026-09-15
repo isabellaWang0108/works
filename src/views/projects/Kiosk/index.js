@@ -2,7 +2,8 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
-import ProjectContext from "../../../components/projectContext"
+import ProjectHero from "../../../components/projectHero"
+import { KIOSK_TAGS } from "../../../components/projectTags"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/Kiosk/img_01.png"
 import Pic3 from "../../../assets/images/Kiosk/img_03.png"
@@ -130,30 +131,16 @@ class Kiosk extends React.Component {
 
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
-                        <h1 id="title" className="fade-in">Automating Office Check-in</h1>
-                        <div className="badgeRow" style={{ marginTop: 8 }}>
-                            <span className="projectBadge">Hardware integration</span>
-                            <span className="projectBadge">IoT</span>
-                            <span className="projectBadge">B2B</span>
-                            <span className="projectBadge">Usability</span>
-                        </div>
-
-                        <div className="inpage_hero_container fade-in">
-                            <div className="inpage_hero_box">
-                                <ProjectContext duration="1 month" team="1 PM, 5 engineers, 1 designer" role="Designer"></ProjectContext>
-                                <p>
-                                    This project introduced a self-service visitor kiosk to make office check-in faster, reduce front desk workload, and improve the guest experience. I designed the flow, validated key usability tradeoffs, and created a polished iPad experience that could work in real office environments.
-                                    <br />
-                                    <a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer" >
-                                        Available on App Store.
-                                    </a>
-                                </p>
-
-                            </div>
-                            <div className="inpage_hero_box">
-                                <img src={Pic1} className="inpage_hero_img" alt="img" decoding="async" fetchPriority="high" />
-                            </div>
-                        </div>
+                        <ProjectHero
+                            title="Automating Office Check-in"
+                            tags={KIOSK_TAGS}
+                            duration="1 month"
+                            team="1 PM, 5 engineers, 1 designer"
+                            role="Designer"
+                            summary={<>Designed a self-service iPad kiosk that sped up office check-in and reduced front desk workload.<br /><a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer">Available on App Store.</a></>}
+                            image={Pic1}
+                            imageAlt="Office check-in kiosk interface"
+                        />
 
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">

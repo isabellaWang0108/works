@@ -11,6 +11,7 @@ import {
   VOICE_TAGS,
 } from "../../components/projectTags";
 import WireframeBackground from "../../components/WireframeBackground";
+import InpageContactMe from "../../components/inpage_contactme";
 
 import KioskProduct from "../../assets/images/home/kiosk.png";
 import PlatformsIntegrationProduct from "../../assets/images/home/Janus.svg";
@@ -143,6 +144,9 @@ function AllProjects() {
           {projects.map((project, index) => (
             <AllProjectCard key={project.id} project={project} index={index} />
           ))}
+        </section>
+        <section className="all-projects-contact" aria-label="Contact Isabella">
+          <InpageContactMe showProjectsButton={false} />
         </section>
       </main>
     </div>

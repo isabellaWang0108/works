@@ -2,8 +2,8 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
-import ProjectContext from "../../../components/projectContext"
-import ProjectTags, { DESIGN_SYSTEM_TAGS } from "../../../components/projectTags"
+import ProjectHero from "../../../components/projectHero"
+import { DESIGN_SYSTEM_TAGS } from "../../../components/projectTags"
 import $ from 'jquery';
 import DesignSystemProduct from "../../../assets/images/home/Project card/DS_product.png"
 import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.png"
@@ -130,19 +130,16 @@ class DS extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
 
-                        <h1 id="title" className="fade-in">Scaling Product Consistency with a Design System</h1>
-                        <ProjectTags tags={DESIGN_SYSTEM_TAGS} style={{ marginTop: 8 }} />
-                        <div className="inpage_hero_container fade-in">
-                            <div className="inpage_hero_box">
-                                <ProjectContext duration="1 year" team="2 engineers, 2 designers" role="Designer"></ProjectContext>
-                                <p>VTS had 4+ independently developed products and 100+ pages built by multiple teams, which caused inconsistent typography, duplicated UI patterns, and confusing product experiences.</p>
-                                <p>I led the design system effort to unify styles across products, embed shared design language into daily workflows, and make consistent design an operational capability for the company.{' '}
-                                    <a href="https://terra.vts.com/">Check out the deployed system site here.</a></p>
-                            </div>
-                            <div className="inpage_hero_box">
-                                <img src={DesignSystemProduct} className="inpage_hero_img" alt="Design system product interface" decoding="async" fetchPriority="high" />
-                            </div>
-                        </div>
+                        <ProjectHero
+                            title="Scaling Product Consistency with a Design System"
+                            tags={DESIGN_SYSTEM_TAGS}
+                            duration="1 year"
+                            team="2 engineers, 2 designers"
+                            role="Designer"
+                            summary={<>Unified 4+ products and 100+ pages into a scalable design system for more consistent product delivery. <a href="https://terra.vts.com/">View the system site.</a></>}
+                            image={DesignSystemProduct}
+                            imageAlt="Design system product interface"
+                        />
 
                         {/* menu bar ==============================================================================================  */}
                         <div className="animated slideInDown content-block left-nav">

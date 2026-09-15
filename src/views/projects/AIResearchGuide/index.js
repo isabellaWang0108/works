@@ -2,8 +2,8 @@ import React from "react";
 import ContentLayout from "../../../components/contentLayout"
 import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
-import ProjectContext from "../../../components/projectContext"
-import ProjectTags, { AI_RESEARCH_GUIDE_TAGS } from "../../../components/projectTags"
+import ProjectHero from "../../../components/projectHero"
+import { AI_RESEARCH_GUIDE_TAGS } from "../../../components/projectTags"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
@@ -113,25 +113,16 @@ class AIResearchGuide extends React.Component {
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
                 <div>
                     <ContentLayout>
-                        <h1 id="title" className="fade-in">AI-Powered Knowledge Tool for Faster Consulting Discovery</h1>
-                        <ProjectTags tags={AI_RESEARCH_GUIDE_TAGS} style={{ marginTop: 8 }} />
-
-                        <div className="inpage_hero_container fade-in">
-                            <div className="inpage_hero_box">
-                                <ProjectContext
-                                    duration="6 months"
-                                    team="1 PM, 2 Engineer, 1 Design"
-                                    role="Design lead"
-                                />
-                                <p>
-                                    A 0→1 AI tool that helps consultants quickly explore unfamiliar domains through guided, source-backed recommendations.
-                                </p>
-                            </div>
-
-                            <div className="inpage_hero_box">
-                                <img src={AIPlatformProduct} className="inpage_hero_img" alt="AI knowledge platform interface" decoding="async" fetchPriority="high" />
-                            </div>
-                        </div>
+                        <ProjectHero
+                            title="AI-Powered Knowledge Tool for Faster Consulting Discovery"
+                            tags={AI_RESEARCH_GUIDE_TAGS}
+                            duration="6 months"
+                            team="1 PM, 2 Engineer, 1 Design"
+                            role="Design lead"
+                            summary="A 0→1 AI tool that helps consultants quickly explore unfamiliar domains through guided, source-backed recommendations."
+                            image={AIPlatformProduct}
+                            imageAlt="AI knowledge platform interface"
+                        />
 
                         {/* menu bar */}
                         <div className="animated slideInDown content-block left-nav">
