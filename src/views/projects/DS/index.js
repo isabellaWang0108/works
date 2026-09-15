@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { DESIGN_SYSTEM_TAGS } from "../../../components/projectTags"
+import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import DesignSystemProduct from "../../../assets/images/home/Project card/DS_product.png"
 import Pic3 from "../../../assets/images/DesignSystem/ds_pic3.png"
@@ -131,12 +132,12 @@ class DS extends React.Component {
                     <ContentLayout>
 
                         <ProjectHero
-                            title="Scaling Product Consistency with a Design System"
+                            title={PROJECT_SUMMARIES.DesignSystem.title}
                             tags={DESIGN_SYSTEM_TAGS}
                             duration="1 year"
                             team="2 engineers, 2 designers"
                             role="Designer"
-                            summary={<>Unified 4+ products and 100+ pages into a scalable design system for more consistent product delivery. <a href="https://terra.vts.com/">View the system site.</a></>}
+                            summary={<>{PROJECT_SUMMARIES.DesignSystem.summary} <a href="https://terra.vts.com/">View the system site.</a></>}
                             image={DesignSystemProduct}
                             imageAlt="Design system product interface"
                         />

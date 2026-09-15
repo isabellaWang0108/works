@@ -39,9 +39,9 @@
   },
   "caseStudies": [
     {
-      "title": "AI-Powered Knowledge Tool for Faster Consulting Discovery",
+      "title": "AI knowledge platform",
       "route": "/ai-research-guide",
-      "summary": "A 0-to-1 AI tool that helps consultants quickly explore unfamiliar domains through guided, source-backed recommendations.",
+      "summary": "Designed a 0→1 AI research workflow that reduced consulting discovery from hours to minutes while establishing reusable AI UX patterns.",
       "role": "Design lead",
       "team": "1 PM, 2 engineers, 1 designer",
       "duration": "6 months",
@@ -55,9 +55,9 @@
       ]
     },
     {
-      "title": "Unifying Consulting Tools into One AI-assisted Workspace",
+      "title": "AI-assisted workspace",
       "route": "/platforms-integration",
-      "summary": "A platform concept that connects fragmented consulting tools into a standardized, AI-assisted assessment workspace.",
+      "summary": "Unified fragmented consulting tools into an AI-assisted workspace with less context switching.",
       "role": "Product designer",
       "team": "Consulting workflow stakeholders and product partners",
       "duration": "Concept and prototyping sprint",
@@ -71,9 +71,9 @@
       ]
     },
     {
-      "title": "Scaling Product Consistency with a Design System",
+      "title": "Design system",
       "route": "/design-system",
-      "summary": "A design system effort that unified typography, patterns, documentation, and adoption across 4+ products and 100+ pages.",
+      "summary": "Unified design patterns across 4+ products and reduced design team's design-spec writing time by 88%.",
       "role": "Designer",
       "team": "2 engineers, 2 designers",
       "duration": "1 year",
@@ -87,9 +87,9 @@
       ]
     },
     {
-      "title": "Automating Office Check-in",
+      "title": "Office visitor kiosk",
       "route": "/kiosk",
-      "summary": "A self-service visitor kiosk that made office check-in faster, reduced front desk workload, and improved the guest experience.",
+      "summary": "Designed a multi-platform kiosk check-in system that reduced front desk workload.",
       "role": "Designer",
       "team": "1 PM, 5 engineers, 1 designer",
       "duration": "1 month",
@@ -103,9 +103,9 @@
       ]
     },
     {
-      "title": "Making NFT Creation Easier for Emerging Artists",
+      "title": "NFT creator marketplace",
       "route": "/voice",
-      "summary": "A creator marketplace flow that made minting and selling NFT artwork feel clear, guided, and accessible.",
+      "summary": "Simplified NFT creation so emerging artists could publish work with more confidence.",
       "role": "Designer",
       "team": "1 PM, 6 engineers, 2 designers, 1 UX researcher",
       "duration": "3 months",
@@ -119,9 +119,9 @@
       ]
     },
     {
-      "title": "NY Tango",
+      "title": "Event discovery + CMS",
       "route": "/event-discovery-cms",
-      "summary": "A community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.",
+      "summary": "Designed and built a discovery app and CMS that reduced organizer manual operations by 80%.",
       "role": "Product designer",
       "team": "Independent product build",
       "duration": "Ongoing",

@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { PLATFORMS_INTEGRATION_TAGS } from "../../../components/projectTags"
+import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 import StrategyCard from "../../../components/strategyCard"
@@ -168,9 +169,9 @@ class PlatformsIntegration extends React.Component {
                 <div>
                     <ContentLayout>
                         <ProjectHero
-                            title="Unifying Consulting Tools into One AI-assisted Workspace"
+                            title={PROJECT_SUMMARIES.PlatformsIntegration.title}
                             tags={PLATFORMS_INTEGRATION_TAGS}
-                            summary="Unify fragmented consulting tools into one AI-assisted workspace, helping consultants run end-to-end Org Transformation assessments faster with less context switching and better context continuity."
+                            summary={PROJECT_SUMMARIES.PlatformsIntegration.summary}
                             image={Pic1}
                             imageAlt="AI-assisted consulting workspace"
                             stats={[

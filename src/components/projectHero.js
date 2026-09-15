@@ -44,9 +44,8 @@ function ProjectHero({
   return (
     <section className={`project-hero-shell project-detail-hero ${className}`.trim()}>
       <div className="project-hero-heading">
-        {kicker && <p className="project-hero-kicker fade-in">{kicker}</p>}
+        <ProjectTags tags={tags} />
         <h1 id="title" className="fade-in">{titleContent}</h1>
-        <ProjectTags tags={tags} style={{ marginTop: 8 }} />
         {summary && <div className="project-hero-subtitle fade-in">{summary}</div>}
       </div>
 

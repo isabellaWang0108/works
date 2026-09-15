@@ -6,6 +6,7 @@ import WireframeBackground from "../../components/WireframeBackground"
 import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
 import ProjectTriggerIconButton from "../../components/ProjectTriggerIconButton"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, EVENT_DISCOVERY_CMS_TAGS, KIOSK_TAGS, PLATFORMS_INTEGRATION_TAGS, VOICE_TAGS } from "../../components/projectTags"
+import PROJECT_SUMMARIES from "../../data/projectSummaries"
 
 import KioskProduct from "../../assets/images/home/kiosk.png"
 import PlatformsIntegrationProduct from "../../assets/images/home/Janus.svg"
@@ -33,8 +34,8 @@ const aboutCardSpacing = {
 
 const heroRecommendations = {
     NYTango: {
-        title: "NY Tango",
-        description: "Designed a community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.",
+        title: PROJECT_SUMMARIES.NYTango.title,
+        description: PROJECT_SUMMARIES.NYTango.summary,
         triggerMetric: "Solo",
         triggerMetricLabel: "0→ 1 product launch",
         triggerSubtitle: "Event discovery + CMS",
@@ -45,8 +46,8 @@ const heroRecommendations = {
         link: "event-discovery-cms"
     },
     PlatformsIntegration: {
-        title: "AI-assisted Workspace",
-        description: "Connected fragmented consulting tools into a standardized, AI-assisted assessment workspace for complex enterprise workflows.",
+        title: PROJECT_SUMMARIES.PlatformsIntegration.title,
+        description: PROJECT_SUMMARIES.PlatformsIntegration.summary,
         triggerMetric: "AI",
         triggerMetricLabel: "workflow system",
         triggerSubtitle: "Enterprise platform strategy",
@@ -56,8 +57,8 @@ const heroRecommendations = {
         link: "platforms-integration"
     },
     Kiosk: {
-        title: "Automating Office Check-in",
-        description: "Designed an iPad check-in flow that reduced front desk workload, improved guest arrival, and balanced usability with real-world office security constraints.",
+        title: PROJECT_SUMMARIES.Kiosk.title,
+        description: PROJECT_SUMMARIES.Kiosk.summary,
         triggerMetric: "Self",
         triggerMetricLabel: "service check-in",
         triggerSubtitle: "Visitor kiosk + iPad UX",
@@ -67,11 +68,11 @@ const heroRecommendations = {
         link: "kiosk"
     },
     AIResearchGuide: {
-        title: "AI Knowledge Platform",
-        description: "AI-powered knowledge platform that turns consulting discovery from hours into minutes.",
+        title: PROJECT_SUMMARIES.AIResearchGuide.title,
+        description: PROJECT_SUMMARIES.AIResearchGuide.summary,
         triggerMetric: "Hrs → Mins",
         triggerMetricLabel: "Research workflow",
-        triggerSubtitle: "AI-powered research tool",
+        triggerSubtitle: "AI Product",
         tags: AI_RESEARCH_GUIDE_TAGS,
         product: AIPlatformProduct,
         background: AIPlatformBackground,
@@ -79,8 +80,8 @@ const heroRecommendations = {
         link: "ai-research-guide"
     },
     Voice: {
-        title: "Voice",
-        description: "A creator marketplace that makes minting and selling NFT artwork feel clear, guided, and effortless.",
+        title: PROJECT_SUMMARIES.Voice.title,
+        description: PROJECT_SUMMARIES.Voice.summary,
         triggerMetric: "2x",
         triggerMetricLabel: "Less activation effort",
         triggerSubtitle: "0 → 1 NFT marketplace",
@@ -91,8 +92,8 @@ const heroRecommendations = {
         link: "voice"
     },
     "Design-system": {
-        title: "Design System",
-        description: "Scaled shared UI from 45% to 90% across 4 products, cutting spec-writing time by 88% and raising WCAG 2.0 compliance to 100%.",
+        title: PROJECT_SUMMARIES.DesignSystem.title,
+        description: PROJECT_SUMMARIES.DesignSystem.summary,
         triggerMetric: "90%",
         triggerMetricLabel: "less spec-writing",
         triggerSubtitle: "Design system across 4 products",
@@ -154,7 +155,6 @@ class Homepage extends React.Component {
     landingRef = React.createRef();
     previousBodyOverflow = "";
     previousHtmlOverflow = "";
-    wheelStepTimeout = null;
     lastWheelStepAt = 0;
     touchStartY = null;
     isLandingInteractionLocked = false;
@@ -222,6 +222,26 @@ class Homepage extends React.Component {
         }
     }
 
+    handleDocumentPointerDown = (event) => {
+        if (!this.state.heroRecommendationId && !this.state.hasNoSearchMatch) {
+            return;
+        }
+
+        const target = event.target;
+        if (!(target instanceof Node)) {
+            return;
+        }
+
+        const selectedWork = this.landingRef.current?.querySelector(".landing-selected-work");
+        const feedbackCard = this.landingRef.current?.querySelector(".hero-recommendation-card");
+
+        if (selectedWork?.contains(target) || feedbackCard?.contains(target)) {
+            return;
+        }
+
+        this.clearRecommendation();
+    }
+
     stepHeroPreview = (deltaY) => {
         if (this.state.isChatExpanded || Math.abs(deltaY) < 8) {
             return;
@@ -235,28 +255,24 @@ class Homepage extends React.Component {
 
         const currentIndex = heroTriggerOrder.indexOf(this.state.heroRecommendationId);
         const isScrollingDown = deltaY > 0;
-        let nextRecommendationId = null;
+        const fallbackIndex = isScrollingDown ? 0 : heroTriggerOrder.length - 1;
+        let nextIndex = currentIndex === -1 ? fallbackIndex : currentIndex + (isScrollingDown ? 1 : -1);
 
-        if (isScrollingDown) {
-            nextRecommendationId = currentIndex === -1
-                ? heroTriggerOrder[0]
-                : heroTriggerOrder[currentIndex + 1] ?? null;
-        } else {
-            nextRecommendationId = currentIndex === -1
-                ? heroTriggerOrder[heroTriggerOrder.length - 1]
-                : heroTriggerOrder[currentIndex - 1] ?? null;
+        if (nextIndex >= heroTriggerOrder.length) {
+            nextIndex = 0;
         }
+
+        if (nextIndex < 0) {
+            nextIndex = heroTriggerOrder.length - 1;
+        }
+
+        const nextRecommendationId = heroTriggerOrder[nextIndex];
 
         this.setState({
             heroRecommendationId: nextRecommendationId,
-            isTriggerPreviewActive: Boolean(nextRecommendationId),
+            isTriggerPreviewActive: true,
             hasNoSearchMatch: false
         });
-
-        window.clearTimeout(this.wheelStepTimeout);
-        this.wheelStepTimeout = window.setTimeout(() => {
-            this.clearRecommendation();
-        }, 2600);
     }
 
     handleLandingWheel = (event) => {
@@ -284,6 +300,7 @@ class Homepage extends React.Component {
     }
 
     componentDidMount() {
+        document.addEventListener("pointerdown", this.handleDocumentPointerDown);
         this.isLandingInteractionLocked = !window.matchMedia("(max-width: 990px)").matches;
 
         if (this.isLandingInteractionLocked) {
@@ -318,7 +335,7 @@ class Homepage extends React.Component {
 
     // Save scroll position when the homepage is about to unmount
     componentWillUnmount() {
-        window.clearTimeout(this.wheelStepTimeout);
+        document.removeEventListener("pointerdown", this.handleDocumentPointerDown);
 
         if (this.isLandingInteractionLocked) {
             window.removeEventListener("wheel", this.handleLandingWheel);
@@ -392,7 +409,12 @@ class Homepage extends React.Component {
                                     <span className="mobile-hero-outcome">I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.</span>
                                 </div>
                                 {!this.state.isChatExpanded && (
-                                    <section className="landing-selected-work" aria-label="Work impact">
+                                    <section
+                                        className="landing-selected-work"
+                                        aria-label="Work impact"
+                                        onMouseLeave={this.clearRecommendation}
+                                        onBlur={this.handleTriggerBlur}
+                                    >
                                         <div className="landing-selected-heading">
                                             <span>Work Impact</span>
                                         </div>
@@ -405,26 +427,25 @@ class Homepage extends React.Component {
                                                     <div
                                                         key={projectId}
                                                         className={`case-study-trigger-item case-study-trigger-item-${index}${isActive ? " is-active" : ""}`}
-                                                        onMouseEnter={() => this.handleRecommendation(projectId, true)}
-                                                        onFocus={() => this.handleRecommendation(projectId, true)}
-                                                        onMouseLeave={this.clearRecommendation}
-                                                        onBlur={this.handleTriggerBlur}
                                                     >
-                                                        <button
-                                                            type="button"
+                                                        <div
                                                             className={`case-study-trigger${isActive ? " is-active" : ""}`}
-                                                            onClick={() => this.openProject(project.link, project.isExternal)}
-                                                            aria-label={`Open ${project.title} case study`}
-                                                            aria-describedby={`${projectId}-preview`}
                                                         >
                                                             <span className="case-study-trigger-copy">
                                                                 <span className="case-study-trigger-heading">
                                                                     <strong>{project.triggerMetric}</strong>
+                                                                    <span>{project.triggerMetricLabel}</span>
                                                                 </span>
-                                                                <span className="case-study-trigger-subtitle">{project.triggerMetricLabel}</span>
+                                                                <span className="case-study-trigger-subtitle">{project.triggerSubtitle}</span>
                                                             </span>
-                                                            <ProjectTriggerIconButton />
-                                                        </button>
+                                                            <ProjectTriggerIconButton
+                                                                ariaDescribedBy={`${projectId}-preview`}
+                                                                ariaLabel={`Open ${project.title} case study`}
+                                                                onClick={() => this.openProject(project.link, project.isExternal)}
+                                                                onFocus={() => this.handleRecommendation(projectId, true)}
+                                                                onMouseEnter={() => this.handleRecommendation(projectId, true)}
+                                                            />
+                                                        </div>
                                                     </div>
                                                 );
                                             })}
@@ -442,8 +463,8 @@ class Homepage extends React.Component {
                                                     type="button"
                                                     onClick={() => this.openProject(project.link, project.isExternal)}
                                                 >
-                                                    <strong>{project.triggerMetric}</strong>
-                                                    <span>{project.triggerMetricLabel}</span>
+                                                    <strong>{project.triggerMetric} {project.triggerMetricLabel}</strong>
+                                                    <span>{project.triggerSubtitle}</span>
                                                 </button>
                                             );
                                         })}
@@ -472,7 +493,6 @@ class Homepage extends React.Component {
                                         <ProjectTags tags={activeHeroProject.tags} />
                                         <h2>{activeHeroProject.title}</h2>
                                         <p>{activeHeroProject.description}</p>
-                                        <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
                                     </div>
                                 </div>
                             )}
@@ -509,12 +529,8 @@ class Homepage extends React.Component {
                             </div>
                             <div className="contentblock">
                                 <ProjectTags tags={EVENT_DISCOVERY_CMS_TAGS} />
-                                <h1>
-                                    Designed a community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.
-                                </h1>
-                            </div>
-                            <div className="contentblock">
-                                <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+                                <h1>{PROJECT_SUMMARIES.NYTango.title}</h1>
+                                <p>{PROJECT_SUMMARIES.NYTango.summary}</p>
                             </div>
                         </div>
 
@@ -533,12 +549,8 @@ class Homepage extends React.Component {
                             </div>
                             <div className="contentblock">
                                 <ProjectTags tags={AI_RESEARCH_GUIDE_TAGS} />
-                                <h1>
-                                    AI-powered knowledge platform that turns consulting discovery from hours into minutes.
-                                </h1>
-                            </div>
-                            <div className="contentblock">
-                                <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+                                <h1>{PROJECT_SUMMARIES.AIResearchGuide.title}</h1>
+                                <p>{PROJECT_SUMMARIES.AIResearchGuide.summary}</p>
                             </div>
                         </div>
 
@@ -562,12 +574,8 @@ class Homepage extends React.Component {
                             </div>
                             <div className="contentblock">
                                 <ProjectTags tags={VOICE_TAGS} />
-                                <h1>
-                                    A creator marketplace that makes minting and selling NFT artwork feel clear, guided, and effortless.
-                                </h1>
-                            </div>
-                            <div className="contentblock">
-                                <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+                                <h1>{PROJECT_SUMMARIES.Voice.title}</h1>
+                                <p>{PROJECT_SUMMARIES.Voice.summary}</p>
                             </div>
                         </div>
                         
@@ -587,12 +595,8 @@ class Homepage extends React.Component {
                             </div>
                             <div className="contentblock">
                                 <ProjectTags tags={DESIGN_SYSTEM_TAGS} />
-                                <h1>
-                                    Scaled shared UI from 45% to 90% across 4 products, cutting spec-writing time by 88% and raising WCAG 2.0 compliance to 100%.
-                                </h1>
-                            </div>
-                            <div className="contentblock">
-                                <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
+                                <h1>{PROJECT_SUMMARIES.DesignSystem.title}</h1>
+                                <p>{PROJECT_SUMMARIES.DesignSystem.summary}</p>
                             </div>
                         </div>
                     </div>

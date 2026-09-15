@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { KIOSK_TAGS } from "../../../components/projectTags"
+import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import Pic1 from "../../../assets/images/Kiosk/img_01.png"
 import Pic3 from "../../../assets/images/Kiosk/img_03.png"
@@ -132,12 +133,12 @@ class Kiosk extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <ProjectHero
-                            title="Automating Office Check-in"
+                            title={PROJECT_SUMMARIES.Kiosk.title}
                             tags={KIOSK_TAGS}
                             duration="1 month"
                             team="1 PM, 5 engineers, 1 designer"
                             role="Designer"
-                            summary={<>Designed a self-service iPad kiosk that sped up office check-in and reduced front desk workload.<br /><a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer">Available on App Store.</a></>}
+                            summary={<>{PROJECT_SUMMARIES.Kiosk.summary}<br /><a href="https://apps.apple.com/us/app/vts-activate-kiosk/id1670460075" target="_blank" rel="noopener noreferrer">Available on App Store.</a></>}
                             image={Pic1}
                             imageAlt="Office check-in kiosk interface"
                         />

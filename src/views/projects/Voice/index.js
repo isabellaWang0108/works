@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { VOICE_TAGS } from "../../../components/projectTags"
+import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import VoiceProduct from "../../../assets/images/home/Project card/Voice_product.png"
 import Pic2 from "../../../assets/images/Voice/pic_2.svg"
@@ -118,12 +119,12 @@ class Voice extends React.Component {
                     {/*contect itself ==============================================================================================                  */}
                     <ContentLayout>
                         <ProjectHero
-                            title="Making NFT Creation Easier for Emerging Artists"
+                            title={PROJECT_SUMMARIES.Voice.title}
                             tags={VOICE_TAGS}
                             duration="3 months"
                             team="1 PM, 6 engineers, 2 designers, 1 UX researcher"
                             role="designer"
-                            summary={<>Designed a simpler NFT creation flow that helped emerging artists publish work with confidence. <a href="https://web.archive.org/web/20211118223756/https://www.voice.com/" target="_blank" rel="noopener noreferrer">See archived product</a></>}
+                            summary={<>{PROJECT_SUMMARIES.Voice.summary} <a href="https://web.archive.org/web/20211118223756/https://www.voice.com/" target="_blank" rel="noopener noreferrer">See archived product</a></>}
                             image={VoiceProduct}
                             imageAlt="Voice NFT creator tool interface"
                         />

@@ -829,6 +829,10 @@ a:hover {
   z-index: 2;
 }
 
+.project-page .project-detail-hero .project-label-row {
+  margin: 0 0 clamp(0.85rem, 2.5vw, 1.45rem);
+}
+
 .project-page #title {
   max-width: 980px;
   margin-bottom: 0;
@@ -846,39 +850,6 @@ a:hover {
   font-family: SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
   font-size: clamp(1.15rem, 1.6vw, 1.45rem);
   line-height: 1.35;
-}
-
-.project-page .badgeRow .projectBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: rgba(255, 226, 242, 0.88);
-  background:
-    linear-gradient(90deg, rgba(255, 140, 196, 0.095), rgba(255, 255, 255, 0.045)),
-    rgba(10, 12, 18, 0.22);
-  border: 1px solid rgba(255, 220, 239, 0.16);
-  border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 10px;
-  line-height: 1.2;
-  font-family: SuisseIntl-SemiBold;
-  white-space: nowrap;
-  flex-shrink: 0;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: default;
-  pointer-events: none;
-}
-
-.project-page .badgeRow .projectBadge::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  background: var(--signature-pink, #FC2293);
-  box-shadow:
-    0 0 12px rgba(255, 140, 196, 0.28),
-    0 0 18px rgba(252, 34, 147, 0.24);
 }
 
 .project-page .inpage_hero_box {
@@ -962,8 +933,8 @@ a:hover {
 
   .project-page .event-discovery-hero {
     display: grid;
-    grid-template-columns: minmax(30rem, 36rem) minmax(0, 1fr);
-    column-gap: clamp(1.25rem, 1.5vw, 1.8rem);
+    grid-template-columns: minmax(24rem, 32rem) minmax(0, 1fr);
+    column-gap: clamp(2rem, 3vw, 4rem);
     row-gap: clamp(2.6rem, 4.2vw, 4.4rem);
     align-items: center;
     min-height: clamp(36rem, 65vh, 45rem);
@@ -988,11 +959,12 @@ a:hover {
   }
 
   .project-page .event-discovery-hero #title {
-    max-width: none;
+    max-width: 100%;
     margin: 0;
-    font-size: clamp(4rem, 4vw, 4.65rem);
-    line-height: 0.92;
-    text-wrap: nowrap;
+    font-size: clamp(3.2rem, 3.4vw, 4.15rem);
+    line-height: 0.95;
+    text-wrap: balance;
+    white-space: normal;
   }
 
   .project-page .event-discovery-hero .event-title-line {
@@ -1001,25 +973,8 @@ a:hover {
   }
 
   .project-page .event-discovery-hero .badgeRow {
-    display: flex;
-    flex-wrap: wrap;
     gap: 0.75rem;
-    margin: clamp(2.15rem, 4vh, 3.05rem) 0 0;
-  }
-
-  .project-page .event-discovery-hero .badgeRow .projectBadge {
-    min-height: 2.18rem;
-    padding: 0.48rem 0.82rem;
-    border-color: rgba(255, 140, 196, 0.38);
-    color: rgba(255, 226, 242, 0.86);
-    background: rgba(255, 140, 196, 0.13);
-    font-size: 0.82rem;
-    letter-spacing: 0.01em;
-  }
-
-  .project-page .event-discovery-hero .badgeRow .projectBadge::before {
-    width: 0.48rem;
-    height: 0.48rem;
+    margin: 0 0 clamp(1.1rem, 2.3vh, 1.8rem);
   }
 
   .project-page .event-discovery-hero .project-hero-subtitle {
@@ -1159,10 +1114,11 @@ a:hover {
   }
 
   .project-page .event-discovery-hero #title {
-    max-width: none;
-    font-size: clamp(3.5rem, 4.05vw, 5rem);
-    line-height: 0.92;
-    text-wrap: nowrap;
+    max-width: 100%;
+    font-size: clamp(3.2rem, 3.4vw, 4.15rem);
+    line-height: 0.95;
+    text-wrap: balance;
+    white-space: normal;
   }
 
   .project-page .project-detail-hero .project-hero-title-line {
@@ -1171,25 +1127,8 @@ a:hover {
   }
 
   .project-page .project-detail-hero .badgeRow {
-    display: flex;
-    flex-wrap: wrap;
     gap: 0.75rem;
-    margin: clamp(1.45rem, 2.6vh, 2.2rem) 0 0 !important;
-  }
-
-  .project-page .project-detail-hero .badgeRow .projectBadge {
-    min-height: 2.18rem;
-    padding: 0.48rem 0.82rem;
-    border-color: rgba(255, 140, 196, 0.38);
-    color: rgba(255, 226, 242, 0.86);
-    background: rgba(255, 140, 196, 0.13);
-    font-size: 0.82rem;
-    letter-spacing: 0.01em;
-  }
-
-  .project-page .project-detail-hero .badgeRow .projectBadge::before {
-    width: 0.48rem;
-    height: 0.48rem;
+    margin: 0 0 clamp(1.1rem, 2.3vh, 1.8rem) !important;
   }
 
   .project-page .project-detail-hero .project-hero-subtitle {
@@ -1203,8 +1142,21 @@ a:hover {
   }
 
   .project-page .project-detail-hero .project-hero-subtitle a {
+    display: flex;
+    align-items: center;
+    gap: 0.34em;
+    width: max-content;
+    max-width: 100%;
+    margin-top: 0.58em;
     color: #ff8cc4;
     font: inherit;
+  }
+
+  .project-page .project-detail-hero .project-hero-subtitle a::after {
+    content: "↗";
+    font-size: 0.78em;
+    line-height: 1;
+    text-decoration: none;
   }
 
   .project-page .project-detail-hero .inpage_hero_container {
@@ -1289,6 +1241,10 @@ a:hover {
   .project-page .content-layout:has(.project-detail-hero) .left-nav {
     display: none;
   }
+
+  .project-page .project-detail-hero ~ .content-block:not(.left-nav) {
+    z-index: 4;
+  }
 }
 
 .project-page .content-block:not(.left-nav) {
@@ -1309,6 +1265,26 @@ a:hover {
 .project-page .content-block p,
 .project-page .content-block li {
   color: rgba(232, 235, 244, 0.82);
+}
+
+.project-page .project-hero-mobile-summary a,
+.project-page .content-block p a {
+  display: flex;
+  align-items: center;
+  gap: 0.32em;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 0.58em;
+  color: #ff8cc4;
+  font: inherit;
+}
+
+.project-page .project-hero-mobile-summary a::after,
+.project-page .content-block p a::after {
+  content: "↗";
+  font-size: 0.78em;
+  line-height: 1;
+  text-decoration: none;
 }
 
 .project-page .context-points {
@@ -2103,7 +2079,7 @@ a:hover {
 
 #landingPart {
   --metric-card-gap: 0;
-  --metrics-row-width: min(72rem, calc(100vw - (var(--site-page-rail) * 2)));
+  --metrics-row-width: min(84rem, calc(100vw - (var(--site-page-rail) * 2)));
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -2595,11 +2571,12 @@ a:hover {
   top: auto;
   z-index: 7;
   display: grid;
-  grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1.08fr);
-  grid-auto-rows: clamp(4.8rem, 6vw, 6.4rem);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(clamp(5.35rem, 6.2vw, 6.9rem), auto);
   align-items: stretch;
   justify-content: flex-start;
-  gap: var(--metric-card-gap);
+  column-gap: clamp(1.3rem, 2.15vw, 2.8rem);
+  row-gap: clamp(1rem, 1.65vw, 1.8rem);
   width: var(--metrics-row-width);
   max-width: 100%;
   align-self: flex-start;
@@ -2612,7 +2589,7 @@ a:hover {
 }
 
 .case-study-trigger-item + .case-study-trigger-item {
-  padding-left: clamp(0.72rem, 1.15vw, 1.25rem);
+  padding-left: clamp(1rem, 1.4vw, 1.5rem);
   border-left: 1px solid rgba(218, 226, 240, 0.16);
 }
 
@@ -2620,40 +2597,27 @@ a:hover {
   z-index: 20;
 }
 
-.case-study-trigger-item.is-active::before {
-  content: "";
-  position: absolute;
-  bottom: calc(100% + 7px);
-  left: 50%;
-  z-index: 21;
-  width: 1px;
-  height: 10px;
-  background: linear-gradient(180deg, rgba(255, 140, 196, 0.58), rgba(255, 140, 196, 0));
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
 .case-study-trigger {
   position: relative;
   overflow: visible;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  gap: clamp(0.5rem, 0.85vw, 0.95rem);
+  justify-content: flex-start;
+  gap: clamp(0.45rem, 0.75vw, 0.85rem);
   width: 100%;
   height: 100%;
   min-width: 0;
   min-height: 0;
-  padding: 0 clamp(0.4rem, 0.72vw, 0.8rem) 0 0;
-  border: 0;
-  border-radius: 0;
+  padding: 0 clamp(0.55rem, 0.85vw, 0.95rem) 0 0;
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
   color: rgba(255, 248, 244, 0.76);
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  cursor: pointer;
+  cursor: default;
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 0;
   text-align: left;
@@ -2679,7 +2643,7 @@ a:hover {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   gap: 0.08rem;
   min-width: 0;
   padding: 0;
@@ -2694,21 +2658,29 @@ a:hover {
   position: relative;
   top: auto;
   right: auto;
-  display: inline-grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
   width: clamp(2.35rem, 2.9vw, 3.35rem);
+  min-height: clamp(2.35rem, 2.9vw, 3.35rem);
   height: clamp(2.35rem, 2.9vw, 3.35rem);
-  border: 1px solid rgba(218, 226, 240, 0.22);
+  padding: 0;
+  border: 1px solid rgba(255, 210, 233, 0.28);
   border-radius: 999px;
-  color: #ff72bc;
+  color: #ff79c0;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+    rgba(18, 19, 27, 0.76);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  cursor: pointer;
   font-family: SuisseIntl-SemiBold, Helvetica Neue, Arial, sans-serif;
   font-size: clamp(1.35rem, 1.7vw, 1.9rem);
   line-height: 1;
   opacity: 1;
   transform: none;
-  transition: border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
-  pointer-events: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  pointer-events: auto;
 }
 
 .case-study-trigger-icon svg {
@@ -2730,15 +2702,15 @@ a:hover {
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
-  flex-wrap: nowrap;
-  gap: 0.3rem;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.42rem;
   color: rgba(255, 248, 244, 0.98);
   line-height: 1;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .case-study-trigger-heading strong {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   color: rgba(255, 248, 244, 0.98);
   font-family: var(--font-display-title);
   font-size: clamp(2.25rem, 2.95vw, 3.95rem);
@@ -2752,11 +2724,11 @@ a:hover {
   overflow: visible;
   color: rgba(255, 248, 244, 0.94);
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(0.72rem, 0.84vw, 0.92rem);
-  font-weight: 700;
-  line-height: 1.05;
+  font-size: clamp(0.82rem, 1vw, 1.18rem);
+  font-weight: 800;
+  line-height: 1.02;
   text-overflow: clip;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .case-study-trigger-subtitle {
@@ -2767,32 +2739,38 @@ a:hover {
   line-height: 1.35;
 }
 
-.case-study-trigger:hover,
-.case-study-trigger:focus-visible,
 .case-study-trigger.is-active {
-  border-color: rgba(255, 190, 224, 0.58);
-  color: rgba(255, 248, 244, 0.94);
+  color: rgba(255, 248, 244, 0.96);
+  border-color: transparent;
   background: transparent;
   box-shadow: none;
   outline: none;
   transform: none;
 }
 
-.case-study-trigger:hover::before,
-.case-study-trigger:focus-visible::before,
 .case-study-trigger.is-active::before {
-  opacity: 1;
-  transform: translateX(0);
+  display: none;
 }
 
-.case-study-trigger:hover .case-study-trigger-icon,
-.case-study-trigger:focus-visible .case-study-trigger-icon,
-.case-study-trigger.is-active .case-study-trigger-icon {
-  color: #ff8cc4;
-  opacity: 1;
-  border-color: rgba(255, 210, 232, 0.48);
-  box-shadow: 0 0 1.6rem rgba(255, 140, 196, 0.12);
-  transform: translateX(0.18rem);
+.case-study-trigger-icon:hover,
+.case-study-trigger-icon:focus-visible {
+  color: #ff79c0;
+  border-color: rgba(255, 210, 233, 0.56);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035)),
+    rgba(22, 23, 32, 0.9);
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 140, 196, 0.12);
+  outline: none;
+  transform: translateY(-0.0625rem);
+}
+
+.case-study-trigger.is-active .case-study-trigger-heading strong,
+.case-study-trigger.is-active .case-study-trigger-heading span {
+  color: #fffafd;
+}
+
+.case-study-trigger.is-active .case-study-trigger-subtitle {
+  color: rgba(255, 226, 242, 0.9);
 }
 
 .landing-orbit-note {
@@ -2876,29 +2854,17 @@ a:hover {
 
 .hero-recommendation-card.trigger-preview-card .hero-recommendation-content .badgeRow {
   margin: 0 0 13px;
-  gap: 10px;
+  gap: clamp(0.95rem, 1.4vw, 1.35rem);
 }
 
 .hero-recommendation-card.trigger-preview-card .hero-recommendation-content .projectBadge {
-  display: inline-flex;
-  align-items: center;
   color: rgba(255, 141, 202, 0.94);
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  font-family: SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
   font-size: clamp(0.9rem, 1.1vw, 1.05rem);
-  line-height: 1.2;
-  letter-spacing: 0;
-  text-transform: none;
   text-shadow: 0 0 22px rgba(255, 80, 166, 0.2);
 }
 
 .hero-recommendation-card.trigger-preview-card .hero-recommendation-content .projectBadge:not(:last-child)::after {
-  content: "|";
-  margin-left: 10px;
-  color: rgba(255, 180, 222, 0.52);
+  content: none;
 }
 
 .hero-recommendation-card.trigger-preview-card .hero-recommendation-content h2 {
@@ -2914,10 +2880,6 @@ a:hover {
   overflow: hidden;
   font-size: clamp(1rem, 1.35vw, 1.18rem);
   line-height: 1.42;
-}
-
-.hero-recommendation-card.trigger-preview-card .view-project-link {
-  margin-top: clamp(1rem, 2svh, 1.45rem);
 }
 
 .hero-recommendation-card.trigger-preview-card.no-search-match-card {
@@ -3143,11 +3105,23 @@ a:hover {
   .case-study-triggers {
     width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 118px;
+    grid-auto-rows: minmax(118px, auto);
+    column-gap: clamp(1rem, 3vw, 1.75rem);
+    row-gap: 1rem;
+  }
+
+  .case-study-trigger-item + .case-study-trigger-item {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .case-study-trigger-item:nth-child(even) {
+    padding-left: clamp(0.9rem, 2.4vw, 1.35rem);
+    border-left: 1px solid rgba(218, 226, 240, 0.16);
   }
 
   .case-study-trigger {
-    padding: 0.62rem 0.9rem;
+    padding: 0.62rem 0.75rem 0.62rem 0;
   }
 
   .hero-recommendation-card.trigger-preview-card {
@@ -3255,8 +3229,6 @@ a:hover {
   }
 
   .case-study-trigger-icon {
-    top: 0.58rem;
-    right: 0.62rem;
     font-size: 1rem;
   }
 
@@ -3314,10 +3286,6 @@ a:hover {
     -webkit-line-clamp: 3;
   }
 
-  .hero-recommendation-card.trigger-preview-card .view-project-link {
-    margin-top: 0.75rem;
-  }
-
   .hero-recommendation-card.trigger-preview-card.no-search-match-card {
     top: clamp(6rem, 13svh, 7.75rem);
     width: calc(100vw - (var(--site-page-rail) * 2));
@@ -3363,23 +3331,45 @@ a:hover {
 
 }
 
-/* project card badges */
+.project-label-row,
 .badgeRow {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: clamp(0.95rem, 1.45vw, 1.45rem);
   margin: 8px 0 12px;
   margin-left: 16px;
   flex-wrap: wrap;
 }
 
+.project-label,
 .projectBadge {
-  background: rgba(255,255,255,0.06);
-  color: #e9eef8;
-  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.54rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 226, 242, 0.9);
+  font-family: SuisseIntl-SemiBold, Helvetica Neue, Arial, sans-serif;
+  font-size: clamp(0.82rem, 1vw, 1.05rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.project-label::before,
+.projectBadge::before {
+  content: "";
+  width: 0.48rem;
+  height: 0.48rem;
+  flex: 0 0 auto;
   border-radius: 999px;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  border: 1px solid rgba(255,255,255,0.06);
+  background: var(--card-signature, var(--signature-pink, #FC2293));
+  box-shadow:
+    0 0 0.8rem rgba(255, 140, 196, 0.28),
+    0 0 1.2rem rgba(252, 34, 147, 0.24);
 }
 
 /* professional work section */
@@ -3945,7 +3935,7 @@ a:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: clamp(0.8rem, 1.2vw, 1.25rem);
   margin: 0;
   min-height: 0;
   padding: 0;
@@ -3959,46 +3949,27 @@ a:hover {
 }
 
 .projectRow .projectBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
   color: rgba(255, 226, 242, 0.88);
-  background:
-    linear-gradient(90deg, rgba(255, 140, 196, 0.095), rgba(255, 255, 255, 0.045)),
-    rgba(10, 12, 18, 0.22);
-  border: 1px solid rgba(255, 190, 224, 0.22);
-  border-radius: 999px;
-  padding: 6px 10px;
   font-size: 10px;
-  line-height: 1.2;
-  font-family: SuisseIntl-SemiBold;
-  white-space: nowrap;
   flex-shrink: 0;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   cursor: default;
   pointer-events: none;
 }
 
 .projectRow .projectBadge::before {
-  content: "";
   width: 5px;
   height: 5px;
-  border-radius: 999px;
   background: var(--card-signature);
-  box-shadow:
-    0 0 12px rgba(255, 140, 196, 0.28),
-    0 0 18px rgba(252, 34, 147, 0.24);
 }
 
 .projectRow .bg-project-card > .contentblock:nth-child(2) h1 {
   position: absolute;
   left: 1.875rem;
   right: 1.875rem;
-  bottom: 4.25rem;
+  bottom: 5.65rem;
   padding: 0;
   font-size: clamp(1.08rem, 1.36vw, 1.3rem);
-  line-height: 1.38;
+  line-height: 1.08;
   font-family: var(--font-display-title);
   font-weight: 900;
   color: rgba(245, 245, 247, 0.78);
@@ -4011,7 +3982,21 @@ a:hover {
 
 #NYTango .bg-project-card > .contentblock:nth-child(2) h1,
 #NYTango > .contentblock:nth-child(2) h1 {
-  bottom: 4.25rem;
+  bottom: 5.65rem;
+}
+
+.projectRow .bg-project-card > .contentblock:nth-child(2) p {
+  position: absolute;
+  left: 1.875rem;
+  right: 1.875rem;
+  bottom: 3.55rem;
+  margin: 0;
+  max-width: 34rem;
+  color: rgba(232, 235, 244, 0.78);
+  font-family: SuisseIntl-SemiBold, SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
+  font-size: clamp(0.8rem, 0.9vw, 0.94rem);
+  line-height: 1.32;
+  text-shadow: 0 0.625rem 1.75rem rgba(0, 0, 0, 0.62);
 }
 
 .projectRow .contentblock:last-child {
@@ -4032,34 +4017,6 @@ a:hover {
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
-}
-
-.view-project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.38rem;
-  width: max-content;
-  max-width: 100%;
-  padding: 0;
-  border-bottom: 0;
-  color: rgba(255, 248, 244, 0.94);
-  font-family: SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
-  font-size: clamp(0.86rem, 1vw, 0.98rem);
-  line-height: 1;
-  letter-spacing: 0;
-  text-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.42);
-  transition: color 180ms ease, border-color 180ms ease, gap 180ms ease;
-}
-
-.view-project-link span {
-  color: #ff8cc4;
-  font: inherit;
-}
-
-.bg-project-card:hover .view-project-link,
-.bg-project-card:focus-visible .view-project-link {
-  color: var(--color-text);
-  gap: 0.55rem;
 }
 
 .projectRow .bg-project-card .contentblock:last-child .readCases {
@@ -4716,13 +4673,17 @@ a:hover {
 
 @media only screen and (max-width: 850px) {
   .project-page .content-layout:has(.event-discovery-hero) {
-    padding: 132px 18px 32px;
+    padding: clamp(5.75rem, 14vh, 7.25rem) 18px 32px;
   }
 
   .project-page .event-discovery-hero {
+    display: grid;
+    gap: 0;
+    align-items: start;
     min-height: 0;
     margin: 0;
     overflow: visible;
+    text-align: left;
   }
 
   .project-page .event-discovery-hero::after {
@@ -4736,16 +4697,24 @@ a:hover {
     bottom: auto;
     z-index: 2;
     display: block;
+    justify-self: start;
+    width: 100%;
+    text-align: left;
   }
 
   .project-page .event-discovery-hero .project-hero-heading .badgeRow {
-    margin: 14px 0 0;
+    justify-content: flex-start;
+    justify-self: start;
+    text-align: left;
+    margin: 0 0 14px;
   }
 
   .project-page .event-discovery-hero #title {
     max-width: 100%;
+    margin: 0;
     font-size: 36px;
     line-height: 1.2;
+    text-align: left;
   }
 
   .project-page .event-discovery-hero .project-hero-title-line {
@@ -4754,7 +4723,12 @@ a:hover {
   }
 
   .project-page .event-discovery-hero .project-hero-subtitle {
-    display: none;
+    display: block;
+    max-width: 100%;
+    margin: 10px 0 0;
+    text-align: left;
+    font-size: clamp(0.9rem, 3.55vw, 1rem);
+    line-height: 1.25;
   }
 
   .project-page .event-discovery-hero .inpage_hero_container {
@@ -4762,13 +4736,17 @@ a:hover {
     inset: auto;
     display: grid;
     min-height: 0;
-    margin-top: 28px;
-    padding: 0 0 18px;
+    margin-top: clamp(0.85rem, 4vw, 1.25rem);
+    padding: 0 0 12px;
     overflow: visible;
   }
 
   .project-page .event-discovery-hero .inpage_hero_box:first-child {
     display: grid;
+  }
+
+  .project-page .event-discovery-hero .project-hero-mobile-summary {
+    display: none;
   }
 
   .project-page .event-discovery-hero .inpage_hero_box:last-child {
@@ -4788,7 +4766,7 @@ a:hover {
     opacity: 1;
   }
 
-  .project-page .project-detail-hero .project-hero-subtitle {
+  .project-page .project-detail-hero:not(.event-discovery-hero) .project-hero-subtitle {
     display: none;
   }
 
@@ -5234,22 +5212,29 @@ a:hover {
 
   .projectRow .projectBadge {
     font-size: 9px;
-    padding: 6px 9px;
-    letter-spacing: 0.06em;
   }
 
   .projectRow .bg-project-card > .contentblock:nth-child(2) h1 {
     left: clamp(16px, 5.4vw, 22px);
     right: clamp(16px, 5.4vw, 22px);
-    bottom: clamp(62px, 17vw, 76px);
+    bottom: clamp(96px, 26vw, 116px);
     padding: 0;
     font-size: clamp(1rem, 4.4vw, 1.15rem);
-    line-height: 1.38;
+    line-height: 1.16;
     max-width: 100%;
   }
 
   #NYTango > .contentblock:nth-child(2) h1 {
+    bottom: clamp(96px, 26vw, 116px);
+  }
+
+  .projectRow .bg-project-card > .contentblock:nth-child(2) p {
+    left: clamp(16px, 5.4vw, 22px);
+    right: clamp(16px, 5.4vw, 22px);
     bottom: clamp(62px, 17vw, 76px);
+    max-width: 100%;
+    font-size: clamp(0.74rem, 3.25vw, 0.9rem);
+    line-height: 1.3;
   }
 
   .projectRow .contentblock:last-child {
@@ -5732,14 +5717,26 @@ a:hover {
 
 .all-projects-tagline {
   margin: 0;
-  color: rgba(255, 140, 196, 0.94);
-  font-family: SuisseIntl-SemiBold, Helvetica Neue, Arial, sans-serif;
-  font-size: clamp(0.72rem, 0.82vw, 0.9rem);
-  line-height: 1.35;
-  letter-spacing: 0.08em;
-  text-transform: none;
+  gap: clamp(0.85rem, 1.1vw, 1.25rem);
   max-width: min(34rem, 100%);
-  text-wrap: pretty;
+}
+
+.all-projects-tagline .projectBadge {
+  gap: 0.54rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 226, 242, 0.9);
+  font-size: clamp(0.72rem, 0.82vw, 0.9rem);
+}
+
+.project-page .all-projects-card-grid .projectBadge,
+.project-page .projectRow .bg-project-card > .contentblock:nth-child(2) .projectBadge {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .all-projects-card-copy h1 {
@@ -5764,11 +5761,6 @@ a:hover {
   font-weight: 400;
   line-height: 1.32;
   text-wrap: pretty;
-}
-
-.all-projects-card-copy .view-project-link {
-  margin-top: clamp(1rem, 1.45vw, 1.35rem);
-  font-size: clamp(0.78rem, 0.9vw, 0.94rem);
 }
 
 @media only screen and (max-width: 1020px) {
@@ -5946,7 +5938,6 @@ a:hover {
 
   .projectRow .projectBadge {
     font-size: clamp(8px, 2.35vw, 9px);
-    padding: 5px 8px;
   }
 
   .projectRow .bg-project-card > .contentblock:nth-child(2) h1 {
@@ -6261,6 +6252,13 @@ a:hover {
     margin: 0;
     font-size: clamp(0.98rem, 4.15vw, 1.12rem);
     line-height: 1.3;
+    max-width: 100%;
+  }
+
+  .projectRow .bg-project-card > .contentblock:nth-child(2) p {
+    position: static !important;
+    inset: auto !important;
+    margin: 0;
     max-width: 100%;
   }
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import NavigationBar from "../../components/navigation";
 import {
+  default as ProjectTags,
   AI_RESEARCH_GUIDE_TAGS,
   DESIGN_SYSTEM_TAGS,
   EVENT_DISCOVERY_CMS_TAGS,
@@ -12,6 +13,7 @@ import {
 } from "../../components/projectTags";
 import WireframeBackground from "../../components/WireframeBackground";
 import InpageContactMe from "../../components/inpage_contactme";
+import PROJECT_SUMMARIES from "../../data/projectSummaries";
 
 import KioskProduct from "../../assets/images/home/kiosk.png";
 import PlatformsIntegrationProduct from "../../assets/images/home/Janus.svg";
@@ -32,8 +34,8 @@ const projects = [
     product: NYTangoProduct,
     background: NYTangoBackground,
     alt: "NY Tango project calendar interface",
-    title: "Event discovery + CMS",
-    summary: "Designed a community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.",
+    title: PROJECT_SUMMARIES.NYTango.title,
+    summary: PROJECT_SUMMARIES.NYTango.summary,
   },
   {
     id: "AIResearchGuide",
@@ -42,8 +44,8 @@ const projects = [
     product: AIPlatformProduct,
     background: AIPlatformBackground,
     alt: "AI knowledge platform interface",
-    title: "AI-powered research tool",
-    summary: "AI-powered knowledge platform that turns consulting discovery from hours into minutes.",
+    title: PROJECT_SUMMARIES.AIResearchGuide.title,
+    summary: PROJECT_SUMMARIES.AIResearchGuide.summary,
   },
   {
     id: "Design-system",
@@ -52,17 +54,8 @@ const projects = [
     product: DesignSystemProduct,
     background: DesignSystemBackground,
     alt: "design system interface",
-    title: "Design system across 4 products",
-    summary: "Scaled shared UI from 45% to 90% across 4 products, cutting spec-writing time by 88% and raising WCAG 2.0 compliance to 100%.",
-  },
-  {
-    id: "Kiosk",
-    href: "/kiosk",
-    tags: KIOSK_TAGS,
-    product: KioskProduct,
-    alt: "office visitor kiosk check-in interface",
-    title: "Office visitor kiosk",
-    summary: "Designed an iPad check-in flow that reduced front desk workload, improved guest arrival, and balanced usability with real-world office security constraints.",
+    title: PROJECT_SUMMARIES.DesignSystem.title,
+    summary: PROJECT_SUMMARIES.DesignSystem.summary,
   },
   {
     id: "PlatformsIntegration",
@@ -70,8 +63,17 @@ const projects = [
     tags: PLATFORMS_INTEGRATION_TAGS,
     product: PlatformsIntegrationProduct,
     alt: "AI-assisted consulting workspace concept",
-    title: "AI-assisted workflow platform",
-    summary: "Connected fragmented consulting tools into a standardized, AI-assisted assessment workspace for complex enterprise workflows.",
+    title: PROJECT_SUMMARIES.PlatformsIntegration.title,
+    summary: PROJECT_SUMMARIES.PlatformsIntegration.summary,
+  },
+  {
+    id: "Kiosk",
+    href: "/kiosk",
+    tags: KIOSK_TAGS,
+    product: KioskProduct,
+    alt: "office visitor kiosk check-in interface",
+    title: PROJECT_SUMMARIES.Kiosk.title,
+    summary: PROJECT_SUMMARIES.Kiosk.summary,
   },
   {
     id: "Voice",
@@ -80,8 +82,8 @@ const projects = [
     product: VoiceProduct,
     background: VoiceBackground,
     alt: "NFT creator tool interface",
-    title: "NFT creator marketplace",
-    summary: "A creator marketplace that makes minting and selling NFT artwork feel clear, guided, and effortless.",
+    title: PROJECT_SUMMARIES.Voice.title,
+    summary: PROJECT_SUMMARIES.Voice.summary,
   },
 ];
 
@@ -92,7 +94,7 @@ function AllProjectCard({ project, index }) {
         <span>{String(index + 1).padStart(2, "0")}</span>
       </div>
       <div className="all-projects-card-copy">
-        <p className="all-projects-tagline">{project.tags.join(" · ")}</p>
+        <ProjectTags tags={project.tags} className="all-projects-tagline" />
         <h1>{project.title}</h1>
         <p className="all-projects-card-summary">{project.summary}</p>
       </div>

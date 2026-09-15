@@ -129,10 +129,10 @@ describe('App', () => {
 
     root.render(<App />);
     await waitFor(() => {
-      assert.match(div.textContent, /Product Designer\s*\|\s*AI-Augmented/);
+      assert.match(div.textContent, /AI-Augmented\s*Product Designer/);
       assert.match(div.textContent, /One designer\s*three disciplines/);
       assert.match(div.textContent, /I bridge product strategy, design, and front-end execution/);
-      assert.match(div.textContent, /Selected Work/);
+      assert.match(div.textContent, /Work Impact/);
     }, { timeout: 5000 });
 
     root.unmount();
@@ -148,9 +148,12 @@ describe('App', () => {
     root.render(<App />);
     await waitFor(() => {
       assert.match(div.textContent, /All projects/);
-      assert.match(div.textContent, /AI-powered knowledge platform/);
+      assert.match(div.textContent, /AI knowledge platform/);
       assert.match(div.textContent, /Kiosk UX/);
       assert.match(div.textContent, /Enterprise platform/);
+      assert.ok(
+        div.textContent.indexOf('AI-assisted workspace') < div.textContent.indexOf('Office visitor kiosk'),
+      );
     }, { timeout: 5000 });
 
     root.unmount();

@@ -7,11 +7,13 @@ export const DESIGN_SYSTEM_TAGS = ["Design systems", "Platform UX", "DesignOps"]
 export const KIOSK_TAGS = ["B2B", "IoT", "Kiosk UX"];
 export const PLATFORMS_INTEGRATION_TAGS = ["AI workflow", "Enterprise platform", "Systems thinking"];
 
-function ProjectTags({ tags, className = "badgeRow", style }) {
+function ProjectTags({ tags, className = "", style }) {
+    const classes = ["project-label-row", "badgeRow", className].filter(Boolean).join(" ");
+
     return (
-        <div className={className} style={style}>
+        <div className={classes} style={style}>
             {tags.map((tag) => (
-                <span className="projectBadge" key={tag}>{tag}</span>
+                <span className="project-label projectBadge" key={tag}>{tag}</span>
             ))}
         </div>
     );

@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { AI_RESEARCH_GUIDE_TAGS } from "../../../components/projectTags"
+import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
@@ -114,12 +115,12 @@ class AIResearchGuide extends React.Component {
                 <div>
                     <ContentLayout>
                         <ProjectHero
-                            title="AI-Powered Knowledge Tool for Faster Consulting Discovery"
+                            title={PROJECT_SUMMARIES.AIResearchGuide.title}
                             tags={AI_RESEARCH_GUIDE_TAGS}
                             duration="6 months"
                             team="1 PM, 2 Engineer, 1 Design"
                             role="Design lead"
-                            summary="A 0→1 AI tool that helps consultants quickly explore unfamiliar domains through guided, source-backed recommendations."
+                            summary={PROJECT_SUMMARIES.AIResearchGuide.summary}
                             image={AIPlatformProduct}
                             imageAlt="AI knowledge platform interface"
                         />

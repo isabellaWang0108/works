@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { EVENT_DISCOVERY_CMS_TAGS } from "../../../components/projectTags"
+import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
 
@@ -113,19 +114,18 @@ class EventDiscoveryCMS extends React.Component {
                     <ContentLayout>
                         <ProjectHero
                             className="event-discovery-hero"
-                            titleLines={["Event Discovery", "+ CMS"]}
+                            title={PROJECT_SUMMARIES.NYTango.title}
                             tags={EVENT_DISCOVERY_CMS_TAGS}
                             duration="2 months"
                             team="1 AI-augmented designer"
                             role="Product design, Full-stack dev"
-                            summary="For community events that need to feel easy to find and easy to manage."
+                            summary={PROJECT_SUMMARIES.NYTango.summary}
                             image={NYTangoProduct}
                             imageAlt="NY Tango event discovery and management interface"
                             stats={[
                                 { label: "Duration", value: "2 mo" },
                                 { label: "Design + dev", value: "Lead" },
                                 { label: "AI-augmented designer", value: "1" },
-                                { label: "Community served", value: "14K people" },
                             ]}
                         />
 

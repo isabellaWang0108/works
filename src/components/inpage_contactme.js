@@ -10,16 +10,12 @@ class InpageContactMe extends Component {
     render() {
         const showOtherProjects = this.props.showProjectsButton !== false;
         const finalButtonLabel = showOtherProjects ? "Other Projects" : "Resume";
-        const rememberProjectsTarget = () => {
-            sessionStorage.setItem("homepageScrollTarget", "projectsPart");
-            sessionStorage.removeItem("homepageScrollPosition");
-        };
 
         return (
             <div className="inpage-contact-card">
                 <div className="inpage-contact-text">
                     <h2>Let’s connect.</h2>
-                    <p>AI product design, systems, and clearer workflows.</p>
+                    <p>AI-augmented designer turing ambiguity into 0→1 launch-ready products and scalable systems.</p>
                 </div>
                 <div className="contact_me_inpage">
                     <a href="https://www.linkedin.com/in/isabella-wang-310181149/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
@@ -32,10 +28,9 @@ class InpageContactMe extends Component {
                     </a>
                     {showOtherProjects ? (
                         <Link
-                            to="/"
+                            to="/projects"
                             className="contact-primary-action"
-                            aria-label="View other projects on the homepage"
-                            onClick={rememberProjectsTarget}
+                            aria-label="View all projects"
                         >
                             <span>{finalButtonLabel}</span>
                         </Link>
