@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import Loading from "./components/loading"
 import { lazyWithMinimum } from "./utils/lazyWithMinimum";
 import { trackPageView } from "./utils/analytics";
@@ -148,6 +149,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AppRoutes />
+      <Analytics />
     </BrowserRouter>
   );
 };
