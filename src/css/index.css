@@ -1134,7 +1134,9 @@ a:hover {
     grid-row: 1;
     align-self: center;
     min-width: 0;
-    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 clamp(2.25rem, 4vw, 5.5rem) 0 0;
   }
 
   .project-page .project-detail-hero .project-hero-kicker {
@@ -1271,7 +1273,7 @@ a:hover {
 
   .project-page .project-detail-hero .project-hero-stats dd {
     margin: 0;
-    color: #FC2293;
+    color: var(--color-text);
     font-family: SuisseIntl-SemiBold, SuisseIntl-Regular, Helvetica Neue, Arial, sans-serif;
     font-size: clamp(2.2rem, 3vw, 3.75rem);
     line-height: 0.95;
@@ -6190,6 +6192,28 @@ a:hover {
 }
 
 @media only screen and (max-width: 850px) {
+  .projectRow {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: 0;
+    padding-right: 0;
+    gap: 0;
+  }
+
+  .projectRow .sessionContainer,
+  .projectRow .bg-project-card {
+    border: solid rgba(236, 242, 255, 0.18);
+    border-width: 1px 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .projectRow .bg-project-card::after {
+    content: none;
+  }
+
   .projectRow .contentblock:first-child::after {
     inset: auto 0 0;
     height: 62%;
@@ -6205,8 +6229,8 @@ a:hover {
   #NYTango .project-card-img {
     top: clamp(16px, 5vw, 28px) !important;
     left: 50%;
-    width: calc(100% - clamp(8px, 3vw, 18px)) !important;
-    max-width: calc(100% - clamp(8px, 3vw, 18px)) !important;
+    width: 100% !important;
+    max-width: 100% !important;
     height: clamp(220px, 58vw, 300px) !important;
     max-height: clamp(220px, 58vw, 300px) !important;
     object-fit: contain;
