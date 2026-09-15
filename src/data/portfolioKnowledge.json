@@ -120,7 +120,7 @@
     },
     {
       "title": "NY Tango",
-      "route": "https://nytango.vercel.app/",
+      "route": "/event-discovery-cms",
       "summary": "A community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.",
       "role": "Product designer",
       "team": "Independent product build",

@@ -30,6 +30,12 @@ import JanusPic4_2 from "../assets/images/Janus/img_4_2.svg";
 import DSPic3 from "../assets/images/DesignSystem/ds_pic3.png";
 import DSPic4 from "../assets/images/DesignSystem/ds_pic4.png";
 import DSPic6 from "../assets/images/DesignSystem/ds_pic6.png";
+import NYTangoResponsiveEvent from "../assets/images/NYTango/responsive_event.png";
+import NYTangoDifferentMentalModel from "../assets/images/NYTango/different_mental_modal.png";
+import NYTangoTheme from "../assets/images/NYTango/theme.png";
+import NYTangoDifferentAdminView from "../assets/images/NYTango/different_admin_view.png";
+import NYTangoComplexWorkflow from "../assets/images/NYTango/complex_workflow.png";
+import NYTangoInterdependentLogic from "../assets/images/NYTango/interdependent_logic.png";
 
 const loadedImages = new Map();
 const loadedModules = new Map();
@@ -76,6 +82,18 @@ const preloadSets = {
   "/ai-research-guide": {
     critical: [AIPlatformProduct],
     secondary: [AIGuidePic1, AIGuidePic2, AIGuidePic3],
+  },
+  "/event-discovery-cms": {
+    critical: [NYTangoProduct],
+    secondary: [
+      NYTangoBackground,
+      NYTangoResponsiveEvent,
+      NYTangoDifferentMentalModel,
+      NYTangoTheme,
+      NYTangoDifferentAdminView,
+      NYTangoComplexWorkflow,
+      NYTangoInterdependentLogic,
+    ],
   },
   "/platforms-integration": {
     critical: [],

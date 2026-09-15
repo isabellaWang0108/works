@@ -12,6 +12,7 @@ const Contact = lazy(() => lazyWithMinimum(() => import("./views/contact.js"), (
 const DS = lazy(() => lazyWithMinimum(() => import("./views/projects/DS/index.js"), () => preloadRouteCriticalAssets("/design-system")));
 const Voice = lazy(() => lazyWithMinimum(() => import("./views/projects/Voice/index.js"), () => preloadRouteCriticalAssets("/voice")));
 const AIResearchGuide = lazy(() => lazyWithMinimum(() => import("./views/projects/AIResearchGuide/index.js"), () => preloadRouteCriticalAssets("/ai-research-guide")));
+const EventDiscoveryCMS = lazy(() => lazyWithMinimum(() => import("./views/projects/EventDiscoveryCMS/index.js"), () => preloadRouteCriticalAssets("/event-discovery-cms")));
 const PlatformsIntegration = lazy(() => lazyWithMinimum(() => import("./views/projects/PlatformsIntegration/index.js"), () => preloadRouteCriticalAssets("/platforms-integration")));
 const Kiosk = lazy(() => lazyWithMinimum(() => import("./views/projects/Kiosk/index.js"), () => preloadRouteCriticalAssets("/kiosk")));
 const AllProjects = lazy(() => lazyWithMinimum(() => import("./views/projects/index.js"), () => preloadRouteCriticalAssets("/projects")));
@@ -132,6 +133,7 @@ function AppRoutes() {
           <Route path="/design-system" element={<DS />} />
           <Route path="/voice" element={<Voice />} />
           <Route path="/ai-research-guide" element={<AIResearchGuide />} />
+          <Route path="/event-discovery-cms" element={<EventDiscoveryCMS />} />
           <Route path="/platforms-integration" element={<PlatformsIntegration />} />
           <Route path="/kiosk" element={<Kiosk />} />
           <Route path="/projects" element={<AllProjects />} />

@@ -11,7 +11,7 @@ const projectIdByRoute = {
     "/design-system": "Design-system",
     "/kiosk": "Kiosk",
     "/voice": "Voice",
-    "https://nytango.vercel.app/": "NYTango"
+    "/event-discovery-cms": "NYTango"
 };
 
 const adjacentKeywordMap = {

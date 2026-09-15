@@ -36,7 +36,7 @@ class DS extends React.Component {
         { title: "Identifying the problems", id: "section1" },
         { title: "Finding the solutions", id: "section2" },
         { title: "The solution", id: "section3" },
-        { title: "Implementation", id: "section4" },
+        { title: "Execution", id: "section4" },
         { title: "People work", id: "section5" },
         { title: "Impact", id: "section6" },
         { title: "The biggest lesson", id: "section7" },
@@ -211,7 +211,7 @@ class DS extends React.Component {
                         </div>
 
                         <div className="content-block" id="section4">
-                            <h2>Implementation</h2>
+                            <h2>Execution</h2>
                             <p>To translate the design into practice, the typography solution was integrated directly into the tools used daily. The implementation includes:
                             </p>
                             <ul>

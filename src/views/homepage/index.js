@@ -5,7 +5,7 @@ import InpageContactMe from "../../components/inpage_contactme"
 import WireframeBackground from "../../components/WireframeBackground"
 import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
 import ProjectTriggerIconButton from "../../components/ProjectTriggerIconButton"
-import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, KIOSK_TAGS, PLATFORMS_INTEGRATION_TAGS, VOICE_TAGS } from "../../components/projectTags"
+import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, EVENT_DISCOVERY_CMS_TAGS, KIOSK_TAGS, PLATFORMS_INTEGRATION_TAGS, VOICE_TAGS } from "../../components/projectTags"
 
 import KioskProduct from "../../assets/images/home/kiosk.png"
 import PlatformsIntegrationProduct from "../../assets/images/home/Janus.svg"
@@ -31,8 +31,6 @@ const aboutCardSpacing = {
     lineHeight: '1.375rem'
 }
 
-const projectCardTags = ["Consumer app", "0 to 1 product", "AI-assisted design"];
-
 const heroRecommendations = {
     NYTango: {
         title: "NY Tango",
@@ -40,12 +38,11 @@ const heroRecommendations = {
         triggerMetric: "Solo",
         triggerMetricLabel: "0→ 1 product launch",
         triggerSubtitle: "Event discovery + CMS",
-        tags: projectCardTags,
+        tags: EVENT_DISCOVERY_CMS_TAGS,
         product: NYTangoProduct,
         background: NYTangoBackground,
         alt: "NY Tango project calendar interface",
-        link: "https://nytango.vercel.app/",
-        isExternal: true
+        link: "event-discovery-cms"
     },
     PlatformsIntegration: {
         title: "AI-assisted Workspace",
@@ -503,15 +500,15 @@ class Homepage extends React.Component {
                             className="sessionContainer bg-project-card"
                             role="link"
                             tabIndex="0"
-                            onClick={() => this.openProject("https://nytango.vercel.app/", true)}
-                            onKeyDown={(event) => this.handleCardKeyDown(event, "https://nytango.vercel.app/", true)}
+                            onClick={() => this.openProject("event-discovery-cms")}
+                            onKeyDown={(event) => this.handleCardKeyDown(event, "event-discovery-cms")}
                         >
                             <div className="contentblock">
                                 <img loading="lazy" src={NYTangoBackground} alt="" className="img project-card-backdrop" aria-hidden="true" />
                                 <LazyProductImage src={NYTangoProduct} alt="NY Tango project calendar interface" className="img project-card-img" />
                             </div>
                             <div className="contentblock">
-                                <ProjectTags tags={projectCardTags} />
+                                <ProjectTags tags={EVENT_DISCOVERY_CMS_TAGS} />
                                 <h1>
                                     Designed a community event discovery and management platform that streamlined organizer workflows and reduced manual operations by 80%.
                                 </h1>

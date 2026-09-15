@@ -5,6 +5,7 @@ import NavigationBar from "../../components/navigation";
 import {
   AI_RESEARCH_GUIDE_TAGS,
   DESIGN_SYSTEM_TAGS,
+  EVENT_DISCOVERY_CMS_TAGS,
   KIOSK_TAGS,
   PLATFORMS_INTEGRATION_TAGS,
   VOICE_TAGS,
@@ -22,14 +23,11 @@ import AIPlatformBackground from "../../assets/images/home/Project card/AIPlatfo
 import DesignSystemProduct from "../../assets/images/home/Project card/DS_product.png";
 import DesignSystemBackground from "../../assets/images/home/Project card/DS_background.webp";
 
-const projectCardTags = ["Consumer app", "0 to 1 product", "AI-assisted design"];
-
 const projects = [
   {
     id: "NYTango",
-    href: "https://nytango.vercel.app/",
-    isExternal: true,
-    tags: projectCardTags,
+    href: "/event-discovery-cms",
+    tags: EVENT_DISCOVERY_CMS_TAGS,
     product: NYTangoProduct,
     background: NYTangoBackground,
     alt: "NY Tango project calendar interface",
@@ -45,16 +43,6 @@ const projects = [
     alt: "AI knowledge platform interface",
     title: "AI-powered research tool",
     summary: "AI-powered knowledge platform that turns consulting discovery from hours into minutes.",
-  },
-  {
-    id: "Voice",
-    href: "/voice",
-    tags: VOICE_TAGS,
-    product: VoiceProduct,
-    background: VoiceBackground,
-    alt: "NFT creator tool interface",
-    title: "NFT creator marketplace",
-    summary: "A creator marketplace that makes minting and selling NFT artwork feel clear, guided, and effortless.",
   },
   {
     id: "Design-system",
@@ -84,6 +72,16 @@ const projects = [
     title: "AI-assisted workflow platform",
     summary: "Connected fragmented consulting tools into a standardized, AI-assisted assessment workspace for complex enterprise workflows.",
   },
+  {
+    id: "Voice",
+    href: "/voice",
+    tags: VOICE_TAGS,
+    product: VoiceProduct,
+    background: VoiceBackground,
+    alt: "NFT creator tool interface",
+    title: "NFT creator marketplace",
+    summary: "A creator marketplace that makes minting and selling NFT artwork feel clear, guided, and effortless.",
+  },
 ];
 
 function AllProjectCard({ project, index }) {
@@ -96,7 +94,6 @@ function AllProjectCard({ project, index }) {
         <p className="all-projects-tagline">{project.tags.join(" · ")}</p>
         <h1>{project.title}</h1>
         <p className="all-projects-card-summary">{project.summary}</p>
-        <span className="view-project-link">View project <span aria-hidden="true">→</span></span>
       </div>
       <div className="all-projects-card-media">
         {project.background && (
@@ -142,10 +139,6 @@ function AllProjects() {
         <WireframeBackground />
       </div>
       <main className="all-projects-content">
-        <header className="all-projects-header">
-          <h1>All projects</h1>
-        </header>
-
         <section className="projectRow all-projects-card-grid" aria-label="All projects">
           {projects.map((project, index) => (
             <AllProjectCard key={project.id} project={project} index={index} />

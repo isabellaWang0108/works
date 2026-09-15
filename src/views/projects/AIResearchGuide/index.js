@@ -24,7 +24,7 @@ class AIResearchGuide extends React.Component {
     content = [
         { title: "Pain points", id: "section1" },
         { title: "Designing the guide", id: "section2" },
-        { title: "UX in AI content", id: "section3" },
+        { title: "AI UX", id: "section3" },
         { title: "Impact", id: "section4" },
         { title: "What users wanted next", id: "section5" },
     ]
@@ -182,32 +182,26 @@ class AIResearchGuide extends React.Component {
 
 
                         <div className="content-block" id="section3">
-                            <h2>UX in AI content </h2>
-                            <p>Much of the UX lived inside the generated content itself: headings, summaries, evidence, recommendations, and visual explanations users had to read and act on.</p>
+                            <h2>AI UX</h2>
+                            <p>Much of the UX for conversational AI live inside the generated content itself. I shaped prompt's output of specific topics so consultants could have quality content even in unstructured AI conversation.</p>
                             <img loading="lazy" decoding="async" src={Pic6} alt="xx" style={{ width: "100%", display: "block"}} />
-                        
-                            <p>I shaped prompt structure and content patterns so consultants could scan quickly, compare options, and turn AI output into next steps.</p>
                         </div>
 
                         <div className="content-block" id="section4">
                             <h2>Impact</h2>
-                            <p>The pilot made early discovery more repeatable: consultants could start with a guided path, inspect AI recommendations, and build understanding faster.</p>
-                            <div className="bullet-callout">
+                            <div className="impact-metric-list">
                                 <ul>
-                                    <li>Faster ramp-up in unfamiliar domains</li>
-                                    <li>More consistent, high-quality analysis</li>
-                                    <li>Reduced dependency on senior experts</li>
-                                    <li>Scalable access to institutional knowledge</li>
+                                    <li><strong>Research time decreased by 60%</strong> with source-backed resources surfaced upfront.</li>
+                                    <li>Junior practitioners could start discovery without relying on expert outreach.</li>
+                                    <li>Institutional knowledge became easier to access, reuse, and scale.</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div className="content-block" id="section5">
                             <h2>What users wanted next</h2>
-                           <p>Once users saw AI-generated guidance in their workflow, they wanted more control over it:</p>
                             <p className="pull-quote">“I wish I could change the content in this section.”</p>
                             <p className="pull-quote">“I wish I could change the choice of graph.”</p>
-                            <p>Users did not want static AI output. They wanted to edit, challenge, and reshape it around their client context.</p>
                             <img loading="lazy" decoding="async" src={Pic7} alt="xx" style={{ width: "100%", display: "block"}} />
                         
                         </div>
