@@ -26,7 +26,7 @@ import AIPlatformBackground from "../../assets/images/home/Project card/AIPlatfo
 import DesignSystemProduct from "../../assets/images/home/Project card/DS_product.png";
 import DesignSystemBackground from "../../assets/images/home/Project card/DS_background.webp";
 
-const projects = [
+export const projects = [
   {
     id: "NYTango",
     href: "/event-discovery-cms",
@@ -87,7 +87,7 @@ const projects = [
   },
 ];
 
-function AllProjectCard({ project, index }) {
+export function AllProjectCard({ project, index }) {
   const content = (
     <>
       <div className="all-projects-card-index" aria-hidden="true">

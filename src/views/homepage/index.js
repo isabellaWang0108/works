@@ -7,6 +7,7 @@ import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
 import ProjectTriggerIconButton from "../../components/ProjectTriggerIconButton"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, EVENT_DISCOVERY_CMS_TAGS, KIOSK_TAGS, PLATFORMS_INTEGRATION_TAGS, VOICE_TAGS } from "../../components/projectTags"
 import PROJECT_SUMMARIES from "../../data/projectSummaries"
+import { AllProjectCard, projects as allProjects } from "../projects"
 
 import KioskProduct from "../../assets/images/home/kiosk.png"
 import PlatformsIntegrationProduct from "../../assets/images/home/Janus.svg"
@@ -452,24 +453,6 @@ class Homepage extends React.Component {
                                         </div>
                                     </section>
                                 )}
-                                {!this.state.isChatExpanded && (
-                                    <div className="landing-mobile-selected" aria-label="Work impact shortcuts">
-                                        {heroTriggerOrder.map((projectId) => {
-                                            const project = heroRecommendations[projectId];
-
-                                            return (
-                                                <button
-                                                    key={projectId}
-                                                    type="button"
-                                                    onClick={() => this.openProject(project.link, project.isExternal)}
-                                                >
-                                                    <strong>{project.triggerMetric} {project.triggerMetricLabel}</strong>
-                                                    <span>{project.triggerSubtitle}</span>
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                )}
                             </div>
                             {activeHeroProject && (
                                 <div
@@ -513,7 +496,7 @@ class Homepage extends React.Component {
                     </div>
 
 
-                    <div id="projectsPart" className="projectRow" tabIndex="-1" aria-label="Selected projects">
+                    <div id="projectsPart" className="projectRow homepage-featured-projects" tabIndex="-1" aria-label="Selected projects">
                         {/* NY Tango */}
                         <div
                             id="NYTango"
@@ -557,7 +540,7 @@ class Homepage extends React.Component {
                     </div>
 
 
-                    <div className="projectRow">
+                    <div className="projectRow homepage-secondary-projects">
                         
                         {/* Voice */}
                         <div
@@ -600,6 +583,12 @@ class Homepage extends React.Component {
                             </div>
                         </div>
                     </div>
+
+                    <section className="homepage-mobile-projects all-projects-card-grid" aria-label="Selected projects">
+                        {allProjects.map((project, index) => (
+                            <AllProjectCard key={project.id} project={project} index={index} />
+                        ))}
+                    </section>
 
                     <div className="sessionContainer extra-projects-section">
                         <div className="seeMore">
