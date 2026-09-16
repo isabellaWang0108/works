@@ -396,7 +396,7 @@ class Homepage extends React.Component {
                             </div>
                             <div className={`landingpage_Intro${this.state.isChatExpanded ? " is-searching" : ""}`}>
                                 <h1 className={`landing-title${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}${this.state.isChatExpanded ? " is-searching" : ""}`}>
-                                    <span className="landing-title-word">AI-Augemented</span>
+                                    <span className="landing-title-word">AI-Augmented</span>
                                     <span className="landing-title-word">
                                         Product{" "}<span className="landing-title-word-secondary">Designer</span>
                                     </span>
@@ -405,7 +405,7 @@ class Homepage extends React.Component {
                                     I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.
                                 </h3>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
-                                    <span className="heroTitleLine">AI-Augemented</span>
+                                    <span className="heroTitleLine">AI-Augmented</span>
                                     <span className="heroTitleLine">Product{" "}<span className="heroTitleLine-secondary">Designer</span></span>
                                     <span className="mobile-hero-outcome">I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.</span>
                                 </div>
