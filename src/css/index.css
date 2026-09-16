@@ -2004,7 +2004,7 @@ a:hover {
   flex-direction: column;
   align-items: flex-start;
   gap: clamp(1.35rem, 2.2svh, 2.2rem);
-  transform: translateY(clamp(0.25rem, 1svh, 0.8rem));
+  transform: translateY(clamp(-1rem, -1.3svh, -0.45rem));
 }
 
 .landing-title {
@@ -2014,7 +2014,7 @@ a:hover {
   font-family: var(--font-display-title);
   font-weight: 900;
   font-size: clamp(72px, 7.9vw, 144px);
-  line-height: 0.88;
+  line-height: 1;
   letter-spacing: -0.025em;
   word-spacing: 0.08em;
   font-synthesis: none;
@@ -2022,7 +2022,7 @@ a:hover {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.02em;
-  padding: 0;
+  padding: 0.08em 0 0;
   color: rgba(255, 250, 253, 0.94);
   text-shadow: 0 0 32px rgba(255, 255, 255, 0.05);
   opacity: 1;
@@ -2060,7 +2060,7 @@ a:hover {
   padding-right: 0.08em;
   font-family: var(--font-display-title);
   font-weight: 900;
-  line-height: 0.88;
+  line-height: 1;
   word-spacing: 0.08em;
   white-space: nowrap;
   overflow: visible;
@@ -2091,7 +2091,7 @@ a:hover {
   color: #ffc0e2;
   font-family: var(--font-display-title);
   font-weight: 900;
-  line-height: 0.88;
+  line-height: 1;
   text-shadow:
     0 0 20px rgba(252, 84, 170, 0.14),
     0 0 46px rgba(183, 128, 246, 0.08);
@@ -5895,9 +5895,10 @@ a:hover {
     font-family: var(--font-display-title);
     font-size: clamp(72px, 18vw, 144px);
     font-weight: 900;
-    line-height: 0.88;
+    line-height: 1;
     letter-spacing: -0.025em;
     word-spacing: 0.08em;
+    padding-top: 0.08em;
     text-align: left;
     text-shadow: 0 22px 82px rgba(0, 0, 0, 0.5);
   }
@@ -6114,7 +6115,7 @@ a:hover {
     font-family: var(--font-display-title);
     font-size: clamp(4.15rem, 11.3vw, 5.8rem);
     font-weight: 900;
-    line-height: 0.9;
+    line-height: 1;
     letter-spacing: 0;
   }
 
@@ -6122,7 +6123,7 @@ a:hover {
   .mobile-legacy-hero .heroTitleLine-secondary {
     font-family: var(--font-display-title);
     font-weight: 900;
-    line-height: 0.9;
+    line-height: 1;
     letter-spacing: 0;
   }
 
@@ -6135,7 +6136,7 @@ a:hover {
 @media only screen and (max-width: 620px) {
   .mobile-legacy-hero {
     font-size: clamp(3.95rem, 17vw, 5.2rem);
-    line-height: 0.92;
+    line-height: 1;
   }
 
   .hero-buckyball,

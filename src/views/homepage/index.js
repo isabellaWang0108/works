@@ -396,17 +396,17 @@ class Homepage extends React.Component {
                             </div>
                             <div className={`landingpage_Intro${this.state.isChatExpanded ? " is-searching" : ""}`}>
                                 <h1 className={`landing-title${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}${this.state.isChatExpanded ? " is-searching" : ""}`}>
-                                    <span className="landing-title-word">One designer</span>
+                                    <span className="landing-title-word">AI-Augemented</span>
                                     <span className="landing-title-word">
-                                        three{" "}<span className="landing-title-word-secondary">disciplines</span>
+                                        Product{" "}<span className="landing-title-word-secondary">Designer</span>
                                     </span>
                                 </h1>
                                 <h3 className={`landing-supporting-copy${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}`}>
                                     I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.
                                 </h3>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
-                                    <span className="heroTitleLine">One designer</span>
-                                    <span className="heroTitleLine">three{" "}<span className="heroTitleLine-secondary">disciplines</span></span>
+                                    <span className="heroTitleLine">AI-Augemented</span>
+                                    <span className="heroTitleLine">Product{" "}<span className="heroTitleLine-secondary">Designer</span></span>
                                     <span className="mobile-hero-outcome">I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.</span>
                                 </div>
                                 {!this.state.isChatExpanded && (

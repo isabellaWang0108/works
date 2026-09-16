@@ -28,7 +28,6 @@ const NavigationBar = () => {
                         <div className="site-logo logo bold pink">
                             Isabella Wang
                         </div>
-                        {isHomePage && <span className="site-nav-role">AI-Augmented Product Designer</span>}
                     </div>
                 </Link>
                 <div className="site-nav-actions" aria-label="Primary links">
