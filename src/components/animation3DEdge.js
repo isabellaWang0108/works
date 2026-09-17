@@ -12,7 +12,7 @@ function Animation3DEdge() {
     const colorArray = useMemo(() => {
         const array = new Float32Array(instanceCount * 3);
         const tempColor = new THREE.Color();
-        const colors = ["#e8eef7", "#91bdff", "#757474", "#2d2634", "#ff8cc4"];
+        const colors = ["#f5f7fa", "#d8dce3", "#757474", "#2d2634", "#eef1f5"];
         for (let i = 0; i < instanceCount; i++) {
             tempColor.set(colors[Math.floor(Math.random() * colors.length)]);
             tempColor.toArray(array, i * 3);

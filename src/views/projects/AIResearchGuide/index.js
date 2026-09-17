@@ -4,9 +4,11 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { AI_RESEARCH_GUIDE_TAGS } from "../../../components/projectTags"
+import HERO_PROJECT_DETAILS from "../../../data/heroProjectDetails"
 import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
+import NumberedInfoCard from "../../../components/numberedInfoCard"
 
 import AIPlatformProduct from "../../../assets/images/home/Project card/AIPlatform_product.png"
 import Pic2 from "../../../assets/images/LeverGuide/img_1.svg"
@@ -33,7 +35,7 @@ class AIResearchGuide extends React.Component {
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
-            .css("background", "rgba(255, 140, 196, 0.12)")
+            .css("background", "rgba(252, 34, 147, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
@@ -121,6 +123,7 @@ class AIResearchGuide extends React.Component {
                             team="1 PM, 2 Engineer, 1 Design"
                             role="Design lead"
                             summary={PROJECT_SUMMARIES.AIResearchGuide.summary}
+                            ownership={HERO_PROJECT_DETAILS.AIResearchGuide.ownership}
                             image={AIPlatformProduct}
                             imageAlt="AI knowledge platform interface"
                         />
@@ -140,22 +143,16 @@ class AIResearchGuide extends React.Component {
                         <div className="content-block fade-in" id="section1">
                             <h2>Pain points</h2>
                             <p>Consultants needed to ramp up on unfamiliar domains quickly, but useful knowledge was scattered across old decks, playbooks, and individual experts.</p>
-                            <div className="discovery-infographic" aria-label="Early discovery pain points">
-                                <div className="discovery-pain-card">
-                                    <span className="discovery-pain-index">01</span>
-                                    <h3>Slow data gathering</h3>
-                                    <p>Teams rebuilt context from scratch.</p>
-                                </div>
-                                <div className="discovery-pain-card">
-                                    <span className="discovery-pain-index">02</span>
-                                    <h3>Uneven research quality</h3>
-                                    <p>Quality depended on finding the right expert or document.</p>
-                                </div>
-                                <div className="discovery-pain-card">
-                                    <span className="discovery-pain-index">03</span>
-                                    <h3>Hard to scale</h3>
-                                    <p>Knowledge was not packaged for repeat use.</p>
-                                </div>
+                            <div className="numbered-info-card-grid" aria-label="Early discovery pain points">
+                                <NumberedInfoCard index="01" title="Slow data gathering">
+                                    Teams rebuilt context from scratch.
+                                </NumberedInfoCard>
+                                <NumberedInfoCard index="02" title="Uneven research quality">
+                                    Quality depended on finding the right expert or document.
+                                </NumberedInfoCard>
+                                <NumberedInfoCard index="03" title="Hard to scale">
+                                    Knowledge was not packaged for repeat use.
+                                </NumberedInfoCard>
                             </div>
                         </div>
 
@@ -184,8 +181,8 @@ class AIResearchGuide extends React.Component {
                             <div className="impact-metric-list">
                                 <ul>
                                     <li><strong>Research time decreased by 60%</strong> with source-backed resources surfaced upfront.</li>
-                                    <li>Junior practitioners could start discovery without relying on expert outreach.</li>
-                                    <li>Institutional knowledge became easier to access, reuse, and scale.</li>
+                                    <li><strong>Junior practitioners could start discovery</strong> without relying on expert outreach.</li>
+                                    <li><strong>Institutional knowledge became easier to access</strong>, reuse, and scale.</li>
                                 </ul>
                             </div>
                         </div>

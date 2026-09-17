@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { DESIGN_SYSTEM_TAGS } from "../../../components/projectTags"
+import HERO_PROJECT_DETAILS from "../../../data/heroProjectDetails"
 import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import DesignSystemProduct from "../../../assets/images/home/Project card/DS_product.png"
@@ -48,7 +49,7 @@ class DS extends React.Component {
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
-            .css("background", "rgba(255, 140, 196, 0.12)")
+            .css("background", "rgba(252, 34, 147, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
@@ -137,7 +138,8 @@ class DS extends React.Component {
                             duration="1 year"
                             team="2 engineers, 2 designers"
                             role="Designer"
-                            summary={<>{PROJECT_SUMMARIES.DesignSystem.summary} <a href="https://terra.vts.com/">View the system site.</a></>}
+                            summary={PROJECT_SUMMARIES.DesignSystem.summary}
+                            ownership={HERO_PROJECT_DETAILS.DesignSystem.ownership}
                             image={DesignSystemProduct}
                             imageAlt="Design system product interface"
                         />
@@ -250,9 +252,9 @@ class DS extends React.Component {
                             </div>
                             <div className="bullet-callout" style={{ marginTop: '24px' }}>
                                 <ul>
-                                    <li>Reduced cross-product inconsistency by centralizing typography and style patterns.</li>
-                                    <li>Enabled 50+ designers and engineers to adopt shared guidelines through documentation and libraries.</li>
-                                    <li>Shifted the effort from a one-off redesign into an operating design system embedded in delivery.</li>
+                                    <li><strong>Reduced cross-product inconsistency</strong> by centralizing typography and style patterns.</li>
+                                    <li><strong>Enabled 50+ designers and engineers</strong> to adopt shared guidelines through documentation and libraries.</li>
+                                    <li><strong>Shifted the effort from a one-off redesign</strong> into an operating design system embedded in delivery.</li>
                                 </ul>
                             </div>
                         </div>

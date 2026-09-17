@@ -4,9 +4,7 @@ const BASE_WIDTH = 1440;
 const BASE_HEIGHT = 900;
 const CENTER_RECT_RATIO = 400 / BASE_WIDTH;
 const MAIN_STROKE = "#3E454C";
-const INNER_STROKE = "#171C20";
 const LINE_WIDTH = 1;
-const RECTANGLE_COUNT = 4;
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
@@ -70,28 +68,10 @@ const getResponsiveWireframe = (width, height) => {
     addPoint(rect.x + rect.width, rect.y + rect.height * step);
   });
 
-  const maxRectScale = Math.min(width / rect.width, height / rect.height) * 0.76;
-  const rectangleScales = Array.from({ length: RECTANGLE_COUNT }, (_, index) => {
-    const progress = index / (RECTANGLE_COUNT - 1);
-    return 1 + (maxRectScale - 1) * Math.pow(progress, 1.15);
-  });
-
-  const rectangles = rectangleScales.map((scale, index) => ({
-    x: center.x - (rect.width * scale) / 2,
-    y: center.y - (rect.height * scale) / 2,
-    width: rect.width * scale,
-    height: rect.height * scale,
-    stroke: index === 0 ? INNER_STROKE : MAIN_STROKE,
-  }));
-
   return {
     center,
     rect,
     lines: points.map((point) => createLineThroughPoint(center, point, width, height)),
-    rectangles: [
-      { x: 0, y: 0, width, height, stroke: MAIN_STROKE },
-      ...rectangles.reverse(),
-    ],
   };
 };
 
@@ -183,18 +163,6 @@ const WireframeBackground = () => {
             />
           ))}
         </g>
-        {wireframe.rectangles.map((rect, index) => (
-          <rect
-            key={`rect-${index}`}
-            x={rect.x}
-            y={rect.y}
-            width={rect.width}
-            height={rect.height}
-            stroke={rect.stroke}
-            strokeWidth={LINE_WIDTH}
-            vectorEffect="non-scaling-stroke"
-          />
-        ))}
       </g>
     </svg>
   );

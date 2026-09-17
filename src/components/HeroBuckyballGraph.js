@@ -15,8 +15,8 @@ const SPARK_POINTS = [
 ];
 
 let dotTexture = null;
-const getStarColor = (index) => (index % 3 === 0 ? "#ff4fad" : index % 3 === 1 ? "#ff9bd1" : "#c277ff");
-const getGlintColor = (index) => (index % 2 === 0 ? "#ffd2e8" : "#ff5db6");
+const getStarColor = (index) => (index % 3 === 0 ? "#f4f6f8" : index % 3 === 1 ? "#d8dce3" : "#eef1f5");
+const getGlintColor = (index) => (index % 2 === 0 ? "#f4f8ff" : "#d8dce3");
 
 function makeSoftDotTexture() {
   if (dotTexture) {
@@ -108,8 +108,8 @@ function createBuckyballTopology() {
 }
 
 const CONNECTION_WHITE_COLOR = "#FFF7FB";
-const CONNECTION_PINK_COLOR = "#FF63BA";
-const CONNECTION_HOT_PINK_COLOR = "#FF2F9E";
+const CONNECTION_ACCENT_COLOR = "#d8dce3";
+const CONNECTION_SIGNAL_COLOR = "#d8dce3";
 const CONNECTION_DOT_SPACING = 0.086;
 const CONNECTION_FRONT_DOT_SIZE = 0.048;
 const NODE_DOT_SIZE = 0.028;
@@ -127,8 +127,8 @@ const getBuckyballGradientMix = (position) => (
   THREE.MathUtils.clamp(((position.x + 1.62) / 3.24) * 0.74 + ((position.y + 1.62) / 3.24) * 0.26, 0, 1)
 );
 
-const setBuckyballGradientColor = (targetColor, white, pink, position) => {
-  targetColor.copy(white).lerp(pink, getBuckyballGradientMix(position));
+const setBuckyballGradientColor = (targetColor, white, accent, position) => {
+  targetColor.copy(white).lerp(accent, getBuckyballGradientMix(position));
   return targetColor;
 };
 
@@ -136,8 +136,8 @@ function ConnectionCloud({ points, edges }) {
   const pointTexture = useMemo(() => makeSoftDotTexture(), []);
   const { positions, colors } = useMemo(() => {
     const white = new THREE.Color(CONNECTION_WHITE_COLOR);
-    const pink = new THREE.Color(CONNECTION_PINK_COLOR);
-    const hotPink = new THREE.Color(CONNECTION_HOT_PINK_COLOR);
+    const accent = new THREE.Color(CONNECTION_ACCENT_COLOR);
+    const signal = new THREE.Color(CONNECTION_SIGNAL_COLOR);
     const color = new THREE.Color();
     const dotPositions = [];
     const dotColors = [];
@@ -151,12 +151,12 @@ function ConnectionCloud({ points, edges }) {
       for (let index = 0; index < dotCount; index += 1) {
         const t = (index + 1) / (dotCount + 1);
         const position = start.clone().lerp(end, t);
-        setBuckyballGradientColor(color, white, pink, position);
+        setBuckyballGradientColor(color, white, accent, position);
 
         if (variant === "signal") {
-          color.lerp(hotPink, 0.34);
+          color.lerp(signal, 0.34);
         } else if (variant === "cross") {
-          color.lerp(pink, 0.2);
+          color.lerp(accent, 0.2);
         } else if (variant === "outer") {
           color.lerp(white, 0.16);
         }
@@ -198,12 +198,12 @@ function NodeBallField({ points }) {
   const pointTexture = useMemo(() => makeSoftDotTexture(), []);
   const colors = useMemo(() => {
     const white = new THREE.Color(CONNECTION_WHITE_COLOR);
-    const pink = new THREE.Color(CONNECTION_PINK_COLOR);
+    const accent = new THREE.Color(CONNECTION_ACCENT_COLOR);
     const color = new THREE.Color();
     const nodeColors = [];
 
     points.forEach((position) => {
-      setBuckyballGradientColor(color, white, pink, position);
+      setBuckyballGradientColor(color, white, accent, position);
       nodeColors.push(color.r, color.g, color.b);
     });
 
@@ -363,7 +363,7 @@ function DataPulses({ points, edges }) {
         pathOffset={11}
       />
       <PulseLayer
-        color="#ff63ba"
+        color="#d8dce3"
         count={PULSE_COUNT}
         edgePaths={returnEdgePaths}
         coreArgs={[0.0068, 0.002, 1, 8]}

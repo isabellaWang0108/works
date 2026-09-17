@@ -29,7 +29,7 @@ class InpageContactMe extends Component {
                     {showOtherProjects ? (
                         <Link
                             to="/projects"
-                            className="contact-primary-action"
+                            className="site-nav-link bold pink"
                             aria-label="View all projects"
                         >
                             <span>{finalButtonLabel}</span>
@@ -40,6 +40,7 @@ class InpageContactMe extends Component {
                             aria-label="Resume"
                             target="_blank"
                             rel="noopener noreferrer"
+                            className="site-nav-link bold pink"
                         >
                             <span>{finalButtonLabel}</span>
                         </a>

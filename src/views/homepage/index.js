@@ -4,8 +4,9 @@ import NavigationBar from "../../components/navigation"
 import InpageContactMe from "../../components/inpage_contactme"
 import WireframeBackground from "../../components/WireframeBackground"
 import HeroBuckyballGraph from "../../components/HeroBuckyballGraph"
-import ProjectTriggerIconButton from "../../components/ProjectTriggerIconButton"
+import WorkImpactTrigger from "../../components/WorkImpactTrigger"
 import ProjectTags, { AI_RESEARCH_GUIDE_TAGS, DESIGN_SYSTEM_TAGS, EVENT_DISCOVERY_CMS_TAGS, KIOSK_TAGS, PLATFORMS_INTEGRATION_TAGS, VOICE_TAGS } from "../../components/projectTags"
+import HERO_PROJECT_DETAILS from "../../data/heroProjectDetails"
 import PROJECT_SUMMARIES from "../../data/projectSummaries"
 import { AllProjectCard, projects as allProjects } from "../projects"
 
@@ -35,11 +36,13 @@ const aboutCardSpacing = {
 
 const heroRecommendations = {
     NYTango: {
-        title: PROJECT_SUMMARIES.NYTango.title,
-        description: PROJECT_SUMMARIES.NYTango.summary,
+        title: HERO_PROJECT_DETAILS.NYTango.title,
+        description: HERO_PROJECT_DETAILS.NYTango.description,
+        outcome: HERO_PROJECT_DETAILS.NYTango.outcome,
         triggerMetric: "Solo",
         triggerMetricLabel: "0→ 1 product launch",
         triggerSubtitle: "Event discovery + CMS",
+        role: HERO_PROJECT_DETAILS.NYTango.ownership,
         tags: EVENT_DISCOVERY_CMS_TAGS,
         product: NYTangoProduct,
         background: NYTangoBackground,
@@ -48,10 +51,12 @@ const heroRecommendations = {
     },
     PlatformsIntegration: {
         title: PROJECT_SUMMARIES.PlatformsIntegration.title,
-        description: PROJECT_SUMMARIES.PlatformsIntegration.summary,
+        description: HERO_PROJECT_DETAILS.PlatformsIntegration.description,
+        outcome: HERO_PROJECT_DETAILS.PlatformsIntegration.outcome,
         triggerMetric: "AI",
         triggerMetricLabel: "workflow system",
         triggerSubtitle: "Enterprise platform strategy",
+        role: HERO_PROJECT_DETAILS.PlatformsIntegration.ownership,
         tags: PLATFORMS_INTEGRATION_TAGS,
         product: PlatformsIntegrationProduct,
         alt: "AI-assisted consulting workspace concept",
@@ -59,21 +64,25 @@ const heroRecommendations = {
     },
     Kiosk: {
         title: PROJECT_SUMMARIES.Kiosk.title,
-        description: PROJECT_SUMMARIES.Kiosk.summary,
+        description: HERO_PROJECT_DETAILS.Kiosk.description,
+        outcome: HERO_PROJECT_DETAILS.Kiosk.outcome,
         triggerMetric: "Self",
         triggerMetricLabel: "service check-in",
         triggerSubtitle: "Visitor kiosk + iPad UX",
+        role: HERO_PROJECT_DETAILS.Kiosk.ownership,
         tags: KIOSK_TAGS,
         product: KioskProduct,
         alt: "office visitor kiosk check-in interface",
         link: "kiosk"
     },
     AIResearchGuide: {
-        title: PROJECT_SUMMARIES.AIResearchGuide.title,
-        description: PROJECT_SUMMARIES.AIResearchGuide.summary,
+        title: HERO_PROJECT_DETAILS.AIResearchGuide.title,
+        description: HERO_PROJECT_DETAILS.AIResearchGuide.description,
+        outcome: HERO_PROJECT_DETAILS.AIResearchGuide.outcome,
         triggerMetric: "Hrs → Mins",
-        triggerMetricLabel: "Research workflow",
+        triggerMetricLabel: "Research time saved",
         triggerSubtitle: "AI Product",
+        role: HERO_PROJECT_DETAILS.AIResearchGuide.ownership,
         tags: AI_RESEARCH_GUIDE_TAGS,
         product: AIPlatformProduct,
         background: AIPlatformBackground,
@@ -81,11 +90,13 @@ const heroRecommendations = {
         link: "ai-research-guide"
     },
     Voice: {
-        title: PROJECT_SUMMARIES.Voice.title,
-        description: PROJECT_SUMMARIES.Voice.summary,
+        title: HERO_PROJECT_DETAILS.Voice.title,
+        description: HERO_PROJECT_DETAILS.Voice.description,
+        outcome: HERO_PROJECT_DETAILS.Voice.outcome,
         triggerMetric: "2x",
         triggerMetricLabel: "Less activation effort",
         triggerSubtitle: "0 → 1 NFT marketplace",
+        role: HERO_PROJECT_DETAILS.Voice.ownership,
         tags: VOICE_TAGS,
         product: VoiceProduct,
         background: VoiceBackground,
@@ -93,11 +104,13 @@ const heroRecommendations = {
         link: "voice"
     },
     "Design-system": {
-        title: PROJECT_SUMMARIES.DesignSystem.title,
-        description: PROJECT_SUMMARIES.DesignSystem.summary,
+        title: HERO_PROJECT_DETAILS.DesignSystem.title,
+        description: HERO_PROJECT_DETAILS.DesignSystem.description,
+        outcome: HERO_PROJECT_DETAILS.DesignSystem.outcome,
         triggerMetric: "90%",
         triggerMetricLabel: "less spec-writing",
         triggerSubtitle: "Design system across 4 products",
+        role: HERO_PROJECT_DETAILS.DesignSystem.ownership,
         tags: DESIGN_SYSTEM_TAGS,
         product: DesignSystemProduct,
         background: DesignSystemBackground,
@@ -234,7 +247,7 @@ class Homepage extends React.Component {
         }
 
         const selectedWork = this.landingRef.current?.querySelector(".landing-selected-work");
-        const feedbackCard = this.landingRef.current?.querySelector(".hero-recommendation-card");
+        const feedbackCard = this.landingRef.current?.querySelector(".hero-recommendation-card, .hero-recommendation-preview");
 
         if (selectedWork?.contains(target) || feedbackCard?.contains(target)) {
             return;
@@ -425,29 +438,15 @@ class Homepage extends React.Component {
                                                 const isActive = this.state.heroRecommendationId === projectId;
 
                                                 return (
-                                                    <div
+                                                    <WorkImpactTrigger
                                                         key={projectId}
-                                                        className={`case-study-trigger-item case-study-trigger-item-${index}${isActive ? " is-active" : ""}`}
-                                                    >
-                                                        <div
-                                                            className={`case-study-trigger${isActive ? " is-active" : ""}`}
-                                                        >
-                                                            <span className="case-study-trigger-copy">
-                                                                <span className="case-study-trigger-heading">
-                                                                    <strong>{project.triggerMetric}</strong>
-                                                                    <span>{project.triggerMetricLabel}</span>
-                                                                </span>
-                                                                <span className="case-study-trigger-subtitle">{project.triggerSubtitle}</span>
-                                                            </span>
-                                                            <ProjectTriggerIconButton
-                                                                ariaDescribedBy={`${projectId}-preview`}
-                                                                ariaLabel={`Open ${project.title} case study`}
-                                                                onClick={() => this.openProject(project.link, project.isExternal)}
-                                                                onFocus={() => this.handleRecommendation(projectId, true)}
-                                                                onMouseEnter={() => this.handleRecommendation(projectId, true)}
-                                                            />
-                                                        </div>
-                                                    </div>
+                                                        index={index}
+                                                        isActive={isActive}
+                                                        onOpen={() => this.openProject(project.link, project.isExternal)}
+                                                        onPreview={() => this.handleRecommendation(projectId, true)}
+                                                        previewId={`${projectId}-preview`}
+                                                        project={project}
+                                                    />
                                                 );
                                             })}
                                         </div>
@@ -457,25 +456,25 @@ class Homepage extends React.Component {
                             {activeHeroProject && (
                                 <div
                                     id={`${this.state.heroRecommendationId}-preview`}
-                                    className="hero-recommendation-card trigger-preview-card"
-                                    role="link"
-                                    tabIndex="0"
-                                    onClick={() => this.openProject(activeHeroProjectLink, activeHeroProjectIsExternal)}
-                                    onKeyDown={(event) => this.handleCardKeyDown(
-                                        event,
-                                        activeHeroProjectLink,
-                                        activeHeroProjectIsExternal
-                                    )}
-                                    aria-label={`Open ${activeHeroProject.title} case study`}
+                                    className="hero-recommendation-preview trigger-preview-card"
                                 >
                                     {activeHeroProject.background && (
                                         <img loading="lazy" src={activeHeroProject.background} alt="" className="hero-recommendation-backdrop" aria-hidden="true" />
                                     )}
                                     <LazyProductImage src={activeHeroProject.product} alt={activeHeroProject.alt} className="hero-recommendation-img" />
                                     <div className="hero-recommendation-content">
-                                        <ProjectTags tags={activeHeroProject.tags} />
+                                        <ProjectTags tags={activeHeroProject.tags} accent />
                                         <h2>{activeHeroProject.title}</h2>
-                                        <p>{activeHeroProject.description}</p>
+                                        <div className="hero-recommendation-meta">
+                                            <p className="hero-recommendation-meta-row">
+                                                <span className="hero-recommendation-meta-label">Outcome</span>
+                                                <span>{activeHeroProject.outcome}</span>
+                                            </p>
+                                            <p className="hero-recommendation-meta-row">
+                                                <span className="hero-recommendation-meta-label">Ownership</span>
+                                                <span>{activeHeroProject.role}</span>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             )}

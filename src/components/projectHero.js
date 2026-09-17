@@ -29,12 +29,15 @@ function ProjectHero({
   role,
   team,
   summary,
+  outcome,
+  ownership,
   stats,
   image,
   imageAlt,
   className = "",
 }) {
   const resolvedStats = stats || buildContextStats({ duration, role, team });
+  const subtitleContent = [summary, outcome].filter(Boolean).join(" ");
   const titleContent = titleLines?.length
     ? titleLines.map((line) => (
       <span className="project-hero-title-line" key={line}>{line}</span>
@@ -46,7 +49,15 @@ function ProjectHero({
       <div className="project-hero-heading">
         <ProjectTags tags={tags} />
         <h1 id="title" className="fade-in">{titleContent}</h1>
-        {summary && <div className="project-hero-subtitle fade-in">{summary}</div>}
+        {subtitleContent && <div className="project-hero-subtitle fade-in">{subtitleContent}</div>}
+        {ownership && (
+          <div className="project-hero-meta fade-in">
+            <p className="project-hero-meta-row">
+              <span className="project-hero-meta-label">Ownership</span>
+              <span>{ownership}</span>
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="inpage_hero_container fade-in">
@@ -54,7 +65,7 @@ function ProjectHero({
           {(duration || role || team) && (
             <ProjectContext duration={duration} team={team} role={role} />
           )}
-          {summary && <div className="project-hero-mobile-summary">{summary}</div>}
+          {subtitleContent && <div className="project-hero-mobile-summary">{subtitleContent}</div>}
         </div>
 
         <div className="inpage_hero_box">

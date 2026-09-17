@@ -17,7 +17,7 @@ class Paragraph extends React.Component {
         }
         return (
             <div style={{ marginBottom: 84 }} className={this.props.val}>
-                <h1 style={{ fontFamily: 'SuisseIntl-Regular' }} className="pink" value={this.props.val}>{this.props.title}</h1>
+                <h1 style={{ fontFamily: 'SuisseIntl-Regular' }} className="noninteractive-accent" value={this.props.val}>{this.props.title}</h1>
                 {this.props.children}
                 {this.props.noImg ?
                     null :

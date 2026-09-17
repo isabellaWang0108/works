@@ -4,10 +4,11 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { PLATFORMS_INTEGRATION_TAGS } from "../../../components/projectTags"
+import HERO_PROJECT_DETAILS from "../../../data/heroProjectDetails"
 import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
-import StrategyCard from "../../../components/strategyCard"
+import NumberedInfoCard from "../../../components/numberedInfoCard"
 import WorkflowScreen from "../../../components/workflowScreen"
 
 import Pic1 from "../../../assets/images/home/Janus.svg"
@@ -87,7 +88,7 @@ class PlatformsIntegration extends React.Component {
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
-            .css("background", "rgba(255, 140, 196, 0.12)")
+            .css("background", "rgba(252, 34, 147, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
@@ -172,6 +173,7 @@ class PlatformsIntegration extends React.Component {
                             title={PROJECT_SUMMARIES.PlatformsIntegration.title}
                             tags={PLATFORMS_INTEGRATION_TAGS}
                             summary={PROJECT_SUMMARIES.PlatformsIntegration.summary}
+                            ownership={HERO_PROJECT_DETAILS.PlatformsIntegration.ownership}
                             image={Pic1}
                             imageAlt="AI-assisted consulting workspace"
                             stats={[
@@ -200,16 +202,16 @@ class PlatformsIntegration extends React.Component {
                             <img loading="lazy" decoding="async" src={Pic2} alt="Core workflow" style={{ width: "100%", display: "block"}} />
                             <h3 style={{ marginTop: 40 }}>Platform opportunity</h3>
                             <p>The goal was simple: keep consultants focused on assessment outcomes instead of reconstructing context across systems.</p>
-                            <div className="strategy-card-grid">
-                                <StrategyCard index="01" title="Connected workspace">
+                            <div className="numbered-info-card-grid">
+                                <NumberedInfoCard index="01" title="Connected workspace">
                                     Bring fragmented tools into one shared workflow layer per engagement.
-                                </StrategyCard>
-                                <StrategyCard index="02" title="Preserve context">
+                                </NumberedInfoCard>
+                                <NumberedInfoCard index="02" title="Preserve context">
                                     Carry context across assessment stages and handoffs.
-                                </StrategyCard>
-                                <StrategyCard index="03" title="Embed AI assistance">
+                                </NumberedInfoCard>
+                                <NumberedInfoCard index="03" title="Embed AI assistance">
                                     Place guidance directly inside the operational workflow.
-                                </StrategyCard>
+                                </NumberedInfoCard>
                             </div>
                            </div>
 
@@ -240,16 +242,16 @@ class PlatformsIntegration extends React.Component {
                          
                          <h3 style={{ marginTop: 40 }}>Core interaction strategy</h3>
                          <p>The most important design decision was defining what the AI layer should do. We framed Janice around three interaction modes:</p>
-                            <div className="strategy-card-grid">
-                                <StrategyCard index="01" title="Chat with data">
+                            <div className="numbered-info-card-grid">
+                                <NumberedInfoCard index="01" title="Chat with data">
                                     Users ask questions and get answers grounded in canonical engagement data.
-                                </StrategyCard>
-                                <StrategyCard index="02" title="Actions that manipulate data">
+                                </NumberedInfoCard>
+                                <NumberedInfoCard index="02" title="Actions that manipulate data">
                                     Users request workflow actions, such as "create an assessment area for finance, FP&A, and AP."
-                                </StrategyCard>
-                                <StrategyCard index="03" title="Suggestions">
+                                </NumberedInfoCard>
+                                <NumberedInfoCard index="03" title="Suggestions">
                                     Janice surfaces suggested prompts in the right content area at the right moment.
-                                </StrategyCard>
+                                </NumberedInfoCard>
                             </div>
                              <p>For visual or workflow-heavy actions, Janice routed users to the relevant page instead of forcing every task into chat.</p>
                             <img loading="lazy" decoding="async" src={Pic6} alt="Core workflow" style={{ width: "100%", display: "block"}} />

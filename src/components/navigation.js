@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Linkedin from "../assets/images/contact/linkedin.svg"
-import Email from "../assets/images/contact/email.svg"
 
 const RESUME_URL = "https://drive.google.com/file/d/1scc8XYAKv6EB3kbu5vvYko-CKHW35W3-/view?usp=sharing";
 
@@ -45,14 +43,14 @@ const NavigationBar = () => {
                         className="site-nav-icon-link site-nav-linkedin-link"
                         aria-label="LinkedIn"
                     >
-                        <img src={Linkedin} alt="" aria-hidden="true" />
+                        <span className="site-nav-linkedin-mark" aria-hidden="true">in</span>
                     </a>
                     <a
                         href="mailto:wangxbella0108@gmail.com"
                         className="site-nav-icon-link site-nav-email-link"
                         aria-label="Email Isabella Wang"
                     >
-                        <img src={Email} alt="" aria-hidden="true" />
+                        <span className="material-symbols-outlined" aria-hidden="true">mail</span>
                     </a>
                     <a
                         href={RESUME_URL}

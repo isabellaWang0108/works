@@ -4,6 +4,7 @@ import NavigationBar from "../../../components/navigation"
 import Back2Top from "../../../components/back2top"
 import ProjectHero from "../../../components/projectHero"
 import { EVENT_DISCOVERY_CMS_TAGS } from "../../../components/projectTags"
+import HERO_PROJECT_DETAILS from "../../../data/heroProjectDetails"
 import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
@@ -31,7 +32,7 @@ class EventDiscoveryCMS extends React.Component {
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
-            .css("background", "rgba(255, 140, 196, 0.12)")
+            .css("background", "rgba(252, 34, 147, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
@@ -120,6 +121,7 @@ class EventDiscoveryCMS extends React.Component {
                             team="1 AI-augmented designer"
                             role="Product design, Full-stack dev"
                             summary={PROJECT_SUMMARIES.NYTango.summary}
+                            ownership={HERO_PROJECT_DETAILS.NYTango.ownership}
                             image={NYTangoProduct}
                             imageAlt="NY Tango event discovery and management interface"
                             stats={[
