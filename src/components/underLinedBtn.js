@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import NewPage from "../assets/icons/newPage.svg"
 
 class underLinedBtn extends React.Component {
 
@@ -12,9 +11,7 @@ class underLinedBtn extends React.Component {
                         className={`portfolio-button ${this.props.className || ""}`}
                         onClick={(e) => e.stopPropagation()} // Prevent bubbling issues
                     >
-                        {this.props.label}<span className="portfolio-button-icon">
-                            <img src={NewPage} alt="new page" />
-                        </span>
+                        {this.props.label}
                     </button>
                 </NavLink>
             ) : (
@@ -25,9 +22,7 @@ class underLinedBtn extends React.Component {
                         window.open(this.props.link, "_blank");
                     }}
                 >
-                    {this.props.label}<span className="portfolio-button-icon">
-                        <img src={NewPage} alt="new page" />
-                    </span>
+                    {this.props.label}
                 </button>
             )
         );

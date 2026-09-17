@@ -21,6 +21,7 @@ import Pain1 from "../../../assets/images/Voice/pain_1.svg"
 import Pain2 from "../../../assets/images/Voice/pain_2.svg"
 import Pain3 from "../../../assets/images/Voice/pain_3.svg"
 import InpageContactMe from "../../../components/inpage_contactme"
+import RelatedProjects from "../../../components/relatedProjects"
 
 class Voice extends React.Component {
     activeSection = null;
@@ -38,7 +39,7 @@ class Voice extends React.Component {
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
-            .css("background", "rgba(252, 34, 147, 0.12)")
+            .css("background", "rgba(255, 86, 185, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
@@ -115,11 +116,8 @@ class Voice extends React.Component {
                     projects
                 />
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
-                <div >
-
-                    {/*contect itself ==============================================================================================                  */}
-                    <ContentLayout>
-                        <ProjectHero
+<div className="project-parallax-hero-layer">
+                            <ProjectHero
                             title={PROJECT_SUMMARIES.Voice.title}
                             tags={VOICE_TAGS}
                             duration="3 months"
@@ -130,22 +128,10 @@ class Voice extends React.Component {
                             image={VoiceProduct}
                             imageAlt="Voice NFT creator tool interface"
                         />
-
-
-                        {/* menu bar ==============================================================================================  */}
-                        <div className="animated slideInDown content-block left-nav">
-                            {/* menu */}
-                            <ul>
-                                <p className="left_nav_title">Content</p>
-                                {this.content.map((item, index) => {
-                                    return (
-                                        <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                            <button className="inpage_menu_item">{item.title}</button>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
                         </div>
+                <div>
+                    <ContentLayout>
+                        <div className="project-parallax-content">
 
                         <div className="content-block fade-in" id="section1">
                             <h2>Pain points</h2>
@@ -206,8 +192,13 @@ class Voice extends React.Component {
                         </div>
 
 
-                        <div className="content-block" >
+                        <div className="content-block">
                             <InpageContactMe />
+                        </div>
+
+                        <div className="content-block related-projects-content-block">
+                            <RelatedProjects currentProjectId="Voice" />
+                        </div>
                         </div>
 
                     </ContentLayout>

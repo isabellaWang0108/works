@@ -28,6 +28,7 @@ import Impact3 from "../../../assets/images/DesignSystem/impact_3.svg"
 import Impact4 from "../../../assets/images/DesignSystem/impact_4.svg"
 
 import InpageContactMe from "../../../components/inpage_contactme"
+import RelatedProjects from "../../../components/relatedProjects"
 
 
 class DS extends React.Component {
@@ -49,7 +50,7 @@ class DS extends React.Component {
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
-            .css("background", "rgba(252, 34, 147, 0.12)")
+            .css("background", "rgba(255, 86, 185, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
@@ -127,12 +128,9 @@ class DS extends React.Component {
                     projects
                 />
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
-                <div >
+<div className="project-parallax-hero-layer">
 
-                    {/*contect itself ==============================================================================================                  */}
-                    <ContentLayout>
-
-                        <ProjectHero
+                            <ProjectHero
                             title={PROJECT_SUMMARIES.DesignSystem.title}
                             tags={DESIGN_SYSTEM_TAGS}
                             duration="1 year"
@@ -143,21 +141,10 @@ class DS extends React.Component {
                             image={DesignSystemProduct}
                             imageAlt="Design system product interface"
                         />
-
-                        {/* menu bar ==============================================================================================  */}
-                        <div className="animated slideInDown content-block left-nav">
-                            {/* menu */}
-                            <ul>
-                                <p className="left_nav_title">Content</p>
-                                {this.content.map((item, index) => {
-                                    return (
-                                        <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                            <button className="inpage_menu_item">{item.title}</button>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
                         </div>
+                <div>
+                    <ContentLayout>
+                        <div className="project-parallax-content">
 
                         <div className="content-block fade-in" id="section1">
                             <h2>Identifying the problems</h2>
@@ -272,8 +259,13 @@ class DS extends React.Component {
                                 A system designer’s job isn’t just building the system — it’s driving adoption. </h3>
                         </div>
 
-                        <div className="content-block" >
+                        <div className="content-block">
                             <InpageContactMe />
+                        </div>
+
+                        <div className="content-block related-projects-content-block">
+                            <RelatedProjects currentProjectId="Design-system" />
+                        </div>
                         </div>
 
                     </ContentLayout>

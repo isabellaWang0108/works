@@ -25,6 +25,7 @@ import Pic16 from "../../../assets/images/Kiosk/img_16.png"
 import Pic17 from "../../../assets/images/Kiosk/img_17.png"
 import Pic18 from "../../../assets/images/Kiosk/img_18.png"
 import InpageContactMe from "../../../components/inpage_contactme"
+import RelatedProjects from "../../../components/relatedProjects"
 
 
 class Kiosk extends React.Component {
@@ -46,7 +47,7 @@ class Kiosk extends React.Component {
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
-            .css("background", "rgba(252, 34, 147, 0.12)")
+            .css("background", "rgba(255, 86, 185, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
@@ -129,11 +130,8 @@ class Kiosk extends React.Component {
                     projects
                 />
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
-                <div >
-
-                    {/*contect itself ==============================================================================================                  */}
-                    <ContentLayout>
-                        <ProjectHero
+<div className="project-parallax-hero-layer">
+                            <ProjectHero
                             title={PROJECT_SUMMARIES.Kiosk.title}
                             tags={KIOSK_TAGS}
                             duration="1 month"
@@ -144,21 +142,10 @@ class Kiosk extends React.Component {
                             image={Pic1}
                             imageAlt="Office check-in kiosk interface"
                         />
-
-                        {/* menu bar ==============================================================================================  */}
-                        <div className="animated slideInDown content-block left-nav">
-                            {/* menu */}
-                            <ul>
-                                <p className="left_nav_title">Content</p>
-                                {this.content.map((item, index) => {
-                                    return (
-                                        <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                            <button className="inpage_menu_item">{item.title}</button>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
                         </div>
+                <div>
+                    <ContentLayout>
+                        <div className="project-parallax-content">
 
                         <div className="content-block fade-in" id="section1">
                             <h2>Findings</h2>
@@ -252,10 +239,14 @@ class Kiosk extends React.Component {
                         <p>This project improves check-in efficiency, but it comes with security trade-offs. It assumes guests have no malicious intent, yet the iPad alone cannot prevent someone from bypassing the process and entering the office uninvited. A more future-forward solution would integrate the iPad with the door system—granting access only after a successful passcode scan, directly enhancing security.</p>
                         <p>This experience reinforced that successful kiosk design must balance convenience, security, and physical context, not just visual polish.</p>
 
-                        <div className="content-block" >
+                        <div className="content-block">
                             <InpageContactMe />
                         </div>
 
+                        <div className="content-block related-projects-content-block">
+                            <RelatedProjects currentProjectId="Kiosk" />
+                        </div>
+                        </div>
 
                     </ContentLayout>
 

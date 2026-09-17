@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Linkedin from "../assets/images/contact/linkedin.svg"
 import Email from "../assets/images/contact/email.svg"
 
@@ -8,8 +7,7 @@ const RESUME_URL = "https://drive.google.com/file/d/1scc8XYAKv6EB3kbu5vvYko-CKHW
 class InpageContactMe extends Component {
 
     render() {
-        const showOtherProjects = this.props.showProjectsButton !== false;
-        const finalButtonLabel = showOtherProjects ? "Other Projects" : "Resume";
+        const showResumeButton = this.props.showProjectsButton === false;
 
         return (
             <div className="inpage-contact-card">
@@ -26,15 +24,7 @@ class InpageContactMe extends Component {
                         <img src={Email} alt="" aria-hidden="true"></img>
                         <span>Email</span>
                     </a>
-                    {showOtherProjects ? (
-                        <Link
-                            to="/projects"
-                            className="site-nav-link bold pink"
-                            aria-label="View all projects"
-                        >
-                            <span>{finalButtonLabel}</span>
-                        </Link>
-                    ) : (
+                    {showResumeButton && (
                         <a
                             href={RESUME_URL}
                             aria-label="Resume"
@@ -42,7 +32,7 @@ class InpageContactMe extends Component {
                             rel="noopener noreferrer"
                             className="site-nav-link bold pink"
                         >
-                            <span>{finalButtonLabel}</span>
+                            <span>Resume</span>
                         </a>
                     )}
                 </div>

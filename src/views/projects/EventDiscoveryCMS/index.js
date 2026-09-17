@@ -8,6 +8,7 @@ import HERO_PROJECT_DETAILS from "../../../data/heroProjectDetails"
 import PROJECT_SUMMARIES from "../../../data/projectSummaries"
 import $ from 'jquery';
 import InpageContactMe from "../../../components/inpage_contactme"
+import RelatedProjects from "../../../components/relatedProjects"
 
 import NYTangoProduct from "../../../assets/images/home/Project card/NYTango_product.png"
 import ResponsiveEvent from "../../../assets/images/NYTango/responsive_event.png"
@@ -32,7 +33,7 @@ class EventDiscoveryCMS extends React.Component {
     turnPink = (theclass) => {
         $("." + theclass + " button").css("font-weight", "normal")
             .css("border", "solid 1px #BDBBBE")
-            .css("background", "rgba(252, 34, 147, 0.12)")
+            .css("background", "rgba(255, 86, 185, 0.12)")
     }
     neutral = () => {
         $("li button").css("font-weight", "normal")
@@ -111,9 +112,8 @@ class EventDiscoveryCMS extends React.Component {
             <div className="page-container project-page" onScroll={this.handleScroll}>
                 <NavigationBar />
                 <Back2Top onClick={() => $('.page-container').animate({ scrollTop: 0 }, 100)} />
-                <div>
-                    <ContentLayout>
-                        <ProjectHero
+                <div className="project-parallax-hero-layer">
+                            <ProjectHero
                             className="event-discovery-hero"
                             title={PROJECT_SUMMARIES.NYTango.title}
                             tags={EVENT_DISCOVERY_CMS_TAGS}
@@ -130,17 +130,10 @@ class EventDiscoveryCMS extends React.Component {
                                 { label: "AI-augmented designer", value: "1" },
                             ]}
                         />
-
-                        <div className="animated slideInDown content-block left-nav">
-                            <ul>
-                                <p className="left_nav_title">Content</p>
-                                {this.content.map((item, index) => (
-                                    <li key={index} onClick={() => this.menuItem(index + 1)} className={"p" + (index + 1)}>
-                                        <button className="inpage_menu_item">{item.title}</button>
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
+                <div>
+                    <ContentLayout>
+                        <div className="project-parallax-content">
 
                         <div className="content-block fade-in" id="section1">
                             <h2>Context</h2>
@@ -193,6 +186,11 @@ class EventDiscoveryCMS extends React.Component {
 
                         <div className="content-block">
                             <InpageContactMe />
+                        </div>
+
+                        <div className="content-block related-projects-content-block">
+                            <RelatedProjects currentProjectId="NYTango" />
+                        </div>
                         </div>
 
                     </ContentLayout>
