@@ -1,0 +1,87 @@
+{
+  "name": "Isabella Wang",
+  "location": "New York City",
+  "portfolio": "https://isabellawang.info/",
+  "email": "wangxbella0108@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/isabella-wang-310181149/",
+  "target_titles": [
+    "Senior Product Designer",
+    "Product Designer",
+    "UX Designer",
+    "Product Design Lead",
+    "AI Product Designer",
+    "AI UX Designer",
+    "B2B SaaS Product Designer",
+    "Enterprise Product Designer",
+    "Design Systems Designer",
+    "Founding Product Designer",
+    "0 to 1 Product Designer"
+  ],
+  "summary": "New York City Senior Product Designer with 5+ years of experience turning ambiguous product problems into shipped 0 to 1 products, AI-assisted workflows, B2B SaaS platforms, enterprise tools, marketplaces, design systems, and frontend prototypes.",
+  "hiring_preferences": [
+    "Senior Product Designer or Product Designer roles",
+    "New York City, NYC-hybrid, or remote roles",
+    "Product teams with real ownership, clear product goals, autonomy, and healthy Product/Engineering collaboration",
+    "Strongest matches: AI products, data-heavy workflows, enterprise tools, productivity tools, consumer/community products, healthcare, marketplaces, design systems, and 0 to 1 products"
+  ],
+  "skills": [
+    "Product strategy",
+    "0 to 1 product design",
+    "AI product design",
+    "AI-assisted workflows",
+    "Human-AI interaction",
+    "B2B SaaS",
+    "Enterprise UX",
+    "Design systems",
+    "Interaction design",
+    "Information architecture",
+    "User research",
+    "Usability testing",
+    "Accessibility",
+    "WCAG 2.0",
+    "Frontend prototyping",
+    "React",
+    "Next.js",
+    "Figma",
+    "AI prototyping",
+    "Marketplace UX",
+    "CMS workflows",
+    "Kiosk UX"
+  ],
+  "education": [
+    "MS Computer and Information Sciences, Cornell University",
+    "BFA Digital Design, Parsons School of Design"
+  ],
+  "case_studies": [
+    {
+      "name": "AI Research Guide",
+      "url": "https://isabellawang.info/ai-research-guide",
+      "impact": "Reduced consulting discovery from hours to minutes and reduced manual research by approximately 60%.",
+      "skills": ["AI product design", "AI UX", "Information architecture", "Enterprise workflows", "Research tools"]
+    },
+    {
+      "name": "VTS Terra Design System",
+      "url": "https://isabellawang.info/design-system",
+      "impact": "Expanded design-system coverage from 45% to 90% across 4 products, created 20+ reusable components, reduced spec-writing time by 88%, and improved shared-component WCAG 2.0 compliance to 100%.",
+      "skills": ["Design systems", "B2B SaaS", "Accessibility", "Enterprise UX", "Component governance"]
+    },
+    {
+      "name": "NY Tango Event Discovery and CMS",
+      "url": "https://isabellawang.info/event-discovery-cms",
+      "impact": "Independently designed and shipped a 0 to 1 event discovery product and CMS/admin workflow, automating recurring listings and reducing manual operations by approximately 80%.",
+      "skills": ["0 to 1 product design", "Consumer UX", "CMS workflows", "Frontend development", "AI-assisted development"]
+    },
+    {
+      "name": "Enterprise AI Workspace",
+      "url": "https://isabellawang.info/platforms-integration",
+      "impact": "Designed AI-assisted enterprise workflow concepts for cross-tool consulting operations, source-heavy research, and systems UX.",
+      "skills": ["Enterprise UX", "AI workflows", "Systems thinking", "Platform design"]
+    },
+    {
+      "name": "Voice NFT Marketplace",
+      "url": "https://isabellawang.info/voice",
+      "impact": "Designed a 0 to 1 marketplace MVP for creators, reduced the creation flow from approximately 10 to 5 steps, and reduced creator abandonment by 50%.",
+      "skills": ["Marketplace UX", "Creator tools", "Consumer product design", "Onboarding UX"]
+    }
+  ]
+}

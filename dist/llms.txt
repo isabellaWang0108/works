@@ -1,0 +1,51 @@
+# Isabella Wang
+
+> New York City Senior Product Designer with 5+ years across AI product design, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, design systems, and frontend prototyping.
+
+Portfolio: https://isabellawang.info/
+LinkedIn: https://www.linkedin.com/in/isabella-wang-310181149/
+Email: wangxbella0108@gmail.com
+Location: New York City
+Target roles: Senior Product Designer, Product Designer, AI Product Designer, Enterprise Product Designer, Design Systems Designer, Founding Product Designer.
+Location preference: New York City, NYC-hybrid, or remote.
+
+Core strengths:
+- Turns ambiguous product problems into shipped 0 to 1 products.
+- Designs AI-assisted workflows where trust, source clarity, validation, and user control matter.
+- Builds and scales design systems for consistency, accessibility, and team velocity.
+- Bridges product strategy, UX/UI, research, interaction design, and frontend prototyping.
+- Comfortable partnering directly with Product and Engineering.
+
+Key skills:
+- Product strategy
+- 0 to 1 product design
+- AI product design
+- Human-AI interaction
+- B2B SaaS
+- Enterprise UX
+- Design systems
+- Information architecture
+- User research
+- Usability testing
+- Accessibility and WCAG 2.0
+- React and Next.js prototyping
+- Figma
+
+Important case studies:
+- AI Research Guide: https://isabellawang.info/ai-research-guide
+  Designed an AI-assisted knowledge platform that reduced consulting discovery from hours to minutes and reduced manual research by approximately 60%.
+- VTS Terra Design System: https://isabellawang.info/design-system
+  Expanded design-system coverage from 45% to 90% across 4 products, created 20+ reusable components, reduced spec-writing time by 88%, and improved shared-component WCAG 2.0 compliance to 100%.
+- NY Tango Event Discovery and CMS: https://isabellawang.info/event-discovery-cms
+  Independently designed and shipped a 0 to 1 event discovery product and CMS/admin workflow, automating recurring listings and reducing manual operations by approximately 80%.
+- Enterprise AI Workspace: https://isabellawang.info/platforms-integration
+  Designed AI-assisted enterprise workflow concepts for cross-tool consulting operations, source-heavy research, and systems UX.
+- Voice NFT Marketplace: https://isabellawang.info/voice
+  Designed a 0 to 1 marketplace MVP for creators, reduced the creation flow from approximately 10 to 5 steps, and reduced creator abandonment by 50%.
+
+Education:
+- MS Computer and Information Sciences, Cornell University
+- BFA Digital Design, Parsons School of Design
+
+Machine-readable profile: https://isabellawang.info/recruiter-profile.json
+Sitemap: https://isabellawang.info/sitemap.xml

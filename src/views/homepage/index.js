@@ -417,6 +417,12 @@ class Homepage extends React.Component {
                                 <h3 className={`landing-supporting-copy${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}`}>
                                     I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.
                                 </h3>
+                                <section className="visually-hidden" aria-label="Recruiter summary">
+                                    <h2>Senior Product Designer for AI products, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, and design systems</h2>
+                                    <p>
+                                        Isabella Wang is a New York City product designer with 5+ years of experience across AI UX, human-AI interaction, B2B SaaS platforms, enterprise workflows, design systems, marketplace UX, CMS tools, kiosk experiences, product strategy, user research, interaction design, accessibility, React, Next.js, Figma, AI prototyping, and front-end implementation.
+                                    </p>
+                                </section>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
                                     <span className="heroTitleLine">AI-Augmented</span>
                                     <span className="heroTitleLine">Product{" "}<span className="heroTitleLine-secondary">Designer</span></span>

@@ -6,6 +6,7 @@ import { lazyWithMinimum } from "./utils/lazyWithMinimum";
 import { trackPageView } from "./utils/analytics";
 import { preloadRouteCriticalAssets } from "./utils/preloadAssets";
 import { isRouteLoading, subscribeToRouteLoading } from "./utils/routeLoadingState";
+import { SeoManager } from "./utils/seo";
 
 
 const Homepage = lazy(() => lazyWithMinimum(() => import("./views/homepage/index.js"), () => preloadRouteCriticalAssets("/")));
@@ -127,6 +128,7 @@ function AppRoutes() {
 
   return (
     <>
+      <SeoManager />
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Homepage />} />
