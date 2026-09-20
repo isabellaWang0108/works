@@ -1,26 +1,30 @@
 # Isabella Wang
 
-> New York City Senior Product Designer with 5+ years across AI product design, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, design systems, and frontend prototyping.
+> New York City AI-powered design engineer with 5+ years across AI product design, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, design systems, React prototyping, and front-end implementation.
 
 Portfolio: https://isabellawang.info/
 LinkedIn: https://www.linkedin.com/in/isabella-wang-310181149/
 Email: wangxbella0108@gmail.com
 Location: New York City
-Target roles: Senior Product Designer, Product Designer, AI Product Designer, Enterprise Product Designer, Design Systems Designer, Founding Product Designer.
+Target roles: AI-Powered Design Engineer, Design Engineer, Product Design Engineer, AI Design Engineer, AI UX Engineer, Frontend Design Engineer, Senior Product Designer, Product Designer, AI Product Designer, Enterprise Product Designer, Design Systems Designer, Founding Product Designer.
 Location preference: New York City, NYC-hybrid, or remote.
 
 Core strengths:
-- Turns ambiguous product problems into shipped 0 to 1 products.
-- Designs AI-assisted workflows where trust, source clarity, validation, and user control matter.
+- Turns ambiguous product problems into designed, prototyped, and shipped 0 to 1 products.
+- Designs and prototypes AI-assisted workflows where trust, source clarity, validation, and user control matter.
 - Builds and scales design systems for consistency, accessibility, and team velocity.
-- Bridges product strategy, UX/UI, research, interaction design, and frontend prototyping.
+- Bridges product strategy, UX/UI, research, interaction design, React prototyping, and front-end implementation as a design engineer.
 - Comfortable partnering directly with Product and Engineering.
 
 Key skills:
 - Product strategy
+- Design engineering
 - 0 to 1 product design
 - AI product design
 - Human-AI interaction
+- Front-end implementation
+- React UI development
+- Interactive prototyping
 - B2B SaaS
 - Enterprise UX
 - Design systems
@@ -28,7 +32,7 @@ Key skills:
 - User research
 - Usability testing
 - Accessibility and WCAG 2.0
-- React and Next.js prototyping
+- React and Next.js implementation
 - Figma
 
 Important case studies:

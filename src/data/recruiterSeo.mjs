@@ -8,10 +8,16 @@ export const NY_TANGO_URL = "https://www.newyorktango.com/";
 export const TERRA_URL = "https://terra.vts.com/";
 
 export const TARGET_TITLES = [
-  "Senior Product Designer",
-  "Product Designer",
+  "AI-Powered Design Engineer",
+  "Design Engineer",
+  "Product Design Engineer",
+  "AI Design Engineer",
+  "AI UX Engineer",
+  "Frontend Design Engineer",
   "UX Designer",
   "Product Design Lead",
+  "Senior Product Designer",
+  "Product Designer",
   "AI Product Designer",
   "AI UX Designer",
   "B2B SaaS Product Designer",
@@ -22,11 +28,15 @@ export const TARGET_TITLES = [
 ];
 
 export const CORE_SKILLS = [
+  "Design engineering",
   "Product strategy",
   "0 to 1 product design",
   "AI product design",
   "AI-assisted workflows",
   "Human-AI interaction",
+  "Front-end implementation",
+  "React UI development",
+  "Interactive prototyping",
   "B2B SaaS",
   "Enterprise UX",
   "Design systems",
@@ -52,18 +62,25 @@ export const SHARED_KEYWORDS = [
   ...CORE_SKILLS,
   "New York Product Designer",
   "NYC Product Designer",
+  "New York Design Engineer",
+  "NYC Design Engineer",
+  "AI Design Engineer",
+  "Design Engineer portfolio",
+  "Product Design Engineer portfolio",
+  "AI UX Engineer",
+  "React design engineer",
   "Parsons School of Design",
   "Cornell Tech",
 ];
 
 export const RECRUITER_SUMMARY =
-  "Isabella Wang is a New York City Senior Product Designer with 5+ years of experience turning ambiguous product problems into shipped 0 to 1 products, AI-assisted workflows, B2B SaaS platforms, enterprise tools, marketplaces, design systems, and frontend prototypes.";
+  "Isabella Wang is a New York City AI-powered design engineer with 5+ years of experience turning ambiguous product problems into designed, prototyped, and shipped 0 to 1 products, AI-assisted workflows, B2B SaaS platforms, enterprise tools, marketplaces, design systems, and React-based product experiences.";
 
 export const HIRING_PREFERENCES = [
-  "Senior Product Designer or Product Designer roles",
+  "Design Engineer, Product Design Engineer, Senior Product Designer, or Product Designer roles",
   "New York City, NYC-hybrid, or remote roles",
   "Product teams with real ownership, clear product goals, autonomy, and healthy Product/Engineering collaboration",
-  "Strongest matches: AI products, data-heavy workflows, enterprise tools, productivity tools, consumer/community products, healthcare, marketplaces, design systems, and 0 to 1 products",
+  "Strongest matches: AI products, design engineering, data-heavy workflows, enterprise tools, productivity tools, consumer/community products, healthcare, marketplaces, design systems, and 0 to 1 products",
 ];
 
 export const PROJECT_PROFILES = [
@@ -71,8 +88,8 @@ export const PROJECT_PROFILES = [
     name: "AI Research Guide",
     url: `${SITE_URL}/ai-research-guide`,
     description:
-      "Designed an AI-assisted knowledge platform that reduced consulting discovery from hours to minutes and reduced manual research by approximately 60%.",
-    skills: ["AI product design", "AI UX", "Information architecture", "Enterprise workflows", "Research tools"],
+      "Designed and prototyped an AI-assisted knowledge platform that reduced consulting discovery from hours to minutes and reduced manual research by approximately 60%.",
+    skills: ["AI design engineering", "AI product design", "AI UX", "Information architecture", "Enterprise workflows", "Research tools"],
   },
   {
     name: "VTS Terra Design System",
@@ -85,8 +102,8 @@ export const PROJECT_PROFILES = [
     name: "NY Tango Event Discovery and CMS",
     url: `${SITE_URL}/event-discovery-cms`,
     description:
-      "Independently designed and shipped a 0 to 1 event discovery product and CMS/admin workflow, automating recurring listings and reducing manual operations by approximately 80%.",
-    skills: ["0 to 1 product design", "Consumer UX", "CMS workflows", "Frontend development", "AI-assisted development"],
+      "Independently designed and built a 0 to 1 event discovery product and CMS/admin workflow, automating recurring listings and reducing manual operations by approximately 80%.",
+    skills: ["Design engineering", "0 to 1 product design", "Consumer UX", "CMS workflows", "Frontend development", "AI-assisted development"],
   },
   {
     name: "Enterprise AI Workspace",
@@ -113,65 +130,72 @@ export const PROJECT_PROFILES = [
 
 export const routeSeo = {
   "/": {
-    title: "Isabella Wang | Senior Product Designer for AI, 0 to 1 Products and Design Systems",
+    title: "Isabella Wang | AI-Powered Design Engineer",
     description:
-      "Portfolio of Isabella Wang, a New York City Senior Product Designer with 5+ years across AI product design, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, design systems, and frontend prototyping.",
+      "Portfolio of Isabella Wang, a New York City design engineer who designs, prototypes, and builds AI products, 0 to 1 launches, B2B SaaS workflows, enterprise tools, marketplaces, and design systems.",
     keywords: [
+      "Design engineer portfolio",
+      "AI design engineer portfolio",
+      "Product design engineer portfolio",
+      "React design engineer portfolio",
       "Product design portfolio",
       "AI product design portfolio",
       "B2B SaaS design portfolio",
+      "hire design engineer",
+      "hire product design engineer",
+      "AI UX engineer",
       "recruiter product designer",
       "hire product designer",
       "senior product designer portfolio",
     ],
   },
   "/projects": {
-    title: "Product Design Case Studies | Isabella Wang",
+    title: "Design Engineering Case Studies | Isabella Wang",
     description:
-      "Product design case studies covering AI workflows, B2B SaaS platforms, enterprise design systems, marketplace UX, CMS tools, kiosk experiences, and 0 to 1 product launches.",
-    keywords: ["Product design case studies", "UX case studies", "AI UX case study", "B2B SaaS UX portfolio"],
+      "Design engineering case studies covering AI workflows, React prototypes, B2B SaaS platforms, enterprise design systems, marketplace UX, CMS tools, kiosk experiences, and 0 to 1 product launches.",
+    keywords: ["Design engineering case studies", "Product design case studies", "UX case studies", "AI UX case study", "B2B SaaS UX portfolio"],
   },
   "/ai-research-guide": {
-    title: "AI Product Design Case Study | Isabella Wang",
+    title: "AI Design Engineer Case Study | Isabella Wang",
     description:
-      "AI knowledge platform case study by Isabella Wang: designed a 0 to 1 AI research workflow that reduced consulting discovery from hours to minutes and reduced manual research by 60%.",
-    keywords: ["AI product designer", "AI UX case study", "AI research workflow", "LLM UX", "consulting platform UX"],
+      "AI design engineering case study by Isabella Wang: designed and prototyped a 0 to 1 AI research workflow that reduced consulting discovery from hours to minutes and reduced manual research by 60%.",
+    keywords: ["AI design engineer", "AI product designer", "AI UX case study", "AI research workflow", "LLM UX", "consulting platform UX"],
   },
   "/design-system": {
-    title: "Enterprise Design System Case Study | Isabella Wang",
+    title: "Enterprise Design System Engineering Case Study | Isabella Wang",
     description:
-      "Design system case study by Isabella Wang: expanded coverage from 45% to 90% across 4 B2B products, reduced spec-writing by 88%, and improved WCAG compliance.",
-    keywords: ["Design systems designer", "enterprise design system", "B2B SaaS design system", "WCAG product design"],
+      "Design system engineering case study by Isabella Wang: expanded coverage from 45% to 90% across 4 B2B products, reduced spec-writing by 88%, and improved WCAG compliance.",
+    keywords: ["Design systems designer", "design system engineer", "enterprise design system", "B2B SaaS design system", "WCAG product design"],
   },
   "/platforms-integration": {
-    title: "Enterprise AI Workflow UX Case Study | Isabella Wang",
+    title: "Enterprise AI Workflow Design Engineering Case Study | Isabella Wang",
     description:
-      "Enterprise platform UX case study by Isabella Wang: AI-assisted workspace concepts for cross-tool consulting operations, source-heavy research, and systems design.",
-    keywords: ["Enterprise UX designer", "AI workflow designer", "platform UX", "systems thinking product designer"],
+      "Enterprise AI workflow case study by Isabella Wang: AI-assisted workspace concepts for cross-tool consulting operations, source-heavy research, and systems design.",
+    keywords: ["Enterprise UX designer", "AI workflow designer", "AI design engineer", "platform UX", "systems thinking product designer"],
   },
   "/event-discovery-cms": {
-    title: "0 to 1 Product and CMS Case Study | Isabella Wang",
+    title: "0 to 1 Product and CMS Design Engineering Case Study | Isabella Wang",
     description:
-      "0 to 1 product design and full-stack build case study by Isabella Wang: event discovery app and CMS that automated recurring listings and reduced organizer manual work by 80%.",
-    keywords: ["0 to 1 product designer", "CMS UX", "full-stack product designer", "consumer product design"],
+      "0 to 1 design engineering case study by Isabella Wang: event discovery app and CMS that automated recurring listings and reduced organizer manual work by 80%.",
+    keywords: ["0 to 1 product designer", "design engineer case study", "CMS UX", "full-stack product designer", "consumer product design"],
   },
   "/kiosk": {
     title: "Kiosk and iPad UX Case Study | Isabella Wang",
     description:
-      "Kiosk UX case study by Isabella Wang: self-service visitor check-in experience for office arrival workflows across kiosk and iPad surfaces.",
-    keywords: ["Kiosk UX designer", "iPad UX", "service design", "visitor management UX"],
+      "Kiosk UX case study by Isabella Wang: designed self-service visitor check-in workflows across kiosk and iPad surfaces for office arrival experiences.",
+    keywords: ["Kiosk UX designer", "iPad UX", "service design", "visitor management UX", "design engineer"],
   },
   "/voice": {
     title: "Marketplace UX Case Study | Isabella Wang",
     description:
-      "Marketplace product design case study by Isabella Wang: 0 to 1 NFT creator workflow that reduced the creation flow from 10 to 5 steps and lowered creator abandonment by 50%.",
-    keywords: ["Marketplace UX designer", "creator tools UX", "onboarding UX", "0 to 1 marketplace design"],
+      "Marketplace product UX case study by Isabella Wang: 0 to 1 NFT creator workflow that reduced the creation flow from 10 to 5 steps and lowered creator abandonment by 50%.",
+    keywords: ["Marketplace UX designer", "creator tools UX", "onboarding UX", "0 to 1 marketplace design", "product design engineer"],
   },
   "/contact": {
-    title: "Contact Isabella Wang | Senior Product Designer",
+    title: "Contact Isabella Wang | AI-Powered Design Engineer",
     description:
-      "Contact Isabella Wang for Senior Product Designer and Product Designer roles focused on AI products, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, and design systems.",
-    keywords: ["Contact Isabella Wang", "hire product designer", "Senior Product Designer available"],
+      "Contact Isabella Wang for Design Engineer and Product Design Engineer roles focused on AI products, 0 to 1 launches, B2B SaaS, enterprise UX, React prototyping, marketplaces, and design systems.",
+    keywords: ["Contact Isabella Wang", "hire design engineer", "hire product design engineer", "Design Engineer available"],
   },
 };
 
@@ -185,7 +209,7 @@ export const personSchema = {
   name: AUTHOR,
   url: SITE_URL,
   email: `mailto:${CONTACT_EMAIL}`,
-  jobTitle: "Senior Product Designer",
+  jobTitle: "AI-Powered Design Engineer",
   address: {
     "@type": "PostalAddress",
     addressLocality: "New York",
@@ -199,7 +223,7 @@ export const personSchema = {
   ],
   hasOccupation: {
     "@type": "Occupation",
-    name: "Senior Product Designer",
+    name: "AI-Powered Design Engineer",
     occupationLocation: {
       "@type": "City",
       name: "New York City",
@@ -229,7 +253,7 @@ export const buildPageSchema = ({ pathname, title, description }) => ({
 export const projectItemListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Isabella Wang product design case studies",
+  name: "Isabella Wang design engineering case studies",
   itemListElement: PROJECT_PROFILES.map((project, index) => ({
     "@type": "ListItem",
     position: index + 1,

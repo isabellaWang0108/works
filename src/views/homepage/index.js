@@ -122,7 +122,7 @@ const heroRecommendations = {
     }
 };
 
-const heroTriggerOrder = ["AIResearchGuide", "Design-system", "Voice", "NYTango"];
+const heroTriggerOrder = ["NYTango", "AIResearchGuide", "Design-system", "Voice"];
 
 const LazyProductImage = ({ src, alt, className }) => {
     const imgRef = useRef(null);
@@ -409,24 +409,24 @@ class Homepage extends React.Component {
                             </div>
                             <div className={`landingpage_Intro${this.state.isChatExpanded ? " is-searching" : ""}`}>
                                 <h1 className={`landing-title${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}${this.state.isChatExpanded ? " is-searching" : ""}`}>
-                                    <span className="landing-title-word">AI-Augmented</span>
+                                    <span className="landing-title-word">AI-Powered</span>
                                     <span className="landing-title-word">
-                                        Product{" "}<span className="landing-title-word-secondary">Designer</span>
+                                        Design{" "}<span className="landing-title-word-secondary">Engineer</span>
                                     </span>
                                 </h1>
                                 <h3 className={`landing-supporting-copy${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}`}>
-                                    I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.
+                                    Design engineer bridging product strategy, UX craft, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.
                                 </h3>
                                 <section className="visually-hidden" aria-label="Recruiter summary">
-                                    <h2>Senior Product Designer for AI products, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, and design systems</h2>
+                                    <h2>AI-Powered Design Engineer for AI products, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, and design systems</h2>
                                     <p>
-                                        Isabella Wang is a New York City product designer with 5+ years of experience across AI UX, human-AI interaction, B2B SaaS platforms, enterprise workflows, design systems, marketplace UX, CMS tools, kiosk experiences, product strategy, user research, interaction design, accessibility, React, Next.js, Figma, AI prototyping, and front-end implementation.
+                                        Isabella Wang is a New York City design engineer with 5+ years of experience across AI UX, human-AI interaction, B2B SaaS platforms, enterprise workflows, design systems, marketplace UX, CMS tools, kiosk experiences, product strategy, user research, interaction design, accessibility, React, Next.js, Figma, AI prototyping, and front-end implementation.
                                     </p>
                                 </section>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
-                                    <span className="heroTitleLine">AI-Augmented</span>
-                                    <span className="heroTitleLine">Product{" "}<span className="heroTitleLine-secondary">Designer</span></span>
-                                    <span className="mobile-hero-outcome">I bridge product strategy, design, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.</span>
+                                    <span className="heroTitleLine">AI-Powered</span>
+                                    <span className="heroTitleLine">Design{" "}<span className="heroTitleLine-secondary">Engineer</span></span>
+                                    <span className="mobile-hero-outcome">Design engineer bridging product strategy, UX craft, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.</span>
                                 </div>
                                 {!this.state.isChatExpanded && (
                                     <section

@@ -5,6 +5,12 @@
   "email": "wangxbella0108@gmail.com",
   "linkedin": "https://www.linkedin.com/in/isabella-wang-310181149/",
   "target_titles": [
+    "AI-Powered Design Engineer",
+    "Design Engineer",
+    "Product Design Engineer",
+    "AI Design Engineer",
+    "AI UX Engineer",
+    "Frontend Design Engineer",
     "Senior Product Designer",
     "Product Designer",
     "UX Designer",
@@ -17,19 +23,23 @@
     "Founding Product Designer",
     "0 to 1 Product Designer"
   ],
-  "summary": "New York City Senior Product Designer with 5+ years of experience turning ambiguous product problems into shipped 0 to 1 products, AI-assisted workflows, B2B SaaS platforms, enterprise tools, marketplaces, design systems, and frontend prototypes.",
+  "summary": "New York City AI-powered design engineer with 5+ years of experience turning ambiguous product problems into designed, prototyped, and shipped 0 to 1 products, AI-assisted workflows, B2B SaaS platforms, enterprise tools, marketplaces, design systems, and React-based product experiences.",
   "hiring_preferences": [
-    "Senior Product Designer or Product Designer roles",
+    "Design Engineer, Product Design Engineer, Senior Product Designer, or Product Designer roles",
     "New York City, NYC-hybrid, or remote roles",
     "Product teams with real ownership, clear product goals, autonomy, and healthy Product/Engineering collaboration",
-    "Strongest matches: AI products, data-heavy workflows, enterprise tools, productivity tools, consumer/community products, healthcare, marketplaces, design systems, and 0 to 1 products"
+    "Strongest matches: AI products, design engineering, data-heavy workflows, enterprise tools, productivity tools, consumer/community products, healthcare, marketplaces, design systems, and 0 to 1 products"
   ],
   "skills": [
+    "Design engineering",
     "Product strategy",
     "0 to 1 product design",
     "AI product design",
     "AI-assisted workflows",
     "Human-AI interaction",
+    "Front-end implementation",
+    "React UI development",
+    "Interactive prototyping",
     "B2B SaaS",
     "Enterprise UX",
     "Design systems",
@@ -56,8 +66,8 @@
     {
       "name": "AI Research Guide",
       "url": "https://isabellawang.info/ai-research-guide",
-      "impact": "Reduced consulting discovery from hours to minutes and reduced manual research by approximately 60%.",
-      "skills": ["AI product design", "AI UX", "Information architecture", "Enterprise workflows", "Research tools"]
+      "impact": "Designed and prototyped an AI-assisted knowledge platform that reduced consulting discovery from hours to minutes and reduced manual research by approximately 60%.",
+      "skills": ["AI design engineering", "AI product design", "AI UX", "Information architecture", "Enterprise workflows", "Research tools"]
     },
     {
       "name": "VTS Terra Design System",
@@ -68,8 +78,8 @@
     {
       "name": "NY Tango Event Discovery and CMS",
       "url": "https://isabellawang.info/event-discovery-cms",
-      "impact": "Independently designed and shipped a 0 to 1 event discovery product and CMS/admin workflow, automating recurring listings and reducing manual operations by approximately 80%.",
-      "skills": ["0 to 1 product design", "Consumer UX", "CMS workflows", "Frontend development", "AI-assisted development"]
+      "impact": "Independently designed and built a 0 to 1 event discovery product and CMS/admin workflow, automating recurring listings and reducing manual operations by approximately 80%.",
+      "skills": ["Design engineering", "0 to 1 product design", "Consumer UX", "CMS workflows", "Frontend development", "AI-assisted development"]
     },
     {
       "name": "Enterprise AI Workspace",
