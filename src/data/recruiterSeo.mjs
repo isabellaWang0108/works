@@ -8,7 +8,7 @@ export const NY_TANGO_URL = "https://www.newyorktango.com/";
 export const TERRA_URL = "https://terra.vts.com/";
 
 export const TARGET_TITLES = [
-  "AI-Powered Design Engineer",
+  "Design-First Design Engineer",
   "Design Engineer",
   "Product Design Engineer",
   "AI Design Engineer",
@@ -74,7 +74,7 @@ export const SHARED_KEYWORDS = [
 ];
 
 export const RECRUITER_SUMMARY =
-  "Isabella Wang is a New York City AI-powered design engineer with 5+ years of experience turning ambiguous product problems into designed, prototyped, and shipped 0 to 1 products, AI-assisted workflows, B2B SaaS platforms, enterprise tools, marketplaces, design systems, and React-based product experiences.";
+  "Isabella Wang is a New York City design-first design engineer with 5+ years of experience turning ambiguous product problems into designed, prototyped, and shipped 0 to 1 products, AI-assisted workflows, B2B SaaS platforms, enterprise tools, marketplaces, design systems, and React-based product experiences.";
 
 export const HIRING_PREFERENCES = [
   "Design Engineer, Product Design Engineer, Senior Product Designer, or Product Designer roles",
@@ -130,7 +130,7 @@ export const PROJECT_PROFILES = [
 
 export const routeSeo = {
   "/": {
-    title: "Isabella Wang | AI-Powered Design Engineer",
+    title: "Isabella Wang | Design-First Design Engineer",
     description:
       "Portfolio of Isabella Wang, a New York City design engineer who designs, prototypes, and builds AI products, 0 to 1 launches, B2B SaaS workflows, enterprise tools, marketplaces, and design systems.",
     keywords: [
@@ -192,7 +192,7 @@ export const routeSeo = {
     keywords: ["Marketplace UX designer", "creator tools UX", "onboarding UX", "0 to 1 marketplace design", "product design engineer"],
   },
   "/contact": {
-    title: "Contact Isabella Wang | AI-Powered Design Engineer",
+    title: "Contact Isabella Wang | Design-First Design Engineer",
     description:
       "Contact Isabella Wang for Design Engineer and Product Design Engineer roles focused on AI products, 0 to 1 launches, B2B SaaS, enterprise UX, React prototyping, marketplaces, and design systems.",
     keywords: ["Contact Isabella Wang", "hire design engineer", "hire product design engineer", "Design Engineer available"],
@@ -209,7 +209,7 @@ export const personSchema = {
   name: AUTHOR,
   url: SITE_URL,
   email: `mailto:${CONTACT_EMAIL}`,
-  jobTitle: "AI-Powered Design Engineer",
+  jobTitle: "Design-First Design Engineer",
   address: {
     "@type": "PostalAddress",
     addressLocality: "New York",
@@ -223,7 +223,7 @@ export const personSchema = {
   ],
   hasOccupation: {
     "@type": "Occupation",
-    name: "AI-Powered Design Engineer",
+    name: "Design-First Design Engineer",
     occupationLocation: {
       "@type": "City",
       name: "New York City",

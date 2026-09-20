@@ -409,24 +409,24 @@ class Homepage extends React.Component {
                             </div>
                             <div className={`landingpage_Intro${this.state.isChatExpanded ? " is-searching" : ""}`}>
                                 <h1 className={`landing-title${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}${this.state.isChatExpanded ? " is-searching" : ""}`}>
-                                    <span className="landing-title-word">AI-Powered</span>
+                                    <span className="landing-title-word">Design-First</span>
                                     <span className="landing-title-word">
                                         Design{" "}<span className="landing-title-word-secondary">Engineer</span>
                                     </span>
                                 </h1>
                                 <h3 className={`landing-supporting-copy${this.state.isTriggerPreviewActive || this.state.isChatExpanded ? " is-previewing" : ""}`}>
-                                    Design engineer bridging product strategy, UX craft, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.
+                                    I turn ambiguous ideas into polished, shipped products through product design, AI-assisted frontend development, and design systems that scale.
                                 </h3>
                                 <section className="visually-hidden" aria-label="Recruiter summary">
-                                    <h2>AI-Powered Design Engineer for AI products, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, and design systems</h2>
+                                    <h2>Design-First Design Engineer for AI products, 0 to 1 launches, B2B SaaS, enterprise UX, marketplaces, and design systems</h2>
                                     <p>
                                         Isabella Wang is a New York City design engineer with 5+ years of experience across AI UX, human-AI interaction, B2B SaaS platforms, enterprise workflows, design systems, marketplace UX, CMS tools, kiosk experiences, product strategy, user research, interaction design, accessibility, React, Next.js, Figma, AI prototyping, and front-end implementation.
                                     </p>
                                 </section>
                                 <div className="mobile-legacy-hero" aria-label="Portfolio intro">
-                                    <span className="heroTitleLine">AI-Powered</span>
+                                    <span className="heroTitleLine">Design-First</span>
                                     <span className="heroTitleLine">Design{" "}<span className="heroTitleLine-secondary">Engineer</span></span>
-                                    <span className="mobile-hero-outcome">Design engineer bridging product strategy, UX craft, and front-end execution to turn ambiguity into 0→1 launch-ready products and scalable systems.</span>
+                                    <span className="mobile-hero-outcome">I turn ambiguous ideas into polished, shipped products through product design, AI-assisted frontend development, and design systems that scale.</span>
                                 </div>
                                 {!this.state.isChatExpanded && (
                                     <section
